@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Blocks.tres" type="TileSet" id=1]
+[ext_resource path="res://Navigation2D.cs" type="Script" id=2]
 
 [node name="Isometric" type="Node2D"]
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 position = Vector2( 250, 250 )
 scale = Vector2( 0.05, 0.05 )
+script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="Navigation2D"]
 mode = 1
@@ -22,4 +24,4 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 861, 496 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
-tile_data = PoolIntArray( -1703930, 1, 0, -1572854, 1, 0, -1441790, 1, 0, -1310715, 1, 0, -1114114, 1, 0, -1179637, 1, 0, -1114110, 1, 0, -1114105, 1, 0, -917505, 1, 0, -983025, 1, 0, -851973, 1, 0, -851962, 1, 0, -851958, 1, 0, -786430, 1, 0, -589834, 1, 0, -589828, 1, 0, -589823, 1, 0, -589814, 1, 0, -524284, 1, 0, -393222, 1, 0, -327694, 1, 0, -327665, 1, 0, -262134, 1, 0, -196608, 1, 0, -65531, 1, 0, 65526, 1, 0, 196605, 1, 0, 393221, 1, 0 )
+tile_data = PoolIntArray( -1703930, 1, 0, -1572854, 1, 0, -1441790, 1, 0, -1310715, 1, 0, -1114114, 1, 0, -1179637, 1, 0, -1114110, 1, 0, -1114105, 1, 0, -917505, 1, 0, -983025, 1, 0, -851973, 1, 0, -851962, 1, 0, -851958, 1, 0, -786430, 1, 0, -786417, 6, 0, -589834, 1, 0, -589828, 1, 0, -589823, 1, 0, -589814, 1, 0, -524284, 1, 0, -393222, 1, 0, -393219, 7, 0, -327694, 1, 0, -327665, 1, 0, -262134, 1, 0, -196608, 1, 0, -65531, 1, 0, -65530, 8, 0, 65526, 1, 0, 196605, 1, 0, 393221, 1, 0 )
