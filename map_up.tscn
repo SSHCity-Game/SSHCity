@@ -76,3 +76,5 @@ mode = 1
 tile_set = SubResource( 2 )
 cell_size = Vector2( 861, 496 )
 format = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
