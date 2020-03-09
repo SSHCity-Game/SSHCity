@@ -53,6 +53,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="building.cs">
+      <DependentUpon>Building.cs</DependentUpon>
+    </Compile>
     <Compile Include="Building.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
