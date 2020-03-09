@@ -9,7 +9,7 @@ public class Building : Node
     private int time_to_build;
     private int money = 100000000;
 
-    public Building(int size, int level, )
+    public Building(int size, int level )
     {
         this.size = size;
         this.level = level;

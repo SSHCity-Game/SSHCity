@@ -28,7 +28,7 @@ public class Plan : Node2D
             int rand_x = rand.Next(min_x, max_x+1);
             int rand_y = rand.Next(min_y, max_y+1);
             int indexe = _tileMap1.GetCell(rand_x, rand_y);
-            if (indexe == 2)
+            if (indexe == 0)
             {
                 int nbr_block_eau = rand.Next(min_block_flaque_eau, max_block_flaque_eau+1);
                 int j = 0;
@@ -40,9 +40,10 @@ public class Plan : Node2D
                     {
                         case 0:
                         {
+                            rand_x++;
                             if (_tileMap1.GetCell(rand_x+1, rand_y) == 0)
                             {
-                                rand_x++;
+                                
                                 _tileMap1.SetCell(rand_x, rand_y, 2);
                                 j++;
                                 if (_tileMap1.GetCell(rand_x+1, rand_y) == 0)
@@ -67,9 +68,10 @@ public class Plan : Node2D
 
                         case 1:
                         {
+                            rand_x--;
                             if (_tileMap1.GetCell(rand_x-1, rand_y) == 0)
                             {
-                                rand_x--;
+                                
                                 _tileMap1.SetCell(rand_x-1, rand_y, 2);
                                 j++;
                                 if (_tileMap1.GetCell(rand_x-1, rand_y) == 0)
@@ -93,9 +95,9 @@ public class Plan : Node2D
 
                         case 2:
                         {
+                            rand_y++;
                             if (_tileMap1.GetCell(rand_x, rand_y+1) == 0)
                             {
-                                rand_y++;
                                 _tileMap1.SetCell(rand_x, rand_y, 2);
                                 j++;
                                 if (_tileMap1.GetCell(rand_x+1, rand_y) == 0)
@@ -113,15 +115,14 @@ public class Plan : Node2D
                                     _tileMap1.SetCell(rand_x, rand_y+1, 2);
                                     j++;
                                 }
-                                
                             }
                             break;
                         }
                         case 3:
                         {
+                            rand_y--;
                             if (_tileMap1.GetCell(rand_x, rand_y-1) == 0)
                             {
-                                rand_y--;
                                 _tileMap1.SetCell(rand_x, rand_y, 2);
                                 j++;
                                 if (_tileMap1.GetCell(rand_x+1, rand_y) == 0)
@@ -143,9 +144,11 @@ public class Plan : Node2D
                             break;
                         }
                     }
-                    
-    
                 }
+            }
+            else
+            {
+                i--;
             }
         }
     }
