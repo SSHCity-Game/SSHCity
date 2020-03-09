@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Blocks.tres" type="TileSet" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+
+[node name="Isometric" type="Node2D"]
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+position = Vector2( 250, 250 )
+scale = Vector2( 0.1, 0.1 )
+
+[node name="TileMap" type="TileMap" parent="Navigation2D"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 861, 496 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -131072, 0, 0, -131071, 3, 0, -131070, 3, 0, -131069, 0, 0, -1, 3, 0, -65536, 0, 0, -65533, 0, 0, -65532, 0, 0, 65535, 0, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 0, 0, 4, 0, 0, 131071, 0, 0, 65536, 2, 0, 65537, 2, 0, 65538, 3, 0, 65539, 0, 0, 131072, 0, 0, 131074, 0, 0, 131075, 0, 0, 196608, 0, 0, 196609, 0, 0 )
+
+[node name="TileMap2" type="TileMap" parent="Navigation2D"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 861, 496 )
+format = 1
+tile_data = PoolIntArray( -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -3, 1, 0, -2, 1, 0, -1, 2, 0, 65534, 1, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 70.4343, 127.236 )
