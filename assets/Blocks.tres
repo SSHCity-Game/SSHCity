@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=6 format=2]
+[gd_resource type="TileSet" load_steps=7 format=2]
 [ext_resource path="res://assets/isometric_0087.png" type="Texture" id=1]
 [ext_resource path="res://assets/isometric_0086.png" type="Texture" id=2]
 [ext_resource path="res://assets/isometric_0080.png" type="Texture" id=3]
+[ext_resource path="res://assets/isometric_0064.png" type="Texture" id=4]
 [ext_resource path="res://assets/isometric_0100.png" type="Texture" id=5]
 [ext_resource path="res://assets/isometric_0087_2.png" type="Texture" id=6]
 
