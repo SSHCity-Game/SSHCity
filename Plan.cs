@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class Plan : Node2D
 {
@@ -23,6 +24,7 @@ public class Plan : Node2D
         int nbr_flaque_eau = rand.Next(min_flaque_eau, max_flaque_eau+1);
         _tileMap1 = (TileMap) GetNode("Navigation2D/TileMap1");
         _tileMap2 = (TileMap) GetNode("Navigation2D/TileMap2");
+        List<(int, int)> coordonnes_base_flaques = new List<(int, int)>();
         for (int i = 0; i < nbr_flaque_eau; i++)
         {
             int rand_x = rand.Next(min_x, max_x+1);
@@ -30,6 +32,7 @@ public class Plan : Node2D
             int indexe = _tileMap1.GetCell(rand_x, rand_y);
             if (indexe == 0)
             {
+                coordonnes_base_flaques.Add((rand_x, rand_y));
                 int nbr_block_eau = rand.Next(min_block_flaque_eau, max_block_flaque_eau+1);
                 int j = 0;
                 while (j < nbr_block_eau)
@@ -158,6 +161,31 @@ public class Plan : Node2D
                 i--;
             }
         }
+
+        foreach (var coord in coordonnes_base_flaques)
+        {
+            (int x, int y) = coord;
+            SableDroite(x, y);
+        }
     }
+
+    private void SableDroite(int x, int y)
+    {
+        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+        {
+            _tileMap1.SetCell(x, y, 5);
+        }
+        else 
+        {
+            if (_tileMap1.GetCell(x, y) == 2)
+            {
+                SableDroite(x+1, y+1);
+                SableDroite(x+1, y);
+                SableDroite(x+1, y-1);
+            }
+        }
+    }
+    
+    
     
 }
