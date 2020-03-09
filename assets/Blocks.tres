@@ -5,6 +5,8 @@
 [ext_resource path="res://assets/isometric_0080.png" type="Texture" id=3]
 [ext_resource path="res://assets/isometric_0064.png" type="Texture" id=4]
 [ext_resource path="res://assets/isometric_0100.png" type="Texture" id=5]
+[ext_resource path="res://assets/isometric_0222.png" type="Texture" id=6]
+[ext_resource path="res://assets/isometric_0160.png" type="Texture" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -36,6 +38,8 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 1/z_index = 0
 2/name = "eau"
 2/texture = ExtResource( 4 )
+2/name = "Batiment2"
+2/texture = ExtResource( 5 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 1024, 1024 )
