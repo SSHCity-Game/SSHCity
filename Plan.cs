@@ -44,7 +44,10 @@ public class Plan : Node2D
                         case 0:
                         {
                             rand_x++;
-                            _tileMap1.SetCell(rand_x, rand_y, 2);
+                            if (_tileMap1.GetCell(rand_x, rand_y) == 0)
+                            {
+                                _tileMap1.SetCell(rand_x, rand_y, 2);
+                            }
                             if (_tileMap1.GetCell(rand_x+1, rand_y) == 0)
                             {
                                 
@@ -73,7 +76,10 @@ public class Plan : Node2D
                         case 1:
                         {
                             rand_x--;
-                            _tileMap1.SetCell(rand_x, rand_y, 2);
+                            if (_tileMap1.GetCell(rand_x, rand_y) == 0)
+                            {
+                                _tileMap1.SetCell(rand_x, rand_y, 2);
+                            }
 
                             if (_tileMap1.GetCell(rand_x-1, rand_y) == 0)
                             {
@@ -102,7 +108,10 @@ public class Plan : Node2D
                         case 2:
                         {
                             rand_y++;
-                            _tileMap1.SetCell(rand_x, rand_y, 2);
+                            if (_tileMap1.GetCell(rand_x, rand_y) == 0)
+                            {
+                                _tileMap1.SetCell(rand_x, rand_y, 2);
+                            }
 
                             if (_tileMap1.GetCell(rand_x, rand_y+1) == 0)
                             {
@@ -129,7 +138,10 @@ public class Plan : Node2D
                         case 3:
                         {
                             rand_y--;
-                            _tileMap1.SetCell(rand_x, rand_y, 2);
+                            if (_tileMap1.GetCell(rand_x, rand_y) == 0)
+                            {
+                                _tileMap1.SetCell(rand_x, rand_y, 2);
+                            }
 
                             if (_tileMap1.GetCell(rand_x, rand_y-1) == 0)
                             {
@@ -165,6 +177,12 @@ public class Plan : Node2D
         foreach (var coord in coordonnes_base_flaques)
         {
             (int x, int y) = coord;
+            GD.Print(coord);
+            
+ 
+            SableGauche(x, y);
+            SableHaut(x, y);
+            SableBas(x, y);
             SableDroite(x, y);
         }
     }
@@ -185,7 +203,56 @@ public class Plan : Node2D
             }
         }
     }
+
+    private void SableGauche(int x, int y)
+    {
+        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+        {
+            _tileMap1.SetCell(x, y, 5);
+        }
+        else 
+        {
+            if (_tileMap1.GetCell(x, y) == 2)
+            {
+                SableGauche(x-1, y+1);
+                SableGauche(x-1, y);
+                SableGauche(x-1, y-1);
+            }
+        }
+    }
     
+    private void SableHaut(int x, int y)
+    {
+        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+        {
+            _tileMap1.SetCell(x, y, 5);
+        }
+        else 
+        {
+            if (_tileMap1.GetCell(x, y) == 2)
+            {
+                SableHaut(x+1, y+1);
+                SableHaut(x, y+1);
+                SableHaut(x-1, y+1);
+            }
+        }
+    }
     
+    private void SableBas(int x, int y)
+    {
+        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+        {
+            _tileMap1.SetCell(x, y, 5);
+        }
+        else 
+        {
+            if (_tileMap1.GetCell(x, y) == 2)
+            {
+                SableBas(x+1, y-1);
+                SableBas(x, y-1);
+                SableBas(x-1, y-1);
+            }
+        }
+    }
     
 }
