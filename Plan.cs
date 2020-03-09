@@ -41,6 +41,7 @@ public class Plan : Node2D
                         case 0:
                         {
                             rand_x++;
+                            _tileMap1.SetCell(rand_x, rand_y, 2);
                             if (_tileMap1.GetCell(rand_x+1, rand_y) == 0)
                             {
                                 
@@ -69,6 +70,8 @@ public class Plan : Node2D
                         case 1:
                         {
                             rand_x--;
+                            _tileMap1.SetCell(rand_x, rand_y, 2);
+
                             if (_tileMap1.GetCell(rand_x-1, rand_y) == 0)
                             {
                                 
@@ -96,6 +99,8 @@ public class Plan : Node2D
                         case 2:
                         {
                             rand_y++;
+                            _tileMap1.SetCell(rand_x, rand_y, 2);
+
                             if (_tileMap1.GetCell(rand_x, rand_y+1) == 0)
                             {
                                 _tileMap1.SetCell(rand_x, rand_y, 2);
@@ -121,6 +126,8 @@ public class Plan : Node2D
                         case 3:
                         {
                             rand_y--;
+                            _tileMap1.SetCell(rand_x, rand_y, 2);
+
                             if (_tileMap1.GetCell(rand_x, rand_y-1) == 0)
                             {
                                 _tileMap1.SetCell(rand_x, rand_y, 2);
