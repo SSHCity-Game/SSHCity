@@ -187,8 +187,8 @@ public class Buildings : Node2D
                SableDroite(x, y);
            }
 
-           int x2 = rand.Next(min_x , max_x - 1);
-           int y2 = rand.Next(min_x , max_x - 1);
+           int x2 = rand.Next(min_x +8, max_x -8);
+           int y2 = rand.Next(min_y +8, max_y -8);
            for (int i = x2; i < x2+5; i+= 2)
            {
                for (int j = y2; j < y2 + 5; j+= 2)
@@ -198,7 +198,7 @@ public class Buildings : Node2D
                     _tileMap2.SetCell(i,j,1);
                    }
                }
-               
+
            }
        }
    
