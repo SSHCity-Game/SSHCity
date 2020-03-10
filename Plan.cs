@@ -20,7 +20,7 @@ public class Plan : Node2D
     private int min_flaque_eau = 2;
     private int max_block_flaque_eau = 10;
     private int min_block_flaque_eau = 5;
-    private int indexe_montagne = 0;
+    private int indexe_montagne = 4;
 
     public override void _Ready()
     {
@@ -274,7 +274,7 @@ public class Plan : Node2D
         {
             _tileMap4.SetCell(rand_m_x, rand_m_y, indexe_montagne);
             _tileMap1.SetCell(rand_m_x, rand_m_y, 4);
-            Montagne_Lv2(rand_m_x, rand_m_y);
+            Montagne_Lv2(rand_m_x+1, rand_m_y+1);
             int i = 1;
             while (i < nbr_m)
             {
@@ -283,14 +283,13 @@ public class Plan : Node2D
                 {
                     case 0:
                     {
-                        if (_tileMap1.GetCell(rand_m_x-1, rand_m_y-1) == 0)
+                        if (_tileMap1.GetCell(rand_m_x-2, rand_m_y-2) == 0)
                         {
-                            Montagne_Lv3(rand_m_x, rand_m_y);
-                            rand_m_x--;
-                            rand_m_y--;
+                            rand_m_x-=2;
+                            rand_m_y-=2;
                             _tileMap1.SetCell(rand_m_x, rand_m_y, 4);
                             _tileMap4.SetCell(rand_m_x, rand_m_y, indexe_montagne);
-                            Montagne_Lv2(rand_m_x, rand_m_y);
+                            Montagne_Lv2(rand_m_x+1, rand_m_y+1);
                             i++;
                         }
 
@@ -299,13 +298,14 @@ public class Plan : Node2D
 
                     case 1:
                     {
-                        if (_tileMap1.GetCell(rand_m_x+1, rand_m_y+1) == 0)
+                        if (_tileMap1.GetCell(rand_m_x+2, rand_m_y+2) == 0)
                         {
-                            Montagne_Lv3(rand_m_x, rand_m_y);
-                            rand_m_x++;
-                            rand_m_y++;
+                            //Montagne_Lv3(rand_m_x+1, rand_m_y+1);
+                            rand_m_x+=2;
+                            rand_m_y+=2;
                             _tileMap1.SetCell(rand_m_x, rand_m_y, 4);
                             _tileMap4.SetCell(rand_m_x, rand_m_y, indexe_montagne);
+                            Montagne_Lv2(rand_m_x+1, rand_m_y+1);
                             i++;
                         }
 
@@ -314,13 +314,14 @@ public class Plan : Node2D
 
                     case 2:
                     {
-                        if (_tileMap1.GetCell(rand_m_x-1, rand_m_y+1) == 0)
+                        if (_tileMap1.GetCell(rand_m_x-2, rand_m_y+2) == 0)
                         {
-                            Montagne_Lv3(rand_m_x, rand_m_y);
-                            rand_m_x--;
-                            rand_m_y++;
+                            //Montagne_Lv3(rand_m_x, rand_m_y);
+                            rand_m_x-=2;
+                            rand_m_y+=2;
                             _tileMap1.SetCell(rand_m_x, rand_m_y, 4);
                             _tileMap4.SetCell(rand_m_x, rand_m_y, indexe_montagne);
+                            Montagne_Lv2(rand_m_x+1, rand_m_y+1);
                             i++;
                         }
 
@@ -329,13 +330,15 @@ public class Plan : Node2D
 
                     case 3:
                     {
-                        Montagne_Lv3(rand_m_x, rand_m_y);
-                        if (_tileMap1.GetCell(rand_m_x+1, rand_m_y-1) == 0)
+                        
+                        if (_tileMap1.GetCell(rand_m_x+2, rand_m_y-2) == 0)
                         {
-                            rand_m_x++;
-                            rand_m_y--;
+                            //Montagne_Lv3(rand_m_x, rand_m_y);
+                            rand_m_x+=2;
+                            rand_m_y-=2;
                             _tileMap1.SetCell(rand_m_x, rand_m_y, 4);
                             _tileMap4.SetCell(rand_m_x, rand_m_y, indexe_montagne);
+                            Montagne_Lv2(rand_m_x+1, rand_m_y+1);
                             i++;
                         }
 
@@ -352,104 +355,104 @@ public class Plan : Node2D
     
     private void Montagne_Lv2(int x, int y)
     {
-        if (_tileMap1.GetCell(x-1, y-1) == 0)
+        if (_tileMap1.GetCell(x-1, y-1) == 0 || _tileMap1.GetCell(x-1, y-1) == indexe_montagne)
         {
             _tileMap1.SetCell(x - 1, y - 1, 4);
             _tileMap3.SetCell(x - 1, y - 1, indexe_montagne);
+            Montagne_Lv3(x, y);
+        }
+        if (_tileMap1.GetCell(x+1, y+1) == 0 || _tileMap1.GetCell(x+1, y+1) == indexe_montagne)
+        {
+            _tileMap3.SetCell(x+1, y+1, indexe_montagne);
+            _tileMap1.SetCell(x+1, y+1, 4);
+            Montagne_Lv3(x+2, y+2);
+        }
+        if (_tileMap1.GetCell(x, y-1) == 0 || _tileMap1.GetCell(x, y-1) == indexe_montagne)
+        {
+            _tileMap3.SetCell(x, y-1, indexe_montagne);
+            _tileMap1.SetCell(x, y-1, 4);
+            Montagne_Lv3(x+1, y);
+        }
+        if (_tileMap1.GetCell(x-1, y) == 0 || _tileMap1.GetCell(x-1, y) == indexe_montagne)
+        {
+            _tileMap3.SetCell(x-1, y, indexe_montagne);
+            _tileMap1.SetCell(x-1, y, 4);
+            Montagne_Lv3(x, y+1);
+        }
+        if (_tileMap1.GetCell(x-1, y+1) == 0 || _tileMap1.GetCell(x-1, y+1) == indexe_montagne)
+        {
+            _tileMap3.SetCell(x-1, y+1, indexe_montagne);
+            _tileMap1.SetCell(x-1, y+1, 4);
+            Montagne_Lv3(x, y+2);
+        }
+        if (_tileMap1.GetCell(x+1, y-1) == 0 || _tileMap1.GetCell(x+1, y-1) == indexe_montagne)
+        {
+            _tileMap3.SetCell(x+1, y-1, indexe_montagne);
+            _tileMap1.SetCell(x+1, y-1, 4);
+            Montagne_Lv3(x+2, y);
+        }
+        if (_tileMap1.GetCell(x+1, y) == 0 || _tileMap1.GetCell(x+1, y) == indexe_montagne)
+        {
+            _tileMap3.SetCell(x+1, y, indexe_montagne);
+            _tileMap1.SetCell(x+1, y, 4);
+            Montagne_Lv3(x+2, y+1);
+        }
+        if (_tileMap1.GetCell(x, y+1) == 0 || _tileMap1.GetCell(x, y+1) == indexe_montagne)
+        {
+            _tileMap3.SetCell(x, y+1, indexe_montagne);
+            _tileMap1.SetCell(x, y+1, 4);
+            Montagne_Lv3(x+1, y+2);
+        }
+    }
+
+    private void Montagne_Lv3(int x, int y)
+    {     
+        if (_tileMap1.GetCell(x-1, y-1) == 0)
+        {
+            _tileMap1.SetCell(x - 1, y - 1, 4);
+            _tileMap2.SetCell(x - 1, y - 1, indexe_montagne);
         }
         if (_tileMap1.GetCell(x+1, y+1) == 0)
         {
-            _tileMap3.SetCell(x+1, y+1, indexe_montagne);
+            _tileMap2.SetCell(x+1, y+1, indexe_montagne);
             _tileMap1.SetCell(x+1, y+1, 4);
 
         }
         if (_tileMap1.GetCell(x, y-1) == 0)
         {
-            _tileMap3.SetCell(x, y-1, indexe_montagne);
+            _tileMap2.SetCell(x, y-1, indexe_montagne);
             _tileMap1.SetCell(x, y-1, 4);
 
         }
         if (_tileMap1.GetCell(x-1, y) == 0)
         {
-            _tileMap3.SetCell(x-1, y, indexe_montagne);
+            _tileMap2.SetCell(x-1, y, indexe_montagne);
             _tileMap1.SetCell(x-1, y, 4);
 
         }
         if (_tileMap1.GetCell(x-1, y+1) == 0)
         {
-            _tileMap3.SetCell(x-1, y+1, indexe_montagne);
+            _tileMap2.SetCell(x-1, y+1, indexe_montagne);
             _tileMap1.SetCell(x-1, y+1, 4);
 
         }
         if (_tileMap1.GetCell(x+1, y-1) == 0)
         {
-            _tileMap3.SetCell(x+1, y-1, indexe_montagne);
+            _tileMap2.SetCell(x+1, y-1, indexe_montagne);
             _tileMap1.SetCell(x+1, y-1, 4);
 
         }
         if (_tileMap1.GetCell(x+1, y) == 0)
         {
-            _tileMap3.SetCell(x+1, y, indexe_montagne);
+            _tileMap2.SetCell(x+1, y, indexe_montagne);
             _tileMap1.SetCell(x+1, y, 4);
 
         }
-        if (_tileMap1.GetCell(x, y+1) == 0)
+
+        if (_tileMap1.GetCell(x, y + 1) == 0)
         {
-            _tileMap3.SetCell(x, y+1, indexe_montagne);
-            _tileMap1.SetCell(x, y+1, 4);
-
-        }
-    }
-
-    private void Montagne_Lv3(int x, int y)
-    {
-        if (_tileMap1.GetCell(x-2, y-2) == 0)
-        {
-            _tileMap2.SetCell(x-2, y-2, indexe_montagne);
-            _tileMap1.SetCell(x-2, y-2, 4);
-
-        }
-        if (_tileMap1.GetCell(x+2, y+2) == 0)
-        {
-            _tileMap2.SetCell(x+2, y+2, indexe_montagne);
-            _tileMap1.SetCell(x+2, y+2, 4);
-
-        }
-        if (_tileMap1.GetCell(x, y-2) == 0)
-        {
-            _tileMap2.SetCell(x, y-2, indexe_montagne);
-            _tileMap1.SetCell(x, y-2, 4);
-
-        }
-        if (_tileMap1.GetCell(x-2, y) == 0)
-        {
-            _tileMap2.SetCell(x-2, y, indexe_montagne);
-            _tileMap1.SetCell(x-2, y, 4);
-
-        }
-        if (_tileMap1.GetCell(x-2, y+2) == 0)
-        {
-            _tileMap2.SetCell(x-2, y+2, indexe_montagne);
-            _tileMap1.SetCell(x-2, y+2, 4);
-
-        }
-        if (_tileMap1.GetCell(x+2, y-2) == 0)
-        {
-            _tileMap2.SetCell(x+2, y-2, indexe_montagne);
-            _tileMap1.SetCell(x+2, y-2, 4);
-
-        }
-        if (_tileMap1.GetCell(x+2, y) == 0)
-        {
-            _tileMap2.SetCell(x+2, y, indexe_montagne);
-            _tileMap1.SetCell(x+2, y, 4);
-
-        }
-        if (_tileMap1.GetCell(x, y+2) == 0)
-        {
-            _tileMap2.SetCell(x, y+2, indexe_montagne);
-            _tileMap1.SetCell(x, y+2, 4);
-
+            _tileMap2.SetCell(x, y + 1, indexe_montagne);
+            _tileMap1.SetCell(x, y + 1, 4);
         }
     }
 
