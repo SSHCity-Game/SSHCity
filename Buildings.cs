@@ -189,6 +189,7 @@ public class Buildings : Node2D
 
            int x2 = rand.Next(min_x +8, max_x -8);
            int y2 = rand.Next(min_y +8, max_y -8);
+           int acc = 0;
            for (int i = x2; i < x2+5; i+= 2)
            {
                for (int j = y2; j < y2 + 5; j+= 2)
@@ -199,6 +200,36 @@ public class Buildings : Node2D
                    }
                }
 
+           }
+
+           for (int i = x2+1; i < x2+6; i++)
+           {
+               for (int j = y2+1; j < y2 + 6; j++)
+               {
+                   if (_tileMap1.GetCell(i,j) == 0 )
+                   {
+                       _tileMap1.SetCell(i,j,3);
+                   }
+               }
+           }
+           
+           
+           for (int i = min_x ; i < max_x; i++)
+           {
+              /*if (_tileMap1.GetCell(i,y2 +2) == 0)
+               {
+                   _tileMap1.SetCell(i,y2+2 ,3);
+               }*/
+              
+               
+           }
+           for (int i = min_y ; i < max_y; i++)
+           {
+              /* if (_tileMap1.GetCell(x2+2,i) == 0)
+               {
+                   _tileMap1.SetCell(x2+2,i ,3);
+               }*/
+               
            }
        }
    
