@@ -34,6 +34,8 @@ public class Plan : Node2D
             {
                 coordonnes_base_flaques.Add((rand_x, rand_y));
                 int nbr_block_eau = rand.Next(min_block_flaque_eau, max_block_flaque_eau+1);
+                _tileMap1.SetCell(rand_x, rand_y, 2);
+                nbr_block_eau++;
                 int j = 0;
                 while (j < nbr_block_eau)
                 {
@@ -227,15 +229,14 @@ public class Plan : Node2D
         {
             _tileMap1.SetCell(x, y, 5);
         }
-        else 
+
+        if (_tileMap1.GetCell(x, y) == 2)
         {
-            if (_tileMap1.GetCell(x, y) == 2)
-            {
-                SableHaut(x+1, y+1);
-                SableHaut(x, y+1);
-                SableHaut(x-1, y+1);
-            }
+            SableHaut(x+1, y+1);
+            SableHaut(x, y+1);
+            SableHaut(x-1, y+1);
         }
+        
     }
     
     private void SableBas(int x, int y)
@@ -254,5 +255,12 @@ public class Plan : Node2D
             }
         }
     }
-    
+
+    public override void _Process(float delta)
+    {
+        if (Input.IsKeyPressed((int)KeyList.Space))
+        {
+            GetTree().ReloadCurrentScene();
+        }
+    }
 }
