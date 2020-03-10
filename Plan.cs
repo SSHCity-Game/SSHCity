@@ -227,7 +227,17 @@ public class Plan : Node2D
                 {
                     if (gauche(i-1,y2))
                     {
-                        
+                        _tileMap1.SetCell(i-1,y2+1,4);
+                        i -= 1;
+                        y2 += 1;
+                        acc += 1;
+                    }
+                    else
+                    {
+                        _tileMap1.SetCell(i-1,y2-1,4);
+                        i -= 1;
+                        y2 -= 1;
+                        acc -= 1;
                     }
                 }
                 else
@@ -235,6 +245,7 @@ public class Plan : Node2D
                     _tileMap1.SetCell(i-1,y2-1,4);
                     y2 -= 1;
                     i -= 1;
+                    acc -= 1;
                 }
             }
             else
