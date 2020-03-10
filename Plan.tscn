@@ -23,3 +23,17 @@ mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 861, 496 )
 format = 1
+
+[node name="TileMap3" type="TileMap" parent="Navigation2D"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 861, 496 )
+cell_custom_transform = Transform2D( 128, 0, 0, 128, 0, 0 )
+format = 1
+
+[node name="TileMap4" type="TileMap" parent="Navigation2D"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 861, 496 )
+cell_custom_transform = Transform2D( 192, 0, 0, 192, 0, 0 )
+format = 1
