@@ -10,6 +10,7 @@ public class Plan : Node2D
     private TileMap _tileMap2;
     private TileMap _tileMap3;
     private TileMap _tileMap4;
+    private int size = 25;
     private int m_max = 5; //Nombre bocks montagnes à trois etages max
     private int m_min = 3; //Nombre bocks montagnes à trois etages min
     private int max_x = 31;
@@ -21,15 +22,20 @@ public class Plan : Node2D
     private int max_block_flaque_eau = 10;
     private int min_block_flaque_eau = 5;
     private int indexe_montagne = 4;
-
+    
     public override void _Ready()
     {
+
+        
         rand = new Random();
         int nbr_flaque_eau = rand.Next(min_flaque_eau, max_flaque_eau+1);
         _tileMap1 = (TileMap) GetNode("Navigation2D/TileMap1");
         _tileMap2 = (TileMap) GetNode("Navigation2D/TileMap2");
         _tileMap3 = (TileMap) GetNode("Navigation2D/TileMap3");
         _tileMap4 = (TileMap) GetNode("Navigation2D/TileMap4");
+        
+        CreatMap(size);
+        CreatMap2(size);
         
         Montagne();
         List<(int, int)> coordonnes_base_flaques = new List<(int, int)>();
@@ -453,6 +459,46 @@ public class Plan : Node2D
         {
             _tileMap2.SetCell(x, y + 1, indexe_montagne);
             _tileMap1.SetCell(x, y + 1, 4);
+        }
+    }
+
+    public void CreatMap(int size_ask)
+    {
+        int start_x = -17;
+        int start_y = -5;
+
+        for (int i = 0; i < size_ask+1; i++)
+        {
+            int x = start_x;
+            int y = start_y;
+            for (int j = start_y; j > -size_ask+y; j--)
+            {
+                _tileMap1.SetCell(x, j, 4);
+                x++;
+            }
+
+            start_x++;
+            start_y++;
+        }
+    }
+
+    public void CreatMap2(int size_ask)
+    {
+        int start_x = -16;
+        int start_y = -5;
+
+        for (int i = 0; i < size_ask-1; i++)
+        {
+            int x = start_x;
+            int y = start_y;
+            for (int j = start_y; j > -size_ask+y+1; j--)
+            {
+                _tileMap1.SetCell(x, j, 4);
+                x++;
+            }
+
+            start_x++;
+            start_y++;
         }
     }
 
