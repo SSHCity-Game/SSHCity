@@ -34,8 +34,9 @@ public class Plan : Node2D
         _tileMap3 = (TileMap) GetNode("Navigation2D/TileMap3");
         _tileMap4 = (TileMap) GetNode("Navigation2D/TileMap4");
         
-        CreatMap(size);
-        CreatMap2(size);
+
+        //CreatMap2(10);
+        //CreatMap(size);
         
         Montagne();
         List<(int, int)> coordonnes_base_flaques = new List<(int, int)>();
@@ -462,43 +463,35 @@ public class Plan : Node2D
         }
     }
 
-    public void CreatMap(int size_ask)
-    {
-        int start_x = -17;
-        int start_y = -5;
-
-        for (int i = 0; i < size_ask+1; i++)
-        {
-            int x = start_x;
-            int y = start_y;
-            for (int j = start_y; j > -size_ask+y; j--)
-            {
-                _tileMap1.SetCell(x, j, 4);
-                x++;
-            }
-
-            start_x++;
-            start_y++;
-        }
-    }
-
+    //CREE MAP CERTAINE TAILLE MAIS MARCHE PAS 
     public void CreatMap2(int size_ask)
     {
         int start_x = -16;
         int start_y = -5;
+        
 
-        for (int i = 0; i < size_ask-1; i++)
+        
+        for (int i = 0; i < size_ask; i++)
         {
             int x = start_x;
             int y = start_y;
+            _tileMap1.SetCell(x+1, y+2, 4);
             for (int j = start_y; j > -size_ask+y+1; j--)
             {
                 _tileMap1.SetCell(x, j, 4);
                 x++;
             }
 
+            x = start_x;
+            for (int j = start_y; j > -size_ask+y+1; j--)
+            {
+                _tileMap1.SetCell(x-1, j, 4);
+                x++;
+            }
+
             start_x++;
             start_y++;
+            _tileMap1.SetCell(start_x, start_y, -1);
         }
     }
 
