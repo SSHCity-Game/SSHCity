@@ -187,13 +187,93 @@ public class Plan : Node2D
             SableBas(x, y);
             SableDroite(x, y);
         }
+        
+        int x2 = rand.Next(min_x +8, max_x -8);
+        int y2 = rand.Next(min_y +8, max_y -8);
+        int acc = 0;
+        for (int i = x2; i < x2+5; i+= 2) //cONSTRUCTION DES BATIMENTS
+        {
+            for (int j = y2; j < y2 + 5; j+= 2)
+            {
+                if (_tileMap1.GetCell(i,j) == 0)
+                {
+                    _tileMap2.SetCell(i,j,1);
+                }
+            }
+
+        }
+
+        for (int i = x2+1; i < x2+6; i++)
+        {
+            for (int j = y2+1; j < y2 + 6; j++)
+            {
+                if (_tileMap1.GetCell(i,j) == 0 )
+                {
+                    _tileMap1.SetCell(i,j,4);
+                }
+            }
+        }
+           
+           
+        for (int i = min_x ; i < max_x; i++)
+        {
+            /*if (_tileMap1.GetCell(i,y2 +2) == 0)
+             {
+                 _tileMap1.SetCell(i,y2+2 ,3);
+             }*/
+            if (avant(i,y2))
+            {
+                if (gauche(i,y2))
+                {
+                    if (gauche(i-1,y2))
+                    {
+                        
+                    }
+                }
+                else
+                {
+                    _tileMap1.SetCell(i-1,y2-1,4);
+                    y2 -= 1;
+                    i -= 1;
+                }
+            }
+            else
+            {
+                if (_tileMap1.GetCell(i,y2) == 0)
+                {
+                    _tileMap1.SetCell(i,y2, 4);
+                }
+            }
+
+        }
+        for (int i = min_y ; i < max_y; i++)
+        {
+            /* if (_tileMap1.GetCell(x2+2,i) == 0)
+             {
+                 _tileMap1.SetCell(x2+2,i ,3);
+             }*/
+               
+        }
+    }
+
+    private bool avant(int x, int y)
+    {
+        return _tileMap1.GetCell(x , y) == 6;
+    }
+    private bool gauche(int x, int y)
+    {
+        return _tileMap1.GetCell(x , y-1) == 6;
+    }
+    private bool droite(int x, int y)
+    {
+        return _tileMap1.GetCell(x , y+1) == 6;
     }
 
     private void SableDroite(int x, int y)
     {
-        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 6)
         {
-            _tileMap1.SetCell(x, y, 5);
+            _tileMap1.SetCell(x, y, 6);
         }
         else 
         {
@@ -208,9 +288,9 @@ public class Plan : Node2D
 
     private void SableGauche(int x, int y)
     {
-        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 6)
         {
-            _tileMap1.SetCell(x, y, 5);
+            _tileMap1.SetCell(x, y, 6);
         }
         else 
         {
@@ -225,9 +305,9 @@ public class Plan : Node2D
     
     private void SableHaut(int x, int y)
     {
-        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 6)
         {
-            _tileMap1.SetCell(x, y, 5);
+            _tileMap1.SetCell(x, y, 6);
         }
 
         if (_tileMap1.GetCell(x, y) == 2)
@@ -241,9 +321,9 @@ public class Plan : Node2D
     
     private void SableBas(int x, int y)
     {
-        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+        if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 6)
         {
-            _tileMap1.SetCell(x, y, 5);
+            _tileMap1.SetCell(x, y, 6);
         }
         else 
         {
