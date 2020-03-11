@@ -24,9 +24,9 @@ public class Buildings : Node2D
 	private int indexe_maison     = 1;
 	private int indexe_eau        = 2;
 	private int indexe_accident   = 3;
-	private int indexe_route      = 4; 
-	private int indexe_montagne   = 5;
-	private int indexe_sable      = 6; 
+	private int indexe_route      = 9; 
+	private int indexe_montagne   = 8;
+	private int indexe_sable      = 5; 
 	
 
 
