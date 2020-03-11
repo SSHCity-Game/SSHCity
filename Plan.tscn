@@ -2,6 +2,7 @@
 
 [ext_resource path="res://assets/Blocks.tres" type="TileSet" id=1]
 [ext_resource path="res://Plan.cs" type="Script" id=2]
+
 [node name="Plan" type="Node2D"]
 script = ExtResource( 2 )
 

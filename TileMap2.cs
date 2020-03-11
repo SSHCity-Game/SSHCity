@@ -3,7 +3,7 @@ using System;
 
 public class TileMap2 : TileMap
 {
-	private TileMap TileMap1, tileMap2;
+	private TileMap tileMap1, tileMap2;
 	private int x,y,index1,index2;
 	private int min_x = -16, max_x = 31;
 	private int min_y = -29, max_y = 19;
@@ -20,7 +20,7 @@ public class TileMap2 : TileMap
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		TileMap1 = (TileMap) GetNode("Navigation2D/TileMap1");
+		tileMap1 = (TileMap) GetNode("Navigation2D/TileMap1");
 		tileMap2 = (TileMap) GetNode("Navigation2D/TileMap2");
 		var rand = new Random();
 		int nb_house = rand.Next(min_house, max_house);
@@ -28,7 +28,7 @@ public class TileMap2 : TileMap
 		{
 			x = rand.Next(min_x,max_x);
 			y = rand.Next(min_y,max_y);
-			var index1 = TileMap1.GetCell(x,y);
+			var index1 = tileMap1.GetCell(x,y);
 			var index2 = tileMap2.GetCell(x,y);
 			if(index1 == grass && index2 == -1)
 				tileMap2.SetCell(x,y,house);
