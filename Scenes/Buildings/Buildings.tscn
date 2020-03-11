@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Blocks.tres" type="TileSet" id=1]
-[ext_resource path="res://Buildings.cs" type="Script" id=2]
+[ext_resource path="res://Scenes/Buildings/Buildings.cs" type="Script" id=2]
 
 [node name="Buildings" type="Node2D"]
 script = ExtResource( 2 )
