@@ -3,7 +3,7 @@ using System;
 
 public class TileMap2 : TileMap
 {
-	private TileMap TileMap1, TileMap2;
+	private TileMap TileMap1, tileMap2;
 	private int x,y,index1,index2;
 	private int min_x = -16, max_x = 31;
 	private int min_y = -29, max_y = 19;
@@ -21,17 +21,17 @@ public class TileMap2 : TileMap
 	public override void _Ready()
 	{
 		TileMap1 = (TileMap) GetNode("Navigation2D/TileMap1");
-		TileMap2 = (TileMap) GetNode("Navigation2D/TileMap2");
-		rand = new Random();
+		tileMap2 = (TileMap) GetNode("Navigation2D/TileMap2");
+		var rand = new Random();
 		int nb_house = rand.Next(min_house, max_house);
 		for(int i = 0; i < nb_house; i++)
 		{
 			x = rand.Next(min_x,max_x);
 			y = rand.Next(min_y,max_y);
-			index1 = TileMap1.GetCell(x,y);
-			index2 = TileMap2.GetCell(x,y);
+			var index1 = TileMap1.GetCell(x,y);
+			var index2 = tileMap2.GetCell(x,y);
 			if(index1 == grass && index2 == -1)
-				TileMap2.SetCell(x,y,house);
+				tileMap2.SetCell(x,y,house);
 		}
 		
 	}
