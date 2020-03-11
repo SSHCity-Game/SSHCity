@@ -20,13 +20,13 @@ public class Buildings : Node2D
     private int min_block_flaque_eau = 5;
     private int m_max = 5; //Nombre bocks montagnes à trois etages max
     private int m_min = 3; 
-    private int indexe_montagne = 5;
-    private int indexe_terre = 0;
-    private int indexe_eau = 2;
-    private int indexe_sable = 6;
-    private int indexe_route = 4;    
-    private int indexe_maison = 1;
-    private int indexe_accident = 3;
+    private int indexe_terre      = 0;  
+    private int indexe_maison     = 1;
+    private int indexe_eau        = 2;
+    private int indexe_accident   = 3;
+    private int indexe_route      = 4; 
+    private int indexe_montagne   = 5;
+    private int indexe_sable      = 6; 
     
 
 
@@ -243,12 +243,12 @@ public class Buildings : Node2D
         }
 
 
-        for (int i = min_x; i < max_x; i++)
+        for (int i = min_x; i < max_x; i++) //route hg ->bd
         {
             bool continuer = true;
             if (acc > 0)
             {
-                if (_tileMap1.GetCell(i, y2 - 1) == indexe_terre)
+                if (_tileMap1.GetCell(i, y2 - 1) == indexe_terre )
                 {
                     _tileMap1.SetCell(i, y2, indexe_route);
                     _tileMap1.SetCell(i, y2 - 1, indexe_route);
@@ -273,22 +273,14 @@ public class Buildings : Node2D
             {
                 if (avant(i, y2))
                 {
-                    if (gauche(i, y2))
+                    if (gauche(i-1, y2))
                     {
-                        if (gauche(i - 1, y2))
-                        {
-                            _tileMap1.SetCell(i - 1, y2 + 1, indexe_route);
-                            i -= 1;
-                            y2 += 1;
-                            acc += 1;
-                        }
-                        else
-                        {
-                            _tileMap1.SetCell(i - 1, y2 - 1, indexe_route);
-                            i -= 1;
-                            y2 -= 1;
-                            acc -= 1;
-                        }
+                       _tileMap1.SetCell(i-1,y2,indexe_route);
+                       _tileMap1.SetCell(i-2,y2-1,indexe_route);
+                       _tileMap1.SetCell(i-2,y2,indexe_route);
+                       i -= 2;
+                       acc -= 1;
+                       y2 -= 1;
                     }
                     else
                     {
@@ -309,7 +301,7 @@ public class Buildings : Node2D
             }
         }
 
-        int acc2 = 0;
+        int acc2 = 0;//route hd ->bg
         int refer = x2;
         for (int i = min_y; i < max_y; i++)
         {
@@ -327,7 +319,7 @@ public class Buildings : Node2D
             }
             else if (acc2 < 0)
             {
-                if (_tileMap1.GetCell(x2 + 1, i) == indexe_terre)
+                if (_tileMap1.GetCell(x2 + 1, i) == indexe_terre )
                 {
                     _tileMap1.SetCell(x2, i, indexe_route);
                     _tileMap1.SetCell(x2 + 1, i, indexe_route);
@@ -346,22 +338,14 @@ public class Buildings : Node2D
             {
                 if (avant2(x2, i))
                 {
-                    if (gauche2(x2, i))
+                    if (gauche2(x2, i-1))
                     {
-                        if (gauche2(x2, i - 1))
-                        {
-                            _tileMap1.SetCell(x2 + 1, i - 1, indexe_route);
-                            x2 += 1;
-                            i -= 1;
-                            acc2 += 1;
-                        }
-                        else
-                        {
-                            _tileMap1.SetCell(x2 - 1, i - 1, indexe_route);
+                            _tileMap1.SetCell(i-1,x2,indexe_route);
+                            _tileMap1.SetCell(i-2,x2-1,indexe_route);
+                            _tileMap1.SetCell(i-2,x2,indexe_route);
+                            i -= 3;
                             x2 -= 1;
-                            i -= 1;
                             acc2 -= 1;
-                        }
                     }
                     else
                     {
@@ -392,11 +376,11 @@ public class Buildings : Node2D
          }
          private bool avant2(int x, int y)
          {
-             return _tileMap1.GetCell(x , y) == indexe_sable|| _tileMap2.GetCell(x, y) == indexe_montagne;
+             return _tileMap1.GetCell(x , y) == indexe_sable|| _tileMap2.GetCell(x, y) == indexe_montagne || _tileMap1.GetCell(x-1,y) == indexe_eau;
          }
          private bool gauche2(int x, int y)
          {
-             return _tileMap1.GetCell(x-1 , y) == indexe_sable || _tileMap2.GetCell(x-1, y) == indexe_montagne;
+             return _tileMap1.GetCell(x-1 , y) == indexe_sable || _tileMap2.GetCell(x-1, y) == indexe_montagne || _tileMap1.GetCell(x-1,y) == indexe_eau;
          }
 
     private void SableDroite(int x, int y)
