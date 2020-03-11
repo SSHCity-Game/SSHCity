@@ -6,22 +6,36 @@ public class Plan : Node2D
 {
 
 	private Random rand;
+	
 	private TileMap _tileMap1;
 	private TileMap _tileMap2;
 	private TileMap _tileMap3;
 	private TileMap _tileMap4;
-	private int size = 25;
+
+	//Variables pour definir la taille de la Map 
+	
+	private int size = 25; //Nombre de bloques sur un coté de la Map
 	private int m_max = 5; //Nombre bocks montagnes à trois etages max
 	private int m_min = 3; //Nombre bocks montagnes à trois etages min
-	private int max_x = 31;
-	private int min_x = -16;
-	private int max_y = 19;
-	private int min_y = -29;
-	private int max_flaque_eau = 4;
-	private int min_flaque_eau = 2;
-	private int max_block_flaque_eau = 10;
-	private int min_block_flaque_eau = 5;
-	private int indexe_montagne = 4;
+	private int max_x = 31; //Coordonées max d'un bloque sur l'axe x
+	private int min_x = -16; //Coordonnées min d'un bloque sur l'axe x
+	private int max_y = 19; //Coordonées max d'un bloque sur l'axe y
+	private int min_y = -29; //Cooronnées min d'un bloque en y
+	
+	// Variables modifiables pour définir le nombres d'éléments sur la Map
+	
+	private int max_flaque_eau = 4; //Nombre maximum de flaques d'eau
+	private int min_flaque_eau = 2; //Nombre minimum de flaque d'eau
+	private int max_block_flaque_eau = 10; //Nombre max de bloques eau pour une flaque
+	private int min_block_flaque_eau = 5; //Nombre Minimum de bloques eau pour une flaque
+	
+	//Vairable permettant d'indiquer l'indexe des bloques
+	
+	private int index_terre = 0;
+	private int index_eau = 2;
+	private int indexe_montagne = 4;	
+	private int index_sable = 5;
+
 
 	public override void _Ready()
 	{
@@ -49,7 +63,7 @@ public class Plan : Node2D
 			{
 				coordonnes_base_flaques.Add((rand_x, rand_y));
 				int nbr_block_eau = rand.Next(min_block_flaque_eau, max_block_flaque_eau+1);
-				_tileMap1.SetCell(rand_x, rand_y, 2);
+				_tileMap1.SetCell(rand_x, rand_y, index_eau);
 				nbr_block_eau++;
 				int j = 0;
 				while (j < nbr_block_eau)
@@ -61,29 +75,29 @@ public class Plan : Node2D
 						case 0:
 						{
 							rand_x++;
-							if (_tileMap1.GetCell(rand_x, rand_y) == 0)
+							if (_tileMap1.GetCell(rand_x, rand_y) == index_terre)
 							{
-								_tileMap1.SetCell(rand_x, rand_y, 2);
+								_tileMap1.SetCell(rand_x, rand_y, index_eau);
 							}
-							if (_tileMap1.GetCell(rand_x+1, rand_y) == 0)
+							if (_tileMap1.GetCell(rand_x+1, rand_y) == index_terre)
 							{
 
-								_tileMap1.SetCell(rand_x, rand_y, 2);
+								_tileMap1.SetCell(rand_x, rand_y, index_eau);
 								j++;
-								if (_tileMap1.GetCell(rand_x+1, rand_y) == 0)
+								if (_tileMap1.GetCell(rand_x+1, rand_y) == index_terre)
 								{
-									_tileMap1.SetCell(rand_x+1, rand_y, 2);
+									_tileMap1.SetCell(rand_x+1, rand_y, index_eau);
 									j++;
 								}
-								if (_tileMap1.GetCell(rand_x, rand_y+1) == 0)
+								if (_tileMap1.GetCell(rand_x, rand_y+1) == index_terre)
 								{
-									_tileMap1.SetCell(rand_x, rand_y+1, 2);
+									_tileMap1.SetCell(rand_x, rand_y+1, index_eau);
 									j++;
 								}
 
-								if (_tileMap1.GetCell(rand_x, rand_y - 1) == 0)
+								if (_tileMap1.GetCell(rand_x, rand_y - 1) == index_terre)
 								{
-									_tileMap1.SetCell(rand_x, rand_y - 1, 2);
+									_tileMap1.SetCell(rand_x, rand_y - 1, index_eau);
 									j++;
 								}
 							}
@@ -93,12 +107,12 @@ public class Plan : Node2D
 						case 1:
 						{
 							rand_x--;
-							if (_tileMap1.GetCell(rand_x, rand_y) == 0)
+							if (_tileMap1.GetCell(rand_x, rand_y) == index_terre)
 							{
-								_tileMap1.SetCell(rand_x, rand_y, 2);
+								_tileMap1.SetCell(rand_x, rand_y, index_eau);
 							}
 
-							if (_tileMap1.GetCell(rand_x-1, rand_y) == 0)
+							if (_tileMap1.GetCell(rand_x-1, rand_y) == index_terre)
 							{
 
 								_tileMap1.SetCell(rand_x-1, rand_y, 2);
