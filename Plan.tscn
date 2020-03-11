@@ -2,7 +2,6 @@
 
 [ext_resource path="res://assets/Blocks.tres" type="TileSet" id=1]
 [ext_resource path="res://Plan.cs" type="Script" id=2]
-
 [node name="Plan" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -28,12 +27,12 @@ format = 1
 mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 861, 496 )
-cell_custom_transform = Transform2D( 128, 0, 0, 128, 0, 0 )
+cell_custom_transform = Transform2D( 127, 0, 0, 127, 0, 0 )
 format = 1
 
 [node name="TileMap4" type="TileMap" parent="Navigation2D"]
 mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 861, 496 )
-cell_custom_transform = Transform2D( 192, 0, 0, 192, 0, 0 )
+cell_custom_transform = Transform2D( 190, 0, 0, 190, 0, 0 )
 format = 1

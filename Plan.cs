@@ -22,23 +22,22 @@ public class Plan : Node2D
     private int max_block_flaque_eau = 10;
     private int min_block_flaque_eau = 5;
     private int indexe_montagne = 4;
-    
-    
+
     public override void _Ready()
     {
 
-        
+
         rand = new Random();
         int nbr_flaque_eau = rand.Next(min_flaque_eau, max_flaque_eau+1);
         _tileMap1 = (TileMap) GetNode("Navigation2D/TileMap1");
         _tileMap2 = (TileMap) GetNode("Navigation2D/TileMap2");
         _tileMap3 = (TileMap) GetNode("Navigation2D/TileMap3");
         _tileMap4 = (TileMap) GetNode("Navigation2D/TileMap4");
-        
+
 
         //CreatMap2(10);
         //CreatMap(size);
-        
+
         Montagne();
         List<(int, int)> coordonnes_base_flaques = new List<(int, int)>();
         for (int i = 0; i < nbr_flaque_eau; i++)
@@ -68,7 +67,7 @@ public class Plan : Node2D
                             }
                             if (_tileMap1.GetCell(rand_x+1, rand_y) == 0)
                             {
-                                
+
                                 _tileMap1.SetCell(rand_x, rand_y, 2);
                                 j++;
                                 if (_tileMap1.GetCell(rand_x+1, rand_y) == 0)
@@ -101,7 +100,7 @@ public class Plan : Node2D
 
                             if (_tileMap1.GetCell(rand_x-1, rand_y) == 0)
                             {
-                                
+
                                 _tileMap1.SetCell(rand_x-1, rand_y, 2);
                                 j++;
                                 if (_tileMap1.GetCell(rand_x-1, rand_y) == 0)
@@ -189,15 +188,15 @@ public class Plan : Node2D
             else
             {
                 i--;
-            }    
+            }
         }
 
         foreach (var coord in coordonnes_base_flaques)
         {
             (int x, int y) = coord;
             GD.Print(coord);
-            
- 
+
+
             SableGauche(x, y);
             SableHaut(x, y);
             SableBas(x, y);
@@ -211,7 +210,7 @@ public class Plan : Node2D
         {
             _tileMap1.SetCell(x, y, 5);
         }
-        else 
+        else
         {
             if (_tileMap1.GetCell(x, y) == 2)
             {
@@ -228,7 +227,7 @@ public class Plan : Node2D
         {
             _tileMap1.SetCell(x, y, 5);
         }
-        else 
+        else
         {
             if (_tileMap1.GetCell(x, y) == 2)
             {
@@ -238,7 +237,7 @@ public class Plan : Node2D
             }
         }
     }
-    
+
     private void SableHaut(int x, int y)
     {
         if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
@@ -252,16 +251,16 @@ public class Plan : Node2D
             SableHaut(x, y+1);
             SableHaut(x-1, y+1);
         }
-        
+
     }
-    
+
     private void SableBas(int x, int y)
     {
         if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
         {
             _tileMap1.SetCell(x, y, 5);
         }
-        else 
+        else
         {
             if (_tileMap1.GetCell(x, y) == 2)
             {
@@ -338,7 +337,7 @@ public class Plan : Node2D
 
                     case 3:
                     {
-                        
+
                         if (_tileMap1.GetCell(rand_m_x+2, rand_m_y-2) == 0)
                         {
                             //Montagne_Lv3(rand_m_x, rand_m_y);
@@ -360,7 +359,7 @@ public class Plan : Node2D
             Montagne();
         }
     }
-    
+
     private void Montagne_Lv2(int x, int y)
     {
         if (_tileMap1.GetCell(x-1, y-1) == 0 || _tileMap1.GetCell(x-1, y-1) == indexe_montagne)
@@ -414,7 +413,7 @@ public class Plan : Node2D
     }
 
     private void Montagne_Lv3(int x, int y)
-    {     
+    {
         if (_tileMap1.GetCell(x-1, y-1) == 0)
         {
             _tileMap1.SetCell(x - 1, y - 1, 4);
@@ -461,6 +460,38 @@ public class Plan : Node2D
         {
             _tileMap2.SetCell(x, y + 1, indexe_montagne);
             _tileMap1.SetCell(x, y + 1, 4);
+        }
+    }
+
+    //CREE MAP CERTAINE TAILLE MAIS MARCHE PAS
+    public void CreatMap2(int size_ask)
+    {
+        int start_x = -16;
+        int start_y = -5;
+
+
+
+        for (int i = 0; i < size_ask; i++)
+        {
+            int x = start_x;
+            int y = start_y;
+            _tileMap1.SetCell(x+1, y+2, 4);
+            for (int j = start_y; j > -size_ask+y+1; j--)
+            {
+                _tileMap1.SetCell(x, j, 4);
+                x++;
+            }
+
+            x = start_x;
+            for (int j = start_y; j > -size_ask+y+1; j--)
+            {
+                _tileMap1.SetCell(x-1, j, 4);
+                x++;
+            }
+
+            start_x++;
+            start_y++;
+            _tileMap1.SetCell(start_x, start_y, -1);
         }
     }
 
