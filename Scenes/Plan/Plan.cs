@@ -14,7 +14,7 @@ public class Plan : Node2D
 
 	//Variables pour definir la taille de la Map 
 
-	private int size = 25; //Nombre de bloques sur un coté de la Map
+	private int size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
 	private int m_max = 5; //Nombre bocks montagnes à trois etages max
 	private int m_min = 3; //Nombre bocks montagnes à trois etages min
 	private int max_x = 31; //Coordonées max d'un bloque sur l'axe x
@@ -50,8 +50,8 @@ public class Plan : Node2D
 		_tileMap4 = (TileMap) GetNode("Navigation2D/TileMap4");
 
 
-		//CreatMap2(10);
-		//CreatMap(size);
+		//CreatMap2(10); //CREE MAP
+
 		Montagne();
 		
 		List<(int, int)> coordonnes_base_flaques = new List<(int, int)>();
@@ -116,21 +116,21 @@ public class Plan : Node2D
 								if (_tileMap1.GetCell(rand_x - 1, rand_y) == index_terre)
 								{
 
-									_tileMap1.SetCell(rand_x - 1, rand_y, 2);
+									_tileMap1.SetCell(rand_x - 1, rand_y, index_eau);
 									j++;
-									if (_tileMap1.GetCell(rand_x - 1, rand_y) == 0)
+									if (_tileMap1.GetCell(rand_x - 1, rand_y) == index_terre)
 									{
-										_tileMap1.SetCell(rand_x - 1, rand_y, 2);
+										_tileMap1.SetCell(rand_x - 1, rand_y, index_eau);
 										j++;
 									}
-									if (_tileMap1.GetCell(rand_x, rand_y + 1) == 0)
+									if (_tileMap1.GetCell(rand_x, rand_y + 1) == index_terre)
 									{
-										_tileMap1.SetCell(rand_x, rand_y + 1, 2);
+										_tileMap1.SetCell(rand_x, rand_y + 1, index_eau);
 										j++;
 									}
-									if (_tileMap1.GetCell(rand_x, rand_y - 1) == 0)
+									if (_tileMap1.GetCell(rand_x, rand_y - 1) == index_terre)
 									{
-										_tileMap1.SetCell(rand_x, rand_y - 1, 2);
+										_tileMap1.SetCell(rand_x, rand_y - 1, index_eau);
 										j++;
 									}
 								}
@@ -140,28 +140,28 @@ public class Plan : Node2D
 						case 2:
 							{
 								rand_y++;
-								if (_tileMap1.GetCell(rand_x, rand_y) == 0)
+								if (_tileMap1.GetCell(rand_x, rand_y) == index_terre)
 								{
-									_tileMap1.SetCell(rand_x, rand_y, 2);
+									_tileMap1.SetCell(rand_x, rand_y, index_eau);
 								}
 
-								if (_tileMap1.GetCell(rand_x, rand_y + 1) == 0)
+								if (_tileMap1.GetCell(rand_x, rand_y + 1) == index_terre)
 								{
-									_tileMap1.SetCell(rand_x, rand_y, 2);
+									_tileMap1.SetCell(rand_x, rand_y, index_eau);
 									j++;
-									if (_tileMap1.GetCell(rand_x + 1, rand_y) == 0)
+									if (_tileMap1.GetCell(rand_x + 1, rand_y) == index_terre)
 									{
-										_tileMap1.SetCell(rand_x + 1, rand_y, 2);
+										_tileMap1.SetCell(rand_x + 1, rand_y, index_eau);
 										j++;
 									}
-									if (_tileMap1.GetCell(rand_x - 1, rand_y) == 0)
+									if (_tileMap1.GetCell(rand_x - 1, rand_y) == index_terre)
 									{
-										_tileMap1.SetCell(rand_x - 1, rand_y, 2);
+										_tileMap1.SetCell(rand_x - 1, rand_y, index_eau);
 										j++;
 									}
-									if (_tileMap1.GetCell(rand_x, rand_y + 1) == 0)
+									if (_tileMap1.GetCell(rand_x, rand_y + 1) == index_terre)
 									{
-										_tileMap1.SetCell(rand_x, rand_y + 1, 2);
+										_tileMap1.SetCell(rand_x, rand_y + 1, index_eau);
 										j++;
 									}
 								}
@@ -170,28 +170,28 @@ public class Plan : Node2D
 						case 3:
 							{
 								rand_y--;
-								if (_tileMap1.GetCell(rand_x, rand_y) == 0)
+								if (_tileMap1.GetCell(rand_x, rand_y) == index_terre)
 								{
-									_tileMap1.SetCell(rand_x, rand_y, 2);
+									_tileMap1.SetCell(rand_x, rand_y, index_eau);
 								}
 
-								if (_tileMap1.GetCell(rand_x, rand_y - 1) == 0)
+								if (_tileMap1.GetCell(rand_x, rand_y - 1) == index_terre)
 								{
-									_tileMap1.SetCell(rand_x, rand_y, 2);
+									_tileMap1.SetCell(rand_x, rand_y, index_eau);
 									j++;
-									if (_tileMap1.GetCell(rand_x + 1, rand_y) == 0)
+									if (_tileMap1.GetCell(rand_x + 1, rand_y) == index_terre)
 									{
-										_tileMap1.SetCell(rand_x + 1, rand_y, 2);
+										_tileMap1.SetCell(rand_x + 1, rand_y, index_eau);
 										j++;
 									}
-									if (_tileMap1.GetCell(rand_x - 1, rand_y) == 0)
+									if (_tileMap1.GetCell(rand_x - 1, rand_y) == index_terre)
 									{
-										_tileMap1.SetCell(rand_x - 1, rand_y, 2);
+										_tileMap1.SetCell(rand_x - 1, rand_y, index_eau);
 										j++;
 									}
-									if (_tileMap1.GetCell(rand_x, rand_y - 1) == 0)
+									if (_tileMap1.GetCell(rand_x, rand_y - 1) == index_terre)
 									{
-										_tileMap1.SetCell(rand_x, rand_y - 1, 2);
+										_tileMap1.SetCell(rand_x, rand_y - 1, index_eau);
 										j++;
 									}
 								}
@@ -205,34 +205,39 @@ public class Plan : Node2D
 				i--;
 			}
 		}
+		//AJOUT SABLE SUR MAP   
+		Sable(coordonnes_base_flaques);
+	}
 
-		foreach (var coord in coordonnes_base_flaques)
+	// A FAIRE
+	//ENLEVER LA CREATION DES LAC DE _READY ET CREER UNE FONCTION LE FAISANT AFIN DE CLARIFIER LE CODE !
+	private void Lac()
+	{
+		
+	}
+	//FONCTION AJOUTANT SABLE
+	private void Sable(List<(int, int)> list_coord)
+	{
+		foreach (var coord in list_coord)
 		{
 			(int x, int y) = coord;
-			GD.Print(coord);
-
-
 			SableGauche(x, y);
 			SableHaut(x, y);
 			SableBas(x, y);
 			SableDroite(x, y);
 		}
 	}
-
-	private void Lac()
-	{
-		
-	}
+	
 
 	private void SableDroite(int x, int y)
 	{
-		if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+		if (_tileMap1.GetCell(x, y) == index_terre || _tileMap1.GetCell(x, y) == index_sable)
 		{
-			_tileMap1.SetCell(x, y, 5);
+			_tileMap1.SetCell(x, y, index_sable);
 		}
 		else
 		{
-			if (_tileMap1.GetCell(x, y) == 2)
+			if (_tileMap1.GetCell(x, y) == index_eau)
 			{
 				SableDroite(x + 1, y + 1);
 				SableDroite(x + 1, y);
@@ -243,13 +248,13 @@ public class Plan : Node2D
 
 	private void SableGauche(int x, int y)
 	{
-		if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+		if (_tileMap1.GetCell(x, y) == index_terre || _tileMap1.GetCell(x, y) == index_sable)
 		{
-			_tileMap1.SetCell(x, y, 5);
+			_tileMap1.SetCell(x, y, index_sable);
 		}
 		else
 		{
-			if (_tileMap1.GetCell(x, y) == 2)
+			if (_tileMap1.GetCell(x, y) == index_eau)
 			{
 				SableGauche(x - 1, y + 1);
 				SableGauche(x - 1, y);
@@ -260,12 +265,12 @@ public class Plan : Node2D
 
 	private void SableHaut(int x, int y)
 	{
-		if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+		if (_tileMap1.GetCell(x, y) == index_terre || _tileMap1.GetCell(x, y) == index_sable)
 		{
-			_tileMap1.SetCell(x, y, 5);
+			_tileMap1.SetCell(x, y, index_sable);
 		}
 
-		if (_tileMap1.GetCell(x, y) == 2)
+		if (_tileMap1.GetCell(x, y) == index_eau)
 		{
 			SableHaut(x + 1, y + 1);
 			SableHaut(x, y + 1);
@@ -276,13 +281,13 @@ public class Plan : Node2D
 
 	private void SableBas(int x, int y)
 	{
-		if (_tileMap1.GetCell(x, y) == 0 || _tileMap1.GetCell(x, y) == 5)
+		if (_tileMap1.GetCell(x, y) == index_terre || _tileMap1.GetCell(x, y) == index_sable)
 		{
-			_tileMap1.SetCell(x, y, 5);
+			_tileMap1.SetCell(x, y, index_sable);
 		}
 		else
 		{
-			if (_tileMap1.GetCell(x, y) == 2)
+			if (_tileMap1.GetCell(x, y) == index_eau)
 			{
 				SableBas(x + 1, y - 1);
 				SableBas(x, y - 1);
@@ -291,13 +296,14 @@ public class Plan : Node2D
 		}
 	}
 
+	//FONCTION CREANT LA MONTAGNE
 	private void Montagne()
 	{
 		int nbr_m = rand.Next(m_min, m_max);
 		int rand_m_x = rand.Next(min_x, max_x + 1);
 		int rand_m_y = rand.Next(min_y, max_y + 1);
 		int indexe_m = _tileMap1.GetCell(rand_m_x, rand_m_y);
-		if (indexe_m == 0)
+		if (indexe_m == index_terre)
 		{
 			_tileMap4.SetCell(rand_m_x, rand_m_y, indexe_montagne);
 			_tileMap1.SetCell(rand_m_x, rand_m_y, indexe_montagne);
@@ -310,7 +316,7 @@ public class Plan : Node2D
 				{
 					case 0:
 						{
-							if (_tileMap1.GetCell(rand_m_x - 2, rand_m_y - 2) == 0)
+							if (_tileMap1.GetCell(rand_m_x - 2, rand_m_y - 2) == index_terre)
 							{
 								rand_m_x -= 2;
 								rand_m_y -= 2;
@@ -325,9 +331,8 @@ public class Plan : Node2D
 
 					case 1:
 						{
-							if (_tileMap1.GetCell(rand_m_x + 2, rand_m_y + 2) == 0)
+							if (_tileMap1.GetCell(rand_m_x + 2, rand_m_y + 2) == index_terre)
 							{
-								//Montagne_Lv3(rand_m_x+1, rand_m_y+1);
 								rand_m_x += 2;
 								rand_m_y += 2;
 								_tileMap1.SetCell(rand_m_x, rand_m_y, indexe_montagne);
@@ -341,9 +346,8 @@ public class Plan : Node2D
 
 					case 2:
 						{
-							if (_tileMap1.GetCell(rand_m_x - 2, rand_m_y + 2) == 0)
+							if (_tileMap1.GetCell(rand_m_x - 2, rand_m_y + 2) == index_terre)
 							{
-								//Montagne_Lv3(rand_m_x, rand_m_y);
 								rand_m_x -= 2;
 								rand_m_y += 2;
 								_tileMap1.SetCell(rand_m_x, rand_m_y, indexe_montagne);
@@ -358,9 +362,8 @@ public class Plan : Node2D
 					case 3:
 						{
 
-							if (_tileMap1.GetCell(rand_m_x + 2, rand_m_y - 2) == 0)
+							if (_tileMap1.GetCell(rand_m_x + 2, rand_m_y - 2) == index_terre)
 							{
-								//Montagne_Lv3(rand_m_x, rand_m_y);
 								rand_m_x += 2;
 								rand_m_y -= 2;
 								_tileMap1.SetCell(rand_m_x, rand_m_y, indexe_montagne);
@@ -379,52 +382,53 @@ public class Plan : Node2D
 			Montagne();
 		}
 	}
-
+	
+	//FONCTION CREANT LA MONTAGNE AU NIVEAU2 (TileMap3)
 	private void Montagne_Lv2(int x, int y)
 	{
-		if (_tileMap1.GetCell(x - 1, y - 1) == 0 || _tileMap1.GetCell(x - 1, y - 1) == indexe_montagne)
+		if (_tileMap1.GetCell(x - 1, y - 1) == index_terre || _tileMap1.GetCell(x - 1, y - 1) == indexe_montagne)
 		{
 			_tileMap1.SetCell(x - 1, y - 1, indexe_montagne);
 			_tileMap3.SetCell(x - 1, y - 1, indexe_montagne);
 			Montagne_Lv3(x, y);
 		}
-		if (_tileMap1.GetCell(x + 1, y + 1) == 0 || _tileMap1.GetCell(x + 1, y + 1) == indexe_montagne)
+		if (_tileMap1.GetCell(x + 1, y + 1) == index_terre || _tileMap1.GetCell(x + 1, y + 1) == indexe_montagne)
 		{
 			_tileMap3.SetCell(x + 1, y + 1, indexe_montagne);
 			_tileMap1.SetCell(x + 1, y + 1, indexe_montagne);
 			Montagne_Lv3(x + 2, y + 2);
 		}
-		if (_tileMap1.GetCell(x, y - 1) == 0 || _tileMap1.GetCell(x, y - 1) == indexe_montagne)
+		if (_tileMap1.GetCell(x, y - 1) == index_terre || _tileMap1.GetCell(x, y - 1) == indexe_montagne)
 		{
 			_tileMap3.SetCell(x, y - 1, indexe_montagne);
 			_tileMap1.SetCell(x, y - 1, indexe_montagne);
 			Montagne_Lv3(x + 1, y);
 		}
-		if (_tileMap1.GetCell(x - 1, y) == 0 || _tileMap1.GetCell(x - 1, y) == indexe_montagne)
+		if (_tileMap1.GetCell(x - 1, y) == index_terre || _tileMap1.GetCell(x - 1, y) == indexe_montagne)
 		{
 			_tileMap3.SetCell(x - 1, y, indexe_montagne);
 			_tileMap1.SetCell(x - 1, y, indexe_montagne);
 			Montagne_Lv3(x, y + 1);
 		}
-		if (_tileMap1.GetCell(x - 1, y + 1) == 0 || _tileMap1.GetCell(x - 1, y + 1) == indexe_montagne)
+		if (_tileMap1.GetCell(x - 1, y + 1) == index_terre || _tileMap1.GetCell(x - 1, y + 1) == indexe_montagne)
 		{
 			_tileMap3.SetCell(x - 1, y + 1, indexe_montagne);
 			_tileMap1.SetCell(x - 1, y + 1, indexe_montagne);
 			Montagne_Lv3(x, y + 2);
 		}
-		if (_tileMap1.GetCell(x + 1, y - 1) == 0 || _tileMap1.GetCell(x + 1, y - 1) == indexe_montagne)
+		if (_tileMap1.GetCell(x + 1, y - 1) == index_terre || _tileMap1.GetCell(x + 1, y - 1) == indexe_montagne)
 		{
 			_tileMap3.SetCell(x + 1, y - 1, indexe_montagne);
 			_tileMap1.SetCell(x + 1, y - 1, indexe_montagne);
 			Montagne_Lv3(x + 2, y);
 		}
-		if (_tileMap1.GetCell(x + 1, y) == 0 || _tileMap1.GetCell(x + 1, y) == indexe_montagne)
+		if (_tileMap1.GetCell(x + 1, y) == index_terre || _tileMap1.GetCell(x + 1, y) == indexe_montagne)
 		{
 			_tileMap3.SetCell(x + 1, y, indexe_montagne);
 			_tileMap1.SetCell(x + 1, y, indexe_montagne);
 			Montagne_Lv3(x + 2, y + 1);
 		}
-		if (_tileMap1.GetCell(x, y + 1) == 0 || _tileMap1.GetCell(x, y + 1) == indexe_montagne)
+		if (_tileMap1.GetCell(x, y + 1) == index_terre || _tileMap1.GetCell(x, y + 1) == indexe_montagne)
 		{
 			_tileMap3.SetCell(x, y + 1, indexe_montagne);
 			_tileMap1.SetCell(x, y + 1, indexe_montagne);
@@ -432,58 +436,62 @@ public class Plan : Node2D
 		}
 	}
 
+	// FONCTION CREANT LA MONTAGNE AU NIVEAU DU SOL (TileMap2)
 	private void Montagne_Lv3(int x, int y)
 	{
-		if (_tileMap1.GetCell(x - 1, y - 1) == 0)
+		if (_tileMap1.GetCell(x - 1, y - 1) == index_terre)
 		{
 			_tileMap1.SetCell(x - 1, y - 1, indexe_montagne);
 			_tileMap2.SetCell(x - 1, y - 1, indexe_montagne);
 		}
-		if (_tileMap1.GetCell(x + 1, y + 1) == 0)
+		if (_tileMap1.GetCell(x + 1, y + 1) == index_terre)
 		{
 			_tileMap2.SetCell(x + 1, y + 1, indexe_montagne);
 			_tileMap1.SetCell(x + 1, y + 1, indexe_montagne);
 
 		}
-		if (_tileMap1.GetCell(x, y - 1) == 0)
+		if (_tileMap1.GetCell(x, y - 1) == index_terre)
 		{
 			_tileMap2.SetCell(x, y - 1, indexe_montagne);
 			_tileMap1.SetCell(x, y - 1, indexe_montagne);
 
 		}
-		if (_tileMap1.GetCell(x - 1, y) == 0)
+		if (_tileMap1.GetCell(x - 1, y) == index_terre)
 		{
 			_tileMap2.SetCell(x - 1, y, indexe_montagne);
 			_tileMap1.SetCell(x - 1, y, indexe_montagne);
 
 		}
-		if (_tileMap1.GetCell(x - 1, y + 1) == 0)
+		if (_tileMap1.GetCell(x - 1, y + 1) == index_terre)
 		{
 			_tileMap2.SetCell(x - 1, y + 1, indexe_montagne);
 			_tileMap1.SetCell(x - 1, y + 1, indexe_montagne);
 
 		}
-		if (_tileMap1.GetCell(x + 1, y - 1) == 0)
+		if (_tileMap1.GetCell(x + 1, y - 1) == index_terre)
 		{
 			_tileMap2.SetCell(x + 1, y - 1, indexe_montagne);
 			_tileMap1.SetCell(x + 1, y - 1, indexe_montagne);
 
 		}
-		if (_tileMap1.GetCell(x + 1, y) == 0)
+		if (_tileMap1.GetCell(x + 1, y) == index_terre)
 		{
 			_tileMap2.SetCell(x + 1, y, indexe_montagne);
 			_tileMap1.SetCell(x + 1, y, indexe_montagne);
 
 		}
 
-		if (_tileMap1.GetCell(x, y + 1) == 0)
+		if (_tileMap1.GetCell(x, y + 1) == index_terre)
 		{
 			_tileMap2.SetCell(x, y + 1, indexe_montagne);
 			_tileMap1.SetCell(x, y + 1, indexe_montagne);
 		}
 	}
 
-	//CREE MAP CERTAINE TAILLE MAIS MARCHE PAS
+	//CREE MAP D'UNE TAILLE DONNEE
+	// NE MARCHE PAS !!
+	
+	// A FAIRE (PB AVEC LES INDEXES DE SETCELL)
 	public void CreatMap2(int size_ask)
 	{
 		int start_x = -16;
@@ -515,6 +523,7 @@ public class Plan : Node2D
 		}
 	}
 
+	//PERMET DE RECREER UNE MAP JUSTE EN CLIQUANT SUR ESPACE (POUR GAGNER DU TEMPS POUR TESTER, SERA SUPPRIME PAR LA SUITE)
 	public override void _Process(float delta)
 	{
 		if (Input.IsKeyPressed((int)KeyList.Space))
