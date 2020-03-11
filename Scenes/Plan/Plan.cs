@@ -32,6 +32,7 @@ public class Plan : Node2D
 	//Vairable permettant d'indiquer l'indexe des bloques
 
 	private int index_terre = 0;
+	private int index_boite = 3;
 	private int index_eau = 2;
 	private int indexe_montagne = 4;
 	private int index_sable = 5;
