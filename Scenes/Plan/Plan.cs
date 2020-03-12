@@ -53,7 +53,7 @@ public class Plan : Node2D
 		//CreatMap2(10); //CREE MAP
 
 		Montagne();
-		
+		/*
 		List<(int, int)> coordonnes_base_flaques = new List<(int, int)>();
 		for (int i = 0; i < nbr_flaque_eau; i++)
 		{
@@ -206,7 +206,7 @@ public class Plan : Node2D
 			}
 		}
 		//AJOUT SABLE SUR MAP   
-		Sable(coordonnes_base_flaques);
+		Sable(coordonnes_base_flaques);*/
 	}
 
 	// A FAIRE
