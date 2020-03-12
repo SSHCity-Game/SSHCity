@@ -59,6 +59,7 @@
     <Compile Include="Scenes\Plan\Lacs.cs" />
     <Compile Include="Scenes\Buildings\Buildings.cs" />
     <Compile Include="Scenes\Plan\MainPlan.cs" />
+    <Compile Include="Scenes\Plan\Montagnes.cs" />
     <Compile Include="Scenes\Plan\PlanInitial.cs" />
     <Compile Include="Scenes\Plan\Ref_donnees.cs" />
     <Compile Include="Scenes\Plan\Sable.cs" />
