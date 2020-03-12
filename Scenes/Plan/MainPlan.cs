@@ -11,7 +11,13 @@ public class MainPlan : Node2D
     public override void _Ready()
     {
         _planInitial = (PlanInitial) GetNode(str_planInitial);
+        
+        //CREATION LACS
         List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
+        
+        //CREATION SABLE
+        Sable.GenerateSable(_planInitial, coordonnées);
+        
     }
     
     //PERMET DE RECREER UNE MAP JUSTE EN CLIQUANT SUR ESPACE (POUR GAGNER DU TEMPS POUR TESTER, SERA SUPPRIME PAR LA SUITE)
@@ -22,5 +28,7 @@ public class MainPlan : Node2D
             GetTree().ReloadCurrentScene();
         }
     }
+    
+    
 
 }

@@ -1,14 +1,16 @@
-﻿
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Godot;
 
 namespace SshCity.Scenes.Plan
-{
+{	
+	/// <summary>
+    /// test
+	///Fonction créant les lacs
+	/// </summary>
     public class Lacs
     {
+
 	    public static Random rand;
 	    
         public static List<(int, int)> GenerateLac(PlanInitial _planInitial)
