@@ -16,4 +16,4 @@ _global_script_class_icons={
 [application]
 
 config/name="Ssh City"
-run/main_scene="res://MainScene.tscn"
+run/main_scene="res://Scenes/Plan/MainPlan.tscn"
