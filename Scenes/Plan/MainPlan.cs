@@ -16,7 +16,9 @@ public class MainPlan : Node2D
         //CREATION DE BATIMENTS
         SshCity.Scenes.Plan.Buildings.GenerateBatiments(_planInitial);
         //CREATION DE LA ROUTE ENTRE LES BATIMENTS
-        SshCity.Scenes.Plan.Buildings.GenerateRoute(_planInitial);
+        SshCity.Scenes.Plan.Buildings.GenerateRouteVillage(_planInitial);
+        
+        SshCity.Scenes.Plan.Buildings.GenerateRoutePlan(_planInitial);
         
         Montagnes.GenerateMontagne(_planInitial);
         

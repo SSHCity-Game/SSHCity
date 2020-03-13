@@ -28,7 +28,7 @@ namespace SshCity.Scenes.Plan
             }
         }
 
-        public static void GenerateRoute(PlanInitial planInitial)
+        public static void GenerateRouteVillage(PlanInitial planInitial)
         {
             for (int i = x2 + 1; i < x2 + 6; i++) //placement des routes
             {
@@ -40,6 +40,11 @@ namespace SshCity.Scenes.Plan
                     }
                 }
             }
+        }
+
+        public static void GenerateRoutePlan(PlanInitial planInitial)
+        {
+            
         }
 
     }

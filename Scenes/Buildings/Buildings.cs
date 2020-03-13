@@ -219,7 +219,7 @@ public class Buildings : Node2D
 		int x2 = rand.Next(min_x + 8, max_x - 8);
 		int y2 = rand.Next(min_y + 8, max_y - 8);
 		int acc = 0;
-		for (int i = x2; i < x2 + 5; i += 2) //cONSTRUCTION DES BATIMENTS
+		for (int i = x2; i < x2 + 5; i += 2) //CONSTRUCTION DES BATIMENTS
 		{
 			for (int j = y2; j < y2 + 5; j += 2)
 			{
