@@ -56,8 +56,16 @@
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\Incident\map_up.cs" />
-    <Compile Include="Scenes\Plan\Plan.cs" />
+    <Compile Include="Scenes\Plan\Lacs.cs" />
     <Compile Include="Scenes\Buildings\Buildings.cs" />
+    <Compile Include="Scenes\Plan\MainPlan.cs" />
+    <Compile Include="Scenes\Plan\Montagnes.cs" />
+    <Compile Include="Scenes\Plan\PlanInitial.cs" />
+    <Compile Include="Scenes\Plan\Ref_donnees.cs" />
+    <Compile Include="Scenes\Plan\Sable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scenes\MainPlan" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
