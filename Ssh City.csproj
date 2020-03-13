@@ -63,7 +63,7 @@
     <Compile Include="Scenes\Plan\PlanInitial.cs" />
     <Compile Include="Scenes\Plan\Ref_donnees.cs" />
     <Compile Include="Scenes\Plan\Sable.cs" />
-    <Compile Include="Scenes\Plan\Village.cs" />
+    <Compile Include="Scenes\Plan\Buildings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scenes\MainPlan" />
