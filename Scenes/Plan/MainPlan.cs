@@ -18,6 +18,8 @@ public class MainPlan : Node2D
         //CREATION SABLE
         Sable.GenerateSable(_planInitial, coordonnées);
         
+        Montagnes.GenerateMontagne(_planInitial);
+        
     }
     
     //PERMET DE RECREER UNE MAP JUSTE EN CLIQUANT SUR ESPACE (POUR GAGNER DU TEMPS POUR TESTER, SERA SUPPRIME PAR LA SUITE)

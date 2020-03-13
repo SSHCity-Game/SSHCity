@@ -7,7 +7,7 @@ namespace SshCity.Scenes.Plan
     {
 
 	    private static Random rand;
-        public static void Montagne(PlanInitial planInitial)
+        public static void GenerateMontagne(PlanInitial planInitial)
 		{
 			int nbr_m = rand.Next(Ref_donnees.m_min, Ref_donnees.m_max);
 			int rand_m_x = rand.Next(Ref_donnees.min_x, Ref_donnees.max_x + 1);
@@ -89,7 +89,7 @@ namespace SshCity.Scenes.Plan
 			}
 			else
 			{
-				Montagne(planInitial);
+				GenerateMontagne(planInitial);
 			}
 		}
 	
@@ -188,7 +188,6 @@ namespace SshCity.Scenes.Plan
 		{
 			planInitial.SetBlock(planInitial.TileMap2, x + 1, y, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x + 1, y, Ref_donnees.indexe_montagne);
-
 		}
 
 		if (planInitial.GetBlock(planInitial.TileMap1, x, y + 1) == Ref_donnees.index_terre)
@@ -196,6 +195,6 @@ namespace SshCity.Scenes.Plan
 			planInitial.SetBlock(planInitial.TileMap2, x, y + 1, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x, y + 1, Ref_donnees.indexe_montagne);
 		}
-	}
+	} 
     }
 }
