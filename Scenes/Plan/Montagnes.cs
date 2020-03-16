@@ -20,6 +20,7 @@ namespace SshCity.Scenes.Plan
 			{
 				planInitial.SetBlock(planInitial.TileMap4, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne);
 				planInitial.SetBlock(planInitial.TileMap1, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne);
+				planInitial.SetBlock(planInitial.TileMap1, rand_m_x+3, rand_m_y+3, Ref_donnees.indexe_montagne);
 				Montagne_Lv2(planInitial, rand_m_x + 1, rand_m_y + 1);
 				int i = 1;
 				while (i < nbr_m)
@@ -33,6 +34,7 @@ namespace SshCity.Scenes.Plan
 								{
 									rand_m_x -= 2;
 									rand_m_y -= 2;
+									planInitial.SetBlock(planInitial.TileMap1, rand_m_x+3, rand_m_y+3, Ref_donnees.indexe_montagne);
 									planInitial.SetBlock(planInitial.TileMap1, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne);
 									planInitial.SetBlock(planInitial.TileMap4, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne);
 									Montagne_Lv2(planInitial, rand_m_x + 1, rand_m_y + 1);
@@ -48,7 +50,8 @@ namespace SshCity.Scenes.Plan
 								{
 									rand_m_x += 2;
 									rand_m_y += 2;
-									planInitial.SetBlock(planInitial.TileMap1, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne); 
+									planInitial.SetBlock(planInitial.TileMap1, rand_m_x+3, rand_m_y+3, Ref_donnees.indexe_montagne); 
+									planInitial.SetBlock(planInitial.TileMap1, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne);
 									planInitial.SetBlock(planInitial.TileMap4, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne);
 									Montagne_Lv2(planInitial, rand_m_x + 1, rand_m_y + 1);
 									i++;
@@ -63,6 +66,7 @@ namespace SshCity.Scenes.Plan
 								{
 									rand_m_x -= 2;
 									rand_m_y += 2;
+									planInitial.SetBlock(planInitial.TileMap1, rand_m_x+3, rand_m_y+3, Ref_donnees.indexe_montagne);
 									planInitial.SetBlock(planInitial.TileMap1, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne);
 									planInitial.SetBlock(planInitial.TileMap4, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne);
 									Montagne_Lv2(planInitial, rand_m_x + 1, rand_m_y + 1);
@@ -79,6 +83,7 @@ namespace SshCity.Scenes.Plan
 								{
 									rand_m_x += 2;
 									rand_m_y -= 2;
+									planInitial.SetBlock(planInitial.TileMap1, rand_m_x+3, rand_m_y+3, Ref_donnees.indexe_montagne);
 									planInitial.SetBlock(planInitial.TileMap1, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne);
 									planInitial.SetBlock(planInitial.TileMap4, rand_m_x, rand_m_y, Ref_donnees.indexe_montagne);
 									Montagne_Lv2(planInitial, rand_m_x + 1, rand_m_y + 1);
@@ -101,6 +106,7 @@ namespace SshCity.Scenes.Plan
 	{
 		if (planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.indexe_montagne)
 		{
+			planInitial.SetBlock(planInitial.TileMap1, x + 1, y + 1, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x - 1, y - 1, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap3, x - 1, y - 1, Ref_donnees.indexe_montagne);
 			Montagne_Lv3(planInitial, x, y);
@@ -109,42 +115,49 @@ namespace SshCity.Scenes.Plan
 		{
 			planInitial.SetBlock(planInitial.TileMap3, x + 1, y + 1, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x + 1, y + 1, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x + 3, y + 3, Ref_donnees.indexe_montagne);
 			Montagne_Lv3(planInitial, x + 2, y + 2);
 		}
 		if (planInitial.GetBlock(planInitial.TileMap1, x, y - 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x, y - 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap3, x, y - 1, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x, y - 1, Ref_donnees.indexe_montagne);
-				Montagne_Lv3(planInitial, x + 1, y);
+			planInitial.SetBlock(planInitial.TileMap1, x+2, y + 1, Ref_donnees.indexe_montagne);
+			Montagne_Lv3(planInitial, x + 1, y);
 		}
 		if (planInitial.GetBlock(planInitial.TileMap1, x - 1, y) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap3, x - 1, y, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x - 1, y, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x + 1, y+2, Ref_donnees.indexe_montagne);
 			Montagne_Lv3(planInitial, x, y + 1);
 		}
 		if (planInitial.GetBlock(planInitial.TileMap1, x - 1, y + 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y + 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap3, x - 1, y + 1, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x - 1, y + 1, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x + 1, y + 3, Ref_donnees.indexe_montagne);
 			Montagne_Lv3(planInitial, x, y + 2);
 		}
 		if (planInitial.GetBlock(planInitial.TileMap1, x + 1, y - 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x + 1, y - 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap3, x + 1, y - 1, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x + 1, y - 1, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x + 3, y + 1, Ref_donnees.indexe_montagne);
 			Montagne_Lv3(planInitial, x + 2, y);
 		}
 		if (planInitial.GetBlock(planInitial.TileMap1, x + 1, y) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x + 1, y) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap3, x + 1, y, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x + 1, y, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x + 3, y+2, Ref_donnees.indexe_montagne);
 			Montagne_Lv3(planInitial, x + 2, y + 1);
 		}
 		if (planInitial.GetBlock(planInitial.TileMap1, x, y + 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x, y + 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap3, x, y + 1, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x, y + 1, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x+2, y + 3, Ref_donnees.indexe_montagne);
 			Montagne_Lv3(planInitial, x + 1, y + 2);
 		}
 	}
@@ -152,51 +165,62 @@ namespace SshCity.Scenes.Plan
 	// FONCTION CREANT LA MONTAGNE AU NIVEAU DU SOL (TileMap2)
 	private static void Montagne_Lv3(PlanInitial planInitial, int x, int y)
 	{
-		if (planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.index_terre)
+		if (planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.indexe_montagne)
 		{
-			planInitial.SetBlock(planInitial.TileMap1, x - 1, y - 1, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x, y , Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap2, x - 1, y - 1, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x - 1, y - 1, Ref_donnees.indexe_montagne);
+
 		}
-		if (planInitial.GetBlock(planInitial.TileMap1, x + 1, y + 1) == Ref_donnees.index_terre)
+		if (planInitial.GetBlock(planInitial.TileMap1, x + 1, y + 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap2, x + 1, y + 1, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x + 2, y + 2, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x + 1, y + 1, Ref_donnees.indexe_montagne);
 
 		}
-		if (planInitial.GetBlock(planInitial.TileMap1, x, y - 1) == Ref_donnees.index_terre)
+		if (planInitial.GetBlock(planInitial.TileMap1, x, y - 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap2, x, y - 1, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x+1, y, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x, y - 1, Ref_donnees.indexe_montagne);
 
 		}
-		if (planInitial.GetBlock(planInitial.TileMap1, x - 1, y) == Ref_donnees.index_terre)
+		if (planInitial.GetBlock(planInitial.TileMap1, x - 1, y) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap2, x - 1, y, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x, y+1, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x - 1, y, Ref_donnees.indexe_montagne);
-
+			
 		}
-		if (planInitial.GetBlock(planInitial.TileMap1, x - 1, y + 1) == Ref_donnees.index_terre)
+		if (planInitial.GetBlock(planInitial.TileMap1, x - 1, y + 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap2, x - 1, y + 1, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x , y + 2, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x - 1, y + 1, Ref_donnees.indexe_montagne);
-
+			
 		}
-		if (planInitial.GetBlock(planInitial.TileMap1, x + 1, y - 1) == Ref_donnees.index_terre)
+		if (planInitial.GetBlock(planInitial.TileMap1, x + 1, y - 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap2, x + 1, y - 1, Ref_donnees.indexe_montagne);
-			planInitial.SetBlock(planInitial.TileMap1, x + 1, y - 1, Ref_donnees.indexe_montagne);
-
+			planInitial.SetBlock(planInitial.TileMap1, x + 2, y, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x + 1, y-1, Ref_donnees.indexe_montagne);
+			
 		}
-		if (planInitial.GetBlock(planInitial.TileMap1, x + 1, y) == Ref_donnees.index_terre)
+		if (planInitial.GetBlock(planInitial.TileMap1, x + 1, y) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap2, x + 1, y, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x + 2, y+1, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x + 1, y, Ref_donnees.indexe_montagne);
+
 		}
 
-		if (planInitial.GetBlock(planInitial.TileMap1, x, y + 1) == Ref_donnees.index_terre)
+		if (planInitial.GetBlock(planInitial.TileMap1, x, y + 1) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1) == Ref_donnees.indexe_montagne)
 		{
 			planInitial.SetBlock(planInitial.TileMap2, x, y + 1, Ref_donnees.indexe_montagne);
+			planInitial.SetBlock(planInitial.TileMap1, x+1, y + 2, Ref_donnees.indexe_montagne);
 			planInitial.SetBlock(planInitial.TileMap1, x, y + 1, Ref_donnees.indexe_montagne);
+
 		}
 	} 
     }
