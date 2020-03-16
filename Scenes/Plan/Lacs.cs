@@ -40,7 +40,7 @@ namespace SshCity.Scenes.Plan
 							case 0:
 								{
 									rand_x++;
-									if (_planInitial.GetBlock(_planInitial.TileMap1, rand_x, rand_y) == Ref_donnees.index_terre)
+									if (_planInitial.GetBlock(_planInitial.TileMap1, rand_x+1, rand_y) == Ref_donnees.index_terre && _planInitial.GetBlock(_planInitial.TileMap1, rand_x+2, rand_y) == Ref_donnees.index_terre)
 									{
 										_planInitial.SetBlock(_planInitial.TileMap1 ,rand_x, rand_y, Ref_donnees.index_eau);
 									}
