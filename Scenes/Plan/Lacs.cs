@@ -15,7 +15,8 @@ namespace SshCity.Scenes.Plan
 	    
         public static List<(int, int)> GenerateLac(PlanInitial _planInitial)
         {
-	        
+	        GD.Print("#########");
+
 	        rand = new Random();
 	        int nbr_flaque_eau = rand.Next(Ref_donnees.min_flaque_eau, Ref_donnees.max_flaque_eau + 1);
 	        List<(int, int)> coordonnes_base_flaques = new List<(int, int)>();
@@ -27,6 +28,10 @@ namespace SshCity.Scenes.Plan
 				if (Valid_Position(rand_x, rand_y, _planInitial))//Si tous les blocs au tour sont des blocs terre ou eau alors on commence a creer le lac
 				{
 					coordonnes_base_flaques.Add((rand_x, rand_y));
+					GD.Print("----------");
+					GD.Print(rand_x, "   ", rand_y);
+
+
 					int nbr_block_eau = rand.Next(Ref_donnees.min_block_flaque_eau, Ref_donnees.max_block_flaque_eau + 1);
 					_planInitial.SetBlock(_planInitial.TileMap1,rand_x, rand_y, Ref_donnees.index_eau);
 					nbr_block_eau++;
@@ -44,11 +49,36 @@ namespace SshCity.Scenes.Plan
 									{
 										_planInitial.SetBlock(_planInitial.TileMap1 ,rand_x, rand_y, Ref_donnees.index_eau);
 										j++;
+										if (Valid_Position(rand_x+1, rand_y, _planInitial))
+										{ 
+											_planInitial.SetBlock(_planInitial.TileMap1,rand_x + 1, rand_y, Ref_donnees.index_eau);
+											j++;
+										}
+										if (Valid_Position(rand_x, rand_y+1, _planInitial))
+										{ 
+											_planInitial.SetBlock(_planInitial.TileMap1,rand_x, rand_y + 1, Ref_donnees.index_eau);
+											j++;
+										}
+
+										if (Valid_Position(rand_x, rand_y-1, _planInitial))
+										{
+											_planInitial.SetBlock(_planInitial.TileMap1,rand_x, rand_y - 1, Ref_donnees.index_eau);
+											j++;
+										}
 									}
-									
-									if (Valid_Position(rand_x+1, rand_y, _planInitial))
+									break;
+								}
+
+						case 1:
+							{
+								rand_x--;
+								if (Valid_Position(rand_x, rand_y, _planInitial))
+								{
+									_planInitial.SetBlock(_planInitial.TileMap1, rand_x, rand_y, Ref_donnees.index_eau);
+									j++;
+									if (Valid_Position(rand_x-1, rand_y, _planInitial))
 									{ 
-										_planInitial.SetBlock(_planInitial.TileMap1,rand_x + 1, rand_y, Ref_donnees.index_eau);
+										_planInitial.SetBlock(_planInitial.TileMap1,rand_x - 1, rand_y, Ref_donnees.index_eau);
 										j++;
 									}
 									if (Valid_Position(rand_x, rand_y+1, _planInitial))
@@ -61,33 +91,6 @@ namespace SshCity.Scenes.Plan
 										_planInitial.SetBlock(_planInitial.TileMap1,rand_x, rand_y - 1, Ref_donnees.index_eau);
 										j++;
 									}
-									
-									break;
-								}
-
-						case 1:
-							{
-								rand_x--;
-								if (Valid_Position(rand_x, rand_y, _planInitial))
-								{
-									_planInitial.SetBlock(_planInitial.TileMap1, rand_x, rand_y, Ref_donnees.index_eau);
-									j++;
-								}
-
-								if (Valid_Position(rand_x-1, rand_y, _planInitial))
-								{ 
-									_planInitial.SetBlock(_planInitial.TileMap1,rand_x - 1, rand_y, Ref_donnees.index_eau);
-									j++;
-								}
-								if (Valid_Position(rand_x, rand_y+1, _planInitial))
-								{ _planInitial.SetBlock(_planInitial.TileMap1,rand_x, rand_y + 1, Ref_donnees.index_eau);
-									j++;
-								}
-
-								if (Valid_Position(rand_x, rand_y-1, _planInitial))
-								{
-									_planInitial.SetBlock(_planInitial.TileMap1,rand_x, rand_y - 1, Ref_donnees.index_eau);
-									j++;
 								}
 								break;
 							}
@@ -99,22 +102,21 @@ namespace SshCity.Scenes.Plan
 								{
 									_planInitial.SetBlock(_planInitial.TileMap1, rand_x, rand_y, Ref_donnees.index_eau);
 									j++;
-								}
+									if (Valid_Position(rand_x+1, rand_y, _planInitial))
+									{ 
+										_planInitial.SetBlock(_planInitial.TileMap1,rand_x + 1, rand_y, Ref_donnees.index_eau);
+										j++;
+									}
+									if (Valid_Position(rand_x-1, rand_y, _planInitial))
+									{ _planInitial.SetBlock(_planInitial.TileMap1,rand_x-1, rand_y, Ref_donnees.index_eau);
+										j++;
+									}
 
-								if (Valid_Position(rand_x+1, rand_y, _planInitial))
-								{ 
-									_planInitial.SetBlock(_planInitial.TileMap1,rand_x + 1, rand_y, Ref_donnees.index_eau);
-									j++;
-								}
-								if (Valid_Position(rand_x-1, rand_y, _planInitial))
-								{ _planInitial.SetBlock(_planInitial.TileMap1,rand_x-1, rand_y, Ref_donnees.index_eau);
-									j++;
-								}
-
-								if (Valid_Position(rand_x, rand_y+1, _planInitial))
-								{
-									_planInitial.SetBlock(_planInitial.TileMap1,rand_x, rand_y + 1, Ref_donnees.index_eau);
-									j++;
+									if (Valid_Position(rand_x, rand_y+1, _planInitial))
+									{
+										_planInitial.SetBlock(_planInitial.TileMap1,rand_x, rand_y + 1, Ref_donnees.index_eau);
+										j++;
+									}
 								}
 								break;
 							}
@@ -125,26 +127,25 @@ namespace SshCity.Scenes.Plan
 								{
 									_planInitial.SetBlock(_planInitial.TileMap1, rand_x, rand_y, Ref_donnees.index_eau);
 									j++;
-								}
+									if (Valid_Position(rand_x, rand_y-1, _planInitial))
+									{ 
+										_planInitial.SetBlock(_planInitial.TileMap1,rand_x , rand_y-1, Ref_donnees.index_eau);
+										j++;
+									}
+									if (Valid_Position(rand_x+1, rand_y, _planInitial))
+									{ _planInitial.SetBlock(_planInitial.TileMap1,rand_x+1, rand_y, Ref_donnees.index_eau);
+										j++;
+									}
 
-								if (Valid_Position(rand_x, rand_y-1, _planInitial))
-								{ 
-									_planInitial.SetBlock(_planInitial.TileMap1,rand_x , rand_y-1, Ref_donnees.index_eau);
-									j++;
-								}
-								if (Valid_Position(rand_x+1, rand_y, _planInitial))
-								{ _planInitial.SetBlock(_planInitial.TileMap1,rand_x+1, rand_y, Ref_donnees.index_eau);
-									j++;
-								}
-
-								if (Valid_Position(rand_x-1, rand_y, _planInitial))
-								{
-									_planInitial.SetBlock(_planInitial.TileMap1,rand_x-1, rand_y, Ref_donnees.index_eau);
-									j++;
+									if (Valid_Position(rand_x-1, rand_y, _planInitial))
+									{
+										_planInitial.SetBlock(_planInitial.TileMap1,rand_x-1, rand_y, Ref_donnees.index_eau);
+										j++;
+									}
 								}
 								break;
 							}
-					}
+						}
 					}
 				}
 				else
@@ -152,6 +153,7 @@ namespace SshCity.Scenes.Plan
 					i--;
 				}
 			}
+            GD.Print("#######");
 
             return coordonnes_base_flaques;
         }
@@ -180,7 +182,7 @@ namespace SshCity.Scenes.Plan
 	        {
 		        creation =
 			        creation &&
-			        (index == Ref_donnees.index_terre || index == Ref_donnees.index_eau);
+			        (index == Ref_donnees.index_terre || index == Ref_donnees.index_eau || index == Ref_donnees.index_sable);
 	        }
 
 	        return creation;
