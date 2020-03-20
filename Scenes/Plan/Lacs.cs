@@ -34,8 +34,7 @@ namespace SshCity.Scenes.Plan
 
 					int nbr_block_eau = rand.Next(Ref_donnees.min_block_flaque_eau, Ref_donnees.max_block_flaque_eau + 1);
 					_planInitial.SetBlock(_planInitial.TileMap1,rand_x, rand_y, Ref_donnees.index_eau);
-					nbr_block_eau++;
-					int j = 0;
+					int j = 1;
 					while (j < nbr_block_eau)
 					{
 						int deplacement = rand.Next(0, 4);
@@ -66,6 +65,10 @@ namespace SshCity.Scenes.Plan
 											j++;
 										}
 									}
+									else
+									{
+										rand_x--;
+									}
 									break;
 								}
 
@@ -91,6 +94,10 @@ namespace SshCity.Scenes.Plan
 										_planInitial.SetBlock(_planInitial.TileMap1,rand_x, rand_y - 1, Ref_donnees.index_eau);
 										j++;
 									}
+								}
+								else
+								{
+									rand_x++;
 								}
 								break;
 							}
@@ -118,6 +125,10 @@ namespace SshCity.Scenes.Plan
 										j++;
 									}
 								}
+								else
+								{
+									rand_y--;
+								}
 								break;
 							}
 						case 3:
@@ -142,6 +153,10 @@ namespace SshCity.Scenes.Plan
 										_planInitial.SetBlock(_planInitial.TileMap1,rand_x-1, rand_y, Ref_donnees.index_eau);
 										j++;
 									}
+								}
+								else
+								{
+									rand_y++;
 								}
 								break;
 							}
@@ -182,7 +197,7 @@ namespace SshCity.Scenes.Plan
 	        {
 		        creation =
 			        creation &&
-			        (index == Ref_donnees.index_terre || index == Ref_donnees.index_eau || index == Ref_donnees.index_sable);
+			        (index == Ref_donnees.index_terre || index == Ref_donnees.index_eau);
 	        }
 
 	        return creation;

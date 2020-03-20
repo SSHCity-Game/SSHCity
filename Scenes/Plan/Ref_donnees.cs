@@ -22,8 +22,8 @@ namespace SshCity.Scenes.Plan
 
         public static int max_flaque_eau = 4; //Nombre maximum de flaques d'eau
         public static int min_flaque_eau = 2; //Nombre minimum de flaque d'eau
-        public static int max_block_flaque_eau = 10; //Nombre max de bloques eau pour une flaque
-        public static int min_block_flaque_eau = 5; //Nombre Minimum de bloques eau pour une flaque
+        public static int max_block_flaque_eau = 15; //Nombre max de bloques eau pour une flaque
+        public static int min_block_flaque_eau = 10; //Nombre Minimum de bloques eau pour une flaque
 
         //Vairable permettant d'indiquer l'indexe des bloques
 
