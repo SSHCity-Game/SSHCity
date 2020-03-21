@@ -12,16 +12,12 @@ public class MainPlan : Node2D
     {
         _planInitial = (PlanInitial) GetNode(str_planInitial);
 
-        
-        //CREATION DE BATIMENTS
-        //SshCity.Scenes.Plan.Buildings.GenerateBatiments(_planInitial);
-        //CREATION DE LA ROUTE ENTRE LES BATIMENTS
-        //SshCity.Scenes.Plan.Buildings.GenerateRouteVillage(_planInitial);
-        
-        //SshCity.Scenes.Plan.Buildings.GenerateRoutePlan(_planInitial);
-        
-        //Montagnes.GenerateMontagne(_planInitial);
-        
+        Montagnes.GenerateMontagne(_planInitial);
+        while (!SshCity.Scenes.Plan.Buildings.GenerateBuildings(_planInitial))
+        {
+            _planInitial = new PlanInitial();
+        }
+
         //CREATION LACS
         List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
         
