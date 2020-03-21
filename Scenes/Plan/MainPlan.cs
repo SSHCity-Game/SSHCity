@@ -24,8 +24,6 @@ public class MainPlan : Node2D
         //CREATION SABLE
         Sable.GenerateSable(_planInitial, coordonnées);
         
-
-        
     }
     
     
