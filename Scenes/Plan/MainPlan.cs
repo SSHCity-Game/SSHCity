@@ -12,7 +12,7 @@ public class MainPlan : Node2D
     
     
 
-    private bool _mousePressed = false;
+    private bool _mousePressed;
     private Vector2 _DraggingStart;
     private Vector2 _distanceDragged;
     public override void _Input(InputEvent OneEvent)
@@ -26,7 +26,6 @@ public class MainPlan : Node2D
                 if (_mousePressed && ! eventMouseButton.IsEcho())
                 {
                     _DraggingStart = GetViewport().GetMousePosition();
-                    GD.Print("PRESSED");
                 }
                 break;
             }
@@ -36,13 +35,21 @@ public class MainPlan : Node2D
                 
                 if (_mousePressed)
                 {
-                    GD.Print("MOVING");
                     _distanceDragged = _DraggingStart - inputEventMouse.Position;
                     _camera2D.Position += _distanceDragged;
                     _DraggingStart = inputEventMouse.Position;
                 }
                 break;
             }
+        }
+
+        if (Input.IsActionPressed("Zoom+"))
+        {
+            _camera2D.Zoom = _camera2D.Zoom / 2;
+        }
+        if (Input.IsActionPressed("Zoom-"))
+        {
+            _camera2D.Zoom = _camera2D.Zoom * 2;
         }
     }
     
