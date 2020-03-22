@@ -6,11 +6,50 @@ using SshCity.Scenes.Plan;
 public class MainPlan : Node2D
 {
     private PlanInitial _planInitial;
+    private Camera2D _camera2D;
     private string str_planInitial = "PlanInitial";
+    private string str_camera2D = "Camera2D";
+    
+    
+
+    private bool _mousePressed = false;
+    private Vector2 _DraggingStart;
+    private Vector2 _distanceDragged;
+    public override void _Input(InputEvent OneEvent)
+    {
+        base._Input(OneEvent);
+        switch (OneEvent)
+        {
+            case InputEventMouseButton eventMouseButton:
+            {
+                _mousePressed = eventMouseButton.Pressed;
+                if (_mousePressed && ! eventMouseButton.IsEcho())
+                {
+                    _DraggingStart = GetViewport().GetMousePosition();
+                    GD.Print("PRESSED");
+                }
+                break;
+            }
+
+            case InputEventMouse inputEventMouse:
+            {
+                
+                if (_mousePressed)
+                {
+                    GD.Print("MOVING");
+                    _distanceDragged = _DraggingStart - inputEventMouse.Position;
+                    _camera2D.Position += _distanceDragged;
+                    _DraggingStart = inputEventMouse.Position;
+                }
+                break;
+            }
+        }
+    }
     
     public override void _Ready()
     {
         _planInitial = (PlanInitial) GetNode(str_planInitial);
+        _camera2D = (Camera2D) GetNode(str_camera2D);
 
         Montagnes.GenerateMontagne(_planInitial);
         while (!SshCity.Scenes.Plan.Buildings.GenerateBuildings(_planInitial))
@@ -36,7 +75,5 @@ public class MainPlan : Node2D
             GetTree().ReloadCurrentScene();
         }
     }
-    
-    
 
 }

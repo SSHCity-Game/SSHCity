@@ -1,37 +1,14 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Blocks.tres" type="TileSet" id=1]
-
-[sub_resource type="CSharpScript" id=1]
-resource_name = "PlanInitial"
-script/source = "using Godot;
-using System;
-
-public class PlanInitial : Node2D
-{
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = \"text\";
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        
-    }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
-}
-"
+[ext_resource path="res://Scenes/Plan/PlanInitial.cs" type="Script" id=2]
 
 [node name="PlanInitial" type="Node2D"]
 scale = Vector2( 0.05, 0.05 )
-script = SubResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
+scale = Vector2( 1, 1 )
 
 [node name="TileMap1" type="TileMap" parent="Navigation2D"]
 mode = 1
