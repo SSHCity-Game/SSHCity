@@ -86,8 +86,8 @@ namespace SshCity.Scenes.Plan
         //OK
         public static (int, int) StartRoad(PlanInitial planInitial)
         {
-            int x = rand.Next(Ref_donnees.min_x, Ref_donnees.max_x + 1);
-            int y = rand.Next(Ref_donnees.min_y, Ref_donnees.max_y + 1);
+            int x = rand.Next(Ref_donnees.min_village_x, Ref_donnees.max_village_x + 1);
+            int y = rand.Next(Ref_donnees.min_village_y, Ref_donnees.max_village_y + 1);
             if (planInitial.GetBlock(planInitial.TileMap1, x, y) != Ref_donnees.index_terre)
             {
                 return StartRoad(planInitial);
