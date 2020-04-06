@@ -34,11 +34,11 @@ public class MainPlan : Node2D
                 if (_mousePressed)
                 {
                     _distanceDragged = _DraggingStart - inputEventMouse.Position;
-                    if ((_camera2D.Position.x + _distanceDragged.x < 510) || (_camera2D.Position.x + _distanceDragged.x > 2064))
+                    if ((_camera2D.Position.x + _distanceDragged.x < Ref_donnees.x_left) || (_camera2D.Position.x + _distanceDragged.x > Ref_donnees.x_right))
                     {
                         _distanceDragged.x = 0;
                     }
-                    if (_camera2D.Position.y + _distanceDragged.y < 300 || _camera2D.Position.y + _distanceDragged.y > 1348)
+                    if (_camera2D.Position.y + _distanceDragged.y < Ref_donnees.y_top|| _camera2D.Position.y + _distanceDragged.y > Ref_donnees.y_bot)
                     {
                         _distanceDragged.y = 0;
                     }
@@ -52,11 +52,31 @@ public class MainPlan : Node2D
 
         if (Input.IsActionPressed("Zoom+"))
         {
-            _camera2D.Zoom = _camera2D.Zoom / 2;
+            float x_zoom = (float)(_camera2D.Zoom.x / Ref_donnees.zoom_in_coef);
+            float y_zoom = (float)(_camera2D.Zoom.y / Ref_donnees.zoom_in_coef);
+            if (x_zoom < Ref_donnees.zoom_in_max)
+            {
+                x_zoom = Ref_donnees.zoom_in_max;
+            }
+            if (y_zoom < Ref_donnees.zoom_in_max)
+            {
+                y_zoom = Ref_donnees.zoom_in_max;
+            }
+            _camera2D.Zoom = new Vector2(x_zoom, y_zoom);
         }
         if (Input.IsActionPressed("Zoom-"))
         {
-            _camera2D.Zoom = _camera2D.Zoom * 2;
+            float x_zoom = (float)(_camera2D.Zoom.x * Ref_donnees.zoom_out_coef);
+            float y_zoom = (float)(_camera2D.Zoom.y * Ref_donnees.zoom_out_coef);
+            if (x_zoom > Ref_donnees.zoom_out_max)
+            {
+                x_zoom = (Ref_donnees.zoom_out_max);
+            }
+            if (y_zoom > Ref_donnees.zoom_out_max)
+            {
+                y_zoom = Ref_donnees.zoom_out_max;
+            }
+            _camera2D.Zoom = new Vector2(x_zoom, y_zoom);
         }
     }
     
