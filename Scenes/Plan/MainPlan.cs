@@ -9,8 +9,6 @@ public class MainPlan : Node2D
     private Camera2D _camera2D;
     private string str_planInitial = "PlanInitial";
     private string str_camera2D = "Camera2D";
-    
-    
 
     private bool _mousePressed;
     private Vector2 _DraggingStart;
@@ -36,6 +34,15 @@ public class MainPlan : Node2D
                 if (_mousePressed)
                 {
                     _distanceDragged = _DraggingStart - inputEventMouse.Position;
+                    if ((_camera2D.Position.x + _distanceDragged.x < 510) || (_camera2D.Position.x + _distanceDragged.x > 2064))
+                    {
+                        _distanceDragged.x = 0;
+                    }
+                    if (_camera2D.Position.y + _distanceDragged.y < 300 || _camera2D.Position.y + _distanceDragged.y > 1348)
+                    {
+                        _distanceDragged.y = 0;
+                    }
+
                     _camera2D.Position += _distanceDragged;
                     _DraggingStart = inputEventMouse.Position;
                 }
