@@ -45,6 +45,24 @@ public class MainPlan : Node2D
 
                     _camera2D.Position += _distanceDragged;
                     _DraggingStart = inputEventMouse.Position;
+                    if ((_camera2D.Position.x < Ref_donnees.x_left))
+                    {
+                        _camera2D.Position = new Vector2(Ref_donnees.x_left, _camera2D.Position.y);
+                    }
+
+                    if (_distanceDragged.x > Ref_donnees.x_right)
+                    {
+                        _camera2D.Position = new Vector2(Ref_donnees.x_right, _camera2D.Position.y);
+
+                    }
+                    if (_camera2D.Position.y < Ref_donnees.y_top)
+                    {
+                        _camera2D.Position = new Vector2(_camera2D.Position.y, Ref_donnees.y_top);
+                    }
+                    if (_camera2D.Position.y > Ref_donnees.y_bot)
+                    {
+                        _camera2D.Position = new Vector2(_camera2D.Position.y, Ref_donnees.y_bot);
+                    }
                 }
                 break;
             }
