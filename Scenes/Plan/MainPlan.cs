@@ -72,7 +72,7 @@ public class MainPlan : Node2D
         {
             float x_zoom = (float)(_camera2D.Zoom.x / Ref_donnees.zoom_in_coef);
             float y_zoom = (float)(_camera2D.Zoom.y / Ref_donnees.zoom_in_coef);
-            if (x_zoom < Ref_donnees.zoom_in_max)
+            if (x_zoom < (Ref_donnees.zoom_in_max))
             {
                 x_zoom = Ref_donnees.zoom_in_max;
             }
