@@ -43,5 +43,17 @@ namespace SshCity.Scenes.Plan
         public static int index_maison     = 1;
         public static int index_accident   = 3;
         public static int index_route      = 9;
+        
+        //Variable bloquer camera
+
+        public static int x_left = 510;
+        public static int x_right = 2064;
+        public static int y_top = 300;
+        public static int y_bot = 1348;
+        public static float zoom_in_max = (float)0.5;
+        public static float zoom_out_max = (float) 2.5;
+        public static float zoom_in_coef = (float) 1.5;
+        public static float zoom_out_coef = (float) 1.5;
+
     }
 }
