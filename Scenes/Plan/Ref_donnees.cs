@@ -46,14 +46,12 @@ namespace SshCity.Scenes.Plan
         
         //Variable bloquer camera
 
-        public static int x_left = 510;
-        public static int x_right = 2064;
-        public static int y_top = 300;
-        public static int y_bot = 1348;
+        public static float[] x_left = {252, 382, 502, 639, 765, 896, 1019, 1146, 1279};
+        public static float[] x_right = {2324, 2197, 2070, 1940, 1817, 1680, 1557, 1430, 1300};
+        public static float[] y_top = {150, 224, 300, 375, 450, 526, 598, 676, 752};
+        public static float[] y_bot = {1502, 1427, 1348, 1280, 1197, 1122, 1046, 974, 900};
         public static float zoom_in_max = (float)0.5;
         public static float zoom_out_max = (float) 2.5;
-        public static float zoom_in_coef = (float) 1.5;
-        public static float zoom_out_coef = (float) 1.5;
-
+        public static float zoom_coef = (float) 0.25;
     }
 }

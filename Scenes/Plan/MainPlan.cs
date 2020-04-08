@@ -9,7 +9,7 @@ public class MainPlan : Node2D
     private Camera2D _camera2D;
     private string str_planInitial = "PlanInitial";
     private string str_camera2D = "Camera2D";
-
+    private int position_zoom = 3;
     private bool _mousePressed;
     private Vector2 _DraggingStart;
     private Vector2 _distanceDragged;
@@ -34,34 +34,34 @@ public class MainPlan : Node2D
                 if (_mousePressed)
                 {
                     _distanceDragged = _DraggingStart - inputEventMouse.Position;
-                    if ((_camera2D.Position.x + _distanceDragged.x < Ref_donnees.x_left) || (_camera2D.Position.x + _distanceDragged.x > Ref_donnees.x_right))
+                    if ((_camera2D.Position.x + _distanceDragged.x < Ref_donnees.x_left[position_zoom]) || (_camera2D.Position.x + _distanceDragged.x > Ref_donnees.x_right[position_zoom]))
                     {
                         _distanceDragged.x = 0;
                     }
-                    if (_camera2D.Position.y + _distanceDragged.y < Ref_donnees.y_top|| _camera2D.Position.y + _distanceDragged.y > Ref_donnees.y_bot)
+                    if (_camera2D.Position.y + _distanceDragged.y < Ref_donnees.y_top[position_zoom]|| _camera2D.Position.y + _distanceDragged.y > Ref_donnees.y_bot[position_zoom])
                     {
                         _distanceDragged.y = 0;
                     }
 
                     _camera2D.Position += _distanceDragged;
                     _DraggingStart = inputEventMouse.Position;
-                    if ((_camera2D.Position.x < Ref_donnees.x_left))
+                    if ((_camera2D.Position.x < Ref_donnees.x_left[position_zoom]))
                     {
-                        _camera2D.Position = new Vector2(Ref_donnees.x_left, _camera2D.Position.y);
+                        _camera2D.Position = new Vector2(Ref_donnees.x_left[position_zoom], _camera2D.Position.y);
                     }
 
-                    if (_distanceDragged.x > Ref_donnees.x_right)
+                    if (_distanceDragged.x > Ref_donnees.x_right[position_zoom])
                     {
-                        _camera2D.Position = new Vector2(Ref_donnees.x_right, _camera2D.Position.y);
+                        _camera2D.Position = new Vector2(Ref_donnees.x_right[position_zoom], _camera2D.Position.y);
 
                     }
-                    if (_camera2D.Position.y < Ref_donnees.y_top)
+                    if (_camera2D.Position.y < Ref_donnees.y_top[position_zoom])
                     {
-                        _camera2D.Position = new Vector2(_camera2D.Position.y, Ref_donnees.y_top);
+                        _camera2D.Position = new Vector2(_camera2D.Position.y, Ref_donnees.y_top[position_zoom]);
                     }
-                    if (_camera2D.Position.y > Ref_donnees.y_bot)
+                    if (_camera2D.Position.y > Ref_donnees.y_bot[position_zoom])
                     {
-                        _camera2D.Position = new Vector2(_camera2D.Position.y, Ref_donnees.y_bot);
+                        _camera2D.Position = new Vector2(_camera2D.Position.y, Ref_donnees.y_bot[position_zoom]);
                     }
                 }
                 break;
@@ -70,8 +70,8 @@ public class MainPlan : Node2D
 
         if (Input.IsActionPressed("Zoom+"))
         {
-            float x_zoom = (float)(_camera2D.Zoom.x / Ref_donnees.zoom_in_coef);
-            float y_zoom = (float)(_camera2D.Zoom.y / Ref_donnees.zoom_in_coef);
+            float x_zoom = (float)(_camera2D.Zoom.x - Ref_donnees.zoom_coef);
+            float y_zoom = (float)(_camera2D.Zoom.y - Ref_donnees.zoom_coef);
             if (x_zoom < (Ref_donnees.zoom_in_max))
             {
                 x_zoom = Ref_donnees.zoom_in_max;
@@ -81,11 +81,15 @@ public class MainPlan : Node2D
                 y_zoom = Ref_donnees.zoom_in_max;
             }
             _camera2D.Zoom = new Vector2(x_zoom, y_zoom);
+            if (position_zoom > 0)
+            {
+                position_zoom -= 1;
+            }
         }
         if (Input.IsActionPressed("Zoom-"))
         {
-            float x_zoom = (float)(_camera2D.Zoom.x * Ref_donnees.zoom_out_coef);
-            float y_zoom = (float)(_camera2D.Zoom.y * Ref_donnees.zoom_out_coef);
+            float x_zoom = (float)(_camera2D.Zoom.x + Ref_donnees.zoom_coef);
+            float y_zoom = (float)(_camera2D.Zoom.y + Ref_donnees.zoom_coef);
             if (x_zoom > Ref_donnees.zoom_out_max)
             {
                 x_zoom = (Ref_donnees.zoom_out_max);
@@ -95,6 +99,10 @@ public class MainPlan : Node2D
                 y_zoom = Ref_donnees.zoom_out_max;
             }
             _camera2D.Zoom = new Vector2(x_zoom, y_zoom);
+            if (position_zoom<8)
+            {
+                position_zoom += 1;
+            }
         }
     }
     
