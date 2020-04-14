@@ -1,15 +1,28 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Interface/Interface.cs" type="Script" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Images_interface/marteau.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/MainPlan/marteau_button.tres" type="StyleBox" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.054902, 0.0313726, 0.0313726, 1 )
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0666667, 0.0588235, 0.054902, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.992157, 0.956863, 0.956863, 1 )
+border_blend = true
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="StyleBoxFlat" id=4]
 corner_radius_top_left = 60
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
@@ -46,7 +59,9 @@ margin_left = 935.13
 margin_top = 520.05
 margin_right = 995.13
 margin_bottom = 580.05
-custom_styles/normal = SubResource( 2 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = ExtResource( 4 )
 icon = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
