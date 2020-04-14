@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Menu_Achat : CanvasLayer
+public class Menu_Achat : Panel
 {
     private Button _button_flecheG;
     private Button _button_flecheD;
