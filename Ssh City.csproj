@@ -67,9 +67,6 @@
     <Compile Include="Scenes\Plan\Buildings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scenes\MainPlan" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="XML_file.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
