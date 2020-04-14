@@ -1,16 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Interface/Interface.cs" type="Script" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Images_interface/marteau.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 2 )
 
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.054902, 0.0313726, 0.0313726, 1 )
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="ImageTexture" id=3]
+
 [node name="Interface" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Money_couleur" type="Panel" parent="."]
 margin_left = 774.126
 margin_top = 15.4774
 margin_right = 1010.13
@@ -19,7 +29,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Money_text" type="Label" parent="Money_couleur"]
 margin_left = -5.89063
 margin_top = 0.675507
 margin_right = 227.109
@@ -30,3 +40,19 @@ align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="."]
+margin_left = 935.13
+margin_top = 520.05
+margin_right = 995.13
+margin_bottom = 580.05
+custom_styles/normal = SubResource( 2 )
+icon = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Button"]
+position = Vector2( 28.9746, 29.1885 )
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 3 )
