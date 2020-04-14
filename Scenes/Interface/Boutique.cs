@@ -12,12 +12,12 @@ public class Boutique : CanvasLayer
     private Button _button_speciaux;
 
     private const string _str_background = "Background";
-    private const string _str_title = "Background/Title";
+    private const string _str_title = _str_background + "/Title";
     private const string _str_button_sante = _str_background + "/ButtonSante";
     private const string _str_button_habitation = _str_background + "/ButtonHabitation";
     private const string _str_button_economie = _str_background + "/ButtonEconomie";
     private const string _str_button_bien_etre = _str_background + "/ButtonBienEtre";
-    private const string _str_button_speciaux = _str_background + "ButtonSpeciaux";
+    private const string _str_button_speciaux = _str_background + "/ButtonSpeciaux";
 
     public override void _Ready()
     {
@@ -28,21 +28,16 @@ public class Boutique : CanvasLayer
         _button_habitation = (Button) GetNode(_str_button_habitation);
         _button_speciaux = (Button) GetNode(_str_button_speciaux);
         _button_bien_etre = (Button) GetNode(_str_button_bien_etre);
-        
-        
         _background.Hide();
-        _title.Hide();
     }
 
     public void OpenShop()
     {
         _background.Show();
-        _title.Show();
     }
 
     public void CloseShop()
     {
         _background.Hide();
-        _title.Hide();
     }
 }

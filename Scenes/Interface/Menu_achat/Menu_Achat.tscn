@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Interface/Menu_achat/MenuHabitation.cs" type="Script" id=1]
+[ext_resource path="res://assets/Images_interface/fleche.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Interface/tres/FlecheButton.tres" type="StyleBox" id=3]
+
+[node name="MenuBoutique" type="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -391.5
+margin_top = -300.0
+margin_right = 391.5
+margin_bottom = -15.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlecheG" type="Sprite" parent="."]
+position = Vector2( 70, 140 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 2 )
+
+[node name="ButtonFlecheG" type="Button" parent="FlecheG"]
+margin_left = -648.0
+margin_top = -424.0
+margin_right = 665.0
+margin_bottom = 415.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlecheD" type="Sprite" parent="."]
+position = Vector2( 710, 140 )
+rotation = 3.14159
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 2 )
+
+[node name="ButtonFlecheD" type="Button" parent="FlecheD"]
+margin_right = 12.0
+margin_bottom = 20.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
