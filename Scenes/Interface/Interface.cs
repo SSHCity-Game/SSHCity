@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-﻿namespace SshCity.Scenes.Interface
-{
-    public class Interface
-    {
-        
-    }
-}
-=======
 using Godot;
 using System;
 
@@ -43,4 +34,4 @@ public class Interface : CanvasLayer
 //      
 //  }
 }
->>>>>>> feature/Interface
+
