@@ -12,15 +12,18 @@ script = ExtResource( 2 )
 [node name="Mairie" parent="Menu_Achat" instance=ExtResource( 3 )]
 margin_top = -120.0
 margin_bottom = 122.0
+script = null
 
 [node name="Mairie2" parent="Menu_Achat" instance=ExtResource( 3 )]
 margin_left = -277.5
 margin_top = -120.0
 margin_right = -96.5
 margin_bottom = 122.0
+script = null
 
 [node name="Mairie3" parent="Menu_Achat" instance=ExtResource( 3 )]
 margin_left = 96.5
 margin_top = -120.0
 margin_right = 277.5
 margin_bottom = 122.0
+script = null
