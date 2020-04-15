@@ -13,6 +13,7 @@ public class MainPlan : Node2D
     private bool _mousePressed;
     private Vector2 _DraggingStart;
     private Vector2 _distanceDragged;
+    //private Vector2 coord_camera;
     public override void _Input(InputEvent OneEvent)
     {
         base._Input(OneEvent);
@@ -123,7 +124,12 @@ public class MainPlan : Node2D
         
         //CREATION SABLE
         Sable.GenerateSable(_planInitial, coordonnées);
-        
+        /*
+        coord_camera = SshCity.Scenes.Plan.Buildings.start_coord_for_camera;
+        coord_camera.x = (float)(coord_camera.x * 20.3);
+        coord_camera.y = (float)(coord_camera.y * 20.3);
+        _camera2D.Position = coord_camera;
+        */
     }
     
     
@@ -135,6 +141,12 @@ public class MainPlan : Node2D
         {
             GetTree().ReloadCurrentScene();
         }
+        /*
+        if (Input.IsKeyPressed((int)KeyList.B))
+        {
+            _camera2D.Position = coord_camera;
+        }
+        */
     }
 
 }
