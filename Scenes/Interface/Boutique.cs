@@ -32,6 +32,12 @@ public class Boutique : CanvasLayer
         _button_bien_etre = (Button) GetNode(_str_button_bien_etre);
         _menuHabitation = (MenuHabitation) GetNode(_str_menuHabitation);
         _background.Hide();
+        _button_habitation.Connect("pressed", this, nameof(ButtonHabitation));
+    }
+
+    public void ButtonHabitation()
+    {
+        
     }
 
     public void ViewShop(bool open)
