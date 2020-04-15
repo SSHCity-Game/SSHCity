@@ -4,41 +4,85 @@ using System;
 public class Boutique : CanvasLayer
 {
     private Panel _background;
-    private Label _title;
     private Button _button_sante;
     private Button _button_habitation;
     private Button _button_economie;
     private Button _button_bien_etre;
     private Button _button_speciaux;
     private MenuHabitation _menuHabitation;
+    private MenuSante _menuSante;
+    private MenuSpeciaux _menuSpeciaux;
+    private MenuBienEtre _menuBienEtre;
+    private MenuEconomie _menuEconomie;
 
     private const string _str_background = "Background";
-    private const string _str_title = _str_background + "/Title";
     private const string _str_button_sante = _str_background + "/ButtonSante";
     private const string _str_button_habitation = _str_background + "/ButtonHabitation";
     private const string _str_button_economie = _str_background + "/ButtonEconomie";
     private const string _str_button_bien_etre = _str_background + "/ButtonBienEtre";
     private const string _str_button_speciaux = _str_background + "/ButtonSpeciaux";
     private const string _str_menuHabitation = _str_background + "/MenuHabitation";
+    private const string _str_menuSante = _str_background + "/MenuSante";
+    private const string _str_menuSpeciaux = _str_background + "/MenuSpeciaux";
+    private const string _str_menuBienEtre = _str_background + "/MenuBienEtre";
+    private const string _str_menuEconomie = _str_background + "/MenuEconomie";
 
     public override void _Ready()
     {
         _background = (Panel) GetNode(_str_background);
-        _title = (Label) GetNode(_str_title);
         _button_sante = (Button) GetNode(_str_button_sante);
         _button_economie = (Button) GetNode(_str_button_economie);
         _button_habitation = (Button) GetNode(_str_button_habitation);
         _button_speciaux = (Button) GetNode(_str_button_speciaux);
         _button_bien_etre = (Button) GetNode(_str_button_bien_etre);
         _menuHabitation = (MenuHabitation) GetNode(_str_menuHabitation);
+        _menuSante = (MenuSante) GetNode(_str_menuSante);
+        _menuSpeciaux = (MenuSpeciaux) GetNode(_str_menuSpeciaux);
+        _menuBienEtre = (MenuBienEtre) GetNode(_str_menuBienEtre);
+        _menuEconomie = (MenuEconomie) GetNode(_str_menuEconomie);
         _background.Hide();
         _button_habitation.Connect("pressed", this, nameof(ButtonHabitationPressed));
+        _button_economie.Connect("pressed", this, nameof(ButtonEconomiePressed));
+        _button_bien_etre.Connect("pressed", this, nameof(ButtonBienEtrePressed));
+        _button_speciaux.Connect("pressed", this, nameof(ButtonSpeciauxPressed));
+        _button_sante.Connect("pressed", this, nameof(ButtonSantePressed));
     }
 
     public void ButtonHabitationPressed()
     {
         _button_bien_etre.Pressed = false;
         _button_economie.Pressed = false;
+        _button_sante.Pressed = false;
+        _button_speciaux.Pressed = false;
+    }
+    public void ButtonSantePressed()
+    {
+        _button_bien_etre.Pressed = false;
+        _button_economie.Pressed = false;
+        _button_habitation.Pressed = false;
+        _button_speciaux.Pressed = false;
+    }
+    public void ButtonSpeciauxPressed()
+    {
+        _button_bien_etre.Pressed = false;
+        _button_economie.Pressed = false;
+        _button_sante.Pressed = false;
+        _button_habitation.Pressed = false;
+    }
+    
+    public void ButtonBienEtrePressed()
+    {
+        _button_economie.Pressed = false;
+        _button_habitation.Pressed = false;
+        _button_sante.Pressed = false;
+        _button_speciaux.Pressed = false;
+    }
+
+
+    public void ButtonEconomiePressed()
+    {
+        _button_bien_etre.Pressed = false;
+        _button_habitation.Pressed = false;
         _button_sante.Pressed = false;
         _button_speciaux.Pressed = false;
     }
@@ -54,6 +98,15 @@ public class Boutique : CanvasLayer
         {
             _background.Hide();
             _menuHabitation.CloseMenuHabitation();
+            _menuEconomie.CloseMenuEconomie();
+            _menuSante.CloseMenuSante();
+            _menuSpeciaux.CloseMenuSpeciaux();
+            _menuBienEtre.CloseMenuBienEtre();
+            _button_bien_etre.Pressed = false;
+            _button_economie.Pressed = false;
+            _button_habitation.Pressed = false;
+            _button_sante.Pressed = false;
+            _button_speciaux.Pressed = false;
         }
     }
 
@@ -66,6 +119,42 @@ public class Boutique : CanvasLayer
         else
         {
             _menuHabitation.CloseMenuHabitation();
+        }
+        
+        if (_button_sante.Pressed)
+        {
+            _menuSante.OpenMenuSante();
+        }
+        else
+        {
+            _menuSante.CloseMenuSante();
+        }
+        
+        if (_button_speciaux.Pressed)
+        {
+            _menuSpeciaux.OpenMenuSpeciaux();
+        }
+        else
+        {
+            _menuSpeciaux.CloseMenuSpeciaux();
+        }
+        
+        if (_button_bien_etre.Pressed)
+        {
+            _menuBienEtre.OpenMenuBienEtre();
+        }
+        else
+        {
+            _menuBienEtre.CloseMenuBienEtre();
+        }
+        
+        if (_button_economie.Pressed)
+        {
+            _menuEconomie.OpenMenuEconomie();
+        }
+        else
+        {
+            _menuEconomie.CloseMenuEconomie();
         }
     }
 }
