@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/Interface/Boutique.cs" type="Script" id=2]
-[ext_resource path="res://Scenes/Interface/Menu_achat/Menu_Achat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Interface/Menu_achat/MenuHabitation.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -41,6 +41,7 @@ margin_top = -216.5
 margin_right = 392.0
 margin_bottom = 216.5
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -54,6 +55,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Boutique"
 align = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -65,6 +67,7 @@ margin_bottom = 119.0
 custom_fonts/font = SubResource( 2 )
 text = "Santé"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -76,6 +79,7 @@ margin_bottom = 121.0
 custom_fonts/font = SubResource( 3 )
 text = "Habitation"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -87,6 +91,7 @@ margin_bottom = 119.0
 custom_fonts/font = SubResource( 4 )
 text = "Bien-être"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -98,6 +103,7 @@ margin_bottom = 119.0
 custom_fonts/font = SubResource( 5 )
 text = "Economie"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -109,9 +115,8 @@ margin_bottom = 119.0
 custom_fonts/font = SubResource( 6 )
 text = "Spéciaux"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Menu_Achat" parent="Background" instance=ExtResource( 3 )]
-margin_top = -76.5
-margin_bottom = 208.5
+[node name="MenuHabitation" parent="Background" instance=ExtResource( 3 )]

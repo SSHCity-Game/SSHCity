@@ -39,14 +39,7 @@ public class Interface : CanvasLayer
 
     public void ButtonPressed()
     {
-        if (hide)
-        {
-            _shop.OpenShop();
-        }
-        else
-        {
-            _shop.CloseShop();
-        }
+        _shop.ViewShop(hide);
         hide = !hide;
     }
     
