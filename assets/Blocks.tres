@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=12 format=2]
+[gd_resource type="TileSet" load_steps=13 format=2]
 
 [ext_resource path="res://assets/isometric_0108.png" type="Texture" id=1]
 [ext_resource path="res://assets/isometric_0130.png" type="Texture" id=2]
@@ -9,9 +9,14 @@
 [ext_resource path="res://assets/isometric_0087_2.png" type="Texture" id=7]
 [ext_resource path="res://assets/isometric_0086.png" type="Texture" id=8]
 [ext_resource path="res://assets/isometric_0080.png" type="Texture" id=9]
-[ext_resource path="res://assets/isometric_0087.png" type="Texture" id=10]
+[ext_resource path="res://assets/grass.png" type="Texture" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
+
+[sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
@@ -124,6 +129,6 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 9/tile_mode = 0
 9/occluder_offset = Vector2( 512, 512 )
 9/navigation_offset = Vector2( 512, 512 )
-9/navigation = SubResource( 1 )
+9/navigation = SubResource( 2 )
 9/shapes = [  ]
 9/z_index = 0
