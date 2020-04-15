@@ -32,18 +32,39 @@ public class Boutique : CanvasLayer
         _button_bien_etre = (Button) GetNode(_str_button_bien_etre);
         _menuHabitation = (MenuHabitation) GetNode(_str_menuHabitation);
         _background.Hide();
+        _button_habitation.Connect("pressed", this, nameof(ButtonHabitationPressed));
     }
+
+    public void ButtonHabitationPressed()
+    {
+        _button_bien_etre.Pressed = false;
+        _button_economie.Pressed = false;
+        _button_sante.Pressed = false;
+        _button_speciaux.Pressed = false;
+    }
+
 
     public void ViewShop(bool open)
     {
         if (open)
         {
             _background.Show();
-            _menuHabitation.OpenMenuHabitation();
         }
         else
         {
             _background.Hide();
+            _menuHabitation.CloseMenuHabitation();
+        }
+    }
+
+    public override void _Process(float delta)
+    {
+        if (_button_habitation.Pressed)
+        {
+            _menuHabitation.OpenMenuHabitation();
+        }
+        else
+        {
             _menuHabitation.CloseMenuHabitation();
         }
     }

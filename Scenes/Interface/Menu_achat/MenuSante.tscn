@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Interface/Menu_achat/Menu_Achat.tscn" type="PackedScene" id=1]
+
+[node name="MenuSante" type="Node2D"]
+
+[node name="Menu_Achat" parent="." instance=ExtResource( 1 )]
+margin_left = 123.5
+margin_top = 210.0
+margin_right = 900.5
+margin_bottom = 510.0
