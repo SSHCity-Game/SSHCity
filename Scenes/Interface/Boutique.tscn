@@ -89,7 +89,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonEconomie" type="Button" parent="Background"]
+[node name="ButtonBienEtre" type="Button" parent="Background"]
 margin_left = 480.0
 margin_top = 90.0
 margin_right = 601.0
@@ -102,7 +102,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonBienEtre" type="Button" parent="Background"]
+[node name="ButtonEconomie" type="Button" parent="Background"]
 margin_left = 335.0
 margin_top = 90.0
 margin_right = 456.0

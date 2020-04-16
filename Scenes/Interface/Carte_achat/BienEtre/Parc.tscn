@@ -1,18 +1,24 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Interface/Carte_achat/Carte.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/isometric_0140.png" type="Texture" id=2]
+[ext_resource path="res://assets/isometric_0056.png" type="Texture" id=2]
 
-[node name="Maison" instance=ExtResource( 1 )]
+[node name="Parc" instance=ExtResource( 1 )]
 
 [node name="Image" parent="Background" index="0"]
 texture = ExtResource( 2 )
 
 [node name="Titre" parent="." index="1"]
-text = "Maison"
+text = "Parc"
 
 [node name="Prix" parent="." index="5"]
-text = "10000"
+margin_top = 179.0
+margin_right = 146.0
+margin_bottom = 201.0
+text = "1000"
+align = 1
 
 [node name="Gain" parent="." index="7"]
-text = "500"
+text = "100
+"
+align = 1

@@ -40,12 +40,19 @@ public class Boutique : CanvasLayer
         _menuSpeciaux = (MenuSpeciaux) GetNode(_str_menuSpeciaux);
         _menuBienEtre = (MenuBienEtre) GetNode(_str_menuBienEtre);
         _menuEconomie = (MenuEconomie) GetNode(_str_menuEconomie);
+        _menuEconomie.Connect("CloseShop", this, nameof(ViewShop));
+        _menuSante.Connect("CloseShop", this, nameof(ViewShop));
+        _menuHabitation.Connect("CloseShop", this, nameof(ViewShop));
+        _menuBienEtre.Connect("CloseShop", this, nameof(ViewShop));
+        _menuSpeciaux.Connect("CloseShop", this, nameof(ViewShop));
+
         _background.Hide();
         _button_habitation.Connect("pressed", this, nameof(ButtonHabitationPressed));
         _button_economie.Connect("pressed", this, nameof(ButtonEconomiePressed));
         _button_bien_etre.Connect("pressed", this, nameof(ButtonBienEtrePressed));
         _button_speciaux.Connect("pressed", this, nameof(ButtonSpeciauxPressed));
         _button_sante.Connect("pressed", this, nameof(ButtonSantePressed));
+
     }
 
     public void ButtonHabitationPressed()
