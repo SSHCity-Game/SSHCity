@@ -77,5 +77,8 @@
   <ItemGroup>
     <Content Include="XML_file.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scenes\Interface\Carte_achat\Economie" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

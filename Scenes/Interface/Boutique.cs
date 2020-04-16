@@ -46,6 +46,7 @@ public class Boutique : CanvasLayer
         _button_bien_etre.Connect("pressed", this, nameof(ButtonBienEtrePressed));
         _button_speciaux.Connect("pressed", this, nameof(ButtonSpeciauxPressed));
         _button_sante.Connect("pressed", this, nameof(ButtonSantePressed));
+
     }
 
     public void ButtonHabitationPressed()

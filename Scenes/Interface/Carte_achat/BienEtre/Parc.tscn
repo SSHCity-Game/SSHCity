@@ -10,3 +10,15 @@ texture = ExtResource( 2 )
 
 [node name="Titre" parent="." index="1"]
 text = "Parc"
+
+[node name="Prix" parent="." index="5"]
+margin_top = 179.0
+margin_right = 146.0
+margin_bottom = 201.0
+text = "1000"
+align = 1
+
+[node name="Gain" parent="." index="7"]
+text = "100
+"
+align = 1

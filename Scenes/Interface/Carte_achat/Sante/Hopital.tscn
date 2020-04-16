@@ -12,3 +12,9 @@ texture = ExtResource( 1 )
 margin_top = 152.0
 margin_bottom = 177.0
 text = "Hopital"
+
+[node name="Prix" parent="." index="5"]
+text = "25000"
+
+[node name="Gain" parent="." index="7"]
+text = "1000"
