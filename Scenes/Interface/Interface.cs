@@ -9,7 +9,13 @@ public class Interface : CanvasLayer
     private Boutique _shop; 
         
     private int _money = 50000;
-    private bool hide = true;
+    private static bool hide = true;
+
+    public static bool Hide
+    {
+        get => hide;
+        set => hide = value;
+    }
 
     public int Money
     {

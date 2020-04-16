@@ -30,7 +30,6 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 0/tile_mode = 0
 0/occluder_offset = Vector2( 512, 512 )
 0/navigation_offset = Vector2( 512, 512 )
-0/navigation = SubResource( 1 )
 0/shapes = [  ]
 0/z_index = 0
 1/name = "Batiment"
