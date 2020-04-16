@@ -22,7 +22,6 @@ public class Carte : Panel
 
     public void ButtonAchatPressed()
     {
-        GD.Print("OKKKY");
-        EmitSignal("Achat");
+        EmitSignal("Achat", _typeBatiment);
     }
 }

@@ -4,16 +4,26 @@ using System;
 public class MenuHabitation : Node
 {
     private Menu_Achat _menu_achat;
+    private Carte _carteMaison;
 
     private const string _str_menu_achat = "Menu_Achat";
+    private const string _str_carteMaison = _str_menu_achat + "/Maison";
 
 
     public override void _Ready()
     {
+        _carteMaison = (Carte) GetNode(_str_carteMaison);
+        _carteMaison.Connect("Achat", this, nameof(AchatBatiment));
         _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
         _menu_achat.Hide();
+        AddUserSignal("CloseShop");
     }
 
+    public void AchatBatiment(string typebatiment)
+    {
+        GD.Print(typebatiment);
+        EmitSignal("CloseShop", false);
+    }
     public void CloseMenuHabitation()
     {
         _menu_achat.Hide();

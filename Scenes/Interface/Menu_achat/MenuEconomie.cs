@@ -8,20 +8,22 @@ public class MenuEconomie : Node
     private Carte _carteMagasin;
 
     private const string _str_menu_achat = "Menu_Achat";
-    private const string _str_carteMagasin = "Menu_Achat/Carte";
+    private const string _str_carteMagasin = "Menu_Achat/Magasin";
 
     
     public override void _Ready()
     {
         _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
         _carteMagasin = (Carte)GetNode(_str_carteMagasin);
-        _carteMagasin.Connect("Achat", this, nameof(AchatMagasin));
+        _carteMagasin.Connect("Achat", this, nameof(AchatBatiment));
         _menu_achat.Hide();
+        AddUserSignal("CloseShop");
     }
 
-    public void AchatMagasin()
+    public void AchatBatiment(string typebatiment)
     {
-        GD.Print("HELLO");
+        GD.Print(typebatiment);
+         EmitSignal("CloseShop", false);
     }
     
     public void CloseMenuEconomie()
