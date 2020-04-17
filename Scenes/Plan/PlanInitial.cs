@@ -1,8 +1,9 @@
 using Godot;
 using System;
 
-public class PlanInitial : Node
+public class PlanInitial : Node2D
 {
+    public Vector2 PositionTile = new Vector2(0,0);
     public TileMap TileMap1;
     public TileMap TileMap2;
     public TileMap TileMap3;
@@ -35,10 +36,13 @@ public class PlanInitial : Node
         base._Input(OneAction);
         if (OneAction is InputEventMouseButton)
         {
-            var mouse_pos = GetViewport().GetMousePosition();
-            var tile = TileMap1.WorldToMap((mouse_pos));
+            var mouse_pos = GetGlobalMousePosition();
+            mouse_pos = new Vector2((float)(mouse_pos.x / 0.05), (float)(mouse_pos.y/0.05));
+            var tile = TileMap1.WorldToMap(mouse_pos);
             GD.Print(tile);
             GD.Print(mouse_pos);
+            GD.Print(MainPlan.cameraPosition);
+            PositionTile = tile;
         }
     }
     
