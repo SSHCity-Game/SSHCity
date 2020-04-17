@@ -40,6 +40,7 @@ public class Boutique : CanvasLayer
         _menuSpeciaux = (MenuSpeciaux) GetNode(_str_menuSpeciaux);
         _menuBienEtre = (MenuBienEtre) GetNode(_str_menuBienEtre);
         _menuEconomie = (MenuEconomie) GetNode(_str_menuEconomie);
+        
         _menuEconomie.Connect("CloseShop", this, nameof(ViewShop));
         _menuSante.Connect("CloseShop", this, nameof(ViewShop));
         _menuHabitation.Connect("CloseShop", this, nameof(ViewShop));
@@ -114,6 +115,7 @@ public class Boutique : CanvasLayer
             _button_habitation.Pressed = false;
             _button_sante.Pressed = false;
             _button_speciaux.Pressed = false;
+            Interface.Hide = true;
         }
     }
 

@@ -13,7 +13,9 @@ public class MainPlan : Node2D
     private bool _mousePressed;
     private Vector2 _DraggingStart;
     private Vector2 _distanceDragged;
-    //private Vector2 coord_camera;
+    public static float zoom = (float)1.25;
+    public static Vector2 cameraPosition = new Vector2(1250, 810);
+    
     public override void _Input(InputEvent OneEvent)
     {
         base._Input(OneEvent);
@@ -64,6 +66,8 @@ public class MainPlan : Node2D
                     {
                         _camera2D.Position = new Vector2(_camera2D.Position.y, Ref_donnees.y_bot[position_zoom]);
                     }
+
+                    cameraPosition = _camera2D.Position;
                 }
                 break;
             }
@@ -99,6 +103,8 @@ public class MainPlan : Node2D
             {
                 y_zoom = Ref_donnees.zoom_out_max;
             }
+
+            zoom = x_zoom;
             _camera2D.Zoom = new Vector2(x_zoom, y_zoom);
             if (position_zoom<8)
             {
@@ -124,12 +130,7 @@ public class MainPlan : Node2D
         
         //CREATION SABLE
         Sable.GenerateSable(_planInitial, coordonnées);
-        /*
-        coord_camera = SshCity.Scenes.Plan.Buildings.start_coord_for_camera;
-        coord_camera.x = (float)(coord_camera.x * 20.3);
-        coord_camera.y = (float)(coord_camera.y * 20.3);
-        _camera2D.Position = coord_camera;
-        */
+
     }
     
     
@@ -141,12 +142,6 @@ public class MainPlan : Node2D
         {
             GetTree().ReloadCurrentScene();
         }
-        /*
-        if (Input.IsKeyPressed((int)KeyList.B))
-        {
-            _camera2D.Position = coord_camera;
-        }
-        */
     }
 
 }

@@ -8,6 +8,14 @@ public class MenuSpeciaux : Node
     
     private const string _str_menu_achat = "Menu_Achat";
     private const string _str_carteMairie = _str_menu_achat + "/Mairie";
+    
+    private static bool _achat = false;
+
+    public static bool Achat
+    {
+        get => _achat;
+        set => _achat = value;
+    }
 
 
     public override void _Ready()

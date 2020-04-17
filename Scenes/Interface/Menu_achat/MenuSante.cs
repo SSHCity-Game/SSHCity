@@ -8,6 +8,14 @@ public class MenuSante : Node
 
     private const string _str_menu_achat = "Menu_Achat";
     private const string _str_carteHopital = _str_menu_achat + "/Hopital";
+    
+    private static bool _achat = false;
+
+    public static bool Achat
+    {
+        get => _achat;
+        set => _achat = value;
+    }
     public override void _Ready()
     {
         _carteHopital = (Carte) GetNode(_str_carteHopital);
