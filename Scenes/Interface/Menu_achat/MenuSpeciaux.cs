@@ -24,18 +24,11 @@ public class MenuSpeciaux : Node
         _carteMairie = (Carte) GetNode(_str_carteMairie);
         //_carteMairie.Bloc = MairieNode.Bloc;
         //_carteMairie.Titre(MairieNode.Titre);
-        _carteMairie.Connect("Achat", this, nameof(AchatBatiment));
+        _carteMairie.Connect("Achat", this, nameof(Menu_Achat.AchatBatiment));
         
         _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
-    }
-    
-    public void AchatBatiment(int bloc)
-    {
-        EmitSignal("CloseShop", false);
-        _achat = true;
-        PlanInitial.Batiment = bloc;
     }
 
     public void CloseMenuSpeciaux()

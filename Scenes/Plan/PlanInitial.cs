@@ -15,11 +15,18 @@ public class PlanInitial : Node2D
 
     private Vector2 _lastTile = new Vector2(0, 0);
     private static int _batiment;
+    private static int _prix;
 
     public static int Batiment
     {
         get => _batiment;
         set => _batiment = value;
+    }
+
+    public static int Prix
+    {
+        get => _prix;
+        set => _prix = value;
     }
 
     public override void _Ready()
@@ -87,6 +94,7 @@ public class PlanInitial : Node2D
             MenuSpeciaux.Achat = false;
             MenuBienEtre.Achat = false;
             _lastTile = new Vector2(0,0);
+            Interface.Money -= _prix;
         }
     }
     

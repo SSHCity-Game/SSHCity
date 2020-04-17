@@ -5,6 +5,7 @@ public class Menu_Achat : Panel
 {
     private Button _button_flecheG;
     private Button _button_flecheD;
+    private bool _achat = false;
 
     private const string _str_button_flecheG = "FlecheG/ButtonFlecheG";
     private const string _str_button_flecheD = "FlecheD/ButtonFlecheD";
@@ -27,5 +28,12 @@ public class Menu_Achat : Panel
         EmitSignal("fleche gauche");
     }
     
+    public void AchatBatiment(int bloc, int prix)
+    {
+        EmitSignal("CloseShop", false);
+        _achat = true;
+        PlanInitial.Batiment = bloc;
+        PlanInitial.Prix = prix;
+    }
 
 }

@@ -22,20 +22,12 @@ public class MenuBienEtre : Node
         _carteParc = (Carte) GetNode(_str_carteParc);
         //_carteParc.Bloc = ParcNode.Bloc;
         //_carteParc.Titre(ParcNode.Titre)
-        _carteParc.Connect("Achat", this, nameof(AchatBatiment));
+        _carteParc.Connect("Achat", this, nameof(Menu_Achat.AchatBatiment));
         
         _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
     }
-    
-    public void AchatBatiment(int bloc)
-    {
-        EmitSignal("CloseShop", false);
-        _achat = true;
-        PlanInitial.Batiment = bloc;
-    }
-    
     public void CloseMenuBienEtre()
     {
         _menu_achat.Hide();
