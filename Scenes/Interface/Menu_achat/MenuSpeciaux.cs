@@ -26,8 +26,14 @@ public class MenuSpeciaux : Node
         
         //Config _carteMairie
         _carteMairie = (Carte) GetNode(_str_carteMairie);
-        //_carteMairie.Bloc = MairieNode.Bloc;
-        //_carteMairie.Titre(MairieNode.Titre);
+        /*
+        _carteMairie.Bloc = MairieNode.Bloc;
+        _carteMairie.Cost = MairieNode.Cost;
+        _carteMairie.Titre(MairieNode.Titre);
+        _carteMairie.Gain(MairieNode.Earn);
+        _carteMairie.Prix(MairieNode.Cost);
+        */
+        
         _carteMairie.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
         _menu_achat.Hide();

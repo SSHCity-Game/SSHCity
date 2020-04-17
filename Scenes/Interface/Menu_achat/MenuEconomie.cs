@@ -24,9 +24,15 @@ public class MenuEconomie : Node
         _carteMagasin = (Carte)GetNode(_str_carteMagasin);
         
         //Config _carteMaison
+        _carteMagasin = (Carte) GetNode(_str_carteMagasin);
+        /*
+        _carteMagasin.Bloc = MagasinNode.Bloc;
+        _carteMagasin.Cost = MagasinNode.Cost;
+        _carteMagasin.Titre(MagasinNode.Titre);
+        _carteMagasin.Gain(MagasinNode.Earn);
+        _carteMagasin.Prix(MagasinNode.Cost);
+        */
         
-        //_carteMagasin.Bloc = MagasinNode.Bloc;
-        //_carteMagasin.Titre(MagasinNode.Titre);
         _menu_achat.Connect("CloseShop", this, nameof(CloseShop));
         _carteMagasin.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
