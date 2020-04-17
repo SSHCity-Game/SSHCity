@@ -26,5 +26,6 @@ public class Menu_Achat : Panel
     {
         EmitSignal("fleche gauche");
     }
+    
 
 }

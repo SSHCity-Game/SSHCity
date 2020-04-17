@@ -20,17 +20,22 @@ public class MenuSpeciaux : Node
 
     public override void _Ready()
     {
+        //Config _carteMairie
         _carteMairie = (Carte) GetNode(_str_carteMairie);
+        //_carteMairie.Bloc = MairieNode.Bloc;
+        //_carteMairie.Titre(MairieNode.Titre);
         _carteMairie.Connect("Achat", this, nameof(AchatBatiment));
+        
         _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
     }
     
-    public void AchatBatiment(string typebatiment)
+    public void AchatBatiment(int bloc)
     {
-        GD.Print(typebatiment);
         EmitSignal("CloseShop", false);
+        _achat = true;
+        PlanInitial.Batiment = bloc;
     }
 
     public void CloseMenuSpeciaux()

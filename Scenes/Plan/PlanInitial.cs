@@ -14,8 +14,14 @@ public class PlanInitial : Node2D
     public string str_TileMap4 = "Navigation2D/TileMap4";
 
     private Vector2 _lastTile = new Vector2(0, 0);
-    private int _batiment;
-    
+    private static int _batiment;
+
+    public static int Batiment
+    {
+        get => _batiment;
+        set => _batiment = value;
+    }
+
     public override void _Ready()
     { 
         TileMap1 = (TileMap) GetNode("Navigation2D/TileMap1");
@@ -73,7 +79,7 @@ public class PlanInitial : Node2D
  
         }
 
-        if (OneAction is InputEventMouseButton && MenuEconomie.Achat)
+        if (OneAction is InputEventMouseButton && (MenuEconomie.Achat|| MenuSante.Achat || MenuHabitation.Achat || MenuSpeciaux.Achat || MenuBienEtre.Achat))
         {
             MenuEconomie.Achat = false;
             MenuHabitation.Achat = false;
