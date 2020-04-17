@@ -22,15 +22,22 @@ public class MenuEconomie : Node
     {
         _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
         _carteMagasin = (Carte)GetNode(_str_carteMagasin);
+        
+        //Config _carteMaison
+        
+        //_carteMagasin.Bloc = MagasinNode.Bloc;
+        //_carteMagasin.Titre(MagasinNode.Titre);
         _carteMagasin.Connect("Achat", this, nameof(AchatBatiment));
+        
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
     }
 
-    public void AchatBatiment(string typebatiment)
+    public void AchatBatiment(int bloc)
     {
         EmitSignal("CloseShop", false);
         _achat = true;
+        PlanInitial.Batiment = bloc;
     }
     
     

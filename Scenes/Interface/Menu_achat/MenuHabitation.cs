@@ -29,8 +29,8 @@ public class MenuHabitation : Node
 
     public void AchatBatiment(string typebatiment)
     {
-        GD.Print(typebatiment);
         EmitSignal("CloseShop", false);
+        _achat = true;
     }
     public void CloseMenuHabitation()
     {
