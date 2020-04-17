@@ -27,11 +27,20 @@ public class MenuEconomie : Node
         
         //_carteMagasin.Bloc = MagasinNode.Bloc;
         //_carteMagasin.Titre(MagasinNode.Titre);
-        _carteMagasin.Connect("Achat", this, nameof(Menu_Achat.AchatBatiment));
+        _carteMagasin.Connect("Achat", this, nameof(AchatBatiment));
         
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
     }
+
+    public void AchatBatiment(int bloc, int prix)
+    {
+        EmitSignal("CloseShop", false);
+        _achat = true;
+        PlanInitial.Batiment = bloc;
+        PlanInitial.Prix = prix;
+    }
+    
     
     public void CloseMenuEconomie()
     {

@@ -16,6 +16,13 @@ public class Carte : Panel
     private const string _str_gain = "Gain";
     private const string _str_prix = "Prix";
     private int _bloc = 1;
+    private int _cost;
+
+    public int Cost
+    {
+        get => _cost;
+        set => _cost = value;
+    }
 
     public int Bloc
     {
@@ -37,7 +44,7 @@ public class Carte : Panel
 
     public void ButtonAchatPressed()
     {
-        EmitSignal("Achat", _bloc, _prix);
+        EmitSignal("Achat", _bloc, _cost);
     }
 
     public void Titre(string titre)

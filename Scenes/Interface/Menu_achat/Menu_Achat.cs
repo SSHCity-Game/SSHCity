@@ -5,8 +5,13 @@ public class Menu_Achat : Panel
 {
     private Button _button_flecheG;
     private Button _button_flecheD;
-    private bool _achat = false;
-
+    private static bool _achat = false;
+    public static bool Achat
+    {
+        get => _achat;
+        set => _achat = value;
+    }
+    
     private const string _str_button_flecheG = "FlecheG/ButtonFlecheG";
     private const string _str_button_flecheD = "FlecheD/ButtonFlecheD";
 

@@ -23,15 +23,24 @@ public class MenuHabitation : Node
         //Config _carteMaison
         _carteMaison = (Carte) GetNode(_str_carteMaison);
         _carteMaison.Bloc = MaisonNode.Bloc;
+        _carteMaison.Cost = MaisonNode.Cost;
         _carteMaison.Titre(MaisonNode.Titre);
         _carteMaison.Gain(MaisonNode.Earn);
         _carteMaison.Prix(MaisonNode.Cost);
-        
-        _carteMaison.Connect("Achat", this, nameof(Menu_Achat.AchatBatiment));
+        _carteMaison.Connect("Achat", this, nameof(AchatBatiment));
         
         _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
+    }
+
+    public void AchatBatiment(int bloc, int prix)
+    {
+        EmitSignal("CloseShop", false);
+        PlanInitial.Batiment = bloc;
+        PlanInitial.Prix = prix;
+        _achat = true;
+ 
     }
     public void CloseMenuHabitation()
     {
