@@ -22,6 +22,7 @@ public class Menu_Achat : Panel
         _button_flecheG = (Button) GetNode(_str_button_flecheG);
         _button_flecheD.Connect("pressed", this, nameof(ClickFlecheD));
         _button_flecheG.Connect("pressed", this, nameof(ClickFlecheG));
+        AddUserSignal("CloseShop");
     }
 
     public void ClickFlecheD()
@@ -35,7 +36,7 @@ public class Menu_Achat : Panel
     
     public void AchatBatiment(int bloc, int prix)
     {
-        EmitSignal("CloseShop", false);
+        EmitSignal("CloseShop");
         _achat = true;
         PlanInitial.Batiment = bloc;
         PlanInitial.Prix = prix;

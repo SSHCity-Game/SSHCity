@@ -20,23 +20,18 @@ public class MenuSpeciaux : Node
 
     public override void _Ready()
     {
+        
+        _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
+        _menu_achat.Connect("CloseShop", this, nameof(CloseShop));
+        
         //Config _carteMairie
         _carteMairie = (Carte) GetNode(_str_carteMairie);
         //_carteMairie.Bloc = MairieNode.Bloc;
         //_carteMairie.Titre(MairieNode.Titre);
-        _carteMairie.Connect("Achat", this, nameof(AchatBatiment));
+        _carteMairie.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
-        _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
-    }
-    
-    public void AchatBatiment(int bloc, int prix)
-    {
-        EmitSignal("CloseShop", false);
-        _achat = true;
-        PlanInitial.Batiment = bloc;
-        PlanInitial.Prix = prix;
     }
 
     public void CloseMenuSpeciaux()
@@ -49,4 +44,8 @@ public class MenuSpeciaux : Node
         _menu_achat.Show();
     }
     
+    public void CloseShop()
+    {
+        EmitSignal("CloseShop", false);
+    }
 }

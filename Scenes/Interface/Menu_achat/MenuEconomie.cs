@@ -27,21 +27,13 @@ public class MenuEconomie : Node
         
         //_carteMagasin.Bloc = MagasinNode.Bloc;
         //_carteMagasin.Titre(MagasinNode.Titre);
-        _carteMagasin.Connect("Achat", this, nameof(AchatBatiment));
+        _menu_achat.Connect("CloseShop", this, nameof(CloseShop));
+        _carteMagasin.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
     }
 
-    public void AchatBatiment(int bloc, int prix)
-    {
-        EmitSignal("CloseShop", false);
-        _achat = true;
-        PlanInitial.Batiment = bloc;
-        PlanInitial.Prix = prix;
-    }
-    
-    
     public void CloseMenuEconomie()
     {
         _menu_achat.Hide();
@@ -51,5 +43,8 @@ public class MenuEconomie : Node
     {
         _menu_achat.Show();
     }
-    
+    public void CloseShop()
+    {
+        EmitSignal("CloseShop", false);
+    }
 }

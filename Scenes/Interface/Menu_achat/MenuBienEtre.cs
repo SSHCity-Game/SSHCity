@@ -18,25 +18,20 @@ public class MenuBienEtre : Node
     }
     public override void _Ready()
     {
+        _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
+        _menu_achat.Connect("CloseShop", this, nameof(CloseShop));
+        
         //Config _carteParc
         _carteParc = (Carte) GetNode(_str_carteParc);
         //_carteParc.Bloc = ParcNode.Bloc;
         //_carteParc.Titre(ParcNode.Titre)
-        _carteParc.Connect("Achat", this, nameof(AchatBatiment));
+        _carteParc.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
-        _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
+
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
     }
-    
-    public void AchatBatiment(int bloc, int prix)
-    {
-        EmitSignal("CloseShop", false);
-        _achat = true;
-        PlanInitial.Batiment = bloc;
-        PlanInitial.Prix = prix;
-    }
-    
+
     public void CloseMenuBienEtre()
     {
         _menu_achat.Hide();
@@ -45,6 +40,11 @@ public class MenuBienEtre : Node
     public void OpenMenuBienEtre()
     {
         _menu_achat.Show();
+    }
+
+    public void CloseShop()
+    {
+        EmitSignal("CloseShop", false);
     }
 }
 
