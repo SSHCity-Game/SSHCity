@@ -6,6 +6,13 @@ public class MenuEconomie : Node
 
     private Menu_Achat _menu_achat;
     private Carte _carteMagasin;
+    private static bool _achat = false;
+
+    public static bool Achat
+    {
+        get => _achat;
+        set => _achat = value;
+    }
 
     private const string _str_menu_achat = "Menu_Achat";
     private const string _str_carteMagasin = "Menu_Achat/Magasin";
@@ -22,9 +29,10 @@ public class MenuEconomie : Node
 
     public void AchatBatiment(string typebatiment)
     {
-        GD.Print(typebatiment);
-         EmitSignal("CloseShop", false);
+        EmitSignal("CloseShop", false);
+        _achat = true;
     }
+    
     
     public void CloseMenuEconomie()
     {
@@ -35,4 +43,5 @@ public class MenuEconomie : Node
     {
         _menu_achat.Show();
     }
+    
 }
