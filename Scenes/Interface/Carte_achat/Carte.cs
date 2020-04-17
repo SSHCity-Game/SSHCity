@@ -8,6 +8,7 @@ public class Carte : Panel
     private Button _buttonAchat;
     private Sprite _sprite;
     private Label _titre;
+    private Label _Gain;
     private const string _str_sprite = "Background/Image";
     private const string _str_button_achat = "ButtonAchat";
     private const string _str_titre = "Titre";
