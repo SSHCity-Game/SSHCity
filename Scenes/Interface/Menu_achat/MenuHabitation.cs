@@ -22,8 +22,8 @@ public class MenuHabitation : Node
     {
         //Config _carteMaison
         _carteMaison = (Carte) GetNode(_str_carteMaison);
-        //_carteMaison.Bloc = MaisonNode.Bloc;
-        //_carteMaison.Titre(MaisonNode.Titre);
+        _carteMaison.Bloc = MaisonNode.Bloc;
+        _carteMaison.Titre(MaisonNode.Titre);
         
         _carteMaison.Connect("Achat", this, nameof(AchatBatiment));
         

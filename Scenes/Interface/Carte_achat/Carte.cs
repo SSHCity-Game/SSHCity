@@ -15,8 +15,8 @@ public class Carte : Panel
 
     public int Bloc
     {
-        get => Bloc;
-        set => Bloc = value;
+        get => _bloc;
+        set => _bloc = value;
     }
     
     public override void _Ready()
