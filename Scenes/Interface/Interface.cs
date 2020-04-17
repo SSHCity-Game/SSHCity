@@ -8,7 +8,7 @@ public class Interface : CanvasLayer
     private Button _button_shop;
     private Boutique _shop; 
         
-    private int _money = 50000;
+    private static int _money = 50000;
     private static bool hide = true;
 
     public static bool Hide
@@ -17,7 +17,7 @@ public class Interface : CanvasLayer
         set => hide = value;
     }
 
-    public int Money
+    public static int Money
     {
         get => _money;
         set => _money = value;

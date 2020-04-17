@@ -8,6 +8,14 @@ public class MenuBienEtre : Node
 
     private const string _str_menu_achat = "Menu_Achat";
     private const string _str_carteParc = _str_menu_achat + "/Parc";
+    
+    private static bool _achat = false;
+
+    public static bool Achat
+    {
+        get => _achat;
+        set => _achat = value;
+    }
     public override void _Ready()
     {
         _carteParc = (Carte) GetNode(_str_carteParc);

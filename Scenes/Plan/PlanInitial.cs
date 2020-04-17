@@ -14,6 +14,7 @@ public class PlanInitial : Node2D
     public string str_TileMap4 = "Navigation2D/TileMap4";
 
     private Vector2 _lastTile = new Vector2(0, 0);
+    private int _batiment;
     
     public override void _Ready()
     { 
@@ -50,23 +51,35 @@ public class PlanInitial : Node2D
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
-        if (OneAction is InputEventMouse && MenuEconomie.Achat)
+        if (OneAction is InputEventMouse && (MenuEconomie.Achat|| MenuSante.Achat || MenuHabitation.Achat || MenuSpeciaux.Achat || MenuBienEtre.Achat))
         {
             Vector2 tile = GetTilePosition();
             if (!AlreadySomethingHere(tile))
             {
-                SetBlock(TileMap2, (int)tile.x, (int)tile.y, 1);
+                SetBlock(TileMap2, (int)tile.x, (int)tile.y, _batiment);
+                if (tile != _lastTile)
+                {
+                    SetBlock(TileMap2, (int)_lastTile.x, (int)_lastTile.y, -1);
+                }
+                _lastTile = tile;
+            }
+            else
+            {
                 if (tile != _lastTile)
                 {
                     SetBlock(TileMap2, (int)_lastTile.x, (int)_lastTile.y, -1);
                 }
             }
-            _lastTile = tile;
+ 
         }
 
         if (OneAction is InputEventMouseButton && MenuEconomie.Achat)
         {
             MenuEconomie.Achat = false;
+            MenuHabitation.Achat = false;
+            MenuSante.Achat = false;
+            MenuSpeciaux.Achat = false;
+            MenuBienEtre.Achat = false;
             _lastTile = new Vector2(0,0);
         }
     }
