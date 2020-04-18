@@ -12,12 +12,22 @@ namespace SshCity.Scenes.Plan
 
         public static void GenerateBatiments(PlanInitial planInitial, int x, int y)
         {
-            int nbr_maison = 2;
-            int nbr_magasin = 3;
+            int nbr_maison = 0;
+            int nbr_magasin = 0;
             for (int i = x; i < x + 5; i += 2) //CONSTRUCTION DES BATIMENTS
             {
                 for (int j = y; j < y + 5; j += 2)
                 {
+                    int bloc_set = -1;
+                    if (nbr_magasin < 3)
+                    {
+                        nbr_magasin++;
+                        //bloc_set == Ref_donnees.index_magasin;
+                    }
+                    else if (nbr_maison < 3)
+                    {
+                        
+                    }
                     planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, Ref_donnees.index_maison);
                 }
             }
@@ -101,9 +111,9 @@ namespace SshCity.Scenes.Plan
             }
             return (x, y);
         }
-        //OK
         public static void BuildRoadDirection(PlanInitial planInitial, int x, int y, Direction dir)
         {
+            (int xd, int yd) = (x, y);
             int bloc;
             switch (dir)
             {
@@ -157,6 +167,7 @@ namespace SshCity.Scenes.Plan
                     }
                 }
             }
+            planInitial.SetBlock(planInitial.TileMap2, xd-1, yd-1, Ref_donnees.index_route_croisement);
         }
         
         
