@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.ComponentModel.Design;
 
-public class MaisonNode : Timer
+public class MaisonNode : Node2D
 {
     private Timer _maisonTimer;
     private static int _bloc = 11;
