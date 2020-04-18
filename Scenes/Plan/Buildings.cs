@@ -11,7 +11,13 @@ namespace SshCity.Scenes.Plan
 
 
         public static void GenerateBatiments(PlanInitial planInitial, int x, int y)
-        {
+        {/*
+            int[] batiments = new[]
+            {
+                Ref_donnees.index_maison, Ref_donnees.index_immeuble_brique, Ref_donnees.index_immeuble_verte,
+                Ref_donnees.index_maison3, Ref_donnees.index_maison4, Ref_donnees.index_maison5,
+                Ref_donnees.index_McAffy, Ref_donnees.index_shop, Ref_donnees.index_piscine
+            };*/
             int nbr_maison = 0;
             int nbr_magasin = 0;
             for (int i = x; i < x + 5; i += 2) //CONSTRUCTION DES BATIMENTS
@@ -26,9 +32,9 @@ namespace SshCity.Scenes.Plan
                     }
                     else if (nbr_maison < 3)
                     {
-                        nbr_maison
+                        
                     }
-                    planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, Ref_donnees.index_maison);
+                    planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, Ref_donnees.maison1);
                 }
             }
         }
@@ -39,9 +45,9 @@ namespace SshCity.Scenes.Plan
             {
                 for (int j = y ; j < y+5 ; j++)
                 {
-                    if (planInitial.GetBlock(planInitial.TileMap1, i, j) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, i, j) == Ref_donnees.index_maison)
+                    if (planInitial.GetBlock(planInitial.TileMap1, i, j) == Ref_donnees.terre || planInitial.GetBlock(planInitial.TileMap1, i, j) == Ref_donnees.maison1)
                     {
-                        planInitial.SetBlock(planInitial.TileMap1, i, j, Ref_donnees.index_route);
+                        planInitial.SetBlock(planInitial.TileMap1, i, j, Ref_donnees.route);
                     }
                 }
             }
@@ -60,7 +66,7 @@ namespace SshCity.Scenes.Plan
             bool valid = true;
             while (planInitial.GetBlock(planInitial.TileMap1, x, y) != -1 && valid)
             {
-                if (planInitial.GetBlock(planInitial.TileMap1, x, y) != Ref_donnees.index_terre)
+                if (planInitial.GetBlock(planInitial.TileMap1, x, y) != Ref_donnees.terre)
                 {
                     valid = false;
                 }
@@ -97,7 +103,7 @@ namespace SshCity.Scenes.Plan
         {
             int x = rand.Next(Ref_donnees.min_village_x, Ref_donnees.max_village_x + 1);
             int y = rand.Next(Ref_donnees.min_village_y, Ref_donnees.max_village_y + 1);
-            if (planInitial.GetBlock(planInitial.TileMap1, x, y) != Ref_donnees.index_terre)
+            if (planInitial.GetBlock(planInitial.TileMap1, x, y) != Ref_donnees.terre)
             {
                 return StartRoad(planInitial);
             }
@@ -119,29 +125,29 @@ namespace SshCity.Scenes.Plan
             {
                 case Direction.TOP:
                 {
-                    bloc = Ref_donnees.index_route_right;
+                    bloc = Ref_donnees.route_right;
                     break;
                 }
                 case Direction.DOWN:
                 {
-                    bloc = Ref_donnees.index_route_right;
+                    bloc = Ref_donnees.route_right;
                     break;
                 }
                 case Direction.LEFT:
                 {
-                    bloc = Ref_donnees.index_route_left;
+                    bloc = Ref_donnees.route_left;
                     break;
                 }
                 default:
                 {
-                    bloc = Ref_donnees.index_route_left;
+                    bloc = Ref_donnees.route_left;
                     break;
                 }
                     
             }
             while (planInitial.GetBlock(planInitial.TileMap1, x, y) != -1 )
             {
-                planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.index_route);
+                planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.route);
                 planInitial.SetBlock(planInitial.TileMap2, x-1, y-1, bloc);
                 switch (dir)
                 {
@@ -167,7 +173,7 @@ namespace SshCity.Scenes.Plan
                     }
                 }
             }
-            planInitial.SetBlock(planInitial.TileMap2, xd-1, yd-1, Ref_donnees.index_route_croisement);
+            planInitial.SetBlock(planInitial.TileMap2, xd-1, yd-1, Ref_donnees.route_croisement);
         }
         
         
