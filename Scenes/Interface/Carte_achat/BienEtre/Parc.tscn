@@ -19,6 +19,5 @@ text = "1000"
 align = 1
 
 [node name="Gain" parent="." index="7"]
-text = "100
-"
+text = "100"
 align = 1
