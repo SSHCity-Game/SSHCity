@@ -27,9 +27,9 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 
 [sub_resource type="NavigationPolygon" id=2]
 
-[sub_resource type="NavigationPolygon" id=4]
+[sub_resource type="NavigationPolygon" id=3]
 
-[sub_resource type="NavigationPolygon" id=5]
+[sub_resource type="NavigationPolygon" id=4]
 
 [resource]
 0/name = "Grass"
@@ -158,7 +158,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 12/tile_mode = 0
 12/occluder_offset = Vector2( 0, 0 )
 12/navigation_offset = Vector2( 0, 0 )
-12/navigation = SubResource( 4 )
+12/navigation = SubResource( 3 )
 12/shapes = [  ]
 12/z_index = 0
 13/name = "maison2.png 13"
@@ -179,7 +179,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 14/tile_mode = 0
 14/occluder_offset = Vector2( 0, 0 )
 14/navigation_offset = Vector2( 0, 0 )
-14/navigation = SubResource( 5 )
+14/navigation = SubResource( 4 )
 14/shapes = [  ]
 14/z_index = 0
 15/name = "hopital.png 15"
