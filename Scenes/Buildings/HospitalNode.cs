@@ -4,7 +4,7 @@ using System;
 public class HospitalNode : Timer
 {
     private Timer _hospitalTimer;
-    private static int _bloc = 5;
+    private static int _bloc = 15;
     private static int _cost = 10000;
     private static int[] _earn = {120,170,250};
     private static string _titre = "Hôpital";

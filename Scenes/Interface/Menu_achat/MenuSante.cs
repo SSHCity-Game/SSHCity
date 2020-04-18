@@ -23,13 +23,12 @@ public class MenuSante : Node
 
         //Config _carteHopital
         _carteHopital = (Carte) GetNode(_str_carteHopital);
-        /*
-        _carteHopital.Bloc = HopitalNode.Bloc;
-        _carteHopital.Cost = HopitalNode.Cost;
-        _carteHopital.Titre(HopitalNode.Titre);
-        _carteHopital.Gain(HopitalNode.Earn);
-        _carteHopital.Prix(HopitalNode.Cost);
-        */
+        _carteHopital.Bloc = HospitalNode.Bloc;
+        _carteHopital.Cost = HospitalNode.Cost;
+        _carteHopital.Titre(HospitalNode.Titre);
+        _carteHopital.Gain(HospitalNode.Earn);
+        _carteHopital.Prix(HospitalNode.Cost);
+        
         
         _carteHopital.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         

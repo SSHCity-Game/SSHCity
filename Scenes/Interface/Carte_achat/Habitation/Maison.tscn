@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Interface/Carte_achat/Carte.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/isometric_0140.png" type="Texture" id=2]
+[ext_resource path="res://assets/maison1.png" type="Texture" id=2]
 
 [node name="Maison" instance=ExtResource( 1 )]
 
 [node name="Image" parent="Background" index="0"]
+position = Vector2( 73, 55 )
+scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
 
 [node name="Titre" parent="." index="1"]

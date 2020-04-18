@@ -26,7 +26,7 @@ public class MenuHabitation : Node
         
         //Config _carteMaison
         _carteMaison = (Carte) GetNode(_str_carteMaison);
-        _carteMaison.Bloc = 11; //MaisonNode.Bloc;
+        _carteMaison.Bloc = MaisonNode.Bloc;
         _carteMaison.Cost = MaisonNode.Cost;
         _carteMaison.Titre(MaisonNode.Titre);
         _carteMaison.Gain(MaisonNode.Earn);
