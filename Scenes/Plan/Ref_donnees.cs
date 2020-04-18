@@ -43,6 +43,13 @@ namespace SshCity.Scenes.Plan
         public static int index_maison     = 1;
         public static int index_accident   = 3;
         public static int index_route      = 9;
+        public static int index_route_left = 18;
+        public const int index_route_right = 17;
+        public const int index_hopital = 15;
+        public const int index_caserne = 14;
+        public const int index_immeuble_verte = 16;
+        public const int index_immeuble_brique = 13;
+        public const int index_police = 12;
         
         //Variable bloquer camera
 

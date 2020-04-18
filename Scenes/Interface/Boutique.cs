@@ -115,7 +115,7 @@ public class Boutique : CanvasLayer
             _button_habitation.Pressed = false;
             _button_sante.Pressed = false;
             _button_speciaux.Pressed = false;
-            Interface.Hide = true;
+            Interface.Hide = false;
         }
     }
 

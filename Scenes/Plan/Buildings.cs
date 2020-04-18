@@ -107,9 +107,35 @@ namespace SshCity.Scenes.Plan
         //OK
         public static void BuildRoadDirection(PlanInitial planInitial, int x, int y, Direction dir)
         {
+            int bloc;
+            switch (dir)
+            {
+                case Direction.TOP:
+                {
+                    bloc = Ref_donnees.index_route_right;
+                    break;
+                }
+                case Direction.DOWN:
+                {
+                    bloc = Ref_donnees.index_route_right;
+                    break;
+                }
+                case Direction.LEFT:
+                {
+                    bloc = Ref_donnees.index_route_left;
+                    break;
+                }
+                default:
+                {
+                    bloc = Ref_donnees.index_route_left;
+                    break;
+                }
+                    
+            }
             while (planInitial.GetBlock(planInitial.TileMap1, x, y) != -1 )
             {
                 planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.index_route);
+                planInitial.SetBlock(planInitial.TileMap2, x-1, y-1, bloc);
                 switch (dir)
                 {
                     case Direction.TOP:
@@ -144,7 +170,6 @@ namespace SshCity.Scenes.Plan
             BuildRoadDirection(planInitial, x, y, Direction.DOWN);
             BuildRoadDirection(planInitial, x, y, Direction.LEFT);
             BuildRoadDirection(planInitial, x, y, Direction.RIGHT);
-            //start_coord_for_camera = new Vector2(x, y);
             return (x, y);
         }
 
