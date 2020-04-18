@@ -26,7 +26,7 @@ namespace SshCity.Scenes.Plan
                     }
                     else if (nbr_maison < 3)
                     {
-                        
+                        nbr_maison
                     }
                     planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, Ref_donnees.index_maison);
                 }
