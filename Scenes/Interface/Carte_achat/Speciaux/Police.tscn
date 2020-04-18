@@ -7,7 +7,6 @@
 
 [node name="Image" parent="Background" index="0"]
 texture = ExtResource( 2 )
-<<<<<<< HEAD
 
 [node name="Titre" parent="." index="1"]
 text = "Mairie"
@@ -17,5 +16,4 @@ text = "3000"
 
 [node name="Gain" parent="." index="6"]
 text = "125"
-=======
->>>>>>> ae934e6a3997d81f68942d9daad351a3e53c1cb0
+
