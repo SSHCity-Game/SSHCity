@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=31 format=2]
+[gd_resource type="TileSet" load_steps=32 format=2]
 
 [ext_resource path="res://assets/isometric_0108.png" type="Texture" id=1]
 [ext_resource path="res://assets/isometric_0130.png" type="Texture" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://assets/isometric magasin6.png" type="Texture" id=24]
 [ext_resource path="res://assets/isometric magasin1.png" type="Texture" id=25]
 [ext_resource path="res://assets/isometric magasin2.png" type="Texture" id=26]
+[ext_resource path="res://assets/isometric piscine.png" type="Texture" id=27]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -309,3 +310,13 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 26/navigation_offset = Vector2( 0, 0 )
 26/shapes = [  ]
 26/z_index = 0
+27/name = "isometric piscine.png 27"
+27/texture = ExtResource( 27 )
+27/tex_offset = Vector2( 60, 330 )
+27/modulate = Color( 1, 1, 1, 1 )
+27/region = Rect2( 0, 0, 832, 704 )
+27/tile_mode = 0
+27/occluder_offset = Vector2( 0, 0 )
+27/navigation_offset = Vector2( 0, 0 )
+27/shapes = [  ]
+27/z_index = 0
