@@ -10,40 +10,40 @@ namespace SshCity.Scenes.Plan
 
         //Variables pour definir la taille de la Map 
 
-        public static int size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
+        public const int size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
 
-        public static int max_x = 127; //Coordonées max d'un bloque sur l'axe x
-        public static int min_x = -16; //Coordonnées min d'un bloque sur l'axe x
-        public static int max_y = 67; //Coordonées max d'un bloque sur l'axe y
-        public static int min_y = -62; //Cooronnées min d'un bloque en y
-        public static int min_village_x = 42;
-        public static int max_village_x = 83;
-        public static int min_village_y = -22;
-        public static int max_village_y = 32;
+        public const int max_x = 127; //Coordonées max d'un bloque sur l'axe x
+        public const int min_x = -16; //Coordonnées min d'un bloque sur l'axe x
+        public const int max_y = 67; //Coordonées max d'un bloque sur l'axe y
+        public const int min_y = -62; //Cooronnées min d'un bloque en y
+        public const int min_village_x = 42;
+        public const int max_village_x = 83;
+        public const int min_village_y = -22;
+        public const int max_village_y = 32;
 
 
 
 
         // Variables modifiables pour définir le nombres d'éléments sur la Map
 
-        public static int max_flaque_eau = 8; //Nombre maximum de flaques d'eau
-        public static int min_flaque_eau = 5; //Nombre minimum de flaque d'eau
-        public static int max_block_flaque_eau = 25; //Nombre max de bloques eau pour une flaque
-        public static int min_block_flaque_eau = 20; //Nombre Minimum de bloques eau pour une flaque
-        public static int m_max = 8; //Nombre bocks montagnes à trois etages max
-        public static int m_min = 5; //Nombre bocks montagnes à trois etages min
+        public const int max_flaque_eau = 8; //Nombre maximum de flaques d'eau
+        public const int min_flaque_eau = 5; //Nombre minimum de flaque d'eau
+        public const int max_block_flaque_eau = 25; //Nombre max de bloques eau pour une flaque
+        public const int min_block_flaque_eau = 20; //Nombre Minimum de bloques eau pour une flaque
+        public const int m_max = 8; //Nombre bocks montagnes à trois etages max
+        public const int m_min = 5; //Nombre bocks montagnes à trois etages min
 
         //Vairable permettant d'indiquer l'indexe des bloques
 
-        public static int terre = 0;
-        public static int boite = 3;
-        public static int eau = 2;
-        public static int montagne = 8;
-        public static int sable = 5;
-        public static int maison1     = 11;
-        public static int accident   = 3;
-        public static int route      = 9;
-        public static int route_left = 18;
+        public const int terre = 0;
+        public const int boite = 3;
+        public const int eau = 2;
+        public const int montagne = 8;
+        public const int sable = 5;
+        public const int maison1     = 11;
+        public const int accident   = 3;
+        public const int route      = 9;
+        public const int route_left = 18;
         public const int route_right = 17;
         public const int hopital = 15;
         public const int caserne = 14;
