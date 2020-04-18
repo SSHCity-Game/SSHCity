@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=26 format=2]
+[gd_resource type="TileSet" load_steps=27 format=2]
 
 [ext_resource path="res://assets/isometric_0108.png" type="Texture" id=1]
 [ext_resource path="res://assets/isometric_0130.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/routeIntersection.png" type="Texture" id=19]
 [ext_resource path="res://assets/hotel.png" type="Texture" id=20]
 [ext_resource path="res://assets/maison3.png" type="Texture" id=21]
+[ext_resource path="res://assets/maison4.png" type="Texture" id=22]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -254,3 +255,13 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 21/navigation_offset = Vector2( 0, 0 )
 21/shapes = [  ]
 21/z_index = 0
+22/name = "maison4.png 22"
+22/texture = ExtResource( 22 )
+22/tex_offset = Vector2( 15, 150 )
+22/modulate = Color( 1, 1, 1, 1 )
+22/region = Rect2( 0, 0, 960, 896 )
+22/tile_mode = 0
+22/occluder_offset = Vector2( 0, 0 )
+22/navigation_offset = Vector2( 0, 0 )
+22/shapes = [  ]
+22/z_index = 0
