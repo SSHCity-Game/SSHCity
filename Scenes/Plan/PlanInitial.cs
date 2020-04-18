@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using SshCity.Scenes.Plan;
 
 public class PlanInitial : Node2D
 {
@@ -71,6 +72,37 @@ public class PlanInitial : Node2D
     {
         return GetBlock(TileMap2, (int) tile.x, (int) tile.y) != -1;
     }
+
+    public void AjoutNode(int batiment)
+    {
+        Interface.Money -= _prix;
+            
+        if (batiment == MaisonNode.Bloc)
+        {
+            MaisonNode maison = (MaisonNode) _maisonNodeScene.Instance();
+            AddChild(maison);
+        }
+        else if (batiment == CaserneNode.Bloc)
+        {
+            CaserneNode caserne = (CaserneNode) _caserNodeScene.Instance();
+            AddChild(caserne);
+        }
+        else if (batiment == ImmeubleNode.Bloc)
+        {
+            ImmeubleNode immeuble = (ImmeubleNode) _immeubleNodeScene.Instance();
+            AddChild(immeuble);
+        }
+        else if (batiment == PoliceNode.Bloc)
+        {
+            PoliceNode police = (PoliceNode) _policeNodeScence.Instance();
+            AddChild(police);
+        }
+        else if (batiment == HospitalNode.Bloc)
+        {
+            HospitalNode hopital = (HospitalNode) _hospitalNodeScene.Instance();
+            AddChild(hopital);
+        }
+    }
     
     public override void _Input(InputEvent OneAction)
     {
@@ -101,34 +133,25 @@ public class PlanInitial : Node2D
         {
             Menu_Achat.Achat = false;
             _lastTile = new Vector2(0,0);
-            Interface.Money -= _prix;
-            
-            if (_batiment == MaisonNode.Bloc)
+            Vector2 tile = GetTilePosition();
+            GD.Print(GetBlock(TileMap2, (int)tile.x, (int)tile.y));
+            if (GetBlock(TileMap2, (int)tile.x, (int)tile.y) == _batiment)
             {
-                MaisonNode maison = (MaisonNode) _maisonNodeScene.Instance();
-                AddChild(maison);
+                if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.index_terre)
+                {
+                    GD.Print("In");
+                    AjoutNode(_batiment);
+                }
+                else
+                {
+                    GD.Print("out");
+                    SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
+                }
             }
-            else if (_batiment == CaserneNode.Bloc)
+            else
             {
-                CaserneNode caserne = (CaserneNode) _caserNodeScene.Instance();
-                AddChild(caserne);
+                GD.Print("pas bon");
             }
-            else if (_batiment == ImmeubleNode.Bloc)
-            {
-                ImmeubleNode immeuble = (ImmeubleNode) _immeubleNodeScene.Instance();
-                AddChild(immeuble);
-            }
-            else if (_batiment == PoliceNode.Bloc)
-            {
-                PoliceNode police = (PoliceNode) _policeNodeScence.Instance();
-                AddChild(police);
-            }
-            else if (_batiment == HospitalNode.Bloc)
-            {
-                HospitalNode hopital = (HospitalNode) _hospitalNodeScene.Instance();
-                AddChild(hopital);
-            }
-            
         }
     }
     
