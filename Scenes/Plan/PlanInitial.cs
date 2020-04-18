@@ -8,6 +8,7 @@ public class PlanInitial : Node2D
     public TileMap TileMap2;
     public TileMap TileMap3;
     public TileMap TileMap4;
+    private PackedScene _maisonNode;
     public string str_TileMap1 = "Navigation2D/TileMap1";
     public string str_TileMap2 = "Navigation2D/TileMap2";
     public string str_TileMap3 = "Navigation2D/TileMap3";
@@ -31,10 +32,12 @@ public class PlanInitial : Node2D
 
     public override void _Ready()
     { 
-        TileMap1 = (TileMap) GetNode("Navigation2D/TileMap1");
-        TileMap2 = (TileMap) GetNode("Navigation2D/TileMap2");
-        TileMap3 = (TileMap) GetNode("Navigation2D/TileMap3");
-        TileMap4 = (TileMap) GetNode("Navigation2D/TileMap4");
+        TileMap1 = (TileMap) GetNode("TileMap1");
+        TileMap2 = (TileMap) GetNode("TileMap2");
+        TileMap3 = (TileMap) GetNode("TileMap3");
+        TileMap4 = (TileMap) GetNode("TileMap4");
+
+        _maisonNode = (PackedScene) GD.Load("res://Scenes/Buildings/MaisonNode.tscn");
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)
@@ -91,6 +94,12 @@ public class PlanInitial : Node2D
             Menu_Achat.Achat = false;
             _lastTile = new Vector2(0,0);
             Interface.Money -= _prix;
+            
+            if (_batiment == MaisonNode.Bloc)
+            {
+                MaisonNode maison = (MaisonNode) _maisonNode.Instance();
+                AddChild(maison);
+            }
         }
     }
     

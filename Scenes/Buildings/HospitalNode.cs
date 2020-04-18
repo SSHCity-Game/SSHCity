@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class HospitalNode : Timer
+public class HospitalNode : Node2D
 {
     private Timer _hospitalTimer;
     private static int _bloc = 15;

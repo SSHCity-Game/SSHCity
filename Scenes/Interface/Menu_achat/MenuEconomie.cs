@@ -6,6 +6,7 @@ public class MenuEconomie : Node
 
     private Menu_Achat _menu_achat;
     private Carte _carteMagasin;
+    private PackedScene _maisonNode;
     private static bool _achat = false;
 
     public static bool Achat
