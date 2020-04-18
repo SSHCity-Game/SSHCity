@@ -18,21 +18,24 @@ public class MenuSante : Node
     }
     public override void _Ready()
     {
+        _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
+        _menu_achat.Connect("CloseShop", this, nameof(CloseShop));
+
         //Config _carteHopital
         _carteHopital = (Carte) GetNode(_str_carteHopital);
-        //_carteHopital.Bloc = HopitalNode.Block;
-        //_carteHopital.Titre(HopitalNode.Titre);
-        _carteHopital.Connect("Achat", this, nameof(AchatBatiment));
+        /*
+        _carteHopital.Bloc = HopitalNode.Bloc;
+        _carteHopital.Cost = HopitalNode.Cost;
+        _carteHopital.Titre(HopitalNode.Titre);
+        _carteHopital.Gain(HopitalNode.Earn);
+        _carteHopital.Prix(HopitalNode.Cost);
+        */
         
-        _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
+        _carteHopital.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+        
+
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
-    }
-    public void AchatBatiment(int bloc)
-    {
-        EmitSignal("CloseShop", false);
-        _achat = true;
-        PlanInitial.Batiment = bloc;
     }
     public void CloseMenuSante()
     {
@@ -42,5 +45,9 @@ public class MenuSante : Node
     public void OpenMenuSante()
     {
         _menu_achat.Show();
+    }
+    public void CloseShop()
+    {
+        EmitSignal("CloseShop", false);
     }
 }
