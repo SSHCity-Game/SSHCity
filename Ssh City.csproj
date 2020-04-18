@@ -63,6 +63,7 @@
     <Compile Include="Scenes\Incident\map_up.cs" />
     <Compile Include="Scenes\Interface\Boutique.cs" />
     <Compile Include="Scenes\Interface\Carte_achat\Carte.cs" />
+    <Compile Include="Scenes\Interface\Carte_achat\Habitation\Immeuble.cs" />
     <Compile Include="Scenes\Interface\Interface.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuBienEtre.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuEconomie.cs" />
