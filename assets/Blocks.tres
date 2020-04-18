@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=21 format=2]
+[gd_resource type="TileSet" load_steps=23 format=2]
 
 [ext_resource path="res://assets/isometric_0108.png" type="Texture" id=1]
 [ext_resource path="res://assets/isometric_0130.png" type="Texture" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://assets/hopital.png" type="Texture" id=15]
 [ext_resource path="res://assets/immeuble.png" type="Texture" id=16]
 [ext_resource path="res://assets/route2.png" type="Texture" id=17]
+[ext_resource path="res://assets/route1.png" type="Texture" id=18]
+[ext_resource path="res://assets/routeIntersection.png" type="Texture" id=19]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -211,3 +213,23 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 17/navigation_offset = Vector2( 0, 0 )
 17/shapes = [  ]
 17/z_index = 0
+18/name = "route1.png 18"
+18/texture = ExtResource( 18 )
+18/tex_offset = Vector2( 60, 430 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 192, 64, 1344, 896 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shapes = [  ]
+18/z_index = 0
+19/name = "routeIntersection.png 19"
+19/texture = ExtResource( 19 )
+19/tex_offset = Vector2( 90, 450 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 0, 0, 1024, 704 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shapes = [  ]
+19/z_index = 0
