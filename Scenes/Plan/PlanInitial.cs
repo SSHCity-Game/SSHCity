@@ -15,11 +15,18 @@ public class PlanInitial : Node2D
 
     private Vector2 _lastTile = new Vector2(0, 0);
     private static int _batiment;
+    private static int _prix;
 
     public static int Batiment
     {
         get => _batiment;
         set => _batiment = value;
+    }
+
+    public static int Prix
+    {
+        get => _prix;
+        set => _prix = value;
     }
 
     public override void _Ready()
@@ -57,7 +64,7 @@ public class PlanInitial : Node2D
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
-        if (OneAction is InputEventMouse && (MenuEconomie.Achat|| MenuSante.Achat || MenuHabitation.Achat || MenuSpeciaux.Achat || MenuBienEtre.Achat))
+        if (OneAction is InputEventMouse && Menu_Achat.Achat)
         {
             Vector2 tile = GetTilePosition();
             if (!AlreadySomethingHere(tile))
@@ -79,14 +86,11 @@ public class PlanInitial : Node2D
  
         }
 
-        if (OneAction is InputEventMouseButton && (MenuEconomie.Achat|| MenuSante.Achat || MenuHabitation.Achat || MenuSpeciaux.Achat || MenuBienEtre.Achat))
+        if (OneAction is InputEventMouseButton && Menu_Achat.Achat)
         {
-            MenuEconomie.Achat = false;
-            MenuHabitation.Achat = false;
-            MenuSante.Achat = false;
-            MenuSpeciaux.Achat = false;
-            MenuBienEtre.Achat = false;
+            Menu_Achat.Achat = false;
             _lastTile = new Vector2(0,0);
+            Interface.Money -= _prix;
         }
     }
     

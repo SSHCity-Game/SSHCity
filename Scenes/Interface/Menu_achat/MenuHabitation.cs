@@ -20,24 +20,26 @@ public class MenuHabitation : Node
 
     public override void _Ready()
     {
+        _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
+        _menu_achat.Connect("CloseShop", this, nameof(CloseShop));
+
+        
         //Config _carteMaison
         _carteMaison = (Carte) GetNode(_str_carteMaison);
-        _carteMaison.Bloc = MaisonNode.Bloc;
+        _carteMaison.Bloc = 11; //MaisonNode.Bloc;
+        _carteMaison.Cost = MaisonNode.Cost;
         _carteMaison.Titre(MaisonNode.Titre);
+        _carteMaison.Gain(MaisonNode.Earn);
+        _carteMaison.Prix(MaisonNode.Cost);
         
-        _carteMaison.Connect("Achat", this, nameof(AchatBatiment));
+
+        _carteMaison.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
-        _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
+
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
     }
-
-    public void AchatBatiment(int bloc)
-    {
-        EmitSignal("CloseShop", false);
-        _achat = true;
-        PlanInitial.Batiment = bloc;
-    }
+    
     public void CloseMenuHabitation()
     {
         _menu_achat.Hide();
@@ -47,5 +49,8 @@ public class MenuHabitation : Node
     {
         _menu_achat.Show();
     }
-    
+    public void CloseShop()
+    {
+        EmitSignal("CloseShop", false);
+    }
 }
