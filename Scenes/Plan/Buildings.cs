@@ -12,16 +12,23 @@ namespace SshCity.Scenes.Plan
 
         public static void GenerateBatiments(PlanInitial planInitial, int x, int y)
         {
-
+            int nbr_maison = 0;
+            int nbr_magasin = 0;
             for (int i = x; i < x + 5; i += 2) //CONSTRUCTION DES BATIMENTS
             {
                 for (int j = y; j < y + 5; j += 2)
                 {
-                    if (planInitial.GetBlock(planInitial.TileMap1, i, j) == Ref_donnees.index_terre)
+                    int bloc_set = -1;
+                    if (nbr_magasin < 3)
                     {
-                        planInitial.SetBlock(planInitial.TileMap2, i-1, j-1, Ref_donnees.index_maison);
-                        planInitial.SetBlock(planInitial.TileMap1, i, j, Ref_donnees.index_maison);
+                        nbr_magasin++;
+                        //bloc_set == Ref_donnees.index_magasin;
                     }
+                    else if (nbr_maison < 3)
+                    {
+                        
+                    }
+                    planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, Ref_donnees.index_maison);
                 }
             }
         }
@@ -104,12 +111,38 @@ namespace SshCity.Scenes.Plan
             }
             return (x, y);
         }
-        //OK
         public static void BuildRoadDirection(PlanInitial planInitial, int x, int y, Direction dir)
         {
+            (int xd, int yd) = (x, y);
+            int bloc;
+            switch (dir)
+            {
+                case Direction.TOP:
+                {
+                    bloc = Ref_donnees.index_route_right;
+                    break;
+                }
+                case Direction.DOWN:
+                {
+                    bloc = Ref_donnees.index_route_right;
+                    break;
+                }
+                case Direction.LEFT:
+                {
+                    bloc = Ref_donnees.index_route_left;
+                    break;
+                }
+                default:
+                {
+                    bloc = Ref_donnees.index_route_left;
+                    break;
+                }
+                    
+            }
             while (planInitial.GetBlock(planInitial.TileMap1, x, y) != -1 )
             {
                 planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.index_route);
+                planInitial.SetBlock(planInitial.TileMap2, x-1, y-1, bloc);
                 switch (dir)
                 {
                     case Direction.TOP:
@@ -134,6 +167,7 @@ namespace SshCity.Scenes.Plan
                     }
                 }
             }
+            planInitial.SetBlock(planInitial.TileMap2, xd-1, yd-1, Ref_donnees.index_route_croisement);
         }
         
         
@@ -144,7 +178,6 @@ namespace SshCity.Scenes.Plan
             BuildRoadDirection(planInitial, x, y, Direction.DOWN);
             BuildRoadDirection(planInitial, x, y, Direction.LEFT);
             BuildRoadDirection(planInitial, x, y, Direction.RIGHT);
-            //start_coord_for_camera = new Vector2(x, y);
             return (x, y);
         }
 
