@@ -35,22 +35,32 @@ namespace SshCity.Scenes.Plan
 
         //Vairable permettant d'indiquer l'indexe des bloques
 
-        public static int index_terre = 0;
-        public static int index_boite = 3;
-        public static int index_eau = 2;
-        public static int indexe_montagne = 8;
-        public static int index_sable = 5;
-        public static int index_maison     = 11;
-        public static int index_accident   = 3;
-        public static int index_route      = 9;
-        public static int index_route_left = 18;
-        public const int index_route_right = 17;
-        public const int index_hopital = 15;
-        public const int index_caserne = 14;
-        public const int index_immeuble_verte = 16;
-        public const int index_immeuble_brique = 13;
-        public const int index_police = 12;
-        public const int index_route_croisement = 19;
+        public static int terre = 0;
+        public static int boite = 3;
+        public static int eau = 2;
+        public static int montagne = 8;
+        public static int sable = 5;
+        public static int maison1     = 11;
+        public static int accident   = 3;
+        public static int route      = 9;
+        public static int route_left = 18;
+        public const int route_right = 17;
+        public const int hopital = 15;
+        public const int caserne = 14;
+        public const int immeuble_vert = 16;
+        public const int immeuble_brique = 13;
+        public const int police = 12;
+        public const int route_croisement = 19;
+        public const int hotel = 20;
+        public const int maison3 = 21;
+        public const int maison4 = 22;
+        public const int maison5 = 23;
+        public const int cafe = 24;
+        public const int McAffy = 25;
+        public const int Molly = 26;
+        public const int piscine = 27;
+        public const int shop = 28;
+        
         
         //Variable bloquer camera
 

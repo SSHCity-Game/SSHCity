@@ -137,7 +137,7 @@ public class PlanInitial : Node2D
             GD.Print(GetBlock(TileMap2, (int)tile.x, (int)tile.y));
             if (GetBlock(TileMap2, (int)tile.x, (int)tile.y) == _batiment)
             {
-                if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.index_terre)
+                if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
                 {
                     AjoutNode(_batiment);
                 }

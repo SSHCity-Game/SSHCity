@@ -21,13 +21,13 @@ namespace SshCity.Scenes.Plan
 
         public static void SableDroite(PlanInitial planInitial, int x, int y)
         {
-            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_sable)
+            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.terre || planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.sable)
             { 
-                planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.index_sable); 
+                planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.sable); 
             }
             else
             {
-                if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_eau)
+                if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.eau)
                 {
                     SableDroite(planInitial, x + 1, y + 1);
                     SableDroite(planInitial, x + 1, y);
@@ -38,13 +38,13 @@ namespace SshCity.Scenes.Plan
 
         private static void SableGauche(PlanInitial planInitial, int x, int y)
         {
-            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_sable)
+            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.terre || planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.sable)
             {
-                planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.index_sable);
+                planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.sable);
             }
             else
             {
-                if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_eau)
+                if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.eau)
                 {
                     SableGauche(planInitial, x - 1, y + 1);
                     SableGauche(planInitial, x - 1, y);
@@ -55,12 +55,12 @@ namespace SshCity.Scenes.Plan
 
         private static void SableHaut(PlanInitial planInitial, int x, int y)
         {
-            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_sable)
+            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.terre || planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.sable)
             {
-                planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.index_sable);
+                planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.sable);
             }
 
-            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_eau)
+            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.eau)
             {
                 SableHaut(planInitial, x + 1, y + 1);
                 SableHaut(planInitial, x, y + 1);
@@ -71,13 +71,13 @@ namespace SshCity.Scenes.Plan
 
         private static void SableBas(PlanInitial planInitial, int x, int y)
         {
-            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_terre || planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_sable)
+            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.terre || planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.sable)
             {
-                planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.index_sable);
+                planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.sable);
             }
             else
             {
-                if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.index_eau)
+                if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.eau)
                 {
                     SableBas(planInitial, x + 1, y - 1);
                     SableBas(planInitial, x, y - 1);
