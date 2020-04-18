@@ -12,16 +12,13 @@ namespace SshCity.Scenes.Plan
 
         public static void GenerateBatiments(PlanInitial planInitial, int x, int y)
         {
-
+            int nbr_maison = 2;
+            int nbr_magasin = 3;
             for (int i = x; i < x + 5; i += 2) //CONSTRUCTION DES BATIMENTS
             {
                 for (int j = y; j < y + 5; j += 2)
                 {
-                    if (planInitial.GetBlock(planInitial.TileMap1, i, j) == Ref_donnees.index_terre)
-                    {
-                        planInitial.SetBlock(planInitial.TileMap2, i-1, j-1, Ref_donnees.index_maison);
-                        planInitial.SetBlock(planInitial.TileMap1, i, j, Ref_donnees.index_maison);
-                    }
+                    planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, Ref_donnees.index_maison);
                 }
             }
         }

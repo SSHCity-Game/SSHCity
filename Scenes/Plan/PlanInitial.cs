@@ -139,18 +139,17 @@ public class PlanInitial : Node2D
             {
                 if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.index_terre)
                 {
-                    GD.Print("In");
                     AjoutNode(_batiment);
                 }
                 else
                 {
-                    GD.Print("out");
+
                     SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
                 }
             }
             else
             {
-                GD.Print("pas bon");
+
             }
         }
     }

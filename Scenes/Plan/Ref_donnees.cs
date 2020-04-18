@@ -40,7 +40,7 @@ namespace SshCity.Scenes.Plan
         public static int index_eau = 2;
         public static int indexe_montagne = 8;
         public static int index_sable = 5;
-        public static int index_maison     = 1;
+        public static int index_maison     = 11;
         public static int index_accident   = 3;
         public static int index_route      = 9;
         public static int index_route_left = 18;
