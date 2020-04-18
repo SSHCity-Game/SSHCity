@@ -11,8 +11,8 @@ texture = ExtResource( 2 )
 [node name="Titre" parent="." index="1"]
 text = "Magasin"
 
-[node name="Prix" parent="." index="5"]
+[node name="Prix" parent="." index="4"]
 text = "2000"
 
-[node name="Gain" parent="." index="7"]
+[node name="Gain" parent="." index="6"]
 text = "300"

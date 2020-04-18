@@ -8,7 +8,11 @@ public class PlanInitial : Node2D
     public TileMap TileMap2;
     public TileMap TileMap3;
     public TileMap TileMap4;
-    private PackedScene _maisonNode;
+    private PackedScene _maisonNodeScene;
+    private PackedScene _caserNodeScene;
+    private PackedScene _immeubleNodeScene;
+    private PackedScene _policeNodeScence;
+    private PackedScene _hospitalNodeScene;
     public string str_TileMap1 = "Navigation2D/TileMap1";
     public string str_TileMap2 = "Navigation2D/TileMap2";
     public string str_TileMap3 = "Navigation2D/TileMap3";
@@ -37,7 +41,11 @@ public class PlanInitial : Node2D
         TileMap3 = (TileMap) GetNode("TileMap3");
         TileMap4 = (TileMap) GetNode("TileMap4");
 
-        _maisonNode = (PackedScene) GD.Load("res://Scenes/Buildings/MaisonNode.tscn");
+        _maisonNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/MaisonNode.tscn");
+        _caserNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/CaserneNode.tscn");
+        _immeubleNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/ImmeubleNode.tscn");
+        _policeNodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/PoliceNode.tscn");
+        _hospitalNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/HospitalNode.tscn");
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)
@@ -97,9 +105,30 @@ public class PlanInitial : Node2D
             
             if (_batiment == MaisonNode.Bloc)
             {
-                MaisonNode maison = (MaisonNode) _maisonNode.Instance();
+                MaisonNode maison = (MaisonNode) _maisonNodeScene.Instance();
                 AddChild(maison);
             }
+            else if (_batiment == CaserneNode.Bloc)
+            {
+                CaserneNode caserne = (CaserneNode) _caserNodeScene.Instance();
+                AddChild(caserne);
+            }
+            else if (_batiment == ImmeubleNode.Bloc)
+            {
+                ImmeubleNode immeuble = (ImmeubleNode) _immeubleNodeScene.Instance();
+                AddChild(immeuble);
+            }
+            else if (_batiment == PoliceNode.Bloc)
+            {
+                PoliceNode police = (PoliceNode) _policeNodeScence.Instance();
+                AddChild(police);
+            }
+            else if (_batiment == HospitalNode.Bloc)
+            {
+                HospitalNode hopital = (HospitalNode) _hospitalNodeScene.Instance();
+                AddChild(hopital);
+            }
+            
         }
     }
     
