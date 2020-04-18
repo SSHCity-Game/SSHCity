@@ -36,10 +36,19 @@ public class Menu_Achat : Panel
     
     public void AchatBatiment(int bloc, int prix)
     {
-        EmitSignal("CloseShop");
-        _achat = true;
-        PlanInitial.Batiment = bloc;
-        PlanInitial.Prix = prix;
+
+        if (Interface.Money - prix < 0)
+        {
+            
+        }
+        else
+        {
+            EmitSignal("CloseShop");
+            _achat = true;
+            PlanInitial.Batiment = bloc;
+            PlanInitial.Prix = prix;
+        }
+
     }
 
 }
