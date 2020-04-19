@@ -51,9 +51,9 @@ public class PlanInitial : Node2D
         
         int[] batiments = new[]
         {
-            Ref_donnees.maison1, Ref_donnees.immeuble_brique, Ref_donnees.immeuble_vert,
-            Ref_donnees.maison3, Ref_donnees.maison4, Ref_donnees.maison5,
-            Ref_donnees.McAffy, Ref_donnees.shop, Ref_donnees.piscine
+            Ref_donnees.maison1, Ref_donnees.maison4, Ref_donnees.ferme,
+            Ref_donnees.maison3, Ref_donnees.mairie, Ref_donnees.maison5,
+            Ref_donnees.eglise, Ref_donnees.shop, Ref_donnees.piscine
         };
         
         MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
