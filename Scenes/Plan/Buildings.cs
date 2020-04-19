@@ -40,6 +40,12 @@ namespace SshCity.Scenes.Plan
                     }
                 }
             }
+            planInitial.SetBlock(planInitial.TileMap2, x, y, Ref_donnees.route_croisement);
+            planInitial.SetBlock(planInitial.TileMap2, x+2, y, Ref_donnees.route_croisement);
+            planInitial.SetBlock(planInitial.TileMap2, x, y+2, Ref_donnees.route_croisement);
+            planInitial.SetBlock(planInitial.TileMap2, x+2, y+2, Ref_donnees.route_croisement);
+            planInitial.SetBlock(planInitial.TileMap2, x+1, y, Ref_donnees.route_left);
+
         }
 
         public enum Direction
