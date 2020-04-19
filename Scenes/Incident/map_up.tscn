@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Blocks.tres" type="TileSet" id=1]
-[ext_resource path="res://Scenes/Incident/map_up.cs" type="Script" id=3]
+[ext_resource path="res://Scenes/Incident/incidents.cs" type="Script" id=2]
 
 [node name="Isometric" type="Node2D"]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 position = Vector2( 250, 250 )

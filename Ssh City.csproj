@@ -60,6 +60,7 @@
     <Compile Include="Scenes\Buildings\ImmeubleNode.cs" />
     <Compile Include="Scenes\Buildings\MaisonNode.cs" />
     <Compile Include="Scenes\Buildings\PoliceNode.cs" />
+    <Compile Include="Scenes\Incident\incidents.cs" />
     <Compile Include="Scenes\Incident\map_up.cs" />
     <Compile Include="Scenes\Interface\Boutique.cs" />
     <Compile Include="Scenes\Interface\Carte_achat\Carte.cs" />
