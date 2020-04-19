@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=44 format=2]
+[gd_resource type="TileSet" load_steps=46 format=2]
 
 [ext_resource path="res://assets/isometric_0108.png" type="Texture" id=1]
 [ext_resource path="res://assets/isometric_0130.png" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://assets/caserne.png" type="Texture" id=14]
 [ext_resource path="res://assets/hopital.png" type="Texture" id=15]
 [ext_resource path="res://assets/immeuble.png" type="Texture" id=16]
+[ext_resource path="res://assets/route_virage3.png" type="Texture" id=17]
+[ext_resource path="res://assets/route_virage2.png" type="Texture" id=18]
 [ext_resource path="res://assets/hotel.png" type="Texture" id=20]
 [ext_resource path="res://assets/maison3.png" type="Texture" id=21]
 [ext_resource path="res://assets/maison4.png" type="Texture" id=22]
@@ -394,7 +396,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 39/z_index = 0
 41/name = "route_bis.png 41"
 41/texture = ExtResource( 40 )
-41/tex_offset = Vector2( -70, 260 )
+41/tex_offset = Vector2( -77, 263 )
 41/modulate = Color( 1, 1, 1, 1 )
 41/region = Rect2( 1024, 1088, 1472, 1216 )
 41/tile_mode = 0
@@ -404,7 +406,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 41/z_index = 0
 42/name = "Croisement_route.png 42"
 42/texture = ExtResource( 41 )
-42/tex_offset = Vector2( -100, 30 )
+42/tex_offset = Vector2( -95, 32 )
 42/modulate = Color( 1, 1, 1, 1 )
 42/region = Rect2( 1024, 1728, 1408, 1280 )
 42/tile_mode = 0
@@ -444,7 +446,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 45/z_index = 0
 46/name = "route_virage1.png 46"
 46/texture = ExtResource( 45 )
-46/tex_offset = Vector2( -5, 395 )
+46/tex_offset = Vector2( 0, 390 )
 46/modulate = Color( 1, 1, 1, 1 )
 46/region = Rect2( 128, 128, 1280, 832 )
 46/tile_mode = 0
@@ -452,3 +454,23 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 46/navigation_offset = Vector2( 0, 0 )
 46/shapes = [  ]
 46/z_index = 0
+47/name = "route_virage3.png 47"
+47/texture = ExtResource( 17 )
+47/tex_offset = Vector2( -35, 295 )
+47/modulate = Color( 1, 1, 1, 1 )
+47/region = Rect2( 0, 0, 1088, 832 )
+47/tile_mode = 0
+47/occluder_offset = Vector2( 0, 0 )
+47/navigation_offset = Vector2( 0, 0 )
+47/shapes = [  ]
+47/z_index = 0
+48/name = "route_virage2.png 48"
+48/texture = ExtResource( 18 )
+48/tex_offset = Vector2( -48, 264 )
+48/modulate = Color( 1, 1, 1, 1 )
+48/region = Rect2( 64, 0, 1152, 832 )
+48/tile_mode = 0
+48/occluder_offset = Vector2( 0, 0 )
+48/navigation_offset = Vector2( 0, 0 )
+48/shapes = [  ]
+48/z_index = 0
