@@ -7,8 +7,6 @@ namespace SshCity.Scenes.Plan
     public class Buildings
     {
         static Random rand = new Random();
-        //public static Vector2 start_coord_for_camera = new Vector2( 1500, 1500);
-
 
         public static void GenerateBatiments(PlanInitial planInitial, int x, int y)
         {
