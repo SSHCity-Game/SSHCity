@@ -51,14 +51,86 @@ namespace SshCity.Scenes.Plan
             planInitial.SetBlock(planInitial.TileMap2, x+2, y+1, Ref_donnees.route_right);
 
             //Routes exterieurs du village
-            planInitial.SetBlock(planInitial.TileMap2, x, y-1, Ref_donnees.route_bord_haut_droit);
-            planInitial.SetBlock(planInitial.TileMap2, x+2, y-1, Ref_donnees.route_bord_haut_droit);
-            planInitial.SetBlock(planInitial.TileMap2, x+3, y, Ref_donnees.route_bord_bas_droit);
-            planInitial.SetBlock(planInitial.TileMap2, x+3, y+2, Ref_donnees.route_bord_bas_droit);
-            planInitial.SetBlock(planInitial.TileMap2, x, y+3, Ref_donnees.route_bord_bas_gauche);
-            planInitial.SetBlock(planInitial.TileMap2, x+2, y+3, Ref_donnees.route_bord_bas_gauche);
-            planInitial.SetBlock(planInitial.TileMap2, x-1, y, Ref_donnees.route_bord_haut_gauche);
-            planInitial.SetBlock(planInitial.TileMap2, x-1 , y+2, Ref_donnees.route_bord_haut_gauche);
+            if (planInitial.GetBlock(planInitial.TileMap2, x, y-2) == Ref_donnees.route_left)
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x, y-2, Ref_donnees.route_T_bas_gauche);
+                planInitial.SetBlock(planInitial.TileMap2, x, y-1, Ref_donnees.route_right);
+            }
+            else
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x, y-1, Ref_donnees.route_bord_haut_droit);
+            }
+
+            if (planInitial.GetBlock(planInitial.TileMap2, x+2, y-2) == Ref_donnees.route_left)
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x+2, y-2, Ref_donnees.route_T_bas_gauche);
+                planInitial.SetBlock(planInitial.TileMap2, x+2, y-1, Ref_donnees.route_right);
+            }
+            else
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x+2, y-1, Ref_donnees.route_bord_haut_droit);
+            }
+
+            if (planInitial.GetBlock(planInitial.TileMap2, x+4, y) == Ref_donnees.route_right)
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x+4, y, Ref_donnees.route_T_haut_gauche);
+                planInitial.SetBlock(planInitial.TileMap2, x+3, y, Ref_donnees.route_left);
+            }
+            else
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x+3, y, Ref_donnees.route_bord_bas_droit);
+            }
+
+            if (planInitial.GetBlock(planInitial.TileMap2, x+4, y+2) == Ref_donnees.route_right)
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x+4, y+2, Ref_donnees.route_T_haut_gauche);
+                planInitial.SetBlock(planInitial.TileMap2, x+3, y+2, Ref_donnees.route_left);
+            }
+            else
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x+3, y+2, Ref_donnees.route_bord_bas_droit);
+            }
+
+            if (planInitial.GetBlock(planInitial.TileMap2, x+2, y+4) == Ref_donnees.route_left)
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x+2, y+4, Ref_donnees.route_T_haut_droit);
+                planInitial.SetBlock(planInitial.TileMap2, x+2, y+3, Ref_donnees.route_right);
+            }
+            else
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x+2, y+3, Ref_donnees.route_bord_bas_gauche);
+            }
+
+            if (planInitial.GetBlock(planInitial.TileMap2, x, y+4) == Ref_donnees.route_left)
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x, y+4, Ref_donnees.route_T_haut_droit);
+                planInitial.SetBlock(planInitial.TileMap2, x, y+3, Ref_donnees.route_right);
+            }
+            else
+            {
+                GD.Print("YP");
+                planInitial.SetBlock(planInitial.TileMap2, x, y+3, Ref_donnees.route_bord_bas_gauche);
+            }
+
+            if (planInitial.GetBlock(planInitial.TileMap2, x-2, y+2) == Ref_donnees.route_right)
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x-2, y+2, Ref_donnees.route_T_bas_droite);
+                planInitial.SetBlock(planInitial.TileMap2, x-1, y+2, Ref_donnees.route_left);
+            }
+            else
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x-1, y, Ref_donnees.route_bord_haut_gauche);
+            }
+
+            if (planInitial.GetBlock(planInitial.TileMap2, x-2, y) == Ref_donnees.route_right)
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x-2, y, Ref_donnees.route_T_bas_droite);
+                planInitial.SetBlock(planInitial.TileMap2, x-1, y, Ref_donnees.route_left);
+            }
+            else
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x-1 , y+2, Ref_donnees.route_bord_haut_gauche);
+            }
 
         }
 
