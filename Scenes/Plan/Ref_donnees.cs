@@ -67,10 +67,10 @@ namespace SshCity.Scenes.Plan
         public const int parc_enfant = 36;
         public const int route_left = 44;
         public const int route_right = 43;
-        public const int route_bord_haut_droit = 37;
-        public const int route_bord_haut_gauche = 40;
-        public const int route_bord_bas_droit = 38;
-        public const int route_bord_bas_gauche = 39;
+        public const int route_bord_haut_droit = 54;
+        public const int route_bord_haut_gauche = 55;
+        public const int route_bord_bas_droit = 52;
+        public const int route_bord_bas_gauche = 53;
         public const int route_T_bas_droite = 45;
         public const int route_T_bas_gauche = 41;
         public const int route_T_haut_droit = 50;
