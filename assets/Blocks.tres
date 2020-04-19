@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=49 format=2]
+[gd_resource type="TileSet" load_steps=50 format=2]
 
 [ext_resource path="res://assets/isometric_0108.png" type="Texture" id=1]
 [ext_resource path="res://assets/isometric_0130.png" type="Texture" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://assets/route_T_haut_droit.png" type="Texture" id=36]
 [ext_resource path="res://assets/route_T_haut_gauche.png" type="Texture" id=37]
 [ext_resource path="res://assets/route_bord_bas_droit.png" type="Texture" id=38]
+[ext_resource path="res://assets/route_bord_bas_gauche.png" type="Texture" id=39]
 [ext_resource path="res://assets/route_bis.png" type="Texture" id=40]
 [ext_resource path="res://assets/Croisement_route.png" type="Texture" id=41]
 [ext_resource path="res://assets/route_bis_right.png" type="Texture" id=42]
@@ -507,3 +508,13 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 52/navigation_offset = Vector2( 0, 0 )
 52/shapes = [  ]
 52/z_index = 0
+53/name = "route_bord_bas_gauche.png 53"
+53/texture = ExtResource( 39 )
+53/tex_offset = Vector2( -10, 310 )
+53/modulate = Color( 1, 1, 1, 1 )
+53/region = Rect2( 256, 64, 1088, 832 )
+53/tile_mode = 0
+53/occluder_offset = Vector2( 0, 0 )
+53/navigation_offset = Vector2( 0, 0 )
+53/shapes = [  ]
+53/z_index = 0
