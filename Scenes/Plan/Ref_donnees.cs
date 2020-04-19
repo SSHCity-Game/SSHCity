@@ -48,7 +48,7 @@ namespace SshCity.Scenes.Plan
         public const int immeuble_vert = 16;
         public const int immeuble_brique = 13;
         public const int police = 12;
-        public const int route_croisement = 19;
+
         public const int hotel = 20;
         public const int maison3 = 21;
         public const int maison4 = 22;
@@ -65,17 +65,19 @@ namespace SshCity.Scenes.Plan
         public const int restaurant = 34;
         public const int restaurant2 = 35;
         public const int parc_enfant = 36;
-        public const int route_left = 18;
-        public const int route_right = 17;
+        public const int route_left = 44;
+        public const int route_right = 43;
         public const int route_bord_haut_droit = 37;
         public const int route_bord_haut_gauche = 40;
         public const int route_bord_bas_droit = 38;
         public const int route_bord_bas_gauche = 39;
-        public const int route_T_bas_droite = 41;
-        public const int route_virage1 = 46;
-        public const int route_virage2 = 45;
-        public const int route_virage3 = 44;
-        public const int route_virage4 = 43;
+        public const int route_T_bas_droite = 45;
+        public const int route_T_bas_gauche = 41;
+        public const int route_virage_gauche = 46;
+        public const int route_virage_droit = 48;
+        public const int route_virage_bas = 47;
+        public const int route_virage_haut = 49;
+        public const int route_croisement = 42;
         
         
         //Variable bloquer camera
