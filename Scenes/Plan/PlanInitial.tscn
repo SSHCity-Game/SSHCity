@@ -21,7 +21,7 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 861, 496 )
 cell_tile_origin = 1
 format = 1
-tile_data = PoolIntArray( 1245277, 48, 0, 1310811, 45, 0, 1310812, 41, 0, 1310813, 47, 0, 1310815, 41, 0, 1310816, 48, 0, 1376348, 43, 0, 1441883, 44, 0, 1441884, 42, 0, 1441885, 47, 0, 1441886, 48, 0, 1441887, 44, 0, 1441888, 48, 0, 1441896, 41, 0, 1507420, 46, 0, 1507421, 44, 0, 1507422, 47, 0 )
+tile_data = PoolIntArray( 1441896, 41, 0 )
 
 [node name="TileMap3" type="TileMap" parent="."]
 mode = 1
