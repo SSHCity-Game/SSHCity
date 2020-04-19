@@ -60,6 +60,13 @@ namespace SshCity.Scenes.Plan
         public const int Molly = 26;
         public const int piscine = 27;
         public const int shop = 28;
+        public const int mairie = 32;
+        public const int ferme = 30;
+        public const int eglise = 31;
+        public const int tea_shop = 33;
+        public const int restaurant = 34;
+        public const int restaurant2 = 35;
+        public const int parc_enfant = 36;
         
         
         //Variable bloquer camera

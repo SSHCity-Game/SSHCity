@@ -7,16 +7,14 @@ namespace SshCity.Scenes.Plan
     public class Buildings
     {
         static Random rand = new Random();
-        //public static Vector2 start_coord_for_camera = new Vector2( 1500, 1500);
-
 
         public static void GenerateBatiments(PlanInitial planInitial, int x, int y)
         {
             int[] batiments = new[]
             {
-                Ref_donnees.maison1, Ref_donnees.immeuble_brique, Ref_donnees.immeuble_vert,
-                Ref_donnees.maison3, Ref_donnees.maison4, Ref_donnees.maison5,
-                Ref_donnees.McAffy, Ref_donnees.shop, Ref_donnees.piscine
+                Ref_donnees.parc_enfant, Ref_donnees.maison3, Ref_donnees.ferme,
+                Ref_donnees.maison3, Ref_donnees.mairie, Ref_donnees.maison5,
+                Ref_donnees.eglise, Ref_donnees.restaurant, Ref_donnees.restaurant2
             };
             int k = 0;
             for (int i = x; i < x + 5; i += 2) //CONSTRUCTION DES BATIMENTS
@@ -42,6 +40,12 @@ namespace SshCity.Scenes.Plan
                     }
                 }
             }
+            planInitial.SetBlock(planInitial.TileMap2, x, y, Ref_donnees.route_croisement);
+            planInitial.SetBlock(planInitial.TileMap2, x+2, y, Ref_donnees.route_croisement);
+            planInitial.SetBlock(planInitial.TileMap2, x, y+2, Ref_donnees.route_croisement);
+            planInitial.SetBlock(planInitial.TileMap2, x+2, y+2, Ref_donnees.route_croisement);
+            planInitial.SetBlock(planInitial.TileMap2, x+1, y, Ref_donnees.route_left);
+
         }
 
         public enum Direction

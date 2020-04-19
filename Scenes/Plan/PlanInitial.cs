@@ -14,10 +14,11 @@ public class PlanInitial : Node2D
     private PackedScene _immeubleNodeScene;
     private PackedScene _policeNodeScence;
     private PackedScene _hospitalNodeScene;
-    public string str_TileMap1 = "Navigation2D/TileMap1";
-    public string str_TileMap2 = "Navigation2D/TileMap2";
-    public string str_TileMap3 = "Navigation2D/TileMap3";
-    public string str_TileMap4 = "Navigation2D/TileMap4";
+    //private PackedScene;
+    public string str_TileMap1 = "TileMap1";
+    public string str_TileMap2 = "TileMap2";
+    public string str_TileMap3 = "TileMap3";
+    public string str_TileMap4 = "TileMap4";
 
     private Vector2 _lastTile = new Vector2(0, 0);
     private static int _batiment;
@@ -37,16 +38,27 @@ public class PlanInitial : Node2D
 
     public override void _Ready()
     { 
-        TileMap1 = (TileMap) GetNode("TileMap1");
-        TileMap2 = (TileMap) GetNode("TileMap2");
-        TileMap3 = (TileMap) GetNode("TileMap3");
-        TileMap4 = (TileMap) GetNode("TileMap4");
+        TileMap1 = (TileMap) GetNode(str_TileMap1);
+        TileMap2 = (TileMap) GetNode(str_TileMap2);
+        TileMap3 = (TileMap) GetNode(str_TileMap3);
+        TileMap4 = (TileMap) GetNode(str_TileMap4);
 
         _maisonNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/MaisonNode.tscn");
         _caserNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/CaserneNode.tscn");
         _immeubleNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/ImmeubleNode.tscn");
         _policeNodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/PoliceNode.tscn");
         _hospitalNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/HospitalNode.tscn");
+        
+        int[] batiments = new[]
+        {
+            Ref_donnees.maison1, Ref_donnees.maison4, Ref_donnees.ferme,
+            Ref_donnees.maison3, Ref_donnees.mairie, Ref_donnees.maison5,
+            Ref_donnees.eglise, Ref_donnees.shop, Ref_donnees.piscine
+        };
+        
+        MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
+        AddChild(maison1);
+        ImmeubleNode immeuble = (ImmeubleNode) _immeubleNodeScene.Instance();
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)
@@ -79,8 +91,8 @@ public class PlanInitial : Node2D
             
         if (batiment == MaisonNode.Bloc)
         {
-            MaisonNode maison = (MaisonNode) _maisonNodeScene.Instance();
-            AddChild(maison);
+            MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
+            AddChild(maison1);
         }
         else if (batiment == CaserneNode.Bloc)
         {
