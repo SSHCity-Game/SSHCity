@@ -73,6 +73,8 @@ namespace SshCity.Scenes.Plan
         public const int route_bord_bas_gauche = 39;
         public const int route_T_bas_droite = 45;
         public const int route_T_bas_gauche = 41;
+        public const int route_T_haut_droit = 50;
+        public const int route_T_haut_gauche = 51;
         public const int route_virage_gauche = 46;
         public const int route_virage_droit = 48;
         public const int route_virage_bas = 47;
