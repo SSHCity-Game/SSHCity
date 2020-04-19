@@ -40,11 +40,25 @@ namespace SshCity.Scenes.Plan
                     }
                 }
             }
+            //Route au tour de la mairie
             planInitial.SetBlock(planInitial.TileMap2, x, y, Ref_donnees.route_croisement);
             planInitial.SetBlock(planInitial.TileMap2, x+2, y, Ref_donnees.route_croisement);
             planInitial.SetBlock(planInitial.TileMap2, x, y+2, Ref_donnees.route_croisement);
             planInitial.SetBlock(planInitial.TileMap2, x+2, y+2, Ref_donnees.route_croisement);
             planInitial.SetBlock(planInitial.TileMap2, x+1, y, Ref_donnees.route_left);
+            planInitial.SetBlock(planInitial.TileMap2, x+1, y+2, Ref_donnees.route_left);
+            planInitial.SetBlock(planInitial.TileMap2, x, y+1, Ref_donnees.route_right);
+            planInitial.SetBlock(planInitial.TileMap2, x+2, y+1, Ref_donnees.route_right);
+
+            //Routes exterieurs du village
+            planInitial.SetBlock(planInitial.TileMap2, x, y-1, Ref_donnees.route_bord_haut_droit);
+            planInitial.SetBlock(planInitial.TileMap2, x+2, y-1, Ref_donnees.route_bord_haut_droit);
+            planInitial.SetBlock(planInitial.TileMap2, x+3, y, Ref_donnees.route_bord_bas_droit);
+            planInitial.SetBlock(planInitial.TileMap2, x+3, y+2, Ref_donnees.route_bord_bas_droit);
+            planInitial.SetBlock(planInitial.TileMap2, x, y+3, Ref_donnees.route_bord_bas_gauche);
+            planInitial.SetBlock(planInitial.TileMap2, x+2, y+3, Ref_donnees.route_bord_bas_gauche);
+            planInitial.SetBlock(planInitial.TileMap2, x-1, y, Ref_donnees.route_bord_haut_gauche);
+            planInitial.SetBlock(planInitial.TileMap2, x-1 , y+2, Ref_donnees.route_bord_haut_gauche);
 
         }
 
