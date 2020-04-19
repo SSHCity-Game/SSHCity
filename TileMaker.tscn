@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/grass.png" type="Texture" id=1]
 [ext_resource path="res://assets/isometric_0086.png" type="Texture" id=2]
@@ -9,11 +9,16 @@
 [ext_resource path="res://assets/isometric_0130.png" type="Texture" id=7]
 [ext_resource path="res://assets/isometric_0108.png" type="Texture" id=8]
 [ext_resource path="res://assets/isometric_0079.png" type="Texture" id=9]
+[ext_resource path="res://assets/montagne.png" type="Texture" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/montagne.png-34b693c2a563fb3cb1084135ec32ee9e.stex"
 
 [node name="TileMaker" type="Node2D"]
 
@@ -25,6 +30,10 @@ texture = ExtResource( 1 )
 position = Vector2( -9.52264, -238.065 )
 scale = Vector2( 0.99, 0.99 )
 navpoly = SubResource( 1 )
+
+[node name="montagne" type="Sprite" parent="Grass/NavigationPolygonInstance"]
+position = Vector2( 7265.91, -578.108 )
+texture = SubResource( 2 )
 
 [node name="Batiment" type="Sprite" parent="."]
 position = Vector2( 2929.58, 244.84 )
@@ -89,3 +98,7 @@ texture = ExtResource( 9 )
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="incident leger"]
 position = Vector2( -8.4, -235.5 )
 navpoly = SubResource( 1 )
+
+[node name="montagne" type="Sprite" parent="."]
+position = Vector2( 10740.4, 3883.54 )
+texture = ExtResource( 10 )
