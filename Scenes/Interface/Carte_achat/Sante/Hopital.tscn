@@ -6,8 +6,8 @@
 [node name="Hopital" instance=ExtResource( 2 )]
 
 [node name="Image" parent="Background" index="0"]
-position = Vector2( 71.9221, 64.3962 )
-scale = Vector2( 0.11463, 0.111881 )
+position = Vector2( 73.6369, 60.5381 )
+scale = Vector2( 0.118441, 0.120426 )
 texture = ExtResource( 1 )
 
 [node name="Titre" parent="." index="1"]
