@@ -11,30 +11,21 @@ namespace SshCity.Scenes.Plan
 
 
         public static void GenerateBatiments(PlanInitial planInitial, int x, int y)
-        {/*
+        {
             int[] batiments = new[]
             {
-                Ref_donnees.index_maison, Ref_donnees.index_immeuble_brique, Ref_donnees.index_immeuble_verte,
-                Ref_donnees.index_maison3, Ref_donnees.index_maison4, Ref_donnees.index_maison5,
-                Ref_donnees.index_McAffy, Ref_donnees.index_shop, Ref_donnees.index_piscine
-            };*/
-            int nbr_maison = 0;
-            int nbr_magasin = 0;
+                Ref_donnees.maison1, Ref_donnees.immeuble_brique, Ref_donnees.immeuble_vert,
+                Ref_donnees.maison3, Ref_donnees.maison4, Ref_donnees.maison5,
+                Ref_donnees.McAffy, Ref_donnees.shop, Ref_donnees.piscine
+            };
+            int k = 0;
             for (int i = x; i < x + 5; i += 2) //CONSTRUCTION DES BATIMENTS
             {
                 for (int j = y; j < y + 5; j += 2)
                 {
-                    int bloc_set = -1;
-                    if (nbr_magasin < 3)
-                    {
-                        nbr_magasin++;
-                        //bloc_set == Ref_donnees.index_magasin;
-                    }
-                    else if (nbr_maison < 3)
-                    {
-                        
-                    }
-                    planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, Ref_donnees.maison1);
+                    int bloc_set = batiments[k];
+                    planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, bloc_set);
+                    k++;
                 }
             }
         }
