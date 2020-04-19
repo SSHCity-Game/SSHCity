@@ -18,11 +18,12 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 [node name="TileMaker" type="Node2D"]
 
 [node name="Grass" type="Sprite" parent="."]
-position = Vector2( -19.5527, 342.68 )
+position = Vector2( -19.5527, 338.021 )
 texture = ExtResource( 1 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Grass"]
-position = Vector2( -8.4, -235.5 )
+position = Vector2( -9.52264, -238.065 )
+scale = Vector2( 0.99, 0.99 )
 navpoly = SubResource( 1 )
 
 [node name="Batiment" type="Sprite" parent="."]
