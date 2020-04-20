@@ -66,7 +66,11 @@
     <Compile Include="Scenes\Buildings\Piscine.cs" />
     <Compile Include="Scenes\Buildings\PoliceNode.cs" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="Scenes\Incident\incidents.cs" />
+=======
+    <Compile Include="Scenes\Buildings\Restaurant2.cs" />
+>>>>>>> 7bf97ea5cd4c5f9335b7c6c0ab44349509e780a6
 =======
     <Compile Include="Scenes\Buildings\Restaurant2.cs" />
 >>>>>>> 7bf97ea5cd4c5f9335b7c6c0ab44349509e780a6
