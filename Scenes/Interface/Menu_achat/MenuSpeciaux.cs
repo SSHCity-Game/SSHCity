@@ -38,6 +38,10 @@ public class MenuSpeciaux : Node
         
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
+        
+        Carte[] menu1 = new[] {_carteMairie};
+        Carte[][] menus = new[] {menu1};
+        _menu_achat.Menus = menus;
     }
 
     public void CloseMenuSpeciaux()

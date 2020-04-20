@@ -35,6 +35,10 @@ public class MenuSante : Node
 
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
+        
+        Carte[] menu1 = new[] {_carteHopital};
+        Carte[][] menus = new[] {menu1};
+        _menu_achat.Menus = menus;
     }
     public void CloseMenuSante()
     {

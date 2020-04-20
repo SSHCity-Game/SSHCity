@@ -6,6 +6,15 @@ public class Menu_Achat : Panel
     private Button _button_flecheG;
     private Button _button_flecheD;
     private static bool _achat = false;
+    private Carte[][] _menus;
+    private int _whichMenu = 0;
+
+    public Carte[][] Menus
+    {
+        get => _menus;
+        set => _menus = value;
+    }
+
     public static bool Achat
     {
         get => _achat;
@@ -27,11 +36,33 @@ public class Menu_Achat : Panel
 
     public void ClickFlecheD()
     {
-        EmitSignal("fleche droite");
+        if (_whichMenu + 1 < _menus.Length)
+        {
+            foreach (var carte in _menus[_whichMenu])
+            {
+                carte.Hide();
+            }
+            _whichMenu++;
+            foreach (var carte in _menus[_whichMenu])
+            {
+                carte.Show();
+            }
+        }
     }
     public void ClickFlecheG()
     {
-        EmitSignal("fleche gauche");
+        if (_whichMenu - 1 >= 0)
+        {
+            foreach (var carte in _menus[_whichMenu])
+            {
+                carte.Hide();
+            }
+            _whichMenu--;
+            foreach (var carte in _menus[_whichMenu])
+            {
+                carte.Show();
+            }
+        }
     }
     
     public void AchatBatiment(int bloc, int prix)

@@ -39,6 +39,10 @@ public class MenuEconomie : Node
         
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
+        
+        Carte[] menu1 = new[] {_carteMagasin};
+        Carte[][] menus = new[] {menu1};
+        _menu_achat.Menus = menus;
     }
 
     public void CloseMenuEconomie()
