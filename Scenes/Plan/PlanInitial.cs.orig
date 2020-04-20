@@ -28,7 +28,6 @@ public class PlanInitial : Node2D
     private PackedScene _piscineNodeScene;
     private PackedScene _restaurantNodeScene;
     private PackedScene _restaurant2NodeScene;
-
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
