@@ -14,6 +14,9 @@ public class PlanInitial : Node2D
     private PackedScene _immeubleNodeScene;
     private PackedScene _policeNodeScence;
     private PackedScene _hospitalNodeScene;
+    private PackedScene _maison3NodeScene;
+
+    private PackedScene _parkNodeScence;
     //private PackedScene;
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
@@ -48,6 +51,7 @@ public class PlanInitial : Node2D
         _immeubleNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/ImmeubleNode.tscn");
         _policeNodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/PoliceNode.tscn");
         _hospitalNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/HospitalNode.tscn");
+        
         
         int[] batiments = new[]
         {
@@ -155,7 +159,6 @@ public class PlanInitial : Node2D
                 }
                 else
                 {
-
                     SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
                 }
             }
