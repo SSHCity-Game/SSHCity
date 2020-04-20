@@ -15,7 +15,14 @@ public class MainPlan : Node2D
     private Vector2 _distanceDragged;
     public static float zoom = (float)1.25;
     public static Vector2 cameraPosition = new Vector2(1250, 810);
-    
+    private static List<(Vector2, int)> _listeBatiment = new List<(Vector2, int)>();
+
+    public static List<(Vector2, int)> ListeBatiment
+    {
+        get => _listeBatiment;
+        set => _listeBatiment = value;
+    }
+
     public override void _Input(InputEvent OneEvent)
     {
         base._Input(OneEvent);
