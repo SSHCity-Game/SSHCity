@@ -114,7 +114,7 @@ public class PlanInitial : Node2D
         return tileMap.GetCell(x, y);
     }
 
-    private Vector2 GetTilePosition()
+    public Vector2 GetTilePosition()
     {
         Vector2 mouse_pos = GetGlobalMousePosition();
         mouse_pos = new Vector2((float)(mouse_pos.x / 0.05), (float)(mouse_pos.y/0.05));
@@ -123,7 +123,7 @@ public class PlanInitial : Node2D
         return tile;
     }
 
-    private bool AlreadySomethingHere(Vector2 tile)
+    public bool AlreadySomethingHere(Vector2 tile)
     {
         return GetBlock(TileMap2, (int) tile.x, (int) tile.y) != -1;
     }
