@@ -41,6 +41,13 @@ public class PlanInitial : Node2D
     private static bool _achat = false;
     private static bool _achatRoute = false;
     private static bool _pressed = false;
+    private static bool _delete = false;
+
+    public static bool Delete
+    {
+        get => _delete;
+        set => _delete = value;
+    }
 
     public static bool Achat
     {
@@ -115,7 +122,7 @@ public class PlanInitial : Node2D
         return tileMap.GetCell(x, y);
     }
 
-    private Vector2 GetTilePosition()
+    public Vector2 GetTilePosition()
     {
         Vector2 mouse_pos = GetGlobalMousePosition();
         mouse_pos = new Vector2((float)(mouse_pos.x / 0.05), (float)(mouse_pos.y/0.05));
@@ -124,7 +131,7 @@ public class PlanInitial : Node2D
         return tile;
     }
 
-    private bool AlreadySomethingHere(Vector2 tile)
+    public bool AlreadySomethingHere(Vector2 tile)
     {
         return GetBlock(TileMap2, (int) tile.x, (int) tile.y) != -1;
     }
@@ -243,6 +250,11 @@ public class PlanInitial : Node2D
         }
     }
 
+    public bool DeleteVerif()
+    {
+        return true;
+    }
+
 
     
     public override void _Input(InputEvent OneAction)
@@ -311,6 +323,18 @@ public class PlanInitial : Node2D
                 SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
             }
             _pressed = false;
+        }
+
+        if (OneAction.IsActionPressed("ClickG") && _delete)
+        {
+            Vector2 tile = GetTilePosition();
+            if (DeleteVerif())
+            {
+                SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
+                SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.terre);
+                Routes.ChangeRoute(tile, this);
+                _delete = false;
+            }
         }
     }
     
