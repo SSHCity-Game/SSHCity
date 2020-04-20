@@ -23,11 +23,19 @@ public class MainPlan : Node2D
         {
             case InputEventMouseButton eventMouseButton:
             {
-                _mousePressed = eventMouseButton.Pressed;
-                if (_mousePressed && ! eventMouseButton.IsEcho())
+                if (eventMouseButton.IsActionPressed("ClickD"))
                 {
-                    _DraggingStart = GetViewport().GetMousePosition();
+                    _mousePressed = eventMouseButton.Pressed;
+                    if (_mousePressed && ! eventMouseButton.IsEcho())
+                    {
+                        _DraggingStart = GetViewport().GetMousePosition();
+                    }
                 }
+                else
+                {
+                    _mousePressed = false;
+                }
+
                 break;
             }
 
