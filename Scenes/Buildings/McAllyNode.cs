@@ -2,7 +2,7 @@ using Godot;
 using System;
 using SshCity.Scenes.Plan;
 
-public class McAlly : Node2D
+public class McAllyNode : Node2D
 {
     private Timer _mcAllyTimer;
     private static int _bloc = Ref_donnees.McAffy;

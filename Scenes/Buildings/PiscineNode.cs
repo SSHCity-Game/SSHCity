@@ -2,7 +2,7 @@ using Godot;
 using System;
 using SshCity.Scenes.Plan;
 
-public class Piscine : Node2D
+public class PiscineNode : Node2D
 {
     private Timer _piscineTimer;
     private static int _bloc = Ref_donnees.piscine;

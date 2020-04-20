@@ -13,7 +13,7 @@ namespace SshCity.Scenes.Plan
             int[] batiments = new[]
             {
                 Ref_donnees.parc_enfant, Ref_donnees.maison3, Ref_donnees.ferme,
-                Ref_donnees.maison3, Ref_donnees.mairie, Ref_donnees.maison5,
+                Ref_donnees.maison4, Ref_donnees.mairie, Ref_donnees.maison5,
                 Ref_donnees.eglise, Ref_donnees.restaurant, Ref_donnees.restaurant2
             };
             int k = 0;
