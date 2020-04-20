@@ -7,6 +7,7 @@ public class Interface : CanvasLayer
     private Label _money_text;
     private Button _button_shop;
     private Button _buttonRoute;
+    private Button _buttonDelete;
     private Boutique _shop;
     private bool _achatRoute = false;
         
@@ -30,6 +31,7 @@ public class Interface : CanvasLayer
     private const string _str_money_couleur = "MoneyColor";
     private const string _str_money_text = "MoneyColor/MoneyText";
     private const string _str_buttonRoute = "ButtonAjoutRoute";
+    private const string _str_buttonDelete = "ButtonDelete";
     
     public override void _Ready()
     {
@@ -37,6 +39,7 @@ public class Interface : CanvasLayer
         _money_text = (Label) GetNode(_str_money_text);
         _button_shop = (Button) GetNode(_str_button_shop);
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
+        _buttonDelete = (Button) GetNode(_str_buttonDelete);
         _shop = (Boutique) GetNode(_str_shop);
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
         _button_shop.Connect("mouse_entered", this, nameof(ButtonRouteOver));
@@ -44,6 +47,7 @@ public class Interface : CanvasLayer
         _buttonRoute.Connect("mouse_entered", this, nameof(ButtonRouteOver));
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonRouteExited));
         _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
+        _buttonDelete.Connect("pressed", this, nameof(ButtonDeletePressed));
     }
 
     public override void _Process(float delta)
@@ -80,6 +84,11 @@ public class Interface : CanvasLayer
         {
             PlanInitial.AchatRoute(true);
         }
+    }
+
+    public void ButtonDeletePressed()
+    {
+        PlanInitial.Delete = true;
     }
     
 }
