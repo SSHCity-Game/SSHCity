@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Concurrent;
 using SshCity.Scenes.Plan;
 
 public class PlanInitial : Node2D
@@ -241,13 +242,151 @@ public class PlanInitial : Node2D
             AddChild(restaurant2);
         }
     }
+
+    public bool IsRoute(int bloc)
+    {
+        return bloc == Ref_donnees.route_left ||
+               bloc == Ref_donnees.route_right ||
+               bloc == Ref_donnees.route_bord_bas_droit ||
+               bloc == Ref_donnees.route_bord_bas_gauche ||
+               bloc == Ref_donnees.route_bord_haut_droit ||
+               bloc == Ref_donnees.route_bord_haut_gauche ||
+               bloc == Ref_donnees.route_croisement ||
+               bloc == Ref_donnees.route_virage_bas ||
+               bloc == Ref_donnees.route_virage_droit ||
+               bloc == Ref_donnees.route_virage_gauche ||
+               bloc == Ref_donnees.route_virage_haut ||
+               bloc == Ref_donnees.route_T_bas_droite ||
+               bloc == Ref_donnees.route_T_bas_gauche ||
+               bloc == Ref_donnees.route_T_haut_droit ||
+               bloc == Ref_donnees.route_T_haut_gauche;
+    }
+    
+    public int ChoixRoute(Vector2 tile)
+    {
+        int x = (int)tile.x;
+        int y = (int) tile.y;
+        bool HD = IsRoute(GetBlock(TileMap2, x, y - 1)) && GetBlock(TileMap1, x+1, y) == Ref_donnees.route;
+        bool BD = IsRoute(GetBlock(TileMap2, x + 1, y)) && GetBlock(TileMap1, x+2, y+1) == Ref_donnees.route;
+        bool BG = IsRoute(GetBlock(TileMap2, x, y + 1)) && GetBlock(TileMap1, x+1, y+2) == Ref_donnees.route;
+        bool HG = IsRoute(GetBlock(TileMap2, x - 1, y)) && GetBlock(TileMap1, x, y+1) == Ref_donnees.route;
+
+        if (HD && BD && BG && HG)
+        {
+            return Ref_donnees.route_croisement;
+        }
+
+        if (HD && BD && HG)
+        {
+            return Ref_donnees.route_T_haut_droit;
+        }
+
+        if (HD && BD && BG)
+        {
+            return Ref_donnees.route_T_bas_droite;
+        }
+
+        if (HG && BG && BD)
+        {
+            return Ref_donnees.route_T_bas_gauche;
+        }
+
+        if (BG && HD && HG)
+        {
+            return Ref_donnees.route_T_haut_gauche;
+        }
+
+        if (HD && BG)
+        {
+            return Ref_donnees.route_right;
+        }
+
+        if (BD && HG)
+        {
+            return Ref_donnees.route_left;
+        }
+
+        if (HD && BD)
+        {
+            return Ref_donnees.route_virage_gauche;
+        }
+
+        if (BD && BG)
+        {
+            return Ref_donnees.route_virage_haut;
+        }
+
+        if (HG && BG)
+        {
+            return Ref_donnees.route_virage_droit;
+        }
+
+        if (HG && HD)
+        {
+            return Ref_donnees.route_virage_bas;
+        }
+
+        if (HD)
+        {
+            return Ref_donnees.route_bord_bas_gauche;
+        }
+
+        if (BD)
+        {
+            return Ref_donnees.route_bord_haut_gauche;
+        }
+
+        if (BG)
+        {
+            return Ref_donnees.route_bord_haut_droit;
+        }
+
+        if (HG)
+        {
+            return Ref_donnees.route_bord_bas_droit;
+        }
+        
+        return Ref_donnees.route_left;
+    }
+
+    public void ChangeRoute(Vector2 tile)
+    {
+        int x = (int)tile.x;
+        int y = (int) tile.y;
+        bool HD = IsRoute(GetBlock(TileMap2, x, y - 1)) && GetBlock(TileMap1, x+1, y) == Ref_donnees.route;
+        bool BD = IsRoute(GetBlock(TileMap2, x + 1, y)) && GetBlock(TileMap1, x+2, y+1) == Ref_donnees.route;
+        bool BG = IsRoute(GetBlock(TileMap2, x, y + 1)) && GetBlock(TileMap1, x+1, y+2) == Ref_donnees.route;
+        bool HG = IsRoute(GetBlock(TileMap2, x - 1, y)) && GetBlock(TileMap1, x, y+1) == Ref_donnees.route;
+
+        if (HD)
+        {
+            SetBlock(TileMap2, x, y-1, ChoixRoute(new Vector2(x, y-1)));
+        }
+        if (BD)
+        {
+            SetBlock(TileMap2, x+1, y, ChoixRoute(new Vector2(x+1, y)));
+        }
+        if (BG)
+        {
+            SetBlock(TileMap2, x, y+1, ChoixRoute(new Vector2(x, y+1)));
+        }
+        if (HG)
+        {
+            SetBlock(TileMap2, x-1, y, ChoixRoute(new Vector2(x-1, y)));
+        }
+    }
     
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
         if (OneAction is InputEventMouse && (_achat ||_achatRoute))
         {
+
             Vector2 tile = GetTilePosition();
+            if (_achatRoute)
+            {
+                _batiment = ChoixRoute(tile);
+            }
             if (!AlreadySomethingHere(tile))
             {
                 SetBlock(TileMap2, (int)tile.x, (int)tile.y, _batiment);
@@ -278,6 +417,10 @@ public class PlanInitial : Node2D
                 if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
                 {
                     SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.route);
+                    if (_achatRoute)
+                    {
+                        ChangeRoute(tile);
+                    }
                     AjoutNode(_batiment);
                 }
                 else
