@@ -75,7 +75,7 @@ public class Menu_Achat : Panel
         else
         {
             EmitSignal("CloseShop");
-            _achat = true;
+            PlanInitial.Achat = true;
             PlanInitial.Batiment = bloc;
             PlanInitial.Prix = prix;
         }

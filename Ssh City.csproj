@@ -88,6 +88,7 @@
     <Compile Include="Scenes\Plan\Montagnes.cs" />
     <Compile Include="Scenes\Plan\PlanInitial.cs" />
     <Compile Include="Scenes\Plan\Ref_donnees.cs" />
+    <Compile Include="Scenes\Plan\Routes.cs" />
     <Compile Include="Scenes\Plan\Sable.cs" />
     <Compile Include="Scenes\Plan\Buildings.cs" />
     <Compile Include="Scenes\Plan\TileMap1.cs" />

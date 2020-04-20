@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Concurrent;
 using SshCity.Scenes.Plan;
 
 public class PlanInitial : Node2D
@@ -27,6 +28,7 @@ public class PlanInitial : Node2D
     private PackedScene _piscineNodeScene;
     private PackedScene _restaurantNodeScene;
     private PackedScene _restaurant2NodeScene;
+    
 
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
@@ -36,6 +38,15 @@ public class PlanInitial : Node2D
     private Vector2 _lastTile = new Vector2(0, 0);
     private static int _batiment;
     private static int _prix;
+    private static bool _achat = false;
+    private static bool _achatRoute = false;
+    private static bool _pressed = false;
+
+    public static bool Achat
+    {
+        get => _achat;
+        set => _achat = value;
+    }
 
     public static int Batiment
     {
@@ -117,6 +128,24 @@ public class PlanInitial : Node2D
     {
         return GetBlock(TileMap2, (int) tile.x, (int) tile.y) != -1;
     }
+
+    public static void AchatRoute(bool start)
+    {
+        if (start)
+        {
+            _batiment = Ref_donnees.route_left;
+            _prix = 500;
+            _achatRoute = true;
+        }
+        else
+        {
+            _batiment = -1;
+            _prix = 0;
+            _achatRoute = false;
+            _pressed = true;
+        }
+    }
+    
 
     public void AjoutNode(int batiment)
     {
@@ -213,13 +242,20 @@ public class PlanInitial : Node2D
             AddChild(restaurant2);
         }
     }
+
+
     
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
-        if (OneAction is InputEventMouse && Menu_Achat.Achat)
+        if (OneAction is InputEventMouse && (_achat ||_achatRoute))
         {
+
             Vector2 tile = GetTilePosition();
+            if (_achatRoute)
+            {
+                _batiment = Routes.ChoixRoute(tile, this);
+            }
             if (!AlreadySomethingHere(tile))
             {
                 SetBlock(TileMap2, (int)tile.x, (int)tile.y, _batiment);
@@ -239,9 +275,9 @@ public class PlanInitial : Node2D
  
         }
 
-        if (OneAction is InputEventMouseButton && Menu_Achat.Achat)
+        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute))
         {
-            Menu_Achat.Achat = false;
+            _achat = false;
             _lastTile = new Vector2(0,0);
             Vector2 tile = GetTilePosition();
             GD.Print(GetBlock(TileMap2, (int)tile.x, (int)tile.y));
@@ -249,17 +285,32 @@ public class PlanInitial : Node2D
             {
                 if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
                 {
+                    SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.route);
+                    if (_achatRoute)
+                    {
+                        Routes.ChangeRoute(tile, this);
+                    }
                     AjoutNode(_batiment);
                 }
                 else
                 {
-                    SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
+                    //MESSAGE ERREUR
                 }
             }
             else
             {
-
+                //MESSAGE ERREUR
             }
+        }
+
+        if (_pressed)
+        {
+            Vector2 tile = GetTilePosition();
+            if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) != Ref_donnees.route)  //Corrige _bug bouton route
+            {
+                SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
+            }
+            _pressed = false;
         }
     }
     
