@@ -63,7 +63,7 @@
     <Compile Include="Scenes\Buildings\HotelNode.cs" />
     <Compile Include="Scenes\Buildings\ImmeubleNode.cs" />
     <Compile Include="Scenes\Buildings\ImmeubleVertNode.cs" />
-    <Compile Include="Scenes\Buildings\Maison2Node.cs" />
+    <Compile Include="Scenes\Buildings\Maison3Node.cs" />
     <Compile Include="Scenes\Buildings\Maison4Node.cs" />
     <Compile Include="Scenes\Buildings\Maison5Node.cs" />
     <Compile Include="Scenes\Buildings\MaisonNode.cs" />

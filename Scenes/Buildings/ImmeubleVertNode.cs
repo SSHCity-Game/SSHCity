@@ -2,7 +2,7 @@ using Godot;
 using System;
 using SshCity.Scenes.Plan;
 
-public class ImmeubleVert : Node2D
+public class ImmeubleVertNode : Node2D
 {
     private Timer _immeublevertTimer;
     private static int _bloc = Ref_donnees.immeuble_vert;

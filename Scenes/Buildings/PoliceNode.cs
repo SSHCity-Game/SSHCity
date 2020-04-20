@@ -1,10 +1,11 @@
 using Godot;
 using System;
+using SshCity.Scenes.Plan;
 
 public class PoliceNode : Node2D
 {
     private Timer _policeTimer;
-    private static int _bloc = 11;
+    private static int _bloc = Ref_donnees.police;
     private static int _cost = 10000;
     private static int[] _earn = {100,150,200};
     private static string _titre = "Police";
