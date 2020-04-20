@@ -39,7 +39,7 @@ public class PlanInitial : Node2D
     private static int _prix;
     private static bool _achat = false;
     private static bool _achatRoute = false;
-    
+    private static bool _pressed = false;
 
     public static bool Achat
     {
@@ -141,6 +141,7 @@ public class PlanInitial : Node2D
             _batiment = -1;
             _prix = 0;
             _achatRoute = false;
+            _pressed = true;
         }
     }
     
@@ -276,17 +277,28 @@ public class PlanInitial : Node2D
             {
                 if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
                 {
+                    SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.route);
                     AjoutNode(_batiment);
                 }
                 else
                 {
-                    SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
+                    //MESSAGE ERREUR
                 }
             }
             else
             {
-
+                //MESSAGE ERREUR
             }
+        }
+
+        if (_pressed)
+        {
+            Vector2 tile = GetTilePosition();
+            if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) != Ref_donnees.route)  //Corrige _bug bouton route
+            {
+                SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
+            }
+            _pressed = false;
         }
     }
     

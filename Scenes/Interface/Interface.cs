@@ -39,6 +39,8 @@ public class Interface : CanvasLayer
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
         _shop = (Boutique) GetNode(_str_shop);
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
+        _button_shop.Connect("mouse_entered", this, nameof(ButtonRouteOver));
+        _button_shop.Connect("mouse_exited", this, nameof(ButtonRouteExited));
         _buttonRoute.Connect("mouse_entered", this, nameof(ButtonRouteOver));
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonRouteExited));
         _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
@@ -52,6 +54,10 @@ public class Interface : CanvasLayer
 
     public void ButtonShopPressed()
     {
+        //Ferme Achat Route
+        _achatRoute = false;
+        PlanInitial.AchatRoute(_achatRoute);
+        
         _shop.ViewShop(hide);
         hide = !hide;
     }
