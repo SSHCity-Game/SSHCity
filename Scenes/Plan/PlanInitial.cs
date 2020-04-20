@@ -302,6 +302,7 @@ public class PlanInitial : Node2D
                     {
                         Routes.ChangeRoute(tile, this);
                     }
+                    MainPlan.ListeBatiment.Add((tile, _batiment));
                     AjoutNode(_batiment);
                 }
                 else

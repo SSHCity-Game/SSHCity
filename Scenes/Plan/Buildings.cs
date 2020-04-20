@@ -23,6 +23,7 @@ namespace SshCity.Scenes.Plan
                 {
                     int bloc_set = batiments[k];
                     planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, bloc_set);
+                    MainPlan.ListeBatiment.Add((new Vector2(i-1, j-1), bloc_set));
                     k++;
                 }
             }
