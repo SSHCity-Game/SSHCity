@@ -71,9 +71,21 @@
     <Compile Include="Scenes\Buildings\ParcNode.cs" />
     <Compile Include="Scenes\Buildings\PiscineNode.cs" />
     <Compile Include="Scenes\Buildings\PoliceNode.cs" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="Scenes\Incident\incidents.cs" />
+=======
+    <Compile Include="Scenes\Buildings\Restaurant2.cs" />
+>>>>>>> 7bf97ea5cd4c5f9335b7c6c0ab44349509e780a6
+=======
+    <Compile Include="Scenes\Buildings\Restaurant2.cs" />
+>>>>>>> 7bf97ea5cd4c5f9335b7c6c0ab44349509e780a6
+=======
     <Compile Include="Scenes\Buildings\Restaurant2Node.cs" />
     <Compile Include="Scenes\Buildings\RestaurantNode.cs" />
+>>>>>>> feature/CarteConnect
+    <Compile Include="Scenes\Incident\map_up.cs" />
     <Compile Include="Scenes\Interface\Boutique.cs" />
     <Compile Include="Scenes\Interface\Carte_achat\Carte.cs" />
     <Compile Include="Scenes\Interface\Interface.cs" />
