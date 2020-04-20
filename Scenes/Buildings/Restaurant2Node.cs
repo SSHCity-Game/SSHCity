@@ -2,7 +2,7 @@ using Godot;
 using System;
 using SshCity.Scenes.Plan;
 
-public class Restaurant22 : Node2D
+public class Restaurant2Node : Node2D
 {
    private Timer _restaurant2Timer;
        private static int _bloc = Ref_donnees.restaurant2;

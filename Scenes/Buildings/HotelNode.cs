@@ -2,7 +2,7 @@ using Godot;
 using System;
 using SshCity.Scenes.Plan;
 
-public class Hotel : Node2D
+public class HotelNode : Node2D
 {
     private Timer _hotelTimer;
     private static int _bloc = Ref_donnees.hotel;

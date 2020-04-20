@@ -2,7 +2,7 @@ using Godot;
 using System;
 using SshCity.Scenes.Plan;
 
-public class Eglise : Node2D
+public class EgliseNode : Node2D
 {
     private Timer _egliseTimer;
     private static int _bloc = Ref_donnees.eglise;
