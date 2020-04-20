@@ -74,16 +74,6 @@ public class PlanInitial : Node2D
         _parcNodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/ParcNode.tscn");
         _piscineNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/PiscineNode.tscn");
         
-
-        
-        
-        
-        int[] batiments = new[]
-        {
-            Ref_donnees.maison1, Ref_donnees.maison4, Ref_donnees.ferme,
-            Ref_donnees.maison3, Ref_donnees.mairie, Ref_donnees.maison5,
-            Ref_donnees.eglise, Ref_donnees.shop, Ref_donnees.piscine
-        };
         
         MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
         AddChild(maison1);
