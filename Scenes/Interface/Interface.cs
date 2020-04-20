@@ -4,6 +4,7 @@ using System;
 public class Interface : CanvasLayer
 {
     private Panel _money_couleur;
+    private DeleteVerif _deleteVerif;
     private Label _money_text;
     private Button _button_shop;
     private Button _buttonRoute;
@@ -32,6 +33,7 @@ public class Interface : CanvasLayer
     private const string _str_money_text = "MoneyColor/MoneyText";
     private const string _str_buttonRoute = "ButtonAjoutRoute";
     private const string _str_buttonDelete = "ButtonDelete";
+    private const string _str_deleteVerif = "DeleteVerif";
     
     public override void _Ready()
     {
@@ -48,7 +50,19 @@ public class Interface : CanvasLayer
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonRouteExited));
         _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
         _buttonDelete.Connect("pressed", this, nameof(ButtonDeletePressed));
+        //_deleteVerif.Connect("DeleteVerifOui", this, nameof(OuiPressed));
     }
+
+    public void OuiPressed()
+    {
+        
+    }
+
+    public void NonPressed()
+    {
+        
+    }
+    
 
     public override void _Process(float delta)
     {

@@ -250,7 +250,7 @@ public class PlanInitial : Node2D
         }
     }
 
-    public bool DeleteVerif()
+    public bool DeleteVerification()
     {
         return true;
     }
@@ -329,12 +329,14 @@ public class PlanInitial : Node2D
         if (OneAction.IsActionPressed("ClickG") && _delete)
         {
             Vector2 tile = GetTilePosition();
-            if (DeleteVerif())
+            int bloc = GetBlock(TileMap2, (int) tile.x, (int) tile.y);
+            if (DeleteVerification())
             {
                 SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
                 SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.terre);
                 Routes.ChangeRoute(tile, this);
                 _delete = false;
+                MainPlan.ListeBatiment.Remove((tile, bloc));
             }
         }
     }
