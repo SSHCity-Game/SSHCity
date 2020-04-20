@@ -147,6 +147,71 @@ public class PlanInitial : Node2D
             HospitalNode hopital = (HospitalNode) _hospitalNodeScene.Instance();
             AddChild(hopital);
         }
+        else if (batiment == CafeNode.Bloc)
+        {
+            CafeNode cafe = (CafeNode) _cafeNodeScene.Instance();
+            AddChild(cafe);
+        } 
+        else if (batiment == EgliseNode.Bloc)
+        {
+            EgliseNode eglise = (EgliseNode) _egliseNodeScene.Instance();
+            AddChild(eglise);
+        }
+        else if (batiment == FermeNode.Bloc)
+        {
+            FermeNode ferme = (FermeNode) _fermeNodeScene.Instance();
+            AddChild(ferme);
+        }
+        else if (batiment == HotelNode.Bloc)
+        {
+            HotelNode hotel = (HotelNode) _hotelNodeScene.Instance();
+            AddChild(hotel);
+        }
+        else if (batiment == ImmeubleVertNode.Bloc)
+        {
+            ImmeubleVertNode immeubleVert = (ImmeubleVertNode) _immeubleVertNodeScene.Instance();
+            AddChild(immeubleVert);
+        }
+        else if (batiment == Maison3Node.Bloc)
+        {
+            Maison3Node maison3 = (Maison3Node) _maison3NodeScene.Instance();
+            AddChild(maison3);
+        }
+        else if (batiment == Maison4Node.Bloc)
+        {
+            Maison4Node maison4 = (Maison4Node) _maison4NodeScence.Instance();
+            AddChild(maison4);
+        }
+        else if (batiment == Maison5Node.Bloc)
+        {
+            Maison5Node maison5 = (Maison5Node) _maison5NodeScene.Instance();
+            AddChild(maison5);
+        }
+        else if (batiment == McAllyNode.Bloc)
+        {
+            McAllyNode mcAlly = (McAllyNode) _McAllyNodeScene.Instance();
+            AddChild(mcAlly);
+        }
+        else if (batiment == ParcNode.Bloc)
+        {
+            ParcNode parc = (ParcNode) _parcNodeScence.Instance();
+            AddChild(parc);
+        }
+        else if (batiment == PiscineNode.Bloc)
+        {
+            PiscineNode piscine = (PiscineNode) _piscineNodeScene.Instance();
+            AddChild(piscine);
+        }
+        else if (batiment == RestaurantNode.Bloc)
+        {
+            RestaurantNode restaurant = (RestaurantNode) _restaurantNodeScene.Instance();
+            AddChild(restaurant);
+        }
+        else if (batiment == Restaurant2Node.Bloc)
+        {
+            Restaurant2Node restaurant2 = (Restaurant2Node) _restaurant2NodeScene.Instance();
+            AddChild(restaurant2);
+        }
     }
     
     public override void _Input(InputEvent OneAction)
