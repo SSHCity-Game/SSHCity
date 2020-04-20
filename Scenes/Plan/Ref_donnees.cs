@@ -80,6 +80,7 @@ namespace SshCity.Scenes.Plan
         public const int route_virage_bas = 47;
         public const int route_virage_haut = 49;
         public const int route_croisement = 42;
+        public const int maison3_flamme = 57;
         
         
         //Variable bloquer camera

@@ -51,7 +51,7 @@ public class Incidents : PlanInitial
         /**************************************
          * Genere un incendie dans une maison *
          **************************************/
-        Vector2 tile = GetTilePosition();
+        
     }
 
 }
