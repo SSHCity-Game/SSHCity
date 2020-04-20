@@ -12,12 +12,23 @@ public class PlanInitial : Node2D
     private PackedScene _maisonNodeScene;
     private PackedScene _caserNodeScene;
     private PackedScene _immeubleNodeScene;
+    private PackedScene _immeubleVertNodeScene;
     private PackedScene _policeNodeScence;
     private PackedScene _hospitalNodeScene;
     private PackedScene _maison3NodeScene;
-
-    private PackedScene _parkNodeScence;
-    //private PackedScene;
+    private PackedScene _maison4NodeScence;
+    private PackedScene _maison5NodeScene;
+    private PackedScene _parcNodeScence;
+    private PackedScene _cafeNodeScene;
+    private PackedScene _egliseNodeScene;
+    private PackedScene _fermeNodeScene;
+    private PackedScene _hotelNodeScene;
+    private PackedScene _maison2NodeScene;
+    private PackedScene _McAllyNodeScene;
+    private PackedScene _piscineNodeScene;
+    private PackedScene _restaurantNodeScene;
+    private PackedScene _restaurant2NodeScene;
+    
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
@@ -51,6 +62,20 @@ public class PlanInitial : Node2D
         _immeubleNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/ImmeubleNode.tscn");
         _policeNodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/PoliceNode.tscn");
         _hospitalNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/HospitalNode.tscn");
+        _cafeNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/CafeNode.tscn");
+        _egliseNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/EgliseNode.tscn");
+        _fermeNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/FermeNode.tscn");
+        _hotelNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/HospitalNode.tscn");
+        _immeubleVertNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/ImmeubleNode.tscn");
+        _maison2NodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/Maison2Node.tscn");
+        _maison3NodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/Maison3Node.tscn");
+        _maison4NodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/Maison4Node.tscn");
+        _maison5NodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/Maison5Node.tscn");
+        _McAllyNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/McAllyNode.tscn");
+        _parcNodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/ParcNode.tscn");
+        _piscineNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/PiscineNode.tscn");
+        
+
         
         
         int[] batiments = new[]
