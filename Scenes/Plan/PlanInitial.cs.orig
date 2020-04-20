@@ -16,6 +16,7 @@ public class PlanInitial : Node2D
     private PackedScene _policeNodeScence;
     private PackedScene _hospitalNodeScene;
     private PackedScene _maison3NodeScene;
+<<<<<<< HEAD
     private PackedScene _maison4NodeScence;
     private PackedScene _maison5NodeScene;
     private PackedScene _parcNodeScence;
@@ -28,6 +29,12 @@ public class PlanInitial : Node2D
     private PackedScene _piscineNodeScene;
     private PackedScene _restaurantNodeScene;
     private PackedScene _restaurant2NodeScene;
+    
+=======
+
+    private PackedScene _parkNodeScence;
+    //private PackedScene;
+>>>>>>> e1647269699e26b7b10917a94b79c158e6c50ba9
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
