@@ -16,7 +16,6 @@ public class PlanInitial : Node2D
     private PackedScene _policeNodeScence;
     private PackedScene _hospitalNodeScene;
     private PackedScene _maison3NodeScene;
-<<<<<<< HEAD
     private PackedScene _maison4NodeScence;
     private PackedScene _maison5NodeScene;
     private PackedScene _parcNodeScence;
@@ -29,12 +28,6 @@ public class PlanInitial : Node2D
     private PackedScene _piscineNodeScene;
     private PackedScene _restaurantNodeScene;
     private PackedScene _restaurant2NodeScene;
-    
-=======
-
-    private PackedScene _parkNodeScence;
-    //private PackedScene;
->>>>>>> rebase
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
@@ -81,16 +74,6 @@ public class PlanInitial : Node2D
         _parcNodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/ParcNode.tscn");
         _piscineNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/PiscineNode.tscn");
         
-
-        
-        
-        
-        int[] batiments = new[]
-        {
-            Ref_donnees.maison1, Ref_donnees.maison4, Ref_donnees.ferme,
-            Ref_donnees.maison3, Ref_donnees.mairie, Ref_donnees.maison5,
-            Ref_donnees.eglise, Ref_donnees.shop, Ref_donnees.piscine
-        };
         
         MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
         AddChild(maison1);
