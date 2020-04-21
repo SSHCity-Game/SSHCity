@@ -38,7 +38,7 @@ namespace SshCity.Scenes.Plan
         public const int terre = 0;
         public const int boite = 3;
         public const int eau = 2;
-        public const int montagne = 8;
+        public const int montagne = 56;
         public const int montagne_sol = 8;
         public const int sable = 5;
         public const int maison1     = 11;
