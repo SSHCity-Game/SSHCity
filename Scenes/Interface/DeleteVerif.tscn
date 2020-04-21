@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Images_interface/bulldozer.png" type="Texture" id=2]
+[ext_resource path="res://Son/suppression.wav" type="AudioStream" id=3]
 
-[sub_resource type="CSharpScript" id=8]
+[sub_resource type="CSharpScript" id=1]
 resource_name = "DeleteVerif"
 script/source = "using Godot;
 using System;
@@ -28,7 +29,7 @@ public class DeleteVerif : Panel
 }
 "
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -39,14 +40,14 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.270588, 0.529412, 0.27451, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=6]
@@ -72,7 +73,7 @@ margin_left = -354.0
 margin_top = -205.5
 margin_right = 354.0
 margin_bottom = 205.5
-script = SubResource( 8 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -90,7 +91,7 @@ margin_left = -307.5
 margin_top = -40.574
 margin_right = 307.5
 margin_bottom = 40.426
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Etes-vous sûr de vouloir supprimer 
 le bâtiment ?"
 align = 1
@@ -108,9 +109,9 @@ margin_top = -20.005
 margin_right = 69.675
 margin_bottom = 19.995
 custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 5 )
+custom_styles/pressed = SubResource( 4 )
 custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Oui"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -128,8 +129,11 @@ margin_bottom = 19.995
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Non"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="supprimer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

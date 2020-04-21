@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Interface/Interface.cs" type="Script" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/route_bis_right.png" type="Texture" id=6]
 [ext_resource path="res://assets/Images_interface/bulldozer.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Interface/DeleteVerif.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Interface/ouverture boutiue.wav" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -83,6 +84,9 @@ __meta__ = {
 position = Vector2( 28.9746, 29.1885 )
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 3 )
+
+[node name="Ouverture" type="AudioStreamPlayer" parent="ButtonShop"]
+stream = ExtResource( 9 )
 
 [node name="ButtonAjoutRoute" type="Button" parent="."]
 anchor_left = 0.942

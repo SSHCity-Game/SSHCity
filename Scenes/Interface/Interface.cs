@@ -4,18 +4,18 @@ using System;
 public class Interface : CanvasLayer
 {
     private Panel _money_couleur;
-    private DeleteVerif _deleteVerif;
     private Label _money_text;
     private Button _button_shop;
     private Button _buttonRoute;
     private Button _buttonDelete;
     private Boutique _shop;
+    private bool _achatRoute = false;
+    private AudioStreamPlayer _ouvertureboutique;
     private Sprite _bulldozerMouse;
+    private bool _delete = false;
         
     private static int _money = 50000;
     private static bool hide = true;
-    private bool _achatRoute = false;
-    private bool _delete = false;
 
     public static bool Hide
     {
@@ -35,7 +35,7 @@ public class Interface : CanvasLayer
     private const string _str_money_text = "MoneyColor/MoneyText";
     private const string _str_buttonRoute = "ButtonAjoutRoute";
     private const string _str_buttonDelete = "ButtonDelete";
-    private const string _str_deleteVerif = "DeleteVerif";
+    private const string _str_sonouverture = ("ButtonShop/Ouverture");
     private const string _str_bulldozerMouse = "BulldozerMouse";
     
     public override void _Ready()
@@ -48,6 +48,7 @@ public class Interface : CanvasLayer
         _shop = (Boutique) GetNode(_str_shop);
         _bulldozerMouse = (Sprite) GetNode(_str_bulldozerMouse);
         _bulldozerMouse.Hide();
+        _ouvertureboutique = (AudioStreamPlayer) GetNode(_str_sonouverture);
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
         _button_shop.Connect("mouse_entered", this, nameof(ButtonRouteOver));
         _button_shop.Connect("mouse_exited", this, nameof(ButtonRouteExited));
@@ -56,7 +57,7 @@ public class Interface : CanvasLayer
         _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
         _buttonDelete.Connect("pressed", this, nameof(ButtonDeletePressed));
     }
-    
+
     public override void _Process(float delta)
     {
         base._Process(delta);
@@ -71,7 +72,7 @@ public class Interface : CanvasLayer
             _bulldozerMouse.Hide();
         }
     }
-
+    
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
@@ -96,7 +97,12 @@ public class Interface : CanvasLayer
         PlanInitial.AchatRoute(_achatRoute);
         
         _shop.ViewShop(hide);
+        if (hide)
+        {
+            _ouvertureboutique.Play();
+        }
         hide = !hide;
+        
     }
     
     public void ButtonRoutePressed()
@@ -125,5 +131,6 @@ public class Interface : CanvasLayer
         PlanInitial.Delete = _delete;
         _bulldozerMouse.Show();
     }
+    
 }
 
