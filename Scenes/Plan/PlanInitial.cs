@@ -142,7 +142,7 @@ public class PlanInitial : Node2D
 
     public bool AlreadySomethingHere(Vector2 tile)
     {
-        return GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) != -1;
+        return GetBlock(TileMap2, (int) tile.x, (int) tile.y) != -1;
     }
 
     public static void AchatRoute(bool start)
