@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/interdit.wav-0ebcc08898716e4733d3cb20fb80d50d.sample"
+
+[deps]
+
+source_file="res://Son/interdit.wav"
+dest_files=[ "res://.import/interdit.wav-0ebcc08898716e4733d3cb20fb80d50d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
