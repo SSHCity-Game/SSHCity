@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/feu.wav-dc3c59acd108943d2cf71e6fd3482a72.sample"
+
+[deps]
+
+source_file="res://Son/feu.wav"
+dest_files=[ "res://.import/feu.wav-dc3c59acd108943d2cf71e6fd3482a72.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
