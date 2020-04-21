@@ -30,8 +30,8 @@ namespace SshCity.Scenes.Plan
         public const int min_flaque_eau = 5; //Nombre minimum de flaque d'eau
         public const int max_block_flaque_eau = 25; //Nombre max de bloques eau pour une flaque
         public const int min_block_flaque_eau = 20; //Nombre Minimum de bloques eau pour une flaque
-        public const int m_max = 8; //Nombre bocks montagnes à trois etages max
-        public const int m_min = 5; //Nombre bocks montagnes à trois etages min
+        public const int m_max = 20; //Nombre bocks montagnes à trois etages max
+        public const int m_min = 15; //Nombre bocks montagnes à trois etages min
 
         //Vairable permettant d'indiquer l'indexe des blocs
 
