@@ -76,6 +76,7 @@
     <Compile Include="Scenes\Buildings\RestaurantNode.cs" />
     <Compile Include="Scenes\Interface\Boutique.cs" />
     <Compile Include="Scenes\Interface\Carte_achat\Carte.cs" />
+    <Compile Include="Scenes\Interface\DeleteVerif.cs" />
     <Compile Include="Scenes\Interface\Interface.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuBienEtre.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuEconomie.cs" />

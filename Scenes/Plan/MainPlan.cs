@@ -147,16 +147,5 @@ public class MainPlan : Node2D
         Sable.GenerateSable(_planInitial, coordonnées);
 
     }
-    
-    
-    
-    //PERMET DE RECREER UNE MAP JUSTE EN CLIQUANT SUR ESPACE (POUR GAGNER DU TEMPS POUR TESTER, SERA SUPPRIME PAR LA SUITE)
-    public override void _Process(float delta)
-    {
-        if (Input.IsKeyPressed((int)KeyList.Space))
-        {
-            GetTree().ReloadCurrentScene();
-        }
-    }
 
 }
