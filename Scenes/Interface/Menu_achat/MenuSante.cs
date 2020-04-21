@@ -5,9 +5,11 @@ public class MenuSante : Node
 {
     private Carte _carteHopital;
     private Menu_Achat _menu_achat;
+    private Carte _carteCaserne;
 
     private const string _str_menu_achat = "Menu_Achat";
     private const string _str_carteHopital = _str_menu_achat + "/Hopital";
+    private const string _str_carteCaserne = _str_menu_achat + "/Caserne";
     
     private static bool _achat = false;
 
@@ -28,15 +30,22 @@ public class MenuSante : Node
         _carteHopital.Titre(HospitalNode.Titre);
         _carteHopital.Gain(HospitalNode.Earn);
         _carteHopital.Prix(HospitalNode.Cost);
-        
-        
         _carteHopital.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+        
+        //Config _carteCaserne
+        _carteCaserne = (Carte) GetNode(_str_carteCaserne);
+        _carteCaserne.Bloc = CaserneNode.Bloc;
+        _carteCaserne.Cost = CaserneNode.Cost;
+        _carteCaserne.Titre(CaserneNode.Titre);
+        _carteCaserne.Gain(CaserneNode.Earn);
+        _carteCaserne.Prix(CaserneNode.Cost);
+        _carteCaserne.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
 
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
         
-        Carte[] menu1 = new[] {_carteHopital};
+        Carte[] menu1 = new[] {_carteHopital, _carteCaserne};
         Carte[][] menus = new[] {menu1};
         _menu_achat.Menus = menus;
     }

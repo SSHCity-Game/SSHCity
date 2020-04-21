@@ -42,6 +42,14 @@ public class PlanInitial : Node2D
     private static bool _achatRoute = false;
     private static bool _pressed = false;
     private static bool _delete = false;
+    private static bool _deleteSure = false;
+    private static Vector2 _tileSupressing;
+
+    public static bool DeleteSure
+    {
+        get => _deleteSure;
+        set => _deleteSure = value;
+    }
 
     public static bool Delete
     {
@@ -250,13 +258,7 @@ public class PlanInitial : Node2D
         }
     }
 
-    public bool DeleteVerif()
-    {
-        return true;
-    }
 
-
-    
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
@@ -315,6 +317,34 @@ public class PlanInitial : Node2D
                 //MESSAGE ERREUR
             }
         }
+        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute))
+        {
+            _achat = false;
+            _lastTile = new Vector2(0,0);
+            Vector2 tile = GetTilePosition();
+            GD.Print(GetBlock(TileMap2, (int)tile.x, (int)tile.y));
+            if (GetBlock(TileMap2, (int)tile.x, (int)tile.y) == _batiment)
+            {
+                if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
+                {
+                    SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.route);
+                    if (_achatRoute)
+                    {
+                        Routes.ChangeRoute(tile, this);
+                    }
+                    MainPlan.ListeBatiment.Add((tile, _batiment));
+                    AjoutNode(_batiment);
+                }
+                else
+                {
+                    //MESSAGE ERREUR
+                }
+            }
+            else
+            {
+                //MESSAGE ERREUR
+            }
+        }
 
         if (_pressed)
         {
@@ -328,14 +358,20 @@ public class PlanInitial : Node2D
 
         if (OneAction.IsActionPressed("ClickG") && _delete)
         {
-            Vector2 tile = GetTilePosition();
-            if (DeleteVerif())
-            {
-                SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
-                SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.terre);
-                Routes.ChangeRoute(tile, this);
-                _delete = false;
-            }
+            _tileSupressing = GetTilePosition();
+            _delete = false;
+            DeleteVerif.Verif = true;
+        }
+
+        if (DeleteSure)
+        {            
+            int bloc = GetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y);
+            SetBlock(TileMap2, (int)_tileSupressing.x, (int)_tileSupressing.y, -1);
+            SetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1, Ref_donnees.terre);
+            Routes.ChangeRoute(_tileSupressing, this);
+            _delete = false;
+            MainPlan.ListeBatiment.Remove((_tileSupressing, bloc));
+            DeleteSure = false;
         }
     }
     
