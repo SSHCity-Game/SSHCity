@@ -132,20 +132,24 @@ public class MainPlan : Node2D
     {
         _planInitial = (PlanInitial) GetNode(str_planInitial);
         _camera2D = (Camera2D) GetNode(str_camera2D);
-
-        Montagnes.GenerateMontagne(_planInitial);
-        Montagnes.GenerateMontagne(_planInitial);
+        //Montagnes.GenerateMontagne(_planInitial);
         while (!SshCity.Scenes.Plan.Buildings.GenerateBuildings(_planInitial))
         {
             _planInitial = new PlanInitial();
         }
+        Montagnes.SetBlocMontagne(new Vector2(70, 50), _planInitial );
 
         //CREATION LACS
         List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
         
         //CREATION SABLE
         Sable.GenerateSable(_planInitial, coordonnées);
-
+    }
+    
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+        Incident.HouseOnFire(_planInitial);
     }
 
 }
