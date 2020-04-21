@@ -12,8 +12,16 @@ public class Interface : CanvasLayer
     private bool _achatRoute = false;
     private AudioStreamPlayer _ouvertureboutique;
     private Sprite _bulldozerMouse;
+    public Sprite _croix;
     private bool _delete = false;
-        
+    private static bool _interdit = false;
+
+    public static bool Interdit
+    {
+        get => _interdit;
+        set => _interdit = value;
+    }
+
     private static int _money = 50000;
     private static bool hide = true;
 
@@ -37,6 +45,7 @@ public class Interface : CanvasLayer
     private const string _str_buttonDelete = "ButtonDelete";
     private const string _str_sonouverture = ("ButtonShop/Ouverture");
     private const string _str_bulldozerMouse = "BulldozerMouse";
+    private const string _str_croix = "Croix";
     
     public override void _Ready()
     {
@@ -48,6 +57,8 @@ public class Interface : CanvasLayer
         _shop = (Boutique) GetNode(_str_shop);
         _bulldozerMouse = (Sprite) GetNode(_str_bulldozerMouse);
         _bulldozerMouse.Hide();
+        _croix = (Sprite) GetNode(_str_croix);
+        _croix.Hide();
         _ouvertureboutique = (AudioStreamPlayer) GetNode(_str_sonouverture);
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
         _button_shop.Connect("mouse_entered", this, nameof(ButtonRouteOver));
@@ -70,6 +81,17 @@ public class Interface : CanvasLayer
         else
         {
             _bulldozerMouse.Hide();
+        }
+
+        if (_interdit)
+        {
+            _croix.Show();
+            Vector2 mousePosition = GetViewport().GetMousePosition();
+            _croix.Position = new Vector2(mousePosition.x, mousePosition.y);
+        }
+        else
+        {
+            _croix.Hide();
         }
     }
     

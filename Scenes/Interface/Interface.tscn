@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Interface/Interface.cs" type="Script" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://assets/Images_interface/bulldozer.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Interface/DeleteVerif.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Interface/ouverture boutiue.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/Images_interface/croix.png" type="Texture" id=10]
+[ext_resource path="res://Son/ouverture boutiue.wav" type="AudioStream" id=9]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -143,3 +146,8 @@ visible = false
 position = Vector2( 25.5941, 20.4767 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 7 )
+
+[node name="Croix" type="Sprite" parent="."]
+position = Vector2( 35.8844, 29.9632 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/musique de fond.wav-1f1648011a4e87d146052871a6ba8447.sample"
+
+[deps]
+
+source_file="res://Son/musique de fond.wav"
+dest_files=[ "res://.import/musique de fond.wav-1f1648011a4e87d146052871a6ba8447.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
