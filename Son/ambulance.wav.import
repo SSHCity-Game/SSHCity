@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ambulance.wav-c15a0b60d169fd1cda8002fe8a40009e.sample"
+
+[deps]
+
+source_file="res://Son/ambulance.wav"
+dest_files=[ "res://.import/ambulance.wav-c15a0b60d169fd1cda8002fe8a40009e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
