@@ -98,6 +98,11 @@ public class Interface : CanvasLayer
     {
         PlanInitial.Delete = true;
     }
+
+    public void Level()
+    {
+        
+    }
     
 }
 
