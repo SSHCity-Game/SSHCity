@@ -10,11 +10,12 @@ public class Interface : CanvasLayer
     private Button _buttonRoute;
     private Button _buttonDelete;
     private Boutique _shop;
-    private bool _achatRoute = false;
     private Sprite _bulldozerMouse;
         
     private static int _money = 50000;
     private static bool hide = true;
+    private bool _achatRoute = false;
+    private bool _delete = false;
 
     public static bool Hide
     {
@@ -71,6 +72,23 @@ public class Interface : CanvasLayer
         }
     }
 
+    public override void _Input(InputEvent OneAction)
+    {
+        base._Input(OneAction);
+        if (OneAction.IsActionPressed("OuvertureBoutique"))
+        {
+            ButtonShopPressed();
+        }
+        if (OneAction.IsActionPressed("Route"))
+        {
+            ButtonRoutePressed();
+        }
+        if (OneAction.IsActionPressed("Delete"))
+        {
+            ButtonDeletePressed();
+        }
+    }
+
     public void ButtonShopPressed()
     {
         //Ferme Achat Route
@@ -103,7 +121,8 @@ public class Interface : CanvasLayer
 
     public void ButtonDeletePressed()
     {
-        PlanInitial.Delete = true;
+        _delete = !_delete;
+        PlanInitial.Delete = _delete;
         _bulldozerMouse.Show();
     }
     
