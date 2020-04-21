@@ -1,10 +1,11 @@
 using Godot;
 using System;
+using SshCity.Scenes.Plan;
 
 public class CaserneNode : Node2D
 {
     private Timer _caserneTimer;
-    private static int _bloc = 11;
+    private static int _bloc = Ref_donnees.caserne;
     private static int _cost = 1000;
     private static int[] _earn = {10,15,20};
     private static string _titre = "Caserne";
