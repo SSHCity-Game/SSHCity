@@ -5,7 +5,13 @@ public class DeleteVerif : Panel
 {
     private Button _buttonOui;
     private Button _buttonNon;
-    private bool _verif = false;
+    private static bool _verif = false;
+
+    public static bool Verif
+    {
+        get => _verif;
+        set => _verif = value;
+    }
 
     private const string _str_buttonOui = "Titre/ButtonOui";
     private const string _str_buttonNon = "Titre/ButtonNon";
@@ -16,21 +22,21 @@ public class DeleteVerif : Panel
         _buttonNon = (Button) GetNode(_str_buttonNon);
         _buttonOui.Connect("pressed", this, nameof(ButtonOuiPressed));
         _buttonNon.Connect("pressed", this, nameof(ButtonNonPressed));
-        AddUserSignal("DeleteVerifOui");
-        AddUserSignal("DeleteVerfiNon");
         this.Hide();
     }
 
     public void ButtonOuiPressed()
     {
-        EmitSignal("DeleteVerifOui");
-        Hide();
+        PlanInitial.DeleteSure = true;
+        _verif = false;
+        this.Hide();
+
     }
 
     public void ButtonNonPressed()
     {
-        EmitSignal("DeleteVerifNon");
-        Hide();
+        _verif = false;
+        this.Hide();
     }
 
     public override void _Process(float delta)
@@ -38,7 +44,7 @@ public class DeleteVerif : Panel
         base._Process(delta);
         if (_verif)
         {
-            
+            Show();
         }
     }
 }

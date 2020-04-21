@@ -53,15 +53,11 @@ public class Interface : CanvasLayer
         //_deleteVerif.Connect("DeleteVerifOui", this, nameof(OuiPressed));
     }
 
-    public void OuiPressed()
+    public void DeleteVerif()
     {
-        
+        _deleteVerif.Show();
     }
 
-    public void NonPressed()
-    {
-        
-    }
     
 
     public override void _Process(float delta)

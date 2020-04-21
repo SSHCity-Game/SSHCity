@@ -42,6 +42,14 @@ public class PlanInitial : Node2D
     private static bool _achatRoute = false;
     private static bool _pressed = false;
     private static bool _delete = false;
+    private static bool _deleteSure = false;
+    private static Vector2 _tileSupressing;
+
+    public static bool DeleteSure
+    {
+        get => _deleteSure;
+        set => _deleteSure = value;
+    }
 
     public static bool Delete
     {
@@ -250,13 +258,7 @@ public class PlanInitial : Node2D
         }
     }
 
-    public bool DeleteVerification()
-    {
-        return true;
-    }
 
-
-    
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
@@ -328,16 +330,20 @@ public class PlanInitial : Node2D
 
         if (OneAction.IsActionPressed("ClickG") && _delete)
         {
-            Vector2 tile = GetTilePosition();
-            int bloc = GetBlock(TileMap2, (int) tile.x, (int) tile.y);
-            if (DeleteVerification())
-            {
-                SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
-                SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.terre);
-                Routes.ChangeRoute(tile, this);
-                _delete = false;
-                MainPlan.ListeBatiment.Remove((tile, bloc));
-            }
+            _tileSupressing = GetTilePosition();
+            _delete = false;
+            DeleteVerif.Verif = true;
+        }
+
+        if (DeleteSure)
+        {            
+            int bloc = GetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y);
+            SetBlock(TileMap2, (int)_tileSupressing.x, (int)_tileSupressing.y, -1);
+            SetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1, Ref_donnees.terre);
+            Routes.ChangeRoute(_tileSupressing, this);
+            _delete = false;
+            MainPlan.ListeBatiment.Remove((_tileSupressing, bloc));
+            DeleteSure = false;
         }
     }
     
