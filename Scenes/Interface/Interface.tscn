@@ -85,7 +85,7 @@ position = Vector2( 28.9746, 29.1885 )
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 3 )
 
-[node name="ouverture" type="AudioStreamPlayer" parent="ButtonShop"]
+[node name="Ouverture" type="AudioStreamPlayer" parent="ButtonShop"]
 stream = ExtResource( 9 )
 
 [node name="ButtonAjoutRoute" type="Button" parent="."]
