@@ -33,7 +33,7 @@ namespace SshCity.Scenes.Plan
         public const int m_max = 8; //Nombre bocks montagnes à trois etages max
         public const int m_min = 5; //Nombre bocks montagnes à trois etages min
 
-        //Vairable permettant d'indiquer l'indexe des bloques
+        //Vairable permettant d'indiquer l'indexe des blocs
 
         public const int terre = 0;
         public const int boite = 3;
@@ -81,6 +81,7 @@ namespace SshCity.Scenes.Plan
         public const int route_virage_bas = 47;
         public const int route_virage_haut = 49;
         public const int route_croisement = 42;
+        public const int maison3_flamme = 57;
         
         
         //Variable bloquer camera
