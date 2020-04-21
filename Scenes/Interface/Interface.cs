@@ -11,6 +11,8 @@ public class Interface : CanvasLayer
     private Boutique _shop;
     private bool _achatRoute = false;
     private AudioStreamPlayer _ouvertureboutique;
+    private Sprite _bulldozerMouse;
+    private bool _delete = false;
         
     private static int _money = 50000;
     private static bool hide = true;
@@ -34,6 +36,7 @@ public class Interface : CanvasLayer
     private const string _str_buttonRoute = "ButtonAjoutRoute";
     private const string _str_buttonDelete = "ButtonDelete";
     private const string _str_sonouverture = ("ButtonShop/Ouverture");
+    private const string _str_bulldozerMouse = "BulldozerMouse";
     
     public override void _Ready()
     {
@@ -43,6 +46,8 @@ public class Interface : CanvasLayer
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
         _buttonDelete = (Button) GetNode(_str_buttonDelete);
         _shop = (Boutique) GetNode(_str_shop);
+        _bulldozerMouse = (Sprite) GetNode(_str_bulldozerMouse);
+        _bulldozerMouse.Hide();
         _ouvertureboutique = (AudioStreamPlayer) GetNode(_str_sonouverture);
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
         _button_shop.Connect("mouse_entered", this, nameof(ButtonRouteOver));
@@ -57,6 +62,32 @@ public class Interface : CanvasLayer
     {
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
+        if (PlanInitial.Delete)
+        {
+            Vector2 mousePosition = GetViewport().GetMousePosition();
+            _bulldozerMouse.Position = new Vector2(mousePosition.x+25, mousePosition.y+25);
+        }
+        else
+        {
+            _bulldozerMouse.Hide();
+        }
+    }
+    
+    public override void _Input(InputEvent OneAction)
+    {
+        base._Input(OneAction);
+        if (OneAction.IsActionPressed("OuvertureBoutique"))
+        {
+            ButtonShopPressed();
+        }
+        if (OneAction.IsActionPressed("Route"))
+        {
+            ButtonRoutePressed();
+        }
+        if (OneAction.IsActionPressed("Delete"))
+        {
+            ButtonDeletePressed();
+        }
     }
 
     public void ButtonShopPressed()
@@ -96,7 +127,9 @@ public class Interface : CanvasLayer
 
     public void ButtonDeletePressed()
     {
-        PlanInitial.Delete = true;
+        _delete = !_delete;
+        PlanInitial.Delete = _delete;
+        _bulldozerMouse.Show();
     }
 
     public void Level()
