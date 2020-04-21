@@ -144,7 +144,12 @@ public class MainPlan : Node2D
         
         //CREATION SABLE
         Sable.GenerateSable(_planInitial, coordonnées);
-
+    }
+    
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+        Incident.HouseOnFire(_planInitial);
     }
 
 }
