@@ -118,6 +118,7 @@ public class PlanInitial : Node2D
         AddChild(restaurant);
         Restaurant2Node retsaurant2 = (Restaurant2Node) _restaurant2NodeScene.Instance();
         AddChild(retsaurant2);
+
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)
