@@ -16,6 +16,8 @@ public class MainPlan : Node2D
     public static float zoom = (float)1.25;
     public static Vector2 cameraPosition = new Vector2(1250, 810);
     private static List<(Vector2, int)> _listeBatiment = new List<(Vector2, int)>();
+    private AudioStreamPlayer _musique;
+    private const string _str_music = "Musique";
 
     public static List<(Vector2, int)> ListeBatiment
     {
@@ -144,6 +146,10 @@ public class MainPlan : Node2D
         
         //CREATION SABLE
         Sable.GenerateSable(_planInitial, coordonnées);
+        
+        //Lancement de la musique
+        _musique = (AudioStreamPlayer) GetNode(_str_music);
+        _musique.Play();
     }
     /*
     public override void _Process(float delta)
