@@ -142,7 +142,8 @@ public class PlanInitial : Node2D
 
     public bool AlreadySomethingHere(Vector2 tile)
     {
-        return GetBlock(TileMap2, (int) tile.x, (int) tile.y) != -1;
+        return GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.route
+            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.montagne_sol;
     }
 
     public static void AchatRoute(bool start)
@@ -273,6 +274,7 @@ public class PlanInitial : Node2D
             }
             if (!AlreadySomethingHere(tile))
             {
+                Interface.Interdit = false;
                 SetBlock(TileMap2, (int)tile.x, (int)tile.y, _batiment);
                 if (tile != _lastTile)
                 {
@@ -285,6 +287,7 @@ public class PlanInitial : Node2D
                 if (tile != _lastTile)
                 {
                     SetBlock(TileMap2, (int)_lastTile.x, (int)_lastTile.y, -1);
+                    Interface.Interdit = true;
                 }
             }
  
@@ -300,6 +303,7 @@ public class PlanInitial : Node2D
             {
                 if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
                 {
+                    Interface.Interdit = false;
                     SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.route);
                     if (_achatRoute)
                     {
@@ -310,12 +314,12 @@ public class PlanInitial : Node2D
                 }
                 else
                 {
-                    //MESSAGE ERREUR
+                    //ERROR
                 }
             }
             else
             {
-                //MESSAGE ERREUR
+                //ERROR
             }
         }
         if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute))
