@@ -11,6 +11,7 @@ public class Interface : CanvasLayer
     private Button _buttonDelete;
     private Boutique _shop;
     private bool _achatRoute = false;
+    private Sprite _bulldozerMouse;
         
     private static int _money = 50000;
     private static bool hide = true;
@@ -34,6 +35,7 @@ public class Interface : CanvasLayer
     private const string _str_buttonRoute = "ButtonAjoutRoute";
     private const string _str_buttonDelete = "ButtonDelete";
     private const string _str_deleteVerif = "DeleteVerif";
+    private const string _str_bulldozerMouse = "BulldozerMouse";
     
     public override void _Ready()
     {
@@ -43,6 +45,8 @@ public class Interface : CanvasLayer
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
         _buttonDelete = (Button) GetNode(_str_buttonDelete);
         _shop = (Boutique) GetNode(_str_shop);
+        _bulldozerMouse = (Sprite) GetNode(_str_bulldozerMouse);
+        _bulldozerMouse.Hide();
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
         _button_shop.Connect("mouse_entered", this, nameof(ButtonRouteOver));
         _button_shop.Connect("mouse_exited", this, nameof(ButtonRouteExited));
@@ -50,20 +54,21 @@ public class Interface : CanvasLayer
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonRouteExited));
         _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
         _buttonDelete.Connect("pressed", this, nameof(ButtonDeletePressed));
-        //_deleteVerif.Connect("DeleteVerifOui", this, nameof(OuiPressed));
     }
-
-    public void DeleteVerif()
-    {
-        _deleteVerif.Show();
-    }
-
     
-
     public override void _Process(float delta)
     {
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
+        if (PlanInitial.Delete)
+        {
+            Vector2 mousePosition = GetViewport().GetMousePosition();
+            _bulldozerMouse.Position = new Vector2(mousePosition.x+25, mousePosition.y+25);
+        }
+        else
+        {
+            _bulldozerMouse.Hide();
+        }
     }
 
     public void ButtonShopPressed()
@@ -99,6 +104,7 @@ public class Interface : CanvasLayer
     public void ButtonDeletePressed()
     {
         PlanInitial.Delete = true;
+        _bulldozerMouse.Show();
     }
     
 }
