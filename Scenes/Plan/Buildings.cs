@@ -17,7 +17,7 @@ namespace SshCity.Scenes.Plan
                 Ref_donnees.eglise, Ref_donnees.restaurant, Ref_donnees.restaurant2
             };
             int k = 0;
-            int k2 = 2;
+            int k2 = 3;
             for (int i = x; i < x + 5; i += 2) //CONSTRUCTION DES BATIMENTS
             {
                 for (int j = y; j < y + 5; j += 2)

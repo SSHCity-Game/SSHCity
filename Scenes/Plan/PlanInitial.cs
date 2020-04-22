@@ -8,6 +8,8 @@ public class PlanInitial : Node2D
     public static Vector2 PositionTile = new Vector2(0,0);
     public TileMap TileMap1;
     public TileMap TileMap2;
+    public TileMap TileMap3;
+
     private PackedScene _maisonNodeScene;
     private PackedScene _caserNodeScene;
     private PackedScene _immeubleNodeScene;
@@ -30,6 +32,8 @@ public class PlanInitial : Node2D
 
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
+    public string str_TileMap3 = "TileMap3";
+
 
     private Vector2 _lastTile = new Vector2(0, 0);
     private static int _batiment;
@@ -77,6 +81,8 @@ public class PlanInitial : Node2D
     { 
         TileMap1 = (TileMap) GetNode(str_TileMap1);
         TileMap2 = (TileMap) GetNode(str_TileMap2);
+        TileMap3 = (TileMap) GetNode(str_TileMap3);
+
 
         _maisonNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/MaisonNode.tscn");
         _caserNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/CaserneNode.tscn");

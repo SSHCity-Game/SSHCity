@@ -55,10 +55,7 @@
   <ItemGroup>
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <Compile Include="Scenes\autres\Plan.cs" />
-=======
->>>>>>> 0459b040b8672f72e7c55d989423a8ad92d3b111
     <Compile Include="Scenes\Buildings\Buildings.cs" />
     <Compile Include="Scenes\Buildings\CafeNode.cs" />
     <Compile Include="Scenes\Buildings\CaserneNode.cs" />
