@@ -38,6 +38,9 @@ corner_radius_bottom_left = 60
 
 [sub_resource type="ImageTexture" id=4]
 
+[sub_resource type="DynamicFont" id=5]
+size = 30
+
 [node name="Interface" type="CanvasLayer"]
 script = ExtResource( 1 )
 
@@ -166,13 +169,25 @@ scale = Vector2( 0.07, 0.07 )
 texture = ExtResource( 12 )
 =======
 [node name="XpColor" type="Panel" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 50.0
+margin_bottom = 30.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="XpText" type="Label" parent="XpColor"]
-margin_right = 40.0
-margin_bottom = 14.0
->>>>>>> bf872b25b4e2b542248ab93887bb4e5e3b9b350e
+margin_right = 50.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 40, 20 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0.788235, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.0235294, 0.00784314, 0.309804, 1 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+>>>>>>> 224fec8890e3ea0ca5db6be39138ca33962348ac

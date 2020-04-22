@@ -17,6 +17,7 @@ namespace SshCity.Scenes.Plan
                 Ref_donnees.eglise, Ref_donnees.restaurant, Ref_donnees.restaurant2
             };
             int k = 0;
+            int k2 = 2;
             for (int i = x; i < x + 5; i += 2) //CONSTRUCTION DES BATIMENTS
             {
                 for (int j = y; j < y + 5; j += 2)
@@ -24,6 +25,12 @@ namespace SshCity.Scenes.Plan
                     int bloc_set = batiments[k];
                     planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, bloc_set);
                     MainPlan.ListeBatiment.Add((new Vector2(i-1, j-1), bloc_set));
+                    if (k != 4)
+                    {
+                        GD.Print(k2);
+                        MainPlan.ListeNode.Add((new Vector2(i-1, j-1), k2));
+                        k2++;
+                    }
                     k++;
                 }
             }
