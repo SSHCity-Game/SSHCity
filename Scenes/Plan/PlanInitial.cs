@@ -169,12 +169,16 @@ public class PlanInitial : Node2D
 
     public void AjoutNode(int batiment)
     {
+
         if (Interface.Money-_prix >=0 )
         {
             Interface.Money -= _prix;
         }
+
         if (batiment == MaisonNode.Bloc)
 	{
+
+
             MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
             AddChild(maison1);
         }
