@@ -195,6 +195,6 @@ public class Interface : CanvasLayer
         PlanInitial.Delete = _delete;
         _bulldozerMouse.Show();
     }
-    
+
 }
 

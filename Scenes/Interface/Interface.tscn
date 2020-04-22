@@ -7,11 +7,10 @@
 [ext_resource path="res://Scenes/Interface/Boutique.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/route_bis_right.png" type="Texture" id=6]
 [ext_resource path="res://assets/Images_interface/bulldozer.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/Interface/DeleteVerif.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Interface/ouverture boutiue.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/Images_interface/croix.png" type="Texture" id=10]
-[ext_resource path="res://Son/ouverture boutiue.wav" type="AudioStream" id=9]
 
+[ext_resource path="res://Scenes/Interface/DeleteVerif.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Son/ouverture boutiue.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/Images_interface/croix.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
