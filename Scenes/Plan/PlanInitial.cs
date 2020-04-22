@@ -43,6 +43,7 @@ public class PlanInitial : Node2D
     private static bool _pressed = false;
     private static bool _delete = false;
     private static bool _deleteSure = false;
+    private static bool _NotEnoughtMoney = false;
     private static Vector2 _tileSupressing;
 
     public static bool DeleteSure
@@ -143,7 +144,9 @@ public class PlanInitial : Node2D
     public bool AlreadySomethingHere(Vector2 tile)
     {
         return GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.route
-            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.montagne_sol;
+            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.montagne_sol
+            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.sable
+            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.eau;
     }
 
     public static void AchatRoute(bool start)
@@ -267,7 +270,7 @@ public class PlanInitial : Node2D
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
-        if (OneAction is InputEventMouse && (_achat ||_achatRoute))
+        if (OneAction is InputEventMouse && (_achat ||_achatRoute) && !_NotEnoughtMoney)
         {
 
             Vector2 tile = GetTilePosition();
@@ -296,7 +299,7 @@ public class PlanInitial : Node2D
  
         }
 
-        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute))
+        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute)&& !_NotEnoughtMoney)
         {
             _achat = false;
             _lastTile = new Vector2(0,0);
@@ -325,9 +328,15 @@ public class PlanInitial : Node2D
                 //ERROR
             }
         }
-        else if ((_achat || _achatRoute) && Interface.Money- _prix < 0)
+        if ((_achat || _achatRoute) && Interface.Money - _prix < 0)
         {
+            _NotEnoughtMoney = true; ;
             Interface.Interdit = true;
+        }
+        else
+        {
+            _NotEnoughtMoney = false;
+            Interface.Interdit = false;
         }
 
         if (_pressed)

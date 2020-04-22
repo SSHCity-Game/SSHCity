@@ -23,8 +23,13 @@ public class Interface : CanvasLayer
         set => _interdit = value;
     }
 
-    private static int _money = Ref_donnees.argent;
+<<<<<<< HEAD
+    private static int _money = 50000;
     private static bool _hide = true;
+=======
+    private static int _money = Ref_donnees.argent;
+    private static bool hide = true;
+>>>>>>> c0dd6310c3d89060fcf6eee10bc30e52fe5ecdfd
 
     public static bool Hide
     {
