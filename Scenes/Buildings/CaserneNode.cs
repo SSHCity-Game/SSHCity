@@ -6,8 +6,8 @@ public class CaserneNode : Node2D
 {
     private Timer _caserneTimer;
     private static int _bloc = Ref_donnees.caserne;
-    private static int _cost = 1000;
-    private static int[] _earn = {10,15,20};
+    private static int _cost = 5000;
+    private static int[] _earn = {10,25,50};
     private static string _titre = "Caserne";
     private static readonly int[] upgrade_cost = {1500, 2000};
     private static int lvl = 0;

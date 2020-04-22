@@ -7,7 +7,7 @@ public class PiscineNode : Node2D
     private Timer _piscineTimer;
     private static int _bloc = Ref_donnees.piscine;
     private static int _cost = 10000;
-    private static int[] _earn = {100,150,200};
+    private static int[] _earn = {20,30,50};
     private static string _titre = "Piscine";
     private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;

@@ -6,8 +6,8 @@ public class FermeNode : Node2D
 {
     private Timer _fermeTimer;
     private static int _bloc = Ref_donnees.ferme;
-    private static int _cost = 10000;
-    private static int[] _earn = {100,150,200};
+    private static int _cost = 3000;
+    private static int[] _earn = {2,5,8};
     private static string _titre = "ferme";
     private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;

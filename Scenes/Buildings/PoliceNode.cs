@@ -6,8 +6,8 @@ public class PoliceNode : Node2D
 {
     private Timer _policeTimer;
     private static int _bloc = Ref_donnees.police;
-    private static int _cost = 10000;
-    private static int[] _earn = {100,150,200};
+    private static int _cost = 1000;
+    private static int[] _earn = {1,2,5};
     private static string _titre = "Police";
     private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;

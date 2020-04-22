@@ -6,8 +6,8 @@ public class Restaurant2Node : Node2D
 {
    private Timer _restaurant2Timer;
        private static int _bloc = Ref_donnees.restaurant2;
-       private static int _cost = 10000;
-       private static int[] _earn = {100,150,200};
+       private static int _cost = 5000;
+       private static int[] _earn = {10,15,20};
        private static string _titre = "Restaurant2";
        private static readonly int[] upgrade_cost = {15000, 20000};
        private static int lvl = 0;
