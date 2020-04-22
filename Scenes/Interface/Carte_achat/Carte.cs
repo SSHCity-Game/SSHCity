@@ -34,6 +34,9 @@ public class Carte : Panel
     {
         _buttonAchat = (Button) GetNode(_str_button_achat);
         _buttonAchat.Connect("pressed", this, nameof(ButtonAchatPressed));
+        _buttonAchat.Connect("mouse_entered", this, nameof(ButtonOver));
+        _buttonAchat.Connect("mouse_exited", this, nameof(ButtonExited));
+
         _titre = (Label) GetNode(_str_titre);
         _sprite = (Sprite) GetNode(_str_sprite);
         _prix = (Label) GetNode(_str_prix);
@@ -62,7 +65,12 @@ public class Carte : Panel
         _gain.Text = Convert.ToString(gain);
     }
 
-    public void ImageSprite(string chemin)
+    public void ButtonOver()
+    {
+        
+    }
+
+    public void ButtonExited()
     {
         
     }

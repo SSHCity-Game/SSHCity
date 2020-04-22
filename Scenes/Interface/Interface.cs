@@ -4,6 +4,7 @@ using SshCity.Scenes.Plan;
 
 public class Interface : CanvasLayer
 {
+    private Sprite _croixJaune;
     private Panel _money_couleur;
     private Label _money_text;
     private Button _button_shop;
@@ -16,6 +17,13 @@ public class Interface : CanvasLayer
     public Sprite _croix;
     private bool _delete = false;
     private static bool _interdit = false;
+    private static bool _interdiMoney = false;
+
+    public static bool InterdiMoney
+    {
+        get => _interdiMoney;
+        set => _interdiMoney = value;
+    }
     private Panel _xp_couleur;
     private Label _xp_text;
 
@@ -55,9 +63,11 @@ public class Interface : CanvasLayer
     private const string _str_buttonDelete = "ButtonDelete";
     private const string _str_sonouverture = ("ButtonShop/Ouverture");
     private const string _str_bulldozerMouse = "BulldozerMouse";
-    private const string _str_croix = "Croix";
+    private const string _str_croix = "CroixRouge";
+    private const string _str_croixJaune = "CroixJaune";
     private const string _str_xp_couleur = "XpColor";
     private const string _str_xp_text = "XpColor/XpText";
+
     
     public override void _Ready()
     {
@@ -72,7 +82,11 @@ public class Interface : CanvasLayer
         _bulldozerMouse = (Sprite) GetNode(_str_bulldozerMouse);
         _bulldozerMouse.Hide();
         _croix = (Sprite) GetNode(_str_croix);
+        _croixJaune = (Sprite) GetNode(_str_croixJaune);
+
         _croix.Hide();
+        _croixJaune.Hide();
+        
         _ouvertureboutique = (AudioStreamPlayer) GetNode(_str_sonouverture);
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
         _buttonDelete.Connect("pressed", this, nameof(ButtonDeletePressed));
@@ -111,6 +125,17 @@ public class Interface : CanvasLayer
         else
         {
             _croix.Hide();
+        }
+        
+        if (_interdiMoney)
+        {
+            _croixJaune.Show();
+            Vector2 mousePosition = GetViewport().GetMousePosition();
+            _croixJaune.Position = new Vector2(mousePosition.x, mousePosition.y);
+        }
+        else
+        {
+            _croixJaune.Hide();
         }
     }
     

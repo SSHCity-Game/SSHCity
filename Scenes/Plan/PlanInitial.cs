@@ -169,18 +169,16 @@ public class PlanInitial : Node2D
 
     public void AjoutNode(int batiment)
     {
-<<<<<<< HEAD
-        Interface.Money -= _prix;
-        if (batiment == MaisonNode.Bloc)
-=======
+
         if (Interface.Money-_prix >=0 )
         {
             Interface.Money -= _prix;
         }
 
-        else if (batiment == MaisonNode.Bloc)
->>>>>>> c94c9db50798392db3fa0c0c59097fea0a4dced2
-        {
+        if (batiment == MaisonNode.Bloc)
+	{
+
+
             MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
             AddChild(maison1);
         }
@@ -336,12 +334,12 @@ public class PlanInitial : Node2D
         if ((_achat || _achatRoute) && Interface.Money - _prix < 0)
         {
             _NotEnoughtMoney = true; ;
-            Interface.Interdit = true;
+            Interface.InterdiMoney = true;
         }
         else
         {
             _NotEnoughtMoney = false;
-            Interface.Interdit = false;
+            Interface.InterdiMoney = false;
         }
 
         if (_pressed)
