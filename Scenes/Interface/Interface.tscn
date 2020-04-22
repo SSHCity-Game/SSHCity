@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Interface/Interface.cs" type="Script" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -7,10 +7,10 @@
 [ext_resource path="res://Scenes/Interface/Boutique.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/route_bis_right.png" type="Texture" id=6]
 [ext_resource path="res://assets/Images_interface/bulldozer.png" type="Texture" id=7]
-
 [ext_resource path="res://Scenes/Interface/DeleteVerif.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Son/ouverture boutiue.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/Images_interface/croix.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Interface/GUI.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -150,3 +150,9 @@ texture = ExtResource( 7 )
 position = Vector2( 35.8844, 29.9632 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 10 )
+
+[node name="GUI" parent="." instance=ExtResource( 11 )]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = -545.0
+margin_bottom = 68.0
