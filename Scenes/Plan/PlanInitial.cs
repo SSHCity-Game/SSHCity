@@ -176,9 +176,7 @@ public class PlanInitial : Node2D
         }
 
         if (batiment == MaisonNode.Bloc)
-	{
-
-
+	    {
             MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
             AddChild(maison1);
         }

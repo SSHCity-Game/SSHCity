@@ -154,4 +154,10 @@ public class MainPlan : Node2D
         _musique = (AudioStreamPlayer) GetNode(_str_music);
         _musique.Play();
     }
+
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+        Incident.GenereIncidents(_planInitial);
+    }
 }
