@@ -17,6 +17,7 @@ public class Interface : CanvasLayer
     public Sprite _croix;
     private bool _delete = false;
     private static bool _interdit = false;
+<<<<<<< HEAD
     private static bool _interdiMoney = false;
 
     public static bool InterdiMoney
@@ -24,8 +25,10 @@ public class Interface : CanvasLayer
         get => _interdiMoney;
         set => _interdiMoney = value;
     }
+=======
     private Panel _xp_couleur;
     private Label _xp_text;
+>>>>>>> bf872b25b4e2b542248ab93887bb4e5e3b9b350e
 
     public static bool Interdit
     {
@@ -63,11 +66,15 @@ public class Interface : CanvasLayer
     private const string _str_buttonDelete = "ButtonDelete";
     private const string _str_sonouverture = ("ButtonShop/Ouverture");
     private const string _str_bulldozerMouse = "BulldozerMouse";
+<<<<<<< HEAD
     private const string _str_croix = "CroixRouge";
     private const string _str_croixJaune = "CroixJaune";
+
+=======
+    private const string _str_croix = "Croix";
     private const string _str_xp_couleur = "XpColor";
     private const string _str_xp_text = "XpColor/XpText";
-
+>>>>>>> bf872b25b4e2b542248ab93887bb4e5e3b9b350e
     
     public override void _Ready()
     {

@@ -8,8 +8,6 @@ public class PlanInitial : Node2D
     public static Vector2 PositionTile = new Vector2(0,0);
     public TileMap TileMap1;
     public TileMap TileMap2;
-    public TileMap TileMap3;
-    public TileMap TileMap4;
     private PackedScene _maisonNodeScene;
     private PackedScene _caserNodeScene;
     private PackedScene _immeubleNodeScene;
@@ -32,8 +30,6 @@ public class PlanInitial : Node2D
 
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
-    public string str_TileMap3 = "TileMap3";
-    public string str_TileMap4 = "TileMap4";
 
     private Vector2 _lastTile = new Vector2(0, 0);
     private static int _batiment;
@@ -43,7 +39,9 @@ public class PlanInitial : Node2D
     private static bool _pressed = false;
     private static bool _delete = false;
     private static bool _deleteSure = false;
+    private static bool _NotEnoughtMoney = false;
     private static Vector2 _tileSupressing;
+    private static int _nbr_Node;
 
     public static bool DeleteSure
     {
@@ -79,8 +77,6 @@ public class PlanInitial : Node2D
     { 
         TileMap1 = (TileMap) GetNode(str_TileMap1);
         TileMap2 = (TileMap) GetNode(str_TileMap2);
-        TileMap3 = (TileMap) GetNode(str_TileMap3);
-        TileMap4 = (TileMap) GetNode(str_TileMap4);
 
         _maisonNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/MaisonNode.tscn");
         _caserNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/CaserneNode.tscn");
@@ -143,7 +139,9 @@ public class PlanInitial : Node2D
     public bool AlreadySomethingHere(Vector2 tile)
     {
         return GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.route
-            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.montagne_sol;
+            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.montagne_sol
+            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.sable
+            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.eau;
     }
 
     public static void AchatRoute(bool start)
@@ -166,13 +164,14 @@ public class PlanInitial : Node2D
 
     public void AjoutNode(int batiment)
     {
+
         if (Interface.Money-_prix >=0 )
         {
             Interface.Money -= _prix;
         }
 
-        else if (batiment == MaisonNode.Bloc)
-        {
+        if (batiment == MaisonNode.Bloc)
+	    {
             MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
             AddChild(maison1);
         }
@@ -267,7 +266,8 @@ public class PlanInitial : Node2D
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
-        if (OneAction is InputEventMouse && (_achat ||_achatRoute))
+        _nbr_Node = GetChildCount();
+        if (OneAction is InputEventMouse && (_achat ||_achatRoute) && !_NotEnoughtMoney)
         {
 
             Vector2 tile = GetTilePosition();
@@ -296,7 +296,7 @@ public class PlanInitial : Node2D
  
         }
 
-        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute))
+        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute)&& !_NotEnoughtMoney)
         {
             _achat = false;
             _lastTile = new Vector2(0,0);
@@ -312,6 +312,11 @@ public class PlanInitial : Node2D
                     {
                         Routes.ChangeRoute(tile, this);
                     }
+                    else
+                    {
+                        MainPlan.ListeNode.Add((tile, _nbr_Node));
+                        GD.Print(MainPlan.ListeNode[_nbr_Node-1]);
+                    }
                     MainPlan.ListeBatiment.Add((tile, _batiment));
                     AjoutNode(_batiment);
                 }
@@ -325,33 +330,15 @@ public class PlanInitial : Node2D
                 //ERROR
             }
         }
-        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute))
+        if ((_achat || _achatRoute) && Interface.Money - _prix < 0)
         {
-            _achat = false;
-            _lastTile = new Vector2(0,0);
-            Vector2 tile = GetTilePosition();
-            GD.Print(GetBlock(TileMap2, (int)tile.x, (int)tile.y));
-            if (GetBlock(TileMap2, (int)tile.x, (int)tile.y) == _batiment)
-            {
-                if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
-                {
-                    SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.route);
-                    if (_achatRoute)
-                    {
-                        Routes.ChangeRoute(tile, this);
-                    }
-                    MainPlan.ListeBatiment.Add((tile, _batiment));
-                    AjoutNode(_batiment);
-                }
-                else
-                {
-                    //MESSAGE ERREUR
-                }
-            }
-            else
-            {
-                //MESSAGE ERREUR
-            }
+            _NotEnoughtMoney = true; ;
+            Interface.InterdiMoney = true;
+        }
+        else
+        {
+            _NotEnoughtMoney = false;
+            Interface.InterdiMoney = false;
         }
 
         if (_pressed)
@@ -377,6 +364,10 @@ public class PlanInitial : Node2D
             SetBlock(TileMap2, (int)_tileSupressing.x, (int)_tileSupressing.y, -1);
             SetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1, Ref_donnees.terre);
             Routes.ChangeRoute(_tileSupressing, this);
+            if (!Routes.IsRoute(bloc))
+            {
+                SshCity.Scenes.Plan.Delete.DeleteNode(this, _tileSupressing);
+            }
             _delete = false;
             MainPlan.ListeBatiment.Remove((_tileSupressing, bloc));
             DeleteSure = false;

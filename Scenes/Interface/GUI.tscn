@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Barre_Niveau/lifebar_fill.png" type="Texture" id=2]
+[ext_resource path="res://assets/Barre_Niveau/lifebar_bg.png" type="Texture" id=3]
+[ext_resource path="res://assets/Barre_Niveau/star.png" type="Texture" id=4]
+[ext_resource path="res://assets/Barre_Niveau/label_HP_bg.png" type="Texture" id=5]
+
+[node name="GUI" type="MarginContainer"]
+anchor_right = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_bottom = 103.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 974.0
+margin_bottom = 53.0
+
+[node name="Bars" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 460.0
+margin_bottom = 53.0
+
+[node name="LifeBar" type="HBoxContainer" parent="HBoxContainer/Bars"]
+margin_right = 460.0
+margin_bottom = 53.0
+
+[node name="Count" type="MarginContainer" parent="HBoxContainer/Bars/LifeBar"]
+margin_right = 60.0
+margin_bottom = 53.0
+
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bars/LifeBar/Count"]
+margin_right = 60.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 60, 40 )
+texture = ExtResource( 5 )
+
+[node name="Title" type="TextureRect" parent="HBoxContainer/Bars/LifeBar/Count/Background"]
+margin_left = 8.27258
+margin_top = 4.04865
+margin_right = 908.273
+margin_bottom = 904.049
+rect_scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 4 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gauge" type="TextureProgress" parent="HBoxContainer/Bars/LifeBar"]
+margin_left = 64.0
+margin_right = 460.0
+margin_bottom = 53.0
+value = 50.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+
+[node name="Counters" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 464.0
+margin_right = 464.0
+margin_bottom = 53.0
