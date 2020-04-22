@@ -5,8 +5,6 @@
 [ext_resource path="res://Scenes/Interface/Interface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Son/musique de fond.wav" type="AudioStream" id=4]
 
-
-
 [node name="MainPlan" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -27,4 +25,3 @@ limit_bottom = 1649
 stream = ExtResource( 4 )
 volume_db = -29.575
 autoplay = true
-
