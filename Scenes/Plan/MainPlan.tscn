@@ -3,9 +3,9 @@
 [ext_resource path="res://Scenes/Plan/MainPlan.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Plan/PlanInitial.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Interface/Interface.tscn" type="PackedScene" id=3]
-<<<<<<< HEAD
 [ext_resource path="res://Son/musique de fond.wav" type="AudioStream" id=4]
->>>>>>> f779ef71934fa4af454c0cd0bed03f86505f489d
+
+
 
 [node name="MainPlan" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,9 +23,8 @@ limit_bottom = 1649
 
 [node name="Interface" parent="Camera2D" instance=ExtResource( 3 )]
 
-<<<<<<< HEAD
 [node name="Musique" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -29.575
 autoplay = true
->>>>>>> f779ef71934fa4af454c0cd0bed03f86505f489d
+
