@@ -93,5 +93,9 @@ namespace SshCity.Scenes.Plan
         public static float zoom_in_max = (float)0.5;
         public static float zoom_out_max = (float) 2.5;
         public static float zoom_coef = (float) 0.25;
+        
+        //argent
+
+        public static int argent = 0;
     }
 }
