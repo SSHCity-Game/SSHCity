@@ -16,6 +16,7 @@ public class MainPlan : Node2D
     public static float zoom = (float)1.25;
     public static Vector2 cameraPosition = new Vector2(1250, 810);
     private static List<(Vector2, int)> _listeBatiment = new List<(Vector2, int)>();
+    private static List<(Vector2, int)> _listeNode = new List<(Vector2, int)>();
     private AudioStreamPlayer _musique;
     private const string _str_music = "Musique";
 
@@ -23,6 +24,12 @@ public class MainPlan : Node2D
     {
         get => _listeBatiment;
         set => _listeBatiment = value;
+    }
+
+    public static List<(Vector2, int)> ListeNode
+    {
+        get => _listeNode;
+        set => _listeNode = value;
     }
 
     public override void _Input(InputEvent OneEvent)
