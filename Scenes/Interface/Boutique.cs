@@ -101,6 +101,8 @@ public class Boutique : CanvasLayer
         if (open)
         {
             _background.Show();
+            _menuSante.OpenMenuSante();
+            _button_sante.Pressed = true;
         }
         else
         {
@@ -115,6 +117,7 @@ public class Boutique : CanvasLayer
             _button_habitation.Pressed = false;
             _button_sante.Pressed = false;
             _button_speciaux.Pressed = false;
+            Menu_Achat.Reset1 = true;
             Interface.Hide = false;
         }
     }
