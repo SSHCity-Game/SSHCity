@@ -154,10 +154,5 @@ public class Interface : CanvasLayer
         _bulldozerMouse.Show();
     }
 
-    public void Level()
-    {
-        
-    }
-    
 }
 
