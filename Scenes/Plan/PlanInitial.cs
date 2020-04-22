@@ -331,12 +331,12 @@ public class PlanInitial : Node2D
         if ((_achat || _achatRoute) && Interface.Money - _prix < 0)
         {
             _NotEnoughtMoney = true; ;
-            Interface.Interdit = true;
+            Interface.InterdiMoney = true;
         }
         else
         {
             _NotEnoughtMoney = false;
-            Interface.Interdit = false;
+            Interface.InterdiMoney = false;
         }
 
         if (_pressed)
