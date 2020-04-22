@@ -157,3 +157,14 @@ margin_left = 15.0
 margin_top = 15.0
 margin_right = -545.0
 margin_bottom = 68.0
+
+[node name="XpColor" type="Panel" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XpText" type="Label" parent="XpColor"]
+margin_right = 40.0
+margin_bottom = 14.0

@@ -167,7 +167,6 @@ public class PlanInitial : Node2D
     public void AjoutNode(int batiment)
     {
         Interface.Money -= _prix;
-
         if (batiment == MaisonNode.Bloc)
         {
             MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();

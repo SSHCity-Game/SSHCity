@@ -11,6 +11,7 @@ public class McAllyNode : Node2D
     private static string _titre = "McAlly";
     private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;
+    private static readonly int[] gain_xp = {10, 100, 500};
 
     public static int Bloc
     {
@@ -30,6 +31,7 @@ public class McAllyNode : Node2D
         _mcAllyTimer = (Timer) GetNode(_str_mcAlly_timer);
         _mcAllyTimer.Start();
         _mcAllyTimer.Connect("timeout", this, nameof(TimeOut));
+        Interface.Xp += gain_xp[lvl];
     }
 
     public void TimeOut()
@@ -44,6 +46,7 @@ public class McAllyNode : Node2D
             lvl += 1;
             Interface.Money -= upgrade_cost[lvl - 1];
             Bloc += 1;
+            Interface.Xp += gain_xp[lvl - 1];
         }
     }    
 }
