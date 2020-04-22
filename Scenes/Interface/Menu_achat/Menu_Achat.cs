@@ -8,8 +8,15 @@ public class Menu_Achat : Panel
     private Carte[][] _menus;
     private Label _Page;
     
-    private int _whichMenu = 0;
+    private static int _whichMenu = 0;
     private static bool _achat = false;
+    private static bool _reset = false;
+
+    public static bool Reset1
+    {
+        get => _reset;
+        set => _reset = value;
+    }
 
     public Carte[][] Menus
     {
@@ -33,6 +40,12 @@ public class Menu_Achat : Panel
         base._Process(delta);
         _pageText = _whichMenu+1 + "/" + _menus.Length;
         _Page.Text = _pageText;
+
+        if (_reset)
+        {
+            Reset();
+            _reset = false;
+        }
     }
 
     public override void _Ready()
@@ -75,6 +88,20 @@ public class Menu_Achat : Panel
             }
         }
     }
+
+    public void Reset()
+    {
+        foreach (var carte in _menus[_whichMenu])
+        {
+            carte.Hide();
+        }
+        _whichMenu = 0;
+
+        foreach (var carte in _menus[_whichMenu])
+        {
+            carte.Show();
+        }
+    }
     
     public void AchatBatiment(int bloc, int prix)
     {
@@ -85,6 +112,7 @@ public class Menu_Achat : Panel
         }
         else
         {
+            Interface.Hide = true;
             EmitSignal("CloseShop");
             PlanInitial.Achat = true;
             PlanInitial.Batiment = bloc;

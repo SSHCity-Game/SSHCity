@@ -6,11 +6,12 @@ public class PoliceNode : Node2D
 {
     private Timer _policeTimer;
     private static int _bloc = Ref_donnees.police;
-    private static int _cost = 10000;
-    private static int[] _earn = {100,150,200};
+    private static int _cost = 1000;
+    private static int[] _earn = {1,2,5};
     private static string _titre = "Police";
     private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;
+    private static readonly int[] gain_xp = {10, 100, 500};
 
     public static int Bloc
     {
@@ -30,6 +31,7 @@ public class PoliceNode : Node2D
         _policeTimer = (Timer) GetNode(_str_police_timer);
         _policeTimer.Start();
         _policeTimer.Connect("timeout", this, nameof(TimeOut));
+        Interface.Xp += gain_xp[lvl];
     }
 
     public void TimeOut()
@@ -44,6 +46,7 @@ public class PoliceNode : Node2D
             lvl += 1;
             Interface.Money -= upgrade_cost[lvl - 1];
             Bloc += 1;
+            Interface.Xp += gain_xp[lvl - 1];
         }
     }    
 }

@@ -6,11 +6,12 @@ public class ImmeubleVertNode : Node2D
 {
     private Timer _immeublevertTimer;
     private static int _bloc = Ref_donnees.immeuble_vert;
-    private static int _cost = 10000;
-    private static int[] _earn = {100,150,200};
+    private static int _cost = 4000;
+    private static int[] _earn = {4,6,8};
     private static string _titre = "Immeublevert";
     private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;
+    private static readonly int[] gain_xp = {10, 100, 500};
 
     public static int Bloc
     {
@@ -30,6 +31,7 @@ public class ImmeubleVertNode : Node2D
         _immeublevertTimer = (Timer) GetNode(_str_immeublevert_timer);
         _immeublevertTimer.Start();
         _immeublevertTimer.Connect("timeout", this, nameof(TimeOut));
+        Interface.Xp += gain_xp[lvl];
     }
 
     public void TimeOut()
@@ -44,6 +46,7 @@ public class ImmeubleVertNode : Node2D
             lvl += 1;
             Interface.Money -= upgrade_cost[lvl - 1];
             Bloc += 1;
+            Interface.Xp += gain_xp[lvl - 1];
         }
     }    
 }

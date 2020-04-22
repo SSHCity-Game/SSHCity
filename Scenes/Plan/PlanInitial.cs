@@ -43,6 +43,7 @@ public class PlanInitial : Node2D
     private static bool _pressed = false;
     private static bool _delete = false;
     private static bool _deleteSure = false;
+    private static bool _NotEnoughtMoney = false;
     private static Vector2 _tileSupressing;
 
     public static bool DeleteSure
@@ -143,7 +144,9 @@ public class PlanInitial : Node2D
     public bool AlreadySomethingHere(Vector2 tile)
     {
         return GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.route
-            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.montagne_sol;
+            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.montagne_sol
+            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.sable
+            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.eau;
     }
 
     public static void AchatRoute(bool start)
@@ -151,7 +154,7 @@ public class PlanInitial : Node2D
         if (start)
         {
             _batiment = Ref_donnees.route_left;
-            _prix = 500;
+            _prix = 50;
             _achatRoute = true;
         }
         else
@@ -166,10 +169,16 @@ public class PlanInitial : Node2D
 
     public void AjoutNode(int batiment)
     {
-        Interface.Money -= _prix;
+
+        if (Interface.Money-_prix >=0 )
+        {
+            Interface.Money -= _prix;
+        }
 
         if (batiment == MaisonNode.Bloc)
-        {
+	{
+
+
             MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
             AddChild(maison1);
         }
@@ -264,7 +273,7 @@ public class PlanInitial : Node2D
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
-        if (OneAction is InputEventMouse && (_achat ||_achatRoute))
+        if (OneAction is InputEventMouse && (_achat ||_achatRoute) && !_NotEnoughtMoney)
         {
 
             Vector2 tile = GetTilePosition();
@@ -293,7 +302,7 @@ public class PlanInitial : Node2D
  
         }
 
-        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute))
+        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute)&& !_NotEnoughtMoney)
         {
             _achat = false;
             _lastTile = new Vector2(0,0);
@@ -322,33 +331,15 @@ public class PlanInitial : Node2D
                 //ERROR
             }
         }
-        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute))
+        if ((_achat || _achatRoute) && Interface.Money - _prix < 0)
         {
-            _achat = false;
-            _lastTile = new Vector2(0,0);
-            Vector2 tile = GetTilePosition();
-            GD.Print(GetBlock(TileMap2, (int)tile.x, (int)tile.y));
-            if (GetBlock(TileMap2, (int)tile.x, (int)tile.y) == _batiment)
-            {
-                if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
-                {
-                    SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.route);
-                    if (_achatRoute)
-                    {
-                        Routes.ChangeRoute(tile, this);
-                    }
-                    MainPlan.ListeBatiment.Add((tile, _batiment));
-                    AjoutNode(_batiment);
-                }
-                else
-                {
-                    //MESSAGE ERREUR
-                }
-            }
-            else
-            {
-                //MESSAGE ERREUR
-            }
+            _NotEnoughtMoney = true; ;
+            Interface.InterdiMoney = true;
+        }
+        else
+        {
+            _NotEnoughtMoney = false;
+            Interface.InterdiMoney = false;
         }
 
         if (_pressed)
