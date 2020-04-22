@@ -320,8 +320,7 @@ public class PlanInitial : Node2D
                     }
                     else
                     {
-                        MainPlan.ListeNode.Add((tile, _nbr_Node));
-                        GD.Print(MainPlan.ListeNode[_nbr_Node-1]);
+                        MainPlan.ListeNode.Add((tile, _nbr_Node)); 
                     }
                     MainPlan.ListeBatiment.Add((tile, _batiment));
                     AjoutNode(_batiment);
