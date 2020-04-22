@@ -23,12 +23,12 @@ public class Interface : CanvasLayer
     }
 
     private static int _money = 50000;
-    private static bool hide = true;
+    private static bool _hide = true;
 
     public static bool Hide
     {
-        get => hide;
-        set => hide = value;
+        get => _hide;
+        set => _hide = value;
     }
 
     public static int Money
@@ -117,13 +117,17 @@ public class Interface : CanvasLayer
         //Ferme Achat Route
         _achatRoute = false;
         PlanInitial.AchatRoute(_achatRoute);
+
+        _delete = false;
+        PlanInitial.Delete = _delete;
+        DeleteVerif.Verif = false;
         
-        _shop.ViewShop(hide);
-        if (hide)
+        _shop.ViewShop(_hide);
+        if (_hide)
         {
             _ouvertureboutique.Play();
         }
-        hide = !hide;
+        _hide = !_hide;
         
     }
     
@@ -131,12 +135,25 @@ public class Interface : CanvasLayer
     {
         _achatRoute = !_achatRoute;
         PlanInitial.AchatRoute(_achatRoute);
+        
+        _delete = false;
+        PlanInitial.Delete = _delete;
+        DeleteVerif.Verif = false;
+        
+        _hide = false;
+        _shop.ViewShop(_hide);
     }
     public void ButtonRouteOver()
     {
         if (_achatRoute)
         {
             PlanInitial.AchatRoute(false);
+        }
+
+        if (_delete)
+        {
+            PlanInitial.Delete = false;
+            _bulldozerMouse.Hide();
         }
     }
     public void ButtonRouteExited()
@@ -145,6 +162,31 @@ public class Interface : CanvasLayer
         {
             PlanInitial.AchatRoute(true);
         }
+        if (_delete)
+        {
+            PlanInitial.Delete = true;
+            _bulldozerMouse.Show();
+        }
+    }
+
+    public void ButtonShopOver()
+    {
+        
+    }
+
+    public void ButtonShopExited()
+    {
+        
+    }
+
+    public void ButtonDeleteOver()
+    {
+        
+    }
+
+    public void ButtonDeleteExited()
+    {
+        
     }
 
     public void ButtonDeletePressed()
