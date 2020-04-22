@@ -152,6 +152,7 @@ scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 10 )
 
 [node name="GUI" parent="." instance=ExtResource( 11 )]
+visible = false
 margin_left = 15.0
 margin_top = 15.0
 margin_right = -545.0

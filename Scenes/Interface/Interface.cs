@@ -61,12 +61,16 @@ public class Interface : CanvasLayer
         _croix.Hide();
         _ouvertureboutique = (AudioStreamPlayer) GetNode(_str_sonouverture);
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
-        _button_shop.Connect("mouse_entered", this, nameof(ButtonRouteOver));
-        _button_shop.Connect("mouse_exited", this, nameof(ButtonRouteExited));
-        _buttonRoute.Connect("mouse_entered", this, nameof(ButtonRouteOver));
-        _buttonRoute.Connect("mouse_exited", this, nameof(ButtonRouteExited));
-        _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
         _buttonDelete.Connect("pressed", this, nameof(ButtonDeletePressed));
+        _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
+
+        _button_shop.Connect("mouse_entered", this, nameof(ButtonOver));
+        _buttonDelete.Connect("mouse_entered", this, nameof(ButtonOver));
+        _buttonRoute.Connect("mouse_entered", this, nameof(ButtonOver));
+
+        _button_shop.Connect("mouse_exited", this, nameof(ButtonExited));
+        _buttonRoute.Connect("mouse_exited", this, nameof(ButtonExited));
+        _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
     }
 
     public override void _Process(float delta)
@@ -143,7 +147,22 @@ public class Interface : CanvasLayer
         _hide = false;
         _shop.ViewShop(_hide);
     }
-    public void ButtonRouteOver()
+    
+    public void ButtonDeletePressed()
+    {
+        _hide = false;
+        _shop.ViewShop(_hide);
+        
+        _interdit = false;
+        _achatRoute = false;
+        PlanInitial.AchatRoute(_achatRoute);
+        
+        _delete = !_delete;
+        PlanInitial.Delete = _delete;
+        _bulldozerMouse.Show();
+    }
+    
+    public void ButtonOver()
     {
         if (_achatRoute)
         {
@@ -156,7 +175,8 @@ public class Interface : CanvasLayer
             _bulldozerMouse.Hide();
         }
     }
-    public void ButtonRouteExited()
+
+    public void ButtonExited()
     {
         if (_achatRoute)
         {
@@ -169,32 +189,8 @@ public class Interface : CanvasLayer
         }
     }
 
-    public void ButtonShopOver()
-    {
-        
-    }
 
-    public void ButtonShopExited()
-    {
-        
-    }
 
-    public void ButtonDeleteOver()
-    {
-        
-    }
-
-    public void ButtonDeleteExited()
-    {
-        
-    }
-
-    public void ButtonDeletePressed()
-    {
-        _delete = !_delete;
-        PlanInitial.Delete = _delete;
-        _bulldozerMouse.Show();
-    }
 
 }
 
