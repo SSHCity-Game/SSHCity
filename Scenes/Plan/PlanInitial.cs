@@ -322,33 +322,9 @@ public class PlanInitial : Node2D
                 //ERROR
             }
         }
-        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute))
+        else if ((_achat || _achatRoute) && Interface.Money- _prix < 0)
         {
-            _achat = false;
-            _lastTile = new Vector2(0,0);
-            Vector2 tile = GetTilePosition();
-            GD.Print(GetBlock(TileMap2, (int)tile.x, (int)tile.y));
-            if (GetBlock(TileMap2, (int)tile.x, (int)tile.y) == _batiment)
-            {
-                if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
-                {
-                    SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.route);
-                    if (_achatRoute)
-                    {
-                        Routes.ChangeRoute(tile, this);
-                    }
-                    MainPlan.ListeBatiment.Add((tile, _batiment));
-                    AjoutNode(_batiment);
-                }
-                else
-                {
-                    //MESSAGE ERREUR
-                }
-            }
-            else
-            {
-                //MESSAGE ERREUR
-            }
+            Interface.Interdit = true;
         }
 
         if (_pressed)
