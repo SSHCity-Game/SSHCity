@@ -6,7 +6,7 @@ public class HospitalNode : Node2D
     private Timer _hospitalTimer;
     private static int _bloc = 15;
     private static int _cost = 10000;
-    private static int[] _earn = {120,170,250};
+    private static int[] _earn = {15,30,50};
     private static string _titre = "Hôpital";
     private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;

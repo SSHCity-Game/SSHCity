@@ -151,7 +151,7 @@ public class PlanInitial : Node2D
         if (start)
         {
             _batiment = Ref_donnees.route_left;
-            _prix = 500;
+            _prix = 50;
             _achatRoute = true;
         }
         else
@@ -166,9 +166,12 @@ public class PlanInitial : Node2D
 
     public void AjoutNode(int batiment)
     {
-        Interface.Money -= _prix;
+        if (Interface.Money-_prix >=0 )
+        {
+            Interface.Money -= _prix;
+        }
 
-        if (batiment == MaisonNode.Bloc)
+        else if (batiment == MaisonNode.Bloc)
         {
             MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
             AddChild(maison1);

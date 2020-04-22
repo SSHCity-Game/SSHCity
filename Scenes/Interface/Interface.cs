@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using SshCity.Scenes.Plan;
 
 public class Interface : CanvasLayer
 {
@@ -22,8 +23,8 @@ public class Interface : CanvasLayer
         set => _interdit = value;
     }
 
-    private static int _money = 50000;
-    private static bool _hide = true;
+    private static int _money = Ref_donnees.argent;
+    private static bool hide = true;
 
     public static bool Hide
     {

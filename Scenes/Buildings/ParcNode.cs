@@ -6,8 +6,8 @@ public class ParcNode : Node2D
 {
     private Timer _parcTimer;
     private static int _bloc = Ref_donnees.parc_enfant;
-    private static int _cost = 10000;
-    private static int[] _earn = {100,150,200};
+    private static int _cost = 100;
+    private static int[] _earn = {1,1,1};
     private static string _titre = "Parc";
     private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;

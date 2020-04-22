@@ -7,7 +7,7 @@ public class MaisonNode : Node2D
     private Timer _maisonTimer;
     private static int _bloc = 11;
     private static int _cost = 1000;
-    private static int[] _earn = {10,15,20};
+    private static int[] _earn = {1,2,5};
     private static string _titre = "Maison";
     private static readonly int[] upgrade_cost = {1500, 2000};
     private static int lvl = 0;
