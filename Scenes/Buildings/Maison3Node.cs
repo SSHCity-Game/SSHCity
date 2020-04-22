@@ -11,6 +11,7 @@ public class Maison3Node : Node2D
     private static string _titre = "Maison3";
     private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;
+    private static readonly int[] gain_xp = {10, 100, 500};
 
     public static int Bloc
     {
@@ -30,6 +31,7 @@ public class Maison3Node : Node2D
         _maison3Timer = (Timer) GetNode(_str_maison3_timer);
         _maison3Timer.Start();
         _maison3Timer.Connect("timeout", this, nameof(TimeOut));
+        Interface.Xp += gain_xp[lvl];
     }
 
     public void TimeOut()
@@ -44,6 +46,7 @@ public class Maison3Node : Node2D
             lvl += 1;
             Interface.Money -= upgrade_cost[lvl - 1];
             Bloc += 1;
+            Interface.Xp += gain_xp[lvl - 1];
         }
     }    
 }

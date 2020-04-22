@@ -24,6 +24,8 @@ public class Interface : CanvasLayer
         get => _interdiMoney;
         set => _interdiMoney = value;
     }
+    private Panel _xp_couleur;
+    private Label _xp_text;
 
     public static bool Interdit
     {
@@ -33,6 +35,7 @@ public class Interface : CanvasLayer
 
     private static int _money = Ref_donnees.argent;
     private static bool _hide = true;
+    private static int _xp = 0;
 
     public static bool Hide
     {
@@ -46,6 +49,12 @@ public class Interface : CanvasLayer
         set => _money = value;
     }
 
+    public static int Xp
+    {
+        get => _xp;
+        set => _xp = value;
+    }
+
     private const string _str_shop = "Boutique";
     private const string _str_button_shop = "ButtonShop";
     private const string _str_money_couleur = "MoneyColor";
@@ -56,12 +65,16 @@ public class Interface : CanvasLayer
     private const string _str_bulldozerMouse = "BulldozerMouse";
     private const string _str_croix = "CroixRouge";
     private const string _str_croixJaune = "CroixJaune";
+    private const string _str_xp_couleur = "XpColor";
+    private const string _str_xp_text = "XpColor/XpText";
 
     
     public override void _Ready()
     {
         _money_couleur = (Panel) GetNode(_str_money_couleur);
         _money_text = (Label) GetNode(_str_money_text);
+        _xp_couleur = (Panel) GetNode(_str_xp_couleur);
+        _xp_text = (Label) GetNode(_str_xp_text);
         _button_shop = (Button) GetNode(_str_button_shop);
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
         _buttonDelete = (Button) GetNode(_str_buttonDelete);
@@ -92,6 +105,7 @@ public class Interface : CanvasLayer
     {
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
+        _xp_text.Text = Convert.ToString(_xp);
         if (PlanInitial.Delete)
         {
             Vector2 mousePosition = GetViewport().GetMousePosition();

@@ -173,9 +173,8 @@ public class PlanInitial : Node2D
         {
             Interface.Money -= _prix;
         }
-
-        else if (batiment == MaisonNode.Bloc)
-        {
+        if (batiment == MaisonNode.Bloc)
+	{
             MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
             AddChild(maison1);
         }
