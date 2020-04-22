@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Interface/Interface.cs" type="Script" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -162,7 +162,6 @@ margin_top = 15.0
 margin_right = -545.0
 margin_bottom = 68.0
 
-
 [node name="CroixJaune" type="Sprite" parent="."]
 position = Vector2( 37.2393, 29.9906 )
 scale = Vector2( 0.07, 0.07 )
@@ -186,8 +185,6 @@ custom_colors/font_color_shadow = Color( 0.0235294, 0.00784314, 0.309804, 1 )
 text = "0"
 align = 1
 valign = 1
-percent_visible = -1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
