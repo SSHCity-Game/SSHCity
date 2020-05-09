@@ -20,6 +20,7 @@ public class MainPlan : Node2D
     private AudioStreamPlayer _musique;
     private const string _str_music = "Musique";
     
+
     public static List<(Vector2, int)> ListeBatiment
     {
         get => _listeBatiment;

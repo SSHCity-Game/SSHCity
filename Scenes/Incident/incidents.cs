@@ -16,10 +16,10 @@ public class Incident : PlanInitial
     }
 
     /* Permet l'utilisation des methodes non static dans methode static */
-     public static Incident Instance { get; } = new Incident();
+    private static Incident Instance { get; } = new Incident();
      
 
-     public static async void GenereIncidents(PlanInitial planInitial)
+    public static async void GenereIncidents(PlanInitial planInitial)
     {
         /******************************************
          * Genere differents incidents sur la map *
@@ -50,18 +50,17 @@ public class Incident : PlanInitial
             await Task.Delay(5000);
             BuildingOnFire(planInitial, indexAv, indexAp, x, y);
             await Task.Delay(1000); 
-            alertes.AlerteIncendie(pos);
+            menu_incident.AlerteIncendie(pos);
             //PutOutFire(planInitial, indexAv, indexAp, x, y);
         }
     }
-    
-    public static async void BuildingOnFire(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
+
+     private static void BuildingOnFire(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
     {
         /***************************************
          * Genere un incendie dans un batiment *
          ***************************************/
-
-        int alerte = Ref_donnees.alerte_incendie;
+        
        
         /* Initialise le bloc en x,y, s'il existe, comme batiment en feu */
         if (planInitial.GetBlock(planInitial.TileMap2, x, y) == indexAv)
