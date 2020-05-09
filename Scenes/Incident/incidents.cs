@@ -6,22 +6,20 @@ using SshCity.Scenes.Plan;
 
 public class Incident : PlanInitial
 {
-    private const int XpIncident = 90;
-    /*private static Button _buttonAlerte;
-    private const string _str_buttonAlerte = "ButtonAlerte";*/
-    
+    private const int XpIncident = 80;
+
     public override void _Ready()
     {
         TileMap1 = (TileMap) GetNode("TileMap1");
         TileMap2 = (TileMap) GetNode("TileMap2");
         TileMap3 = (TileMap) GetNode("TileMap3");
     }
-    
-    /* Permet l'utilisation des methodes non static dans methode static */
-     private static Incident Instance { get; } = new Incident();
 
-    
-    public static async void GenereIncidents(PlanInitial planInitial)
+    /* Permet l'utilisation des methodes non static dans methode static */
+     public static Incident Instance { get; } = new Incident();
+     
+
+     public static async void GenereIncidents(PlanInitial planInitial)
     {
         /******************************************
          * Genere differents incidents sur la map *
@@ -42,12 +40,17 @@ public class Incident : PlanInitial
         }
 
         int nbBloc = coordinates.Count;
-        (x, y) = coordinates[rand.Next(0, nbBloc)];
+        (x, y) = coordinates[rand.Next(0, nbBloc)]; // choisit la tuile aleatoirement
+        Vector2 pos;
+        pos.x = x;
+        pos.y = y;
 
         if (Interface.Xp >= XpIncident)
         {
             await Task.Delay(5000);
             BuildingOnFire(planInitial, indexAv, indexAp, x, y);
+            await Task.Delay(1000); 
+            alertes.AlerteIncendie(pos);
             //PutOutFire(planInitial, indexAv, indexAp, x, y);
         }
     }
@@ -62,11 +65,7 @@ public class Incident : PlanInitial
        
         /* Initialise le bloc en x,y, s'il existe, comme batiment en feu */
         if (planInitial.GetBlock(planInitial.TileMap2, x, y) == indexAv)
-        {
             planInitial.SetBlock(planInitial.TileMap2, x, y, indexAp);
-            await Task.Delay(1000);
-            planInitial.SetBlock(planInitial.TileMap3, x, y, alerte);
-        }
     }
 
     public static void PutOutFire(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
@@ -78,9 +77,7 @@ public class Incident : PlanInitial
         Vector2 mousePosition = Instance.GetViewport().GetMousePosition();
         (int xMouse, int yMouse) = ((int) mousePosition.x, (int) mousePosition.y);
         if (xMouse >= x - 10 && xMouse <= x + 10 && yMouse >= y - 10 && yMouse <= y + 10)
-        {
             planInitial.SetBlock(planInitial.TileMap2, x, y, indexAv);
-        }
     }
 }
 

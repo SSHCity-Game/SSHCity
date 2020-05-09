@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Incident/menu_incident.cs" type="Script" id=2]
+[ext_resource path="res://assets/Alerte_incidents/background.png" type="Texture" id=3]
+[ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 4 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.08484
+margin_top = -3.73686
+margin_right = 0.0849609
+margin_bottom = -6.73688
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -392.0
+margin_top = -216.5
+margin_right = 392.0
+margin_bottom = 216.5
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -275.5
+margin_top = -125.5
+margin_right = 275.5
+margin_bottom = 125.5
+custom_fonts/font = SubResource( 1 )
+text = "Pour eteindre l'incendie, dirigez vous vers la boutique afin d'acheter une caserne et le materiel adequate.
+Revenez ensuite et appuyez sur eteindre pour eteindre le feu"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = -0.0108696
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quitter" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -256.574
+margin_top = 100.321
+margin_right = -198.574
+margin_bottom = 120.321
+rect_scale = Vector2( 2, 2 )
+text = "Quitter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resoudre" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 80.3472
+margin_top = -147.0
+margin_right = 152.347
+margin_bottom = -127.0
+rect_scale = Vector2( 2, 2 )
+text = "Eteindre"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Boutique" type="Button" parent="."]
+margin_left = 300.0
+margin_top = 450.0
+margin_right = 370.0
+margin_bottom = 470.0
+rect_scale = Vector2( 2, 2 )
+text = "Boutique"
+__meta__ = {
+"_edit_use_anchors_": false
+}
