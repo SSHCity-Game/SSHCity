@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Plan/MainPlan.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Plan/PlanInitial.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Interface/Interface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Son/musique.wav" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/Incident/menu_incident.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Incident/alertes.tscn" type="PackedScene" id=6]
 
 [node name="MainPlan" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,7 +13,7 @@ script = ExtResource( 1 )
 [node name="PlanInitial" parent="." instance=ExtResource( 2 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1113.01, 786.027 )
+position = Vector2( 636.147, 380.049 )
 current = true
 zoom = Vector2( 1.25, 1.25 )
 limit_left = 0
@@ -21,7 +23,11 @@ limit_bottom = 1649
 
 [node name="Interface" parent="Camera2D" instance=ExtResource( 3 )]
 
+[node name="Control" parent="Camera2D" instance=ExtResource( 5 )]
+
 [node name="Musique" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -29.575
 autoplay = true
+
+[node name="Control" parent="." instance=ExtResource( 6 )]

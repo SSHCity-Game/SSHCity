@@ -73,9 +73,11 @@
     <Compile Include="Scenes\Buildings\ParcNode.cs" />
     <Compile Include="Scenes\Buildings\PiscineNode.cs" />
     <Compile Include="Scenes\Buildings\PoliceNode.cs" />
+    <Compile Include="Scenes\Incident\alertes.cs" />
     <Compile Include="Scenes\Incident\incidents.cs" />
     <Compile Include="Scenes\Buildings\Restaurant2Node.cs" />
     <Compile Include="Scenes\Buildings\RestaurantNode.cs" />
+    <Compile Include="Scenes\Incident\menu_incident.cs" />
     <Compile Include="Scenes\Interface\Boutique.cs" />
     <Compile Include="Scenes\Interface\Carte_achat\Carte.cs" />
     <Compile Include="Scenes\Interface\DeleteVerif.cs" />
