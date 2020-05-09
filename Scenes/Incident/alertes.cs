@@ -1,30 +1,21 @@
 using Godot;
 using System;
 
-public class alertes : Control
+public class alertes : Node
 {
-    
-    private static Button Flamme;
-    
+    // Declare member variables here. Examples:
+    // private int a = 2;
+    // private string b = "text";
+
+    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        Flamme = (Button) GetNode("Flamme");
-        Flamme.Connect("pressed", this, nameof(Resolution));
-        Flamme.Hide();
+        
     }
-    
-    public static void AlerteIncendie(Vector2 pos)
-    {
-        Flamme.SetPosition(pos);
-        Flamme.Show();
-    }
-    
-    
-    public void Resolution()
-    {
-        menu_incident.Background.Show();
-        menu_incident.Boutique.Show();
-        menu_incident.Resoudre.Show();
-        menu_incident.Quitter.Show();
-    }
+
+//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+//  public override void _Process(float delta)
+//  {
+//      
+//  }
 }

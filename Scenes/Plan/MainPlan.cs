@@ -19,6 +19,7 @@ public class MainPlan : Node2D
     private static List<(Vector2, int)> _listeNode = new List<(Vector2, int)>();
     private AudioStreamPlayer _musique;
     private const string _str_music = "Musique";
+    
 
     public static List<(Vector2, int)> ListeBatiment
     {
