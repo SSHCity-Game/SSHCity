@@ -109,6 +109,7 @@
     <Compile Include="Scenes\Interface\DeleteVerif.cs" />
     <Compile Include="Scenes\Interface\Infos.cs" />
     <Compile Include="Scenes\Interface\Interface.cs" />
+    <Compile Include="Scenes\Interface\MainMenu.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuBienEtre.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuEconomie.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuHabitation.cs" />
