@@ -22,9 +22,7 @@ limit_bottom = 1649
 
 [node name="Interface" parent="Camera2D" instance=ExtResource( 3 )]
 
-[node name="Control" parent="Camera2D" instance=ExtResource( 5 )]
-margin_right = 2.08484
-margin_bottom = -3.73688
+[node name="CanvasLayer" parent="Camera2D" instance=ExtResource( 5 )]
 
 [node name="Musique" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
