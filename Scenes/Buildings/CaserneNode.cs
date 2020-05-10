@@ -12,7 +12,8 @@ public class CaserneNode : Node2D
     private static readonly int[] upgrade_cost = {1500, 2000};
     private static int lvl = 0;
     private static readonly int[] gain_xp = {10, 100, 500};
-    
+    private static string _image = "res://assets/caserne.png";
+
     public static int Bloc
     {
         get => _bloc;
@@ -23,6 +24,7 @@ public class CaserneNode : Node2D
 
     public static int Cost => _cost;
 
+    public static string Image => _image;
     public static int Earn => _earn[lvl];
 
     private const string _str_caserne_timer = "Timer";

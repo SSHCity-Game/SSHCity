@@ -18,6 +18,15 @@ public class Interface : CanvasLayer
     private bool _delete = false;
     private static bool _interdit = false;
     private static bool _interdiMoney = false;
+    private static Infos _infos;
+
+    private static bool _infosBool = false;
+
+    public static bool InfosBool
+    {
+        get => _infosBool;
+        set => _infosBool = value;
+    }
 
     public static bool InterdiMoney
     {
@@ -67,6 +76,7 @@ public class Interface : CanvasLayer
     private const string _str_croixJaune = "CroixJaune";
     private const string _str_xp_couleur = "XpColor";
     private const string _str_xp_text = "XpColor/XpText";
+    private const string _str_infos = "Infos";
 
     
     public override void _Ready()
@@ -83,9 +93,11 @@ public class Interface : CanvasLayer
         _bulldozerMouse.Hide();
         _croix = (Sprite) GetNode(_str_croix);
         _croixJaune = (Sprite) GetNode(_str_croixJaune);
+        _infos = (Infos) GetNode(_str_infos);
 
         _croix.Hide();
         _croixJaune.Hide();
+        _infos.Hide();
         
         _ouvertureboutique = (AudioStreamPlayer) GetNode(_str_sonouverture);
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
@@ -99,6 +111,12 @@ public class Interface : CanvasLayer
         _button_shop.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
+    }
+
+    public static void ConfigInfos(Vector2 tile, PlanInitial planInitial)
+    {
+        _infos.config(tile, planInitial);
+        _infos.Show();
     }
 
     public override void _Process(float delta)
@@ -137,6 +155,7 @@ public class Interface : CanvasLayer
         {
             _croixJaune.Hide();
         }
+        
     }
     
     public override void _Input(InputEvent OneAction)

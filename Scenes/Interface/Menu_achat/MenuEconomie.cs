@@ -1,6 +1,5 @@
 using Godot;
 using System;
-
 public class MenuEconomie : Node
 {
 

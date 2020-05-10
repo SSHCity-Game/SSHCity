@@ -12,6 +12,7 @@ public class MaisonNode : Node2D
     private static readonly int[] upgrade_cost = {1500, 2000};
     private static int lvl = 0;
     private static readonly int[] gain_xp = {10, 100, 500};
+    private static string _image = "res://assets/maison1.png";
 
     public static int Bloc
     {
@@ -22,6 +23,8 @@ public class MaisonNode : Node2D
     public static string Titre => _titre;
 
     public static int Cost => _cost;
+
+    public static string Image => _image;
 
     public static int Earn => _earn[lvl];
 

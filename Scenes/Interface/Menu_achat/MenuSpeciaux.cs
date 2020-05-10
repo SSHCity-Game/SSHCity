@@ -53,7 +53,7 @@ public class MenuSpeciaux : Node
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
         
-        Carte[] menu1 = new[] {_cartePolice};
+        Carte[] menu1 = new[] {_cartePolice, _carteCentraleElectrique};
         Carte[][] menus = new[] {menu1};
         _menu_achat.Menus = menus;
     }

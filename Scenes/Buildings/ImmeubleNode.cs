@@ -11,12 +11,16 @@ public class ImmeubleNode : Node2D
     private static readonly int[] upgrade_cost = {4500, 5000};
     private static int lvl = 0;
     private static readonly int[] gain_xp = {10, 100, 500};
+    private static string _image = "res://assets/maison2.png";
+
 
     public static int Bloc
     {
         get => _bloc;
         set => _bloc = value;
     }
+
+    public static string Image => _image;
 
     public static string Titre => _titre;
 

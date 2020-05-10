@@ -254,6 +254,12 @@ public partial class PlanInitial : Node2D
             MainPlan.ListeBatiment.Remove((_tileSupressing, bloc));
             DeleteSure = false;
         }
+
+        if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete)
+        {
+            Vector2 tile = GetTilePosition();
+            Interface.ConfigInfos(tile, this);
+        }
     }
     
 }
