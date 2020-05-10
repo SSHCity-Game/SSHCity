@@ -59,6 +59,7 @@
     <Compile Include="Scenes\Buildings\Buildings.cs" />
     <Compile Include="Scenes\Buildings\CafeNode.cs" />
     <Compile Include="Scenes\Buildings\CaserneNode.cs" />
+    <Compile Include="Scenes\Buildings\CentraleElectriqueNode.cs" />
     <Compile Include="Scenes\Buildings\EgliseNode.cs" />
     <Compile Include="Scenes\Buildings\FermeNode.cs" />
     <Compile Include="Scenes\Buildings\HospitalNode.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Scenes\Interface\Menu_achat\MenuSante.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuSpeciaux.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\Menu_Achat.cs" />
+    <Compile Include="Scenes\Plan\Achat.cs" />
     <Compile Include="Scenes\Plan\Delete.cs" />
     <Compile Include="Scenes\Plan\Lacs.cs" />
     <Compile Include="Scenes\Plan\MainPlan.cs" />

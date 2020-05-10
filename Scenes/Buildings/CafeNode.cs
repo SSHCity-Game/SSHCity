@@ -12,7 +12,6 @@ public class CafeNode : Node2D
     private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;
     private static readonly int[] gain_xp = {10, 100, 500};
-
     public static int Bloc
     {
         get => _bloc;

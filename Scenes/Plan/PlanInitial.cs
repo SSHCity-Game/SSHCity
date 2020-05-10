@@ -3,7 +3,7 @@ using System;
 using System.Collections.Concurrent;
 using SshCity.Scenes.Plan;
 
-public class PlanInitial : Node2D
+public partial class PlanInitial : Node2D
 {
     public static Vector2 PositionTile = new Vector2(0,0);
     public TileMap TileMap1;
@@ -28,6 +28,7 @@ public class PlanInitial : Node2D
     private PackedScene _piscineNodeScene;
     private PackedScene _restaurantNodeScene;
     private PackedScene _restaurant2NodeScene;
+    private PackedScene _centraleElectriqueNodeScene;
     
 
     public string str_TileMap1 = "TileMap1";
@@ -83,25 +84,26 @@ public class PlanInitial : Node2D
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
 
-
+        Func<string, string> chemin = str => "res://Scenes/Buildings/" + str +".tscn"; 
         _maisonNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/MaisonNode.tscn");
-        _caserNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/CaserneNode.tscn");
-        _immeubleNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/ImmeubleNode.tscn");
-        _policeNodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/PoliceNode.tscn");
-        _hospitalNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/HospitalNode.tscn");
-        _cafeNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/CafeNode.tscn");
-        _egliseNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/EgliseNode.tscn");
-        _fermeNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/FermeNode.tscn");
-        _hotelNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/HospitalNode.tscn");
-        _immeubleVertNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/ImmeubleNode.tscn");
-        _maison3NodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/Maison3Node.tscn");
-        _maison4NodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/Maison4Node.tscn");
-        _maison5NodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/Maison5Node.tscn");
-        _McAllyNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/McAllyNode.tscn");
-        _parcNodeScence = (PackedScene) GD.Load("res://Scenes/Buildings/ParcNode.tscn");
-        _piscineNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/PiscineNode.tscn");
-        _restaurantNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/RestaurantNode.tscn");
-        _restaurant2NodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/Restaurant2Node.tscn");
+        _caserNodeScene = (PackedScene) GD.Load(chemin("CaserneNode"));
+        _immeubleNodeScene = (PackedScene) GD.Load(chemin("ImmeubleNode"));
+        _policeNodeScence = (PackedScene) GD.Load(chemin("PoliceNode"));
+        _hospitalNodeScene = (PackedScene) GD.Load(chemin("HospitalNode"));
+        _cafeNodeScene = (PackedScene) GD.Load(chemin("CafeNode"));
+        _egliseNodeScene = (PackedScene) GD.Load(chemin("EgliseNode"));
+        _fermeNodeScene = (PackedScene) GD.Load(chemin("FermeNode"));
+        _hotelNodeScene = (PackedScene) GD.Load(chemin("HotelNode"));
+        _immeubleVertNodeScene = (PackedScene) GD.Load(chemin("ImmeubleVertNode"));
+        _maison3NodeScene = (PackedScene) GD.Load(chemin("Maison3Node"));
+        _maison4NodeScence = (PackedScene) GD.Load(chemin("Maison4Node"));
+        _maison5NodeScene = (PackedScene) GD.Load(chemin("Maison5Node"));
+        _McAllyNodeScene = (PackedScene) GD.Load(chemin("McAllyNode"));
+        _parcNodeScence = (PackedScene) GD.Load(chemin("ParcNode"));
+        _piscineNodeScene = (PackedScene) GD.Load(chemin("PiscineNode"));
+        _restaurantNodeScene = (PackedScene) GD.Load(chemin("RestaurantNode"));
+        _restaurant2NodeScene = (PackedScene) GD.Load(chemin("Restaurant2Node"));
+        _centraleElectriqueNodeScene = (PackedScene) GD.Load(chemin("CentraleElectriqueNode"));
 
         //Ajout Node village de base
         Maison3Node maison3 = (Maison3Node) _maison3NodeScene.Instance();
@@ -128,7 +130,7 @@ public class PlanInitial : Node2D
         tileMap.SetCell(x, y, index);
     }
     
-    public int GetBlock(TileMap tileMap, int x, int y)
+    public int GetBlock( TileMap tileMap, int x, int y)
     {
         return tileMap.GetCell(x, y);
     }
@@ -140,132 +142,6 @@ public class PlanInitial : Node2D
         Vector2 tile = TileMap1.WorldToMap(mouse_pos);
         tile = new Vector2(tile.x-1, tile.y-1);
         return tile;
-    }
-
-    public bool AlreadySomethingHere(Vector2 tile)
-    {
-        return GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.route
-            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.montagne_sol
-            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.sable
-            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.eau;
-    }
-
-    public static void AchatRoute(bool start)
-    {
-        if (start)
-        {
-            _batiment = Ref_donnees.route_left;
-            _prix = 50;
-            _achatRoute = true;
-        }
-        else
-        {
-            _batiment = -1;
-            _prix = 0;
-            _achatRoute = false;
-            _pressed = true;
-        }
-    }
-    
-
-    public void AjoutNode(int batiment)
-    {
-
-        if (Interface.Money-_prix >=0 )
-        {
-            Interface.Money -= _prix;
-        }
-
-        if (batiment == MaisonNode.Bloc)
-	    {
-            MaisonNode maison1 = (MaisonNode) _maisonNodeScene.Instance();
-            AddChild(maison1);
-        }
-        else if (batiment == CaserneNode.Bloc)
-        {
-            CaserneNode caserne = (CaserneNode) _caserNodeScene.Instance();
-            AddChild(caserne);
-        }
-        else if (batiment == ImmeubleNode.Bloc)
-        {
-            ImmeubleNode immeuble = (ImmeubleNode) _immeubleNodeScene.Instance();
-            AddChild(immeuble);
-        }
-        else if (batiment == PoliceNode.Bloc)
-        {
-            PoliceNode police = (PoliceNode) _policeNodeScence.Instance();
-            AddChild(police);
-        }
-        else if (batiment == HospitalNode.Bloc)
-        {
-            HospitalNode hopital = (HospitalNode) _hospitalNodeScene.Instance();
-            AddChild(hopital);
-        }
-        else if (batiment == CafeNode.Bloc)
-        {
-            CafeNode cafe = (CafeNode) _cafeNodeScene.Instance();
-            AddChild(cafe);
-        } 
-        else if (batiment == EgliseNode.Bloc)
-        {
-            EgliseNode eglise = (EgliseNode) _egliseNodeScene.Instance();
-            AddChild(eglise);
-        }
-        else if (batiment == FermeNode.Bloc)
-        {
-            FermeNode ferme = (FermeNode) _fermeNodeScene.Instance();
-            AddChild(ferme);
-        }
-        else if (batiment == HotelNode.Bloc)
-        {
-            HotelNode hotel = (HotelNode) _hotelNodeScene.Instance();
-            AddChild(hotel);
-        }
-        else if (batiment == ImmeubleVertNode.Bloc)
-        {
-            ImmeubleVertNode immeubleVert = (ImmeubleVertNode) _immeubleVertNodeScene.Instance();
-            AddChild(immeubleVert);
-        }
-        else if (batiment == Maison3Node.Bloc)
-        {
-            Maison3Node maison3 = (Maison3Node) _maison3NodeScene.Instance();
-            AddChild(maison3);
-        }
-        else if (batiment == Maison4Node.Bloc)
-        {
-            Maison4Node maison4 = (Maison4Node) _maison4NodeScence.Instance();
-            AddChild(maison4);
-        }
-        else if (batiment == Maison5Node.Bloc)
-        {
-            Maison5Node maison5 = (Maison5Node) _maison5NodeScene.Instance();
-            AddChild(maison5);
-        }
-        else if (batiment == McAllyNode.Bloc)
-        {
-            McAllyNode mcAlly = (McAllyNode) _McAllyNodeScene.Instance();
-            AddChild(mcAlly);
-        }
-        else if (batiment == ParcNode.Bloc)
-        {
-            ParcNode parc = (ParcNode) _parcNodeScence.Instance();
-            AddChild(parc);
-        }
-        else if (batiment == PiscineNode.Bloc)
-        {
-            PiscineNode piscine = (PiscineNode) _piscineNodeScene.Instance();
-            AddChild(piscine);
-        }
-        else if (batiment == RestaurantNode.Bloc)
-        {
-            RestaurantNode restaurant = (RestaurantNode) _restaurantNodeScene.Instance();
-            AddChild(restaurant);
-        }
-        else if (batiment == Restaurant2Node.Bloc)
-        {
-            Restaurant2Node restaurant2 = (Restaurant2Node) _restaurant2NodeScene.Instance();
-            AddChild(restaurant2);
-        }
     }
 
 

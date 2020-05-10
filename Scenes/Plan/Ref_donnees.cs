@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Collections;
+using System.Collections.Generic;
 namespace SshCity.Scenes.Plan
 {
     public class Ref_donnees
@@ -99,6 +100,14 @@ namespace SshCity.Scenes.Plan
         
         //argent
 
-        public static int argent = 0;
+        public static int argent = 1000;
+        
+        //Dimensions blocs
+        public static Dictionary<int, (int, int)> dimensions = new Dictionary<int, (int, int)>()
+        {
+            {centrale, (3, 4)},
+            {ferme, (2,2)}
+        };
+
     }
 }

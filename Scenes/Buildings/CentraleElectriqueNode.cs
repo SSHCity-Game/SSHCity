@@ -1,18 +1,18 @@
-using Godot;
+﻿using Godot;
 using System;
 using SshCity.Scenes.Plan;
 
-public class CaserneNode : Node2D
+public class CentraleElectriqueNode : Node2D
 {
-    private Timer _caserneTimer;
-    private static int _bloc = Ref_donnees.caserne;
-    private static int _cost = 5000;
-    private static int[] _earn = {10,25,50};
-    private static string _titre = "Caserne";
-    private static readonly int[] upgrade_cost = {1500, 2000};
+    private Timer _centraleTimer;
+    private static int _bloc = Ref_donnees.centrale;
+    private static int _cost = 3000;
+    private static int[] _earn = {2,5,8};
+    private static string _titre = "centrale electrique";
+    private static readonly int[] upgrade_cost = {15000, 20000};
     private static int lvl = 0;
     private static readonly int[] gain_xp = {10, 100, 500};
-    
+
     public static int Bloc
     {
         get => _bloc;
@@ -25,12 +25,12 @@ public class CaserneNode : Node2D
 
     public static int Earn => _earn[lvl];
 
-    private const string _str_caserne_timer = "Timer";
+    private const string _str_centrale_timer = "Timer";
     public override void _Ready()
     {
-        _caserneTimer = (Timer) GetNode(_str_caserne_timer);
-        _caserneTimer.Start();
-        _caserneTimer.Connect("timeout", this, nameof(TimeOut));
+        _centraleTimer = (Timer) GetNode(_str_centrale_timer);
+        _centraleTimer.Start();
+        _centraleTimer.Connect("timeout", this, nameof(TimeOut));
         Interface.Xp += gain_xp[lvl];
     }
 
@@ -41,7 +41,7 @@ public class CaserneNode : Node2D
 
     public void Upgrade()
     {
-        if (lvl < 2 && Interface.Money > upgrade_cost[lvl])
+        if (lvl <2 && Interface.Money> upgrade_cost[lvl])
         {
             lvl += 1;
             Interface.Money -= upgrade_cost[lvl - 1];
