@@ -6,7 +6,7 @@ using SshCity.Scenes.Plan;
 public partial class PlanInitial
 {
     public bool AlreadySomethingHere(Vector2 tile)
-    {/*
+    {
         (int largeur, int longueur) dimensions = (1, 1);
         bool somehtingHere = false;
         try
@@ -33,12 +33,36 @@ public partial class PlanInitial
             i++;
         }
 
-        return somehtingHere;*/
-        return GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.route
-            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.montagne_sol
-            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.sable
-            || GetBlock(TileMap1, (int) tile.x+1, (int) tile.y+1) == Ref_donnees.eau;
+        return somehtingHere;
     }
+
+    public void SetAchatBlocs(Vector2 tile)
+    {
+        (int largeur, int longueur) dimensions = (1, 1);
+        bool somehtingHere = false;
+        try
+        {
+            dimensions = Ref_donnees.dimensions[_batiment];
+        }
+        catch (Exception)
+        {
+            
+        }
+        int i = 1;
+        while (!somehtingHere && i < dimensions.longueur +1)
+        {
+            int j = 1;
+            while (!somehtingHere && j < dimensions.largeur+1)
+            {
+                SetBlock(TileMap1, (int)tile.x+i, (int)tile.y+j, Ref_donnees.route);
+                j++;
+            }
+
+            i++;
+        }
+    }
+    
+    
     public static void AchatRoute(bool start)
     {
         if (start)

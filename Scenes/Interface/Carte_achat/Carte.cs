@@ -16,8 +16,8 @@ public class Carte : Panel
     private const string _str_titre = "Titre";
     private const string _str_gain = "Gain";
     private const string _str_prix = "Prix";
-    private static int _bloc = 1;
-    private static int _cost;
+    private int _bloc = 1;
+    private int _cost;
 
     public int Cost
     {

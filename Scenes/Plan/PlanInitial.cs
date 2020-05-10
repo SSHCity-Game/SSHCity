@@ -143,6 +143,7 @@ public partial class PlanInitial : Node2D
         tile = new Vector2(tile.x-1, tile.y-1);
         return tile;
     }
+    
 
 
     public override void _Input(InputEvent OneAction)
@@ -189,7 +190,7 @@ public partial class PlanInitial : Node2D
                 if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
                 {
                     Interface.Interdit = false;
-                    SetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1, Ref_donnees.route);
+                    SetAchatBlocs(tile);
                     if (_achatRoute)
                     {
                         Routes.ChangeRoute(tile, this);
