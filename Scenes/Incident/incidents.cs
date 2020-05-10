@@ -17,7 +17,6 @@ public class Incident : PlanInitial
 
     /* Permet l'utilisation des methodes non static dans methode static */
     private static Incident Instance { get; } = new Incident();
-     
 
     public static async void GenereIncidents(PlanInitial planInitial)
     {
@@ -28,29 +27,31 @@ public class Incident : PlanInitial
         var rand = new Random();
         int indexAv = Ref_donnees.maison3;
         int indexAp = Ref_donnees.maison3_flamme;
-        List<(int,int)> coordinates = new List<(int,int)>(); // positions du bloc index_av
+        List<Vector2> coordinates = new List<Vector2>(); // positions du bloc index_av
         int x, y;
+        bool exist_fire = false;
+        Vector2 pos;
         
         /* recherche des coordonnees du batiment voulut et ajout a la liste coordinates */
         foreach (var building in MainPlan.ListeBatiment)
         {
             (Vector2 coords, int bat) = building;
             if (bat == indexAv)
-                coordinates.Add(((int) coords.x, (int) coords.y));
+                coordinates.Add(coords);
         }
 
-        int nbBloc = coordinates.Count;
-        (x, y) = coordinates[rand.Next(0, nbBloc)]; // choisit la tuile aleatoirement
-        Vector2 pos;
-        pos.x = x;
-        pos.y = y;
+        int nbBloc = coordinates.Count - 1;
+        pos = coordinates[rand.Next(0, nbBloc)]; // choisit la tuile aleatoirement
+        x = (int) pos.x;
+        y = (int) pos.y;
 
-        if (Interface.Xp >= XpIncident)
+        if (Interface.Xp >= XpIncident && !exist_fire)
         {
             await Task.Delay(5000);
             BuildingOnFire(planInitial, indexAv, indexAp, x, y);
+            exist_fire = true;
             await Task.Delay(1000); 
-            menu_incident.AlerteIncendie(pos);
+            menu_incident.AlerteIncendie();
             //PutOutFire(planInitial, indexAv, indexAp, x, y);
         }
     }
@@ -61,8 +62,7 @@ public class Incident : PlanInitial
          * Genere un incendie dans un batiment *
          ***************************************/
         
-       
-        /* Initialise le bloc en x,y, s'il existe, comme batiment en feu */
+        /* Initialise le bloc en x,y, comme batiment en feu */
         if (planInitial.GetBlock(planInitial.TileMap2, x, y) == indexAv)
             planInitial.SetBlock(planInitial.TileMap2, x, y, indexAp);
     }
