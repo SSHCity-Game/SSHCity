@@ -2,7 +2,7 @@ using Godot;
 using System;
 using SshCity.Scenes.Plan;
 
-public class menu_incident : Control
+public class menu_incident : CanvasLayer
 {
     public Button Boutique;
     public Button Resoudre;
