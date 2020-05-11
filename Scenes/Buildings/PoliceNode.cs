@@ -22,8 +22,11 @@ public class PoliceNode : Node2D
 
     public static string Image => _image;
     public static string Titre => _titre;
+    public static int[] UpgradeCost => upgrade_cost;
 
+    public static int[] GainXp => gain_xp;
     public static int Cost => _cost;
+    public static int[] EarnTableau => _earn;
 
     public static int Earn => _earn[lvl];
 

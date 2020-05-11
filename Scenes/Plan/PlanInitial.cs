@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Concurrent;
+using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Plan;
 
 public partial class PlanInitial : Node2D
@@ -200,7 +201,7 @@ public partial class PlanInitial : Node2D
                         MainPlan.ListeNode.Add((tile, _nbr_Node)); 
                     }
                     MainPlan.ListeBatiment.Add((tile, _batiment));
-                    AjoutNode(_batiment);
+                    AjoutNode(_batiment, tile);
                 }
                 else
                 {
@@ -243,6 +244,7 @@ public partial class PlanInitial : Node2D
         if (DeleteSure)
         {            
             int bloc = GetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y);
+            Batiments.Suppression(_tileSupressing);
             SetBlock(TileMap2, (int)_tileSupressing.x, (int)_tileSupressing.y, -1);
             SetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1, Ref_donnees.terre);
             Routes.ChangeRoute(_tileSupressing, this);
@@ -255,10 +257,23 @@ public partial class PlanInitial : Node2D
             DeleteSure = false;
         }
 
-        if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete)
+        if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete && !DeleteVerif.Verif)
         {
             Vector2 tile = GetTilePosition();
-            Interface.ConfigInfos(tile, this);
+            int batiment = -1;
+            foreach ((Vector2 posi, int node) tuple in MainPlan.ListeBatiment)
+            {
+                if (tuple.posi == tile)
+                {
+                    batiment = tuple.node;
+                    break;
+                }
+            }
+
+            if (batiment != -1)
+            {
+                Interface.ConfigInfos(batiment, this);
+            }
         }
     }
     

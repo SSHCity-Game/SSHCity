@@ -12,7 +12,7 @@ public class Restaurant2Node : Node2D
        private static readonly int[] upgrade_cost = {15000, 20000};
        private static int lvl = 0;
        private static readonly int[] gain_xp = {10, 100, 500};
-       private static string _image = "res://assets/iso resto.png.png";
+       private static string _image = "res://assets/iso resto.png";
 
 
        public static int Bloc
@@ -22,11 +22,14 @@ public class Restaurant2Node : Node2D
        }
 
        public static string Image => _image;
-   
+       public static int[] UpgradeCost => upgrade_cost;
+
+       public static int[] GainXp => gain_xp;
        public static string Titre => _titre;
    
        public static int Cost => _cost;
-   
+       public static int[] EarnTableau => _earn;
+
        public static int Earn => _earn[lvl];
    
        private const string _str_restaurant2_timer = "Timer";

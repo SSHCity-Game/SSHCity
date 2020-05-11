@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
+
 
 public class Infos : Panel
 {
@@ -10,10 +12,13 @@ public class Infos : Panel
     private Panel _cadre;
     private Label _titre;
 
+
+    private bool buttonWork = false;
+
     private const string _strQuitter = "Quitter";
     private const string _strAmeliorer = "Ameliorer";
     private const string _strCadre = "Cadre";
-    private const string _strDetruire = "Detruire";
+    private const string _strDetruire = "Détruire";
     private const string _strImage = _strCadre + "/Image";
     private const string _strTitre = "Titre";
     
@@ -25,20 +30,23 @@ public class Infos : Panel
         _titre = (Label) GetNode(_strTitre);
         _image = (Sprite) GetNode(_strImage);
         _cadre = (Panel) GetNode(_strCadre);
+        _quitter.Connect("pressed", this, nameof(CloseInfos));
+
     }
 
-    public void config(Vector2 tile, PlanInitial planInitial)
+    public override void _Process(float delta)
     {
-        int batiment = 0;
-        foreach ((Vector2 posi, int node) tuple in MainPlan.ListeBatiment)
-        {
-            if (tuple.posi == tile)
-            {
-                batiment = tuple.node;
-                break;
-            }
-        }
+        base._Process(delta);
+    }
 
+    public void CloseInfos()
+    {
+        this.Hide();
+    }
+
+    public void config(int batiment, PlanInitial planInitial)
+    {
+        
         Action<(string titre, int earn, string pathTexture)> config = delegate((string titre, int earn, string pathTexture) tuple) {             
             _titre.Text = tuple.titre;
             Texture texture = ResourceLoader.Load(tuple.pathTexture) as Texture;

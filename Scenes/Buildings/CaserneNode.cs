@@ -13,7 +13,9 @@ public class CaserneNode : Node2D
     private static int lvl = 0;
     private static readonly int[] gain_xp = {10, 100, 500};
     private static string _image = "res://assets/caserne.png";
+    public static int[] UpgradeCost => upgrade_cost;
 
+    public static int[] GainXp => gain_xp;
     public static int Bloc
     {
         get => _bloc;
@@ -21,6 +23,7 @@ public class CaserneNode : Node2D
     }
 
     public static string Titre => _titre;
+    public static int[] EarnTableau => _earn;
 
     public static int Cost => _cost;
 

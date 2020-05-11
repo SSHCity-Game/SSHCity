@@ -31,12 +31,6 @@ namespace SshCity.Scenes.Plan
 
             }
             MainPlan.ListeNode = res;
-
-
-            for (int i = 0; i < length-1; i++)
-            {
-                GD.Print(MainPlan.ListeNode[i]);
-            }
         }
     }
 }

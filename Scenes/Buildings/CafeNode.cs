@@ -14,6 +14,10 @@ public class CafeNode : Node2D
     private static readonly int[] gain_xp = {10, 100, 500};
     private static string _image = "res://assets/isometric magasin6.png";
 
+    public static int[] UpgradeCost => upgrade_cost;
+
+    public static int[] GainXp => gain_xp;
+
     public static int Bloc
     {
         get => _bloc;
@@ -26,6 +30,7 @@ public class CafeNode : Node2D
 
     public static string Image => _image;
     public static int Earn => _earn[lvl];
+    public static int[] EarnTableau => _earn;
 
     private const string _str_cafe_timer = "Timer";
     public override void _Ready()

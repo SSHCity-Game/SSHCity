@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using SshCity.Scenes.Plan;
+using System.Threading.Tasks;
 
 public class Interface : CanvasLayer
 {
@@ -113,9 +114,9 @@ public class Interface : CanvasLayer
         _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
     }
 
-    public static void ConfigInfos(Vector2 tile, PlanInitial planInitial)
+    public static void ConfigInfos(int batiment, PlanInitial planInitial)
     {
-        _infos.config(tile, planInitial);
+        _infos.config(batiment, planInitial);
         _infos.Show();
     }
 
