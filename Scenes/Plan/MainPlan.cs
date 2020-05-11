@@ -26,12 +26,6 @@ public class MainPlan : Node2D
         set => _listeBatiment = value;
     }
 
-    public static List<(Vector2, int)> ListeNode
-    {
-        get => _listeNode;
-        set => _listeNode = value;
-    }
-
     public override void _Input(InputEvent OneEvent)
     {
         base._Input(OneEvent);

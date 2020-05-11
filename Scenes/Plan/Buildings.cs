@@ -19,62 +19,60 @@ namespace SshCity.Scenes.Plan
             };
 
             int k = 0;
-            int k2 = 3;
             for (int i = x; i < x + 5; i += 2) //CONSTRUCTION DES BATIMENTS
             {
                 for (int j = y; j < y + 5; j += 2)
                 {
                     int bloc_set = batiments[k];
                     planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, bloc_set);
+                    
+                    //TEST
+                    int[] test = new[] {100000, 2};
+                    //
                     switch (k)
                     {
                         case 0:
                         {
-                            new Batiments.Building(ParcNode.Bloc, ParcNode.Cost, ParcNode.EarnTableau, ParcNode.Titre, ParcNode.UpgradeCost, ParcNode.GainXp, ParcNode.Image, Batiments.Class.PARC, new Vector2(i-1, j-1));
+                            new Batiments.Building(Batiments.Class.PARC, new Vector2(i-1, j-1));
                             break;
                         }
                         case 1:
                         {
-                            new Batiments.Building(Maison3Node.Bloc, Maison3Node.Cost, Maison3Node.EarnTableau, Maison3Node.Titre, Maison3Node.UpgradeCost, Maison3Node.GainXp, Maison3Node.Image, Batiments.Class.MAISON3, new Vector2(i-1, j-1));
+                            new Batiments.Building(Batiments.Class.MAISON3, new Vector2(i-1, j-1));
                             break;
                         }
                         case 2:
                         {
-                            new Batiments.Building(FermeNode.Bloc, FermeNode.Cost, FermeNode.EarnTableau, FermeNode.Titre, FermeNode.UpgradeCost, FermeNode.GainXp, FermeNode.Image, Batiments.Class.FERME, new Vector2(i-1, j-1));
+                            new Batiments.Building(Batiments.Class.FERME, new Vector2(i-1, j-1));
                             break;
                         }
                         case 3:
                         {
-                            new Batiments.Building(Maison4Node.Bloc, Maison4Node.Cost, Maison4Node.EarnTableau, Maison4Node.Titre, Maison4Node.UpgradeCost, Maison4Node.GainXp, Maison4Node.Image, Batiments.Class.MAISON4, new Vector2(i-1, j-1));
+                            new Batiments.Building(Batiments.Class.MAISON4, new Vector2(i-1, j-1));
                             break;
                         }
                         case 5:
                         {
-                            new Batiments.Building(Maison5Node.Bloc, Maison5Node.Cost, Maison5Node.EarnTableau, Maison5Node.Titre, Maison5Node.UpgradeCost, Maison5Node.GainXp, Maison5Node.Image, Batiments.Class.MAISON5, new Vector2(i-1, j-1));
+                            new Batiments.Building(Batiments.Class.MAISON5, new Vector2(i-1, j-1));
                             break;
                         }
                         case 6:
                         {
-                            new Batiments.Building(EgliseNode.Bloc, EgliseNode.Cost, EgliseNode.EarnTableau, EgliseNode.Titre, EgliseNode.UpgradeCost, EgliseNode.GainXp, EgliseNode.Image, Batiments.Class.EGLISE, new Vector2(i-1, j-1));
+                            new Batiments.Building(Batiments.Class.EGLISE, new Vector2(i-1, j-1));
                             break;
                         }
                         case 7:
                         {
-                            new Batiments.Building(RestaurantNode.Bloc, RestaurantNode.Cost, RestaurantNode.EarnTableau, RestaurantNode.Titre, RestaurantNode.UpgradeCost, RestaurantNode.GainXp, RestaurantNode.Image, Batiments.Class.RESTAURANT, new Vector2(i-1, j-1));
+                            new Batiments.Building(Batiments.Class.RESTAURANT, new Vector2(i-1, j-1));
                             break;
                         }
                         case 8:
                         {
-                            new Batiments.Building(Restaurant2Node.Bloc, Restaurant2Node.Cost, Restaurant2Node.EarnTableau, Restaurant2Node.Titre, Restaurant2Node.UpgradeCost, Restaurant2Node.GainXp, Restaurant2Node.Image, Batiments.Class.RESTAURANT2, new Vector2(i-1, j-1));
+                            new Batiments.Building(Batiments.Class.RESTAURANT2, new Vector2(i-1, j-1));
                             break;
                         }
                     }
                     MainPlan.ListeBatiment.Add((new Vector2(i-1, j-1), bloc_set));
-                    if (k != 4)
-                    {
-                        MainPlan.ListeNode.Add((new Vector2(i-1, j-1), k2));
-                        k2++;
-                    }
                     k++;
                 }
             }

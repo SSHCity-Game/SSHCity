@@ -2,6 +2,7 @@ using Godot;
 using System;
 using SshCity.Scenes.Plan;
 using System.Threading.Tasks;
+using SshCity.Scenes.Buildings;
 
 public class Interface : CanvasLayer
 {
@@ -20,6 +21,8 @@ public class Interface : CanvasLayer
     private static bool _interdit = false;
     private static bool _interdiMoney = false;
     private static Infos _infos;
+    private Timer _timer;
+    private int moneyWin = 0;
 
     private static bool _infosBool = false;
 
@@ -78,6 +81,7 @@ public class Interface : CanvasLayer
     private const string _str_xp_couleur = "XpColor";
     private const string _str_xp_text = "XpColor/XpText";
     private const string _str_infos = "Infos";
+    private const string _str_timer = "Timer";
 
     
     public override void _Ready()
@@ -95,10 +99,13 @@ public class Interface : CanvasLayer
         _croix = (Sprite) GetNode(_str_croix);
         _croixJaune = (Sprite) GetNode(_str_croixJaune);
         _infos = (Infos) GetNode(_str_infos);
+        _timer = (Timer) GetNode(_str_timer);
 
         _croix.Hide();
         _croixJaune.Hide();
         _infos.Hide();
+        
+        _timer.Start();
         
         _ouvertureboutique = (AudioStreamPlayer) GetNode(_str_sonouverture);
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
@@ -112,6 +119,8 @@ public class Interface : CanvasLayer
         _button_shop.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
+
+        _timer.Connect("timeout", this, nameof(WinMoney));
     }
 
     public static void ConfigInfos(Vector2 tile)
@@ -120,11 +129,25 @@ public class Interface : CanvasLayer
         _infos.Show();
     }
 
+    public void WinMoney()
+    {
+        Money += moneyWin;
+    }
+
     public override void _Process(float delta)
     {
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
         _xp_text.Text = Convert.ToString(_xp);
+
+
+        moneyWin = 0;
+        foreach (Batiments.Building batiment in Batiments.ListBuildings)
+        {
+            moneyWin += batiment.Earn;
+        }
+
+
         if (PlanInitial.Delete)
         {
             Vector2 mousePosition = GetViewport().GetMousePosition();
@@ -248,9 +271,6 @@ public class Interface : CanvasLayer
             _bulldozerMouse.Show();
         }
     }
-
-
-
 
 }
 

@@ -31,21 +31,21 @@ public class MenuSpeciaux : Node
 
         //Config _cartePolice
         _cartePolice = (Carte) GetNode(_str_cartePolice);
-        _cartePolice.Bloc = PoliceNode.Bloc[0];
-        _cartePolice.Cost = PoliceNode.Cost[0];
-        _cartePolice.Titre(PoliceNode.Titre[0]);
-        _cartePolice.Gain(PoliceNode.Earn);
-        _cartePolice.Prix(PoliceNode.Cost[0]);
+        _cartePolice.Bloc = Police._bloc[0];
+        _cartePolice.Cost = Police._cost[0];
+        _cartePolice.Titre(Police._titre[0]);
+        _cartePolice.Gain(Police._earn[0]);
+        _cartePolice.Prix(Police._cost[0]);
         _cartePolice.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         
         //Config _carteCentraleElectrique
         _carteCentraleElectrique = (Carte) GetNode(_str_carteCentraleElectrique);
-        _carteCentraleElectrique.Bloc = CentraleElectriqueNode.Bloc[0];
-        _carteCentraleElectrique.Cost = CentraleElectriqueNode.Cost[0];
-        _carteCentraleElectrique.Titre(CentraleElectriqueNode.Titre[0]);
-        _carteCentraleElectrique.Gain(CentraleElectriqueNode.Earn);
-        _carteCentraleElectrique.Prix(CentraleElectriqueNode.Cost[0]);
+        _carteCentraleElectrique.Bloc = CentraleElectrique._bloc[0];
+        _carteCentraleElectrique.Cost = CentraleElectrique._cost[0];
+        _carteCentraleElectrique.Titre(CentraleElectrique._titre[0]);
+        _carteCentraleElectrique.Gain(CentraleElectrique._earn[0]);
+        _carteCentraleElectrique.Prix(CentraleElectrique._cost[0]);
         _carteCentraleElectrique.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         

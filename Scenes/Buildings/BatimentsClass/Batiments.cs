@@ -16,7 +16,6 @@ namespace SshCity.Scenes.Buildings
             private  int[] _cost;
             private  int[] _earn;
             private  string[] _titre;
-            private static int[] _upgrade_cost;
             private  int lvl;
             private  int[] gain_xp;
             private  string[] _image;
@@ -27,16 +26,18 @@ namespace SshCity.Scenes.Buildings
 
             public  Class Class => _class;
 
-            public Building(int[] bloc, int[] cost, int[] earn, string[] titre, int[]upgrade_cost, int[] gainXp, string[] image, Batiments.Class batimentClass, Vector2 position)
+            public Building(Class batimentClass, Vector2 position)
             {
+                Caracteristiques.BatimentsCaracteristiques caracteristique = Caracteristiques.GiveCaracteristique(batimentClass);
+                
                 _position = position;
                 _class = batimentClass;
-                _bloc = bloc;
-                _cost = cost;
-                _titre = titre;
-                _upgrade_cost = upgrade_cost;
-                gain_xp = gainXp;
-                _image = image;
+                _bloc = caracteristique.Bloc;
+                _earn = caracteristique.Earn;
+                _cost = caracteristique.Cost;
+                _titre = caracteristique.Titre;
+                gain_xp = caracteristique.GainXp;
+                _image = caracteristique.Image;
                 lvl = 0;
                 ListBuildings.Add(this);
             }
@@ -56,14 +57,13 @@ namespace SshCity.Scenes.Buildings
 
             public void Upgrade()
             {
-                if (lvl <2 && Interface.Money> _upgrade_cost[lvl])
+                if (lvl <2 && Interface.Money> _cost[lvl])
                 {
+                    Interface.Money -= _cost[lvl];
+                    Interface.Xp += gain_xp[lvl];
                     lvl += 1;
-                    Interface.Money -= _upgrade_cost[lvl - 1];
-                    Interface.Xp += gain_xp[lvl - 1];
                 }
-            }   
-            
+            }
         }
     }
 }

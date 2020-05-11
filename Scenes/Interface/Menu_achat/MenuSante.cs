@@ -25,20 +25,20 @@ public class MenuSante : Node
 
         //Config _carteHopital
         _carteHopital = (Carte) GetNode(_str_carteHopital);
-        _carteHopital.Bloc = HospitalNode.Bloc[0];
-        _carteHopital.Cost = HospitalNode.Cost[0];
-        _carteHopital.Titre(HospitalNode.Titre[0]);
-        _carteHopital.Gain(HospitalNode.Earn);
-        _carteHopital.Prix(HospitalNode.Cost[0]);
+        _carteHopital.Bloc = Hospital._bloc[0];
+        _carteHopital.Cost = Hospital._cost[0];
+        _carteHopital.Titre(Hospital._titre[0]);
+        _carteHopital.Gain(Hospital._earn[0]);
+        _carteHopital.Prix(Hospital._cost[0]);
         _carteHopital.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
         //Config _carteCaserne
         _carteCaserne = (Carte) GetNode(_str_carteCaserne);
-        _carteCaserne.Bloc = CaserneNode.Bloc[0];
-        _carteCaserne.Cost = CaserneNode.Cost[0];
-        _carteCaserne.Titre(CaserneNode.Titre[0]);
-        _carteCaserne.Gain(CaserneNode.Earn);
-        _carteCaserne.Prix(CaserneNode.Cost[0]);
+        _carteCaserne.Bloc = Caserne._bloc[0];
+        _carteCaserne.Cost = Caserne._cost[0];
+        _carteCaserne.Titre(Caserne._titre[0]);
+        _carteCaserne.Gain(Caserne._earn[0]);
+        _carteCaserne.Prix(Caserne._cost[0]);
         _carteCaserne.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
 

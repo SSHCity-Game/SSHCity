@@ -190,3 +190,5 @@ __meta__ = {
 
 [node name="Infos" parent="." instance=ExtResource( 13 )]
 visible = false
+
+[node name="Timer" type="Timer" parent="."]
