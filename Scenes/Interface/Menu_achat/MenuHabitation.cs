@@ -40,40 +40,40 @@ public class MenuHabitation : Node
         
         //Config _carteMaison
         _carteMaison = (Carte) GetNode(_str_carteMaison);
-        _carteMaison.Bloc = MaisonNode.Bloc;
-        _carteMaison.Cost = MaisonNode.Cost;
-        _carteMaison.Titre(MaisonNode.Titre);
+        _carteMaison.Bloc = MaisonNode.Bloc[0];
+        _carteMaison.Cost = MaisonNode.Cost[0];
+        _carteMaison.Titre(MaisonNode.Titre[0]);
         _carteMaison.Gain(MaisonNode.Earn);
-        _carteMaison.Prix(MaisonNode.Cost);
+        _carteMaison.Prix(MaisonNode.Cost[0]);
         
         _carteMaison.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         
         //Config _carteMaison3
         _carteMaison3 = (Carte) GetNode(_str_carteMaison3);
-        _carteMaison3.Bloc = Maison3Node.Bloc;
-        _carteMaison3.Cost = Maison3Node.Cost;
-        _carteMaison3.Titre(Maison3Node.Titre);
+        _carteMaison3.Bloc = Maison3Node.Bloc[0];
+        _carteMaison3.Cost = Maison3Node.Cost[0];
+        _carteMaison3.Titre(Maison3Node.Titre[0]);
         _carteMaison3.Gain(Maison3Node.Earn);
-        _carteMaison3.Prix(Maison3Node.Cost);
+        _carteMaison3.Prix(Maison3Node.Cost[0]);
         _carteMaison3.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         //Config _carteMaison4
         _carteMaison4 = (Carte) GetNode(_str_carteMaison4);
-        _carteMaison4.Bloc = Maison4Node.Bloc;
-        _carteMaison4.Cost = Maison4Node.Cost;
-        _carteMaison4.Titre(Maison4Node.Titre);
+        _carteMaison4.Bloc = Maison4Node.Bloc[0];
+        _carteMaison4.Cost = Maison4Node.Cost[0];
+        _carteMaison4.Titre(Maison4Node.Titre[0]);
         _carteMaison4.Gain(Maison4Node.Earn);
-        _carteMaison4.Prix(Maison4Node.Cost);
+        _carteMaison4.Prix(Maison4Node.Cost[0]);
         _carteMaison4.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         //Config _carteMaison5
         _carteMaison5 = (Carte) GetNode(_str_carteMaison5);
-        _carteMaison5.Bloc = Maison5Node.Bloc;
-        _carteMaison5.Cost = Maison5Node.Cost;
-        _carteMaison5.Titre(Maison5Node.Titre);
+        _carteMaison5.Bloc = Maison5Node.Bloc[0];
+        _carteMaison5.Cost = Maison5Node.Cost[0];
+        _carteMaison5.Titre(Maison5Node.Titre[0]);
         _carteMaison5.Gain(Maison5Node.Earn);
-        _carteMaison5.Prix(Maison5Node.Cost);
+        _carteMaison5.Prix(Maison5Node.Cost[0]);
         _carteMaison5.Hide();
         _carteMaison5.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         

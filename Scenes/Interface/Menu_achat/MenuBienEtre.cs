@@ -23,11 +23,11 @@ public class MenuBienEtre : Node
         
         //Config _carteParc
         _carteParc = (Carte) GetNode(_str_carteParc);
-        _carteParc.Bloc = ParcNode.Bloc;
-        _carteParc.Cost = ParcNode.Cost;
-        _carteParc.Titre(ParcNode.Titre);
+        _carteParc.Bloc = ParcNode.Bloc[0];
+        _carteParc.Cost = ParcNode.Cost[0];
+        _carteParc.Titre(ParcNode.Titre[0]);
         _carteParc.Gain(ParcNode.Earn);
-        _carteParc.Prix(ParcNode.Cost);
+        _carteParc.Prix(ParcNode.Cost[0]);
         _carteParc.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
 

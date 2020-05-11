@@ -11,58 +11,59 @@ namespace SshCity.Scenes.Buildings
     {
         public class Building
         {
-            private static int _bloc;
-            private static int _cost;
-            private static int[] _earn;
-            private static string _titre;
-            private static int[] upgrade_cost;
-            private static int lvl;
-            private static int[] gain_xp;
-            private static string _image;
-            private static Class _class;
+            private int nbrAmelioration;
+            private int[] _bloc;
+            private  int[] _cost;
+            private  int[] _earn;
+            private  string[] _titre;
+            private static int[] _upgrade_cost;
+            private  int lvl;
+            private  int[] gain_xp;
+            private  string[] _image;
+            private  Class _class;
             private  Vector2 _position;
 
             public Vector2 Position => _position;
 
-            public static Class Class => _class;
+            public  Class Class => _class;
 
-            public Building(int bloc, int cost, int[] earn, string titre, int[]upgrade_cost, int[] gainXp, string image, Batiments.Class batimentClass, Vector2 position)
+            public Building(int[] bloc, int[] cost, int[] earn, string[] titre, int[]upgrade_cost, int[] gainXp, string[] image, Batiments.Class batimentClass, Vector2 position)
             {
                 _position = position;
                 _class = batimentClass;
                 _bloc = bloc;
                 _cost = cost;
                 _titre = titre;
-                Building.upgrade_cost = upgrade_cost;
+                _upgrade_cost = upgrade_cost;
                 gain_xp = gainXp;
                 _image = image;
                 lvl = 0;
                 ListBuildings.Add(this);
             }
             
-            public static int Bloc
+            public  int Bloc
             {
-                get => _bloc;
-                set => _bloc = value;
+                get => _bloc[lvl];
             }
 
-            public static string Titre => _titre;
+            public  string Titre => _titre[lvl];
 
-            public static int Cost => _cost;
+            public  int[] Cost => _cost;
 
-            public static string Image => _image;
-            public static int Earn => _earn[lvl];
+            public  string Image => _image[lvl];
+            public  int Earn => _earn[lvl];
             
 
             public void Upgrade()
             {
-                if (lvl <2 && Interface.Money> upgrade_cost[lvl])
+                if (lvl <2 && Interface.Money> _upgrade_cost[lvl])
                 {
                     lvl += 1;
-                    Interface.Money -= upgrade_cost[lvl - 1];
+                    Interface.Money -= _upgrade_cost[lvl - 1];
                     Interface.Xp += gain_xp[lvl - 1];
                 }
             }   
+            
         }
     }
 }

@@ -29,29 +29,29 @@ public class MenuEconomie : Node
 
         //Config _carteCafe
         _carteCafe = (Carte) GetNode(_str_carteCafe);
-        _carteCafe.Bloc = CafeNode.Bloc;
-        _carteCafe.Cost = CafeNode.Cost;
-        _carteCafe.Titre(CafeNode.Titre);
+        _carteCafe.Bloc = CafeNode.Bloc[0];
+        _carteCafe.Cost = CafeNode.Cost[0];
+        _carteCafe.Titre(CafeNode.Titre[0]);
         _carteCafe.Gain(CafeNode.Earn);
-        _carteCafe.Prix(CafeNode.Cost);
+        _carteCafe.Prix(CafeNode.Cost[0]);
         _carteCafe.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         //Config _carteRestaurant
         _carteRestaurant = (Carte) GetNode(_str_carteRestaurant);
-        _carteRestaurant.Bloc = RestaurantNode.Bloc;
-        _carteRestaurant.Cost = RestaurantNode.Cost;
-        _carteRestaurant.Titre(RestaurantNode.Titre);
+        _carteRestaurant.Bloc = RestaurantNode.Bloc[0];
+        _carteRestaurant.Cost = RestaurantNode.Cost[0];
+        _carteRestaurant.Titre(RestaurantNode.Titre[0]);
         _carteRestaurant.Gain(RestaurantNode.Earn);
-        _carteRestaurant.Prix(RestaurantNode.Cost);
+        _carteRestaurant.Prix(RestaurantNode.Cost[0]);
         _carteRestaurant.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
         //Config _carteRestaurant2
         _carteRestaurant2 = (Carte) GetNode(_str_carteRestaurant2);
-        _carteRestaurant2.Bloc = Restaurant2Node.Bloc;
-        _carteRestaurant2.Cost = Restaurant2Node.Cost;
-        _carteRestaurant2.Titre(Restaurant2Node.Titre);
+        _carteRestaurant2.Bloc = Restaurant2Node.Bloc[0];
+        _carteRestaurant2.Cost = Restaurant2Node.Cost[0];
+        _carteRestaurant2.Titre(Restaurant2Node.Titre[0]);
         _carteRestaurant2.Gain(Restaurant2Node.Earn);
-        _carteRestaurant2.Prix(Restaurant2Node.Cost);
+        _carteRestaurant2.Prix(Restaurant2Node.Cost[0]);
         _carteRestaurant2.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         
         _menu_achat.Connect("CloseShop", this, nameof(CloseShop));

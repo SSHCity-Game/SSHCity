@@ -114,9 +114,9 @@ public class Interface : CanvasLayer
         _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
     }
 
-    public static void ConfigInfos(int batiment, PlanInitial planInitial)
+    public static void ConfigInfos(Vector2 tile)
     {
-        _infos.config(batiment, planInitial);
+        _infos.config(tile);
         _infos.Show();
     }
 

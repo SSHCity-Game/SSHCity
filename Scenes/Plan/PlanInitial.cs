@@ -48,6 +48,8 @@ public partial class PlanInitial : Node2D
     private static bool _NotEnoughtMoney = false;
     private static Vector2 _tileSupressing;
     private static int _nbr_Node;
+    private static bool _buildOnTileMap2 = false;
+    private static Vector2 _tileOnTileMap2;
 
     public static bool DeleteSure
     {
@@ -85,8 +87,8 @@ public partial class PlanInitial : Node2D
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
 
-        Func<string, string> chemin = str => "res://Scenes/Buildings/" + str +".tscn"; 
-        _maisonNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/MaisonNode.tscn");
+        Func<string, string> chemin = str => "res://Scenes/Buildings/BatimentsNode/" + str +".tscn"; 
+        _maisonNodeScene = (PackedScene) GD.Load("res://Scenes/Buildings/BatimentsNode/MaisonNode.tscn");
         _caserNodeScene = (PackedScene) GD.Load(chemin("CaserneNode"));
         _immeubleNodeScene = (PackedScene) GD.Load(chemin("ImmeubleNode"));
         _policeNodeScence = (PackedScene) GD.Load(chemin("PoliceNode"));
@@ -144,8 +146,22 @@ public partial class PlanInitial : Node2D
         tile = new Vector2(tile.x-1, tile.y-1);
         return tile;
     }
-    
 
+    public static void Amelioration(Vector2 tile)
+    {
+        (bool worked, int bloc) amelio = Batiments.Amelioration(tile);
+        if (amelio.worked)
+        {
+            BuildTileMap2(amelio.bloc, tile);
+        }
+    }
+
+    public static void BuildTileMap2(int bloc, Vector2 tile)
+    {
+        _batiment = bloc;
+        _tileOnTileMap2 = tile;
+        _buildOnTileMap2 = true;
+    }
 
     public override void _Input(InputEvent OneAction)
     {
@@ -272,9 +288,18 @@ public partial class PlanInitial : Node2D
 
             if (batiment != -1)
             {
-                Interface.ConfigInfos(batiment, this);
+                Interface.ConfigInfos(tile);
             }
         }
     }
-    
+
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+        
+        if (_buildOnTileMap2)
+        {
+            SetBlock(TileMap2, (int)_tileOnTileMap2.x, (int)_tileOnTileMap2.y, _batiment);
+        }
+    }
 }
