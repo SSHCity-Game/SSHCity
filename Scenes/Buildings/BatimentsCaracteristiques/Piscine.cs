@@ -2,8 +2,9 @@ using Godot;
 using System;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Plan;
+using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
 
-public class Piscine
+public class Piscine : Caracteristiques
 {
     public static int[] _bloc = {Ref_donnees.piscine};
     public static int[] _cost = {10000};
@@ -14,5 +15,5 @@ public class Piscine
     public static string[] _image = {"res://assets/isometric piscine1.png"};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.PISCINE;
-    Caracteristiques.BatimentsCaracteristiques cara = new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class);
+    BatimentsCaracteristiques cara = new BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class);
 }

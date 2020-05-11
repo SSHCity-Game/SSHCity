@@ -2,6 +2,7 @@ using Godot;
 using System;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Plan;
+using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
 
 public class McAlly
 {
@@ -14,5 +15,5 @@ public class McAlly
     public static string[] _image = {"res://assets/isometric magasin1.png"};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.MCALLY;
-    Caracteristiques.BatimentsCaracteristiques cara = new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class);
+    public static Caracteristiques.BatimentsCaracteristiques cara = new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class);
 }

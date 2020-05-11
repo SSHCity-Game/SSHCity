@@ -2,6 +2,7 @@ using Godot;
 using System;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Plan;
+using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
 
 public class Police
 {

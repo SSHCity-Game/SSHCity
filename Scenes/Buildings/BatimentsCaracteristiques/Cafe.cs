@@ -1,9 +1,10 @@
 using Godot;
 using System;
-using SshCity.Scenes.Plan;
 using SshCity.Scenes.Buildings;
+using SshCity.Scenes.Plan;
+using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
 
-public class Cafe
+public class Cafe : Caracteristiques
 {
     public static Batiments.Class _class= Batiments.Class.CAFE;
     public static int nbrAmeliorations = 0;
@@ -13,5 +14,6 @@ public class Cafe
     public static string[] _titre = {"Cafe"};
     public static readonly int[] gain_xp = {10, 100, 500};
     public static string[] _image = {"res://assets/isometric magasin6.png"};
-    Caracteristiques.BatimentsCaracteristiques cara = new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class);
+    public static BatimentsCaracteristiques cara = new BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class);
 }
+

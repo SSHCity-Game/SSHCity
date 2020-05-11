@@ -1,11 +1,7 @@
-﻿using Godot;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Threading.Tasks;
-using SshCity.Scenes.Plan;
+﻿using System.Collections.Generic;
+using Godot;
 
-namespace SshCity.Scenes.Buildings
+namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
 {
     public class Caracteristiques
     {
@@ -46,18 +42,17 @@ namespace SshCity.Scenes.Buildings
                 this.gain_xp = gain_xp;
                 this._image = _image;
                 this._class = _class;
-                ListCaracteristiques.Add(this);
+                liste.Add(this);
             }
         }
-
         
-        public static List<BatimentsCaracteristiques> ListCaracteristiques = new List<BatimentsCaracteristiques>();
-
 
         public static BatimentsCaracteristiques GiveCaracteristique(Batiments.Class _class)
         {
-            foreach (BatimentsCaracteristiques caracteristique in ListCaracteristiques)
+            GD.Print(_class);
+            foreach (BatimentsCaracteristiques caracteristique in liste)
             {
+                GD.Print(caracteristique);
                 if (caracteristique._Class == _class)
                 {
                     return caracteristique;
@@ -66,5 +61,11 @@ namespace SshCity.Scenes.Buildings
 
             return null;
         }
+
+        public static BatimentsCaracteristiques[] NoCarte = {Eglise.cara, Ferme.cara};
+        
+        public static List<BatimentsCaracteristiques> liste = new List<BatimentsCaracteristiques>();
+        
+        
     }
 }
