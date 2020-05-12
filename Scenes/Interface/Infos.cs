@@ -42,15 +42,20 @@ public class Infos : Panel
         this.Hide();
     }
 
-    public void config(Vector2 tile)
+    public bool config(Vector2 tile)
     {
         Batiments.Building batiment = Batiments.GetBuildingWithPosition(tile);
-        GD.Print(tile);
-        Batiments.ListBuildings.Add(batiment);
-        _titre.Text = batiment.Titre;
-        Texture texture = ResourceLoader.Load(batiment.Image) as Texture;
-        _image.Texture = texture;
-        position = tile;
+        if (batiment != null)
+        {
+            Batiments.ListBuildings.Add(batiment);
+            _titre.Text = batiment.Titre;
+            Texture texture = ResourceLoader.Load(batiment.Image) as Texture;
+            _image.Texture = texture;
+            position = tile;
+            return true;
+        }
+
+        return false;
     }
 
     public void AmeliorerInfos()

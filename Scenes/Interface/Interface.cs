@@ -126,8 +126,10 @@ public class Interface : CanvasLayer
 
     public static void ConfigInfos(Vector2 tile)
     {
-        _infos.config(tile);
-        _infos.Show();
+        if (_infos.config(tile))
+        {
+            _infos.Show();
+        }
     }
 
 
