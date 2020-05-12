@@ -39,6 +39,7 @@ namespace SshCity.Scenes.Buildings
                 _titre = caracteristique.Titre;
                 gain_xp = caracteristique.GainXp;
                 _image = caracteristique.Image;
+                nbrAmelioration = caracteristique.NbrAmelioration;
                 lvl = 0;
                 ListBuildings.Add(this);
             }
@@ -50,20 +51,20 @@ namespace SshCity.Scenes.Buildings
 
             public  string Titre => _titre[lvl];
 
-            public  int[] Cost => _cost;
-
             public  string Image => _image[lvl];
             public  int Earn => _earn[lvl];
             
 
             public void Upgrade()
             {
-                if (nbrAmelioration > lvl && lvl <2 && Interface.Money> _cost[lvl])
+                GD.Print(nbrAmelioration);
+                if (nbrAmelioration > lvl && lvl <2 && Interface.Money>= _cost[lvl])
                 {
                     Interface.Money -= _cost[lvl];
                     Interface.Xp += gain_xp[lvl];
                     lvl += 1;
                 }
+                GD.Print(lvl);
             }
         }
     }

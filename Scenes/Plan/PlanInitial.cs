@@ -89,6 +89,7 @@ public partial class PlanInitial : Node2D
     public static void Amelioration(Vector2 tile)
     {
         (bool worked, int bloc) amelio = Batiments.Amelioration(tile);
+        GD.Print(amelio);
         if (amelio.worked)
         {
             BuildTileMap2(amelio.bloc, tile);

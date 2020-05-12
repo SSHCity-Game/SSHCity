@@ -55,6 +55,8 @@ public class Infos : Panel
 
     public void AmeliorerInfos()
     {
+        GD.Print(position);
         PlanInitial.Amelioration(position);
+        config(position);
     }
 }
