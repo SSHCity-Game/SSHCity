@@ -32,7 +32,8 @@ margin_top = 91.0
 margin_right = 667.5
 margin_bottom = 342.0
 custom_fonts/font = SubResource( 1 )
-text = "Pour eteindre l'incendie, dirigez vous vers la boutique afin d'acheter une caserne et le materiel adequate.
+text = "Attention, vous avez un incendie en cours.
+Pour l'eteindre, dirigez vous vers la boutique afin d'acheter une caserne et le materiel adequate.
 Revenez ensuite et appuyez sur eteindre pour eteindre le feu"
 align = 1
 valign = 1

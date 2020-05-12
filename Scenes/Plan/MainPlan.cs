@@ -5,7 +5,7 @@ using SshCity.Scenes.Plan;
 
 public class MainPlan : Node2D
 {
-    private PlanInitial _planInitial;
+    public static PlanInitial _planInitial;
     private Camera2D _camera2D;
     private string str_planInitial = "PlanInitial";
     private string str_camera2D = "Camera2D";
@@ -19,7 +19,8 @@ public class MainPlan : Node2D
     private static List<(Vector2, int)> _listeNode = new List<(Vector2, int)>();
     private AudioStreamPlayer _musique;
     private const string _str_music = "Musique";
-    
+
+    private MainMenu _mainMenu;
 
     public static List<(Vector2, int)> ListeBatiment
     {
@@ -134,9 +135,11 @@ public class MainPlan : Node2D
 
     public override void _Ready()
     {
+        _mainMenu = (MainMenu) GetNode("Camera2D/MainMenu");
         _planInitial = (PlanInitial) GetNode(str_planInitial);
         _camera2D = (Camera2D) GetNode(str_camera2D);
-
+        _musique = (AudioStreamPlayer) GetNode(_str_music);
+        
         Montagnes.GenerateMontagne(_planInitial);
         Montagnes.GenerateMontagne(_planInitial);
 
@@ -154,13 +157,14 @@ public class MainPlan : Node2D
         Sable.GenerateSable(_planInitial, coordonnées);
 
         //Lancement de la musique
-        _musique = (AudioStreamPlayer) GetNode(_str_music);
         _musique.Play();
     }
+
 
     public override void _Process(float delta)
     {
         base._Process(delta);
         //Incident.GenereIncidents(_planInitial);
     }
+
 }

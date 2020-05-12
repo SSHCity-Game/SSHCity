@@ -23,6 +23,8 @@ public class MainMenu : CanvasLayer
         Connexion.Connect("pressed", this, nameof(menu_connexion));
         NewGame.Connect("pressed", this, nameof(new_game));
         Options.Connect("pressed", this, nameof(menu_options));
+        
+        AddUserSignal("game_started");
     }
 
     public void menu_connexion()
@@ -36,6 +38,7 @@ public class MainMenu : CanvasLayer
         Options.Hide();
         Background.Hide();
         SSHCity.Hide();
+        EmitSignal("game_started");
     }
     public void menu_options()
     {
