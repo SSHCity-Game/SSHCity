@@ -14,6 +14,13 @@ public class Incident : PlanInitial
         TileMap2 = (TileMap) GetNode("TileMap2");
         TileMap3 = (TileMap) GetNode("TileMap3");
     }
+    
+    
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+        GenereIncidents(MainPlan._planInitial);
+    }
 
     /* Permet l'utilisation des methodes non static dans methode static */
     private static Incident Instance { get; } = new Incident();
