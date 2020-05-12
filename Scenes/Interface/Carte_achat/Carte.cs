@@ -18,6 +18,8 @@ public class Carte : Panel
     private const string _str_prix = "Prix";
     private int _bloc = 1;
     private int _cost;
+    //public static Sprite _fleche;
+    //private const string _str_fleche = "Fleche";
 
     public int Cost
     {
@@ -42,6 +44,7 @@ public class Carte : Panel
         _sprite = (Sprite) GetNode(_str_sprite);
         _prix = (Label) GetNode(_str_prix);
         _gain = (Label) GetNode(_str_gain);
+        //_fleche = (Sprite) GetNode(_str_fleche);
 
         AddUserSignal("Achat");
     }

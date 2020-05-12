@@ -74,6 +74,7 @@ __meta__ = {
 margin_right = 182.0
 margin_bottom = 43.0
 custom_fonts/font = SubResource( 2 )
+toggle_mode = true
 text = "Connexion"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -84,6 +85,7 @@ margin_top = 73.0
 margin_right = 182.0
 margin_bottom = 116.0
 custom_fonts/font = SubResource( 3 )
+toggle_mode = true
 text = "New Game"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -94,6 +96,7 @@ margin_top = 146.0
 margin_right = 182.0
 margin_bottom = 189.0
 custom_fonts/font = SubResource( 4 )
+toggle_mode = true
 text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false

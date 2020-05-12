@@ -9,8 +9,8 @@ public class menu_incident : CanvasLayer
     public Button Quitter;
     public static Button Flamme;
     public TextureRect Background;
+
     
-    private static Interface Instance { get; } = new Interface();
     public override void _Ready()
     {
         Boutique = (Button) GetNode("Boutique");
@@ -31,6 +31,15 @@ public class menu_incident : CanvasLayer
         Flamme.Connect("pressed", this, nameof(Resolution));
         
     }
+    
+    private void on_boutique_pressed()
+    {
+        Boutique.Hide();
+        Resoudre.Hide();
+        Quitter.Hide();
+        Background.Hide();
+        Interface.OpenShop = true;
+    }
 
     public void Resolution()
     {
@@ -43,14 +52,7 @@ public class menu_incident : CanvasLayer
     {
         Flamme.Show();
     }
-    private void on_boutique_pressed()
-    {
-        Boutique.Hide();
-        Resoudre.Hide();
-        Quitter.Hide();
-        Background.Hide();
-        //Instance.ButtonShopPressed();
-    }
+
 
     private void on_resoudre_pressed()
     {
