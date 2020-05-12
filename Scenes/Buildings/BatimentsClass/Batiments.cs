@@ -27,6 +27,8 @@ namespace SshCity.Scenes.Buildings
 
             public  Class Class => _class;
 
+            public int Lvl => lvl;
+
             public Building(Class batimentClass, Vector2 position)
             {
                 Caracteristiques.BatimentsCaracteristiques caracteristique = Caracteristiques.GiveCaracteristique(batimentClass);

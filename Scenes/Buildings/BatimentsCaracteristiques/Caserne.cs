@@ -14,6 +14,6 @@ public class Caserne
     public static string[] _titre = {"Caserne"};
     public static int lvl = 0;
     public static readonly int[] gain_xp = {10, 100, 500};
-    public static string[] _image = {"res://assets/caserne.png"};
+    public static string[] _image = {"res://assets/ImageSized/caserne.png"};
     public static Caracteristiques.BatimentsCaracteristiques cara = new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class);
 }
