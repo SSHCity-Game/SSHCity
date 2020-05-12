@@ -4,12 +4,13 @@ using SshCity.Scenes.Plan;
 
 public class menu_incident : CanvasLayer
 {
-    public static Button Boutique;
-    public static Button Resoudre;
-    public static Button Quitter;
+    public Button Boutique;
+    public Button Resoudre;
+    public Button Quitter;
     public static Button Flamme;
-    public static TextureRect Background;
+    public TextureRect Background;
     
+    private static Interface Instance { get; } = new Interface();
     public override void _Ready()
     {
         Boutique = (Button) GetNode("Boutique");
@@ -48,6 +49,7 @@ public class menu_incident : CanvasLayer
         Resoudre.Hide();
         Quitter.Hide();
         Background.Hide();
+        //Instance.ButtonShopPressed();
     }
 
     private void on_resoudre_pressed()

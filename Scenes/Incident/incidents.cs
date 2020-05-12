@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -6,7 +6,7 @@ using SshCity.Scenes.Plan;
 
 public class Incident : PlanInitial
 {
-    private const int XpIncident = 80;
+    private const int XpIncident = 0;
 
     public override void _Ready()
     {
@@ -14,8 +14,7 @@ public class Incident : PlanInitial
         TileMap2 = (TileMap) GetNode("TileMap2");
         TileMap3 = (TileMap) GetNode("TileMap3");
     }
-    
-    
+
     public override void _Process(float delta)
     {
         base._Process(delta);
@@ -24,6 +23,7 @@ public class Incident : PlanInitial
 
     /* Permet l'utilisation des methodes non static dans methode static */
     private static Incident Instance { get; } = new Incident();
+    private static menu_incident MenuIncident { get; } = new menu_incident();
 
     public static async void GenereIncidents(PlanInitial planInitial)
     {
@@ -36,7 +36,6 @@ public class Incident : PlanInitial
         int indexAp = Ref_donnees.maison3_flamme;
         List<Vector2> coordinates = new List<Vector2>(); // positions du bloc index_av
         int x, y;
-        bool exist_fire = false;
         Vector2 pos;
         
         /* recherche des coordonnees du batiment voulut et ajout a la liste coordinates */
@@ -52,15 +51,14 @@ public class Incident : PlanInitial
         x = (int) pos.x;
         y = (int) pos.y;
 
-        if (Interface.Xp >= XpIncident && !exist_fire)
-        {
+        //if (Interface.Xp >= XpIncident)
+        //{
             await Task.Delay(5000);
             BuildingOnFire(planInitial, indexAv, indexAp, x, y);
-            exist_fire = true;
             await Task.Delay(1000); 
             menu_incident.AlerteIncendie();
             //PutOutFire(planInitial, indexAv, indexAp, x, y);
-        }
+        //}
     }
 
      private static void BuildingOnFire(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)

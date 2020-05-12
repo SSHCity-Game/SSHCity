@@ -1,13 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Alerte_incidents/flamme.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Incident/menu_incident.cs" type="Script" id=2]
 [ext_resource path="res://assets/Alerte_incidents/background.png" type="Texture" id=3]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/Alerte_incidents/flamme4.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 4 )
+
+[sub_resource type="AnimatedTexture" id=2]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 1 )
+frame_1/texture = ExtResource( 5 )
+frame_1/delay_sec = 0.0
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -93,7 +101,7 @@ margin_top = 60.0
 margin_right = 1068.43
 margin_bottom = 166.0
 rect_scale = Vector2( 0.5, 0.5 )
-icon = ExtResource( 1 )
+icon = SubResource( 2 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false

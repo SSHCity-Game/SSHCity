@@ -10,8 +10,7 @@ public class MainMenu : CanvasLayer
     public Label SSHCity;
     
     /* Permet l'utilisation des methodes non static dans methode static */
-    private static Incident Instance { get; } = new Incident();
-    
+
     public override void _Ready()
     {
         Connexion = (Button) GetNode("Center/MenuOptions/Connexion");
