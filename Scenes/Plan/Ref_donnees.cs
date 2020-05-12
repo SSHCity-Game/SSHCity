@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Collections;
+using System.Collections.Generic;
 namespace SshCity.Scenes.Plan
 {
     public class Ref_donnees
@@ -83,6 +84,8 @@ namespace SshCity.Scenes.Plan
         public const int route_croisement = 42;
         public const int maison3_flamme = 57;
         public const int alerte_incendie = 6;
+        public const int centrale = 58;
+        public const int ferme_ecolo = 59;
         
         
         //Variable bloquer camera
@@ -97,6 +100,14 @@ namespace SshCity.Scenes.Plan
         
         //argent
 
-        public static int argent = 0;
+        public static int argent = 10000;
+        
+        //Dimensions blocs
+        public static Dictionary<int, (int, int)> dimensions = new Dictionary<int, (int, int)>()
+        {
+            {centrale, (3, 4)},
+            {ferme, (2,2)}
+        };
+
     }
 }

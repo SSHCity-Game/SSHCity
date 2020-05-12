@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Security.Cryptography.X509Certificates;
+using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
 
 public class MenuHabitation : Node
 {
@@ -40,40 +41,40 @@ public class MenuHabitation : Node
         
         //Config _carteMaison
         _carteMaison = (Carte) GetNode(_str_carteMaison);
-        _carteMaison.Bloc = MaisonNode.Bloc;
-        _carteMaison.Cost = MaisonNode.Cost;
-        _carteMaison.Titre(MaisonNode.Titre);
-        _carteMaison.Gain(MaisonNode.Earn);
-        _carteMaison.Prix(MaisonNode.Cost);
+        _carteMaison.Bloc = Maison._bloc[0];
+        _carteMaison.Cost = Maison._cost[0];
+        _carteMaison.Titre(Maison._titre[0]);
+        _carteMaison.Gain(Maison._earn[0]);
+        _carteMaison.Prix(Maison._cost[0]);
         
         _carteMaison.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         
         //Config _carteMaison3
         _carteMaison3 = (Carte) GetNode(_str_carteMaison3);
-        _carteMaison3.Bloc = Maison3Node.Bloc;
-        _carteMaison3.Cost = Maison3Node.Cost;
-        _carteMaison3.Titre(Maison3Node.Titre);
-        _carteMaison3.Gain(Maison3Node.Earn);
-        _carteMaison3.Prix(Maison3Node.Cost);
+        _carteMaison3.Bloc = Maison3._bloc[0];
+        _carteMaison3.Cost = Maison3._cost[0];
+        _carteMaison3.Titre(Maison3._titre[0]);
+        _carteMaison3.Gain(Maison3._earn[0]);
+        _carteMaison3.Prix(Maison3._cost[0]);
         _carteMaison3.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         //Config _carteMaison4
         _carteMaison4 = (Carte) GetNode(_str_carteMaison4);
-        _carteMaison4.Bloc = Maison4Node.Bloc;
-        _carteMaison4.Cost = Maison4Node.Cost;
-        _carteMaison4.Titre(Maison4Node.Titre);
-        _carteMaison4.Gain(Maison4Node.Earn);
-        _carteMaison4.Prix(Maison4Node.Cost);
+        _carteMaison4.Bloc = Maison4._bloc[0];
+        _carteMaison4.Cost = Maison4._cost[0];
+        _carteMaison4.Titre(Maison4._titre[0]);
+        _carteMaison4.Gain(Maison4._earn[0]);
+        _carteMaison4.Prix(Maison4._cost[0]);
         _carteMaison4.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         //Config _carteMaison5
         _carteMaison5 = (Carte) GetNode(_str_carteMaison5);
-        _carteMaison5.Bloc = Maison5Node.Bloc;
-        _carteMaison5.Cost = Maison5Node.Cost;
-        _carteMaison5.Titre(Maison5Node.Titre);
-        _carteMaison5.Gain(Maison5Node.Earn);
-        _carteMaison5.Prix(Maison5Node.Cost);
+        _carteMaison5.Bloc = Maison5._bloc[0];
+        _carteMaison5.Cost = Maison5._cost[0];
+        _carteMaison5.Titre(Maison5._titre[0]);
+        _carteMaison5.Gain(Maison5._earn[0]);
+        _carteMaison5.Prix(Maison5._cost[0]);
         _carteMaison5.Hide();
         _carteMaison5.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
         

@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/Images_interface/croix.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/Interface/GUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/Images_interface/croix_jaune.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Interface/Infos.tscn" type="PackedScene" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -186,3 +187,8 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Infos" parent="." instance=ExtResource( 13 )]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.Tracing;
 using Godot;
+using SshCity.Scenes.Buildings;
 
 namespace SshCity.Scenes.Plan
 {
@@ -16,21 +17,59 @@ namespace SshCity.Scenes.Plan
                 Ref_donnees.maison4, Ref_donnees.mairie, Ref_donnees.maison5,
                 Ref_donnees.eglise, Ref_donnees.restaurant, Ref_donnees.restaurant2
             };
+
             int k = 0;
-            int k2 = 3;
             for (int i = x; i < x + 5; i += 2) //CONSTRUCTION DES BATIMENTS
             {
                 for (int j = y; j < y + 5; j += 2)
                 {
                     int bloc_set = batiments[k];
                     planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, bloc_set);
-                    MainPlan.ListeBatiment.Add((new Vector2(i-1, j-1), bloc_set));
-                    if (k != 4)
+
+                    switch (k)
                     {
-                        GD.Print(k2);
-                        MainPlan.ListeNode.Add((new Vector2(i-1, j-1), k2));
-                        k2++;
+                        case 0:
+                        {
+                            new Batiments.Building(Batiments.Class.PARC, new Vector2(i-1, j-1));
+                            break;
+                        }
+                        case 1:
+                        {
+                            new Batiments.Building(Batiments.Class.MAISON3, new Vector2(i-1, j-1));
+                            break;
+                        }
+                        case 2:
+                        {
+                            new Batiments.Building(Batiments.Class.FERME, new Vector2(i-1, j-1));
+                            break;
+                        }
+                        case 3:
+                        {
+                            new Batiments.Building(Batiments.Class.MAISON4, new Vector2(i-1, j-1));
+                            break;
+                        }
+                        case 5:
+                        {
+                            new Batiments.Building(Batiments.Class.MAISON5, new Vector2(i-1, j-1));
+                            break;
+                        }
+                        case 6:
+                        {
+                            new Batiments.Building(Batiments.Class.EGLISE, new Vector2(i-1, j-1));
+                            break;
+                        }
+                        case 7:
+                        {
+                            new Batiments.Building(Batiments.Class.RESTAURANT, new Vector2(i-1, j-1));
+                            break;
+                        }
+                        case 8:
+                        {
+                            new Batiments.Building(Batiments.Class.RESTAURANT2, new Vector2(i-1, j-1));
+                            break;
+                        }
                     }
+                    MainPlan.ListeBatiment.Add((new Vector2(i-1, j-1), bloc_set));
                     k++;
                 }
             }

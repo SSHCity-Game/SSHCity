@@ -19,17 +19,11 @@ public class MainPlan : Node2D
     private static List<(Vector2, int)> _listeNode = new List<(Vector2, int)>();
     private AudioStreamPlayer _musique;
     private const string _str_music = "Musique";
-
+    
     public static List<(Vector2, int)> ListeBatiment
     {
         get => _listeBatiment;
         set => _listeBatiment = value;
-    }
-
-    public static List<(Vector2, int)> ListeNode
-    {
-        get => _listeNode;
-        set => _listeNode = value;
     }
 
     public override void _Input(InputEvent OneEvent)
@@ -165,6 +159,6 @@ public class MainPlan : Node2D
     public override void _Process(float delta)
     {
         base._Process(delta);
-        Incident.GenereIncidents(_planInitial);
+        //Incident.GenereIncidents(_planInitial);
     }
 }

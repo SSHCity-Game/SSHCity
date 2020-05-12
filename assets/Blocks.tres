@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=57 format=2]
+[gd_resource type="TileSet" load_steps=59 format=2]
 
 [ext_resource path="res://assets/isometric_0108.png" type="Texture" id=1]
 [ext_resource path="res://assets/Alerte_incidents/bulleFeu.png" type="Texture" id=2]
@@ -52,6 +52,8 @@
 [ext_resource path="res://assets/route_virage2.png" type="Texture" id=50]
 [ext_resource path="res://assets/montagne.png" type="Texture" id=51]
 [ext_resource path="res://assets/flammeMaison3.png" type="Texture" id=52]
+[ext_resource path="res://assets/isometric centrale1.png" type="Texture" id=53]
+[ext_resource path="res://assets/isometric ferme ecolo.png" type="Texture" id=54]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -598,3 +600,23 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 57/navigation = SubResource( 1 )
 57/shapes = [  ]
 57/z_index = 0
+58/name = "isometric centrale1.png 58"
+58/texture = ExtResource( 53 )
+58/tex_offset = Vector2( -750, -70 )
+58/modulate = Color( 1, 1, 1, 1 )
+58/region = Rect2( 0, 128, 3040, 2400 )
+58/tile_mode = 0
+58/occluder_offset = Vector2( 0, 0 )
+58/navigation_offset = Vector2( 0, 0 )
+58/shapes = [  ]
+58/z_index = 0
+59/name = "isometric ferme ecolo.png 59"
+59/texture = ExtResource( 54 )
+59/tex_offset = Vector2( -400, 250 )
+59/modulate = Color( 1, 1, 1, 1 )
+59/region = Rect2( 0, 0, 1792, 1312 )
+59/tile_mode = 0
+59/occluder_offset = Vector2( 0, 0 )
+59/navigation_offset = Vector2( 0, 0 )
+59/shapes = [  ]
+59/z_index = 0

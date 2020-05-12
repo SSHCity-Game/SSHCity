@@ -118,7 +118,6 @@ public class Boutique : CanvasLayer
             _button_sante.Pressed = false;
             _button_speciaux.Pressed = false;
             Menu_Achat.Reset1 = true;
-            Interface.Hide = false;
         }
     }
 
