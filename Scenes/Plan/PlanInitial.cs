@@ -204,7 +204,7 @@ public partial class PlanInitial : Node2D
             DeleteSure = false;
         }
 
-        if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete && !DeleteVerif.Verif)
+        if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete && !DeleteVerif.Verif && Interface.Hide)
         {
             Vector2 tile = GetTilePosition();
             int batiment = -1;

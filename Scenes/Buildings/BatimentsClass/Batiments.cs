@@ -58,7 +58,7 @@ namespace SshCity.Scenes.Buildings
 
             public void Upgrade()
             {
-                if (lvl <2 && Interface.Money> _cost[lvl])
+                if (nbrAmelioration > lvl && lvl <2 && Interface.Money> _cost[lvl])
                 {
                     Interface.Money -= _cost[lvl];
                     Interface.Xp += gain_xp[lvl];

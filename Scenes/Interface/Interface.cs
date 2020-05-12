@@ -23,6 +23,7 @@ public class Interface : CanvasLayer
     private static Infos _infos;
     private Timer _timer;
     private int moneyWin = 0;
+    private bool _visible;
 
     private static bool _infosBool = false;
 
@@ -128,6 +129,7 @@ public class Interface : CanvasLayer
         _infos.config(tile);
         _infos.Show();
     }
+
 
     public void WinMoney()
     {

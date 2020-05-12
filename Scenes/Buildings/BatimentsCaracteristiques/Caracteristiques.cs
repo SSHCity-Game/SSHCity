@@ -3,7 +3,7 @@ using Godot;
 
 namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
 {
-    public class Caracteristiques
+    public partial class Caracteristiques
     {
         public class BatimentsCaracteristiques
         {
@@ -62,8 +62,6 @@ namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
             return null;
         }
 
-        public static BatimentsCaracteristiques[] NoCarte = {Eglise.cara, Ferme.cara};
-        
         public static List<BatimentsCaracteristiques> liste = new List<BatimentsCaracteristiques>();
         
         

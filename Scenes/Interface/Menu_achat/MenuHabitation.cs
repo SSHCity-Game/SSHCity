@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Security.Cryptography.X509Certificates;
+using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
 
 public class MenuHabitation : Node
 {

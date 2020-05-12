@@ -40,7 +40,7 @@ namespace SshCity.Scenes.Plan
                         }
                         case 2:
                         {
-                            //new Batiments.Building(Batiments.Class.FERME, new Vector2(i-1, j-1));
+                            new Batiments.Building(Batiments.Class.FERME, new Vector2(i-1, j-1));
                             break;
                         }
                         case 3:
@@ -55,7 +55,7 @@ namespace SshCity.Scenes.Plan
                         }
                         case 6:
                         {
-                            //new Batiments.Building(Batiments.Class.EGLISE, new Vector2(i-1, j-1));
+                            new Batiments.Building(Batiments.Class.EGLISE, new Vector2(i-1, j-1));
                             break;
                         }
                         case 7:

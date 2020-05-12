@@ -58,7 +58,9 @@
     <Compile Include="Scenes\autres\Plan.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Caracteristiques.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\DictionnaireCaracteristiques.cs" />
+    <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Eglise.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Ferme.cs" />
+    <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Maison.cs" />
     <Compile Include="Scenes\Buildings\BatimentsClass\Amelioration.cs" />
     <Compile Include="Scenes\Buildings\BatimentsClass\Batiments.cs" />
     <Compile Include="Scenes\Buildings\BatimentsClass\Classes.cs" />
@@ -66,7 +68,6 @@
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Cafe.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Caserne.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\CentraleElectrique.cs" />
-    <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Eglise.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Hospital.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Hotel.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Immeuble.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Maison3.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Maison4.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Maison5.cs" />
-    <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Maison.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\McAlly.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Parc.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Piscine.cs" />
