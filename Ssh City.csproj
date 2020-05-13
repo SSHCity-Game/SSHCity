@@ -104,6 +104,9 @@
     <Compile Include="Scenes\Plan\Sable.cs" />
     <Compile Include="Scenes\Plan\Buildings.cs" />
     <Compile Include="Scenes\Plan\TileMap1.cs" />
+    <Compile Include="Scenes\Sauvegarde\Sauvegarde.cs" />
+    <Compile Include="Scenes\Sauvegarde\SauvegardeManager.cs" />
+    <Compile Include="Scenes\Sauvegarde\Serializable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="XML_file.xml" />
