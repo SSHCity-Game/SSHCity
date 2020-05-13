@@ -146,24 +146,27 @@ public class MainPlan : Node2D
 		_camera2D = (Camera2D) GetNode(str_camera2D);
 
 		// Initialise les sauvegardes
-		SauvegardeManager.Instance.Initialize();
-
-		Montagnes.GenerateMontagne(_planInitial);
-		Montagnes.GenerateMontagne(_planInitial);
-
-		// Génère une nouvelle map tant qu'on ne peut pas créer de village
-		while (!SshCity.Scenes.Plan.Buildings.GenerateBuildings(_planInitial))
+		SauvegardeManager.Initialize();
+		// We load the game or we generate a map
+		if (!SauvegardeManager.LoadGame())
 		{
-			_planInitial = new PlanInitial();
+			Montagnes.GenerateMontagne(_planInitial);
+			Montagnes.GenerateMontagne(_planInitial);
+
+			// Génère une nouvelle map tant qu'on ne peut pas créer de village
+			while (!SshCity.Scenes.Plan.Buildings.GenerateBuildings(_planInitial))
+			{
+				_planInitial = new PlanInitial();
+			}
+
+			Montagnes.GenerateMontagne(_planInitial);
+
+			//CREATION LACS
+			List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
+
+			//CREATION SABLE
+			Sable.GenerateSable(_planInitial, coordonnées);
 		}
-
-		Montagnes.GenerateMontagne(_planInitial);
-
-		//CREATION LACS
-		List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
-
-		//CREATION SABLE
-		Sable.GenerateSable(_planInitial, coordonnées);
 
 		//Lancement de la musique
 		_musique = (AudioStreamPlayer) GetNode(_str_music);
@@ -175,7 +178,7 @@ public class MainPlan : Node2D
 		// Ne s'occupe que de la fermeture du jeu
 		if (what != MainLoop.NotificationWmQuitRequest)
 			return;
-		SauvegardeManager.Instance.SaveGame();
+		SauvegardeManager.SaveGame();
 	}
 
 	public override void _Process(float delta)

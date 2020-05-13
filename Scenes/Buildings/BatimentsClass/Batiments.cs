@@ -28,21 +28,20 @@ namespace SshCity.Scenes.Buildings
 
 			public Class Class => _class;
 
-			public Building(Class batimentClass, Vector2 position)
+			public Building(Class clazz, Vector2 position, int theLvl = 0)
 			{
-				Caracteristiques.BatimentsCaracteristiques caracteristique =
-					Caracteristiques.GiveCaracteristique(batimentClass);
+				var car = Caracteristiques.GiveCaracteristique(clazz);
 
 				_position = position;
-				_class = batimentClass;
-				_bloc = caracteristique.Bloc;
-				_earn = caracteristique.Earn;
-				_cost = caracteristique.Cost;
-				_titre = caracteristique.Titre;
-				gain_xp = caracteristique.GainXp;
-				_image = caracteristique.Image;
-				nbrAmelioration = caracteristique.NbrAmelioration;
-				lvl = 0;
+				_class = clazz;
+				_bloc = car.Bloc;
+				_earn = car.Earn;
+				_cost = car.Cost;
+				_titre = car.Titre;
+				gain_xp = car.GainXp;
+				_image = car.Image;
+				nbrAmelioration = car.NbrAmelioration;
+				lvl = theLvl;
 				ListBuildings.Add(this);
 			}
 
