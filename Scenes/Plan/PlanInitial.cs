@@ -235,6 +235,7 @@ public partial class PlanInitial : Node2D
         if (_buildOnTileMap2)
         {
             SetBlock(TileMap2, (int)_tileOnTileMap2.x, (int)_tileOnTileMap2.y, _batiment);
+            _buildOnTileMap2 = false;
         }
     }
 }

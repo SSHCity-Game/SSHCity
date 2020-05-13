@@ -159,6 +159,6 @@ public class MainPlan : Node2D
     public override void _Process(float delta)
     {
         base._Process(delta);
-        //Incident.GenereIncidents(_planInitial);
+        Incident.GenereIncidents(_planInitial);
     }
 }

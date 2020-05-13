@@ -16,11 +16,16 @@ public class Infos : Panel
     private Label _argentActuel;
     private Label _energieActuel;
     private Label _eauActuel;
+    private Panel _amelioPanel;
+    private Panel _nivMax;
+
+    private Label _argentAmelio;
+    private Label _energieAmelio;
+    private Label _eauAmelio;
     
     private bool buttonWork = false;
     private Vector2 position;
-
-
+    
     private const string _strQuitter = "Quitter";
     private const string _strAmeliorer = "Ameliorer";
     private const string _strCadre = "Cadre";
@@ -30,6 +35,11 @@ public class Infos : Panel
     private const string _strArgentActuel = "Lvl/Gains/Argent/ArgentValue";
     private const string _strEnergieActuel = "Lvl/Couts/Energie/EnergieValue";
     private const string _strEauActuel = "Lvl/Couts/Eau/EauValue";
+    private const string _strArgentAmelio = "Amelioration/Gains/Argent/ArgentValue";
+    private const string _strEnergieAmelio = "Amelioration/Couts/Energie/EnergieValue";
+    private const string _strEauAmelio = "Amelioration/Couts/Eau/EauValue";
+    private const string _strAmelioPanel = "Amelioration";
+    private const string _strNivMax = "LvlMax";
     
     public override void _Ready()
     {
@@ -44,6 +54,13 @@ public class Infos : Panel
         _argentActuel = (Label) GetNode(_strArgentActuel);
         _energieActuel = (Label) GetNode(_strEnergieActuel);
         _eauActuel = (Label) GetNode(_strEauActuel);
+        _argentAmelio = (Label) GetNode(_strArgentAmelio);
+        _energieAmelio = (Label) GetNode(_strEnergieAmelio);
+        _eauAmelio = (Label) GetNode(_strEauAmelio);
+        _amelioPanel = (Panel) GetNode(_strAmelioPanel);
+        _nivMax = (Panel) GetNode(_strNivMax);
+        
+        _nivMax.Hide();
         
         _quitter.Connect("pressed", this, nameof(CloseInfos));
         _ameliorer.Connect("pressed", this, nameof(AmeliorerInfos));
@@ -67,6 +84,19 @@ public class Infos : Panel
             _argentActuel.Text = Convert.ToString(batiment.Earn);
             //_energieActuel.Text = Convert.ToString(batiment.Energie);
             //_eauActuel.Text = Convert.ToString(batiment.eau):
+            if (batiment.Lvl != batiment.NbrAmelioration)
+            {
+                _argentAmelio.Text = Convert.ToString(batiment.EarnTab[batiment.Lvl+1]);
+                //_argentAmelio.Text = Convert.ToString(batiment.EnergieTab[batiment.Lvl + 1]);
+                //_eauAmelio.Text = Convert.ToString(batiment.EauTab[batiment.Lvl + 1]);
+                _ameliorer.Text = "Ameliorer\n" + Convert.ToString(batiment.AmeliorationCost);
+            }
+            else
+            {
+                _amelioPanel.Hide();
+                _nivMax.Show();
+                _ameliorer.Text = "LVL MAX";
+            }
             return true;
         }
 

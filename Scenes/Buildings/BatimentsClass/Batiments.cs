@@ -55,6 +55,10 @@ namespace SshCity.Scenes.Buildings
 
             public  string Image => _image[lvl];
             public  int Earn => _earn[lvl];
+            public int[] EarnTab => _earn;
+            public int AmeliorationCost => _cost[lvl + 1];
+
+            public int NbrAmelioration => nbrAmelioration;
             
 
             public void Upgrade()
