@@ -9,7 +9,7 @@ public class MainMenu : CanvasLayer
     public TextureRect Background;
     public Label SSHCity;
     
-    /* Permet l'utilisation des methodes non static dans methode static */
+    
 
     public override void _Ready()
     {

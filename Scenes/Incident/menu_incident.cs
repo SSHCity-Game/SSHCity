@@ -4,6 +4,7 @@ using SshCity.Scenes.Plan;
 
 public class menu_incident : CanvasLayer
 {
+    /* VARIABLES */
     public Button Boutique;
     public Button Resoudre;
     public Button Quitter;
@@ -39,6 +40,8 @@ public class menu_incident : CanvasLayer
         Quitter.Hide();
         Background.Hide();
         Interface.OpenShop = true;
+        //Interface.CloseShop = false;
+        //CaserneCligno._cligno = true;
     }
 
     public void Resolution()

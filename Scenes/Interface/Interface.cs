@@ -68,11 +68,18 @@ public class Interface : CanvasLayer
         get => _xp;
         set => _xp = value;
     }
+    
     public static bool _openShop = false;
     public static bool OpenShop
     {
         get => _openShop;
         set => _openShop = value;
+    }
+    public static bool _closeShop = true;
+    public static bool CloseShop
+    {
+        get => _closeShop;
+        set => _closeShop = value;
     }
 
     private const string _str_shop = "Boutique";
@@ -154,7 +161,6 @@ public class Interface : CanvasLayer
         {
             ButtonShopPressed();
             OpenShop = false;
-            //Carte._fleche.Show();
         }
 
         moneyWin = 0;
@@ -220,6 +226,9 @@ public class Interface : CanvasLayer
         //Ferme Achat Route
         _achatRoute = false;
         PlanInitial.AchatRoute(_achatRoute);
+
+        //_openShop = !_openShop;
+        //_closeShop = !_closeShop;
 
         _delete = false;
         PlanInitial.Delete = _delete;

@@ -113,6 +113,7 @@
   <ItemGroup>
     <Folder Include="Scenes\Interface\Carte_achat\Economie" />
     <Folder Include="Scenes\Interface\Carte_achat\Habitation" />
+    <Folder Include="Scenes\Interface\Carte_achat\Sante" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
