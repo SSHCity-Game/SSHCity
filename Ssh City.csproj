@@ -95,6 +95,7 @@
     <Compile Include="Scenes\Interface\Menu_achat\MenuSpeciaux.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\Menu_Achat.cs" />
     <Compile Include="Scenes\Plan\Achat.cs" />
+    <Compile Include="Scenes\Plan\Camion.cs" />
     <Compile Include="Scenes\Plan\Lacs.cs" />
     <Compile Include="Scenes\Plan\MainPlan.cs" />
     <Compile Include="Scenes\Plan\Montagnes.cs" />

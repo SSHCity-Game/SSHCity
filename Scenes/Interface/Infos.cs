@@ -25,7 +25,21 @@ public class Infos : Panel
     
     private bool buttonWork = false;
     private Vector2 position;
-    
+    private static bool _close = false;
+    private static bool _isOpen = false;
+
+    public static bool IsOpen
+    {
+        get => _isOpen;
+        set => _isOpen = value;
+    }
+
+    public static bool Close
+    {
+        get => _close;
+        set => _close = value;
+    }
+
     private const string _strQuitter = "Quitter";
     private const string _strAmeliorer = "Ameliorer";
     private const string _strCadre = "Cadre";
@@ -68,6 +82,7 @@ public class Infos : Panel
     public void CloseInfos()
     {
         this.Hide();
+        _isOpen = false;
     }
 
     public bool config(Vector2 tile)
@@ -107,5 +122,20 @@ public class Infos : Panel
     {
         PlanInitial.Amelioration(position);
         config(position);
+    }
+
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+        if (_close)
+        {
+            CloseInfos();
+            _close = false;
+        }
+
+        if (this.Visible)
+        {
+            _isOpen = true;
+        }
     }
 }

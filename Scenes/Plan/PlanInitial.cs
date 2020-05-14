@@ -10,10 +10,19 @@ public partial class PlanInitial : Node2D
     public TileMap TileMap1;
     public TileMap TileMap2;
     public TileMap TileMap3;
+    private AnimatedSprite Camion;
+    public bool isMoving = false;
+    public Vector2 _deplacement;
+    public Vector2 arrive;
+    public Camion.Direction direction;
+    private Vector2 CamionDecallage = new Vector2(100, 230);
+
 
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
+    private const string strCamion = "Camion";
+
 
 
     private Vector2 _lastTile = new Vector2(0, 0);
@@ -65,6 +74,74 @@ public partial class PlanInitial : Node2D
         TileMap1 = (TileMap) GetNode(str_TileMap1);
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
+        Camion = (AnimatedSprite) GetNode(strCamion);
+        Camion.Position = TileMap2.MapToWorld(new Vector2(20, 0))+new Vector2(50, 250);
+    }
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+        Action<Camion.Direction> MovingDirection = direction1 =>
+        {
+            Vector2 positionActuel = TileMap2.WorldToMap(Camion.Position);
+            Vector2 NextCase = SshCity.Scenes.Plan.Camion.DirectionToVector2(direction1)+new Vector2(-1, -1);
+            if (Routes.IsRoute(GetBlock(TileMap2, (int)positionActuel.x+(int)NextCase.x, (int)positionActuel.y+(int)NextCase.y)))
+            {
+                isMoving = true;
+                Vector2 nextBlock = positionActuel + SshCity.Scenes.Plan.Camion.DirectionToVector2(direction1);
+                _deplacement = (TileMap2.MapToWorld(nextBlock) +CamionDecallage)- Camion.Position ;
+                arrive = TileMap2.MapToWorld(nextBlock) + CamionDecallage;
+                direction = direction1;
+            }
+        };
+
+        if (isMoving)
+        {
+            if ((direction == SshCity.Scenes.Plan.Camion.Direction.RIGHT && Camion.Position >= arrive) ||
+                (direction == SshCity.Scenes.Plan.Camion.Direction.LEFT && Camion.Position <= arrive))
+            {
+                Vector2 positionActuel = TileMap2.WorldToMap(Camion.Position);
+                if (Routes.IsRoute(GetBlock(TileMap2, (int) positionActuel.x, (int) positionActuel.y - 1))
+                && !Routes.IsCroisement(GetBlock(TileMap2, (int) positionActuel.x, (int) positionActuel.y - 1)))
+                {
+                    Vector2 nextBlock = positionActuel + SshCity.Scenes.Plan.Camion.DirectionToVector2(direction);
+                    _deplacement = (TileMap2.MapToWorld(nextBlock) + CamionDecallage) - Camion.Position; 
+                    arrive = TileMap2.MapToWorld(nextBlock) + CamionDecallage;
+                }
+                else
+                {
+                    isMoving = false;
+                    _deplacement = new Vector2(0, 0);
+                }
+            }
+        }
+
+        if (!isMoving && Input.IsActionPressed("ui_right"))
+        {
+            MovingDirection(SshCity.Scenes.Plan.Camion.Direction.RIGHT);
+        }
+
+        if (!isMoving && Input.IsActionPressed("ui_left"))
+        {
+            MovingDirection(SshCity.Scenes.Plan.Camion.Direction.LEFT);
+        }
+
+        if (!isMoving && Input.IsActionPressed("ui_down"))
+        {
+            MovingDirection(SshCity.Scenes.Plan.Camion.Direction.BOT);
+        }
+
+        if (!isMoving && Input.IsActionPressed("ui_up"))
+        {
+            MovingDirection(SshCity.Scenes.Plan.Camion.Direction.TOP);
+        }
+
+        Camion.Position += _deplacement * delta;
+        
+        if (_buildOnTileMap2)
+        {
+            SetBlock(TileMap2, (int)_tileOnTileMap2.x, (int)_tileOnTileMap2.y, _batiment);
+            _buildOnTileMap2 = false;
+        }
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)
@@ -208,7 +285,7 @@ public partial class PlanInitial : Node2D
             DeleteSure = false;
         }
 
-        if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete && !DeleteVerif.Verif && Interface.Hide)
+        if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete && !DeleteVerif.Verif && !Infos.IsOpen)
         {
             Vector2 tile = GetTilePosition();
             int batiment = -1;
@@ -227,15 +304,5 @@ public partial class PlanInitial : Node2D
             }
         }
     }
-
-    public override void _Process(float delta)
-    {
-        base._Process(delta);
-        
-        if (_buildOnTileMap2)
-        {
-            SetBlock(TileMap2, (int)_tileOnTileMap2.x, (int)_tileOnTileMap2.y, _batiment);
-            _buildOnTileMap2 = false;
-        }
-    }
+    
 }
