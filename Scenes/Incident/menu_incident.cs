@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Net.Configuration;
 using System.Net.Mime;
 using SshCity.Scenes.Plan;
 
@@ -11,7 +12,9 @@ public class menu_incident : CanvasLayer
     public Button Quitter;
     public static Button Flamme;
     public TextureRect Background;
-    public Label Texte;    
+    public Label Texte;
+
+    public static bool AlerteIncendie = false;
     //public TextureRect BackBoutiqueOk;
     //public Label TexteBoutiqueOk;
 
@@ -55,6 +58,15 @@ public class menu_incident : CanvasLayer
         Flamme.Connect("pressed", this, nameof(Resolution));
     }
 
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+        if (AlerteIncendie)
+        {
+             Flamme.Show();
+        }
+    }
+
 
     private void HideAll()
     {
@@ -89,12 +101,7 @@ public class menu_incident : CanvasLayer
         Texte.Show();
         openIncident = true;
     }
-    public static void AlerteIncendie()
-    {
-        Flamme.Show();
-    }
-
-
+    
     private void on_resoudre_pressed()
     {   
         HideAll();

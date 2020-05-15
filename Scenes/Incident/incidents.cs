@@ -54,7 +54,7 @@ public class Incident : PlanInitial
             await Task.Delay(5000);
             BuildingSwitch(planInitial, indexAv, indexAp, x, y);
             await Task.Delay(1000); 
-            menu_incident.AlerteIncendie();
+            menu_incident.AlerteIncendie = true;
             if (resoIncident)
             {
                 BuildingSwitch(planInitial, indexAp, indexAv, x, y);

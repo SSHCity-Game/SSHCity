@@ -13,7 +13,7 @@
 size = 20
 font_data = ExtResource( 4 )
 
-[sub_resource type="AnimatedTexture" id=3]
+[sub_resource type="AnimatedTexture" id=2]
 flags = 4
 frames = 2
 fps = 1.5
@@ -21,7 +21,7 @@ frame_0/texture = ExtResource( 7 )
 frame_1/texture = ExtResource( 8 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=2]
+[sub_resource type="AnimatedTexture" id=3]
 flags = 4
 frames = 3
 fps = 8.0
@@ -71,7 +71,7 @@ margin_left = -196.0
 margin_top = -108.0
 margin_right = 196.0
 margin_bottom = 108.0
-texture = SubResource( 3 )
+texture = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -145,7 +145,7 @@ margin_top = 60.0
 margin_right = 1062.43
 margin_bottom = 166.0
 rect_scale = Vector2( 0.5, 0.5 )
-icon = SubResource( 2 )
+icon = SubResource( 3 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
