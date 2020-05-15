@@ -567,3 +567,11 @@ text = "Lvl Max Atteinds
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Camion" type="Button" parent="."]
+visible = false
+margin_left = 670.0
+margin_top = 393.0
+margin_right = 762.0
+margin_bottom = 421.0
+text = "Camion"

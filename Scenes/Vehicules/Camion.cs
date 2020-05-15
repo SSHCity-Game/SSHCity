@@ -13,10 +13,10 @@ namespace SshCity.Scenes.Plan
         private Vehicules.Direction direction;
         private Vector2 CamionDecallage = new Vector2(100, 230);
 
-        public void Init(PlanInitial planInitial)
+        public void Init(PlanInitial planInitial, Vector2 position)
         {
             this._planInitial = planInitial;
-            this.Position = _planInitial.TileMap2.MapToWorld(new Vector2(20, 0))+CamionDecallage;
+            this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)); //_planInitial.TileMap2.MapToWorld(new Vector2(20, 0))+CamionDecallage;
         }
         
         public override void _Ready()

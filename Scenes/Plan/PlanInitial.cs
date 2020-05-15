@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Concurrent;
+using System.Security.Cryptography.X509Certificates;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Plan;
 
@@ -31,6 +32,8 @@ public partial class PlanInitial : Node2D
     private static Vector2 _tileSupressing;
     private static bool _buildOnTileMap2 = false;
     private static Vector2 _tileOnTileMap2;
+    public static bool CamionInit = false;
+    public static Vector2 CamionPosition;
 
     public static bool DeleteSure
     {
@@ -68,9 +71,6 @@ public partial class PlanInitial : Node2D
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
         _camionScene = (PackedScene) GD.Load("res://Scenes/Vehicules/Camion.tscn");
-        Camion _camion = (Camion) _camionScene.Instance();
-        _camion.Init(this);
-        AddChild(_camion);
     }
     public override void _Process(float delta)
     {
@@ -80,6 +80,20 @@ public partial class PlanInitial : Node2D
             SetBlock(TileMap2, (int)_tileOnTileMap2.x, (int)_tileOnTileMap2.y, _batiment);
             _buildOnTileMap2 = false;
         }
+
+        if (CamionInit)
+        {
+            InitCamion(CamionPosition);
+            CamionInit = false;
+        }
+        
+    }
+
+    public void InitCamion(Vector2 position)
+    {
+        Camion _camion = (Camion) _camionScene.Instance();
+        _camion.Init(this, Routes.WhereIsRoute(position, this));
+        AddChild(_camion);
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)

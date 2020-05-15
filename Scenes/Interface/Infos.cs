@@ -16,13 +16,14 @@ public class Infos : Panel
     private Label _argentActuel;
     private Label _energieActuel;
     private Label _eauActuel;
+    private Button _camionPompier;
     private Panel _amelioPanel;
     private Panel _nivMax;
 
     private Label _argentAmelio;
     private Label _energieAmelio;
     private Label _eauAmelio;
-    
+    private Batiments.Class _class;
     private bool buttonWork = false;
     private Vector2 position;
     private static bool _close = false;
@@ -54,6 +55,7 @@ public class Infos : Panel
     private const string _strEauAmelio = "Amelioration/Couts/Eau/EauValue";
     private const string _strAmelioPanel = "Amelioration";
     private const string _strNivMax = "LvlMax";
+    private const string _strCamionPompier = "Camion";
     
     public override void _Ready()
     {
@@ -62,6 +64,8 @@ public class Infos : Panel
         _titre = (Label) GetNode(_strTitre);
         _image = (Sprite) GetNode(_strImage);
         _cadre = (Panel) GetNode(_strCadre);
+
+        _camionPompier = (Button) GetNode(_strCamionPompier);
         
         // Infos/Ameliorations
         _lvlActuel = (Label) GetNode(_strLvlActuel);
@@ -73,16 +77,27 @@ public class Infos : Panel
         _eauAmelio = (Label) GetNode(_strEauAmelio);
         _amelioPanel = (Panel) GetNode(_strAmelioPanel);
         _nivMax = (Panel) GetNode(_strNivMax);
-        
         _nivMax.Hide();
+        if (_class == Batiments.Class.CASERNE)
+        {
+            _camionPompier.Show();
+        }
         
         _quitter.Connect("pressed", this, nameof(CloseInfos));
         _ameliorer.Connect("pressed", this, nameof(AmeliorerInfos));
+        _camionPompier.Connect("pressed", this, nameof(EnvoieCamion));
     }
     public void CloseInfos()
     {
         this.Hide();
         _isOpen = false;
+    }
+
+    public void EnvoieCamion()
+    {
+        CloseInfos();
+        PlanInitial.CamionInit = true;
+        PlanInitial.CamionPosition = position;
     }
 
     public bool config(Vector2 tile)
@@ -97,6 +112,7 @@ public class Infos : Panel
             position = tile;
             _lvlActuel.Text = "Lvl " + Convert.ToString(batiment.Lvl + 1);
             _argentActuel.Text = Convert.ToString(batiment.Earn);
+            _class = batiment.Class;
             //_energieActuel.Text = Convert.ToString(batiment.Energie);
             //_eauActuel.Text = Convert.ToString(batiment.eau):
             if (batiment.Lvl != batiment.NbrAmelioration)
@@ -136,6 +152,14 @@ public class Infos : Panel
         if (this.Visible)
         {
             _isOpen = true;
+        }
+        if (_class == Batiments.Class.CASERNE)
+        {
+            _camionPompier.Show();
+        }
+        else
+        {
+            _camionPompier.Hide();
         }
     }
 }
