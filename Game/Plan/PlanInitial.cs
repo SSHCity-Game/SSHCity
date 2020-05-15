@@ -1,6 +1,7 @@
 using Godot;
 using SshCity.Game.Buildings;
 using SshCity.Game.Plan;
+using SshCity.Game.Vehicules;
 
 public partial class PlanInitial : Node2D
 {

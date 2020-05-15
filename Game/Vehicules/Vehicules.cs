@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace SshCity.Game.Plan
+namespace SshCity.Game.Vehicules
 {
     public class Vehicules
     {
