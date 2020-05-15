@@ -1,10 +1,11 @@
-﻿using System;
-using Godot;
-using Godot.Collections;
-
-namespace SshCity.Scenes.Plan
+﻿namespace SshCity.Scenes.Plan
 {
-    public class Camion : AnimatedSprite
+    using Godot;
+using System;
+using Godot.Collections;
+using SshCity.Scenes.Plan;
+
+    public class Ambulance : AnimatedSprite
     {
 
         private PlanInitial _planInitial;
@@ -120,6 +121,7 @@ namespace SshCity.Scenes.Plan
             {Ref_donnees.route_T_bas_gauche, "SW"},
             {Ref_donnees.route_T_haut_droit, "NE"},
             {Ref_donnees.route_T_haut_gauche, "NW"}
-            };
+        };
     }
+
 }

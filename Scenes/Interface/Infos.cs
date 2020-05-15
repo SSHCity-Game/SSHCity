@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel.Design;
 using System.Threading.Tasks;
 using SshCity.Scenes.Buildings;
+using SshCity.Scenes.Plan;
 
 
 public class Infos : Panel
@@ -16,7 +17,7 @@ public class Infos : Panel
     private Label _argentActuel;
     private Label _energieActuel;
     private Label _eauActuel;
-    private Button _camionPompier;
+    private Button _vehicule;
     private Panel _amelioPanel;
     private Panel _nivMax;
 
@@ -28,6 +29,7 @@ public class Infos : Panel
     private Vector2 position;
     private static bool _close = false;
     private static bool _isOpen = false;
+    private Vehicules.Type _type;
 
     public static bool IsOpen
     {
@@ -55,7 +57,7 @@ public class Infos : Panel
     private const string _strEauAmelio = "Amelioration/Couts/Eau/EauValue";
     private const string _strAmelioPanel = "Amelioration";
     private const string _strNivMax = "LvlMax";
-    private const string _strCamionPompier = "Camion";
+    private const string _strVehicule = "Camion";
     
     public override void _Ready()
     {
@@ -65,7 +67,7 @@ public class Infos : Panel
         _image = (Sprite) GetNode(_strImage);
         _cadre = (Panel) GetNode(_strCadre);
 
-        _camionPompier = (Button) GetNode(_strCamionPompier);
+        _vehicule = (Button) GetNode(_strVehicule);
         
         // Infos/Ameliorations
         _lvlActuel = (Label) GetNode(_strLvlActuel);
@@ -78,14 +80,11 @@ public class Infos : Panel
         _amelioPanel = (Panel) GetNode(_strAmelioPanel);
         _nivMax = (Panel) GetNode(_strNivMax);
         _nivMax.Hide();
-        if (_class == Batiments.Class.CASERNE)
-        {
-            _camionPompier.Show();
-        }
+        
         
         _quitter.Connect("pressed", this, nameof(CloseInfos));
         _ameliorer.Connect("pressed", this, nameof(AmeliorerInfos));
-        _camionPompier.Connect("pressed", this, nameof(EnvoieCamion));
+        _vehicule.Connect("pressed", this, nameof(EnvoieVehicule));
     }
     public void CloseInfos()
     {
@@ -93,11 +92,10 @@ public class Infos : Panel
         _isOpen = false;
     }
 
-    public void EnvoieCamion()
+    public void EnvoieVehicule()
     {
         CloseInfos();
-        PlanInitial.CamionInit = true;
-        PlanInitial.CamionPosition = position;
+        PlanInitial.AddVehicule(_type, position);
     }
 
     public bool config(Vector2 tile)
@@ -155,11 +153,15 @@ public class Infos : Panel
         }
         if (_class == Batiments.Class.CASERNE)
         {
-            _camionPompier.Show();
+            _vehicule.Text = "Camion";
+            _vehicule.Show();
+            _type = Vehicules.Type.CAMION;
         }
-        else
+        else if (_class == Batiments.Class.HOSPITAL)
         {
-            _camionPompier.Hide();
+            _vehicule.Text = "Ambulance";
+            _vehicule.Show();
+            _type = Vehicules.Type.AMBULANCE;
         }
     }
 }

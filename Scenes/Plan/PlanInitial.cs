@@ -12,6 +12,7 @@ public partial class PlanInitial : Node2D
     public TileMap TileMap2;
     public TileMap TileMap3;
     private PackedScene _camionScene;
+    private PackedScene _ambulanceScene;
 
 
     public string str_TileMap1 = "TileMap1";
@@ -32,8 +33,9 @@ public partial class PlanInitial : Node2D
     private static Vector2 _tileSupressing;
     private static bool _buildOnTileMap2 = false;
     private static Vector2 _tileOnTileMap2;
-    public static bool CamionInit = false;
-    public static Vector2 CamionPosition;
+    public static bool VehiculesInit = false;
+    public static Vector2 VehiculesPosition;
+    public static Vehicules.Type VehiculesType;
 
     public static bool DeleteSure
     {
@@ -71,10 +73,7 @@ public partial class PlanInitial : Node2D
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
         _camionScene = (PackedScene) GD.Load("res://Scenes/Vehicules/Camion.tscn");
-        Vector2 test = new Vector2(19, -1);
-        Camion _camion = (Camion) _camionScene.Instance();
-        _camion.Init(this, test);
-        AddChild(_camion);
+        _ambulanceScene = (PackedScene) GD.Load("res://Scenes/Vehicules/Ambulance.tscn");
     }
     public override void _Process(float delta)
     {
@@ -85,12 +84,26 @@ public partial class PlanInitial : Node2D
             _buildOnTileMap2 = false;
         }
 
-        if (CamionInit)
+        if (VehiculesInit)
         {
-            InitCamion(CamionPosition);
-            CamionInit = false;
+            if (VehiculesType == Vehicules.Type.AMBULANCE)
+            {
+                InitAmbulance(VehiculesPosition);
+            }
+            else if (VehiculesType == Vehicules.Type.CAMION)
+            {
+                InitCamion(VehiculesPosition);
+            }
+            VehiculesInit = false;
         }
         
+    }
+
+    public static void AddVehicule(Vehicules.Type type, Vector2 position)
+    {
+        VehiculesInit = true;
+        VehiculesPosition = position;
+        VehiculesType = type;
     }
 
     public void InitCamion(Vector2 position)
@@ -98,6 +111,12 @@ public partial class PlanInitial : Node2D
         Camion _camion = (Camion) _camionScene.Instance();
         _camion.Init(this, Routes.WhereIsRoute(position, this));
         AddChild(_camion);
+    }
+    public void InitAmbulance(Vector2 position)
+    {
+        Ambulance _ambulance = (Ambulance) _ambulanceScene.Instance();
+        _ambulance.Init(this, Routes.WhereIsRoute(position, this));
+        AddChild(_ambulance);
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)

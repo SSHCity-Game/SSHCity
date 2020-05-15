@@ -11,6 +11,12 @@ namespace SshCity.Scenes.Plan
             BOT,
             RIGHT
         }
+        
+        public enum Type
+        {
+            CAMION,
+            AMBULANCE
+        }
 
         public static Vector2 DirectionToVector2(Direction dir)
         {
