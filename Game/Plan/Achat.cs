@@ -69,13 +69,13 @@ public partial class PlanInitial
         if (start)
         {
             _batiment = Ref_donnees.route_left;
-            _prix = 50;
+            Prix = 50;
             _achatRoute = true;
         }
         else
         {
             _batiment = -1;
-            _prix = 0;
+            Prix = 0;
             _achatRoute = false;
             _pressed = true;
         }
@@ -83,9 +83,9 @@ public partial class PlanInitial
 
     public void AjoutNode(int batiment, Vector2 tile)
     {
-        if (Interface.Money - _prix >= 0)
+        if (Interface.Money - Prix >= 0)
         {
-            Interface.Money -= _prix;
+            Interface.Money -= Prix;
         }
 
         Batiments.Class batimentClass = DictionnaireCaracteristiques.dictionnaireCaracteristiques[batiment];
