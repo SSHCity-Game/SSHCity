@@ -41,7 +41,6 @@ public class menu_incident : CanvasLayer
         Background.Hide();
         Interface.OpenShop = true;
         //Interface.CloseShop = false;
-        //CaserneCligno._cligno = true;
     }
 
     public void Resolution()

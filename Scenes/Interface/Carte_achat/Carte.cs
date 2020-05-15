@@ -18,6 +18,7 @@ public class Carte : Panel
     private const string _str_prix = "Prix";
     private int _bloc = 1;
     private int _cost;
+
     public int Cost
     {
         get => _cost;
@@ -29,7 +30,7 @@ public class Carte : Panel
         get => _bloc;
         set => _bloc = value;
     }
-    
+
     public override void _Ready()
     {
         _buttonAchat = (Button) GetNode(_str_button_achat);
@@ -41,8 +42,6 @@ public class Carte : Panel
         _sprite = (Sprite) GetNode(_str_sprite);
         _prix = (Label) GetNode(_str_prix);
         _gain = (Label) GetNode(_str_gain);
-
-        AddUserSignal("Achat");
     }
 
     public void ButtonAchatPressed()
