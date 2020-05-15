@@ -144,7 +144,6 @@ public class Interface : CanvasLayer
         _money_text.Text = Convert.ToString(_money);
         _xp_text.Text = Convert.ToString(_xp);
 
-
         moneyWin = 0;
         foreach (Batiments.Building batiment in Batiments.ListBuildings)
         {
@@ -208,6 +207,9 @@ public class Interface : CanvasLayer
         //Ferme Achat Route
         _achatRoute = false;
         PlanInitial.AchatRoute(_achatRoute);
+
+        //_openShop = !_openShop;
+        //_closeShop = !_closeShop;
 
         _delete = false;
         PlanInitial.Delete = _delete;

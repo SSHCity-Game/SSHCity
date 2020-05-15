@@ -12,7 +12,7 @@ public class McAlly
     public static string[] _titre = {"McAlly"};
     public static int lvl = 0;
     public static readonly int[] gain_xp = {10, 100, 500};
-    public static string[] _image = {"res://assets/isometric magasin1.png"};
+    public static string[] _image = {"res://assets/ImageSized/isometric magasin1.png"};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.MCALLY;
     public static Caracteristiques.BatimentsCaracteristiques cara = new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class);

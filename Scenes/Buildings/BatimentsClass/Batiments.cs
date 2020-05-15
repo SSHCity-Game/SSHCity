@@ -30,30 +30,31 @@ namespace SshCity.Scenes.Buildings
 
 			public Building(Class clazz, Vector2 position, int theLvl = 0)
 			{
-				var car = Caracteristiques.GiveCaracteristique(clazz);
-
-				_position = position;
-				_class = clazz;
-				_bloc = car.Bloc;
-				_earn = car.Earn;
-				_cost = car.Cost;
-				_titre = car.Titre;
-				gain_xp = car.GainXp;
-				_image = car.Image;
-				nbrAmelioration = car.NbrAmelioration;
-				lvl = theLvl;
-				ListBuildings.Add(this);
-			}
-
+           var caracteristique = Caracteristiques.GiveCaracteristique(clazz);
+                
+           _position = position;
+           _class = batimentClass;
+           _bloc = caracteristique.Bloc;
+           _earn = caracteristique.Earn;
+           _cost = caracteristique.Cost;
+           _titre = caracteristique.Titre;
+           gain_xp = caracteristique.GainXp;
+           _image = caracteristique.Image;
+           nbrAmelioration = caracteristique.NbrAmelioration;
+           lvl = theLvl;
+           ListBuildings.Add(this);
+      }
+            
 			public int Bloc
 			{
 				get => _bloc[lvl];
 			}
-
-			public string Titre => _titre[lvl];
-
-			public string Image => _image[lvl];
-			public int Earn => _earn[lvl];
+      
+      public  string Image => _image[lvl];
+      public  int Earn => _earn[lvl];
+      public int[] EarnTab => _earn;
+      public int AmeliorationCost => _cost[lvl + 1];
+      public int NbrAmelioration => nbrAmelioration;
 
 
 			public void Upgrade()

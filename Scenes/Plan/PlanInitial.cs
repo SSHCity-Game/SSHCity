@@ -153,7 +153,10 @@ public partial class PlanInitial : Node2D
                         Routes.ChangeRoute(tile, this);
                     }
                     MainPlan.ListeBatiment.Add((tile, _batiment));
-                    AjoutNode(_batiment, tile);
+                    if (!_achatRoute)
+                    {
+                        AjoutNode(_batiment, tile);
+                    }
                 }
                 else
                 {
@@ -232,6 +235,7 @@ public partial class PlanInitial : Node2D
         if (_buildOnTileMap2)
         {
             SetBlock(TileMap2, (int)_tileOnTileMap2.x, (int)_tileOnTileMap2.y, _batiment);
+            _buildOnTileMap2 = false;
         }
     }
 }
