@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Security.Policy;
 using SshCity.Scenes.Plan;
 
 public class MainPlan : Node2D
@@ -21,6 +22,7 @@ public class MainPlan : Node2D
     private const string _str_music = "Musique";
 
     private MainMenu _mainMenu;
+    public static bool incident = false;
 
     public static List<(Vector2, int)> ListeBatiment
     {
@@ -159,11 +161,28 @@ public class MainPlan : Node2D
         //Lancement de la musique
         _musique.Play();
     }
+
+    public static bool ExistBatiment(int indexBat)
+    {
+        bool found = false;
+        int i = 0;
+        int len = ListeBatiment.Count;
+        while (!found && i < len)
+        {
+            (var pos, var bat) = ListeBatiment[i];
+            if (bat == indexBat)
+                found = true;
+            i++;
+        }
+
+        return found;
+    }
     
     public override void _Process(float delta)
     {
         base._Process(delta);
-        Incident.GenereIncidents(_planInitial);
+        if(!Incident.resoIncident)
+            Incident.GenereIncidents(_planInitial);
     }
 
 }

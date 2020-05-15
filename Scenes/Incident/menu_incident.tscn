@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Alerte_incidents/flamme.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Incident/menu_incident.cs" type="Script" id=2]
@@ -6,10 +6,20 @@
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/Alerte_incidents/flamme4.png" type="Texture" id=5]
 [ext_resource path="res://assets/Alerte_incidents/flamme3.png" type="Texture" id=6]
+[ext_resource path="res://assets/Alerte_incidents/AlertesBackground2png.png" type="Texture" id=7]
+[ext_resource path="res://assets/Alerte_incidents/AlertesBackground.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 4 )
+
+[sub_resource type="AnimatedTexture" id=3]
+flags = 4
+frames = 2
+fps = 1.5
+frame_0/texture = ExtResource( 7 )
+frame_1/texture = ExtResource( 8 )
+frame_1/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=2]
 flags = 4
@@ -29,24 +39,54 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -390.915
+margin_left = -392.131
 margin_top = -221.737
-margin_right = 393.085
+margin_right = 391.869
 margin_bottom = 211.263
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Background"]
+[node name="Texte" type="Label" parent="Background"]
 margin_left = 116.5
 margin_top = 91.0
 margin_right = 667.5
 margin_bottom = 342.0
 custom_fonts/font = SubResource( 1 )
-text = "Attention, vous avez un incendie en cours.
-Pour l'eteindre, dirigez vous vers la boutique afin d'acheter une caserne et le materiel adequate.
-Revenez ensuite et appuyez sur eteindre pour eteindre le feu"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoutiqueOk" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -196.0
+margin_top = -108.0
+margin_right = 196.0
+margin_bottom = 108.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TexteBoutiqueOk" type="Label" parent="BoutiqueOk"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -137.75
+margin_top = -62.75
+margin_right = 137.75
+margin_bottom = 62.75
+custom_fonts/font = SubResource( 1 )
 align = 1
 valign = 1
 autowrap = true
@@ -55,14 +95,14 @@ __meta__ = {
 }
 
 [node name="Resoudre" type="Button" parent="."]
-anchor_left = 0.115
-anchor_top = 0.139
-anchor_right = 0.115
-anchor_bottom = 0.139
-margin_left = 476.952
-margin_top = 362.863
-margin_right = 548.952
-margin_bottom = 382.863
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.0
+margin_top = 142.0
+margin_right = 3.0
+margin_bottom = 162.0
 rect_scale = Vector2( 2, 2 )
 text = "Eteindre"
 __meta__ = {
@@ -85,14 +125,14 @@ __meta__ = {
 }
 
 [node name="Boutique" type="Button" parent="."]
-anchor_left = 0.117
-anchor_top = 0.137
-anchor_right = 0.117
-anchor_bottom = 0.137
-margin_left = 181.061
-margin_top = 364.063
-margin_right = 251.061
-margin_bottom = 384.063
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -66.6122
+margin_top = 142.921
+margin_right = 3.38782
+margin_bottom = 162.921
 rect_scale = Vector2( 2, 2 )
 text = "Boutique"
 __meta__ = {

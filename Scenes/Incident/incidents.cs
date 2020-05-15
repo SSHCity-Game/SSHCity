@@ -8,6 +8,9 @@ public class Incident : PlanInitial
 {
     private const int XpIncident = 0;
 
+    public static bool resoIncident = false;
+    
+
     public override void _Ready()
     {
         TileMap1 = (TileMap) GetNode("TileMap1");
@@ -49,34 +52,26 @@ public class Incident : PlanInitial
         //if (Interface.Xp >= XpIncident)
         //{
             await Task.Delay(5000);
-            BuildingOnFire(planInitial, indexAv, indexAp, x, y);
+            BuildingSwitch(planInitial, indexAv, indexAp, x, y);
             await Task.Delay(1000); 
             menu_incident.AlerteIncendie();
-            //PutOutFire(planInitial, indexAv, indexAp, x, y);
+            if (resoIncident)
+            {
+                BuildingSwitch(planInitial, indexAp, indexAv, x, y);
+                resoIncident = false;
+            }
         //}
     }
 
-     private static void BuildingOnFire(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
+     public static void BuildingSwitch(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
     {
         /***************************************
-         * Genere un incendie dans un batiment *
+         * Change l'image d'un batiment *
          ***************************************/
         
         /* Initialise le bloc en x,y, comme batiment en feu */
         if (planInitial.GetBlock(planInitial.TileMap2, x, y) == indexAv)
             planInitial.SetBlock(planInitial.TileMap2, x, y, indexAp);
-    }
-
-    public static void PutOutFire(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
-    {
-        /*************************************
-         * Eteint l'incendie dans un batiment *
-         *************************************/
-
-        Vector2 mousePosition = Instance.GetViewport().GetMousePosition();
-        (int xMouse, int yMouse) = ((int) mousePosition.x, (int) mousePosition.y);
-        if (xMouse >= x - 10 && xMouse <= x + 10 && yMouse >= y - 10 && yMouse <= y + 10)
-            planInitial.SetBlock(planInitial.TileMap2, x, y, indexAv);
     }
 }
 
