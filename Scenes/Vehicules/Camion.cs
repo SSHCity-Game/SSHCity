@@ -4,32 +4,31 @@ using Godot.Collections;
 
 namespace SshCity.Scenes.Plan
 {
-    public class Camion : AnimatedSprite
+    public class Camion : Area2D
     {
-
+        private AnimatedSprite _animatedSprite;
         private PlanInitial _planInitial;
         private bool isMoving = false;
         private Vector2 _deplacement;
         private Vector2 arrive;
         private Vehicules.Direction direction;
         private Vector2 CamionDecallage = new Vector2(175, 150);
+        private CollisionShape2D _collisionShape2D;
+
+        private const string _strAnimatedSprite = "AnimatedSprite";
+        private const string _strCollsionShape2D = "CollisionShape2D";
 
         public void Init(PlanInitial planInitial, Vector2 position)
         {
+            _animatedSprite = (AnimatedSprite) GetNode(_strAnimatedSprite);
+            _collisionShape2D = (CollisionShape2D) GetNode(_strCollsionShape2D);
             this._planInitial = planInitial;
             int blocRoute = planInitial.GetBlock(planInitial.TileMap2, (int) position.x, (int) position.y);
-            GD.Print("----------");
-            GD.Print(blocRoute);
-            Animation = CamionAnimation[blocRoute];
-            CamionDecallage = CamionDecallageDico[Animation];
+            _animatedSprite.Animation = CamionAnimation[blocRoute];
+            CamionDecallage = CamionDecallageDico[_animatedSprite.Animation];
+            _collisionShape2D.Rotation = CollisionAngle[_animatedSprite.Animation];
+            Connect("body_entered", this, nameof(CollisionCamion));
             this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1))+CamionDecallage;
-
-
-        }
-        
-        public override void _Ready()
-        {
-            base._Ready();
         }
 
         public override void _Process(float delta)
@@ -43,8 +42,8 @@ namespace SshCity.Scenes.Plan
                 if (Routes.IsRoute(_planInitial.GetBlock(_planInitial.TileMap2,
                     (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
                 {
-                    Animation = para.anim;
-                    CamionDecallage = CamionDecallageDico[Animation];
+                    _animatedSprite.Animation = para.anim;
+                    CamionDecallage = CamionDecallageDico[_animatedSprite.Animation];
                     isMoving = true;
                     Vector2 nextBlock = positionActuel + Vehicules.DirectionToVector2(para.direction1);
                     _deplacement = (_planInitial.TileMap2.MapToWorld(nextBlock) + CamionDecallage) - this.Position;
@@ -99,6 +98,12 @@ namespace SshCity.Scenes.Plan
 
         this.Position += _deplacement * delta;
         }
+
+        public void CollisionCamion()
+        {
+            this.Hide();
+            
+        }
         
         Dictionary<string, Vector2> CamionDecallageDico = new Dictionary<string, Vector2>()
         {
@@ -121,5 +126,12 @@ namespace SshCity.Scenes.Plan
             {Ref_donnees.route_T_haut_droit, "NE"},
             {Ref_donnees.route_T_haut_gauche, "NW"}
             };
+        Dictionary<string, int> CollisionAngle = new Dictionary<string, int>()
+        {
+            {"NE", 27},
+            {"NW", -27},
+            {"SE", -27},
+            {"SW", 27}
+        };
     }
 }
