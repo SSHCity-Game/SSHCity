@@ -1,15 +1,13 @@
 using Godot;
-using System;
 
 public class MainMenu : CanvasLayer
 {
+    public TextureRect Background;
     public Button Connexion;
     public Button NewGame;
     public Button Options;
-    public TextureRect Background;
     public Label SSHCity;
-    
-    
+
 
     public override void _Ready()
     {
@@ -22,7 +20,7 @@ public class MainMenu : CanvasLayer
         Connexion.Connect("pressed", this, nameof(menu_connexion));
         NewGame.Connect("pressed", this, nameof(new_game));
         Options.Connect("pressed", this, nameof(menu_options));
-        
+
         AddUserSignal("game_started");
     }
 
@@ -30,6 +28,7 @@ public class MainMenu : CanvasLayer
     {
         new_game();
     }
+
     public void new_game()
     {
         Connexion.Hide();
@@ -39,8 +38,8 @@ public class MainMenu : CanvasLayer
         SSHCity.Hide();
         EmitSignal("game_started");
     }
+
     public void menu_options()
     {
-        
     }
 }

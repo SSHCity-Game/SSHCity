@@ -1,10 +1,5 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
 using Godot;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Threading.Tasks;
-using SshCity.Scenes.Plan;
 
 namespace SshCity.Scenes.Buildings
 {
@@ -32,13 +27,13 @@ namespace SshCity.Scenes.Buildings
             CASERNE,
             HOTEL
         };
-        
+
         public static List<Building> ListBuildings = new List<Building>();
 
         public static Building GetBuildingWithPosition(Vector2 tile)
         {
             bool found = false;
-            Building batimentLookingFor= null;
+            Building batimentLookingFor = null;
             int i = 0;
             int length = ListBuildings.Count;
             while (!found && i < length)

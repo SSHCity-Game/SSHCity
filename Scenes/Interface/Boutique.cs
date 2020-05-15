@@ -1,20 +1,7 @@
 using Godot;
-using System;
 
 public class Boutique : CanvasLayer
 {
-    private Panel _background;
-    private Button _button_sante;
-    private Button _button_habitation;
-    private Button _button_economie;
-    private Button _button_bien_etre;
-    private Button _button_speciaux;
-    private MenuHabitation _menuHabitation;
-    private MenuSante _menuSante;
-    private MenuSpeciaux _menuSpeciaux;
-    private MenuBienEtre _menuBienEtre;
-    private MenuEconomie _menuEconomie;
-
     private const string _str_background = "Background";
     private const string _str_button_sante = _str_background + "/ButtonSante";
     private const string _str_button_habitation = _str_background + "/ButtonHabitation";
@@ -26,6 +13,17 @@ public class Boutique : CanvasLayer
     private const string _str_menuSpeciaux = _str_background + "/MenuSpeciaux";
     private const string _str_menuBienEtre = _str_background + "/MenuBienEtre";
     private const string _str_menuEconomie = _str_background + "/MenuEconomie";
+    private Panel _background;
+    private Button _button_bien_etre;
+    private Button _button_economie;
+    private Button _button_habitation;
+    private Button _button_sante;
+    private Button _button_speciaux;
+    private MenuBienEtre _menuBienEtre;
+    private MenuEconomie _menuEconomie;
+    private MenuHabitation _menuHabitation;
+    private MenuSante _menuSante;
+    private MenuSpeciaux _menuSpeciaux;
 
     public override void _Ready()
     {
@@ -40,7 +38,7 @@ public class Boutique : CanvasLayer
         _menuSpeciaux = (MenuSpeciaux) GetNode(_str_menuSpeciaux);
         _menuBienEtre = (MenuBienEtre) GetNode(_str_menuBienEtre);
         _menuEconomie = (MenuEconomie) GetNode(_str_menuEconomie);
-        
+
         _menuEconomie.Connect("CloseShop", this, nameof(ViewShop));
         _menuSante.Connect("CloseShop", this, nameof(ViewShop));
         _menuHabitation.Connect("CloseShop", this, nameof(ViewShop));
@@ -53,7 +51,6 @@ public class Boutique : CanvasLayer
         _button_bien_etre.Connect("pressed", this, nameof(ButtonBienEtrePressed));
         _button_speciaux.Connect("pressed", this, nameof(ButtonSpeciauxPressed));
         _button_sante.Connect("pressed", this, nameof(ButtonSantePressed));
-
     }
 
     public void ButtonHabitationPressed()
@@ -63,6 +60,7 @@ public class Boutique : CanvasLayer
         _button_sante.Pressed = false;
         _button_speciaux.Pressed = false;
     }
+
     public void ButtonSantePressed()
     {
         _button_bien_etre.Pressed = false;
@@ -70,6 +68,7 @@ public class Boutique : CanvasLayer
         _button_habitation.Pressed = false;
         _button_speciaux.Pressed = false;
     }
+
     public void ButtonSpeciauxPressed()
     {
         _button_bien_etre.Pressed = false;
@@ -77,7 +76,7 @@ public class Boutique : CanvasLayer
         _button_sante.Pressed = false;
         _button_habitation.Pressed = false;
     }
-    
+
     public void ButtonBienEtrePressed()
     {
         _button_economie.Pressed = false;
@@ -130,6 +129,7 @@ public class Boutique : CanvasLayer
         {
             ViewShop(false);
         }
+
         if (menu_incident.openShop)
         {
             ViewShop(true);
@@ -139,6 +139,7 @@ public class Boutique : CanvasLayer
         {
             MenuSante._cligno.Hide();
         }
+
         if (_button_habitation.Pressed)
         {
             _menuHabitation.OpenMenuHabitation();
@@ -147,7 +148,7 @@ public class Boutique : CanvasLayer
         {
             _menuHabitation.CloseMenuHabitation();
         }
-        
+
         if (_button_sante.Pressed)
         {
             _menuSante.OpenMenuSante();
@@ -156,7 +157,7 @@ public class Boutique : CanvasLayer
         {
             _menuSante.CloseMenuSante();
         }
-        
+
         if (_button_speciaux.Pressed)
         {
             _menuSpeciaux.OpenMenuSpeciaux();
@@ -165,7 +166,7 @@ public class Boutique : CanvasLayer
         {
             _menuSpeciaux.CloseMenuSpeciaux();
         }
-        
+
         if (_button_bien_etre.Pressed)
         {
             _menuBienEtre.OpenMenuBienEtre();
@@ -174,7 +175,7 @@ public class Boutique : CanvasLayer
         {
             _menuBienEtre.CloseMenuBienEtre();
         }
-        
+
         if (_button_economie.Pressed)
         {
             _menuEconomie.OpenMenuEconomie();

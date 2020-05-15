@@ -1,6 +1,5 @@
-﻿using Godot;
-using System;
-using System.Collections.Concurrent;
+﻿using System;
+using Godot;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
 using SshCity.Scenes.Plan;
@@ -17,18 +16,18 @@ public partial class PlanInitial
         }
         catch (Exception)
         {
-            
         }
+
         int i = 1;
-        while (!somehtingHere && i < dimensions.longueur +1)
+        while (!somehtingHere && i < dimensions.longueur + 1)
         {
             int j = 1;
-            while (!somehtingHere && j < dimensions.largeur+1)
+            while (!somehtingHere && j < dimensions.largeur + 1)
             {
-                somehtingHere =  GetBlock(TileMap1, (int) tile.x+i, (int) tile.y+j) == Ref_donnees.route
-                                 || GetBlock(TileMap1, (int) tile.x+i, (int) tile.y+j) == Ref_donnees.montagne_sol
-                                 || GetBlock(TileMap1, (int) tile.x+i, (int) tile.y+j) == Ref_donnees.sable
-                                 || GetBlock(TileMap1, (int) tile.x+i, (int) tile.y+j) == Ref_donnees.eau;
+                somehtingHere = GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.route
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.montagne_sol
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sable
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.eau;
                 j++;
             }
 
@@ -48,23 +47,23 @@ public partial class PlanInitial
         }
         catch (Exception)
         {
-            
         }
+
         int i = 1;
-        while (!somehtingHere && i < dimensions.longueur +1)
+        while (!somehtingHere && i < dimensions.longueur + 1)
         {
             int j = 1;
-            while (!somehtingHere && j < dimensions.largeur+1)
+            while (!somehtingHere && j < dimensions.largeur + 1)
             {
-                SetBlock(TileMap1, (int)tile.x+i, (int)tile.y+j, Ref_donnees.route);
+                SetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
                 j++;
             }
 
             i++;
         }
     }
-    
-    
+
+
     public static void AchatRoute(bool start)
     {
         if (start)
@@ -81,10 +80,10 @@ public partial class PlanInitial
             _pressed = true;
         }
     }
+
     public void AjoutNode(int batiment, Vector2 tile)
     {
-
-        if (Interface.Money-_prix >=0 )
+        if (Interface.Money - _prix >= 0)
         {
             Interface.Money -= _prix;
         }

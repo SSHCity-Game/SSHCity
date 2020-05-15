@@ -1,9 +1,4 @@
 ﻿using Godot;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Threading.Tasks;
-using SshCity.Scenes.Plan;
 
 namespace SshCity.Scenes.Buildings
 {

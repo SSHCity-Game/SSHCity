@@ -1,4 +1,3 @@
-using Godot;
 using SshCity.Scenes.Plan;
 
 namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
@@ -16,14 +15,15 @@ namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
         public static string[] _image = {"res://assets/ImageSized/isometric eglise1.png"};
         public static int nbrAmeliorations = 0;
         public static Batiments.Class _class = Batiments.Class.EGLISE;
+
         public static Caracteristiques.BatimentsCaracteristiques cara =
             new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,
-                _bloc, 
-                _cost, 
-                _earn, 
-                _titre, 
-                gain_xp, 
-                _image, 
+                _bloc,
+                _cost,
+                _earn,
+                _titre,
+                gain_xp,
+                _image,
                 _class,
                 _consomationelec,
                 _consomationeau);

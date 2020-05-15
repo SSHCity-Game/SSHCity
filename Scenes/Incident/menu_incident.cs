@@ -1,18 +1,9 @@
 using Godot;
-using System;
-using System.Net.Configuration;
-using System.Net.Mime;
 using SshCity.Scenes.Plan;
 
 public class menu_incident : CanvasLayer
 {
-    /* VARIABLES */
-    public Button Boutique;
-    public Button Resoudre;
-    public Button Quitter;
     public static Button Flamme;
-    public TextureRect Background;
-    public Label Texte;
 
     public static bool AlerteIncendie = false;
     //public TextureRect BackBoutiqueOk;
@@ -26,13 +17,22 @@ public class menu_incident : CanvasLayer
     private static string CaserneNon =
         "Attention, vous avez un incendie en cours. \n " +
         "Pour l'eteindre, dirigez vous vers la boutique afin d'acheter une caserne de pompiers. \n ";
+
     private static string CaserneOui =
         "Attention, vous avez un incendie en cours. \n " +
         "Vous possedez le materiel adequate pour mettre fin a cet incendie \n" +
         "Appuyez sur Eteindre pour venir a bout de l'incendie";
-    
+
+    public TextureRect Background;
+
+    /* VARIABLES */
+    public Button Boutique;
+    public Button Quitter;
+    public Button Resoudre;
+    public Label Texte;
+
     public override void _Ready()
-    
+
     {
         Boutique = (Button) GetNode("Boutique");
         Resoudre = (Button) GetNode("Resoudre");
@@ -42,7 +42,7 @@ public class menu_incident : CanvasLayer
         Texte = (Label) GetNode("Background/Texte");
         //BackBoutiqueOk = (TextureRect) GetNode("BoutiqueOk");
         //TexteBoutiqueOk = (Label) GetNode("BoutiqueOk/TexteBoutiqueOk");
-        
+
         Boutique.Hide();
         Resoudre.Hide();
         Quitter.Hide();
@@ -63,7 +63,7 @@ public class menu_incident : CanvasLayer
         base._Process(delta);
         if (AlerteIncendie)
         {
-             Flamme.Show();
+            Flamme.Show();
         }
     }
 
@@ -78,6 +78,7 @@ public class menu_incident : CanvasLayer
         //BackBoutiqueOk.Hide();
         //TexteBoutiqueOk.Hide();
     }
+
     private void on_boutique_pressed()
     {
         HideAll();
@@ -98,12 +99,13 @@ public class menu_incident : CanvasLayer
             Texte.Text = CaserneNon;
             Boutique.Show();
         }
+
         Texte.Show();
         openIncident = true;
     }
-    
+
     private void on_resoudre_pressed()
-    {   
+    {
         HideAll();
         Incident.resoIncident = true;
     }

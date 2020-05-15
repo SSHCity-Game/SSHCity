@@ -1,98 +1,92 @@
 using Godot;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Threading.Tasks;
+using Godot.Collections;
 using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
-using SshCity.Scenes.Plan;
-using SshCity.Scenes.Sauvegarde;
 
 namespace SshCity.Scenes.Buildings
 {
-	public partial class Batiments
-	{
-		public class Building
-		{
-			private int nbrAmelioration;
-			private int[] _bloc;
-			private int[] _cost;
-			private int[] _earn;
-			private string[] _titre;
-			private int lvl;
-			private int[] gain_xp;
-			private string[] _image;
-			private Class _class;
-			private Vector2 _position;
-			private int[] _consomation_elec;
-			private int[] _consomation_eau;
+    public partial class Batiments
+    {
+        public class Building
+        {
+            private int[] _bloc;
+            private Class _class;
+            private int[] _consomation_eau;
+            private int[] _consomation_elec;
+            private int[] _cost;
+            private int[] _earn;
+            private string[] _image;
+            private Vector2 _position;
+            private string[] _titre;
+            private int[] gain_xp;
+            private int lvl;
+            private int nbrAmelioration;
 
-			public int Lvl => lvl;
-			public Vector2 Position => _position;
+            public Building(Class clazz, Vector2 position, int theLvl = 0)
+            {
+                var caracteristique = Caracteristiques.GiveCaracteristique(clazz);
+                _position = position;
+                _class = caracteristique._Class;
+                _bloc = caracteristique.Bloc;
+                _earn = caracteristique.Earn;
+                _cost = caracteristique.Cost;
+                _titre = caracteristique.Titre;
+                gain_xp = caracteristique.GainXp;
+                _image = caracteristique.Image;
+                nbrAmelioration = caracteristique.NbrAmelioration;
+                lvl = theLvl;
+                ListBuildings.Add(this);
+            }
 
-			public string[] Titre => _titre;
+            public int Lvl => lvl;
+            public Vector2 Position => _position;
 
-			public Class Class => _class;
+            public string[] Titre => _titre;
 
-			public Building(Class clazz, Vector2 position, int theLvl = 0)
-			{
-				var caracteristique = Caracteristiques.GiveCaracteristique(clazz);
-				_position = position;
-				_class = caracteristique._Class;
-				_bloc = caracteristique.Bloc;
-				_earn = caracteristique.Earn;
-				_cost = caracteristique.Cost;
-				_titre = caracteristique.Titre;
-				gain_xp = caracteristique.GainXp;
-				_image = caracteristique.Image;
-				nbrAmelioration = caracteristique.NbrAmelioration;
-				lvl = theLvl;
-				ListBuildings.Add(this);
-			}
+            public Class Class => _class;
 
-			public int Bloc
-			{
-				get => _bloc[lvl];
-			}
+            public int Bloc
+            {
+                get => _bloc[lvl];
+            }
 
-			public int[] EarnTab => _earn;
-			public int AmeliorationCost => _cost[lvl + 1];
-			public int NbrAmelioration => nbrAmelioration;
+            public int[] EarnTab => _earn;
+            public int AmeliorationCost => _cost[lvl + 1];
+            public int NbrAmelioration => nbrAmelioration;
 
 
-			public string Image => _image[lvl];
-			public int Earn => _earn[lvl];
+            public string Image => _image[lvl];
+            public int Earn => _earn[lvl];
 
-			public int[] ConsomationElec
-			{
-				get => _consomation_elec;
-			}
+            public int[] ConsomationElec
+            {
+                get => _consomation_elec;
+            }
 
-			public int[] ConsomationEau
-			{
-				get => _consomation_eau;
-			}
+            public int[] ConsomationEau
+            {
+                get => _consomation_eau;
+            }
 
-			public void Upgrade()
-			{
-				if (nbrAmelioration > lvl && lvl < 2 && Interface.Money >= _cost[lvl])
-				{
-					Interface.Money -= _cost[lvl];
-					Interface.Xp += gain_xp[lvl];
-					lvl += 1;
-				}
-			}
+            public void Upgrade()
+            {
+                if (nbrAmelioration > lvl && lvl < 2 && Interface.Money >= _cost[lvl])
+                {
+                    Interface.Money -= _cost[lvl];
+                    Interface.Xp += gain_xp[lvl];
+                    lvl += 1;
+                }
+            }
 
-			public Godot.Collections.Dictionary<string, object> Save()
-			{
-				return new Godot.Collections.Dictionary<string, object>
-				{
-					{"PosX", Position.x},
-					{"PosY", Position.y},
-					{"Class", Class},
-					{"Level", lvl}
-				};
-			}
-		}
-	}
+            public Dictionary<string, object> Save()
+            {
+                return new Dictionary<string, object>
+                {
+                    {"PosX", Position.x},
+                    {"PosY", Position.y},
+                    {"Class", Class},
+                    {"Level", lvl}
+                };
+            }
+        }
+    }
 }
-

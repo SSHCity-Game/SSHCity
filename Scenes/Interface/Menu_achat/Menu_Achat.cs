@@ -1,16 +1,19 @@
 using Godot;
-using System;
 
 public class Menu_Achat : Panel
 {
-    private Button _button_flecheG;
-    private Button _button_flecheD;
-    private Carte[][] _menus;
-    private Label _Page;
-    
+    private const string _str_button_flecheG = "FlecheG/ButtonFlecheG";
+    private const string _str_button_flecheD = "FlecheD/ButtonFlecheD";
+    private const string _str_Page = "Page";
+
     private static int _whichMenu = 0;
     private static bool _achat = false;
     private static bool _reset = false;
+    private Button _button_flecheD;
+    private Button _button_flecheG;
+    private Carte[][] _menus;
+    private Label _Page;
+    private string _pageText;
 
     public static bool Reset1
     {
@@ -29,16 +32,11 @@ public class Menu_Achat : Panel
         get => _achat;
         set => _achat = value;
     }
-    
-    private const string _str_button_flecheG = "FlecheG/ButtonFlecheG";
-    private const string _str_button_flecheD = "FlecheD/ButtonFlecheD";
-    private const string _str_Page = "Page";
-    private string _pageText;
 
     public override void _Process(float delta)
     {
         base._Process(delta);
-        _pageText = _whichMenu+1 + "/" + _menus.Length;
+        _pageText = _whichMenu + 1 + "/" + _menus.Length;
         _Page.Text = _pageText;
 
         if (_reset)
@@ -66,6 +64,7 @@ public class Menu_Achat : Panel
             {
                 carte.Hide();
             }
+
             _whichMenu++;
             foreach (var carte in _menus[_whichMenu])
             {
@@ -73,6 +72,7 @@ public class Menu_Achat : Panel
             }
         }
     }
+
     public void ClickFlecheG()
     {
         if (_whichMenu - 1 >= 0)
@@ -81,6 +81,7 @@ public class Menu_Achat : Panel
             {
                 carte.Hide();
             }
+
             _whichMenu--;
             foreach (var carte in _menus[_whichMenu])
             {
@@ -95,6 +96,7 @@ public class Menu_Achat : Panel
         {
             carte.Hide();
         }
+
         _whichMenu = 0;
 
         foreach (var carte in _menus[_whichMenu])
@@ -102,13 +104,11 @@ public class Menu_Achat : Panel
             carte.Show();
         }
     }
-    
+
     public void AchatBatiment(int bloc, int prix)
     {
-
         if (Interface.Money - prix < 0)
         {
-            
         }
         else
         {
@@ -119,5 +119,4 @@ public class Menu_Achat : Panel
             PlanInitial.Prix = prix;
         }
     }
-
 }

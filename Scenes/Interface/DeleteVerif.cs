@@ -1,11 +1,13 @@
 using Godot;
-using System;
 
 public class DeleteVerif : Panel
 {
-    private Button _buttonOui;
-    private Button _buttonNon;
+    private const string _str_buttonOui = "Titre/ButtonOui";
+    private const string _str_buttonNon = "Titre/ButtonNon";
+    private const string _str_suppr = "supprimer";
     private static bool _verif = false;
+    private Button _buttonNon;
+    private Button _buttonOui;
     private AudioStreamPlayer _supression;
 
     public static bool Verif
@@ -14,10 +16,6 @@ public class DeleteVerif : Panel
         set => _verif = value;
     }
 
-    private const string _str_buttonOui = "Titre/ButtonOui";
-    private const string _str_buttonNon = "Titre/ButtonNon";
-    private const string _str_suppr = "supprimer";
-    
     public override void _Ready()
     {
         _buttonOui = (Button) GetNode(_str_buttonOui);

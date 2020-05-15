@@ -1,20 +1,18 @@
 using Godot;
-using System;
 
 public class MenuSante : Node
 {
-    private Carte _carteHopital;
-    private Menu_Achat _menu_achat;
-    private Carte _carteCaserne;
-    public static TextureRect _cligno;
-    
     private const string _str_menu_achat = "Menu_Achat";
     private const string _str_carteHopital = _str_menu_achat + "/Hopital";
     private const string _str_carteCaserne = _str_menu_achat + "/Caserne";
-    
+    public static TextureRect _cligno;
+
     private static bool _achat = false;
     public static bool cligno = false;
-    
+    private Carte _carteCaserne;
+    private Carte _carteHopital;
+    private Menu_Achat _menu_achat;
+
     public static bool Achat
     {
         get => _achat;
@@ -26,7 +24,7 @@ public class MenuSante : Node
         get => cligno;
         set => cligno = value;
     }
-    
+
     public override void _Ready()
     {
         _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
@@ -40,7 +38,7 @@ public class MenuSante : Node
         _carteHopital.Gain(Hospital._earn[0]);
         _carteHopital.Prix(Hospital._cost[0]);
         _carteHopital.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
-        
+
         //Config _carteCaserne
         _carteCaserne = (Carte) GetNode(_str_carteCaserne);
         _carteCaserne.Bloc = Caserne._bloc[0];
@@ -53,15 +51,15 @@ public class MenuSante : Node
         /* Fond clignotant quand besoin du batiment*/
         _cligno = (TextureRect) GetNode(_str_carteCaserne + "/Background/Cligno");
         _cligno.Hide();
-        
+
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
-        
+
         Carte[] menu1 = new[] {_carteHopital, _carteCaserne};
         Carte[][] menus = new[] {menu1};
         _menu_achat.Menus = menus;
     }
-    
+
 
     public void CloseMenuSante()
     {
@@ -72,6 +70,7 @@ public class MenuSante : Node
     {
         _menu_achat.Show();
     }
+
     public void CloseShop()
     {
         EmitSignal("CloseShop", false);

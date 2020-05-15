@@ -1,48 +1,10 @@
-using Godot;
 using System;
-using System.ComponentModel.Design;
-using System.Threading.Tasks;
+using Godot;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Plan;
 
-
 public class Infos : Panel
 {
-    private Button _quitter;
-    private Button _ameliorer;
-    private Sprite _image;
-    private Panel _cadre;
-    private Label _titre;
-    private Label _lvlActuel;
-    private Label _argentActuel;
-    private Label _energieActuel;
-    private Label _eauActuel;
-    private Button _vehicule;
-    private Panel _amelioPanel;
-    private Panel _nivMax;
-
-    private Label _argentAmelio;
-    private Label _energieAmelio;
-    private Label _eauAmelio;
-    private Batiments.Class _class;
-    private bool buttonWork = false;
-    private Vector2 position;
-    private static bool _close = false;
-    private static bool _isOpen = false;
-    private Vehicules.Type _type;
-
-    public static bool IsOpen
-    {
-        get => _isOpen;
-        set => _isOpen = value;
-    }
-
-    public static bool Close
-    {
-        get => _close;
-        set => _close = value;
-    }
-
     private const string _strQuitter = "Quitter";
     private const string _strAmeliorer = "Ameliorer";
     private const string _strCadre = "Cadre";
@@ -58,7 +20,41 @@ public class Infos : Panel
     private const string _strAmelioPanel = "Amelioration";
     private const string _strNivMax = "LvlMax";
     private const string _strVehicule = "Camion";
-    
+    private static bool _close = false;
+    private static bool _isOpen = false;
+    private Panel _amelioPanel;
+    private Button _ameliorer;
+    private Label _argentActuel;
+
+    private Label _argentAmelio;
+    private Panel _cadre;
+    private Batiments.Class _class;
+    private Label _eauActuel;
+    private Label _eauAmelio;
+    private Label _energieActuel;
+    private Label _energieAmelio;
+    private Sprite _image;
+    private Label _lvlActuel;
+    private Panel _nivMax;
+    private Button _quitter;
+    private Label _titre;
+    private Vehicules.Type _type;
+    private Button _vehicule;
+    private bool buttonWork = false;
+    private Vector2 position;
+
+    public static bool IsOpen
+    {
+        get => _isOpen;
+        set => _isOpen = value;
+    }
+
+    public static bool Close
+    {
+        get => _close;
+        set => _close = value;
+    }
+
     public override void _Ready()
     {
         _quitter = (Button) GetNode(_strQuitter);
@@ -68,7 +64,7 @@ public class Infos : Panel
         _cadre = (Panel) GetNode(_strCadre);
 
         _vehicule = (Button) GetNode(_strVehicule);
-        
+
         // Infos/Ameliorations
         _lvlActuel = (Label) GetNode(_strLvlActuel);
         _argentActuel = (Label) GetNode(_strArgentActuel);
@@ -80,12 +76,13 @@ public class Infos : Panel
         _amelioPanel = (Panel) GetNode(_strAmelioPanel);
         _nivMax = (Panel) GetNode(_strNivMax);
         _nivMax.Hide();
-        
-        
+
+
         _quitter.Connect("pressed", this, nameof(CloseInfos));
         _ameliorer.Connect("pressed", this, nameof(AmeliorerInfos));
         _vehicule.Connect("pressed", this, nameof(EnvoieVehicule));
     }
+
     public void CloseInfos()
     {
         this.Hide();
@@ -115,7 +112,7 @@ public class Infos : Panel
             //_eauActuel.Text = Convert.ToString(batiment.eau):
             if (batiment.Lvl != batiment.NbrAmelioration)
             {
-                _argentAmelio.Text = Convert.ToString(batiment.EarnTab[batiment.Lvl+1]);
+                _argentAmelio.Text = Convert.ToString(batiment.EarnTab[batiment.Lvl + 1]);
                 //_argentAmelio.Text = Convert.ToString(batiment.EnergieTab[batiment.Lvl + 1]);
                 //_eauAmelio.Text = Convert.ToString(batiment.EauTab[batiment.Lvl + 1]);
                 _ameliorer.Text = "Ameliorer\n" + Convert.ToString(batiment.AmeliorationCost);
@@ -126,6 +123,7 @@ public class Infos : Panel
                 _nivMax.Show();
                 _ameliorer.Text = "LVL MAX";
             }
+
             return true;
         }
 
@@ -151,6 +149,7 @@ public class Infos : Panel
         {
             _isOpen = true;
         }
+
         if (_class == Batiments.Class.CASERNE)
         {
             _vehicule.Text = "Camion";

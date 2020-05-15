@@ -11,7 +11,7 @@ namespace SshCity.Scenes.Plan
             BOT,
             RIGHT
         }
-        
+
         public enum Type
         {
             CAMION,
@@ -25,7 +25,7 @@ namespace SshCity.Scenes.Plan
             {
                 case Direction.TOP:
                 {
-                    res = new Vector2(0,-1);
+                    res = new Vector2(0, -1);
                     break;
                 }
                 case Direction.BOT:

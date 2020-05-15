@@ -1,27 +1,10 @@
 using Godot;
-using System;
-using System.Collections.Concurrent;
-using System.Security.Cryptography.X509Certificates;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Plan;
 
 public partial class PlanInitial : Node2D
 {
-    public static Vector2 PositionTile = new Vector2(0,0);
-    public TileMap TileMap1;
-    public TileMap TileMap2;
-    public TileMap TileMap3;
-    private PackedScene _camionScene;
-    private PackedScene _ambulanceScene;
-
-
-    public string str_TileMap1 = "TileMap1";
-    public string str_TileMap2 = "TileMap2";
-    public string str_TileMap3 = "TileMap3";
-
-
-
-    private Vector2 _lastTile = new Vector2(0, 0);
+    public static Vector2 PositionTile = new Vector2(0, 0);
     private static int _batiment;
     private static int _prix;
     private static bool _achat = false;
@@ -36,6 +19,19 @@ public partial class PlanInitial : Node2D
     public static bool VehiculesInit = false;
     public static Vector2 VehiculesPosition;
     public static Vehicules.Type VehiculesType;
+    private PackedScene _ambulanceScene;
+    private PackedScene _camionScene;
+
+
+    private Vector2 _lastTile = new Vector2(0, 0);
+
+
+    public string str_TileMap1 = "TileMap1";
+    public string str_TileMap2 = "TileMap2";
+    public string str_TileMap3 = "TileMap3";
+    public TileMap TileMap1;
+    public TileMap TileMap2;
+    public TileMap TileMap3;
 
     public static bool DeleteSure
     {
@@ -65,22 +61,23 @@ public partial class PlanInitial : Node2D
     {
         get => _prix;
         set => _prix = value;
-    }     
+    }
 
     public override void _Ready()
-    { 
+    {
         TileMap1 = (TileMap) GetNode(str_TileMap1);
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
         _camionScene = (PackedScene) GD.Load("res://Scenes/Vehicules/Camion.tscn");
         _ambulanceScene = (PackedScene) GD.Load("res://Scenes/Vehicules/Ambulance.tscn");
     }
+
     public override void _Process(float delta)
     {
         base._Process(delta);
         if (_buildOnTileMap2)
         {
-            SetBlock(TileMap2, (int)_tileOnTileMap2.x, (int)_tileOnTileMap2.y, _batiment);
+            SetBlock(TileMap2, (int) _tileOnTileMap2.x, (int) _tileOnTileMap2.y, _batiment);
             _buildOnTileMap2 = false;
         }
 
@@ -94,9 +91,9 @@ public partial class PlanInitial : Node2D
             {
                 InitCamion(VehiculesPosition);
             }
+
             VehiculesInit = false;
         }
-        
     }
 
     public static void AddVehicule(Vehicules.Type type, Vector2 position)
@@ -112,6 +109,7 @@ public partial class PlanInitial : Node2D
         _camion.Init(this, Routes.WhereIsRoute(position, this));
         AddChild(_camion);
     }
+
     public void InitAmbulance(Vector2 position)
     {
         Ambulance _ambulance = (Ambulance) _ambulanceScene.Instance();
@@ -123,8 +121,8 @@ public partial class PlanInitial : Node2D
     {
         tileMap.SetCell(x, y, index);
     }
-    
-    public int GetBlock( TileMap tileMap, int x, int y)
+
+    public int GetBlock(TileMap tileMap, int x, int y)
     {
         return tileMap.GetCell(x, y);
     }
@@ -132,9 +130,9 @@ public partial class PlanInitial : Node2D
     public Vector2 GetTilePosition()
     {
         Vector2 mouse_pos = GetGlobalMousePosition();
-        mouse_pos = new Vector2((float)(mouse_pos.x / 0.05), (float)(mouse_pos.y/0.05));
+        mouse_pos = new Vector2((float) (mouse_pos.x / 0.05), (float) (mouse_pos.y / 0.05));
         Vector2 tile = TileMap1.WorldToMap(mouse_pos);
-        tile = new Vector2(tile.x-1, tile.y-1);
+        tile = new Vector2(tile.x - 1, tile.y - 1);
         return tile;
     }
 
@@ -158,44 +156,44 @@ public partial class PlanInitial : Node2D
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
-        if (OneAction is InputEventMouse && (_achat ||_achatRoute) && !_NotEnoughtMoney)
+        if (OneAction is InputEventMouse && (_achat || _achatRoute) && !_NotEnoughtMoney)
         {
-
             Vector2 tile = GetTilePosition();
             if (_achatRoute)
             {
                 _batiment = Routes.ChoixRoute(tile, this);
             }
+
             if (!AlreadySomethingHere(tile))
             {
                 Interface.Interdit = false;
-                SetBlock(TileMap2, (int)tile.x, (int)tile.y, _batiment);
+                SetBlock(TileMap2, (int) tile.x, (int) tile.y, _batiment);
                 if (tile != _lastTile)
                 {
-                    SetBlock(TileMap2, (int)_lastTile.x, (int)_lastTile.y, -1);
+                    SetBlock(TileMap2, (int) _lastTile.x, (int) _lastTile.y, -1);
                 }
+
                 _lastTile = tile;
             }
             else
             {
                 if (tile != _lastTile)
                 {
-                    SetBlock(TileMap2, (int)_lastTile.x, (int)_lastTile.y, -1);
+                    SetBlock(TileMap2, (int) _lastTile.x, (int) _lastTile.y, -1);
                     Interface.Interdit = true;
                 }
             }
- 
         }
 
-        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute)&& !_NotEnoughtMoney)
+        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute) && !_NotEnoughtMoney)
         {
             _achat = false;
-            _lastTile = new Vector2(0,0);
+            _lastTile = new Vector2(0, 0);
             Vector2 tile = GetTilePosition();
-            GD.Print(GetBlock(TileMap2, (int)tile.x, (int)tile.y));
-            if (GetBlock(TileMap2, (int)tile.x, (int)tile.y) == _batiment)
+            GD.Print(GetBlock(TileMap2, (int) tile.x, (int) tile.y));
+            if (GetBlock(TileMap2, (int) tile.x, (int) tile.y) == _batiment)
             {
-                if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) == Ref_donnees.terre)
+                if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)
                 {
                     Interface.Interdit = false;
                     SetAchatBlocs(tile);
@@ -203,6 +201,7 @@ public partial class PlanInitial : Node2D
                     {
                         Routes.ChangeRoute(tile, this);
                     }
+
                     MainPlan.ListeBatiment.Add((tile, _batiment));
                     if (!_achatRoute)
                     {
@@ -219,9 +218,11 @@ public partial class PlanInitial : Node2D
                 //ERROR
             }
         }
+
         if ((_achat || _achatRoute) && Interface.Money - _prix < 0)
         {
-            _NotEnoughtMoney = true; ;
+            _NotEnoughtMoney = true;
+            ;
             Interface.InterdiMoney = true;
         }
         else
@@ -233,10 +234,11 @@ public partial class PlanInitial : Node2D
         if (_pressed)
         {
             Vector2 tile = GetTilePosition();
-            if (GetBlock(TileMap1, (int)tile.x+1, (int)tile.y+1) != Ref_donnees.route)  //Corrige _bug bouton route
+            if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) != Ref_donnees.route) //Corrige _bug bouton route
             {
-                SetBlock(TileMap2, (int)tile.x, (int)tile.y, -1);
+                SetBlock(TileMap2, (int) tile.x, (int) tile.y, -1);
             }
+
             _pressed = false;
         }
 
@@ -248,18 +250,19 @@ public partial class PlanInitial : Node2D
         }
 
         if (DeleteSure)
-        {            
+        {
             int bloc = GetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y);
             Batiments.Suppression(_tileSupressing);
-            SetBlock(TileMap2, (int)_tileSupressing.x, (int)_tileSupressing.y, -1);
-            SetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1, Ref_donnees.terre);
+            SetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
+            SetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1, Ref_donnees.terre);
             Routes.ChangeRoute(_tileSupressing, this);
             _delete = false;
             MainPlan.ListeBatiment.Remove((_tileSupressing, bloc));
             DeleteSure = false;
         }
 
-        if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete && !DeleteVerif.Verif && !Infos.IsOpen)
+        if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete && !DeleteVerif.Verif &&
+            !Infos.IsOpen)
         {
             Vector2 tile = GetTilePosition();
             int batiment = -1;
@@ -278,5 +281,4 @@ public partial class PlanInitial : Node2D
             }
         }
     }
-    
 }

@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using Godot;
 
 namespace SshCity.Scenes.Plan
 {
     public class Ref_donnees
     {
-        private Random rand;
-
-
         //Variables pour definir la taille de la Map 
 
         public const int
@@ -87,6 +82,9 @@ namespace SshCity.Scenes.Plan
         public const int centrale = 58;
         public const int ferme_ecolo = 59;
 
+        // Sauvegarde
+        public const string GameSavePath = "user://sshcity.save";
+
 
         //Variable bloquer camera
 
@@ -100,7 +98,7 @@ namespace SshCity.Scenes.Plan
 
         //argent
         public static int argent = 100000;
-        
+
         //Dimensions blocs
         public static Dictionary<int, (int, int)> dimensions = new Dictionary<int, (int, int)>()
         {
@@ -108,7 +106,6 @@ namespace SshCity.Scenes.Plan
             {ferme, (2, 2)}
         };
 
-        // Sauvegarde
-        public const string GameSavePath = "user://sshcity.save";
+        private Random rand;
     }
 }

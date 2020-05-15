@@ -1,31 +1,51 @@
-using Godot;
 using System;
-using SshCity.Scenes.Plan;
-using System.Threading.Tasks;
+using Godot;
 using SshCity.Scenes.Buildings;
+using SshCity.Scenes.Plan;
 
 public class Interface : CanvasLayer
 {
-    private Sprite _croixJaune;
-    private Panel _money_couleur;
-    private Label _money_text;
-    private Button _button_shop;
-    private Button _buttonRoute;
-    private Button _buttonDelete;
-    private Boutique _shop;
-    private bool _achatRoute = false;
-    private AudioStreamPlayer _ouvertureboutique;
-    private Sprite _bulldozerMouse;
-    public Sprite _croix;
-    private bool _delete = false;
+    private const string _str_shop = "Boutique";
+    private const string _str_button_shop = "ButtonShop";
+    private const string _str_money_couleur = "MoneyColor";
+    private const string _str_money_text = "MoneyColor/MoneyText";
+    private const string _str_buttonRoute = "ButtonAjoutRoute";
+    private const string _str_buttonDelete = "ButtonDelete";
+    private const string _str_sonouverture = ("ButtonShop/Ouverture");
+    private const string _str_bulldozerMouse = "BulldozerMouse";
+    private const string _str_croix = "CroixRouge";
+    private const string _str_croixJaune = "CroixJaune";
+    private const string _str_xp_couleur = "XpColor";
+    private const string _str_xp_text = "XpColor/XpText";
+    private const string _str_infos = "Infos";
+    private const string _str_timer = "Timer";
     private static bool _interdit = false;
     private static bool _interdiMoney = false;
     private static Infos _infos;
-    private Timer _timer;
-    private int moneyWin = 0;
-    private bool _visible;
 
     private static bool _infosBool = false;
+
+    private static int _money = Ref_donnees.argent;
+    private static bool _hide = true;
+    private static int _xp = 0;
+    private bool _achatRoute = false;
+    private Sprite _bulldozerMouse;
+    private Button _button_shop;
+    private Button _buttonDelete;
+    private Button _buttonRoute;
+    public Sprite _croix;
+    private Sprite _croixJaune;
+    private bool _delete = false;
+    private Panel _money_couleur;
+    private Label _money_text;
+    private AudioStreamPlayer _ouvertureboutique;
+    private Boutique _shop;
+    private Timer _timer;
+    private bool _visible;
+
+    private Panel _xp_couleur;
+    private Label _xp_text;
+    private int moneyWin = 0;
 
     public static bool InfosBool
     {
@@ -38,18 +58,12 @@ public class Interface : CanvasLayer
         get => _interdiMoney;
         set => _interdiMoney = value;
     }
-    private Panel _xp_couleur;
-    private Label _xp_text;
 
     public static bool Interdit
     {
         get => _interdit;
         set => _interdit = value;
     }
-
-    private static int _money = Ref_donnees.argent;
-    private static bool _hide = true;
-    private static int _xp = 0;
 
     public static bool Hide
     {
@@ -69,22 +83,7 @@ public class Interface : CanvasLayer
         set => _xp = value;
     }
 
-    private const string _str_shop = "Boutique";
-    private const string _str_button_shop = "ButtonShop";
-    private const string _str_money_couleur = "MoneyColor";
-    private const string _str_money_text = "MoneyColor/MoneyText";
-    private const string _str_buttonRoute = "ButtonAjoutRoute";
-    private const string _str_buttonDelete = "ButtonDelete";
-    private const string _str_sonouverture = ("ButtonShop/Ouverture");
-    private const string _str_bulldozerMouse = "BulldozerMouse";
-    private const string _str_croix = "CroixRouge";
-    private const string _str_croixJaune = "CroixJaune";
-    private const string _str_xp_couleur = "XpColor";
-    private const string _str_xp_text = "XpColor/XpText";
-    private const string _str_infos = "Infos";
-    private const string _str_timer = "Timer";
 
-    
     public override void _Ready()
     {
         _money_couleur = (Panel) GetNode(_str_money_couleur);
@@ -105,9 +104,9 @@ public class Interface : CanvasLayer
         _croix.Hide();
         _croixJaune.Hide();
         _infos.Hide();
-        
+
         _timer.Start();
-        
+
         _ouvertureboutique = (AudioStreamPlayer) GetNode(_str_sonouverture);
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
         _buttonDelete.Connect("pressed", this, nameof(ButtonDeletePressed));
@@ -154,7 +153,7 @@ public class Interface : CanvasLayer
         if (PlanInitial.Delete)
         {
             Vector2 mousePosition = GetViewport().GetMousePosition();
-            _bulldozerMouse.Position = new Vector2(mousePosition.x+25, mousePosition.y+25);
+            _bulldozerMouse.Position = new Vector2(mousePosition.x + 25, mousePosition.y + 25);
         }
         else
         {
@@ -171,7 +170,7 @@ public class Interface : CanvasLayer
         {
             _croix.Hide();
         }
-        
+
         if (_interdiMoney)
         {
             _croixJaune.Show();
@@ -182,9 +181,8 @@ public class Interface : CanvasLayer
         {
             _croixJaune.Hide();
         }
-        
     }
-    
+
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
@@ -192,10 +190,12 @@ public class Interface : CanvasLayer
         {
             ButtonShopPressed();
         }
+
         if (OneAction.IsActionPressed("Route"))
         {
             ButtonRoutePressed();
         }
+
         if (OneAction.IsActionPressed("Delete"))
         {
             ButtonDeletePressed();
@@ -214,7 +214,7 @@ public class Interface : CanvasLayer
         _delete = false;
         PlanInitial.Delete = _delete;
         DeleteVerif.Verif = false;
-        
+
         Infos.Close = true;
 
         _shop.ViewShop(_hide);
@@ -222,15 +222,15 @@ public class Interface : CanvasLayer
         {
             _ouvertureboutique.Play();
         }
+
         _hide = !_hide;
-        
     }
-    
+
     public void ButtonRoutePressed()
     {
         _achatRoute = !_achatRoute;
         PlanInitial.AchatRoute(_achatRoute);
-        
+
         _delete = false;
         PlanInitial.Delete = _delete;
         DeleteVerif.Verif = false;
@@ -238,12 +238,12 @@ public class Interface : CanvasLayer
         _hide = false;
         _shop.ViewShop(_hide);
     }
-    
+
     public void ButtonDeletePressed()
     {
         _hide = false;
         _shop.ViewShop(_hide);
-        
+
         _interdit = false;
         _achatRoute = false;
         PlanInitial.AchatRoute(_achatRoute);
@@ -252,7 +252,7 @@ public class Interface : CanvasLayer
         PlanInitial.Delete = _delete;
         _bulldozerMouse.Show();
     }
-    
+
     public void ButtonOver()
     {
         if (_achatRoute)
@@ -273,12 +273,11 @@ public class Interface : CanvasLayer
         {
             PlanInitial.AchatRoute(true);
         }
+
         if (_delete)
         {
             PlanInitial.Delete = true;
             _bulldozerMouse.Show();
         }
     }
-
 }
-

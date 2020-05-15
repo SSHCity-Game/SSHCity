@@ -1,10 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Godot;
 using Godot.Collections;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Plan;
-using Array = Godot.Collections.Array;
 
 namespace SshCity.Scenes.Sauvegarde
 {

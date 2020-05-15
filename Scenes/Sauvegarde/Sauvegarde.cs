@@ -11,7 +11,7 @@
         /// Delete a save
         /// </summary>
         void Delete();
-        
+
         /// <summary>
         /// Upload the save to the account
         /// </summary>
