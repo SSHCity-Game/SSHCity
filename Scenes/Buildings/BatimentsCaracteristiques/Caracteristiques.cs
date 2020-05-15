@@ -13,7 +13,8 @@ namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
             private  int[] _earn;
             private  string[] _titre;
             private  int[] gain_xp;
-            private  string[] _image;
+            private string[] _image;
+            private int[] _consomation_elec;
             private Batiments.Class _class;
 
             public Batiments.Class _Class => _class;
@@ -32,7 +33,9 @@ namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
 
             public int NbrAmelioration => _nbrAmelioration;
 
-            public BatimentsCaracteristiques(int nbrAmelioration, int[] _bloc, int[] _cost, int[] _earn, string[] _titre, int[] gain_xp, string[] _image, Batiments.Class _class)
+            public int[] ConsomationElec => _consomation_elec;
+
+            public BatimentsCaracteristiques(int nbrAmelioration, int[] _bloc, int[] _cost, int[] _earn, string[] _titre, int[] gain_xp, string[] _image, Batiments.Class _class,int[] _consomationElec)
             {
                 this._nbrAmelioration = nbrAmelioration;
                 this._bloc = _bloc;
@@ -42,6 +45,8 @@ namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
                 this.gain_xp = gain_xp;
                 this._image = _image;
                 this._class = _class;
+                this._consomation_elec = _consomation_elec;
+                
                 liste.Add(this);
             }
         }
