@@ -106,6 +106,9 @@
     <Compile Include="Scenes\Plan\Sable.cs" />
     <Compile Include="Scenes\Plan\Buildings.cs" />
     <Compile Include="Scenes\Plan\TileMap1.cs" />
+    <Compile Include="Scenes\Vehicules\Ambulance.cs" />
+    <Compile Include="Scenes\Vehicules\Camion.cs" />
+    <Compile Include="Scenes\Vehicules\Vehicules.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="XML_file.xml" />

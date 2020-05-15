@@ -54,14 +54,14 @@ outline_color = Color( 0.87451, 0.0627451, 0.0627451, 1 )
 font_data = ExtResource( 1 )
 
 [node name="Infos" type="Panel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -409.06
-margin_top = -233.056
-margin_right = 414.94
-margin_bottom = 213.944
+anchor_left = 0.485
+anchor_top = 0.555
+anchor_right = 0.485
+anchor_bottom = 0.555
+margin_left = -393.7
+margin_top = -266.056
+margin_right = 430.3
+margin_bottom = 180.944
 script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -123,10 +123,10 @@ __meta__ = {
 }
 
 [node name="Couts" type="Panel" parent="Amelioration"]
-margin_left = 562.05
+margin_left = 555.0
 margin_top = 245.95
-margin_right = 798.05
-margin_bottom = 359.95
+margin_right = 790.0
+margin_bottom = 360.0
 theme = SubResource( 7 )
 custom_styles/panel = SubResource( 8 )
 __meta__ = {
@@ -138,10 +138,10 @@ anchor_left = 0.5
 anchor_top = 0.207
 anchor_right = 0.5
 anchor_bottom = 0.207
-margin_left = -105.5
-margin_top = -15.805
-margin_right = 103.5
-margin_bottom = 37.195
+margin_left = -116.5
+margin_top = -20.6084
+margin_right = 116.5
+margin_bottom = 32.3916
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.976471, 0.0784314, 0.0588235, 1 )
 text = "Couts
@@ -157,10 +157,10 @@ anchor_left = 0.28
 anchor_top = 0.501
 anchor_right = 0.28
 anchor_bottom = 0.501
-margin_left = -49.0079
-margin_top = -16.5466
-margin_right = 42.9921
-margin_bottom = 16.4534
+margin_left = -45.8
+margin_top = -17.139
+margin_right = 46.2
+margin_bottom = 15.861
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.992157, 1, 0.0196078, 1 )
 text = "Energie :"
@@ -168,33 +168,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SpriteEnergie" type="Sprite" parent="Amelioration/Couts/Energie"]
+
 [node name="EnergieValue" type="Label" parent="Amelioration/Couts/Energie"]
-anchor_left = 0.407
+anchor_left = 1.489
 anchor_top = 0.5
-anchor_right = 0.407
+anchor_right = 1.489
 anchor_bottom = 0.5
-margin_left = 69.42
-margin_top = -15.0895
-margin_right = 146.42
-margin_bottom = 17.9105
+margin_left = -41.988
+margin_top = -16.5
+margin_right = 42.012
+margin_bottom = 16.5
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.992157, 1, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 0.0196078, 0.12549, 1, 1 )
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpriteEnergie" type="Sprite" parent="Amelioration/Couts/Energie"]
-
 [node name="Eau" type="Label" parent="Amelioration/Couts"]
-anchor_left = 0.28
-anchor_top = 0.801
-anchor_right = 0.28
-anchor_bottom = 0.801
-margin_left = -48.2729
-margin_top = -15.7622
-margin_right = 43.7271
-margin_bottom = 17.2378
+anchor_left = 0.281
+anchor_top = 0.802
+anchor_right = 0.281
+anchor_bottom = 0.802
+margin_left = -46.035
+margin_top = -16.4681
+margin_right = 45.965
+margin_bottom = 16.5319
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.0196078, 0.12549, 1, 1 )
 text = "Eau :"
@@ -203,14 +203,14 @@ __meta__ = {
 }
 
 [node name="EauValue" type="Label" parent="Amelioration/Couts/Eau"]
-anchor_left = 1.464
+anchor_left = 1.489
 anchor_top = 0.5
-anchor_right = 1.464
+anchor_right = 1.489
 anchor_bottom = 0.5
-margin_left = -52.7809
-margin_top = -17.7053
-margin_right = 54.2191
-margin_bottom = 15.2947
+margin_left = -41.988
+margin_top = -16.5
+margin_right = 42.012
+margin_bottom = 16.5
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.0196078, 0.12549, 1, 1 )
 align = 2
@@ -221,10 +221,10 @@ __meta__ = {
 [node name="SpriteEau" type="Sprite" parent="Amelioration/Couts/Eau"]
 
 [node name="Gains" type="Panel" parent="Amelioration"]
-margin_left = 286.25
-margin_top = 244.55
-margin_right = 523.25
-margin_bottom = 357.55
+margin_left = 280.0
+margin_top = 245.0
+margin_right = 515.0
+margin_bottom = 360.0
 theme = SubResource( 7 )
 custom_styles/panel = SubResource( 8 )
 __meta__ = {
@@ -236,10 +236,10 @@ anchor_left = 0.492
 anchor_top = 0.17
 anchor_right = 0.492
 anchor_bottom = 0.17
-margin_left = -94.5333
-margin_top = -16.5448
-margin_right = 94.4667
-margin_bottom = 16.4553
+margin_left = -114.62
+margin_top = -16.55
+margin_right = 119.38
+margin_bottom = 16.45
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.192157, 0.996078, 0.0196078, 1 )
 text = "Gains"
@@ -254,10 +254,10 @@ anchor_left = 0.273
 anchor_top = 0.5
 anchor_right = 0.273
 anchor_bottom = 0.5
-margin_left = -46.1184
-margin_top = -19.0731
-margin_right = 45.8817
-margin_bottom = 13.9269
+margin_left = -44.155
+margin_top = -17.5
+margin_right = 45.845
+margin_bottom = 13.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.172549, 0.478431, 0, 1 )
 text = "Argent :"
@@ -266,16 +266,16 @@ __meta__ = {
 }
 
 [node name="ArgentValue" type="Label" parent="Amelioration/Gains/Argent"]
-anchor_left = 0.407
+anchor_left = 1.73
 anchor_top = 0.5
-anchor_right = 0.407
+anchor_right = 1.73
 anchor_bottom = 0.5
-margin_left = 69.556
+margin_left = -49.514
 margin_top = -15.5
-margin_right = 168.556
+margin_right = 49.486
 margin_bottom = 17.5
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.992157, 1, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 0.258824, 0.501961, 0.117647, 1 )
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -288,10 +288,10 @@ anchor_left = 0.277
 anchor_top = 0.479
 anchor_right = 0.277
 anchor_bottom = 0.479
-margin_left = -45.166
-margin_top = 19.5231
-margin_right = 46.834
-margin_bottom = 52.5231
+margin_left = -45.095
+margin_top = 19.915
+margin_right = 46.905
+margin_bottom = 52.915
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.172549, 0.478431, 0, 1 )
 __meta__ = {
@@ -337,10 +337,10 @@ __meta__ = {
 }
 
 [node name="Couts" type="Panel" parent="Lvl"]
-margin_left = 554.6
-margin_top = 56.2
-margin_right = 794.6
-margin_bottom = 168.2
+margin_left = 555.0
+margin_top = 55.0
+margin_right = 790.0
+margin_bottom = 170.0
 theme = SubResource( 7 )
 custom_styles/panel = SubResource( 8 )
 __meta__ = {
@@ -349,13 +349,13 @@ __meta__ = {
 
 [node name="CoutsTitre" type="Label" parent="Lvl/Couts"]
 anchor_left = 0.5
-anchor_top = 0.207
+anchor_top = 0.146
 anchor_right = 0.5
-anchor_bottom = 0.207
-margin_left = -105.5
-margin_top = -15.805
-margin_right = 103.5
-margin_bottom = 37.195
+anchor_bottom = 0.146
+margin_left = -116.5
+margin_top = -13.79
+margin_right = 116.5
+margin_bottom = 39.21
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.976471, 0.0784314, 0.0588235, 1 )
 text = "Couts
@@ -371,10 +371,10 @@ anchor_left = 0.28
 anchor_top = 0.501
 anchor_right = 0.28
 anchor_bottom = 0.501
-margin_left = -49.0079
-margin_top = -16.5466
-margin_right = 42.9921
-margin_bottom = 16.4534
+margin_left = -45.8
+margin_top = -17.615
+margin_right = 46.2
+margin_bottom = 15.385
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.992157, 1, 0.0196078, 1 )
 text = "Energie :"
@@ -383,14 +383,14 @@ __meta__ = {
 }
 
 [node name="EnergieValue" type="Label" parent="Lvl/Couts/Energie"]
-anchor_left = 0.407
+anchor_left = 1.489
 anchor_top = 0.5
-anchor_right = 0.407
+anchor_right = 1.489
 anchor_bottom = 0.5
-margin_left = 69.556
-margin_top = -15.5
-margin_right = 153.556
-margin_bottom = 17.5
+margin_left = -41.988
+margin_top = -16.5
+margin_right = 42.012
+margin_bottom = 16.5
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.992157, 1, 0.0196078, 1 )
 align = 2
@@ -405,10 +405,10 @@ anchor_left = 0.28
 anchor_top = 0.801
 anchor_right = 0.28
 anchor_bottom = 0.801
-margin_left = -48.2729
-margin_top = -15.7622
-margin_right = 43.7271
-margin_bottom = 17.2378
+margin_left = -45.8
+margin_top = -17.115
+margin_right = 46.2
+margin_bottom = 15.885
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.0196078, 0.12549, 1, 1 )
 text = "Eau :"
@@ -416,15 +416,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SpriteEau" type="Sprite" parent="Lvl/Couts/Eau"]
+
 [node name="EauValue" type="Label" parent="Lvl/Couts/Eau"]
-anchor_left = 1.464
+anchor_left = 1.489
 anchor_top = 0.5
-anchor_right = 1.464
+anchor_right = 1.489
 anchor_bottom = 0.5
-margin_left = -52.688
-margin_top = -17.5
-margin_right = 51.312
-margin_bottom = 15.5
+margin_left = -41.988
+margin_top = -16.5
+margin_right = 42.012
+margin_bottom = 16.5
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.0196078, 0.12549, 1, 1 )
 align = 2
@@ -432,13 +434,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpriteEau" type="Sprite" parent="Lvl/Couts/Eau"]
-
 [node name="Gains" type="Panel" parent="Lvl"]
-margin_left = 281.55
-margin_top = 55.2501
-margin_right = 514.55
-margin_bottom = 168.25
+margin_left = 280.0
+margin_top = 55.0
+margin_right = 515.0
+margin_bottom = 170.0
 theme = SubResource( 7 )
 custom_styles/panel = SubResource( 8 )
 __meta__ = {
@@ -450,10 +450,10 @@ anchor_left = 0.492
 anchor_top = 0.17
 anchor_right = 0.492
 anchor_bottom = 0.17
-margin_left = -94.5333
-margin_top = -16.5448
-margin_right = 94.4667
-margin_bottom = 16.4553
+margin_left = -114.62
+margin_top = -16.55
+margin_right = 119.38
+margin_bottom = 16.45
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.192157, 0.996078, 0.0196078, 1 )
 text = "Gains"
@@ -468,10 +468,10 @@ anchor_left = 0.277
 anchor_top = 0.479
 anchor_right = 0.277
 anchor_bottom = 0.479
-margin_left = -46.0084
-margin_top = -16.4499
-margin_right = 45.9916
-margin_bottom = 16.5501
+margin_left = -45.095
+margin_top = -15.085
+margin_right = 45.0
+margin_bottom = 15.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.172549, 0.478431, 0, 1 )
 text = "Argent :"
@@ -480,16 +480,16 @@ __meta__ = {
 }
 
 [node name="ArgentValue" type="Label" parent="Lvl/Gains/Argent"]
-anchor_left = 0.407
+anchor_left = 1.582
 anchor_top = 0.5
-anchor_right = 0.407
+anchor_right = 1.582
 anchor_bottom = 0.5
-margin_left = 57.977
-margin_top = -15.5
-margin_right = 156.977
-margin_bottom = 17.5
+margin_left = -47.5303
+margin_top = -15.0425
+margin_right = 47.4697
+margin_bottom = 15.4575
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.992157, 1, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 0.345098, 0.52549, 0.243137, 1 )
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -502,10 +502,10 @@ anchor_left = 0.277
 anchor_top = 0.479
 anchor_right = 0.277
 anchor_bottom = 0.479
-margin_left = -46.0084
-margin_top = 20.6
-margin_right = 45.9916
-margin_bottom = 53.6
+margin_left = -45.095
+margin_top = 19.915
+margin_right = 46.905
+margin_bottom = 52.915
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.172549, 0.478431, 0, 1 )
 __meta__ = {
@@ -567,3 +567,11 @@ text = "Lvl Max Atteinds
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Camion" type="Button" parent="."]
+visible = false
+margin_left = 670.0
+margin_top = 393.0
+margin_right = 762.0
+margin_bottom = 421.0
+text = "Camion"
