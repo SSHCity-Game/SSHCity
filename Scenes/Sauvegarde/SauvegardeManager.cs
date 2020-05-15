@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Godot.Collections;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Plan;
+using Array = Godot.Collections.Array;
 
 namespace SshCity.Scenes.Sauvegarde
 {
@@ -27,42 +27,32 @@ namespace SshCity.Scenes.Sauvegarde
                 return false;
 
             saveGame.Open(Ref_donnees.GameSavePath, File.ModeFlags.Read);
-            // TODO: Fix cast
-            var buildData =
-                (Godot.Collections.Dictionary<string, object>) JSON
-                    .Parse(saveGame.GetLine()).Result;
-            buildData.TryGetValue("Buildings", out var datas);
-            if (datas == null)
-                datas = new List<Godot.Collections.Dictionary<string, object>>();
-            foreach (var dicValues in (IEnumerable<Dictionary<string, object>>) datas)
+            var buildData = (Dictionary) JSON.Parse(saveGame.GetAsText()).Result;
+            // Load Buildings
+            var datas = (Array) buildData["Buildings"];
+            foreach (var dicValues in datas.Cast<Dictionary>())
             {
-                dicValues.TryGetValue("PosX", out var x);
-                dicValues.TryGetValue("PosY", out var y);
-                dicValues.TryGetValue("Class", out var clazz);
-                dicValues.TryGetValue("Level", out var lvl);
-                if (x == null)
-                    x = 0;
-                if (y == null)
-                    y = 0;
-                if (clazz == null)
-                    clazz = 3;
-                if (lvl == null)
-                    lvl = 0;
-                new Batiments.Building((Batiments.Class) clazz, new Vector2((float) x, (float) y), (int) lvl);
+                var x = (float) dicValues["PosX"];
+                var y = (float) dicValues["PosY"];
+                var clazz = (Batiments.Class) int.Parse(dicValues["Class"].ToString());
+                var lvl = int.Parse(dicValues["Level"].ToString());
+
+                new Batiments.Building(clazz, new Vector2(x, y), lvl);
+                // todo : ajouter les batiments sur le map
             }
 
+            saveGame.Close();
             return true;
         }
 
-        public static void SaveGame(bool readable = false)
+        public static void SaveGame()
         {
             // TODO : Faire une version lisible 
             var bat = Batiments.ListBuildings;
             var saveGame = new File();
             saveGame.Open(Ref_donnees.GameSavePath, File.ModeFlags.Write);
-            GD.Print(saveGame.GetPathAbsolute());
             var buildingsData = JSON.Print(
-                new Godot.Collections.Dictionary<string, IEnumerable<Godot.Collections.Dictionary<string, object>>>
+                new Dictionary<string, System.Collections.Generic.IEnumerable<Dictionary<string, object>>>
                 {
                     {"Buildings", bat.Select(b => b.Save())}
                 });
