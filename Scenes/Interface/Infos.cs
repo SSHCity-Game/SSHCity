@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel.Design;
 using System.Threading.Tasks;
 using SshCity.Scenes.Buildings;
+using SshCity.Scenes.Plan;
 
 
 public class Infos : Panel
@@ -16,16 +17,32 @@ public class Infos : Panel
     private Label _argentActuel;
     private Label _energieActuel;
     private Label _eauActuel;
+    private Button _vehicule;
     private Panel _amelioPanel;
     private Panel _nivMax;
 
     private Label _argentAmelio;
     private Label _energieAmelio;
     private Label _eauAmelio;
-    
+    private Batiments.Class _class;
     private bool buttonWork = false;
     private Vector2 position;
-    
+    private static bool _close = false;
+    private static bool _isOpen = false;
+    private Vehicules.Type _type;
+
+    public static bool IsOpen
+    {
+        get => _isOpen;
+        set => _isOpen = value;
+    }
+
+    public static bool Close
+    {
+        get => _close;
+        set => _close = value;
+    }
+
     private const string _strQuitter = "Quitter";
     private const string _strAmeliorer = "Ameliorer";
     private const string _strCadre = "Cadre";
@@ -40,6 +57,7 @@ public class Infos : Panel
     private const string _strEauAmelio = "Amelioration/Couts/Eau/EauValue";
     private const string _strAmelioPanel = "Amelioration";
     private const string _strNivMax = "LvlMax";
+    private const string _strVehicule = "Camion";
     
     public override void _Ready()
     {
@@ -48,6 +66,8 @@ public class Infos : Panel
         _titre = (Label) GetNode(_strTitre);
         _image = (Sprite) GetNode(_strImage);
         _cadre = (Panel) GetNode(_strCadre);
+
+        _vehicule = (Button) GetNode(_strVehicule);
         
         // Infos/Ameliorations
         _lvlActuel = (Label) GetNode(_strLvlActuel);
@@ -59,15 +79,23 @@ public class Infos : Panel
         _eauAmelio = (Label) GetNode(_strEauAmelio);
         _amelioPanel = (Panel) GetNode(_strAmelioPanel);
         _nivMax = (Panel) GetNode(_strNivMax);
-        
         _nivMax.Hide();
+        
         
         _quitter.Connect("pressed", this, nameof(CloseInfos));
         _ameliorer.Connect("pressed", this, nameof(AmeliorerInfos));
+        _vehicule.Connect("pressed", this, nameof(EnvoieVehicule));
     }
     public void CloseInfos()
     {
         this.Hide();
+        _isOpen = false;
+    }
+
+    public void EnvoieVehicule()
+    {
+        CloseInfos();
+        PlanInitial.AddVehicule(_type, position);
     }
 
     public bool config(Vector2 tile)
@@ -82,6 +110,7 @@ public class Infos : Panel
             position = tile;
             _lvlActuel.Text = "Lvl " + Convert.ToString(batiment.Lvl + 1);
             _argentActuel.Text = Convert.ToString(batiment.Earn);
+            _class = batiment.Class;
             //_energieActuel.Text = Convert.ToString(batiment.Energie);
             //_eauActuel.Text = Convert.ToString(batiment.eau):
             if (batiment.Lvl != batiment.NbrAmelioration)
@@ -107,5 +136,32 @@ public class Infos : Panel
     {
         PlanInitial.Amelioration(position);
         config(position);
+    }
+
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+        if (_close)
+        {
+            CloseInfos();
+            _close = false;
+        }
+
+        if (this.Visible)
+        {
+            _isOpen = true;
+        }
+        if (_class == Batiments.Class.CASERNE)
+        {
+            _vehicule.Text = "Camion";
+            _vehicule.Show();
+            _type = Vehicules.Type.CAMION;
+        }
+        else if (_class == Batiments.Class.HOSPITAL)
+        {
+            _vehicule.Text = "Ambulance";
+            _vehicule.Show();
+            _type = Vehicules.Type.AMBULANCE;
+        }
     }
 }

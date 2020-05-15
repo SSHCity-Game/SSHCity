@@ -99,9 +99,8 @@ namespace SshCity.Scenes.Plan
         public static float zoom_coef = (float) 0.25;
 
         //argent
-
-        public static int argent = 10000;
-
+        public static int argent = 100000;
+        
         //Dimensions blocs
         public static Dictionary<int, (int, int)> dimensions = new Dictionary<int, (int, int)>()
         {
