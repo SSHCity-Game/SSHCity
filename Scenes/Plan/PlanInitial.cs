@@ -75,7 +75,7 @@ public partial class PlanInitial : Node2D
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
         Camion = (AnimatedSprite) GetNode(strCamion);
-        Camion.Position = TileMap2.MapToWorld(new Vector2(20, 0))+new Vector2(50, 250);
+        Camion.Position = TileMap2.MapToWorld(new Vector2(20, 0))+CamionDecallage;
     }
     public override void _Process(float delta)
     {
@@ -100,8 +100,9 @@ public partial class PlanInitial : Node2D
                 (direction == SshCity.Scenes.Plan.Camion.Direction.LEFT && Camion.Position <= arrive))
             {
                 Vector2 positionActuel = TileMap2.WorldToMap(Camion.Position);
-                if (Routes.IsRoute(GetBlock(TileMap2, (int) positionActuel.x, (int) positionActuel.y - 1))
-                && !Routes.IsCroisement(GetBlock(TileMap2, (int) positionActuel.x, (int) positionActuel.y - 1)))
+                Vector2 NextCase = SshCity.Scenes.Plan.Camion.DirectionToVector2(direction)+new Vector2(-1, -1);
+                if (Routes.IsRoute(GetBlock(TileMap2, (int)positionActuel.x+(int)NextCase.x, (int)positionActuel.y+(int)NextCase.y))
+                && !Routes.IsCroisement(GetBlock(TileMap2, (int)positionActuel.x+(int)NextCase.x, (int)positionActuel.y+(int)NextCase.y)))
                 {
                     Vector2 nextBlock = positionActuel + SshCity.Scenes.Plan.Camion.DirectionToVector2(direction);
                     _deplacement = (TileMap2.MapToWorld(nextBlock) + CamionDecallage) - Camion.Position; 
@@ -117,21 +118,25 @@ public partial class PlanInitial : Node2D
 
         if (!isMoving && Input.IsActionPressed("ui_right"))
         {
+            Camion.Animation = "NE";
             MovingDirection(SshCity.Scenes.Plan.Camion.Direction.RIGHT);
         }
 
         if (!isMoving && Input.IsActionPressed("ui_left"))
         {
+            Camion.Animation = "SW";
             MovingDirection(SshCity.Scenes.Plan.Camion.Direction.LEFT);
         }
 
         if (!isMoving && Input.IsActionPressed("ui_down"))
         {
+            Camion.Animation = "SE";
             MovingDirection(SshCity.Scenes.Plan.Camion.Direction.BOT);
         }
 
         if (!isMoving && Input.IsActionPressed("ui_up"))
         {
+            Camion.Animation = "NW";
             MovingDirection(SshCity.Scenes.Plan.Camion.Direction.TOP);
         }
 

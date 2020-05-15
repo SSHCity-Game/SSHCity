@@ -1,37 +1,32 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Blocks.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Plan/PlanInitial.cs" type="Script" id=2]
-[ext_resource path="res://assets/camionPompier.png" type="Texture" id=3]
+[ext_resource path="res://assets/vehicules/Isometric/firetruck_NW.png" type="Texture" id=3]
 [ext_resource path="res://assets/vehicules/Isometric/firetruck_NE.png" type="Texture" id=4]
+[ext_resource path="res://assets/vehicules/Isometric/firetruck_SW.png" type="Texture" id=5]
+[ext_resource path="res://assets/vehicules/Isometric/firetruck_SE.png" type="Texture" id=6]
 
-[sub_resource type="TileSet" id=1]
-0/name = "camionPompier.png 0"
-0/texture = ExtResource( 3 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 64, 352, 4480, 3488 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shapes = [  ]
-0/z_index = 0
-1/name = "camionPompier.png 1"
-1/texture = ExtResource( 3 )
-1/tex_offset = Vector2( 100, 600 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 32, 384, 288 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shapes = [  ]
-1/z_index = 0
-
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "SW",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "SE",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "NW",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "default",
+"name": "NE",
 "speed": 5.0
 } ]
 
@@ -53,7 +48,7 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 861, 496 )
 cell_tile_origin = 1
 format = 1
-tile_data = PoolIntArray( -262124, 44, 0, -196588, 44, 0, -131052, 44, 0, -65518, 44, 0, -65517, 44, 0, -65516, 44, 0, -65515, 44, 0, -65514, 44, 0, -65513, 44, 0, -65512, 42, 0, 20, 44, 0, 65556, 44, 0, 131092, 44, 0, 1441869, 17, 0, 1703901, 0, 0, 1638477, 18, 0, 1638478, 18, 0, 1638479, 18, 0, 1638480, 18, 0, 1704014, 57, 0 )
+tile_data = PoolIntArray( -262121, 55, 0, -262120, 41, 0, -262119, 52, 0, -196584, 43, 0, -131048, 43, 0, -65518, 44, 0, -65517, 44, 0, -65516, 44, 0, -65515, 44, 0, -65514, 44, 0, -65513, 44, 0, -65512, 42, 0, -65511, 44, 0, -65510, 41, 0, -65509, 51, 0, 24, 43, 0, 26, 50, 0, 27, 50, 0, 65560, 43, 0, 131096, 45, 0 )
 
 [node name="TileMap3" type="TileMap" parent="."]
 mode = 1
@@ -63,17 +58,9 @@ cell_tile_origin = 1
 format = 1
 tile_data = PoolIntArray( 1703901, 0, 0 )
 
-[node name="TileMap4" type="TileMap" parent="."]
-mode = 1
-tile_set = SubResource( 1 )
-cell_size = Vector2( 861, 496 )
-cell_tile_origin = 1
-format = 1
-tile_data = PoolIntArray( 1507401, 0, 0, 1507408, 1, 0, 1703901, 0, 0 )
-
 [node name="Camion" type="AnimatedSprite" parent="."]
-position = Vector2( 9057.79, 5399.46 )
-rotation = 0.0436332
+position = Vector2( 9359.1, 5448.63 )
+rotation = 0.0349066
 scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 2 )
-playing = true
+frames = SubResource( 1 )
+animation = "NE"
