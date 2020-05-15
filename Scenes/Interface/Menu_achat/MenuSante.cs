@@ -50,9 +50,10 @@ public class MenuSante : Node
         _carteCaserne.Prix(Caserne._cost[0]);
         _carteCaserne.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
+        /* Fond clignotant quand besoin du batiment*/
         _cligno = (TextureRect) GetNode(_str_carteCaserne + "/Background/Cligno");
         _cligno.Hide();
-
+        
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
         

@@ -11,6 +11,8 @@ public class menu_incident : CanvasLayer
     public static Button Flamme;
     public TextureRect Background;
 
+    public static bool openIncident = false;
+
     
     public override void _Ready()
     {
@@ -30,7 +32,6 @@ public class menu_incident : CanvasLayer
         Resoudre.Connect("pressed", this, nameof(on_resoudre_pressed));
         Quitter.Connect("pressed", this, nameof(on_quitter_pressed));
         Flamme.Connect("pressed", this, nameof(Resolution));
-        
     }
     
     private void on_boutique_pressed()
@@ -39,8 +40,6 @@ public class menu_incident : CanvasLayer
         Resoudre.Hide();
         Quitter.Hide();
         Background.Hide();
-        Interface.OpenShop = true;
-        //Interface.CloseShop = false;
     }
 
     public void Resolution()
@@ -49,6 +48,7 @@ public class menu_incident : CanvasLayer
         Resoudre.Show();
         Quitter.Show();
         Background.Show();
+        openIncident = true;
     }
     public static void AlerteIncendie()
     {

@@ -42,6 +42,8 @@ public class Carte : Panel
         _sprite = (Sprite) GetNode(_str_sprite);
         _prix = (Label) GetNode(_str_prix);
         _gain = (Label) GetNode(_str_gain);
+        
+        AddUserSignal("Achat");
     }
 
     public void ButtonAchatPressed()

@@ -123,6 +123,11 @@ public class Boutique : CanvasLayer
 
     public override void _Process(float delta)
     {
+        if (menu_incident.openIncident)
+        {
+            menu_incident.openIncident = false;
+            ViewShop(false);
+        }
         if (_button_habitation.Pressed)
         {
             _menuHabitation.OpenMenuHabitation();
