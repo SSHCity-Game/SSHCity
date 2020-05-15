@@ -55,7 +55,6 @@
   <ItemGroup>
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenes\autres\Plan.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Caracteristiques.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\DictionnaireCaracteristiques.cs" />
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Eglise.cs" />
