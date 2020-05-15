@@ -6,13 +6,8 @@ using SshCity.Game.Plan;
 
 namespace SshCity.Game.Sauvegarde
 {
-    public class SauvegardeManager
+    public static class SauvegardeManager
     {
-        public static void Initialize()
-        {
-            // TODO: Initialiser Sauvegarde : Vérifier les paths, les fichiers existants etc...
-        }
-
         /// <summary>
         /// Charge une sauvegarde depuis un fichier s'il existe
         /// </summary>
@@ -46,7 +41,6 @@ namespace SshCity.Game.Sauvegarde
 
         public static void SaveGame()
         {
-            // TODO : Faire une version lisible 
             var bat = Batiments.ListBuildings;
             var saveGame = new File();
             saveGame.Open(Ref_donnees.GameSavePath, File.ModeFlags.Write);
@@ -55,7 +49,6 @@ namespace SshCity.Game.Sauvegarde
                 {
                     {"Buildings", bat.Select(b => b.Save())}
                 });
-            //GD.Print(buildingsData);
             saveGame.StoreLine(buildingsData);
             saveGame.Close();
         }

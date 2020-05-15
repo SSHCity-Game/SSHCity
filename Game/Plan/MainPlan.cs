@@ -151,8 +151,6 @@ public class MainPlan : Node2D
 		_camera2D = (Camera2D) GetNode(str_camera2D);
 		_musique = (AudioStreamPlayer) GetNode(_str_music);
 
-		// Initialise les sauvegardes
-		SauvegardeManager.Initialize();
 		// We load the game or we generate a map
 		if (!SauvegardeManager.LoadGame(_planInitial))
 		{
