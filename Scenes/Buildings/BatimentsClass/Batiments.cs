@@ -24,7 +24,10 @@ namespace SshCity.Scenes.Buildings
 			private Class _class;
 			private Vector2 _position;
 
+			public int Lvl => lvl;
 			public Vector2 Position => _position;
+
+			public string[] Titre => _titre;
 
 			public Class Class => _class;
 
@@ -33,7 +36,7 @@ namespace SshCity.Scenes.Buildings
            var caracteristique = Caracteristiques.GiveCaracteristique(clazz);
                 
            _position = position;
-           _class = batimentClass;
+           _class = caracteristique._Class;
            _bloc = caracteristique.Bloc;
            _earn = caracteristique.Earn;
            _cost = caracteristique.Cost;
