@@ -14,7 +14,18 @@ public class Hotel
     public static readonly int[] gain_xp = {10, 100, 500};
     public static string[] _image = {"res://assets/hotel.png"};
     public static int[] _consomationelec = {2};
+    public static int[] _consomationeau = {2};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.HOTEL;
-    public static Caracteristiques.BatimentsCaracteristiques cara = new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class,_consomationelec);
+    public static Caracteristiques.BatimentsCaracteristiques cara = 
+        new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,
+            _bloc,
+            _cost,
+            _earn, 
+            _titre, 
+            gain_xp,
+            _image, 
+            _class,
+            _consomationelec,
+            _consomationeau);
 }

@@ -13,8 +13,20 @@ public class Parc
     public static int lvl = 0;
     public static readonly int[] gain_xp = {10, 100, 500};
     public static int[] _consomationelec = {0};
+    public static int[] _consomationeau = {0};
     public static string[] _image = {"res://assets/iso parc enfant4.png"};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.PARC;
-    public static Caracteristiques.BatimentsCaracteristiques cara = new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class,_consomationelec);
+    public static Caracteristiques.BatimentsCaracteristiques cara =
+        new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,
+            _bloc,
+            _cost,
+            _earn,
+            _titre, 
+            gain_xp,
+            _image,
+            _class,
+            _consomationelec,
+            _consomationeau);
 }
+

@@ -13,8 +13,19 @@ public class Piscine : Caracteristiques
     public static int lvl = 0;
     public static readonly int[] gain_xp = {10, 100, 500};
     public static int[] _consomationelec = {1};
+    public static int[] _consomationeau = {3};
     public static string[] _image = {"res://assets/isometric piscine1.png"};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.PISCINE;
-    BatimentsCaracteristiques cara = new BatimentsCaracteristiques(nbrAmeliorations, _bloc, _cost, _earn, _titre, gain_xp, _image, _class,_consomationelec);
+    BatimentsCaracteristiques cara =
+        new BatimentsCaracteristiques(nbrAmeliorations,
+            _bloc, 
+            _cost,
+            _earn, 
+            _titre, 
+            gain_xp,
+            _image,
+            _class,
+            _consomationelec,
+            _consomationeau);
 }

@@ -23,6 +23,7 @@ namespace SshCity.Scenes.Buildings
             private  Class _class;
             private  Vector2 _position;
             private int[] _consomation_elec;
+            private int[] _consomation_eau;
 
             public Vector2 Position => _position;
 
@@ -42,6 +43,7 @@ namespace SshCity.Scenes.Buildings
                 _image = caracteristique.Image;
                 nbrAmelioration = caracteristique.NbrAmelioration;
                 _consomation_elec = caracteristique.ConsomationElec;
+                _consomation_eau = caracteristique.ConsomationEau;
                 lvl = 0;
                 ListBuildings.Add(this);
             }
@@ -60,7 +62,10 @@ namespace SshCity.Scenes.Buildings
             {
                 get => _consomation_elec;
             }
-
+            public int[] ConsomationEau
+            {
+                get => _consomation_eau;
+            }
 
             public void Upgrade()
             {
