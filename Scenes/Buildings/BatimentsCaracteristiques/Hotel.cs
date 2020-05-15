@@ -12,9 +12,9 @@ public class Hotel
     public static string[] _titre = {"Hotel"};
     public static int lvl = 0;
     public static readonly int[] gain_xp = {10, 100, 500};
-    public static string[] _image = {"res://assets/hotel.png"};
     public static int[] _consomationelec = {2};
     public static int[] _consomationeau = {2};
+    public static string[] _image = {"res://assets/ImageSized/hotel.png"};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.HOTEL;
     public static Caracteristiques.BatimentsCaracteristiques cara = 

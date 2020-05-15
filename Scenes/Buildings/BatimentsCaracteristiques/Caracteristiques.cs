@@ -57,10 +57,8 @@ namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
 
         public static BatimentsCaracteristiques GiveCaracteristique(Batiments.Class _class)
         {
-            GD.Print(_class);
             foreach (BatimentsCaracteristiques caracteristique in liste)
             {
-                GD.Print(caracteristique);
                 if (caracteristique._Class == _class)
                 {
                     return caracteristique;

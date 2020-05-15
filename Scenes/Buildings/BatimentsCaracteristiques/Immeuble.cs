@@ -13,7 +13,7 @@ public class Immeuble
     public static readonly int[] gain_xp = {10, 100, 500};
     public static int[] _consomationelec = {2};
     public static int[] _consomationeau = {2};
-    public static string[] _image = {"res://assets/maison2.png"};
+    public static string[] _image = {"res://assets/ImageSized/maison2.png"};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.IMMEUBLE;
     public static Caracteristiques.BatimentsCaracteristiques cara =

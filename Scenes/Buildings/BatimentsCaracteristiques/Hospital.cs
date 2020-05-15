@@ -13,7 +13,7 @@ public class Hospital
     public static readonly int[] gain_xp = {10, 100, 500};
     public static int[] _consomationelec = {2};
     public static int[] _consomationeau = {2};
-    public static string[] _image = {"res://assets/hopital.png"};
+    public static string[] _image = {"res://assets/ImageSized/hopital.png"};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.HOSPITAL;
     public static Caracteristiques.BatimentsCaracteristiques cara =

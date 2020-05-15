@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Godot;
+
 namespace SshCity.Scenes.Plan
 {
     public class Ref_donnees
     {
         private Random rand;
 
- 
 
         //Variables pour definir la taille de la Map 
 
-        public const int size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
+        public const int
+            size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
 
         public const int max_x = 127; //Coordonées max d'un bloque sur l'axe x
         public const int min_x = -16; //Coordonnées min d'un bloque sur l'axe x
@@ -21,8 +23,6 @@ namespace SshCity.Scenes.Plan
         public const int max_village_x = 83;
         public const int min_village_y = -22;
         public const int max_village_y = 32;
-
-
 
 
         // Variables modifiables pour définir le nombres d'éléments sur la Map
@@ -42,9 +42,9 @@ namespace SshCity.Scenes.Plan
         public const int montagne = 56;
         public const int montagne_sol = 1;
         public const int sable = 5;
-        public const int maison1     = 11;
-        public const int accident   = 3;
-        public const int route      = 9;
+        public const int maison1 = 11;
+        public const int accident = 3;
+        public const int route = 9;
         public const int hopital = 15;
         public const int caserne = 14;
         public const int immeuble_vert = 16;
@@ -86,28 +86,29 @@ namespace SshCity.Scenes.Plan
         public const int alerte_incendie = 6;
         public const int centrale = 58;
         public const int ferme_ecolo = 59;
-        
-        
+
+
         //Variable bloquer camera
 
         public static float[] x_left = {252, 382, 502, 639, 765, 896, 1019, 1146, 1279};
         public static float[] x_right = {2324, 2197, 2070, 1940, 1817, 1680, 1557, 1430, 1300};
         public static float[] y_top = {150, 224, 300, 375, 450, 526, 598, 676, 752};
         public static float[] y_bot = {1502, 1427, 1348, 1280, 1197, 1122, 1046, 974, 900};
-        public static float zoom_in_max = (float)0.5;
+        public static float zoom_in_max = (float) 0.5;
         public static float zoom_out_max = (float) 2.5;
         public static float zoom_coef = (float) 0.25;
-        
-        //argent
 
-        public static int argent = 10000;
+        //argent
+        public static int argent = 100000;
         
         //Dimensions blocs
         public static Dictionary<int, (int, int)> dimensions = new Dictionary<int, (int, int)>()
         {
             {centrale, (3, 4)},
-            {ferme, (2,2)}
+            {ferme, (2, 2)}
         };
 
+        // Sauvegarde
+        public const string GameSavePath = "user://sshcity.save";
     }
 }

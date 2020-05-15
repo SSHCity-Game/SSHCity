@@ -14,7 +14,7 @@ public class Restaurant2
     public static readonly int[] gain_xp = {10, 100, 500};
     public static int[] _consomationelec = {1};
     public static int[] _consomationeau = {2};
-    public static string[] _image = {"res://assets/iso resto.png"};
+    public static string[] _image = {"res://assets/ImageSized/iso resto.png"};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.RESTAURANT2;
     public static Caracteristiques.BatimentsCaracteristiques cara = 

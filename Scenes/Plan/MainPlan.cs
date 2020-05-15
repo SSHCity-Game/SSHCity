@@ -1,11 +1,13 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Security.Policy;
 using SshCity.Scenes.Plan;
+using SshCity.Scenes.Sauvegarde;
 
 public class MainPlan : Node2D
 {
-    private PlanInitial _planInitial;
+    public static PlanInitial _planInitial;
     private Camera2D _camera2D;
     private string str_planInitial = "PlanInitial";
     private string str_camera2D = "Camera2D";
@@ -19,7 +21,11 @@ public class MainPlan : Node2D
     private static List<(Vector2, int)> _listeNode = new List<(Vector2, int)>();
     private AudioStreamPlayer _musique;
     private const string _str_music = "Musique";
-    
+
+
+    public PlanInitial PlanInitial => _planInitial;
+    private MainMenu _mainMenu;
+    public static bool incident = false;
     public static List<(Vector2, int)> ListeBatiment
     {
         get => _listeBatiment;
@@ -130,35 +136,63 @@ public class MainPlan : Node2D
             }
         }
     }
-    
+
     public override void _Ready()
     {
+        _mainMenu = (MainMenu) GetNode("Camera2D/MainMenu");
         _planInitial = (PlanInitial) GetNode(str_planInitial);
         _camera2D = (Camera2D) GetNode(str_camera2D);
-        
-        Montagnes.GenerateMontagne(_planInitial);
-        Montagnes.GenerateMontagne(_planInitial);
-
-        while (!SshCity.Scenes.Plan.Buildings.GenerateBuildings(_planInitial))
-        {
-            _planInitial = new PlanInitial();
-        }
-        Montagnes.GenerateMontagne(_planInitial);
-
-        //CREATION LACS
-        List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
-        
-        //CREATION SABLE
-        Sable.GenerateSable(_planInitial, coordonnées);
-        
-        //Lancement de la musique
         _musique = (AudioStreamPlayer) GetNode(_str_music);
+        
+        // Initialise les sauvegardes
+		    SauvegardeManager.Initialize();
+		    // We load the game or we generate a map
+		    if (!SauvegardeManager.LoadGame(_planInitial))
+		    {
+			       Montagnes.GenerateMontagne(_planInitial);
+			       Montagnes.GenerateMontagne(_planInitial);
+
+			       // Génère une nouvelle map tant qu'on ne peut pas créer de village
+			       while (!SshCity.Scenes.Plan.Buildings.GenerateBuildings(_planInitial))
+			       {
+				        _planInitial = new PlanInitial();
+			       }
+
+				     Montagnes.GenerateMontagne(_planInitial);
+
+			       //CREATION LACS
+			       List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
+
+			       //CREATION SABLE
+			       Sable.GenerateSable(_planInitial, coordonnées);
+		
+        }
+
+        //Lancement de la musique
         _musique.Play();
     }
 
+    public static bool ExistBatiment(int indexBat)
+    {
+        bool found = false;
+        int i = 0;
+        int len = ListeBatiment.Count;
+        while (!found && i < len)
+        {
+            (var pos, var bat) = ListeBatiment[i];
+            if (bat == indexBat)
+                found = true;
+            i++;
+        }
+
+        return found;
+    }
+    
     public override void _Process(float delta)
     {
         base._Process(delta);
-        //Incident.GenereIncidents(_planInitial);
+        if(!Incident.resoIncident)
+            Incident.GenereIncidents(_planInitial);
     }
+
 }

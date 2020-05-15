@@ -144,7 +144,6 @@ public class Interface : CanvasLayer
         _money_text.Text = Convert.ToString(_money);
         _xp_text.Text = Convert.ToString(_xp);
 
-
         moneyWin = 0;
         foreach (Batiments.Building batiment in Batiments.ListBuildings)
         {
@@ -209,10 +208,15 @@ public class Interface : CanvasLayer
         _achatRoute = false;
         PlanInitial.AchatRoute(_achatRoute);
 
+        //_openShop = !_openShop;
+        //_closeShop = !_closeShop;
+
         _delete = false;
         PlanInitial.Delete = _delete;
         DeleteVerif.Verif = false;
         
+        Infos.Close = true;
+
         _shop.ViewShop(_hide);
         if (_hide)
         {
@@ -230,7 +234,7 @@ public class Interface : CanvasLayer
         _delete = false;
         PlanInitial.Delete = _delete;
         DeleteVerif.Verif = false;
-        
+        Infos.Close = true;
         _hide = false;
         _shop.ViewShop(_hide);
     }
@@ -243,7 +247,7 @@ public class Interface : CanvasLayer
         _interdit = false;
         _achatRoute = false;
         PlanInitial.AchatRoute(_achatRoute);
-        
+        Infos.Close = true;
         _delete = !_delete;
         PlanInitial.Delete = _delete;
         _bulldozerMouse.Show();

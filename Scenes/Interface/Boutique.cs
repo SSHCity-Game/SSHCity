@@ -118,11 +118,27 @@ public class Boutique : CanvasLayer
             _button_sante.Pressed = false;
             _button_speciaux.Pressed = false;
             Menu_Achat.Reset1 = true;
+            MenuSante._cligno.Hide();
+            menu_incident.openShop = false;
+            menu_incident.openIncident = false;
         }
     }
 
     public override void _Process(float delta)
     {
+        if (menu_incident.openIncident)
+        {
+            ViewShop(false);
+        }
+        if (menu_incident.openShop)
+        {
+            ViewShop(true);
+            MenuSante._cligno.Show();
+        }
+        else
+        {
+            MenuSante._cligno.Hide();
+        }
         if (_button_habitation.Pressed)
         {
             _menuHabitation.OpenMenuHabitation();

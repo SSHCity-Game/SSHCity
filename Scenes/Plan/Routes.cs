@@ -23,6 +23,23 @@ namespace SshCity.Scenes.Plan
                    bloc == Ref_donnees.route_T_haut_droit ||
                    bloc == Ref_donnees.route_T_haut_gauche;
         }
+
+        public static bool IsCroisement(int bloc)
+        {
+            return bloc == Ref_donnees.route_croisement ||
+                   bloc == Ref_donnees.route_T_bas_droite ||
+                   bloc == Ref_donnees.route_T_bas_gauche ||
+                   bloc == Ref_donnees.route_T_haut_droit ||
+                   bloc == Ref_donnees.route_T_haut_gauche;
+        }
+
+        public static bool IsVirage(int bloc)
+        {
+            return bloc == Ref_donnees.route_virage_bas ||
+                   bloc == Ref_donnees.route_virage_droit ||
+                   bloc == Ref_donnees.route_virage_gauche ||
+                   bloc == Ref_donnees.route_virage_haut;
+        }
     
         public static int ChoixRoute(Vector2 tile, PlanInitial planInitial)
         {
@@ -136,6 +153,28 @@ namespace SshCity.Scenes.Plan
             {
                 planInitial.SetBlock(planInitial.TileMap2, x-1, y, ChoixRoute(new Vector2(x-1, y), planInitial));
             }
+        }
+
+        public static Vector2 WhereIsRoute(Vector2 tile, PlanInitial planInitial)
+        {
+            if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)tile.x-1, (int)tile.y)))
+            {
+                return tile - new Vector2(1, 0);
+            }
+            if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)tile.x+1, (int)tile.y)))
+            {
+                return tile + new Vector2(1, 0);
+            }
+            if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)tile.x, (int)tile.y-1)))
+            {
+                return tile - new Vector2(0, 1);
+            }
+            if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)tile.x, (int)tile.y+1)))
+            {
+                return tile + new Vector2(0, 1);
+            }
+
+            return new Vector2();
         }
     }
 }

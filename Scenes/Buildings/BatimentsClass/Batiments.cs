@@ -1,10 +1,11 @@
-﻿using Godot;
+using Godot;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Threading.Tasks;
 using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
 using SshCity.Scenes.Plan;
+using SshCity.Scenes.Sauvegarde;
 
 namespace SshCity.Scenes.Buildings
 {
@@ -25,14 +26,14 @@ namespace SshCity.Scenes.Buildings
             private int[] _consomation_elec;
             private int[] _consomation_eau;
 
-            public Vector2 Position => _position;
+			public Vector2 Position => _position;
 
-            public  Class Class => _class;
+			public Class Class => _class;
 
-            public Building(Class batimentClass, Vector2 position)
-            {
-                Caracteristiques.BatimentsCaracteristiques caracteristique = Caracteristiques.GiveCaracteristique(batimentClass);
-                
+			public Building(Class clazz, Vector2 position, int theLvl = 0)
+			{
+           var caracteristique = Caracteristiques.GiveCaracteristique(clazz);
+             
                 _position = position;
                 _class = batimentClass;
                 _bloc = caracteristique.Bloc;
@@ -48,12 +49,17 @@ namespace SshCity.Scenes.Buildings
                 ListBuildings.Add(this);
             }
             
-            public  int Bloc
-            {
-                get => _bloc[lvl];
-            }
+			public int Bloc
+			{
+				get => _bloc[lvl];
+			}
+      
+      public  string Image => _image[lvl];
+      public  int Earn => _earn[lvl];
+      public int[] EarnTab => _earn;
+      public int AmeliorationCost => _cost[lvl + 1];
+      public int NbrAmelioration => nbrAmelioration;
 
-            public  string Titre => _titre[lvl];
 
             public  string Image => _image[lvl];
             public  int Earn => _earn[lvl];
@@ -67,17 +73,19 @@ namespace SshCity.Scenes.Buildings
                 get => _consomation_eau;
             }
 
-            public void Upgrade()
-            {
-                GD.Print(nbrAmelioration);
-                if (nbrAmelioration > lvl && lvl <2 && Interface.Money>= _cost[lvl])
-                {
-                    Interface.Money -= _cost[lvl];
-                    Interface.Xp += gain_xp[lvl];
-                    lvl += 1;
-                }
-                GD.Print(lvl);
-            }
-        }
-    }
+				GD.Print(lvl);
+			}
+      
+			public Godot.Collections.Dictionary<string, object> Save()
+			{
+				return new Godot.Collections.Dictionary<string, object>
+				{
+					{"PosX", Position.x},
+					{"PosY", Position.y},
+					{"Class", Class},
+					{"Level", lvl}
+				};
+			}
+		}
+	}
 }

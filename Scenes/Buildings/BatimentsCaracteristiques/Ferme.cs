@@ -13,7 +13,7 @@ namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
         public static readonly int[] gain_xp = {10, 100, 500};
         public static int[] _consomationelec = {1};
         public static int[] _consomationeau = {3};
-        public static string[] _image = {"res://assets/isometric ferme2.png"};
+        public static string[] _image = {"res://assets/ImageSized/isometric ferme2.png"};
         public static int nbrAmeliorations = 0;
         public static Batiments.Class _class = Batiments.Class.FERME;
         public static Caracteristiques.BatimentsCaracteristiques cara =

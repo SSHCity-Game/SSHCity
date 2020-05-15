@@ -6,18 +6,27 @@ public class MenuSante : Node
     private Carte _carteHopital;
     private Menu_Achat _menu_achat;
     private Carte _carteCaserne;
-
+    public static TextureRect _cligno;
+    
     private const string _str_menu_achat = "Menu_Achat";
     private const string _str_carteHopital = _str_menu_achat + "/Hopital";
     private const string _str_carteCaserne = _str_menu_achat + "/Caserne";
     
     private static bool _achat = false;
-
+    public static bool cligno = false;
+    
     public static bool Achat
     {
         get => _achat;
         set => _achat = value;
     }
+
+    public static bool Cligno
+    {
+        get => cligno;
+        set => cligno = value;
+    }
+    
     public override void _Ready()
     {
         _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
@@ -40,8 +49,11 @@ public class MenuSante : Node
         _carteCaserne.Gain(Caserne._earn[0]);
         _carteCaserne.Prix(Caserne._cost[0]);
         _carteCaserne.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
-        
 
+        /* Fond clignotant quand besoin du batiment*/
+        _cligno = (TextureRect) GetNode(_str_carteCaserne + "/Background/Cligno");
+        _cligno.Hide();
+        
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
         
@@ -49,6 +61,8 @@ public class MenuSante : Node
         Carte[][] menus = new[] {menu1};
         _menu_achat.Menus = menus;
     }
+    
+
     public void CloseMenuSante()
     {
         _menu_achat.Hide();

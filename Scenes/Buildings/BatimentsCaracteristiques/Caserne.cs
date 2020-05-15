@@ -1,10 +1,11 @@
 using Godot;
 using System;
+using System.Text;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
 using SshCity.Scenes.Plan;
 
-public class Caserne
+public class Caserne : Carte
 {
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.CASERNE;
@@ -16,7 +17,6 @@ public class Caserne
     public static int[] _consomationeau = {2};
     public static int lvl = 0;
     public static readonly int[] gain_xp = {10, 100, 500};
-    public static string[] _image = {"res://assets/caserne.png"};
     public static Caracteristiques.BatimentsCaracteristiques cara =
         new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,
             _bloc,
@@ -28,4 +28,5 @@ public class Caserne
             _class,
             _consomationelec,
             _consomationeau);
+    public static string[] _image = {"res://assets/ImageSized/caserne.png"};
 }

@@ -15,7 +15,6 @@ public class Cafe : Caracteristiques
     public static int[] _consomationeau = {2};
     public static string[] _titre = {"Cafe"};
     public static readonly int[] gain_xp = {10, 100, 500};
-    public static string[] _image = {"res://assets/isometric magasin6.png"};
     public static BatimentsCaracteristiques cara = 
         new BatimentsCaracteristiques(nbrAmeliorations, 
             _bloc,
@@ -27,5 +26,6 @@ public class Cafe : Caracteristiques
             _class,
             _consomationelec,
             _consomationeau);
+    public static string[] _image = {"res://assets/ImageSized/isometric magasin6.png"};
 }
 

@@ -14,7 +14,7 @@ public class ImmeubleVertNode : Node2D
     public static readonly int[] gain_xp = {10, 100, 500};
     public static int[] _consomationelec = {2};
     public static int[] _consomationeau = {2};
-    public static string[] _image = {"res://assets/immeuble.png"};
+    public static string[] _image = {"res://assets/ImageSized/immeuble.png"};
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.IMMEUBLEVERT;
     public static Caracteristiques.BatimentsCaracteristiques cara = 
