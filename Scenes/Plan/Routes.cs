@@ -167,7 +167,7 @@ namespace SshCity.Scenes.Plan
             }
             if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)tile.x, (int)tile.y-1)))
             {
-                return tile - new Vector2(0, -1);
+                return tile - new Vector2(0, 1);
             }
             if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)tile.x, (int)tile.y+1)))
             {
