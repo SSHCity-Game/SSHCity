@@ -158,7 +158,7 @@ public class MainPlan : Node2D
 				        _planInitial = new PlanInitial();
 			       }
 
-				     Montagnes.GenerateMontagne(_planInitial);
+                   Montagnes.GenerateMontagne(_planInitial);
 
 			       //CREATION LACS
 			       List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
@@ -187,11 +187,10 @@ public class MainPlan : Node2D
 
         return found;
     }
-    /*
+    
     public override void _Process(float delta)
     {
-        base._Process(delta); 
+        base._Process(delta);
         Incident.GenereIncidents(_planInitial);
     }
-*/
 }
