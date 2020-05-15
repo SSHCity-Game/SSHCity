@@ -92,19 +92,13 @@ public class menu_incident : CanvasLayer
     public static void AlerteIncendie()
     {
         Flamme.Show();
-        ExistFire++;
     }
 
 
     private void on_resoudre_pressed()
     {   
         HideAll();
-        ExistFire--;
         Incident.resoIncident = true;
-        if (ExistFire == 0)
-        {
-            Flamme.Hide();
-        }
     }
 
     private void on_quitter_pressed()

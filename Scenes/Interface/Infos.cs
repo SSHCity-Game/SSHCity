@@ -104,7 +104,7 @@ public class Infos : Panel
         if (batiment != null)
         {
             Batiments.ListBuildings.Add(batiment);
-            _titre.Text = batiment.Titre;
+            _titre.Text = batiment.Titre[batiment.Lvl];
             Texture texture = ResourceLoader.Load(batiment.Image) as Texture;
             _image.Texture = texture;
             position = tile;
