@@ -63,14 +63,12 @@ namespace SshCity.Scenes.Buildings
 
             public void Upgrade()
             {
-                GD.Print(nbrAmelioration);
                 if (nbrAmelioration > lvl && lvl <2 && Interface.Money>= _cost[lvl])
                 {
                     Interface.Money -= _cost[lvl];
                     Interface.Xp += gain_xp[lvl];
                     lvl += 1;
                 }
-                GD.Print(lvl);
             }
         }
     }

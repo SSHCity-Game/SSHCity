@@ -95,7 +95,6 @@
     <Compile Include="Scenes\Interface\Menu_achat\MenuSpeciaux.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\Menu_Achat.cs" />
     <Compile Include="Scenes\Plan\Achat.cs" />
-    <Compile Include="Scenes\Plan\Camion.cs" />
     <Compile Include="Scenes\Plan\Lacs.cs" />
     <Compile Include="Scenes\Plan\MainPlan.cs" />
     <Compile Include="Scenes\Plan\Montagnes.cs" />
@@ -105,6 +104,8 @@
     <Compile Include="Scenes\Plan\Sable.cs" />
     <Compile Include="Scenes\Plan\Buildings.cs" />
     <Compile Include="Scenes\Plan\TileMap1.cs" />
+    <Compile Include="Scenes\Vehicules\Camion.cs" />
+    <Compile Include="Scenes\Vehicules\Vehicules.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="XML_file.xml" />

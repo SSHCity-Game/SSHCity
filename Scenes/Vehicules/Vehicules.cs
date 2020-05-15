@@ -2,7 +2,7 @@
 
 namespace SshCity.Scenes.Plan
 {
-    public class Camion
+    public class Vehicules
     {
         public enum Direction
         {

@@ -1,34 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Blocks.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Plan/PlanInitial.cs" type="Script" id=2]
-[ext_resource path="res://assets/vehicules/Isometric/firetruck_NW.png" type="Texture" id=3]
-[ext_resource path="res://assets/vehicules/Isometric/firetruck_NE.png" type="Texture" id=4]
-[ext_resource path="res://assets/vehicules/Isometric/firetruck_SW.png" type="Texture" id=5]
-[ext_resource path="res://assets/vehicules/Isometric/firetruck_SE.png" type="Texture" id=6]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "SW",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "SE",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "NW",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "NE",
-"speed": 5.0
-} ]
 
 [node name="PlanInitial" type="Node2D"]
 scale = Vector2( 0.05, 0.05 )
@@ -57,10 +30,3 @@ cell_size = Vector2( 861, 496 )
 cell_tile_origin = 1
 format = 1
 tile_data = PoolIntArray( 1703901, 0, 0 )
-
-[node name="Camion" type="AnimatedSprite" parent="."]
-position = Vector2( 9359.1, 5448.63 )
-rotation = 0.0349066
-scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 1 )
-animation = "NE"

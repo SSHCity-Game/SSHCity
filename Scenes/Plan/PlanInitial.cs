@@ -10,18 +10,12 @@ public partial class PlanInitial : Node2D
     public TileMap TileMap1;
     public TileMap TileMap2;
     public TileMap TileMap3;
-    private AnimatedSprite Camion;
-    public bool isMoving = false;
-    public Vector2 _deplacement;
-    public Vector2 arrive;
-    public Camion.Direction direction;
-    private Vector2 CamionDecallage = new Vector2(100, 230);
+    private PackedScene _camionScene;
 
 
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
-    private const string strCamion = "Camion";
 
 
 
@@ -35,7 +29,6 @@ public partial class PlanInitial : Node2D
     private static bool _deleteSure = false;
     private static bool _NotEnoughtMoney = false;
     private static Vector2 _tileSupressing;
-    private static int _nbr_Node;
     private static bool _buildOnTileMap2 = false;
     private static Vector2 _tileOnTileMap2;
 
@@ -67,81 +60,21 @@ public partial class PlanInitial : Node2D
     {
         get => _prix;
         set => _prix = value;
-    }
+    }     
 
     public override void _Ready()
     { 
         TileMap1 = (TileMap) GetNode(str_TileMap1);
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
-        Camion = (AnimatedSprite) GetNode(strCamion);
-        Camion.Position = TileMap2.MapToWorld(new Vector2(20, 0))+CamionDecallage;
+        _camionScene = (PackedScene) GD.Load("res://Scenes/Vehicules/Camion.tscn");
+        Camion _camion = (Camion) _camionScene.Instance();
+        _camion.Init(this);
+        AddChild(_camion);
     }
     public override void _Process(float delta)
     {
         base._Process(delta);
-        Action<Camion.Direction> MovingDirection = direction1 =>
-        {
-            Vector2 positionActuel = TileMap2.WorldToMap(Camion.Position);
-            Vector2 NextCase = SshCity.Scenes.Plan.Camion.DirectionToVector2(direction1)+new Vector2(-1, -1);
-            if (Routes.IsRoute(GetBlock(TileMap2, (int)positionActuel.x+(int)NextCase.x, (int)positionActuel.y+(int)NextCase.y)))
-            {
-                isMoving = true;
-                Vector2 nextBlock = positionActuel + SshCity.Scenes.Plan.Camion.DirectionToVector2(direction1);
-                _deplacement = (TileMap2.MapToWorld(nextBlock) +CamionDecallage)- Camion.Position ;
-                arrive = TileMap2.MapToWorld(nextBlock) + CamionDecallage;
-                direction = direction1;
-            }
-        };
-
-        if (isMoving)
-        {
-            if ((direction == SshCity.Scenes.Plan.Camion.Direction.RIGHT && Camion.Position >= arrive) ||
-                (direction == SshCity.Scenes.Plan.Camion.Direction.LEFT && Camion.Position <= arrive))
-            {
-                Vector2 positionActuel = TileMap2.WorldToMap(Camion.Position);
-                Vector2 NextCase = SshCity.Scenes.Plan.Camion.DirectionToVector2(direction)+new Vector2(-1, -1);
-                if (Routes.IsRoute(GetBlock(TileMap2, (int)positionActuel.x+(int)NextCase.x, (int)positionActuel.y+(int)NextCase.y))
-                && !Routes.IsCroisement(GetBlock(TileMap2, (int)positionActuel.x+(int)NextCase.x, (int)positionActuel.y+(int)NextCase.y)))
-                {
-                    Vector2 nextBlock = positionActuel + SshCity.Scenes.Plan.Camion.DirectionToVector2(direction);
-                    _deplacement = (TileMap2.MapToWorld(nextBlock) + CamionDecallage) - Camion.Position; 
-                    arrive = TileMap2.MapToWorld(nextBlock) + CamionDecallage;
-                }
-                else
-                {
-                    isMoving = false;
-                    _deplacement = new Vector2(0, 0);
-                }
-            }
-        }
-
-        if (!isMoving && Input.IsActionPressed("ui_right"))
-        {
-            Camion.Animation = "NE";
-            MovingDirection(SshCity.Scenes.Plan.Camion.Direction.RIGHT);
-        }
-
-        if (!isMoving && Input.IsActionPressed("ui_left"))
-        {
-            Camion.Animation = "SW";
-            MovingDirection(SshCity.Scenes.Plan.Camion.Direction.LEFT);
-        }
-
-        if (!isMoving && Input.IsActionPressed("ui_down"))
-        {
-            Camion.Animation = "SE";
-            MovingDirection(SshCity.Scenes.Plan.Camion.Direction.BOT);
-        }
-
-        if (!isMoving && Input.IsActionPressed("ui_up"))
-        {
-            Camion.Animation = "NW";
-            MovingDirection(SshCity.Scenes.Plan.Camion.Direction.TOP);
-        }
-
-        Camion.Position += _deplacement * delta;
-        
         if (_buildOnTileMap2)
         {
             SetBlock(TileMap2, (int)_tileOnTileMap2.x, (int)_tileOnTileMap2.y, _batiment);
@@ -188,7 +121,6 @@ public partial class PlanInitial : Node2D
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
-        _nbr_Node = GetChildCount();
         if (OneAction is InputEventMouse && (_achat ||_achatRoute) && !_NotEnoughtMoney)
         {
 
