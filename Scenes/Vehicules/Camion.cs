@@ -88,7 +88,7 @@ namespace SshCity.Scenes.Plan
                 if ((direction == Vehicules.Direction.RIGHT && this.Position >= arrive) ||
                     (direction == Vehicules.Direction.LEFT && this.Position <= arrive) ||
                     (direction == Vehicules.Direction.TOP && this.Position >= arrive) ||
-                    (direction == Vehicules.Direction.BOT && this.Position <= arrive))
+                    (direction == Vehicules.Direction.BOTTOM && this.Position <= arrive))
                 {
                     Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(this.Position);
                     Vector2 NextCase = Vehicules.DirectionToVector2(direction) + new Vector2(-1, -1);
@@ -121,7 +121,7 @@ namespace SshCity.Scenes.Plan
 
             if (!isMoving && Input.IsActionPressed("ui_down"))
             {
-                MovingDirection((Vehicules.Direction.BOT, "SE"));
+                MovingDirection((Vehicules.Direction.BOTTOM, "SE"));
             }
 
             if (!isMoving && Input.IsActionPressed("ui_up"))

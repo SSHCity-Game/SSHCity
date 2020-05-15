@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System;
+using Godot;
 
 namespace SshCity.Scenes.Plan
 {
@@ -8,7 +9,7 @@ namespace SshCity.Scenes.Plan
         {
             TOP,
             LEFT,
-            BOT,
+            BOTTOM,
             RIGHT
         }
 
@@ -20,32 +21,14 @@ namespace SshCity.Scenes.Plan
 
         public static Vector2 DirectionToVector2(Direction dir)
         {
-            Vector2 res;
-            switch (dir)
+            return dir switch
             {
-                case Direction.TOP:
-                {
-                    res = new Vector2(0, -1);
-                    break;
-                }
-                case Direction.BOT:
-                {
-                    res = new Vector2(0, 1);
-                    break;
-                }
-                case Direction.RIGHT:
-                {
-                    res = new Vector2(1, 0);
-                    break;
-                }
-                default:
-                {
-                    res = new Vector2(-1, 0);
-                    break;
-                }
-            }
-
-            return res;
+                Direction.BOTTOM => new Vector2(0, 1),
+                Direction.TOP => new Vector2(0, -1),
+                Direction.LEFT => new Vector2(-1, 0),
+                Direction.RIGHT => new Vector2(1, 0),
+                _ => throw new ArgumentException()
+            };
         }
     }
 }
