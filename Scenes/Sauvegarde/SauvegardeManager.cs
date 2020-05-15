@@ -19,7 +19,7 @@ namespace SshCity.Scenes.Sauvegarde
         /// Charge une sauvegarde depuis un fichier s'il existe
         /// </summary>
         /// <returns>Renvoie false s'il n'y a pas de sauvegarde ou quelle n'a pu être chargée. true sinon</returns>
-        public static bool LoadGame()
+        public static bool LoadGame(PlanInitial planInitial)
         {
             var saveGame = new File();
             // Il n'y a pas de sauvegarde
@@ -37,8 +37,9 @@ namespace SshCity.Scenes.Sauvegarde
                 var clazz = (Batiments.Class) int.Parse(dicValues["Class"].ToString());
                 var lvl = int.Parse(dicValues["Level"].ToString());
 
-                new Batiments.Building(clazz, new Vector2(x, y), lvl);
-                // todo : ajouter les batiments sur le map
+                var bat = new Batiments.Building(clazz, new Vector2(x, y), lvl);
+                planInitial.SetBlock(planInitial.TileMap2, (int) x, (int) y, bat.Bloc);
+                planInitial.SetAchatBlocs(bat.Position);
             }
 
             saveGame.Close();

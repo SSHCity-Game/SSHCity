@@ -148,7 +148,7 @@ public class MainPlan : Node2D
 		// Initialise les sauvegardes
 		SauvegardeManager.Initialize();
 		// We load the game or we generate a map
-		if (!SauvegardeManager.LoadGame())
+		if (!SauvegardeManager.LoadGame(_planInitial))
 		{
 			Montagnes.GenerateMontagne(_planInitial);
 			Montagnes.GenerateMontagne(_planInitial);
