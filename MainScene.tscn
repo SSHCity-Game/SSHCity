@@ -1,7 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/isometric_0086.png" type="Texture" id=1]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/isometric_0087.png" type="Texture" id=3]
 [ext_resource path="res://assets/isometric_0080.png" type="Texture" id=4]
 
@@ -58,6 +57,3 @@ cell_size = Vector2( 861, 496 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 format = 1
 tile_data = PoolIntArray( -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -1, 1, 0, -65536, 0, 0, -65533, 0, 0, -65532, 0, 0, 65535, 0, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 0, 0, 4, 0, 0, 131071, 0, 0, 65536, 2, 0, 65537, 2, 0, 65538, 1, 0, 65539, 0, 0, 131072, 0, 0, 131074, 0, 0, 131075, 0, 0, 196608, 0, 0, 196609, 0, 0 )
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 85.7768, 57.7435 )

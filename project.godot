@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ssh City"
-run/main_scene="res://Scenes/Plan/MainPlan.tscn"
+run/main_scene="res://Game/Plan/MainPlan.tscn"
 config/icon="res://SAFExTY.ico"
 
 [input]

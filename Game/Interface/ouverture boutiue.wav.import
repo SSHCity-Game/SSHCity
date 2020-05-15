@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ouverture boutiue.wav-aa9e73e61e388dd4214f2a651a5a05e5.sample"
+
+[deps]
+
+source_file="res://Game/Interface/ouverture boutiue.wav"
+dest_files=[ "res://.import/ouverture boutiue.wav-aa9e73e61e388dd4214f2a651a5a05e5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
