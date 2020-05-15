@@ -35,7 +35,7 @@ namespace SshCity.Scenes.Buildings.BatimentsCaracteristiques
 
             public int[] ConsomationElec => _consomation_elec;
 
-            public BatimentsCaracteristiques(int nbrAmelioration, int[] _bloc, int[] _cost, int[] _earn, string[] _titre, int[] gain_xp, string[] _image, Batiments.Class _class,int[] _consomationElec)
+            public BatimentsCaracteristiques(int nbrAmelioration, int[] _bloc, int[] _cost, int[] _earn, string[] _titre, int[] gain_xp, string[] _image, Batiments.Class _class,int[] _consomation_elec)
             {
                 this._nbrAmelioration = nbrAmelioration;
                 this._bloc = _bloc;
