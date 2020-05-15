@@ -61,6 +61,8 @@ public class MenuSante : Node
         Carte[][] menus = new[] {menu1};
         _menu_achat.Menus = menus;
     }
+    
+
     public void CloseMenuSante()
     {
         _menu_achat.Hide();

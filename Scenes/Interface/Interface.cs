@@ -68,19 +68,6 @@ public class Interface : CanvasLayer
         get => _xp;
         set => _xp = value;
     }
-    
-    public static bool _openShop = false;
-    public static bool OpenShop
-    {
-        get => _openShop;
-        set => _openShop = value;
-    }
-    public static bool _closeShop = true;
-    public static bool CloseShop
-    {
-        get => _closeShop;
-        set => _closeShop = value;
-    }
 
     private const string _str_shop = "Boutique";
     private const string _str_button_shop = "ButtonShop";
@@ -156,12 +143,6 @@ public class Interface : CanvasLayer
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
         _xp_text.Text = Convert.ToString(_xp);
-
-        if (OpenShop)
-        {
-            ButtonShopPressed();
-            OpenShop = false;
-        }
 
         moneyWin = 0;
         foreach (Batiments.Building batiment in Batiments.ListBuildings)

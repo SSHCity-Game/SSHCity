@@ -12,6 +12,7 @@ public class menu_incident : CanvasLayer
     public TextureRect Background;
 
     public static bool openIncident = false;
+    public static bool openShop = false;
 
     
     public override void _Ready()
@@ -40,6 +41,7 @@ public class menu_incident : CanvasLayer
         Resoudre.Hide();
         Quitter.Hide();
         Background.Hide();
+        openShop = true;
     }
 
     public void Resolution()
