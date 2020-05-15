@@ -26,28 +26,28 @@ namespace SshCity.Scenes.Buildings
             private int[] _consomation_elec;
             private int[] _consomation_eau;
 
+			public int Lvl => lvl;
 			public Vector2 Position => _position;
+
+			public string[] Titre => _titre;
 
 			public Class Class => _class;
 
 			public Building(Class clazz, Vector2 position, int theLvl = 0)
 			{
-           var caracteristique = Caracteristiques.GiveCaracteristique(clazz);
-             
-                _position = position;
-                _class = batimentClass;
-                _bloc = caracteristique.Bloc;
-                _earn = caracteristique.Earn;
-                _cost = caracteristique.Cost;
-                _titre = caracteristique.Titre;
-                gain_xp = caracteristique.GainXp;
-                _image = caracteristique.Image;
-                nbrAmelioration = caracteristique.NbrAmelioration;
-                _consomation_elec = caracteristique.ConsomationElec;
-                _consomation_eau = caracteristique.ConsomationEau;
-                lvl = 0;
-                ListBuildings.Add(this);
-            }
+           var caracteristique = Caracteristiques.GiveCaracteristique(clazz);           
+           _position = position;
+           _class = caracteristique._Class;
+           _bloc = caracteristique.Bloc;
+           _earn = caracteristique.Earn;
+           _cost = caracteristique.Cost;
+           _titre = caracteristique.Titre;
+           gain_xp = caracteristique.GainXp;
+           _image = caracteristique.Image;
+           nbrAmelioration = caracteristique.NbrAmelioration;
+           lvl = theLvl;
+           ListBuildings.Add(this);
+      }
             
 			public int Bloc
 			{
