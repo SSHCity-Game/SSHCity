@@ -71,6 +71,8 @@ public partial class PlanInitial : Node2D
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
         _camionScene = (PackedScene) GD.Load("res://Scenes/Vehicules/Camion.tscn");
+        Vector2 test = new Vector2(20, 0);
+        InitCamion(test);
     }
     public override void _Process(float delta)
     {
