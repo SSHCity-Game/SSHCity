@@ -187,12 +187,12 @@ public class MainPlan : Node2D
 
         return found;
     }
-    
+    /*
     public override void _Process(float delta)
     {
         base._Process(delta);
         if(!Incident.resoIncident)
             Incident.GenereIncidents(_planInitial);
     }
-
+*/
 }
