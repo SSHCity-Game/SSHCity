@@ -1,10 +1,11 @@
 using Godot;
 using System;
+using System.Text;
 using SshCity.Scenes.Buildings;
 using SshCity.Scenes.Buildings.BatimentsCaracteristiques;
 using SshCity.Scenes.Plan;
 
-public class Caserne
+public class Caserne : Carte
 {
     public static int nbrAmeliorations = 0;
     public static Batiments.Class _class = Batiments.Class.CASERNE;

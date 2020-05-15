@@ -1,11 +1,12 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Security.Policy;
 using SshCity.Scenes.Plan;
 
 public class MainPlan : Node2D
 {
-    private PlanInitial _planInitial;
+    public static PlanInitial _planInitial;
     private Camera2D _camera2D;
     private string str_planInitial = "PlanInitial";
     private string str_camera2D = "Camera2D";
@@ -20,8 +21,10 @@ public class MainPlan : Node2D
     private AudioStreamPlayer _musique;
     private const string _str_music = "Musique";
 
+
     public PlanInitial PlanInitial => _planInitial;
-    
+    private MainMenu _mainMenu;
+    public static bool incident = false;
     public static List<(Vector2, int)> ListeBatiment
     {
         get => _listeBatiment;
@@ -132,11 +135,13 @@ public class MainPlan : Node2D
             }
         }
     }
-    
+
     public override void _Ready()
     {
+        _mainMenu = (MainMenu) GetNode("Camera2D/MainMenu");
         _planInitial = (PlanInitial) GetNode(str_planInitial);
         _camera2D = (Camera2D) GetNode(str_camera2D);
+        _musique = (AudioStreamPlayer) GetNode(_str_music);
         
         Montagnes.GenerateMontagne(_planInitial);
         Montagnes.GenerateMontagne(_planInitial);
@@ -145,22 +150,40 @@ public class MainPlan : Node2D
         {
             _planInitial = new PlanInitial();
         }
+
         Montagnes.GenerateMontagne(_planInitial);
 
         //CREATION LACS
         List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
-        
+
         //CREATION SABLE
         Sable.GenerateSable(_planInitial, coordonnées);
-        
+
         //Lancement de la musique
-        _musique = (AudioStreamPlayer) GetNode(_str_music);
         _musique.Play();
     }
 
+    public static bool ExistBatiment(int indexBat)
+    {
+        bool found = false;
+        int i = 0;
+        int len = ListeBatiment.Count;
+        while (!found && i < len)
+        {
+            (var pos, var bat) = ListeBatiment[i];
+            if (bat == indexBat)
+                found = true;
+            i++;
+        }
+
+        return found;
+    }
+    
     public override void _Process(float delta)
     {
         base._Process(delta);
-        Incident.GenereIncidents(_planInitial);
+        if(!Incident.resoIncident)
+            Incident.GenereIncidents(_planInitial);
     }
+
 }

@@ -83,11 +83,13 @@
     <Compile Include="Scenes\Buildings\BatimentsCaracteristiques\Restaurant.cs" />
     <Compile Include="Scenes\Buildings\Buildings.cs" />
     <Compile Include="Scenes\Incident\incidents.cs" />
+    <Compile Include="Scenes\Incident\menu_incident.cs" />
     <Compile Include="Scenes\Interface\Boutique.cs" />
     <Compile Include="Scenes\Interface\Carte_achat\Carte.cs" />
     <Compile Include="Scenes\Interface\DeleteVerif.cs" />
     <Compile Include="Scenes\Interface\Infos.cs" />
     <Compile Include="Scenes\Interface\Interface.cs" />
+    <Compile Include="Scenes\Interface\MainMenu.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuBienEtre.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuEconomie.cs" />
     <Compile Include="Scenes\Interface\Menu_achat\MenuHabitation.cs" />
@@ -114,6 +116,7 @@
   <ItemGroup>
     <Folder Include="Scenes\Interface\Carte_achat\Economie" />
     <Folder Include="Scenes\Interface\Carte_achat\Habitation" />
+    <Folder Include="Scenes\Interface\Carte_achat\Sante" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
