@@ -98,25 +98,25 @@ public class Infos : Panel
 
     public bool config(Vector2 tile)
     {
-        Batiments.Building batiment = Batiments.GetBuildingWithPosition(tile);
+        Building batiment = Building.GetBuildingWithPosition(tile);
         if (batiment != null)
         {
-            Batiments.ListBuildings.Add(batiment);
-            _titre.Text = batiment.Titre[batiment.Lvl];
-            Texture texture = ResourceLoader.Load(batiment.Image) as Texture;
+            Building.ListBuildings.Add(batiment);
+            _titre.Text = batiment.Characteristics.Titre[batiment.Characteristics.Lvl];
+            Texture texture = ResourceLoader.Load(batiment.Characteristics.Image[0]) as Texture;
             _image.Texture = texture;
             position = tile;
-            _lvlActuel.Text = "Lvl " + Convert.ToString(batiment.Lvl + 1);
-            _argentActuel.Text = Convert.ToString(batiment.Earn);
-            _class = batiment.Class;
-            //_energieActuel.Text = Convert.ToString(batiment.Energie);
-            //_eauActuel.Text = Convert.ToString(batiment.eau):
-            if (batiment.Lvl != batiment.NbrAmelioration)
+            _lvlActuel.Text = "Lvl " + Convert.ToString(batiment.Characteristics.Lvl + 1);
+            _argentActuel.Text = Convert.ToString(batiment.Characteristics.Earn);
+            _class = batiment.Type;
+            //_energieActuel.Text = Convert.ToString(batiment.Characteristics.Energie);
+            //_eauActuel.Text = Convert.ToString(batiment.Characteristics.eau):
+            if (batiment.Characteristics.Lvl != batiment.Characteristics.NbrAmeliorations)
             {
-                _argentAmelio.Text = Convert.ToString(batiment.EarnTab[batiment.Lvl + 1]);
-                //_argentAmelio.Text = Convert.ToString(batiment.EnergieTab[batiment.Lvl + 1]);
-                //_eauAmelio.Text = Convert.ToString(batiment.EauTab[batiment.Lvl + 1]);
-                _ameliorer.Text = "Ameliorer\n" + Convert.ToString(batiment.AmeliorationCost);
+                _argentAmelio.Text = Convert.ToString(batiment.Characteristics.Earn[batiment.Characteristics.Lvl + 1]);
+                //_argentAmelio.Text = Convert.ToString(batiment.Characteristics.EnergieTab[batiment.Characteristics.Lvl + 1]);
+                //_eauAmelio.Text = Convert.ToString(batiment.Characteristics.EauTab[batiment.Characteristics.Lvl + 1]);
+                _ameliorer.Text = "Ameliorer\n" + Convert.ToString(batiment.Characteristics.Cost[1]);
             }
             else
             {

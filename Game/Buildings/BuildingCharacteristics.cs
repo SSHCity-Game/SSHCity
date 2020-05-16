@@ -9,7 +9,7 @@ namespace SshCity.Game.Buildings
         public int[] Cost { get; }
         public int[] Earn { get; }
         public string[] Titre { get; }
-        public int Lvl { get; }
+        public int Lvl { get; set; }
         public int[] GainXp { get; }
         public int[] Consomationelec { get; }
         public int[] Consomationeau { get; }

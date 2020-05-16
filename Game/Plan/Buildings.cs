@@ -19,7 +19,8 @@ namespace SshCity.Game.Plan
         public static void GenerateBatiments(PlanInitial planInitial, int x, int y)
         {
             // Bâtiments de départ 
-            int[] batiments = {
+            int[] batiments =
+            {
                 Ref_donnees.parc_enfant, Ref_donnees.maison3, Ref_donnees.ferme,
                 Ref_donnees.maison4, Ref_donnees.mairie, Ref_donnees.maison5,
                 Ref_donnees.eglise, Ref_donnees.restaurant, Ref_donnees.restaurant2
@@ -37,42 +38,42 @@ namespace SshCity.Game.Plan
                     {
                         case 0:
                         {
-                            new Batiments.Building(BuildingType.PARC, new Vector2(i - 1, j - 1));
+                            Building.Create(BuildingType.PARC, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 1:
                         {
-                            new Batiments.Building(BuildingType.MAISON3, new Vector2(i - 1, j - 1));
+                            Building.Create(BuildingType.MAISON3, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 2:
                         {
-                            new Batiments.Building(BuildingType.FERME, new Vector2(i - 1, j - 1));
+                            Building.Create(BuildingType.FERME, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 3:
                         {
-                            new Batiments.Building(BuildingType.MAISON4, new Vector2(i - 1, j - 1));
+                            Building.Create(BuildingType.MAISON4, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 5:
                         {
-                            new Batiments.Building(BuildingType.MAISON5, new Vector2(i - 1, j - 1));
+                            Building.Create(BuildingType.MAISON5, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 6:
                         {
-                            new Batiments.Building(BuildingType.EGLISE, new Vector2(i - 1, j - 1));
+                            Building.Create(BuildingType.EGLISE, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 7:
                         {
-                            new Batiments.Building(BuildingType.RESTAURANT, new Vector2(i - 1, j - 1));
+                            Building.Create(BuildingType.RESTAURANT, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 8:
                         {
-                            new Batiments.Building(BuildingType.RESTAURANT2, new Vector2(i - 1, j - 1));
+                            Building.Create(BuildingType.RESTAURANT2, new Vector2(i - 1, j - 1));
                             break;
                         }
                     }
@@ -409,7 +410,7 @@ namespace SshCity.Game.Plan
                 GenerateBatiments(planInitial, x - 2, y - 2);
                 GenerateRouteVillage(planInitial, x - 2, y - 2);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

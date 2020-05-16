@@ -55,10 +55,7 @@
         <Reference Include="System" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Game\Buildings\BatimentsClass\Amelioration.cs" />
-        <Compile Include="Game\Buildings\BatimentsClass\Batiments.cs" />
-        <Compile Include="Game\Buildings\BatimentsClass\Classes.cs" />
-        <Compile Include="Game\Buildings\BatimentsClass\Suppression.cs" />
+        <Compile Include="Game\Buildings\Building.cs" />
         <Compile Include="Game\Buildings\BuildingCharacteristics.cs" />
         <Compile Include="Game\Buildings\BuildingType.cs" />
         <Compile Include="Game\Buildings\Characteristics\Cafe.cs" />

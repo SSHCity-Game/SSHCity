@@ -119,7 +119,7 @@ public partial class PlanInitial : Node2D
 
     public static void Amelioration(Vector2 tile)
     {
-        (bool worked, int bloc) amelio = Batiments.Amelioration(tile);
+        (bool worked, int bloc) amelio = Building.Amelioration(tile);
         GD.Print(amelio);
         if (amelio.worked)
         {
@@ -225,7 +225,7 @@ public partial class PlanInitial : Node2D
         if (DeleteSure)
         {
             int bloc = GetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y);
-            Batiments.Suppression(_tileSupressing);
+            Building.Suppression(_tileSupressing);
             SetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
             SetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1, Ref_donnees.terre);
             Routes.ChangeRoute(_tileSupressing, this);

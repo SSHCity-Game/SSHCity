@@ -88,6 +88,6 @@ public partial class PlanInitial
         }
 
         var batimentClass = (BuildingType) batiment;
-        new Batiments.Building(batimentClass, tile);
+        Building.Create(batimentClass, tile);
     }
 }
