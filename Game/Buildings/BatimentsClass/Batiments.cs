@@ -1,6 +1,5 @@
 using Godot;
 using Godot.Collections;
-using SshCity.Game.Buildings.BatimentsCaracteristiques;
 
 namespace SshCity.Game.Buildings
 {
@@ -15,16 +14,16 @@ namespace SshCity.Game.Buildings
 
             public Building(BuildingType type, Vector2 position, int theLvl = 0)
             {
-                var caracteristique = Caracteristiques.GiveCaracteristique(type);
+                var caracteristique = BuildingCharacteristics.FromType(type);
                 Position = position;
-                Class = caracteristique._Class;
+                Class = type;
                 _bloc = caracteristique.Bloc;
                 EarnTab = caracteristique.Earn;
                 _cost = caracteristique.Cost;
                 Titre = caracteristique.Titre;
                 gain_xp = caracteristique.GainXp;
                 _image = caracteristique.Image;
-                NbrAmelioration = caracteristique.NbrAmelioration;
+                NbrAmelioration = caracteristique.NbrAmeliorations;
                 Lvl = theLvl;
                 ListBuildings.Add(this);
             }

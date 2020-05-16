@@ -1,7 +1,6 @@
 ﻿using System;
 using Godot;
 using SshCity.Game.Buildings;
-using SshCity.Game.Buildings.BatimentsCaracteristiques;
 using SshCity.Game.Plan;
 
 public partial class PlanInitial
@@ -88,7 +87,7 @@ public partial class PlanInitial
             Interface.Money -= Prix;
         }
 
-        BuildingType batimentClass = DictionnaireCaracteristiques.dictionnaireCaracteristiques[batiment];
+        var batimentClass = (BuildingType) batiment;
         new Batiments.Building(batimentClass, tile);
     }
 }
