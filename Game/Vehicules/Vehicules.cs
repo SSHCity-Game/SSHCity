@@ -24,7 +24,21 @@ namespace SshCity.Game.Plan
         public enum Type
         {
             CAMION,
-            AMBULANCE
+            AMBULANCE,
+            VOITURE,
+            VOITURECOURSE,
+            POLICE,
+            SPORTIVE,
+            LUXE,
+            SUV,
+            LIVRAISON,
+            HATCHBACK,
+            TAXI,
+            TRACTEURPOLICE,
+            TRACTOPEL,
+            TRACTEUR,
+            VOITURETRUCK,
+            VAN
         }
 
         public static Vector2 DirectionToVector2(Direction dir)
@@ -76,7 +90,21 @@ namespace SshCity.Game.Plan
         Dictionary<Type, SpriteFrames> AnimatedSpriteType = new Dictionary<Type, SpriteFrames>()
         {
             {Type.AMBULANCE, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Ambulance_animatedSprite.tres") as SpriteFrames},
-            {Type.CAMION, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Camion_animatedSprite.tres") as SpriteFrames}
+            {Type.CAMION, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Camion_animatedSprite.tres") as SpriteFrames},
+            {Type.VOITURE, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Voiture_animatedSprite.tres") as SpriteFrames},
+            {Type.POLICE, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Police_animatedSprite.tres") as SpriteFrames},
+            {Type.SPORTIVE, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/VoitureSport_animatedSprite.tres") as SpriteFrames},
+            {Type.LUXE, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Luxe_animatedSprite.tres") as SpriteFrames},
+            {Type.SUV, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/SUV_animatedSprite.tres") as SpriteFrames},
+            {Type.LIVRAISON, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Livraison_animatedSprite.tres") as SpriteFrames},
+            {Type.HATCHBACK, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/HatchBack_animatedSprite.tres") as SpriteFrames},
+            {Type.VOITURECOURSE, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/VoitureCourse_animatedSprite.tres") as SpriteFrames},
+            {Type.TAXI, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Taxi_animatedSprite.tres") as SpriteFrames},
+            {Type.TRACTEURPOLICE, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/TracteurPolice_animatedSprite.tres") as SpriteFrames},
+            {Type.TRACTOPEL, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Tractopel_animatedSprite.tres") as SpriteFrames},
+            {Type.TRACTEUR, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Tracteur_animatedSprite.tres") as SpriteFrames},
+            {Type.VOITURETRUCK, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/VoitureTruck_animatedSprite.tres") as SpriteFrames},
+            {Type.VAN, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Van_animatedSprite.tres") as SpriteFrames},
         };
         
         private Direction direction;

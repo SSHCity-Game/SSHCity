@@ -21,16 +21,20 @@ namespace SshCity.Game.Buildings
 			private int lvl;
 			private int nbrAmelioration;
 
+			public Vector2 Position => _position;
 			public Building(Class clazz, Vector2 position, int theLvl = 0)
 			{
 				var caracteristique = Caracteristiques.GiveCaracteristique(clazz);
+				if (caracteristique == null)
+				{
+					GD.Print("OKII " + position);
+				}
 				_position = position;
 				_class = caracteristique._Class;
 				_bloc = caracteristique.Bloc;
 				_earn = caracteristique.Earn;
 				_cost = caracteristique.Cost;
 				_titre = caracteristique.Titre;
-				GD.Print(_titre);
 				gain_xp = caracteristique.GainXp;
 				_image = caracteristique.Image;
 				nbrAmelioration = caracteristique.NbrAmelioration;
@@ -39,7 +43,6 @@ namespace SshCity.Game.Buildings
 			}
 
 			public int Lvl => lvl;
-			public Vector2 Position => _position;
 
 			public string[] Titre => _titre;
 

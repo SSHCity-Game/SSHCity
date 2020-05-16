@@ -13,14 +13,6 @@ public class MenuSpeciaux : Node
     private Carte _carteEglise;
     private Carte _cartePolice;
     private Menu_Achat _menu_achat;
-
-    public static bool Achat
-    {
-        get => _achat;
-        set => _achat = value;
-    }
-
-
     public override void _Ready()
     {
         _menu_achat = (Menu_Achat) GetNode(_str_menu_achat);

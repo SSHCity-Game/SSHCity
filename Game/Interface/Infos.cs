@@ -162,5 +162,11 @@ public class Infos : Panel
             _vehicule.Show();
             _type = Vehicules.Type.AMBULANCE;
         }
+        else if (_class == Batiments.Class.POLICE)
+        {
+            _vehicule.Text = "Police";
+            _vehicule.Show();
+            _type = Vehicules.Type.POLICE;
+        }
     }
 }
