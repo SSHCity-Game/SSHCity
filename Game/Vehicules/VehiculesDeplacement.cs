@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using Godot;
 using Godot.Collections;
+using SshCity.Game.Buildings.BatimentsCaracteristiques;
 
 namespace SshCity.Game.Plan
 {
@@ -13,6 +14,8 @@ namespace SshCity.Game.Plan
 	    private Direction[] directionCroisement;
 	    private string[] animationCroisment;
 	    private bool isMovingCroisment = false;
+	    private bool Virage = false;
+	    private int WhichVirage;
 
 	    private bool VerifDirectionCroisment(Direction dir, Vector2 position)
 	    {
@@ -81,52 +84,7 @@ namespace SshCity.Game.Plan
 					direction = para.direction1;
 				}
 			};
-
-			if (isMoving && !Croisement)
-			{
-				if ((direction == Vehicules.Direction.RIGHT && this.Position >= arrive) ||
-					(direction == Vehicules.Direction.LEFT && this.Position <= arrive) ||
-					(direction == Vehicules.Direction.TOP && this.Position >= arrive) ||
-					(direction == Vehicules.Direction.BOTTOM && this.Position <= arrive))
-				{
-					Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(this.Position);
-					Vector2 NextCase = Vehicules.DirectionToVector2(direction) + new Vector2(-1, -1);
-					if (!isMovingCroisment && Routes.IsRoute(_planInitial.GetBlock(_planInitial.TileMap2,
-							(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))
-						&& !Routes.IsCroisement(_planInitial.GetBlock(_planInitial.TileMap2,
-							(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
-					{
-						Vector2 nextBlock = positionActuel + Vehicules.DirectionToVector2(direction);
-						_deplacement = (_planInitial.TileMap2.MapToWorld(nextBlock) + Decallage) - this.Position;
-						arrive = _planInitial.TileMap2.MapToWorld(nextBlock) + Decallage;
-					}
-					else if(isMovingCroisment)
-					{
-						_deplacement = arriveCroisment[1] - this.Position;
-						arrive = arriveCroisment[1];
-						direction = directionCroisement[1];
-						_animatedSprite.Animation = animationCroisment[1];
-						Croisement = false;
-						isMovingCroisment = false;
-						isMoving = true;
-						Decallage = DecallageDico[_animatedSprite.Animation];
-					}
-					else if (Routes.IsCroisement(_planInitial.GetBlock(_planInitial.TileMap2,
-                             							(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
-					{
-						Croisement = true;
-						isMoving = false;
-						_deplacement = new Vector2(0, 0);
-						BlocCroisment = new Vector2((int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y);
-					}
-					else
-					{
-						isMoving = false;
-						_deplacement = new Vector2(0, 0);
-					}
-				}
-			}
-
+			
 			Action<(Vector2 posActuel, Vector2 aucroisement, Vector2 aprescroisement, string animavt, string animapres,
 					Vector2 decallageDansCroisement, string[] animcroisment, Direction[]dircroisement)>
 				MovingCroisementSwitch =
@@ -353,7 +311,145 @@ namespace SshCity.Game.Plan
 					isMoving = true;
 				}
 			};
-			
+			Action<int> MovingVirage = bloc =>
+			{
+				GD.Print("Virage");
+				switch (bloc)
+				{
+					case Ref_donnees.route_virage_bas:
+					{
+						switch (_animatedSprite.Animation)
+						{
+							case "SE":
+							{
+								MovingCroisement(Direction.LEFT);
+								break;
+							}
+							case "NE":
+							{
+								MovingCroisement(Direction.TOP);
+								break;
+							}
+						}
+						break;
+					}
+					case Ref_donnees.route_virage_haut:
+					{
+						switch (_animatedSprite.Animation)
+						{
+							case "SW":
+							{
+								GD.Print("DONE VIRAGE");
+								MovingCroisement(Direction.BOTTOM);
+								break;
+							}
+							case "NW":
+							{
+								MovingCroisement(Direction.RIGHT);
+								break;
+							}
+						}
+						break;
+					}
+					case Ref_donnees.route_virage_gauche:
+					{
+						switch (_animatedSprite.Animation)
+						{
+							case "SW":
+							{
+								MovingCroisement(Direction.TOP);
+								break;
+							}
+							case "SE":
+							{
+								MovingCroisement(Direction.RIGHT);
+								break;
+							}
+						}
+						break;
+					}
+					case Ref_donnees.route_virage_droit:
+					{
+						switch (_animatedSprite.Animation)
+						{
+							case "NW":
+							{
+								MovingCroisement(Direction.LEFT);
+								break;
+							}
+							case "NE":
+							{
+								MovingCroisement(Direction.BOTTOM);
+								break;
+							}
+						}
+						break;
+					}
+				}
+			};
+
+			if (isMoving && !Croisement)
+			{
+				if ((direction == Vehicules.Direction.RIGHT && this.Position >= arrive) ||
+					(direction == Vehicules.Direction.LEFT && this.Position <= arrive) ||
+					(direction == Vehicules.Direction.TOP && this.Position >= arrive) ||
+					(direction == Vehicules.Direction.BOTTOM && this.Position <= arrive))
+				{
+					Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(this.Position);
+					Vector2 NextCase = Vehicules.DirectionToVector2(direction) + new Vector2(-1, -1);
+					GD.Print(_planInitial.GetBlock(_planInitial.TileMap2,
+						(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y));
+					if (!isMovingCroisment && Routes.IsRoute(_planInitial.GetBlock(_planInitial.TileMap2,
+						                       (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))
+					                       && !Routes.IsCroisement(_planInitial.GetBlock(_planInitial.TileMap2,
+						                       (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))
+					                       &&!Routes.IsVirage(_planInitial.GetBlock(_planInitial.TileMap2,
+						                       (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
+					{
+						Vector2 nextBlock = positionActuel + Vehicules.DirectionToVector2(direction);
+						_deplacement = (_planInitial.TileMap2.MapToWorld(nextBlock) + Decallage) - this.Position;
+						arrive = _planInitial.TileMap2.MapToWorld(nextBlock) + Decallage;
+					}
+					else if(isMovingCroisment)
+					{
+						_deplacement = arriveCroisment[1] - this.Position;
+						arrive = arriveCroisment[1];
+						direction = directionCroisement[1];
+						_animatedSprite.Animation = animationCroisment[1];
+						Croisement = false;
+						isMovingCroisment = false;
+						isMoving = true;
+						Decallage = DecallageDico[_animatedSprite.Animation];
+					}
+					else if (Routes.IsCroisement(_planInitial.GetBlock(_planInitial.TileMap2,
+                             							(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))
+							&& !Routes.IsVirage(_planInitial.GetBlock(_planInitial.TileMap2,
+														(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
+					{
+						GD.Print("Croisment");
+						Croisement = true;
+						isMoving = false;
+						_deplacement = new Vector2(0, 0);
+						BlocCroisment = new Vector2((int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y);
+					}
+					else if(Routes.IsVirage(_planInitial.GetBlock(_planInitial.TileMap2, (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
+					{
+						GD.Print("ENTER VIRAGE");
+						isMoving = false;
+						_deplacement = new Vector2(0, 0);
+						BlocCroisment = new Vector2((int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y);
+						WhichVirage = _planInitial.GetBlock(_planInitial.TileMap2,
+							(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y);
+						MovingVirage(WhichVirage);
+					}
+					else
+					{
+						isMoving = false;
+						_deplacement = new Vector2(0, 0);
+					}
+				}
+			}
+
 			//input deplacement inital
 			if (!isMoving && Input.IsActionPressed("ui_right"))
 			{
