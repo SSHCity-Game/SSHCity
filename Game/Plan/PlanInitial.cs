@@ -1,22 +1,28 @@
+using System;
 using Godot;
 using SshCity.Game.Buildings;
 using SshCity.Game.Plan;
-using SshCity.Game.Vehicules;
 
 public partial class PlanInitial : Node2D
 {
     public static Vector2 PositionTile = new Vector2(0, 0);
     private static int _batiment;
-    private static bool _achatRoute;
-    private static bool _pressed;
-    private static bool _NotEnoughtMoney;
+    private static int _prix;
+    private static bool _achat = false;
+    private static bool _achatRoute = false;
+    private static bool _pressed = false;
+    private static bool _delete = false;
+    private static bool _deleteSure = false;
+    private static bool _NotEnoughtMoney = false;
     private static Vector2 _tileSupressing;
-    private static bool _buildOnTileMap2;
+    private static bool _buildOnTileMap2 = false;
     private static Vector2 _tileOnTileMap2;
-    public static bool VehiculesInit;
+    public static bool VehiculesInit = false;
     public static Vector2 VehiculesPosition;
     public static Vehicules.Type VehiculesType;
     private PackedScene _vehiculeScene;
+    private Timer VehiculeTimer;
+    private static bool VehiculesAutonome;
 
 
     private Vector2 _lastTile = new Vector2(0, 0);
@@ -25,15 +31,28 @@ public partial class PlanInitial : Node2D
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
+    private const string str_VehiculeTimer = "Vehicule";
     public TileMap TileMap1;
     public TileMap TileMap2;
     public TileMap TileMap3;
 
-    public static bool DeleteSure { get; set; }
+    public static bool DeleteSure
+    {
+        get => _deleteSure;
+        set => _deleteSure = value;
+    }
 
-    public static bool Delete { get; set; }
+    public static bool Delete
+    {
+        get => _delete;
+        set => _delete = value;
+    }
 
-    public static bool Achat { get; set; }
+    public static bool Achat
+    {
+        get => _achat;
+        set => _achat = value;
+    }
 
     public static int Batiment
     {
@@ -41,14 +60,20 @@ public partial class PlanInitial : Node2D
         set => _batiment = value;
     }
 
-    public static int Prix { get; set; }
+    public static int Prix
+    {
+        get => _prix;
+        set => _prix = value;
+    }
 
     public override void _Ready()
     {
         TileMap1 = (TileMap) GetNode(str_TileMap1);
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
+        VehiculeTimer = (Timer) GetNode(str_VehiculeTimer);
         _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
+        VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
     }
 
     public override void _Process(float delta)
@@ -60,18 +85,31 @@ public partial class PlanInitial : Node2D
             _buildOnTileMap2 = false;
         }
 
-        if (!VehiculesInit) return;
-        Vehicules _vehicule = (Vehicules) _vehiculeScene.Instance();
-        _vehicule.Init(this, Routes.WhereIsRoute(VehiculesPosition, this), VehiculesType);
-        AddChild(_vehicule);
-        VehiculesInit = false;
+        if (VehiculesInit)
+        {
+            Vehicules _vehicule = (Vehicules) _vehiculeScene.Instance();
+            _vehicule.Init(this, Routes.WhereIsRoute(VehiculesPosition, this), VehiculesType, VehiculesAutonome);
+            AddChild(_vehicule);
+            VehiculesInit = false;
+        }
     }
 
-    public static void AddVehicule(Vehicules.Type type, Vector2 position)
+    public void TimerOutVehicule()
+    {
+        bool found = false;
+        Random rand = new Random();
+        int whichVehicule = rand.Next(0, Vehicules.ListTypeVehicules.Count);
+        Vehicules.Type type = Vehicules.ListTypeVehicules[whichVehicule];
+        int WhereVehicule = rand.Next(0, 4);
+        AddVehicule(type, SshCity.Game.Plan.Buildings.DepartRoute[WhereVehicule], true);
+    }
+
+    public static void AddVehicule(Vehicules.Type type, Vector2 position, bool autonome=false)
     {
         VehiculesInit = true;
         VehiculesPosition = position;
         VehiculesType = type;
+        VehiculesAutonome = autonome;
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)
@@ -95,7 +133,7 @@ public partial class PlanInitial : Node2D
 
     public static void Amelioration(Vector2 tile)
     {
-        (bool worked, int bloc) amelio = Building.Upgrade(tile);
+        (bool worked, int bloc) amelio = Batiments.Amelioration(tile);
         GD.Print(amelio);
         if (amelio.worked)
         {
@@ -113,7 +151,7 @@ public partial class PlanInitial : Node2D
     public override void _Input(InputEvent OneAction)
     {
         base._Input(OneAction);
-        if (OneAction is InputEventMouse && (Achat || _achatRoute) && !_NotEnoughtMoney)
+        if (OneAction is InputEventMouse && (_achat || _achatRoute) && !_NotEnoughtMoney)
         {
             Vector2 tile = GetTilePosition();
             if (_achatRoute)
@@ -142,9 +180,9 @@ public partial class PlanInitial : Node2D
             }
         }
 
-        if (OneAction.IsActionPressed("ClickG") && (Achat || _achatRoute) && !_NotEnoughtMoney)
+        if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute) && !_NotEnoughtMoney)
         {
-            Achat = false;
+            _achat = false;
             _lastTile = new Vector2(0, 0);
             Vector2 tile = GetTilePosition();
             GD.Print(GetBlock(TileMap2, (int) tile.x, (int) tile.y));
@@ -165,10 +203,18 @@ public partial class PlanInitial : Node2D
                         AjoutNode(_batiment, tile);
                     }
                 }
+                else
+                {
+                    //ERROR
+                }
+            }
+            else
+            {
+                //ERROR
             }
         }
 
-        if ((Achat || _achatRoute) && Interface.Money - Prix < 0)
+        if ((_achat || _achatRoute) && Interface.Money - _prix < 0)
         {
             _NotEnoughtMoney = true;
             ;
@@ -191,26 +237,26 @@ public partial class PlanInitial : Node2D
             _pressed = false;
         }
 
-        if (OneAction.IsActionPressed("ClickG") && Delete)
+        if (OneAction.IsActionPressed("ClickG") && _delete)
         {
             _tileSupressing = GetTilePosition();
-            Delete = false;
+            _delete = false;
             DeleteVerif.Verif = true;
         }
 
         if (DeleteSure)
         {
             int bloc = GetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y);
-            Building.Delete(_tileSupressing);
+            Batiments.Suppression(_tileSupressing);
             SetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
             SetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1, Ref_donnees.terre);
             Routes.ChangeRoute(_tileSupressing, this);
-            Delete = false;
+            _delete = false;
             MainPlan.ListeBatiment.Remove((_tileSupressing, bloc));
             DeleteSure = false;
         }
 
-        if (OneAction.IsActionPressed("ClickG") && !(Achat) && !(_achatRoute) && !Delete && !DeleteVerif.Verif &&
+        if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete && !DeleteVerif.Verif &&
             !Infos.IsOpen)
         {
             Vector2 tile = GetTilePosition();

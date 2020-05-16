@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using Godot;
-using Godot.Collections;
 
 namespace SshCity.Game.Vehicules
 {
@@ -13,13 +13,8 @@ namespace SshCity.Game.Vehicules
         private Vector2 _deplacement;
         private PlanInitial _planInitial;
         private Vector2 arrive;
-
-        public override void _Ready()
-        {
-            base._Ready();
-            
-        }
-
+        private bool Autonome;
+        private static Random rand = new Random();
         public enum Direction
         {
             TOP,
@@ -27,6 +22,14 @@ namespace SshCity.Game.Vehicules
             BOTTOM,
             RIGHT
         }
+        
+        public static List<Direction> ListDirection = new List<Direction>()
+        {
+            {Direction.TOP},
+            {Direction.BOTTOM},
+            {Direction.RIGHT},
+            {Direction.LEFT}
+        };
 
         public enum Type
         {
@@ -61,7 +64,7 @@ namespace SshCity.Game.Vehicules
         }
 
         //Choisis l'animation du vehicule (son orientation) par rapport à a la route au depart
-        Dictionary<int, string>  WhichAnimation = new Dictionary<int, string>()
+        Godot.Collections.Dictionary<int, string>  WhichAnimation = new Godot.Collections.Dictionary<int, string>()
         {
             {Ref_donnees.route_left, "NE"},
             {Ref_donnees.route_right, "SE"},
@@ -78,7 +81,7 @@ namespace SshCity.Game.Vehicules
         
         private Vector2 Decallage = new Vector2(175, 150);
 
-        Dictionary<string, Vector2> DecallageDico = new Dictionary<string, Vector2>()
+        Godot.Collections.Dictionary<string, Vector2> DecallageDico = new Godot.Collections.Dictionary<string, Vector2>()
         {
             {"NE", new Vector2(100, 230)},
             {"NW", new Vector2(70, 220)},
@@ -86,15 +89,22 @@ namespace SshCity.Game.Vehicules
             {"SW", new Vector2(175, 150)}
         };
 
-        Dictionary<string, int> CollisionAngle = new Dictionary<string, int>()
+        Godot.Collections.Dictionary<string, int> CollisionAngle = new Godot.Collections.Dictionary<string, int>()
         {
             {"NE", 27},
             {"NW", -27},
             {"SE", -27},
             {"SW", 27}
         };
-        
-        Dictionary<Type, SpriteFrames> AnimatedSpriteType = new Dictionary<Type, SpriteFrames>()
+        Godot.Collections.Dictionary<Direction, string> DirectionToAnim = new Godot.Collections.Dictionary<Direction, string>()
+        {
+            {Direction.TOP, "NW"},
+            {Direction.BOTTOM, "SE"},
+            {Direction.LEFT, "SW"},
+            {Direction.RIGHT, "NE"}
+        };
+
+        Godot.Collections.Dictionary<Type, SpriteFrames> AnimatedSpriteType = new Godot.Collections.Dictionary<Type, SpriteFrames>()
         {
             {Type.AMBULANCE, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Ambulance_animatedSprite.tres") as SpriteFrames},
             {Type.CAMION, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Camion_animatedSprite.tres") as SpriteFrames},
@@ -117,10 +127,11 @@ namespace SshCity.Game.Vehicules
         private Direction direction;
         private bool isMoving = false;
 
-        public void Init(PlanInitial planInitial, Vector2 position, Type type)
+        public void Init(PlanInitial planInitial, Vector2 position, Type type, bool autonome=false)
         {
             _animatedSprite = (AnimatedSprite) GetNode(_strAnimatedSprite);
             _collisionShape2D = (CollisionShape2D) GetNode(_strCollsionShape2D);
+            Autonome = autonome;
             this._planInitial = planInitial;
             SpriteFrames spriteFrames = AnimatedSpriteType[type];
             _animatedSprite.Frames = spriteFrames;
@@ -128,12 +139,30 @@ namespace SshCity.Game.Vehicules
             _animatedSprite.Animation = WhichAnimation[blocRoute];
             Decallage = DecallageDico[_animatedSprite.Animation];
             _collisionShape2D.Rotation = CollisionAngle[_animatedSprite.Animation];
-            Connect("area_entered", this, nameof(Collision));
+            //Connect("area_entered", this, nameof(Collision));
             this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage;
         }
         public void Collision()
         {
         	this.Hide();
         }
+        
+        public static List<Type> ListTypeVehicules = new List<Type>()
+        {
+            {Type.SUV},
+            {Type.VAN},
+            {Type.LUXE},
+            {Type.TAXI},
+            {Type.CAMION},
+            {Type.SPORTIVE},
+            {Type.VOITURE},
+            {Type.TRACTEUR},
+            {Type.TRACTEUR},
+            {Type.HATCHBACK},
+            {Type.LIVRAISON},
+            {Type.TRACTOPEL},
+            {Type.VOITURETRUCK},
+            {Type.VOITURECOURSE},
+        };
     }
 }
