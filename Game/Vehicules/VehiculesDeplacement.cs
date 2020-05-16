@@ -321,6 +321,68 @@ namespace SshCity.Game.Plan
 							}
 							break;
 						}
+						case "NW":
+						{
+							switch (direction1)
+							{
+								case Direction.LEFT:
+								{
+									Vector2 AuCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(0, -1)) +
+										DecallageDico["NW"];
+									Vector2 ApresCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(-1, -1)) +
+										DecallageDico["SW"];
+									arriveCroisment = new[]
+									{
+										AuCroisement-new Vector2(-80, 80),	
+										ApresCroisement
+									};
+									animationCroisment = new[] {"NW", "SW"};
+									directionCroisement = new[] {Direction.TOP, Direction.LEFT};
+									break;
+								}
+								case Direction.TOP:
+								{
+									Vector2 AuCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(0, -1)) +
+										DecallageDico["NW"];
+									Vector2 ApresCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(0, -2)) +
+										DecallageDico["NW"];
+									arriveCroisment = new[]
+									{
+										AuCroisement,	
+										ApresCroisement
+									};
+									animationCroisment = new[] {"NW", "NW"};
+									directionCroisement = new[] {Direction.TOP, Direction.TOP};
+									break;
+								}
+								case Direction.RIGHT:
+								{
+									Vector2 AuCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(0, -1)) +
+										DecallageDico["NW"];
+									Vector2 ApresCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, -1)) +
+										DecallageDico["NE"];
+									arriveCroisment = new[]
+									{
+										AuCroisement,	
+										ApresCroisement
+									};
+									animationCroisment = new[] {"NW", "NE"};
+									directionCroisement = new[] {Direction.TOP, Direction.RIGHT};
+									break;
+								}
+								default:
+								{
+									return;
+								}
+							}
+							break;
+						}
 					}
 					
 					_deplacement = arriveCroisment[0] - this.Position;
