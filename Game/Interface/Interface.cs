@@ -144,9 +144,9 @@ public class Interface : CanvasLayer
         _xp_text.Text = Convert.ToString(_xp);
 
         moneyWin = 0;
-        foreach (Batiments.Building batiment in Batiments.ListBuildings)
+        foreach (var batiment in Building.ListBuildings)
         {
-            moneyWin += batiment.Earn;
+            moneyWin += batiment.Characteristics.Earn[0];
         }
 
 

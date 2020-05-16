@@ -7,8 +7,7 @@ namespace SshCity.Game.Plan
     {
         //Variables pour definir la taille de la Map 
 
-        public const int
-            size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
+        public const int size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
 
         public const int max_x = 127; //Coordonées max d'un bloque sur l'axe x
         public const int min_x = -16; //Coordonnées min d'un bloque sur l'axe x
@@ -29,8 +28,8 @@ namespace SshCity.Game.Plan
         public const int m_max = 20; //Nombre bocks montagnes à trois etages max
         public const int m_min = 15; //Nombre bocks montagnes à trois etages min
 
-        //Vairable permettant d'indiquer l'indexe des blocs
-
+        // Variable permettant d'indiquer l'indexe des blocs
+        // todo : convertir en une enum
         public const int terre = 0;
         public const int boite = 3;
         public const int eau = 2;
