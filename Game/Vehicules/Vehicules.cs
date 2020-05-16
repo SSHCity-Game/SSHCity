@@ -13,6 +13,13 @@ namespace SshCity.Game.Plan
         private Vector2 _deplacement;
         private PlanInitial _planInitial;
         private Vector2 arrive;
+
+        public override void _Ready()
+        {
+            base._Ready();
+            
+        }
+
         public enum Direction
         {
             TOP,
@@ -52,7 +59,7 @@ namespace SshCity.Game.Plan
                 _ => throw new ArgumentException()
             };
         }
-        
+
         //Choisis l'animation du vehicule (son orientation) par rapport à a la route au depart
         Dictionary<int, string> WhichAnimation = new Dictionary<int, string>()
         {
@@ -121,8 +128,12 @@ namespace SshCity.Game.Plan
             _animatedSprite.Animation = WhichAnimation[blocRoute];
             Decallage = DecallageDico[_animatedSprite.Animation];
             _collisionShape2D.Rotation = CollisionAngle[_animatedSprite.Animation];
-            Connect("body_entered", this, nameof(CollisionCamion));
+            Connect("area_entered", this, nameof(Collision));
             this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage;
+        }
+        public void Collision()
+        {
+        	this.Hide();
         }
     }
 }

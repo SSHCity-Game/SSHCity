@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using Godot;
 using Godot.Collections;
 
@@ -6,6 +7,61 @@ namespace SshCity.Game.Plan
 {
     public partial class Vehicules: Area2D
     {
+	    private bool Croisement = false; //Si la voiture est devant un croisment 
+	    private Vector2 BlocCroisment; //Savoit quel bloc croisment est devant le camion
+	    private Vector2[] arriveCroisment;
+	    private Direction[] directionCroisement;
+	    private string[] animationCroisment;
+	    private bool isMovingCroisment = false;
+
+	    private bool VerifDirectionCroisment(Direction dir, Vector2 position)
+	    {
+		    switch (dir)
+		    {
+			    case Direction.TOP:
+			    {
+				    Vector2 CaseVerifie = BlocCroisment - new Vector2(0, 1);
+				    int bloc = _planInitial.GetBlock(_planInitial.TileMap2, (int) CaseVerifie.x, (int) CaseVerifie.y);
+				    if (Routes.IsRoute(bloc))
+				    {
+					    return true;
+				    }
+				    break;
+			    }
+			    case Direction.BOTTOM:
+			    {
+				    Vector2 CaseVerifie = BlocCroisment + new Vector2(0, 1);
+				    int bloc = _planInitial.GetBlock(_planInitial.TileMap2, (int) CaseVerifie.x, (int) CaseVerifie.y);
+				    if (Routes.IsRoute(bloc))
+				    {
+					    return true;
+				    }
+				    break;
+			    }
+			    case Direction.LEFT:
+			    {
+				    Vector2 CaseVerifie = BlocCroisment - new Vector2(1, 0);
+				    int bloc = _planInitial.GetBlock(_planInitial.TileMap2, (int) CaseVerifie.x, (int) CaseVerifie.y);
+				    if (Routes.IsRoute(bloc))
+				    {
+					    return true;
+				    }
+				    break;
+			    }
+			    case Direction.RIGHT:
+			    {
+				    Vector2 CaseVerifie = BlocCroisment + new Vector2(1, 0);
+				    int bloc = _planInitial.GetBlock(_planInitial.TileMap2, (int) CaseVerifie.x, (int) CaseVerifie.y);
+				    if (Routes.IsRoute(bloc))
+				    {
+					    return true;
+				    }
+				    break;
+			    }
+		    }
+
+		    return false;
+	    }
         public override void _Process(float delta)
 		{
 			base._Process(delta);
@@ -26,7 +82,7 @@ namespace SshCity.Game.Plan
 				}
 			};
 
-			if (isMoving)
+			if (isMoving && !Croisement)
 			{
 				if ((direction == Vehicules.Direction.RIGHT && this.Position >= arrive) ||
 					(direction == Vehicules.Direction.LEFT && this.Position <= arrive) ||
@@ -35,7 +91,7 @@ namespace SshCity.Game.Plan
 				{
 					Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(this.Position);
 					Vector2 NextCase = Vehicules.DirectionToVector2(direction) + new Vector2(-1, -1);
-					if (Routes.IsRoute(_planInitial.GetBlock(_planInitial.TileMap2,
+					if (!isMovingCroisment && Routes.IsRoute(_planInitial.GetBlock(_planInitial.TileMap2,
 							(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))
 						&& !Routes.IsCroisement(_planInitial.GetBlock(_planInitial.TileMap2,
 							(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
@@ -43,6 +99,25 @@ namespace SshCity.Game.Plan
 						Vector2 nextBlock = positionActuel + Vehicules.DirectionToVector2(direction);
 						_deplacement = (_planInitial.TileMap2.MapToWorld(nextBlock) + Decallage) - this.Position;
 						arrive = _planInitial.TileMap2.MapToWorld(nextBlock) + Decallage;
+					}
+					else if(isMovingCroisment)
+					{
+						_deplacement = arriveCroisment[1] - this.Position;
+						arrive = arriveCroisment[1];
+						direction = directionCroisement[1];
+						_animatedSprite.Animation = animationCroisment[1];
+						Croisement = false;
+						isMovingCroisment = false;
+						isMoving = true;
+						Decallage = DecallageDico[_animatedSprite.Animation];
+					}
+					else if (Routes.IsCroisement(_planInitial.GetBlock(_planInitial.TileMap2,
+                             							(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
+					{
+						Croisement = true;
+						isMoving = false;
+						_deplacement = new Vector2(0, 0);
+						BlocCroisment = new Vector2((int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y);
 					}
 					else
 					{
@@ -52,32 +127,91 @@ namespace SshCity.Game.Plan
 				}
 			}
 
+			Action<Direction> MovingCroisement = direction1 =>
+			{
+				bool WillDoSmth = VerifDirectionCroisment(direction1, BlocCroisment);
+				Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(this.Position);
+				Vector2 NextCase = Vehicules.DirectionToVector2(direction1) + new Vector2(-1, -1);
+				if (WillDoSmth)
+				{
+					switch (_animatedSprite.Animation)
+					{
+						case "NE":
+						{
+							Vector2 AuCroisement =
+								_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, 0)) +
+								DecallageDico["NE"];
+							Vector2 ApresCroisement =
+								_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, 1)) +
+								DecallageDico["SE"];
+							arriveCroisment = new[]
+							{
+								AuCroisement-new Vector2(100, 50),	
+								ApresCroisement
+							};
+							animationCroisment = new[] {"NE", "SE"};
+							directionCroisement = new[] {Direction.RIGHT, Direction.BOTTOM};
+							break;
+						}
+					}
+					
+					_deplacement = arriveCroisment[0] - this.Position;
+					arrive = arriveCroisment[0];
+					direction = directionCroisement[0];
+					Croisement = false;
+					isMovingCroisment = true;
+					isMoving = true;
+				}
+			};
+			
+			//input deplacement inital
 			if (!isMoving && Input.IsActionPressed("ui_right"))
 			{
-				MovingDirection((Vehicules.Direction.RIGHT, "NE"));
+				if (Croisement)
+				{
+					MovingCroisement(Direction.RIGHT);
+				}
+				else
+					MovingDirection((Vehicules.Direction.RIGHT, "NE"));
 			}
 
 			if (!isMoving && Input.IsActionPressed("ui_left"))
 			{
-				MovingDirection((Vehicules.Direction.LEFT, "SW"));
+				if (Croisement)
+				{
+					MovingCroisement(Direction.RIGHT);
+				}
+				else
+				{
+					MovingDirection((Vehicules.Direction.LEFT, "SW"));
+				}
 			}
 
 			if (!isMoving && Input.IsActionPressed("ui_down"))
 			{
-				MovingDirection((Vehicules.Direction.BOTTOM, "SE"));
+				if (Croisement)
+				{
+					MovingCroisement(Direction.RIGHT);
+				}
+				else
+				{
+					MovingDirection((Vehicules.Direction.BOTTOM, "SE"));
+				}
 			}
 
 			if (!isMoving && Input.IsActionPressed("ui_up"))
 			{
-				MovingDirection((Vehicules.Direction.TOP, "NW"));
+				if (Croisement)
+				{
+					MovingCroisement(Direction.RIGHT);
+				}
+				else
+				{
+					MovingDirection((Vehicules.Direction.TOP, "NW"));
+				}
 			}
 
 			this.Position += _deplacement * delta;
-		}
-
-		public void CollisionCamion()
-		{
-			this.Hide();
 		}
     }
 }

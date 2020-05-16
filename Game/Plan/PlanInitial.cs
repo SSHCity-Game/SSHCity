@@ -68,6 +68,9 @@ public partial class PlanInitial : Node2D
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
         _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
+        Vehicules _vehicule = (Vehicules) _vehiculeScene.Instance();
+        _vehicule.Init(this, new Vector2(40, 4), Vehicules.Type.CAMION);
+        AddChild(_vehicule);
     }
 
     public override void _Process(float delta)
