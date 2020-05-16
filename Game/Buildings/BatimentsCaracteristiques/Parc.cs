@@ -14,7 +14,7 @@ public class Parc
     public static int[] _consomationeau = {0};
     public static string[] _image = {"res://assets/ImageSized/iso parc enfant4.png"};
     public static int nbrAmeliorations = 0;
-    public static Batiments.Class _class = Batiments.Class.PARC;
+    public static BuildingType _class = BuildingType.PARC;
 
     public static Caracteristiques.BatimentsCaracteristiques cara =
         new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,

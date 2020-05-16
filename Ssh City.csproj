@@ -80,6 +80,7 @@
         <Compile Include="Game\Buildings\BatimentsClass\Batiments.cs" />
         <Compile Include="Game\Buildings\BatimentsClass\Classes.cs" />
         <Compile Include="Game\Buildings\BatimentsClass\Suppression.cs" />
+        <Compile Include="Game\Buildings\BuildingType.cs" />
         <Compile Include="Game\Incident\incidents.cs" />
         <Compile Include="Game\Incident\menu_incident.cs" />
         <Compile Include="Game\Interface\Boutique.cs" />

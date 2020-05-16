@@ -13,10 +13,8 @@ namespace SshCity.Game.Buildings
                 ListBuildings.Add(batimentToUpgrade);
                 return (true, batimentToUpgrade.Bloc);
             }
-            else
-            {
-                return (false, -1);
-            }
+            
+            return (false, -1);
         }
     }
 }

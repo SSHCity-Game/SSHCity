@@ -13,7 +13,7 @@ public class Immeuble
     public static int[] _consomationeau = {2};
     public static string[] _image = {"res://assets/ImageSized/maison2.png"};
     public static int nbrAmeliorations = 0;
-    public static Batiments.Class _class = Batiments.Class.IMMEUBLE;
+    public static BuildingType _class = BuildingType.IMMEUBLE;
 
     public static Caracteristiques.BatimentsCaracteristiques cara =
         new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,

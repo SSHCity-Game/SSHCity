@@ -27,7 +27,7 @@ namespace SshCity.Game.Sauvegarde
             {
                 var x = (float) dicValues["PosX"];
                 var y = (float) dicValues["PosY"];
-                var clazz = (Batiments.Class) int.Parse(dicValues["Class"].ToString());
+                var clazz = (BuildingType) int.Parse(dicValues["Class"].ToString());
                 var lvl = int.Parse(dicValues["Level"].ToString());
 
                 var bat = new Batiments.Building(clazz, new Vector2(x, y), lvl);

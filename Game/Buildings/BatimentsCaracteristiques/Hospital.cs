@@ -13,7 +13,7 @@ public class Hospital
     public static int[] _consomationeau = {2};
     public static string[] _image = {"res://assets/ImageSized/hopital.png"};
     public static int nbrAmeliorations = 0;
-    public static Batiments.Class _class = Batiments.Class.HOSPITAL;
+    public static BuildingType _class = BuildingType.HOSPITAL;
 
     public static Caracteristiques.BatimentsCaracteristiques cara =
         new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,

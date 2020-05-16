@@ -14,7 +14,7 @@ public class McAlly
     public static int[] _consomationeau = {2};
     public static string[] _image = {"res://assets/ImageSized/isometric magasin1.png"};
     public static int nbrAmeliorations = 0;
-    public static Batiments.Class _class = Batiments.Class.MCALLY;
+    public static BuildingType _class = BuildingType.MCALLY;
 
     public static Caracteristiques.BatimentsCaracteristiques cara =
         new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,

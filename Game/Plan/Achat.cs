@@ -88,7 +88,7 @@ public partial class PlanInitial
             Interface.Money -= Prix;
         }
 
-        Batiments.Class batimentClass = DictionnaireCaracteristiques.dictionnaireCaracteristiques[batiment];
+        BuildingType batimentClass = DictionnaireCaracteristiques.dictionnaireCaracteristiques[batiment];
         new Batiments.Building(batimentClass, tile);
     }
 }

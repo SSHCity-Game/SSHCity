@@ -5,7 +5,7 @@ using SshCity.Game.Plan;
 public class Caserne : Carte
 {
     public static int nbrAmeliorations = 0;
-    public static Batiments.Class _class = Batiments.Class.CASERNE;
+    public static BuildingType _class = BuildingType.CASERNE;
     public static int[] _bloc = {Ref_donnees.caserne};
     public static int[] _cost = {5000};
     public static int[] _earn = {10, 25, 50};

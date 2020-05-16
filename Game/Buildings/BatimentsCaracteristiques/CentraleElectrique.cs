@@ -14,7 +14,7 @@ public class CentraleElectrique
     public static int[] _consomationeau = {3};
     public static string[] _image = {"res://assets/ImageSized/isometric centrale1.png"};
     public static int nbrAmeliorations = 0;
-    public static Batiments.Class _class = Batiments.Class.CENTRALE;
+    public static BuildingType _class = BuildingType.CENTRALE;
 
     public static Caracteristiques.BatimentsCaracteristiques cara =
         new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,

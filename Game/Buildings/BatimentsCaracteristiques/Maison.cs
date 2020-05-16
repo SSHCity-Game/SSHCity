@@ -14,7 +14,7 @@ namespace SshCity.Game.Buildings.BatimentsCaracteristiques
         public static int[] _consomationeau = {1};
         public static string[] _image = {"res://assets/ImageSized/maison1.png"};
         public static int nbrAmeliorations = 0;
-        public static Batiments.Class _class = Batiments.Class.MAISON;
+        public static BuildingType _class = BuildingType.MAISON;
 
         public static Caracteristiques.BatimentsCaracteristiques cara =
             new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,

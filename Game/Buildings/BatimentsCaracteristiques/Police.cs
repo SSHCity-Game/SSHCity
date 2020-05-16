@@ -14,7 +14,7 @@ public class Police
     public static int[] _consomationeau = {1};
     public static string[] _image = {"res://assets/ImageSized/police.png"};
     public static int nbrAmeliorations = 0;
-    public static Batiments.Class _class = Batiments.Class.POLICE;
+    public static BuildingType _class = BuildingType.POLICE;
 
     Caracteristiques.BatimentsCaracteristiques cara =
         new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,

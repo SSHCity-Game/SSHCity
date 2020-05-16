@@ -4,7 +4,7 @@ using SshCity.Game.Plan;
 
 public class Cafe : Caracteristiques
 {
-    public static Batiments.Class _class = Batiments.Class.CAFE;
+    public static BuildingType _class = BuildingType.CAFE;
     public static int nbrAmeliorations = 0;
     public static int[] _bloc = {Ref_donnees.cafe};
     public static int[] _cost = {1000, 1500};

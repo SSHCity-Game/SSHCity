@@ -4,89 +4,72 @@ using SshCity.Game.Buildings.BatimentsCaracteristiques;
 
 namespace SshCity.Game.Buildings
 {
-	public partial class Batiments
-	{
-		public class Building
-		{
-			private int[] _bloc;
-			private Class _class;
-			private int[] _consomation_eau;
-			private int[] _consomation_elec;
-			private int[] _cost;
-			private int[] _earn;
-			private string[] _image;
-			private Vector2 _position;
-			private string[] _titre;
-			private int[] gain_xp;
-			private int lvl;
-			private int nbrAmelioration;
+    public partial class Batiments
+    {
+        public class Building
+        {
+            private int[] _bloc;
+            private int[] _cost;
+            private string[] _image;
+            private int[] gain_xp;
 
-			public Building(Class clazz, Vector2 position, int theLvl = 0)
-			{
-				var caracteristique = Caracteristiques.GiveCaracteristique(clazz);
-				_position = position;
-				_class = caracteristique._Class;
-				_bloc = caracteristique.Bloc;
-				_earn = caracteristique.Earn;
-				_cost = caracteristique.Cost;
-				_titre = caracteristique.Titre;
-				gain_xp = caracteristique.GainXp;
-				_image = caracteristique.Image;
-				nbrAmelioration = caracteristique.NbrAmelioration;
-				lvl = theLvl;
-				ListBuildings.Add(this);
-			}
+            public Building(BuildingType type, Vector2 position, int theLvl = 0)
+            {
+                var caracteristique = Caracteristiques.GiveCaracteristique(type);
+                Position = position;
+                Class = caracteristique._Class;
+                _bloc = caracteristique.Bloc;
+                EarnTab = caracteristique.Earn;
+                _cost = caracteristique.Cost;
+                Titre = caracteristique.Titre;
+                gain_xp = caracteristique.GainXp;
+                _image = caracteristique.Image;
+                NbrAmelioration = caracteristique.NbrAmelioration;
+                Lvl = theLvl;
+                ListBuildings.Add(this);
+            }
 
-			public int Lvl => lvl;
-			public Vector2 Position => _position;
+            public int Lvl { get; private set; }
 
-			public string[] Titre => _titre;
+            public Vector2 Position { get; }
 
-			public Class Class => _class;
+            public string[] Titre { get; }
 
-			public int Bloc
-			{
-				get => _bloc[lvl];
-			}
+            public BuildingType Class { get; }
 
-			public int[] EarnTab => _earn;
-			public int AmeliorationCost => _cost[lvl + 1];
-			public int NbrAmelioration => nbrAmelioration;
+            public int Bloc => _bloc[Lvl];
+
+            public int[] EarnTab { get; }
+
+            public int AmeliorationCost => _cost[Lvl + 1];
+            public int NbrAmelioration { get; }
 
 
-			public string Image => _image[lvl];
-			public int Earn => _earn[lvl];
+            public string Image => _image[Lvl];
+            public int Earn => EarnTab[Lvl];
 
-			public int[] ConsomationElec
-			{
-				get => _consomation_elec;
-			}
+            public int[] ConsomationElec { get; }
 
-			public int[] ConsomationEau
-			{
-				get => _consomation_eau;
-			}
+            public int[] ConsomationEau { get; }
 
-			public void Upgrade()
-			{
-				if (nbrAmelioration > lvl && lvl < 2 && Interface.Money >= _cost[lvl])
-				{
-					Interface.Money -= _cost[lvl];
-					Interface.Xp += gain_xp[lvl];
-					lvl += 1;
-				}
-			}
+            public void Upgrade()
+            {
+                if (NbrAmelioration <= Lvl || Lvl >= 2 || Interface.Money < _cost[Lvl]) return;
+                Interface.Money -= _cost[Lvl];
+                Interface.Xp += gain_xp[Lvl];
+                Lvl += 1;
+            }
 
-			public Dictionary<string, object> Save()
-			{
-				return new Dictionary<string, object>
-				{
-					{"PosX", Position.x},
-					{"PosY", Position.y},
-					{"Class", Class},
-					{"Level", lvl}
-				};
-			}
-		}
-	}
+            public Dictionary<string, object> Save()
+            {
+                return new Dictionary<string, object>
+                {
+                    {"PosX", Position.x},
+                    {"PosY", Position.y},
+                    {"Class", Class},
+                    {"Level", Lvl}
+                };
+            }
+        }
+    }
 }

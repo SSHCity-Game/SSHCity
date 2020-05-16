@@ -2,12 +2,12 @@
 
 namespace SshCity.Game.Buildings.BatimentsCaracteristiques
 {
-    public partial class Caracteristiques
+    public class Caracteristiques
     {
         public static List<BatimentsCaracteristiques> liste = new List<BatimentsCaracteristiques>();
 
 
-        public static BatimentsCaracteristiques GiveCaracteristique(Batiments.Class _class)
+        public static BatimentsCaracteristiques GiveCaracteristique(BuildingType _class)
         {
             foreach (BatimentsCaracteristiques caracteristique in liste)
             {
@@ -23,7 +23,7 @@ namespace SshCity.Game.Buildings.BatimentsCaracteristiques
         public class BatimentsCaracteristiques
         {
             private int[] _bloc;
-            private Batiments.Class _class;
+            private BuildingType _class;
             private int[] _consomation_eau;
             private int[] _consomation_elec;
             private int[] _cost;
@@ -34,7 +34,7 @@ namespace SshCity.Game.Buildings.BatimentsCaracteristiques
             private int[] gain_xp;
 
             public BatimentsCaracteristiques(int nbrAmelioration, int[] _bloc, int[] _cost, int[] _earn,
-                string[] _titre, int[] gain_xp, string[] _image, Batiments.Class _class, int[] _consomation_elec,
+                string[] _titre, int[] gain_xp, string[] _image, BuildingType _class, int[] _consomation_elec,
                 int[] _consomation_eau)
             {
                 this._nbrAmelioration = nbrAmelioration;
@@ -51,7 +51,7 @@ namespace SshCity.Game.Buildings.BatimentsCaracteristiques
                 liste.Add(this);
             }
 
-            public Batiments.Class _Class => _class;
+            public BuildingType _Class => _class;
 
             public int[] Bloc => _bloc;
 

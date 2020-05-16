@@ -14,7 +14,7 @@ public class Piscine : Caracteristiques
     public static int[] _consomationeau = {3};
     public static string[] _image = {"res://assets/ImageSized/isometric piscine1.png"};
     public static int nbrAmeliorations = 0;
-    public static Batiments.Class _class = Batiments.Class.PISCINE;
+    public static BuildingType _class = BuildingType.PISCINE;
 
     BatimentsCaracteristiques cara =
         new BatimentsCaracteristiques(nbrAmeliorations,

@@ -14,7 +14,7 @@ public class Restaurant
     public static int[] _consomationeau = {2};
     public static string[] _image = {"res://assets/ImageSized/isometric boutique5.png"};
     public static int nbrAmeliorations = 0;
-    public static Batiments.Class _class = Batiments.Class.RESTAURANT;
+    public static BuildingType _class = BuildingType.RESTAURANT;
 
     public static Caracteristiques.BatimentsCaracteristiques cara =
         new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,

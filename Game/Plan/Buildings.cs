@@ -37,42 +37,42 @@ namespace SshCity.Game.Plan
                     {
                         case 0:
                         {
-                            new Batiments.Building(Batiments.Class.PARC, new Vector2(i - 1, j - 1));
+                            new Batiments.Building(BuildingType.PARC, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 1:
                         {
-                            new Batiments.Building(Batiments.Class.MAISON3, new Vector2(i - 1, j - 1));
+                            new Batiments.Building(BuildingType.MAISON3, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 2:
                         {
-                            new Batiments.Building(Batiments.Class.FERME, new Vector2(i - 1, j - 1));
+                            new Batiments.Building(BuildingType.FERME, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 3:
                         {
-                            new Batiments.Building(Batiments.Class.MAISON4, new Vector2(i - 1, j - 1));
+                            new Batiments.Building(BuildingType.MAISON4, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 5:
                         {
-                            new Batiments.Building(Batiments.Class.MAISON5, new Vector2(i - 1, j - 1));
+                            new Batiments.Building(BuildingType.MAISON5, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 6:
                         {
-                            new Batiments.Building(Batiments.Class.EGLISE, new Vector2(i - 1, j - 1));
+                            new Batiments.Building(BuildingType.EGLISE, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 7:
                         {
-                            new Batiments.Building(Batiments.Class.RESTAURANT, new Vector2(i - 1, j - 1));
+                            new Batiments.Building(BuildingType.RESTAURANT, new Vector2(i - 1, j - 1));
                             break;
                         }
                         case 8:
                         {
-                            new Batiments.Building(Batiments.Class.RESTAURANT2, new Vector2(i - 1, j - 1));
+                            new Batiments.Building(BuildingType.RESTAURANT2, new Vector2(i - 1, j - 1));
                             break;
                         }
                     }

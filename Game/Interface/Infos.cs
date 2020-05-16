@@ -29,7 +29,7 @@ public class Infos : Panel
 
     private Label _argentAmelio;
     private Panel _cadre;
-    private Batiments.Class _class;
+    private BuildingType _class;
     private Label _eauActuel;
     private Label _eauAmelio;
     private Label _energieActuel;
@@ -151,13 +151,13 @@ public class Infos : Panel
             _isOpen = true;
         }
 
-        if (_class == Batiments.Class.CASERNE)
+        if (_class == BuildingType.CASERNE)
         {
             _vehicule.Text = "Camion";
             _vehicule.Show();
             _type = Vehicules.Type.CAMION;
         }
-        else if (_class == Batiments.Class.HOSPITAL)
+        else if (_class == BuildingType.HOSPITAL)
         {
             _vehicule.Text = "Ambulance";
             _vehicule.Show();

@@ -14,7 +14,7 @@ namespace SshCity.Game.Buildings.BatimentsCaracteristiques
         public static int[] _consomationeau = {3};
         public static string[] _image = {"res://assets/ImageSized/isometric ferme2.png"};
         public static int nbrAmeliorations = 0;
-        public static Batiments.Class _class = Batiments.Class.FERME;
+        public static BuildingType _class = BuildingType.FERME;
 
         public static Caracteristiques.BatimentsCaracteristiques cara =
             new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,
