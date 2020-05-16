@@ -29,8 +29,8 @@ namespace SshCity.Game.Plan
         public const int m_max = 20; //Nombre bocks montagnes à trois etages max
         public const int m_min = 15; //Nombre bocks montagnes à trois etages min
 
-        //Vairable permettant d'indiquer l'indexe des blocs
-
+        // Variable permettant d'indiquer l'indexe des blocs
+        // todo : convertir en une enum
         public const int terre = 0;
         public const int boite = 3;
         public const int eau = 2;
