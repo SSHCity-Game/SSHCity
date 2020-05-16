@@ -12,15 +12,8 @@ namespace SshCity.Game.Plan
                    bloc == Ref_donnees.route_bord_bas_gauche ||
                    bloc == Ref_donnees.route_bord_haut_droit ||
                    bloc == Ref_donnees.route_bord_haut_gauche ||
-                   bloc == Ref_donnees.route_croisement ||
-                   bloc == Ref_donnees.route_virage_bas ||
-                   bloc == Ref_donnees.route_virage_droit ||
-                   bloc == Ref_donnees.route_virage_gauche ||
-                   bloc == Ref_donnees.route_virage_haut ||
-                   bloc == Ref_donnees.route_T_bas_droite ||
-                   bloc == Ref_donnees.route_T_bas_gauche ||
-                   bloc == Ref_donnees.route_T_haut_droit ||
-                   bloc == Ref_donnees.route_T_haut_gauche;
+                   IsCroisement(bloc) || 
+                   IsVirage(bloc);
         }
 
         public static bool IsCroisement(int bloc)
