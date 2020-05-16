@@ -15,10 +15,10 @@ public class Infos : Panel
     private const string _strArgentActuel = "Lvl/Gains/Argent/ArgentValue";
     private const string _strEnergieActuel = "Lvl/Couts/Energie/EnergieValue";
     private const string _strEauActuel = "Lvl/Couts/Eau/EauValue";
-    private const string _strArgentAmelio = "Amelioration/Gains/Argent/ArgentValue";
-    private const string _strEnergieAmelio = "Amelioration/Couts/Energie/EnergieValue";
-    private const string _strEauAmelio = "Amelioration/Couts/Eau/EauValue";
-    private const string _strAmelioPanel = "Amelioration";
+    private const string _strArgentAmelio = "Upgrade/Gains/Argent/ArgentValue";
+    private const string _strEnergieAmelio = "Upgrade/Couts/Energie/EnergieValue";
+    private const string _strEauAmelio = "Upgrade/Couts/Eau/EauValue";
+    private const string _strAmelioPanel = "Upgrade";
     private const string _strNivMax = "LvlMax";
     private const string _strVehicule = "Camion";
     private static bool _close = false;
@@ -98,7 +98,7 @@ public class Infos : Panel
 
     public bool config(Vector2 tile)
     {
-        Building batiment = Building.GetBuildingWithPosition(tile);
+        Building batiment = Building.Delete(tile);
         if (batiment != null)
         {
             Building.ListBuildings.Add(batiment);

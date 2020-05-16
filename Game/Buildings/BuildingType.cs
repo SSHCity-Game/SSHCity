@@ -2,6 +2,9 @@ using SshCity.Game.Plan;
 
 namespace SshCity.Game.Buildings
 {
+    /// <summary>
+    /// Contient les différents type de bâtiments présent dans le jeu, ainsi que leurs ids respectifs pour les textures dans godot
+    /// </summary>
     public enum BuildingType
     {
         CAFE = Ref_donnees.cafe,

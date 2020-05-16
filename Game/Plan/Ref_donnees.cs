@@ -7,8 +7,7 @@ namespace SshCity.Game.Plan
     {
         //Variables pour definir la taille de la Map 
 
-        public const int
-            size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
+        public const int size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
 
         public const int max_x = 127; //Coordonées max d'un bloque sur l'axe x
         public const int min_x = -16; //Coordonnées min d'un bloque sur l'axe x

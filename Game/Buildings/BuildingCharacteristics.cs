@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using SshCity.Game.Buildings.Characteristics;
 
 namespace SshCity.Game.Buildings
 {
+    /// <summary>
+    /// Représente les caractéristiques que les bâtiments doivent posséder.
+    /// </summary>
     public interface IBuildingCharacteristics
     {
         public int[] Bloc { get; }
@@ -17,36 +21,45 @@ namespace SshCity.Game.Buildings
         public int NbrAmeliorations { get; }
     }
 
+    /// <summary>
+    /// Classe qui lie les types de bâtiments à leurs caractéristique par défaut
+    /// </summary>
     public static class BuildingCharacteristics
     {
-        private static readonly Dictionary<BuildingType, IBuildingCharacteristics> _dictionary =
-            new Dictionary<BuildingType, IBuildingCharacteristics>
+        private static readonly Dictionary<BuildingType, Type> _dictionary =
+            new Dictionary<BuildingType, Type>
             {
-                {BuildingType.CAFE, new Cafe()},
-                {BuildingType.CASERNE, new Caserne()},
-                {BuildingType.CENTRALE, new CentraleElectrique()},
-                {BuildingType.EGLISE, new Eglise()},
-                {BuildingType.FERME, new Ferme()},
-                {BuildingType.HOSPITAL, new Hospital()},
-                {BuildingType.HOTEL, new Hotel()},
-                {BuildingType.IMMEUBLE, new Immeuble()},
-                {BuildingType.IMMEUBLE_VERT, new ImmeubleVert()},
-                {BuildingType.MAISON, new Maison()},
-                {BuildingType.MAISON3, new Maison3()},
-                {BuildingType.MAISON4, new Maison4()},
-                {BuildingType.MAISON5, new Maison5()},
-                {BuildingType.MCALLY, new McAlly()},
-                {BuildingType.PARC, new Parc()},
-                {BuildingType.PISCINE, new Piscine()},
-                {BuildingType.RESTAURANT, new Restaurant()},
-                {BuildingType.POLICE, new Police()},
-                {BuildingType.RESTAURANT2, new Restaurant2()},
+                {BuildingType.CAFE, typeof(Cafe)},
+                {BuildingType.CASERNE, typeof(Caserne)},
+                {BuildingType.CENTRALE, typeof(CentraleElectrique)},
+                {BuildingType.EGLISE, typeof(Eglise)},
+                {BuildingType.FERME, typeof(Ferme)},
+                {BuildingType.HOSPITAL, typeof(Hospital)},
+                {BuildingType.HOTEL, typeof(Hotel)},
+                {BuildingType.IMMEUBLE, typeof(Immeuble)},
+                {BuildingType.IMMEUBLE_VERT, typeof(ImmeubleVert)},
+                {BuildingType.MAISON, typeof(Maison)},
+                {BuildingType.MAISON3, typeof(Maison3)},
+                {BuildingType.MAISON4, typeof(Maison4)},
+                {BuildingType.MAISON5, typeof(Maison5)},
+                {BuildingType.MCALLY, typeof(McAlly)},
+                {BuildingType.PARC, typeof(Parc)},
+                {BuildingType.PISCINE, typeof(Piscine)},
+                {BuildingType.RESTAURANT, typeof(Restaurant)},
+                {BuildingType.POLICE, typeof(Police)},
+                {BuildingType.RESTAURANT2, typeof(Restaurant2)},
             };
 
 
+        /// <summary>
+        /// Créer une caractéristique par rapport type de bâtiment 
+        /// </summary>
+        /// <param name="type">Le type de bâtiment</param>
+        /// <returns>La caractéristique par défaut de ce bâtiment</returns>
         public static IBuildingCharacteristics FromType(BuildingType type)
         {
-            return _dictionary.TryGetValue(type, out var build) ? build : null;
+            return (_dictionary.TryGetValue(type, out var build) ? Activator.CreateInstance(build) : null) as
+                IBuildingCharacteristics;
         }
     }
 }
