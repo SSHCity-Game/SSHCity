@@ -173,7 +173,7 @@ public class MainPlan : Node2D
 		}
 
 		//Lancement de la musique
-		_musique.Play();
+		//_musique.Play();
 	}
 
 	public static bool ExistBatiment(int indexBat)
