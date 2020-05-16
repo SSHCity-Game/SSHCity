@@ -30,6 +30,7 @@ namespace SshCity.Game.Buildings
 				_earn = caracteristique.Earn;
 				_cost = caracteristique.Cost;
 				_titre = caracteristique.Titre;
+				GD.Print(_titre);
 				gain_xp = caracteristique.GainXp;
 				_image = caracteristique.Image;
 				nbrAmelioration = caracteristique.NbrAmelioration;

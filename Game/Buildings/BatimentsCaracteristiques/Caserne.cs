@@ -12,8 +12,8 @@ public class Caserne : Carte
     public static string[] _titre = {"Caserne"};
     public static int[] _consomationelec = {2};
     public static int[] _consomationeau = {2};
-    public static int lvl = 0;
     public static readonly int[] gain_xp = {10, 100, 500};
+    public static string[] _image = {"res://assets/ImageSized/caserne.png"};
 
     public static Caracteristiques.BatimentsCaracteristiques cara =
         new Caracteristiques.BatimentsCaracteristiques(nbrAmeliorations,
@@ -22,10 +22,8 @@ public class Caserne : Carte
             _earn,
             _titre,
             gain_xp,
-            _image,
+            _image, 
             _class,
             _consomationelec,
             _consomationeau);
-
-    public static string[] _image = {"res://assets/ImageSized/caserne.png"};
 }
