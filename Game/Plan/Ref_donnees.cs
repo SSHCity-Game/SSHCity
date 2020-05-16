@@ -31,20 +31,16 @@ namespace SshCity.Game.Plan
         // Variable permettant d'indiquer l'indexe des blocs
         // todo : convertir en une enum
         public const int terre = 0;
-        public const int boite = 3;
-        public const int eau = 2;
-        public const int montagne = 56;
         public const int montagne_sol = 1;
+        public const int eau = 2;
         public const int sable = 5;
-        public const int maison1 = 11;
-        public const int accident = 3;
         public const int route = 9;
-        public const int hopital = 15;
-        public const int caserne = 14;
-        public const int immeuble_vert = 16;
-        public const int immeuble_brique = 13;
+        public const int maison1 = 11;
         public const int police = 12;
-
+        public const int immeuble_brique = 13;
+        public const int caserne = 14;
+        public const int hopital = 15;
+        public const int immeuble_vert = 16;
         public const int hotel = 20;
         public const int maison3 = 21;
         public const int maison4 = 22;
@@ -54,39 +50,47 @@ namespace SshCity.Game.Plan
         public const int Molly = 26;
         public const int piscine = 27;
         public const int shop = 28;
-        public const int mairie = 32;
         public const int ferme = 30;
         public const int eglise = 31;
+        public const int mairie = 32;
         public const int tea_shop = 33;
         public const int restaurant = 34;
         public const int restaurant2 = 35;
         public const int parc_enfant = 36;
-        public const int route_left = 44;
-        public const int route_right = 43;
-        public const int route_bord_haut_droit = 54;
-        public const int route_bord_haut_gauche = 55;
-        public const int route_bord_bas_droit = 52;
-        public const int route_bord_bas_gauche = 53;
-        public const int route_T_bas_droite = 45;
         public const int route_T_bas_gauche = 41;
+        public const int route_croisement = 42;
+        public const int route_right = 43;
+        public const int route_left = 44;
+        public const int route_T_bas_droite = 45;
+        public const int route_virage_gauche = 46;
+        public const int route_virage_bas = 47;
+        public const int route_virage_droit = 48;
+        public const int route_virage_haut = 49;
         public const int route_T_haut_droit = 50;
         public const int route_T_haut_gauche = 51;
-        public const int route_virage_gauche = 46;
-        public const int route_virage_droit = 48;
-        public const int route_virage_bas = 47;
-        public const int route_virage_haut = 49;
-        public const int route_croisement = 42;
-        public const int maison3_flamme = 57;
-        public const int alerte_incendie = 6;
+        public const int route_bord_bas_droit = 52;
+        public const int route_bord_bas_gauche = 53;
+        public const int route_bord_haut_droit = 54;
+        public const int route_bord_haut_gauche = 55;
+        public const int montagne = 56;
         public const int centrale = 58;
         public const int ferme_ecolo = 59;
+        /* Incendie Batiments */
+        public const int boutique5_flamme = 3;
+        public const int eglise1_flamme = 4;
+        public const int maison1_flamme = 6;
+        public const int maison4_flamme = 7;
+        public const int maison5_flamme = 8;
+        public const int maison3_flamme = 57;
+        public const int cafe_flamme = 60;
+        public const int resto_flamme= 62;
 
+        
+        
         // Sauvegarde
         public const string GameSavePath = "user://sshcity.save";
-
-
+        
         //Variable bloquer camera
-
         public static float[] x_left = {252, 382, 502, 639, 765, 896, 1019, 1146, 1279};
         public static float[] x_right = {2324, 2197, 2070, 1940, 1817, 1680, 1557, 1430, 1300};
         public static float[] y_top = {150, 224, 300, 375, 450, 526, 598, 676, 752};
