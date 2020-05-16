@@ -16,8 +16,7 @@ public partial class PlanInitial : Node2D
     public static bool VehiculesInit;
     public static Vector2 VehiculesPosition;
     public static Vehicules.Type VehiculesType;
-    private PackedScene _ambulanceScene;
-    private PackedScene _camionScene;
+    private PackedScene _vehiculeScene;
 
 
     private Vector2 _lastTile = new Vector2(0, 0);
@@ -49,9 +48,7 @@ public partial class PlanInitial : Node2D
         TileMap1 = (TileMap) GetNode(str_TileMap1);
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
-
-        _camionScene = (PackedScene) GD.Load("res://Game/Vehicules/Camion.tscn");
-        _ambulanceScene = (PackedScene) GD.Load("res://Game/Vehicules/Ambulance.tscn");
+        _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
     }
 
     public override void _Process(float delta)
@@ -64,16 +61,9 @@ public partial class PlanInitial : Node2D
         }
 
         if (!VehiculesInit) return;
-        switch (VehiculesType)
-        {
-            case Vehicules.Type.AMBULANCE:
-                InitAmbulance(VehiculesPosition);
-                break;
-            case Vehicules.Type.CAMION:
-                InitCamion(VehiculesPosition);
-                break;
-        }
-
+        Vehicules _vehicule = (Vehicules) _vehiculeScene.Instance();
+        _vehicule.Init(this, Routes.WhereIsRoute(VehiculesPosition, this), VehiculesType);
+        AddChild(_vehicule);
         VehiculesInit = false;
     }
 
@@ -82,20 +72,6 @@ public partial class PlanInitial : Node2D
         VehiculesInit = true;
         VehiculesPosition = position;
         VehiculesType = type;
-    }
-
-    public void InitCamion(Vector2 position)
-    {
-        Camion _camion = (Camion) _camionScene.Instance();
-        _camion.Init(this, Routes.WhereIsRoute(position, this));
-        AddChild(_camion);
-    }
-
-    public void InitAmbulance(Vector2 position)
-    {
-        Ambulance _ambulance = (Ambulance) _ambulanceScene.Instance();
-        _ambulance.Init(this, Routes.WhereIsRoute(position, this));
-        AddChild(_ambulance);
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)
