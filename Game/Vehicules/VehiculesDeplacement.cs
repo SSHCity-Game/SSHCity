@@ -149,7 +149,7 @@ namespace SshCity.Game.Plan
 										"NE",
 										"NE",
 										new Vector2(0, 0),
-										new[] {"NE", "SE"},
+										new[] {"NE", "NE"},
 										new[] {Direction.RIGHT, Direction.RIGHT}));
 									break;
 								}
@@ -313,7 +313,6 @@ namespace SshCity.Game.Plan
 			};
 			Action<int> MovingVirage = bloc =>
 			{
-				GD.Print("Virage");
 				switch (bloc)
 				{
 					case Ref_donnees.route_virage_bas:
@@ -339,7 +338,6 @@ namespace SshCity.Game.Plan
 						{
 							case "SW":
 							{
-								GD.Print("DONE VIRAGE");
 								MovingCroisement(Direction.BOTTOM);
 								break;
 							}
@@ -387,7 +385,7 @@ namespace SshCity.Game.Plan
 					}
 				}
 			};
-
+			
 			if (isMoving && !Croisement)
 			{
 				if ((direction == Vehicules.Direction.RIGHT && this.Position >= arrive) ||
@@ -397,8 +395,6 @@ namespace SshCity.Game.Plan
 				{
 					Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(this.Position);
 					Vector2 NextCase = Vehicules.DirectionToVector2(direction) + new Vector2(-1, -1);
-					GD.Print(_planInitial.GetBlock(_planInitial.TileMap2,
-						(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y));
 					if (!isMovingCroisment && Routes.IsRoute(_planInitial.GetBlock(_planInitial.TileMap2,
 						                       (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))
 					                       && !Routes.IsCroisement(_planInitial.GetBlock(_planInitial.TileMap2,
@@ -426,7 +422,6 @@ namespace SshCity.Game.Plan
 							&& !Routes.IsVirage(_planInitial.GetBlock(_planInitial.TileMap2,
 														(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
 					{
-						GD.Print("Croisment");
 						Croisement = true;
 						isMoving = false;
 						_deplacement = new Vector2(0, 0);
@@ -434,7 +429,6 @@ namespace SshCity.Game.Plan
 					}
 					else if(Routes.IsVirage(_planInitial.GetBlock(_planInitial.TileMap2, (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
 					{
-						GD.Print("ENTER VIRAGE");
 						isMoving = false;
 						_deplacement = new Vector2(0, 0);
 						BlocCroisment = new Vector2((int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y);
@@ -451,7 +445,7 @@ namespace SshCity.Game.Plan
 			}
 
 			//input deplacement inital
-			if (!isMoving && Input.IsActionPressed("ui_right"))
+			if (!isMoving && !Autonome && Input.IsActionPressed("ui_right"))
 			{
 				if (Croisement)
 				{
@@ -461,7 +455,7 @@ namespace SshCity.Game.Plan
 					MovingDirection((Vehicules.Direction.RIGHT, "NE"));
 			}
 
-			if (!isMoving && Input.IsActionPressed("ui_left"))
+			if (!isMoving && !Autonome && Input.IsActionPressed("ui_left"))
 			{
 				if (Croisement)
 				{
@@ -473,7 +467,7 @@ namespace SshCity.Game.Plan
 				}
 			}
 
-			if (!isMoving && Input.IsActionPressed("ui_down"))
+			if (!isMoving && !Autonome && Input.IsActionPressed("ui_down"))
 			{
 				if (Croisement)
 				{
@@ -485,7 +479,7 @@ namespace SshCity.Game.Plan
 				}
 			}
 
-			if (!isMoving && Input.IsActionPressed("ui_up"))
+			if (!isMoving && !Autonome && Input.IsActionPressed("ui_up"))
 			{
 				if (Croisement)
 				{
@@ -494,6 +488,20 @@ namespace SshCity.Game.Plan
 				else
 				{
 					MovingDirection((Vehicules.Direction.TOP, "NW"));
+				}
+			}
+
+			if (Autonome && !isMoving)
+			{
+				int randNumber = rand.Next(0, 4);
+				Direction direction = ListDirection[randNumber];
+				if (Croisement)
+				{
+					MovingCroisement(direction);
+				}
+				else
+				{
+					MovingDirection((direction, DirectionToAnim[direction]));
 				}
 			}
 

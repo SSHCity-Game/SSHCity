@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Godot;
 using SshCity.Game.Buildings;
 
@@ -165,7 +166,6 @@ namespace SshCity.Game.Plan
             }
             else
             {
-                GD.Print("YP");
                 planInitial.SetBlock(planInitial.TileMap2, x, y + 3, Ref_donnees.route_bord_bas_gauche);
             }
 
@@ -250,6 +250,8 @@ namespace SshCity.Game.Plan
 
             return (x, y);
         }
+        
+        public static List<Vector2> DepartRoute = new List<Vector2>();
 
         public static void BuildRoadDirection(PlanInitial planInitial, int x, int y, Direction dir)
         {
@@ -278,7 +280,6 @@ namespace SshCity.Game.Plan
                     break;
                 }
             }
-
             while (planInitial.GetBlock(planInitial.TileMap1, x, y) != -1)
             {
                 planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.route);
@@ -288,21 +289,37 @@ namespace SshCity.Game.Plan
                     case Direction.TOP:
                     {
                         y--;
+                        if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
+                        {
+                            DepartRoute.Add(new Vector2(x, y+1));
+                        }
                         break;
                     }
                     case Direction.DOWN:
                     {
                         y++;
+                        if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
+                        {
+                            DepartRoute.Add(new Vector2(x, y-1));
+                        }
                         break;
                     }
                     case Direction.LEFT:
                     {
                         x--;
+                        if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
+                        {
+                            DepartRoute.Add(new Vector2(x+1, y));
+                        }
                         break;
                     }
                     case Direction.RIGHT:
                     {
                         x++;
+                        if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
+                        {
+                            DepartRoute.Add(new Vector2(x-1, y));
+                        }
                         break;
                     }
                 }
