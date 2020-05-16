@@ -61,7 +61,7 @@ namespace SshCity.Game.Plan
         }
 
         //Choisis l'animation du vehicule (son orientation) par rapport à a la route au depart
-        Dictionary<int, string> WhichAnimation = new Dictionary<int, string>()
+        Dictionary<int, string>  WhichAnimation = new Dictionary<int, string>()
         {
             {Ref_donnees.route_left, "NE"},
             {Ref_donnees.route_right, "SE"},
