@@ -131,26 +131,132 @@ namespace SshCity.Game.Plan
 			{
 				bool WillDoSmth = VerifDirectionCroisment(direction1, BlocCroisment);
 				Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(this.Position);
-				Vector2 NextCase = Vehicules.DirectionToVector2(direction1) + new Vector2(-1, -1);
 				if (WillDoSmth)
 				{
 					switch (_animatedSprite.Animation)
 					{
 						case "NE":
 						{
-							Vector2 AuCroisement =
-								_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, 0)) +
-								DecallageDico["NE"];
-							Vector2 ApresCroisement =
-								_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, 1)) +
-								DecallageDico["SE"];
-							arriveCroisment = new[]
+							switch (direction1)
 							{
-								AuCroisement-new Vector2(100, 50),	
-								ApresCroisement
-							};
-							animationCroisment = new[] {"NE", "SE"};
-							directionCroisement = new[] {Direction.RIGHT, Direction.BOTTOM};
+								case Direction.BOTTOM:
+								{
+									Vector2 AuCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, 0)) +
+										DecallageDico["NE"];
+									Vector2 ApresCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, 1)) +
+										DecallageDico["SE"];
+									arriveCroisment = new[]
+									{
+										AuCroisement-new Vector2(100, 50),	
+										ApresCroisement
+									};
+									animationCroisment = new[] {"NE", "SE"};
+									directionCroisement = new[] {Direction.RIGHT, Direction.BOTTOM};
+									break;
+								}
+								case Direction.TOP:
+								{
+									Vector2 AuCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, 0)) +
+										DecallageDico["NE"];
+									Vector2 ApresCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, -1)) +
+										DecallageDico["NW"];
+									arriveCroisment = new[]
+									{
+										AuCroisement,	
+										ApresCroisement
+									};
+									animationCroisment = new[] {"NE", "NW"};
+									directionCroisement = new[] {Direction.RIGHT, Direction.TOP};
+									break;
+								}
+								case Direction.RIGHT:
+								{
+									Vector2 AuCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, 0)) +
+										DecallageDico["NE"];
+									Vector2 ApresCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(2, 0)) +
+										DecallageDico["NE"];
+									arriveCroisment = new[]
+									{
+										AuCroisement,	
+										ApresCroisement
+									};
+									animationCroisment = new[] {"NE", "NE"};
+									directionCroisement = new[] {Direction.RIGHT, Direction.RIGHT};
+									break;
+								}
+								default:
+								{
+									return;
+								}
+							}
+							break;
+						}
+						case "SE":
+						{
+							switch (direction1)
+							{
+								case Direction.LEFT:
+								{
+									Vector2 AuCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(0, 1)) +
+										DecallageDico["SE"];
+									Vector2 ApresCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(-1, 1)) +
+										DecallageDico["SW"];
+									arriveCroisment = new[]
+									{
+										AuCroisement-new Vector2(-80, 80),	
+										ApresCroisement
+									};
+									animationCroisment = new[] {"SE", "SW"};
+									directionCroisement = new[] {Direction.BOTTOM, Direction.LEFT};
+									break;
+								}
+								case Direction.BOTTOM:
+								{
+									Vector2 AuCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(0, 1)) +
+										DecallageDico["SE"];
+									Vector2 ApresCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(0, 2)) +
+										DecallageDico["SE"];
+									arriveCroisment = new[]
+									{
+										AuCroisement,	
+										ApresCroisement
+									};
+									animationCroisment = new[] {"SE", "SE"};
+									directionCroisement = new[] {Direction.BOTTOM, Direction.BOTTOM};
+									break;
+								}
+								case Direction.RIGHT:
+								{
+									Vector2 AuCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(0, 1)) +
+										DecallageDico["SE"];
+									Vector2 ApresCroisement =
+										_planInitial.TileMap2.MapToWorld(positionActuel + new Vector2(1, 1)) +
+										DecallageDico["NE"];
+									arriveCroisment = new[]
+									{
+										AuCroisement,	
+										ApresCroisement
+									};
+									animationCroisment = new[] {"SE", "NE"};
+									directionCroisement = new[] {Direction.BOTTOM, Direction.RIGHT};
+									break;
+								}
+								default:
+								{
+									return;
+								}
+							}
 							break;
 						}
 					}
@@ -179,7 +285,7 @@ namespace SshCity.Game.Plan
 			{
 				if (Croisement)
 				{
-					MovingCroisement(Direction.RIGHT);
+					MovingCroisement(Direction.LEFT);
 				}
 				else
 				{
@@ -191,7 +297,7 @@ namespace SshCity.Game.Plan
 			{
 				if (Croisement)
 				{
-					MovingCroisement(Direction.RIGHT);
+					MovingCroisement(Direction.BOTTOM);
 				}
 				else
 				{
@@ -203,7 +309,7 @@ namespace SshCity.Game.Plan
 			{
 				if (Croisement)
 				{
-					MovingCroisement(Direction.RIGHT);
+					MovingCroisement(Direction.TOP);
 				}
 				else
 				{

@@ -169,5 +169,9 @@ public class Infos : Panel
             _vehicule.Show();
             _type = Vehicules.Type.POLICE;
         }
+        else
+        {
+            _vehicule.Hide();
+        }
     }
 }
