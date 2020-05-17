@@ -84,6 +84,7 @@
     <Compile Include="Game\Interface\Infos.cs" />
     <Compile Include="Game\Interface\Interface.cs" />
     <Compile Include="Game\Interface\MainMenu.cs" />
+    <Compile Include="Game\Interface\MairieMenu.cs" />
     <Compile Include="Game\Interface\Menu_achat\MenuBienEtre.cs" />
     <Compile Include="Game\Interface\Menu_achat\MenuEconomie.cs" />
     <Compile Include="Game\Interface\Menu_achat\MenuHabitation.cs" />

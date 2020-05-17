@@ -106,15 +106,15 @@ public class Infos : Panel
             _image.Texture = texture;
             position = tile;
             _lvlActuel.Text = "Lvl " + Convert.ToString(batiment.Characteristics.Lvl + 1);
-            _argentActuel.Text = Convert.ToString(batiment.Characteristics.Earn);
+            _argentActuel.Text = Convert.ToString(batiment.Characteristics.Earn[0]);
             _class = batiment.Type;
-            //_energieActuel.Text = Convert.ToString(batiment.Characteristics.Energie);
-            //_eauActuel.Text = Convert.ToString(batiment.Characteristics.eau):
+            _energieActuel.Text = Convert.ToString(batiment.Characteristics.Consomationeau[0]);
+            _eauActuel.Text = Convert.ToString(batiment.Characteristics.Consomationelec[0]);
             if (batiment.Characteristics.Lvl != batiment.Characteristics.NbrAmeliorations)
             {
                 _argentAmelio.Text = Convert.ToString(batiment.Characteristics.Earn[batiment.Characteristics.Lvl + 1]);
-                //_argentAmelio.Text = Convert.ToString(batiment.Characteristics.EnergieTab[batiment.Characteristics.Lvl + 1]);
-                //_eauAmelio.Text = Convert.ToString(batiment.Characteristics.EauTab[batiment.Characteristics.Lvl + 1]);
+                _argentAmelio.Text = Convert.ToString(batiment.Characteristics.Consomationelec[batiment.Characteristics.Lvl + 1]);
+                _eauAmelio.Text = Convert.ToString(batiment.Characteristics.Consomationeau[batiment.Characteristics.Lvl + 1]);
                 _ameliorer.Text = "Ameliorer\n" + Convert.ToString(batiment.Characteristics.Cost[1]);
             }
             else

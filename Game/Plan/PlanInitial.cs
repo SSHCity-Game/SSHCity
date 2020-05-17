@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using SshCity.Game.Buildings;
 using SshCity.Game.Plan;
@@ -24,6 +25,14 @@ public partial class PlanInitial : Node2D
     private PackedScene _vehiculeScene;
     private Timer VehiculeTimer;
     private static bool VehiculesAutonome;
+    public static List<Vector2> DepartRoute = new List<Vector2>();
+    private static bool addVehicule = true;
+
+    public static bool AddVehicule1
+    {
+        get => addVehicule;
+        set => addVehicule = value;
+    }
 
 
     private Vector2 _lastTile = new Vector2(0, 0);
@@ -73,6 +82,7 @@ public partial class PlanInitial : Node2D
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
         VehiculeTimer = (Timer) GetNode(str_VehiculeTimer);
+        VehiculeTimer.Autostart = true;
         _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
         VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
     }
@@ -89,7 +99,14 @@ public partial class PlanInitial : Node2D
         if (VehiculesInit)
         {
             Vehicules _vehicule = (Vehicules) _vehiculeScene.Instance();
-            _vehicule.Init(this, Routes.WhereIsRoute(VehiculesPosition, this), VehiculesType, VehiculesAutonome);
+            if (VehiculesAutonome)
+            {
+                _vehicule.Init(this, VehiculesPosition-new Vector2(1, 1), VehiculesType, VehiculesAutonome);
+            }
+            else
+            {
+                _vehicule.Init(this, Routes.WhereIsRoute(VehiculesPosition, this), VehiculesType, VehiculesAutonome);
+            }
             AddChild(_vehicule);
             VehiculesInit = false;
         }
@@ -97,12 +114,14 @@ public partial class PlanInitial : Node2D
 
     public void TimerOutVehicule()
     {
-        bool found = false;
-        Random rand = new Random();
-        int whichVehicule = rand.Next(0, Vehicules.ListTypeVehicules.Count);
-        Vehicules.Type type = Vehicules.ListTypeVehicules[whichVehicule];
-        int WhereVehicule = rand.Next(0, 4);
-        AddVehicule(type, SshCity.Game.Plan.Buildings.DepartRoute[WhereVehicule], true);
+        if (addVehicule)
+        {
+            Random rand = new Random();
+            int whichVehicule = rand.Next(0, Vehicules.ListTypeVehicules.Count);
+            Vehicules.Type type = Vehicules.ListTypeVehicules[whichVehicule];
+            int WhereVehicule = rand.Next(0, DepartRoute.Count);
+            AddVehicule(type, DepartRoute[WhereVehicule], true);
+        }
     }
 
     public static void AddVehicule(Vehicules.Type type, Vector2 position, bool autonome=false)

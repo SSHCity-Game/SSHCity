@@ -104,6 +104,13 @@ namespace SshCity.Game.Vehicules
             {Direction.LEFT, "SW"},
             {Direction.RIGHT, "NE"}
         };
+        Godot.Collections.Dictionary<string, Direction> AnimToDirection = new Godot.Collections.Dictionary<string, Direction>()
+        {
+            {"NW", Direction.TOP},
+            {"SE", Direction.BOTTOM},
+            {"SW", Direction.LEFT},
+            {"NE", Direction.RIGHT}
+        };
 
         Godot.Collections.Dictionary<Type, SpriteFrames> AnimatedSpriteType = new Godot.Collections.Dictionary<Type, SpriteFrames>()
         {
@@ -140,12 +147,12 @@ namespace SshCity.Game.Vehicules
             _animatedSprite.Animation = WhichAnimation[blocRoute];
             Decallage = DecallageDico[_animatedSprite.Animation];
             _collisionShape2D.Rotation = CollisionAngle[_animatedSprite.Animation];
-            //Connect("area_entered", this, nameof(Collision));
+            Connect("area_shape_entered", this, nameof(Collision));
             this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage;
         }
         public void Collision()
         {
-        	this.Hide();
+        	QueueFree();
         }
         
         public static List<Type> ListTypeVehicules = new List<Type>()
