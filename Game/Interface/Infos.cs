@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using SshCity.Game.Buildings;
-using SshCity.Game.Plan;
 using SshCity.Game.Vehicules;
 
 public class Infos : Panel

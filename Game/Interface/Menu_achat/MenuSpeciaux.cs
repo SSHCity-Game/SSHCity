@@ -1,5 +1,5 @@
 using Godot;
-using SshCity.Game.Buildings.BatimentsCaracteristiques;
+using SshCity.Game.Buildings;
 
 public class MenuSpeciaux : Node
 {
@@ -21,31 +21,34 @@ public class MenuSpeciaux : Node
 
         //Config _cartePolice
         _cartePolice = (Carte) GetNode(_str_cartePolice);
-        _cartePolice.Bloc = Police._bloc[0];
-        _cartePolice.Cost = Police._cost[0];
-        _cartePolice.Titre(Police._titre[0]);
-        _cartePolice.Gain(Police._earn[0]);
-        _cartePolice.Prix(Police._cost[0]);
+        var police = BuildingCharacteristics.FromType(BuildingType.POLICE);
+        _cartePolice.Bloc = police.Bloc[0];
+        _cartePolice.Cost = police.Cost[0];
+        _cartePolice.Titre(police.Titre[0]);
+        _cartePolice.Gain(police.Earn[0]);
+        _cartePolice.Prix(police.Cost[0]);
         _cartePolice.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 
         //Config _carteCentraleElectrique
         _carteCentraleElectrique = (Carte) GetNode(_str_carteCentraleElectrique);
-        _carteCentraleElectrique.Bloc = CentraleElectrique._bloc[0];
-        _carteCentraleElectrique.Cost = CentraleElectrique._cost[0];
-        _carteCentraleElectrique.Titre(CentraleElectrique._titre[0]);
-        _carteCentraleElectrique.Gain(CentraleElectrique._earn[0]);
-        _carteCentraleElectrique.Prix(CentraleElectrique._cost[0]);
+        var centrale = BuildingCharacteristics.FromType(BuildingType.CENTRALE);
+        _carteCentraleElectrique.Bloc = centrale.Bloc[0];
+        _carteCentraleElectrique.Cost = centrale.Cost[0];
+        _carteCentraleElectrique.Titre(centrale.Titre[0]);
+        _carteCentraleElectrique.Gain(centrale.Earn[0]);
+        _carteCentraleElectrique.Prix(centrale.Cost[0]);
         _carteCentraleElectrique.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         //Config _carteEglise
 
         _carteEglise = (Carte) GetNode(_str_carteEglise);
-        _carteEglise.Bloc = Eglise._bloc[0];
-        _carteEglise.Cost = Eglise._cost[0];
-        _carteEglise.Titre(Eglise._titre[0]);
-        _carteEglise.Gain(Eglise._earn[0]);
-        _carteEglise.Prix(Eglise._cost[0]);
+        var eglise = BuildingCharacteristics.FromType(BuildingType.EGLISE);
+        _carteEglise.Bloc = eglise.Bloc[0];
+        _carteEglise.Cost = eglise.Cost[0];
+        _carteEglise.Titre(eglise.Titre[0]);
+        _carteEglise.Gain(eglise.Earn[0]);
+        _carteEglise.Prix(eglise.Cost[0]);
         _carteEglise.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 
