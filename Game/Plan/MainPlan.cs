@@ -21,9 +21,13 @@ public class MainPlan : Node2D
 	private int position_zoom = 3;
 	private string str_camera2D = "Camera2D";
 	private string str_planInitial = "PlanInitial";
+	private static Vector2 _mairiePosition;
 
-
-	public PlanInitial PlanInitial => _planInitial;
+	public static Vector2 MairiePosition
+	{
+		get => _mairiePosition;
+		set => _mairiePosition = value;
+	}
 
 	public static List<(Vector2, int)> ListeBatiment
 	{
