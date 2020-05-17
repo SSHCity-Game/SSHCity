@@ -395,10 +395,12 @@ namespace SshCity.Game.Plan
 				{
 					Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(this.Position);
 					Vector2 NextCase = Vehicules.DirectionToVector2(direction) + new Vector2(-1, -1);
+					/*
 					if (_planInitial.GetBlock(_planInitial.TileMap2,(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y) == -1)
 					{
 						this.QueueFree();
 					}
+					*/
 					if (!isMovingCroisment && Routes.IsRoute(_planInitial.GetBlock(_planInitial.TileMap2,
 						                       (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))
 					                       && !Routes.IsCroisement(_planInitial.GetBlock(_planInitial.TileMap2,

@@ -31,5 +31,5 @@ format = 1
 tile_data = PoolIntArray( 1703901, 0, 0 )
 
 [node name="Vehicule" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
