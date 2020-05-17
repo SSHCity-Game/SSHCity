@@ -9,16 +9,16 @@ namespace SshCity.Game.Buildings
     /// </summary>
     public interface IBuildingCharacteristics
     {
-        public int[] Bloc { get; }
-        public int[] Cost { get; }
-        public int[] Earn { get; }
-        public string[] Titre { get; }
-        public int Lvl { get; set; }
-        public int[] GainXp { get; }
-        public int[] Consomationelec { get; }
-        public int[] Consomationeau { get; }
-        public string[] Image { get; }
-        public int NbrAmeliorations { get; }
+        int[] Bloc { get; }
+        int[] Cost { get; }
+        int[] Earn { get; }
+        string[] Titre { get; }
+        int Lvl { get; set; }
+        int[] GainXp { get; }
+        int[] Consomationelec { get; }
+        int[] Consomationeau { get; } 
+        string[] Image { get; }
+        int NbrAmeliorations { get; }
     }
 
     /// <summary>
