@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using SshCity.Game.Buildings;
-using SshCity.Game.Plan;
 using SshCity.Game.Vehicules;
 
 public class Infos : Panel
@@ -162,6 +161,16 @@ public class Infos : Panel
             _vehicule.Text = "Ambulance";
             _vehicule.Show();
             _type = Vehicules.Type.AMBULANCE;
+        }
+        else if (_class == BuildingType.POLICE)
+        {
+            _vehicule.Text = "Police";
+            _vehicule.Show();
+            _type = Vehicules.Type.POLICE;
+        }
+        else
+        {
+            _vehicule.Hide();
         }
     }
 }
