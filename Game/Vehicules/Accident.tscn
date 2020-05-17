@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 177.678, 219.992 )
+polygon = PoolVector2Array( -169.432, 44.1662, -583.643, -206.001, -179.685, -491.027, 236.5, -218.222 )

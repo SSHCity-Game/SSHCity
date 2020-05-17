@@ -27,6 +27,10 @@ public partial class PlanInitial : Node2D
     private static bool VehiculesAutonome;
     public static List<Vector2> DepartRoute = new List<Vector2>();
     private static bool addVehicule = true;
+    private PackedScene _accidentArea2D;
+    private static bool addAccident = false;
+    private static Vector2 positionAccident;
+    
 
     public static bool AddVehicule1
     {
@@ -84,6 +88,7 @@ public partial class PlanInitial : Node2D
         VehiculeTimer = (Timer) GetNode(str_VehiculeTimer);
         VehiculeTimer.Autostart = true;
         _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
+        _accidentArea2D = (PackedScene) GD.Load("res://Game/Vehicules/Accident.tscn");
         VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
     }
 
@@ -110,6 +115,20 @@ public partial class PlanInitial : Node2D
             AddChild(_vehicule);
             VehiculesInit = false;
         }
+
+        if (addAccident)
+        {
+            Area2D area = (Area2D) _accidentArea2D.Instance();
+            area.Position = positionAccident;
+            AddChild(area);
+            addAccident = false;
+        }
+    }
+
+    public static void AddZoneAccident(Vector2 posi)
+    {
+        positionAccident = posi;
+        addAccident = true;
     }
 
     public void TimerOutVehicule()

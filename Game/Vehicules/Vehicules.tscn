@@ -4,7 +4,7 @@
 [ext_resource path="res://Game/Vehicules/ANimatedSpriteVehicules/VoitureTruck_animatedSprite.tres" type="SpriteFrames" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 107.718, 11.4971 )
+extents = Vector2( 97.4504, 0.00546455 )
 
 [node name="Vehicule" type="Area2D"]
 scale = Vector2( 1.5, 1.5 )
@@ -15,6 +15,6 @@ frames = ExtResource( 2 )
 animation = "SE"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -25.0734, -24.65 )
+position = Vector2( -16.382, -1.69704 )
 rotation = -0.471239
 shape = SubResource( 1 )

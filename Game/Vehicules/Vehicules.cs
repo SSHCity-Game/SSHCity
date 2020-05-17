@@ -16,6 +16,7 @@ namespace SshCity.Game.Vehicules
         private Vector2 arrive;
         private bool Autonome;
         private static Random rand = new Random();
+        private bool _paused = false;
         public enum Direction
         {
             TOP,
@@ -146,13 +147,29 @@ namespace SshCity.Game.Vehicules
             int blocRoute = planInitial.GetBlock(planInitial.TileMap2, (int) position.x, (int) position.y);
             _animatedSprite.Animation = WhichAnimation[blocRoute];
             Decallage = DecallageDico[_animatedSprite.Animation];
-            _collisionShape2D.Rotation = CollisionAngle[_animatedSprite.Animation];
-            Connect("area_shape_entered", this, nameof(Collision));
+            _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation];
+            this.Connect("area_entered", this, nameof(Collision));
+
             this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage;
         }
-        public void Collision()
+        public void Collision(Area2D area2D)
         {
-        	QueueFree();
+            if (area2D.CollisionLayer == this.CollisionLayer)
+            {
+                Vector2 position = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
+                PlanInitial.AddZoneAccident(Position);
+                _planInitial.SetBlock(_planInitial.TileMap3, (int)position.x, (int)position.y, Ref_donnees.accident_voiture);
+                QueueFree();
+            }
+            else
+            {
+                CollisionMask = 3;
+                PlanInitial.AddZoneAccident(Position);
+                _paused = true;
+                isMoving = false;
+                _deplacement = new Vector2(0, 0);
+            }
+
         }
         
         public static List<Type> ListTypeVehicules = new List<Type>()
