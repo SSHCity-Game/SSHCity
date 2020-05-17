@@ -45,7 +45,16 @@ public class Interface : CanvasLayer
 
     private Panel _xp_couleur;
     private Label _xp_text;
-    private int moneyWin = 0;
+    private static int moneyWin = 0;
+    private static bool _moneyAutomatique = true;
+
+    public static bool MoneyAutomatique
+    {
+        get => _moneyAutomatique;
+        set => _moneyAutomatique = value;
+    }
+
+    public static int MoneyWin => moneyWin;
 
     public static bool InfosBool
     {
@@ -125,7 +134,11 @@ public class Interface : CanvasLayer
 
     public static void ConfigInfos(Vector2 tile)
     {
-        if (_infos.config(tile))
+        if (tile == MainPlan.MairiePosition)
+        {
+            MairieMenu.OpenMairieMenu = true;
+        }
+        else if (_infos.config(tile))
         {
             _infos.Show();
         }
@@ -134,7 +147,14 @@ public class Interface : CanvasLayer
 
     public void WinMoney()
     {
-        Money += moneyWin;
+        if (_moneyAutomatique)
+        {
+            Money += moneyWin;
+        }
+        else
+        {
+            MairieMenu.MoneyWinManuel += moneyWin;
+        }
     }
 
     public override void _Process(float delta)
