@@ -111,7 +111,6 @@ public partial class PlanInitial : Node2D
         int whichVehicule = rand.Next(0, Vehicules.ListTypeVehicules.Count);
         Vehicules.Type type = Vehicules.ListTypeVehicules[whichVehicule];
         int WhereVehicule = rand.Next(0, DepartRoute.Count);
-        GD.Print(DepartRoute[WhereVehicule]);
         AddVehicule(type, DepartRoute[WhereVehicule], true);
     }
 
