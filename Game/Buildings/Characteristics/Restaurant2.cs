@@ -14,7 +14,7 @@ namespace SshCity.Game.Buildings.Characteristics
             GainXp = new[] {10, 100, 500};
             Consomationelec = new[] {1};
             Consomationeau = new[] {2};
-            Image = new[] {"todo"};
+            Image = new[] {"res://assets/ImageSized/restaurant2.png"};
             NbrAmeliorations = 0;
         }
 
