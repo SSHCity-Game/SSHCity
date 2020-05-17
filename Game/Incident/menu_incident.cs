@@ -10,8 +10,8 @@ public class menu_incident : CanvasLayer
     //public Label TexteBoutiqueOk;
 
     public static int ExistFire = 0;
-    public static bool openIncident = false;
-    public static bool openShop = false;
+    public static bool OpenIncident = false;
+    public static bool CaserneopenShop = false;
 
     /* textes incident */
     private static string CaserneNon =
@@ -65,6 +65,10 @@ public class menu_incident : CanvasLayer
         {
             Flamme.Show();
         }
+        else
+        {
+            Flamme.Hide();
+        }
     }
 
 
@@ -82,7 +86,7 @@ public class menu_incident : CanvasLayer
     private void on_boutique_pressed()
     {
         HideAll();
-        openShop = true;
+        CaserneopenShop = true;
     }
 
     public void Resolution()
@@ -101,13 +105,15 @@ public class menu_incident : CanvasLayer
         }
 
         Texte.Show();
-        openIncident = true;
+        OpenIncident = true;
     }
 
     private void on_resoudre_pressed()
     {
         HideAll();
         Incident.resoIncident = true;
+        AlerteIncendie = false;
+        
     }
 
     private void on_quitter_pressed()
