@@ -251,8 +251,6 @@ namespace SshCity.Game.Plan
 
             return (x, y);
         }
-        
-        public static List<Vector2> DepartRoute = new List<Vector2>();
 
         public static void BuildRoadDirection(PlanInitial planInitial, int x, int y, Direction dir)
         {
@@ -292,7 +290,7 @@ namespace SshCity.Game.Plan
                         y--;
                         if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
                         {
-                            DepartRoute.Add(new Vector2(x, y+1));
+                            PlanInitial.DepartRoute.Add(new Vector2(x, y+1));
                         }
                         break;
                     }
@@ -301,7 +299,7 @@ namespace SshCity.Game.Plan
                         y++;
                         if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
                         {
-                            DepartRoute.Add(new Vector2(x, y-1));
+                            PlanInitial.DepartRoute.Add(new Vector2(x, y-1));
                         }
                         break;
                     }
@@ -310,7 +308,7 @@ namespace SshCity.Game.Plan
                         x--;
                         if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
                         {
-                            DepartRoute.Add(new Vector2(x+1, y));
+                            PlanInitial.DepartRoute.Add(new Vector2(x+1, y));
                         }
                         break;
                     }
@@ -319,7 +317,7 @@ namespace SshCity.Game.Plan
                         x++;
                         if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
                         {
-                            DepartRoute.Add(new Vector2(x-1, y));
+                            PlanInitial.DepartRoute.Add(new Vector2(x-1, y));
                         }
                         break;
                     }
