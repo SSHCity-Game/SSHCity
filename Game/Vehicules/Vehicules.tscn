@@ -15,6 +15,6 @@ frames = ExtResource( 2 )
 animation = "SE"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -25.0734, -24.65 )
+position = Vector2( -24.2958, -24.65 )
 rotation = -0.471239
 shape = SubResource( 1 )

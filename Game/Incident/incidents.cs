@@ -51,14 +51,17 @@ public class Incident : PlanInitial
 
 		//if (Interface.Xp >= XpIncident)
 		//{
-		await Task.Delay(5000);
-		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
-		await Task.Delay(1000);
-		menu_incident.AlerteIncendie = true;
 		if (resoIncident)
 		{
 			BuildingSwitch(planInitial, indexAp, indexAv, x, y);
-			resoIncident = false;
+			menu_incident.AlerteIncendie = false;
+		}
+		else
+		{
+			await Task.Delay(5000);
+			BuildingSwitch(planInitial, indexAv, indexAp, x, y);
+			await Task.Delay(1000);
+			menu_incident.AlerteIncendie = true;
 		}
 
 		//}
