@@ -104,6 +104,13 @@ namespace SshCity.Game.Vehicules
             {Direction.LEFT, "SW"},
             {Direction.RIGHT, "NE"}
         };
+        Godot.Collections.Dictionary<string, Direction> AnimToDirection = new Godot.Collections.Dictionary<string, Direction>()
+        {
+            {"NW", Direction.TOP},
+            {"SE", Direction.BOTTOM},
+            {"SW", Direction.LEFT},
+            {"NE", Direction.RIGHT}
+        };
 
         Godot.Collections.Dictionary<Type, SpriteFrames> AnimatedSpriteType = new Godot.Collections.Dictionary<Type, SpriteFrames>()
         {
