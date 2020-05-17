@@ -57,6 +57,11 @@ namespace SshCity.Game.Plan
                             Building.Create(BuildingType.MAISON4, new Vector2(i - 1, j - 1));
                             break;
                         }
+                        case 4:
+                        {
+                            MainPlan.MairiePosition = new Vector2(i-1, j-1);
+                            break;
+                        }
                         case 5:
                         {
                             Building.Create(BuildingType.MAISON5, new Vector2(i - 1, j - 1));

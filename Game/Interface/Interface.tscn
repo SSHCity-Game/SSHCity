@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Game/Interface/Interface.cs" type="Script" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Game/Interface/GUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/Images_interface/croix_jaune.png" type="Texture" id=12]
 [ext_resource path="res://Game/Interface/Infos.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Game/Interface/MairieMenu.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -192,3 +193,6 @@ __meta__ = {
 visible = false
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="MairieMenu" parent="." instance=ExtResource( 14 )]
+visible = false

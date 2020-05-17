@@ -26,6 +26,13 @@ public partial class PlanInitial : Node2D
     private Timer VehiculeTimer;
     private static bool VehiculesAutonome;
     public static List<Vector2> DepartRoute = new List<Vector2>();
+    private static bool addVehicule = true;
+
+    public static bool AddVehicule1
+    {
+        get => addVehicule;
+        set => addVehicule = value;
+    }
 
 
     private Vector2 _lastTile = new Vector2(0, 0);
@@ -107,11 +114,14 @@ public partial class PlanInitial : Node2D
 
     public void TimerOutVehicule()
     {
-        Random rand = new Random();
-        int whichVehicule = rand.Next(0, Vehicules.ListTypeVehicules.Count);
-        Vehicules.Type type = Vehicules.ListTypeVehicules[whichVehicule];
-        int WhereVehicule = rand.Next(0, DepartRoute.Count);
-        AddVehicule(type, DepartRoute[WhereVehicule], true);
+        if (addVehicule)
+        {
+            Random rand = new Random();
+            int whichVehicule = rand.Next(0, Vehicules.ListTypeVehicules.Count);
+            Vehicules.Type type = Vehicules.ListTypeVehicules[whichVehicule];
+            int WhereVehicule = rand.Next(0, DepartRoute.Count);
+            AddVehicule(type, DepartRoute[WhereVehicule], true);
+        }
     }
 
     public static void AddVehicule(Vehicules.Type type, Vector2 position, bool autonome=false)
