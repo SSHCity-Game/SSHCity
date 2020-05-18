@@ -66,12 +66,6 @@ namespace SshCity.Game.Buildings
         public static void energyAndWater(BuildingType type)
         {
             (int energy, int water) = (Characteristics.energy[Characteristics.Lvl],Characteristics.water[Characteristics.Lvl]);
-            switch (type)
-            {
-                case BuildingType.CENTRALE:
-                    Ref_donnees.energy += 100;
-                    break;
-            }
             Interface.Energy -= energy;
             Interface.Water -= water;
         }

@@ -11,7 +11,7 @@ public class Interface : CanvasLayer
     private const string _str_money_text = "MoneyColor/MoneyText";
     private const string _str_buttonRoute = "ButtonAjoutRoute";
     private const string _str_buttonDelete = "ButtonDelete";
-    private const string _str_sonouverture = ("ButtonShop/Ouverture");
+    private const string _str_sonouverture = "ButtonShop/Ouverture";
     private const string _str_bulldozerMouse = "BulldozerMouse";
     private const string _str_croix = "CroixRouge";
     private const string _str_croixJaune = "CroixJaune";
@@ -40,6 +40,8 @@ public class Interface : CanvasLayer
     private bool _delete = false;
     private Panel _money_couleur;
     private Label _money_text;
+    private Label _energy_text;
+    private Label _water_text;
     private AudioStreamPlayer _ouvertureboutique;
     private Boutique _shop;
     private Timer _timer;
@@ -48,6 +50,8 @@ public class Interface : CanvasLayer
     private Panel _xp_couleur;
     private Label _xp_text;
     private static int moneyWin = 0;
+    private static int energyused = 0;
+    private static int waterused = 0;
     private static bool _moneyAutomatique = true;
 
     public static bool MoneyAutomatique
@@ -57,6 +61,10 @@ public class Interface : CanvasLayer
     }
 
     public static int MoneyWin => moneyWin;
+
+    public static int Energyused => energyused;
+
+    public static int Waterused => waterused;
 
     public static bool InfosBool
     {
@@ -144,6 +152,8 @@ public class Interface : CanvasLayer
         _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
 
         _timer.Connect("timeout", this, nameof(WinMoney));
+        _timer.Connect("timeout", this, nameof(EnergyWin));
+        _timer.Connect("timeout", this, nameof(WaterWin));
     }
 
     public static void ConfigInfos(Vector2 tile)
@@ -169,6 +179,17 @@ public class Interface : CanvasLayer
         {
             MairieMenu.MoneyWinManuel += moneyWin;
         }
+        Water -= waterused;
+    }
+
+    public void EnergyWin()
+    {
+        Energy -= energyused;
+    }
+
+    public void WaterWin()
+    {
+        Water -= Waterused;
     }
 
     public override void _Process(float delta)
@@ -178,9 +199,13 @@ public class Interface : CanvasLayer
         _xp_text.Text = Convert.ToString(_xp);
 
         moneyWin = 0;
+        energyused = 0;
+        waterused = 0;
         foreach (var batiment in Building.ListBuildings)
         {
             moneyWin += Building.Characteristics.Earn[0];
+            energyused += Building.Characteristics.energy[0];
+            waterused += Building.Characteristics.water[0];
         }
 
 
