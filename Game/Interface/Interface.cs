@@ -15,8 +15,6 @@ public class Interface : CanvasLayer
     private const string _str_bulldozerMouse = "BulldozerMouse";
     private const string _str_croix = "CroixRouge";
     private const string _str_croixJaune = "CroixJaune";
-    private const string _str_xp_couleur = "XpColor";
-    private const string _str_xp_text = "XpColor/XpText";
     private const string _str_infos = "Infos";
     private const string _str_timer = "Timer";
     private static bool _interdit = false;
@@ -48,9 +46,8 @@ public class Interface : CanvasLayer
     private Boutique _shop;
     private Timer _timer;
     private bool _visible;
-
-    private Panel _xp_couleur;
-    private Label _xp_text;
+    
+    private TextureProgress ScoreBar;
     
     private static int moneyWin = 0;
     private static int energyused = 0;
@@ -122,8 +119,6 @@ public class Interface : CanvasLayer
     {
         _money_couleur = (Panel) GetNode(_str_money_couleur);
         _money_text = (Label) GetNode(_str_money_text);
-        _xp_couleur = (Panel) GetNode(_str_xp_couleur);
-        _xp_text = (Label) GetNode(_str_xp_text);
         _button_shop = (Button) GetNode(_str_button_shop);
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
         _buttonDelete = (Button) GetNode(_str_buttonDelete);
@@ -136,6 +131,8 @@ public class Interface : CanvasLayer
         _rouages = (Sprite) GetNode("Parametres/Rouages");
         _infos = (Infos) GetNode(_str_infos);
         _timer = (Timer) GetNode(_str_timer);
+        ScoreBar = (TextureProgress) GetNode("ScoreBar");
+        
 
         _croix.Hide();
         _croixJaune.Hide();
@@ -203,7 +200,6 @@ public class Interface : CanvasLayer
     {
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
-        _xp_text.Text = Convert.ToString(_xp);
 
         moneyWin = 0;
         energyused = 0;
