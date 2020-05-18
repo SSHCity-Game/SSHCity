@@ -18,3 +18,7 @@ animation = "SE"
 position = Vector2( -16.382, -1.69704 )
 rotation = -0.471239
 shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true

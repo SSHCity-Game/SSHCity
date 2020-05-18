@@ -30,7 +30,9 @@ public partial class PlanInitial : Node2D
     private PackedScene _accidentArea2D;
     private static bool addAccident = false;
     private static Vector2 positionAccident;
-    
+    private static bool deleteAccident = false;
+    private static Vector2 positionDeleteAccident;
+    private static bool _accidentVisi = false;
 
     public static bool AddVehicule1
     {
@@ -118,15 +120,18 @@ public partial class PlanInitial : Node2D
 
         if (addAccident)
         {
-            Area2D area = (Area2D) _accidentArea2D.Instance();
+            Accident area = (Accident) _accidentArea2D.Instance();
             area.Position = positionAccident;
+            area.Init(this, _accidentVisi);
             AddChild(area);
             addAccident = false;
         }
     }
 
-    public static void AddZoneAccident(Vector2 posi)
+    public static void AddZoneAccident(Vector2 posi, bool visi)
     {
+        GD.Print("ADD");
+        _accidentVisi = visi;
         positionAccident = posi;
         addAccident = true;
     }

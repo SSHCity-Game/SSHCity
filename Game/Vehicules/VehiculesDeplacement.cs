@@ -510,7 +510,11 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
-			Position += _deplacement * delta;
+			if (!_paused)
+			{
+				Position += _deplacement * delta;
+			}
+
 		}
     }
 }

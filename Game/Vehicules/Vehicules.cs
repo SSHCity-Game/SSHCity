@@ -17,6 +17,10 @@ namespace SshCity.Game.Vehicules
         private bool Autonome;
         private static Random rand = new Random();
         private bool _paused = false;
+        private bool _stopArea2DCreat = false;
+        private Timer _timer;
+        private const string _strTimer = "Timer";
+        private bool _stopAccident = false;
         public enum Direction
         {
             TOP,
@@ -149,27 +153,51 @@ namespace SshCity.Game.Vehicules
             Decallage = DecallageDico[_animatedSprite.Animation];
             _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation];
             this.Connect("area_entered", this, nameof(Collision));
+            Connect("area_exited", this, nameof(EndCollision));
 
             this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage;
         }
+
+        public override void _Ready()
+        {
+            base._Ready();
+            _timer = (Timer) GetNode(_strTimer);
+            _timer.Connect("timeout", this, nameof(TimeOut));
+        }
+
         public void Collision(Area2D area2D)
         {
-            if (area2D.CollisionLayer == this.CollisionLayer)
+            if (!_stopArea2DCreat)
             {
-                Vector2 position = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
-                PlanInitial.AddZoneAccident(Position);
-                _planInitial.SetBlock(_planInitial.TileMap3, (int)position.x, (int)position.y, Ref_donnees.accident_voiture);
-                QueueFree();
+                if (area2D.CollisionMask == 1)
+                {
+                    Vector2 position = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
+                    PlanInitial.AddZoneAccident(Position, true);
+                    QueueFree();
+                }
+                else
+                {
+                    PlanInitial.AddZoneAccident(Position, false);
+                    _paused = true;
+                    _stopArea2DCreat = true;
+                }
             }
-            else
-            {
-                CollisionMask = 3;
-                PlanInitial.AddZoneAccident(Position);
-                _paused = true;
-                isMoving = false;
-                _deplacement = new Vector2(0, 0);
-            }
+        }
 
+        public void EndCollision(Area2D area2D)
+        {
+            if (area2D.CollisionMask == 3)
+            {
+                GD.Print("AREA2D OUT");
+                _stopArea2DCreat = false;
+                _paused = false;
+                _stopAccident = true;
+            }
+        }
+
+        public void TimeOut()
+        {
+            _stopAccident = false;
         }
         
         public static List<Type> ListTypeVehicules = new List<Type>()
