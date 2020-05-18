@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=65 format=2]
+[gd_resource type="TileSet" load_steps=72 format=2]
 
 [ext_resource path="res://assets/isometric_0108.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -59,6 +59,13 @@
 [ext_resource path="res://assets/Flammeeglise1.png" type="Texture" id=57]
 [ext_resource path="res://assets/Flammemaison5.png" type="Texture" id=58]
 [ext_resource path="res://assets/Flammemaison4.png" type="Texture" id=59]
+[ext_resource path="res://assets/Images_interface/roues.png" type="Texture" id=61]
+[ext_resource path="res://assets/Images_interface/trait.png" type="Texture" id=62]
+[ext_resource path="res://assets/Images_interface/croix_jaune.png" type="Texture" id=63]
+[ext_resource path="res://assets/Images_interface/marteau.png" type="Texture" id=64]
+[ext_resource path="res://assets/Images_interface/bulldozer.png" type="Texture" id=65]
+[ext_resource path="res://assets/Images_interface/fleche.png" type="Texture" id=66]
+[ext_resource path="res://assets/Images_interface/croix.png" type="Texture" id=67]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -707,3 +714,113 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 66/navigation = SubResource( 1 )
 66/shapes = [  ]
 66/z_index = 0
+67/name = "Marteau"
+67/texture = ExtResource( 64 )
+67/tex_offset = Vector2( 0, 0 )
+67/modulate = Color( 1, 1, 1, 1 )
+67/region = Rect2( 0, 0, 1280, 1056 )
+67/tile_mode = 0
+67/occluder_offset = Vector2( 640, 528 )
+67/navigation_offset = Vector2( 640, 528 )
+67/shapes = [  ]
+67/z_index = 0
+68/name = "Route"
+68/texture = ExtResource( 42 )
+68/tex_offset = Vector2( 0, 0 )
+68/modulate = Color( 1, 1, 1, 1 )
+68/region = Rect2( 0, 0, 1600, 1019 )
+68/tile_mode = 0
+68/occluder_offset = Vector2( 800, 509.5 )
+68/navigation_offset = Vector2( 800, 509.5 )
+68/shapes = [  ]
+68/z_index = 0
+69/name = "Bulldozer"
+69/texture = ExtResource( 65 )
+69/tex_offset = Vector2( 0, 0 )
+69/modulate = Color( 1, 1, 1, 1 )
+69/region = Rect2( 0, 0, 476, 250 )
+69/tile_mode = 0
+69/occluder_offset = Vector2( 238, 125 )
+69/navigation_offset = Vector2( 238, 125 )
+69/shapes = [  ]
+69/z_index = 0
+70/name = "FlecheG"
+70/texture = ExtResource( 66 )
+70/tex_offset = Vector2( 0, 0 )
+70/modulate = Color( 1, 1, 1, 1 )
+70/region = Rect2( 0, 0, 1280, 815 )
+70/tile_mode = 0
+70/occluder_offset = Vector2( 640, 407.5 )
+70/navigation_offset = Vector2( 640, 407.5 )
+70/shapes = [  ]
+70/z_index = 0
+71/name = "FlecheD"
+71/texture = ExtResource( 66 )
+71/tex_offset = Vector2( 0, 0 )
+71/modulate = Color( 1, 1, 1, 1 )
+71/region = Rect2( 0, 0, 1280, 815 )
+71/tile_mode = 0
+71/occluder_offset = Vector2( 640, 407.5 )
+71/navigation_offset = Vector2( 640, 407.5 )
+71/shapes = [  ]
+71/z_index = 0
+72/name = "Image"
+72/texture = ExtResource( 21 )
+72/tex_offset = Vector2( 0, 0 )
+72/modulate = Color( 1, 1, 1, 1 )
+72/region = Rect2( 0, 0, 975, 905 )
+72/tile_mode = 0
+72/occluder_offset = Vector2( 487.5, 452.5 )
+72/navigation_offset = Vector2( 487.5, 452.5 )
+72/shapes = [  ]
+72/z_index = 0
+73/name = "BulldozerMouse"
+73/texture = ExtResource( 65 )
+73/tex_offset = Vector2( 0, 0 )
+73/modulate = Color( 1, 1, 1, 1 )
+73/region = Rect2( 0, 0, 476, 250 )
+73/tile_mode = 0
+73/occluder_offset = Vector2( 238, 125 )
+73/navigation_offset = Vector2( 238, 125 )
+73/shapes = [  ]
+73/z_index = 0
+74/name = "CroixRouge"
+74/texture = ExtResource( 67 )
+74/tex_offset = Vector2( 0, 0 )
+74/modulate = Color( 1, 1, 1, 1 )
+74/region = Rect2( 0, 0, 360, 360 )
+74/tile_mode = 0
+74/occluder_offset = Vector2( 180, 180 )
+74/navigation_offset = Vector2( 180, 180 )
+74/shapes = [  ]
+74/z_index = 0
+75/name = "CroixJaune"
+75/texture = ExtResource( 63 )
+75/tex_offset = Vector2( 0, 0 )
+75/modulate = Color( 1, 1, 1, 1 )
+75/region = Rect2( 0, 0, 512, 510 )
+75/tile_mode = 0
+75/occluder_offset = Vector2( 256, 255 )
+75/navigation_offset = Vector2( 256, 255 )
+75/shapes = [  ]
+75/z_index = 0
+76/name = "Rouages"
+76/texture = ExtResource( 61 )
+76/tex_offset = Vector2( 0, 0 )
+76/modulate = Color( 1, 1, 1, 1 )
+76/region = Rect2( 0, 0, 2048, 2048 )
+76/tile_mode = 0
+76/occluder_offset = Vector2( 1024, 1024 )
+76/navigation_offset = Vector2( 1024, 1024 )
+76/shapes = [  ]
+76/z_index = 0
+77/name = "Trait"
+77/texture = ExtResource( 62 )
+77/tex_offset = Vector2( 0, 0 )
+77/modulate = Color( 1, 1, 1, 1 )
+77/region = Rect2( 0, 0, 1308, 1182 )
+77/tile_mode = 0
+77/occluder_offset = Vector2( 654, 591 )
+77/navigation_offset = Vector2( 654, 591 )
+77/shapes = [  ]
+77/z_index = 0
