@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Game/Incident/menu_incident.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/Incident/incidents.cs" type="Script" id=2]
+
+[node name="Incidents" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="MenuIncidents" parent="." instance=ExtResource( 1 )]
