@@ -20,7 +20,6 @@ public class Accident : Area2D
     {
         if (area2D.CollisionMask == 3)
         {
-            GD.Print("DELETE");
             QueueFree();
         }
     }
@@ -41,7 +40,6 @@ public class Accident : Area2D
         {
             Vector2 position = _planInitial.TileMap2.WorldToMap(GetGlobalMousePosition());
             _planInitial.SetBlock(_planInitial.TileMap3, (int)position.x, (int)position.y, -1);
-            GD.Print("querefree");
             this.QueueFree();
         }
     }

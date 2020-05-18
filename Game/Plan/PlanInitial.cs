@@ -130,7 +130,6 @@ public partial class PlanInitial : Node2D
 
     public static void AddZoneAccident(Vector2 posi, bool visi)
     {
-        GD.Print("ADD");
         _accidentVisi = visi;
         positionAccident = posi;
         addAccident = true;

@@ -9,6 +9,8 @@ namespace SshCity.Game.Vehicules
     {
         private const string _strAnimatedSprite = "AnimatedSprite";
         private const string _strCollsionShape2D = "CollisionShape2D";
+        private Sprite _invincible;
+        private const string _strInvincible = "Invincible";
         private AnimatedSprite _animatedSprite;
         private CollisionShape2D _collisionShape2D;
         private Vector2 _deplacement;
@@ -154,7 +156,6 @@ namespace SshCity.Game.Vehicules
             _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation];
             this.Connect("area_entered", this, nameof(Collision));
             Connect("area_exited", this, nameof(EndCollision));
-
             this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage;
         }
 
@@ -163,11 +164,12 @@ namespace SshCity.Game.Vehicules
             base._Ready();
             _timer = (Timer) GetNode(_strTimer);
             _timer.Connect("timeout", this, nameof(TimeOut));
+            _invincible = (Sprite) GetNode(_strInvincible);
         }
 
         public void Collision(Area2D area2D)
         {
-            if (!_stopArea2DCreat)
+            if (!_stopArea2DCreat && !_stopAccident)
             {
                 if (area2D.CollisionMask == 1)
                 {
@@ -188,16 +190,18 @@ namespace SshCity.Game.Vehicules
         {
             if (area2D.CollisionMask == 3)
             {
-                GD.Print("AREA2D OUT");
                 _stopArea2DCreat = false;
                 _paused = false;
                 _stopAccident = true;
+                _invincible.Show();
+                _timer.Start();
             }
         }
 
         public void TimeOut()
         {
             _stopAccident = false;
+            _invincible.Hide();
         }
         
         public static List<Type> ListTypeVehicules = new List<Type>()
