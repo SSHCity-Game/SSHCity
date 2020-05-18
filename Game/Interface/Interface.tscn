@@ -195,6 +195,7 @@ texture = ExtResource( 15 )
 visible = false
 
 [node name="ScoreBar" type="TextureProgress" parent="."]
+visible = false
 margin_left = 50.0
 margin_top = 5.0
 margin_right = 355.0
@@ -208,6 +209,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 22.0494
 margin_top = 22.6524
 margin_right = 51.0494
