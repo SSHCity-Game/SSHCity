@@ -86,8 +86,8 @@ public partial class PlanInitial
         {
             Interface.Money -= Prix;
         }
-
         var batimentClass = (BuildingType) batiment;
+        Building.energyAndWater(batimentClass);
         Building.Create(batimentClass, tile);
     }
 }

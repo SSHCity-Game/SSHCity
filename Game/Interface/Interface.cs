@@ -180,7 +180,7 @@ public class Interface : CanvasLayer
         moneyWin = 0;
         foreach (var batiment in Building.ListBuildings)
         {
-            moneyWin += batiment.Characteristics.Earn[0];
+            moneyWin += Building.Characteristics.Earn[0];
         }
 
 

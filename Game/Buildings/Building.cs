@@ -34,7 +34,7 @@ namespace SshCity.Game.Buildings
         /// <summary>
         /// Ses caractéristiques associées
         /// </summary>
-        public IBuildingCharacteristics Characteristics { get; }
+        public static IBuildingCharacteristics Characteristics { get; set; }
 
         /// <summary>
         /// Créer le dictionnaire qui store l'état du bâtiment pour le sauvegarder
@@ -60,19 +60,24 @@ namespace SshCity.Game.Buildings
         /// <returns>Le bâtiment créé</returns>
         public static Building Create(BuildingType type, Vector2 position, int theLvl = 0)
         {
-            verify(type);
             return new Building(type, position, theLvl);
         }
 
-        public static void verify(BuildingType type)
+        public static void energyAndWater(BuildingType type)
         {
+            (int energy, int water) = (Characteristics.energy[Characteristics.Lvl],Characteristics.water[Characteristics.Lvl]);
             switch (type)
             {
                 case BuildingType.CENTRALE:
                     Ref_donnees.energy += 100;
                     break;
             }
+            Interface.Energy -= energy;
+            Interface.Water -= water;
         }
+
+        
+        
 
         /// <summary>
         /// Supprime un bâtiment de la liste des bâtiments
@@ -109,7 +114,7 @@ namespace SshCity.Game.Buildings
             if (batimentToUpgrade == null) return (false, -1);
             batimentToUpgrade.Upgrade();
             ListBuildings.Add(batimentToUpgrade);
-            return (true, batimentToUpgrade.Characteristics.Bloc[0]);
+            return (true, Building.Characteristics.Bloc[0]);
         }
 
         /// <summary>
