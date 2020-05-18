@@ -49,10 +49,14 @@ __meta__ = {
 }
 
 [node name="Texte" type="Label" parent="Background"]
-margin_left = 116.5
-margin_top = 91.0
-margin_right = 667.5
-margin_bottom = 342.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -275.5
+margin_top = -125.5
+margin_right = 275.5
+margin_bottom = 125.5
 custom_fonts/font = SubResource( 1 )
 align = 1
 valign = 1
@@ -95,13 +99,13 @@ __meta__ = {
 }
 
 [node name="Resoudre" type="Button" parent="."]
-anchor_left = 0.5
+anchor_left = 0.503
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.503
 anchor_bottom = 0.5
-margin_left = -69.0
+margin_left = -72.072
 margin_top = 142.0
-margin_right = 3.0
+margin_right = -0.0720215
 margin_bottom = 162.0
 rect_scale = Vector2( 2, 2 )
 text = "Eteindre"
@@ -110,14 +114,14 @@ __meta__ = {
 }
 
 [node name="Quitter" type="Button" parent="."]
-anchor_left = 0.115
-anchor_top = 0.139
-anchor_right = 0.115
-anchor_bottom = 0.139
-margin_left = 622.24
-margin_top = 16.6
-margin_right = 694.24
-margin_bottom = 36.6
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 229.36
+margin_top = -201.36
+margin_right = 301.36
+margin_bottom = -181.36
 rect_scale = Vector2( 2, 2 )
 text = "Quitter"
 __meta__ = {
@@ -125,13 +129,13 @@ __meta__ = {
 }
 
 [node name="Boutique" type="Button" parent="."]
-anchor_left = 0.5
+anchor_left = 0.502
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.502
 anchor_bottom = 0.5
-margin_left = -66.6122
+margin_left = -70.0206
 margin_top = 142.921
-margin_right = 3.38782
+margin_right = -0.0205688
 margin_bottom = 162.921
 rect_scale = Vector2( 2, 2 )
 text = "Boutique"
@@ -140,9 +144,11 @@ __meta__ = {
 }
 
 [node name="Flamme" type="Button" parent="."]
-margin_left = 950.432
+anchor_left = 0.955
+anchor_right = 0.955
+margin_left = -27.488
 margin_top = 60.0
-margin_right = 1062.43
+margin_right = 84.51
 margin_bottom = 166.0
 rect_scale = Vector2( 0.5, 0.5 )
 icon = SubResource( 3 )
@@ -150,3 +156,6 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="Timer" parent="Flamme"]
+one_shot = true
