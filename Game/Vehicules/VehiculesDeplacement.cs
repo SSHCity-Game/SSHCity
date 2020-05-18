@@ -7,7 +7,7 @@ namespace SshCity.Game.Vehicules
     public partial class Vehicules
     {
 	    private bool Croisement; //Si la voiture est devant un croisment 
-	    private Vector2 BlocCroisment; //Savoit quel bloc croisment est devant le camion
+	    private Vector2 BlocCroisment; //Savoit position bloc croisment
 	    private Vector2[] arriveCroisment;
 	    private Direction[] directionCroisement;
 	    private string[] animationCroisment;
