@@ -12,8 +12,8 @@ namespace SshCity.Game.Buildings.Characteristics
             Titre = new[] {"Police"};
             Lvl = 0;
             GainXp = new[] {10, 100, 500};
-            Consomationelec = new[] {2};
-            Consomationeau = new[] {1};
+            energy = new[] {2};
+            water = new[] {1};
             Image = new[] {"res://assets/ImageSized/police.png"};
             NbrAmeliorations = 0;
         }
@@ -24,8 +24,8 @@ namespace SshCity.Game.Buildings.Characteristics
         public string[] Titre { get; }
         public int Lvl { get; set; }
         public int[] GainXp { get; }
-        public int[] Consomationelec { get; }
-        public int[] Consomationeau { get; }
+        public int[] energy { get; }
+        public int[] water { get; }
         public string[] Image { get; }
         public int NbrAmeliorations { get; }
     }

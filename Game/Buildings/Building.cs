@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using SshCity.Game.Plan;
 using SshCity.Game.Sauvegarde;
 
 namespace SshCity.Game.Buildings
@@ -59,7 +60,18 @@ namespace SshCity.Game.Buildings
         /// <returns>Le bâtiment créé</returns>
         public static Building Create(BuildingType type, Vector2 position, int theLvl = 0)
         {
+            verify(type);
             return new Building(type, position, theLvl);
+        }
+
+        public static void verify(BuildingType type)
+        {
+            switch (type)
+            {
+                case BuildingType.CENTRALE:
+                    Ref_donnees.energy += 100;
+                    break;
+            }
         }
 
         /// <summary>

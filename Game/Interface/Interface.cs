@@ -26,6 +26,8 @@ public class Interface : CanvasLayer
     private static bool _infosBool = false;
 
     private static int _money = Ref_donnees.argent;
+    private static int _energy = Ref_donnees.energy;
+    private static int _water = Ref_donnees.water;
     private static bool _hide = true;
     private static int _xp = 0;
     private bool _achatRoute = false;
@@ -90,6 +92,18 @@ public class Interface : CanvasLayer
     {
         get => _xp;
         set => _xp = value;
+    }
+
+    public static int Energy
+    {
+        get => _energy;
+        set => _energy = value;
+    }
+
+    public static int Water
+    {
+        get => _water;
+        set => _water = value;
     }
 
 
