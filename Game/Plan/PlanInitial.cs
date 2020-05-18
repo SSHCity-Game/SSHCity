@@ -41,7 +41,7 @@ public partial class PlanInitial : Node2D
 
     //Add Houloucoupters
     public static bool HouloucoupterInit = false;
-    public static Vector2 HouloucoupterPosition;
+    public static Vector2 HouloucoupterPosition = new Vector2(60, 0);
     public static Houloucoupter.Type HouloucoupterType;
     public static Vector2 HouloucoupterDestination;
     private PackedScene _houloucoupterScene;
@@ -107,6 +107,7 @@ public partial class PlanInitial : Node2D
         _accidentArea2D = (PackedScene) GD.Load("res://Game/Vehicules/Accident.tscn");
         _houloucoupterScene = (PackedScene) GD.Load("res://Game/Vehicules/Houloucoupter.tscn");
         VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
+        AddHouloucoupter(Houloucoupter.Type.HOPITAL, new Vector2(80, 0), new Vector2(18, -8));
     }
 
     public override void _Process(float delta)
@@ -144,9 +145,10 @@ public partial class PlanInitial : Node2D
 
         if (HouloucoupterInit)
         {
-            Houloucoupter houloucoupter = (Houloucoupter) _houloucoupterScene.Instance();
-            houloucoupter.Init(this, HouloucoupterType, HouloucoupterPosition, HouloucoupterDestination);
-            AddChild(houloucoupter);
+            Houloucoupter _houloucoupter = (Houloucoupter) _houloucoupterScene.Instance();
+            _houloucoupter.Init(this, HouloucoupterType, HouloucoupterPosition, HouloucoupterDestination);
+            AddChild(_houloucoupter);
+            HouloucoupterInit = false;
         }
     }
 
@@ -179,10 +181,10 @@ public partial class PlanInitial : Node2D
 
     public static void AddHouloucoupter(Houloucoupter.Type type, Vector2 position, Vector2 destination)
     {
-        HouloucoupterInit = true;
         HouloucoupterPosition = position;
         HouloucoupterType = type;
         HouloucoupterDestination = destination;
+        HouloucoupterInit = true;
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)

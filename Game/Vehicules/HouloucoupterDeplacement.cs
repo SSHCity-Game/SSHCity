@@ -7,6 +7,7 @@ public partial class Houloucoupter
         base._Process(delta);
         if (arrive(Position, _destination))
         {
+            GD.Print("VITE");
             Position += _deplacement * delta;
         }
     }

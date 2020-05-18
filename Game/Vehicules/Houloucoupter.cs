@@ -20,10 +20,10 @@ public partial class Houloucoupter : Area2D
 
     Godot.Collections.Dictionary<string, int> CollisionAngle = new Godot.Collections.Dictionary<string, int>()
     {
-        {"NE", 27},
-        {"NW", -27},
-        {"SE", -27},
-        {"SW", 27}
+        {"NE", 60},
+        {"NW", -60},
+        {"SE", -60},
+        {"SW", 60}
     };
 
     Godot.Collections.Dictionary<Type, SpriteFrames> AnimatedSpriteType = new Godot.Collections.Dictionary<Type, SpriteFrames>()
@@ -38,17 +38,19 @@ public partial class Houloucoupter : Area2D
 
     public void Init(PlanInitial planInitial, Type type, Vector2 position, Vector2 destination)
     {
+        GD.Print("VOLE");
         _animatedSprite = (AnimatedSprite) GetNode(_strAnimatedSprite);
         _collisionShape2D = (CollisionShape2D) GetNode(_strCollsionShape2D);
         this._planInitial = planInitial;
         SpriteFrames spriteFrames = AnimatedSpriteType[type];
         _animatedSprite.Frames = spriteFrames;
-        int blocRoute = planInitial.GetBlock(planInitial.TileMap2, (int) position.x, (int) position.y);
         _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation];
-        this.Connect("area_entered", this, nameof(Collision));
-        this.Position = position;
-        _deplacement = destination - Position;
-        _destination = destination;
+        Connect("area_entered", this, nameof(Collision));
+        Position = planInitial.TileMap2.MapToWorld(position);
+        GD.Print(Position);
+        _animatedSprite.Animation = "NE";
+        _deplacement = planInitial.TileMap2.MapToWorld(destination - Position);
+        _destination = planInitial.TileMap2.MapToWorld(destination);
         
         if (_deplacement.x >= Position.x && _deplacement.y >= Position.y)
         {
