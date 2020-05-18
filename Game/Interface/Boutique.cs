@@ -118,22 +118,22 @@ public class Boutique : CanvasLayer
             _button_speciaux.Pressed = false;
             Menu_Achat.Reset1 = true;
             MenuSante._cligno.Hide();
-            menu_incident.openShop = false;
-            menu_incident.openIncident = false;
+            menu_incident.CaserneopenShop = false;
+            menu_incident.OpenIncident = false;
         }
     }
 
     public override void _Process(float delta)
     {
-        if (menu_incident.openIncident)
+        if (menu_incident.OpenIncident) // ferme la boutique si appui sur incident
         {
             ViewShop(false);
         }
 
-        if (menu_incident.openShop)
+        if (menu_incident.CaserneopenShop) // ouvre le shop et fait clignoter la caserne
         {
-            ViewShop(true);
             MenuSante._cligno.Show();
+            ViewShop(true);
         }
         else
         {

@@ -4,74 +4,107 @@ using System.Threading.Tasks;
 using Godot;
 using SshCity.Game.Plan;
 
-public class Incident : PlanInitial
+public class incidents : CanvasLayer
 {
-	private const int XpIncident = 0;
+	/* Maximum des incidents potentiels */
+	public const int MAX_INCIDENTS = 8;
+	public const int MAX_INCENDIES = 2;
+	public const int MAX_ACCIDENT = 1;
+	public const int MAX_NOYADES = 2;
+	public const int MAX_BRACAGES = 2;
+	/* Nombre actuel des incidents */
+	public static int Nbincidents = 0;
+	public static int Nbincendies = 0;
+	public static int Nbaccident = 0;
+	public static int Nbnoyades = 0;
+	public static int Nbbracages = 0;
+	
+	public static bool ResoIncident = false;
 
-	public static bool resoIncident = false;
-
-
-	/* Permet l'utilisation des methodes non static dans methode static */
-	private static Incident Instance { get; } = new Incident();
-	private static menu_incident MenuIncident { get; } = new menu_incident();
-
-
+	private static int x;
+	private static int y;
+	private static int indexAv;
+	private static int indexAp;
+	
+	
 	public override void _Ready()
 	{
-		TileMap1 = (TileMap) GetNode("TileMap1");
-		TileMap2 = (TileMap) GetNode("TileMap2");
-		TileMap3 = (TileMap) GetNode("TileMap3");
 	}
 
-	public static async void GenereIncidents(PlanInitial planInitial)
+	public override void _Process(float delta)
 	{
-		/******************************************
-		 * Genere differents incidents sur la map *
-		 ******************************************/
+		base._Process(delta);
+		
+		/* INCENDIES */
+		(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.BatimentFeu);
+		if (ResoIncident)
+		{
+			StopIncendies(MainPlan._planInitial);
+			Nbincendies--;
+		}
+		else if (Nbincidents < MAX_INCIDENTS && Nbincendies < MAX_INCENDIES && !ResoIncident)
+		{
+			GenereIncendies(MainPlan._planInitial);
+			Nbincendies++;
+		}
+
+		Nbincidents = Nbincendies + Nbaccident + Nbnoyades + Nbbracages;
+	}
+
+	public static (int x, int y, int indexAv, int indexAp) GenereCoords((int, int)[] listBat)
+	{
+		/*******************************************************************
+		 * Genere aleatoirement les coordonnees d un batiement a accidente *
+		 *******************************************************************/
 
 		var rand = new Random();
-		int indexAv = Ref_donnees.maison3;
-		int indexAp = Ref_donnees.maison3_flamme;
-		List<Vector2> coordinates = new List<Vector2>(); // positions du bloc index_av
-		int x, y;
-		Vector2 pos;
-
-		/* recherche des coordonnees du batiment voulut et ajout a la liste coordinates */
-		foreach (var building in MainPlan.ListeBatiment)
-		{
-			(Vector2 coords, int bat) = building;
-			if (bat == indexAv)
-				coordinates.Add(coords);
-		}
-
-		int nbBloc = coordinates.Count - 1;
-		pos = coordinates[rand.Next(0, nbBloc)]; // choisit la tuile aleatoirement
-		x = (int) pos.x;
-		y = (int) pos.y;
-
-		//if (Interface.Xp >= XpIncident)
-		//{
-		await Task.Delay(5000);
-		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
-		await Task.Delay(1000);
-		menu_incident.AlerteIncendie = true;
-		if (resoIncident)
-		{
-			BuildingSwitch(planInitial, indexAp, indexAv, x, y);
-			resoIncident = false;
-		}
-
-		//}
+		var coordinates = new List<Vector2>(); // Liste de stockage des coordonnees de l incident
+		var nbBat = listBat.Length - 1;
+		int nbBloc;
+		int indexAv, indexAp;
+		
+		/* Ajoute a la liste toutes les positions du batiment a incendier */
+		do {
+			(indexAv, indexAp) = listBat[rand.Next(0, nbBat)]; // choix aleatoire du batiment parmit les possibilites
+			
+			foreach (var building in MainPlan.ListeBatiment)
+			{
+				(Vector2 coords, int bat) = building;
+				if (bat == indexAv)
+					coordinates.Add(coords);
+			}
+			nbBloc = coordinates.Count - 1;
+		} while (nbBloc < 0); // verifie que le batiment existe et recommence s'il n'existe pas
+		
+		var pos = coordinates[rand.Next(0, nbBloc)]; // choisit aleatoirement un batiment parmit tous les batiments de meme type
+		var x = (int) pos.x;
+		var y = (int) pos.y;
+		return (x, y, indexAv, indexAp);
 	}
 
+	public static async void GenereIncendies(PlanInitial planInitial)
+	{ 
+		/* change le batiment normal avec celui accidente */
+		await Task.Delay(5000);
+		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
+		menu_incident.Flamme.Show();
+	}
+	
+	public static async void StopIncendies(PlanInitial planInitial)
+	{ 
+		/* revient au batiment normal */
+		menu_incident.Flamme.Hide();
+		await Task.Delay(3000);
+		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
+	}
 	public static void BuildingSwitch(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
 	{
-		/***************************************
+		/********************************
 		 * Change l'image d'un batiment *
-		 ***************************************/
+		 ********************************/
 
-		/* Initialise le bloc en x,y, comme batiment en feu */
-		if (planInitial.GetBlock(planInitial.TileMap2, x, y) == indexAv)
+		/* Initialise le bloc en x,y, comme batiment accidente */
+		if (planInitial.GetBlock(planInitial.TileMap2, x, y) == indexAv) 
 			planInitial.SetBlock(planInitial.TileMap2, x, y, indexAp);
 	}
 }

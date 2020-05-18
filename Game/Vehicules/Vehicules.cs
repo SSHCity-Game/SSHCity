@@ -71,7 +71,7 @@ namespace SshCity.Game.Vehicules
             };
         }
 
-        //Choisis l'animation du vehicule (son orientation) par rapport à a la route au depart
+        //Choisis l'animation du vehicule (son orientation) par rapport à la route au depart
         Godot.Collections.Dictionary<int, string>  WhichAnimation = new Godot.Collections.Dictionary<int, string>()
         {
             {Ref_donnees.route_left, "NE"},
