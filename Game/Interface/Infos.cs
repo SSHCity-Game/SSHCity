@@ -108,8 +108,8 @@ public class Infos : Panel
             _lvlActuel.Text = "Lvl " + Convert.ToString(Building.Characteristics.Lvl + 1);
             _argentActuel.Text = Convert.ToString(Building.Characteristics.Earn[0]);
             _class = batiment.Type;
-            _energieActuel.Text = Convert.ToString(Building.Characteristics.water[0]);
-            _eauActuel.Text = Convert.ToString(Building.Characteristics.energy[0]);
+            _energieActuel.Text = Convert.ToString(Building.Characteristics.energy[0]);
+            _eauActuel.Text = Convert.ToString(Building.Characteristics.water[0]);
             if (Building.Characteristics.Lvl != Building.Characteristics.NbrAmeliorations)
             {
                 _argentAmelio.Text = Convert.ToString(Building.Characteristics.Earn[Building.Characteristics.Lvl + 1]);

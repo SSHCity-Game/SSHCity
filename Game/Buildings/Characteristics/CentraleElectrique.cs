@@ -12,7 +12,7 @@ namespace SshCity.Game.Buildings.Characteristics
             Titre = new[] {"Centrale Electrique"};
             Lvl = 0;
             GainXp = new[] {10, 100, 500};
-            energy = new[] {-100};
+            energy = new[] {0};
             water = new[] {3};
             Image = new[] {"res://assets/ImageSized/isometric centrale1.png"};
             NbrAmeliorations = 0;
