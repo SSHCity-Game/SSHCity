@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using SshCity.Game.Plan;
 
 public class MairieMenu : Panel
 {
@@ -126,6 +127,8 @@ public class MairieMenu : Panel
         }
 
         _argentValue.Text = "" + Interface.MoneyWin;
+        _electriciteValue.Text = "" + Interface.Energyused;
+        _eauValue.Text = "" + Interface.Waterused;
 
     }
 }

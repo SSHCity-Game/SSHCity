@@ -27,6 +27,12 @@ public partial class PlanInitial : Node2D
     private static bool VehiculesAutonome;
     public static List<Vector2> DepartRoute = new List<Vector2>();
     private static bool addVehicule = true;
+    private PackedScene _accidentArea2D;
+    private static bool addAccident = false;
+    private static Vector2 positionAccident;
+    private static bool deleteAccident = false;
+    private static Vector2 positionDeleteAccident;
+    private static bool _accidentVisi = false;
 
     public static bool AddVehicule1
     {
@@ -84,6 +90,7 @@ public partial class PlanInitial : Node2D
         VehiculeTimer = (Timer) GetNode(str_VehiculeTimer);
         VehiculeTimer.Autostart = true;
         _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
+        _accidentArea2D = (PackedScene) GD.Load("res://Game/Vehicules/Accident.tscn");
         VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
     }
 
@@ -110,6 +117,22 @@ public partial class PlanInitial : Node2D
             AddChild(_vehicule);
             VehiculesInit = false;
         }
+
+        if (addAccident)
+        {
+            Accident area = (Accident) _accidentArea2D.Instance();
+            area.Position = positionAccident;
+            area.Init(this, _accidentVisi);
+            AddChild(area);
+            addAccident = false;
+        }
+    }
+
+    public static void AddZoneAccident(Vector2 posi, bool visi)
+    {
+        _accidentVisi = visi;
+        positionAccident = posi;
+        addAccident = true;
     }
 
     public void TimerOutVehicule()
@@ -237,7 +260,6 @@ public partial class PlanInitial : Node2D
         if ((_achat || _achatRoute) && Interface.Money - _prix < 0)
         {
             _NotEnoughtMoney = true;
-            ;
             Interface.InterdiMoney = true;
         }
         else

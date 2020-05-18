@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using SshCity.Game.Plan;
 using SshCity.Game.Sauvegarde;
 
 namespace SshCity.Game.Buildings
@@ -33,7 +34,7 @@ namespace SshCity.Game.Buildings
         /// <summary>
         /// Ses caractéristiques associées
         /// </summary>
-        public IBuildingCharacteristics Characteristics { get; }
+        public static IBuildingCharacteristics Characteristics { get; set; }
 
         /// <summary>
         /// Créer le dictionnaire qui store l'état du bâtiment pour le sauvegarder
@@ -61,6 +62,16 @@ namespace SshCity.Game.Buildings
         {
             return new Building(type, position, theLvl);
         }
+
+        public static void energyAndWater(BuildingType type)
+        {
+            (int energy, int water) = (Characteristics.energy[Characteristics.Lvl],Characteristics.water[Characteristics.Lvl]);
+            Interface.Energy -= energy;
+            Interface.Water -= water;
+        }
+
+        
+        
 
         /// <summary>
         /// Supprime un bâtiment de la liste des bâtiments
@@ -97,7 +108,7 @@ namespace SshCity.Game.Buildings
             if (batimentToUpgrade == null) return (false, -1);
             batimentToUpgrade.Upgrade();
             ListBuildings.Add(batimentToUpgrade);
-            return (true, batimentToUpgrade.Characteristics.Bloc[0]);
+            return (true, Building.Characteristics.Bloc[0]);
         }
 
         /// <summary>

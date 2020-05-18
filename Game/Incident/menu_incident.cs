@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 using SshCity.Game.Plan;
 
@@ -5,11 +6,6 @@ public class menu_incident : CanvasLayer
 {
     public static Button Flamme;
 
-    public static bool AlerteIncendie = false;
-    //public TextureRect BackBoutiqueOk;
-    //public Label TexteBoutiqueOk;
-
-    public static int ExistFire = 0;
     public static bool OpenIncident = false;
     public static bool CaserneopenShop = false;
 
@@ -40,8 +36,6 @@ public class menu_incident : CanvasLayer
         Flamme = (Button) GetNode("Flamme");
         Background = (TextureRect) GetNode("Background");
         Texte = (Label) GetNode("Background/Texte");
-        //BackBoutiqueOk = (TextureRect) GetNode("BoutiqueOk");
-        //TexteBoutiqueOk = (Label) GetNode("BoutiqueOk/TexteBoutiqueOk");
 
         Boutique.Hide();
         Resoudre.Hide();
@@ -49,28 +43,13 @@ public class menu_incident : CanvasLayer
         Flamme.Hide();
         Background.Hide();
         Texte.Hide();
-        //BackBoutiqueOk.Hide();
-        //TexteBoutiqueOk.Hide();
 
         Boutique.Connect("pressed", this, nameof(on_boutique_pressed));
         Resoudre.Connect("pressed", this, nameof(on_resoudre_pressed));
         Quitter.Connect("pressed", this, nameof(on_quitter_pressed));
         Flamme.Connect("pressed", this, nameof(Resolution));
     }
-
-    public override void _Process(float delta)
-    {
-        base._Process(delta);
-        if (AlerteIncendie)
-        {
-            Flamme.Show();
-        }
-        else
-        {
-            Flamme.Hide();
-        }
-    }
-
+    
 
     private void HideAll()
     {
@@ -91,8 +70,9 @@ public class menu_incident : CanvasLayer
 
     public void Resolution()
     {
-        Quitter.Show();
         Background.Show();
+        Quitter.Show();
+        
         if (MainPlan.ExistBatiment(Ref_donnees.caserne))
         {
             Texte.Text = CaserneOui;
@@ -108,12 +88,11 @@ public class menu_incident : CanvasLayer
         OpenIncident = true;
     }
 
-    private void on_resoudre_pressed()
+    private async void on_resoudre_pressed()
     {
         HideAll();
-        Incident.resoIncident = true;
-        AlerteIncendie = false;
-        
+        await Task.Delay(3000);
+        incidents.ResoIncident = true;
     }
 
     private void on_quitter_pressed()
