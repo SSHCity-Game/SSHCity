@@ -4,7 +4,7 @@ using SshCity.Game.Plan;
 
 namespace SshCity.Game.Vehicules
 {
-    public partial class Vehicules: Area2D
+    public partial class Vehicules
     {
 	    private bool Croisement; //Si la voiture est devant un croisment 
 	    private Vector2 BlocCroisment; //Savoit quel bloc croisment est devant le camion
@@ -74,6 +74,7 @@ namespace SshCity.Game.Vehicules
 					(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
 				{
 					_animatedSprite.Animation = para.anim;
+					_collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation];
 					Decallage = DecallageDico[_animatedSprite.Animation];
 					isMoving = true;
 					Vector2 nextBlock = positionActuel + DirectionToVector2(para.direction1);
@@ -415,6 +416,7 @@ namespace SshCity.Game.Vehicules
 						arrive = arriveCroisment[1];
 						direction = directionCroisement[1];
 						_animatedSprite.Animation = animationCroisment[1];
+						_collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation];
 						Croisement = false;
 						isMovingCroisment = false;
 						isMoving = true;
@@ -448,7 +450,7 @@ namespace SshCity.Game.Vehicules
 			}
 
 			//input deplacement inital
-			if (!isMoving && !Autonome && Input.IsActionPressed("ui_right"))
+			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_right"))
 			{
 				if (Croisement)
 				{
@@ -458,7 +460,7 @@ namespace SshCity.Game.Vehicules
 					MovingDirection((Direction.RIGHT, "NE"));
 			}
 
-			if (!isMoving && !Autonome && Input.IsActionPressed("ui_left"))
+			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_left"))
 			{
 				if (Croisement)
 				{
@@ -470,7 +472,7 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
-			if (!isMoving && !Autonome && Input.IsActionPressed("ui_down"))
+			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_down"))
 			{
 				if (Croisement)
 				{
@@ -482,7 +484,7 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
-			if (!isMoving && !Autonome && Input.IsActionPressed("ui_up"))
+			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_up"))
 			{
 				if (Croisement)
 				{
@@ -494,7 +496,7 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
-			if (Autonome && !isMoving)
+			if (!_paused && Autonome && !isMoving)
 			{
 				int randNumber = rand.Next(0, 4);
 				Direction direction = ListDirection[randNumber];
@@ -508,7 +510,11 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
-			Position += _deplacement * delta;
+			if (!_paused)
+			{
+				Position += _deplacement * delta;
+			}
+
 		}
     }
 }

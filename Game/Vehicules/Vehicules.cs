@@ -9,6 +9,8 @@ namespace SshCity.Game.Vehicules
     {
         private const string _strAnimatedSprite = "AnimatedSprite";
         private const string _strCollsionShape2D = "CollisionShape2D";
+        private Sprite _invincible;
+        private const string _strInvincible = "Invincible";
         private AnimatedSprite _animatedSprite;
         private CollisionShape2D _collisionShape2D;
         private Vector2 _deplacement;
@@ -16,6 +18,11 @@ namespace SshCity.Game.Vehicules
         private Vector2 arrive;
         private bool Autonome;
         private static Random rand = new Random();
+        private bool _paused = false;
+        private bool _stopArea2DCreat = false;
+        private Timer _timer;
+        private const string _strTimer = "Timer";
+        private bool _stopAccident = false;
         public enum Direction
         {
             TOP,
@@ -64,7 +71,7 @@ namespace SshCity.Game.Vehicules
             };
         }
 
-        //Choisis l'animation du vehicule (son orientation) par rapport à a la route au depart
+        //Choisis l'animation du vehicule (son orientation) par rapport à la route au depart
         Godot.Collections.Dictionary<int, string>  WhichAnimation = new Godot.Collections.Dictionary<int, string>()
         {
             {Ref_donnees.route_left, "NE"},
@@ -146,13 +153,55 @@ namespace SshCity.Game.Vehicules
             int blocRoute = planInitial.GetBlock(planInitial.TileMap2, (int) position.x, (int) position.y);
             _animatedSprite.Animation = WhichAnimation[blocRoute];
             Decallage = DecallageDico[_animatedSprite.Animation];
-            _collisionShape2D.Rotation = CollisionAngle[_animatedSprite.Animation];
-            Connect("area_shape_entered", this, nameof(Collision));
+            _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation];
+            this.Connect("area_entered", this, nameof(Collision));
+            Connect("area_exited", this, nameof(EndCollision));
             this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage;
         }
-        public void Collision()
+
+        public override void _Ready()
         {
-        	QueueFree();
+            base._Ready();
+            _timer = (Timer) GetNode(_strTimer);
+            _timer.Connect("timeout", this, nameof(TimeOut));
+            _invincible = (Sprite) GetNode(_strInvincible);
+        }
+
+        public void Collision(Area2D area2D)
+        {
+            if (!_stopArea2DCreat && !_stopAccident)
+            {
+                if (area2D.CollisionMask == 1)
+                {
+                    Vector2 position = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
+                    PlanInitial.AddZoneAccident(Position, true);
+                    QueueFree();
+                }
+                else
+                {
+                    PlanInitial.AddZoneAccident(Position, false);
+                    _paused = true;
+                    _stopArea2DCreat = true;
+                }
+            }
+        }
+
+        public void EndCollision(Area2D area2D)
+        {
+            if (area2D.CollisionMask == 3)
+            {
+                _stopArea2DCreat = false;
+                _paused = false;
+                _stopAccident = true;
+                _invincible.Show();
+                _timer.Start();
+            }
+        }
+
+        public void TimeOut()
+        {
+            _stopAccident = false;
+            _invincible.Hide();
         }
         
         public static List<Type> ListTypeVehicules = new List<Type>()

@@ -35,8 +35,10 @@ public class Interface : CanvasLayer
     private Button _button_shop;
     private Button _buttonDelete;
     private Button _buttonRoute;
+    private Button _parametre;
     public Sprite _croix;
     private Sprite _croixJaune;
+    private Sprite _rouages;
     private bool _delete = false;
     private Panel _money_couleur;
     private Label _money_text;
@@ -49,6 +51,7 @@ public class Interface : CanvasLayer
 
     private Panel _xp_couleur;
     private Label _xp_text;
+    
     private static int moneyWin = 0;
     private static int energyused = 0;
     private static int waterused = 0;
@@ -124,11 +127,13 @@ public class Interface : CanvasLayer
         _button_shop = (Button) GetNode(_str_button_shop);
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
         _buttonDelete = (Button) GetNode(_str_buttonDelete);
+        _parametre = (Button) GetNode("Parametres");
         _shop = (Boutique) GetNode(_str_shop);
         _bulldozerMouse = (Sprite) GetNode(_str_bulldozerMouse);
         _bulldozerMouse.Hide();
         _croix = (Sprite) GetNode(_str_croix);
         _croixJaune = (Sprite) GetNode(_str_croixJaune);
+        _rouages = (Sprite) GetNode("Parametres/Rouages");
         _infos = (Infos) GetNode(_str_infos);
         _timer = (Timer) GetNode(_str_timer);
 
@@ -154,6 +159,8 @@ public class Interface : CanvasLayer
         _timer.Connect("timeout", this, nameof(WinMoney));
         _timer.Connect("timeout", this, nameof(EnergyWin));
         _timer.Connect("timeout", this, nameof(WaterWin));
+
+        _parametre.Connect("pressed", this, nameof(ButtonParam));
     }
 
     public static void ConfigInfos(Vector2 tile)
@@ -338,5 +345,10 @@ public class Interface : CanvasLayer
             PlanInitial.Delete = true;
             _bulldozerMouse.Show();
         }
+    }
+
+    public void ButtonParam()
+    {
+        /* Ouverture Parametres du jeu */
     }
 }
