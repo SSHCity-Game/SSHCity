@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Game/Interface/Interface.cs" type="Script" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -219,5 +219,6 @@ __meta__ = {
 position = Vector2( 29.6387, 30.3809 )
 scale = Vector2( 0.0288479, 0.0295595 )
 texture = ExtResource( 15 )
+
 [node name="MairieMenu" parent="." instance=ExtResource( 14 )]
 visible = false

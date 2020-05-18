@@ -76,15 +76,24 @@ namespace SshCity.Game.Plan
         public const int centrale = 58;
         public const int ferme_ecolo = 59;
         /* Incendie Batiments */
-        public const int boutique5_flamme = 3;
-        public const int eglise1_flamme = 4;
+        public const int restaurant_flamme = 3;
+        public const int eglise_flamme = 4;
         public const int maison1_flamme = 6;
         public const int maison4_flamme = 7;
         public const int maison5_flamme = 8;
         public const int maison3_flamme = 57;
         public const int cafe_flamme = 60;
-        public const int resto_flamme= 62;
+        public const int restaurant2_flamme= 62;
 
+        /* Liste batiment, batiment en feu */
+        public static (int, int)[] BatimentFeu = {
+            (maison1, maison1_flamme), (maison3, maison3_flamme),
+            (maison4, maison4_flamme), (maison5, maison5_flamme), (restaurant, restaurant_flamme),
+            (restaurant2, restaurant2_flamme), (eglise, eglise_flamme), (cafe, cafe_flamme)
+        };
+        
+        /* Liste batiment, batiment en feu */
+        public static int[] Lacs = {63,64,65};
         
         
         // Sauvegarde

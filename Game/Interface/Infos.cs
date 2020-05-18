@@ -43,6 +43,8 @@ public class Infos : Panel
     private bool buttonWork = false;
     private Vector2 position;
 
+    public Vector2 CamionPos;
+
     public static bool IsOpen
     {
         get => _isOpen;

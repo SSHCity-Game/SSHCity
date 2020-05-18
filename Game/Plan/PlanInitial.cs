@@ -237,7 +237,6 @@ public partial class PlanInitial : Node2D
         if ((_achat || _achatRoute) && Interface.Money - _prix < 0)
         {
             _NotEnoughtMoney = true;
-            ;
             Interface.InterdiMoney = true;
         }
         else
