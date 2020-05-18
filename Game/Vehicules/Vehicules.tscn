@@ -23,7 +23,6 @@ animation = "SW"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -16.382, -1.69704 )
-
 rotation = -0.471239
 shape = SubResource( 1 )
 
