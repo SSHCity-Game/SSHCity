@@ -75,6 +75,10 @@ namespace SshCity.Game.Plan
         public const int montagne = 56;
         public const int centrale = 58;
         public const int ferme_ecolo = 59;
+        
+        public static int energy = 20;
+
+        public static int water = 20;
         /* Incendie Batiments */
         public const int boutique5_flamme = 3;
         public const int eglise1_flamme = 4;
