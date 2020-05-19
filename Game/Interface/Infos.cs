@@ -99,7 +99,7 @@ public class Infos : Panel
 
     public bool config(Vector2 tile)
     {
-        Building batiment = Building.Delete(tile);
+        Building batiment = Building.GetFromTile(tile);
         if (batiment != null)
         {
             Building.ListBuildings.Add(batiment);

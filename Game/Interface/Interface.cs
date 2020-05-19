@@ -22,6 +22,7 @@ public class Interface : CanvasLayer
     private static Infos _infos;
 
     private static bool _infosBool = false;
+    private static PlanInitial _planInitial;
 
     private static int _money = Ref_donnees.argent;
     private static int _energy = Ref_donnees.energy;
@@ -117,6 +118,10 @@ public class Interface : CanvasLayer
         set => _water = value;
     }
 
+    public void Init(PlanInitial planInitial)
+    {
+        _planInitial = planInitial;
+    }
 
     public override void _Ready()
     {
@@ -212,6 +217,7 @@ public class Interface : CanvasLayer
         moneyWin = 0;
         energyused = 0;
         waterused = 0;
+        
         foreach (var batiment in Building.ListBuildings)
         {
             moneyWin += batiment.Characteristics.Earn[batiment.Characteristics.Lvl];
