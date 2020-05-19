@@ -7,3 +7,11 @@
 
 [node name="Image" parent="Background" index="0"]
 texture = ExtResource( 2 )
+
+[node name="Energie" type="Label" parent="." index="7"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Eau" type="Label" parent="." index="8"]
+margin_right = 40.0
+margin_bottom = 14.0

@@ -129,6 +129,8 @@ public class MairieMenu : Panel
         _argentValue.Text = "" + Interface.MoneyWin;
         _electriciteValue.Text = "" + Interface.Energyused;
         _eauValue.Text = "" + Interface.Waterused;
+        _stockageEau.Text = ""+Ref_donnees.water;
+        _stockageElectricite.Text = "" + Ref_donnees.energy;
 
     }
 }

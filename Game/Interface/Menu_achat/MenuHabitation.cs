@@ -32,6 +32,8 @@ public class MenuHabitation : Node
 		_carteMaison.Titre(maison.Titre[0]);
 		_carteMaison.Gain(maison.Earn[0]);
 		_carteMaison.Prix(maison.Cost[0]);
+		_carteMaison.Enrgie(maison.energy[0].ToString());
+		_carteMaison.Eau(maison.water[0].ToString());
 
 		_carteMaison.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
@@ -44,6 +46,8 @@ public class MenuHabitation : Node
 		_carteMaison3.Titre(maison3.Titre[0]);
 		_carteMaison3.Gain(maison3.Earn[0]);
 		_carteMaison3.Prix(maison3.Cost[0]);
+		_carteMaison3.Enrgie(maison3.energy[0].ToString());
+		_carteMaison3.Eau(maison3.water[0].ToString());
 		_carteMaison3.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		//Config _carteMaison4
@@ -54,6 +58,8 @@ public class MenuHabitation : Node
 		_carteMaison4.Titre(maison4.Titre[0]);
 		_carteMaison4.Gain(maison4.Earn[0]);
 		_carteMaison4.Prix(maison4.Cost[0]);
+		_carteMaison4.Enrgie(maison4.energy[0].ToString());
+		_carteMaison4.Eau(maison4.water[0].ToString());
 		_carteMaison4.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		//Config _carteMaison5
@@ -64,6 +70,8 @@ public class MenuHabitation : Node
 		_carteMaison5.Titre(maison5.Titre[0]);
 		_carteMaison5.Gain(maison5.Earn[0]);
 		_carteMaison5.Prix(maison5.Cost[0]);
+		_carteMaison5.Enrgie(maison5.energy[0].ToString());
+		_carteMaison5.Eau(maison5.water[0].ToString());
 		_carteMaison5.Hide();
 		_carteMaison5.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 

@@ -72,8 +72,21 @@ namespace SshCity.Game.Buildings
         public void energyAndWater(Building type)
         {
             (int energy, int water) = (Characteristics.energy[Characteristics.Lvl],Characteristics.water[Characteristics.Lvl]);
-            Interface.Energy -= energy;
-            Interface.Water -= water;
+            if (energy<0)
+            {
+                Ref_donnees.energy -= energy;
+                Interface.Water -= water;
+            }
+            else if(water < 0)
+            {
+                Ref_donnees.water -= water;
+                Interface.Energy -= energy;
+            }
+            else
+            {
+                Interface.Energy -= energy;
+                Interface.Water -= water;
+            }
         }
 
         

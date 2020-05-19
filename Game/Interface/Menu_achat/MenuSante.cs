@@ -28,6 +28,8 @@ public class MenuSante : Node
 		_carteHopital.Titre(hospital.Titre[0]);
 		_carteHopital.Gain(hospital.Earn[0]);
 		_carteHopital.Prix(hospital.Cost[0]);
+		_carteHopital.Enrgie(hospital.energy[0].ToString());
+		_carteHopital.Eau(hospital.water[0].ToString());
 		_carteHopital.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		//Config _carteCaserne
@@ -38,6 +40,8 @@ public class MenuSante : Node
 		_carteCaserne.Titre(caserne.Titre[0]);
 		_carteCaserne.Gain(caserne.Earn[0]);
 		_carteCaserne.Prix(caserne.Cost[0]);
+		_carteCaserne.Enrgie(caserne.energy[0].ToString());
+		_carteCaserne.Eau(caserne.water[0].ToString());
 		_carteCaserne.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		/* Fond clignotant quand besoin du batiment*/
