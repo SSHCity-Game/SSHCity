@@ -20,17 +20,14 @@ public class incidents : CanvasLayer
 	public static int Nbbracages = 0;
 	
 	public static bool ResoIncident = false;
+	public static bool ResoAccident = false;
 
 	private static int x;
 	private static int y;
 	private static int indexAv;
 	private static int indexAp;
-	
-	
-	public override void _Ready()
-	{
-	}
 
+	
 	public override void _Process(float delta)
 	{
 		base._Process(delta);
@@ -42,8 +39,7 @@ public class incidents : CanvasLayer
 	}
 
 	public static (int x, int y, int indexAv, int indexAp) GenereCoords((int, int)[] listBat)
-	{
-		/* Genere aleatoirement les coordonnees d un batiement a accidente */
+	{ /* Genere aleatoirement les coordonnees d un batiement a accidente */
 
 		var rand = new Random();
 		var coordinates = new List<Vector2>(); // Liste de stockage des coordonnees de l incident
@@ -85,27 +81,44 @@ public class incidents : CanvasLayer
 		}
 	}
 	public static async void StartIncendie(PlanInitial planInitial)
-	{ 
-		/* change le batiment normal avec celui accidente */
+	{ /* change le batiment normal avec celui accidente */
 		await Task.Delay(5000);
 		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
 		menu_incident.Flamme.Show();
 	}
 	
 	public static async void StopIncendie(PlanInitial planInitial)
-	{ 
-		/* revient au batiment normal */
+	{ /* revient au batiment normal */
 		menu_incident.Flamme.Hide();
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
 	}
 	
-	public static void BuildingSwitch(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
+	public static void GenerateAccident(PlanInitial planInitial)
 	{
-		/********************************
-		 * Change l'image d'un batiment *
-		 ********************************/
-
+		if (ResoAccident)
+		{
+			StopAccident(MainPlan._planInitial);
+			Nbaccident--;
+		}
+		else if (Nbincidents < MAX_INCIDENTS && Nbaccident < MAX_INCENDIES && !ResoAccident)
+		{
+			StartAccident(MainPlan._planInitial);
+			Nbaccident++;
+		}
+	}
+	public static async void StartAccident(PlanInitial planInitial)
+	{ /* fait apparaitre une image d'accident sur la route */
+		menu_incident.Accident.Show();
+	}
+	
+	public static async void StopAccident(PlanInitial planInitial)
+	{ /* supprime l'accident */
+		menu_incident.Accident.Hide();
+	}
+	
+	public static void BuildingSwitch(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
+	{ /* Change l'image d'un batiment */
 		/* Initialise le bloc en x,y, comme batiment accidente */
 		if (planInitial.GetBlock(planInitial.TileMap2, x, y) == indexAv) 
 			planInitial.SetBlock(planInitial.TileMap2, x, y, indexAp);

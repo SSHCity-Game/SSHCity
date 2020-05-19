@@ -167,13 +167,13 @@ namespace SshCity.Game.Vehicules
         {
             _animatedSprite = (AnimatedSprite) GetNode(_strAnimatedSprite);
             _collisionShape2D = (CollisionShape2D) GetNode(_strCollsionShape2D);
-            Autonome = autonome; //Determine si le vehicule se deplace tout seul ou s'il faut que le joueur le direige avec les fleches
+            Autonome = autonome; //Determine si le vehicule se deplace tout seul ou s'il faut que le joueur le dirige avec les fleches
             this._planInitial = planInitial;
             SpriteFrames spriteFrames = AnimatedSpriteType[type]; //Charge l'animatedSprite, donc l'image du vehicule, en fonction du type rentre en parametre
             _animatedSprite.Frames = spriteFrames; //Set l'animatedSprite
             int blocRoute = planInitial.GetBlock(planInitial.TileMap2, (int) position.x, (int) position.y); //Recupere l'index du bloc route sur le quel est le vehicule
             _animatedSprite.Animation = WhichAnimation[blocRoute]; //Set l'animation en fonction du bloc route
-            Decallage = DecallageDico[_animatedSprite.Animation]; //Decallage du vehicule en focntion de l'animatio pour qu'il soit centre sur la route
+            Decallage = DecallageDico[_animatedSprite.Animation]; //Decallage du vehicule en fonction de l'animation pour qu'il soit centre sur la route
             _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation]; // Rotation du CollisionShape2D en fonction de l'anmation pour qu'il soit centré sur le vehicule
             this.Connect("area_entered", this, nameof(Collision));//Connect la collision
             Connect("area_exited", this, nameof(EndCollision));//Connect la resolution de l'accident
