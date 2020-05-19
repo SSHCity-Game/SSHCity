@@ -199,21 +199,6 @@ texture = ExtResource( 15 )
 [node name="MairieMenu" parent="." instance=ExtResource( 14 )]
 visible = false
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color( 0.121569, 0.490196, 0.419608, 0.317647 )
-anchor_left = -0.165
-anchor_top = -0.112
-anchor_right = -0.165
-anchor_bottom = -0.112
-margin_left = 219.086
-margin_top = 72.4175
-margin_right = 524.086
-margin_bottom = 130.417
-texture = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ScoreBar" type="TextureProgress" parent="."]
 margin_left = 50.0
 margin_top = 5.0
@@ -225,6 +210,21 @@ max_value = 100.0
 texture_under = ExtResource( 11 )
 texture_progress = ExtResource( 16 )
 nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ScoreBar"]
+modulate = Color( 0.121569, 0.490196, 0.419608, 0.317647 )
+anchor_left = -0.165
+anchor_top = -0.112
+anchor_right = -0.165
+anchor_bottom = -0.112
+margin_left = 50.451
+margin_top = 6.7135
+margin_right = 355.451
+margin_bottom = 64.7135
+texture = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

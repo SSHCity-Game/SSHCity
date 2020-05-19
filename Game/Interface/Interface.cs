@@ -46,11 +46,13 @@ public class Interface : CanvasLayer
     private Timer _timer;
     private bool _visible;
     
+    /* ScoreBar */
     private TextureProgress ScoreBar;
     private Label Score;
-    private static int _xp = 0;
-    private static int _level = 1;
-    private static int XpMax = 100;
+    private static int _xp;
+    private static int _level = 1; // niveau
+    private static int _scoreValue; // index XpMax
+    private static int[] XpMax = {200, 400, 600, 800, 1000}; // xp en fonction des niveaux
     
     private static int moneyWin = 0;
     private static int energyused = 0;
@@ -204,7 +206,8 @@ public class Interface : CanvasLayer
     {
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
-        
+
+        _scoreValue = UpdateScoreValue(_level);
         (_xp, _level) = UpdateXp(_xp, _level);
         ScoreBar.Value = _xp;
         Score.Text = Convert.ToString(_level);
@@ -349,13 +352,43 @@ public class Interface : CanvasLayer
     }
 
     public void ButtonParam()
-    {
-        /* Ouverture Parametres du jeu */
+    { /* Ouverture Parametres du jeu */
     }
 
-    public (int, int) UpdateXp(int xp, int level)
-    {
-        return (xp, level) = xp >= XpMax ? (xp - XpMax, level + 1) : (xp, level);
+    public (int, int) UpdateXp(int xp, int level) 
+    { /* retourne les nouveaux xp et niveau */
+        return (xp, level) = xp >= XpMax[_scoreValue] ? (xp - XpMax[_scoreValue], level + 1) : (xp, level);
     }
 
+    public static int UpdateScoreValue(int level)
+    { /* retourne la nouvelle scoreValue pour choisir XpMax du niveau */
+        switch (level)
+        {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                return 0;
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                return 1;
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+                return 2;
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+                return 3;
+            default:
+                return 4;
+        }
+    }
 }
