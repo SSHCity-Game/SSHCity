@@ -19,20 +19,34 @@ public partial class PlanInitial : Node2D
     private static Vector2 _tileSupressing;
     private static bool _buildOnTileMap2 = false;
     private static Vector2 _tileOnTileMap2;
+    
+    //Add Vehicules
     public static bool VehiculesInit = false;
+    private static bool addVehicule = true; //MairieMenu desactivation des vehicules
     public static Vector2 VehiculesPosition;
     public static Vehicules.Type VehiculesType;
     private PackedScene _vehiculeScene;
     private Timer VehiculeTimer;
     private static bool VehiculesAutonome;
-    public static List<Vector2> DepartRoute = new List<Vector2>();
-    private static bool addVehicule = true;
+    
+    //Accidents
     private PackedScene _accidentArea2D;
     private static bool addAccident = false;
     private static Vector2 positionAccident;
     private static bool deleteAccident = false;
     private static Vector2 positionDeleteAccident;
     private static bool _accidentVisi = false;
+    
+    public static List<Vector2> DepartRoute = new List<Vector2>();
+
+    //Add Houloucoupters
+    public static bool HouloucoupterInit = false;
+    public static Vector2 HouloucoupterPosition = new Vector2(60, 0);
+    public static Houloucoupter.Type HouloucoupterType;
+    public static Vector2 HouloucoupterDestination;
+    private PackedScene _houloucoupterScene;
+
+
 
     public static int MAX_CAR = 0;
     public static int NbCar = 0;
@@ -91,6 +105,7 @@ public partial class PlanInitial : Node2D
         VehiculeTimer.Autostart = true;
         _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
         _accidentArea2D = (PackedScene) GD.Load("res://Game/Vehicules/Accident.tscn");
+        _houloucoupterScene = (PackedScene) GD.Load("res://Game/Vehicules/Houloucoupter.tscn");
         VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
     }
 
@@ -122,9 +137,17 @@ public partial class PlanInitial : Node2D
         {
             Accident area = (Accident) _accidentArea2D.Instance();
             area.Position = positionAccident;
-            area.Init(this, _accidentVisi);
+            area.Init(_accidentVisi);
             AddChild(area);
             addAccident = false;
+        }
+
+        if (HouloucoupterInit)
+        {
+            Houloucoupter _houloucoupter = (Houloucoupter) _houloucoupterScene.Instance();
+            _houloucoupter.Init(this, HouloucoupterType, HouloucoupterPosition, HouloucoupterDestination);
+            AddChild(_houloucoupter);
+            HouloucoupterInit = false;
         }
     }
 
@@ -161,6 +184,14 @@ public partial class PlanInitial : Node2D
             VehiculesType = type;
             VehiculesAutonome = autonome;
         }
+    }
+
+    public static void AddHouloucoupter(Houloucoupter.Type type, Vector2 position, Vector2 destination)
+    {
+        HouloucoupterPosition = position;
+        HouloucoupterType = type;
+        HouloucoupterDestination = destination;
+        HouloucoupterInit = true;
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)

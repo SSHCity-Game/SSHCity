@@ -7,7 +7,7 @@ namespace SshCity.Game.Vehicules
     public partial class Vehicules
     {
 	    private bool Croisement; //Si la voiture est devant un croisment 
-	    private Vector2 BlocCroisment; //Savoit quel bloc croisment est devant le camion
+	    private Vector2 BlocCroisment; //Savoit position bloc croisment
 	    private Vector2[] arriveCroisment;
 	    private Direction[] directionCroisement;
 	    private string[] animationCroisment;
@@ -15,7 +15,12 @@ namespace SshCity.Game.Vehicules
 	    private bool Virage = false;
 	    private int WhichVirage;
 
-	    private bool VerifDirectionCroisment(Direction dir, Vector2 position)
+	    /// <summary>
+	    /// Indique si un deplacemetn à un croisment est valide ou pas 
+	    /// </summary>
+	    /// <param name="dir">La direction a verifie</param>
+	    /// <returns>Deplacment possible ou non</returns>
+	    private bool VerifDirectionCroisment(Direction dir)
 	    {
 		    switch (dir)
 		    {
@@ -66,6 +71,9 @@ namespace SshCity.Game.Vehicules
         public override void _Process(float delta)
 		{
 			base._Process(delta);
+			
+			//Set, en focntion de la direction et de l'animation passe en parametre,
+			//la nouvelle direction du vehicule, son animaion, son decallage, sa case d'arrive.
 			Action<(Direction direction1, string anim)> MovingDirection = para =>
 			{
 				Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(Position);
@@ -84,6 +92,7 @@ namespace SshCity.Game.Vehicules
 				}
 			};
 			
+			//Set le mouvement du vehicule lors d'un croisment 
 			Action<(Vector2 posActuel, Vector2 aucroisement, Vector2 aprescroisement, string animavt, string animapres,
 					Vector2 decallageDansCroisement, string[] animcroisment, Direction[]dircroisement)>
 				MovingCroisementSwitch =
@@ -103,10 +112,10 @@ namespace SshCity.Game.Vehicules
 						animationCroisment = tuple.animcroisment;
 						directionCroisement = tuple.dircroisement;
 					};
-
+			
 			Action<Direction> MovingCroisement = direction1 =>
 			{
-				bool WillDoSmth = VerifDirectionCroisment(direction1, BlocCroisment);
+				bool WillDoSmth = VerifDirectionCroisment(direction1);
 				Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(Position);
 				if (WillDoSmth)
 				{
@@ -385,16 +394,16 @@ namespace SshCity.Game.Vehicules
 				}
 			};
 			
-			if (isMoving && !Croisement)
+			if (isMoving && !Croisement) //Si le vehicule est en mouvement et que l'on n'est pas a un croisement
 			{
 				if ((direction == Direction.RIGHT && Position >= arrive) ||
 					(direction == Direction.LEFT && Position <= arrive) ||
 					(direction == Direction.TOP && Position >= arrive) ||
-					(direction == Direction.BOTTOM && Position <= arrive))
+					(direction == Direction.BOTTOM && Position <= arrive)) //Si le vehicule est arrive au bloc suivant
 				{
 					Vector2 positionActuel = _planInitial.TileMap2.WorldToMap(Position);
-					Vector2 NextCase = DirectionToVector2(direction) + new Vector2(-1, -1);
-					if (_planInitial.GetBlock(_planInitial.TileMap1,(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y) == -1)
+					Vector2 NextCase = DirectionToVector2(direction) + new Vector2(-1, -1); // Position du bloc suivant. new Vector2(-1, -1) pour difference dans le TileSet
+					if (_planInitial.GetBlock(_planInitial.TileMap1,(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y) == -1) //Enleve le vehicule quand il sort de la map
 					{
 						this.QueueFree();
 					}
@@ -404,13 +413,13 @@ namespace SshCity.Game.Vehicules
 					                       && !Routes.IsCroisement(_planInitial.GetBlock(_planInitial.TileMap2,
 						                       (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))
 					                       &&!Routes.IsVirage(_planInitial.GetBlock(_planInitial.TileMap2,
-						                       (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
+						                       (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))) //Si le bloc suivant est une route mais pas un croisment ni un virage
 					{
 						Vector2 nextBlock = positionActuel + DirectionToVector2(direction);
 						_deplacement = (_planInitial.TileMap2.MapToWorld(nextBlock) + Decallage) - Position;
 						arrive = _planInitial.TileMap2.MapToWorld(nextBlock) + Decallage;
 					}
-					else if(isMovingCroisment)
+					else if(isMovingCroisment) // Si le vehicule réalise un deplacement croisement
 					{
 						_deplacement = arriveCroisment[1] - Position;
 						arrive = arriveCroisment[1];
@@ -425,7 +434,7 @@ namespace SshCity.Game.Vehicules
 					else if (Routes.IsCroisement(_planInitial.GetBlock(_planInitial.TileMap2,
                              							(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))
 							&& !Routes.IsVirage(_planInitial.GetBlock(_planInitial.TileMap2,
-														(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
+														(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y))) //Si le bloc suivant est un croisment mais pas un virage
 					{
 						Croisement = true;
 						isMoving = false;
@@ -433,6 +442,7 @@ namespace SshCity.Game.Vehicules
 						BlocCroisment = new Vector2((int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y);
 					}
 					else if(Routes.IsVirage(_planInitial.GetBlock(_planInitial.TileMap2, (int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y)))
+						//Si le bloc suivant est un virage
 					{
 						isMoving = false;
 						_deplacement = new Vector2(0, 0);
@@ -441,7 +451,7 @@ namespace SshCity.Game.Vehicules
 							(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y);
 						MovingVirage(WhichVirage);
 					}
-					else
+					else //sinon le vehicule arrete de rouler
 					{
 						isMoving = false;
 						_deplacement = new Vector2(0, 0);
@@ -449,8 +459,8 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
-			//input deplacement inital
-			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_right"))
+			//input deplacement vehicule quand il n'est pas autonome en fonction des fleches claviers pressé.
+			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_right")) // Gauche
 			{
 				if (Croisement)
 				{
@@ -460,7 +470,7 @@ namespace SshCity.Game.Vehicules
 					MovingDirection((Direction.RIGHT, "NE"));
 			}
 
-			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_left"))
+			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_left"))//droite
 			{
 				if (Croisement)
 				{
@@ -472,7 +482,7 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
-			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_down"))
+			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_down"))//bas
 			{
 				if (Croisement)
 				{
@@ -484,7 +494,7 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
-			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_up"))
+			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_up"))//Haut
 			{
 				if (Croisement)
 				{
@@ -496,6 +506,7 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
+			//Si c'est un vehicule autonome, il va choisir une direction pour faire bouger le vehicule quand celui ci ne bouge pas
 			if (!_paused && Autonome && !isMoving)
 			{
 				int randNumber = rand.Next(0, 4);
@@ -509,7 +520,8 @@ namespace SshCity.Game.Vehicules
 					MovingDirection((direction, DirectionToAnim[direction]));
 				}
 			}
-
+			
+			//Deplace le vehicule. Si _paused alors le vehicule ne bouge plus
 			if (!_paused)
 			{
 				Position += _deplacement * delta;

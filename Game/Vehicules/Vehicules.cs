@@ -60,6 +60,11 @@ namespace SshCity.Game.Vehicules
             VAN
         }
 
+        /// <summary>
+        /// Permet avec la direction du vehicule d'avoir le vecteur a ajouter par rapport à sa position pour aller sur le bloc suivant
+        /// </summary>
+        /// <param name="dir">Direction du vehicule</param>
+        /// <returns>Le vecteur a ajouté pour aller sur le bloc suivant</returns>
         public static Vector2 DirectionToVector2(Direction dir)
         {
             return dir switch
@@ -71,8 +76,9 @@ namespace SshCity.Game.Vehicules
                 _ => throw new ArgumentException()
             };
         }
-
-        //Choisis l'animation du vehicule (son orientation) par rapport à la route au depart
+        /// <summary>
+        ///Choisis l'animation du vehicule (son orientation) par rapport à la route au depart
+        /// </summary>
         Godot.Collections.Dictionary<int, string>  WhichAnimation = new Godot.Collections.Dictionary<int, string>()
         {
             {Ref_donnees.route_left, "NE"},
@@ -88,8 +94,11 @@ namespace SshCity.Game.Vehicules
             {-1, "NE"}
         };
         
-        private Vector2 Decallage = new Vector2(175, 150);
+        private Vector2 Decallage;
 
+        /// <summary>
+        /// Converti une animation en décallage du vehicule pour qu'il soit centre sur la route
+        /// </summary>
         Godot.Collections.Dictionary<string, Vector2> DecallageDico = new Godot.Collections.Dictionary<string, Vector2>()
         {
             {"NE", new Vector2(100, 230)},
@@ -98,6 +107,10 @@ namespace SshCity.Game.Vehicules
             {"SW", new Vector2(175, 150)}
         };
 
+        
+        /// <summary>
+        /// Converti l'animation en angle pour faire touner le collisionShape2D
+        /// </summary>
         Godot.Collections.Dictionary<string, int> CollisionAngle = new Godot.Collections.Dictionary<string, int>()
         {
             {"NE", 27},
@@ -105,6 +118,10 @@ namespace SshCity.Game.Vehicules
             {"SE", -27},
             {"SW", 27}
         };
+        
+        /// <summary>
+        /// Converti la direction en animation
+        /// </summary>
         Godot.Collections.Dictionary<Direction, string> DirectionToAnim = new Godot.Collections.Dictionary<Direction, string>()
         {
             {Direction.TOP, "NW"},
@@ -112,14 +129,10 @@ namespace SshCity.Game.Vehicules
             {Direction.LEFT, "SW"},
             {Direction.RIGHT, "NE"}
         };
-        Godot.Collections.Dictionary<string, Direction> AnimToDirection = new Godot.Collections.Dictionary<string, Direction>()
-        {
-            {"NW", Direction.TOP},
-            {"SE", Direction.BOTTOM},
-            {"SW", Direction.LEFT},
-            {"NE", Direction.RIGHT}
-        };
 
+        /// <summary>
+        /// Converti le type d'un vehicule en son animatedSprite qui lui correspond
+        /// </summary>
         Godot.Collections.Dictionary<Type, SpriteFrames> AnimatedSpriteType = new Godot.Collections.Dictionary<Type, SpriteFrames>()
         {
             {Type.AMBULANCE, ResourceLoader.Load("res://Game/Vehicules/ANimatedSpriteVehicules/Ambulance_animatedSprite.tres") as SpriteFrames},
@@ -143,23 +156,30 @@ namespace SshCity.Game.Vehicules
         private Direction direction;
         private bool isMoving = false;
 
+        /// <summary>
+        /// Correspond au constructeur du Vehicule
+        /// </summary>
+        /// <param name="planInitial">PlanInitial afin de convertir les coordonne</param>
+        /// <param name="position">position ou est set le vehicule</param>
+        /// <param name="type">type du vehicule pose</param>
+        /// <param name="autonome">choisir si le vehicule se direige tout seul ou manuellement</param>
         public void Init(PlanInitial planInitial, Vector2 position, Type type, bool autonome=false)
         {
             _animatedSprite = (AnimatedSprite) GetNode(_strAnimatedSprite);
             _collisionShape2D = (CollisionShape2D) GetNode(_strCollsionShape2D);
-            Autonome = autonome;
+            Autonome = autonome; //Determine si le vehicule se deplace tout seul ou s'il faut que le joueur le direige avec les fleches
             this._planInitial = planInitial;
-            SpriteFrames spriteFrames = AnimatedSpriteType[type];
-            _animatedSprite.Frames = spriteFrames;
-            int blocRoute = planInitial.GetBlock(planInitial.TileMap2, (int) position.x, (int) position.y);
-            _animatedSprite.Animation = WhichAnimation[blocRoute];
-            Decallage = DecallageDico[_animatedSprite.Animation];
-            _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation];
-            this.Connect("area_entered", this, nameof(Collision));
-            Connect("area_exited", this, nameof(EndCollision));
-            this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage;
+            SpriteFrames spriteFrames = AnimatedSpriteType[type]; //Charge l'animatedSprite, donc l'image du vehicule, en fonction du type rentre en parametre
+            _animatedSprite.Frames = spriteFrames; //Set l'animatedSprite
+            int blocRoute = planInitial.GetBlock(planInitial.TileMap2, (int) position.x, (int) position.y); //Recupere l'index du bloc route sur le quel est le vehicule
+            _animatedSprite.Animation = WhichAnimation[blocRoute]; //Set l'animation en fonction du bloc route
+            Decallage = DecallageDico[_animatedSprite.Animation]; //Decallage du vehicule en focntion de l'animatio pour qu'il soit centre sur la route
+            _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation]; // Rotation du CollisionShape2D en fonction de l'anmation pour qu'il soit centré sur le vehicule
+            this.Connect("area_entered", this, nameof(Collision));//Connect la collision
+            Connect("area_exited", this, nameof(EndCollision));//Connect la resolution de l'accident
+            this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage;//Set la position du vehicule. LE new Vector2(1, 1) correspond au decallage du tileset
         }
-
+        
         public override void _Ready()
         {
             base._Ready();
@@ -168,6 +188,11 @@ namespace SshCity.Game.Vehicules
             _invincible = (Sprite) GetNode(_strInvincible);
         }
 
+        /// <summary>
+        /// Fonction connectée à l'area2D lorsqu'une area2D rentre dans celle-ci
+        /// Lorsque le vehicule rentre en collision soit avec un autre vehicule soit avec une zone accident
+        /// </summary>
+        /// <param name="area2D">L'area2D venant de rentrer dans l'area2D</param>
         public void Collision(Area2D area2D)
         {
             if (!_stopArea2DCreat && !_stopAccident)
@@ -187,9 +212,14 @@ namespace SshCity.Game.Vehicules
             }
         }
 
+        /// <summary>
+        /// Fonction connectée à l'area2D lorsqu'une area2D sors de celle-ci
+        /// Permet de detecte la fin d'un accident et de remettre en route les vehicules
+        /// </summary>
+        /// <param name="area2D">L'area2D qui vient de sortir</param>
         public void EndCollision(Area2D area2D)
         {
-            if (area2D.CollisionMask == 3)
+            if (area2D.CollisionMask == 3) //Tets si l'area2D est une area2D Accident
             {
                 _stopArea2DCreat = false;
                 _paused = false;
@@ -199,12 +229,20 @@ namespace SshCity.Game.Vehicules
             }
         }
 
+        /// <summary>
+        /// Fonction connecté au timer lors du timeout
+        /// Met fin a l'invincibilité d'un vehicule 
+        /// </summary>
         public void TimeOut()
         {
             _stopAccident = false;
-            _invincible.Hide();
+            _invincible.Hide(); 
         }
         
+        /// <summary>
+        /// Liste des differents types de Vehicules
+        /// Est utilise afin de choisir un type de vehicule aleatoirement
+        /// </summary>
         public static List<Type> ListTypeVehicules = new List<Type>()
         {
             {Type.SUV},

@@ -19,7 +19,7 @@ texture = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
-animation = "SW"
+animation = "NW"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -16.382, -1.69704 )
