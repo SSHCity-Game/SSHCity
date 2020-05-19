@@ -5,10 +5,13 @@ public partial class Houloucoupter
     public override void _Process(float delta)
     {
         base._Process(delta);
-        if (arrive(Position, _destination))
+        
+        if (!(_planInitial.TileMap2.WorldToMap(Position) == _planInitial.TileMap2.WorldToMap(_destination)
+            || _planInitial.TileMap2.WorldToMap(Position) == _planInitial.TileMap2.WorldToMap(_destination) - new Vector2(1, 1)
+            || _planInitial.TileMap2.WorldToMap(Position) == _planInitial.TileMap2.WorldToMap(_destination) - new Vector2(0, 1)
+            || _planInitial.TileMap2.WorldToMap(Position) == _planInitial.TileMap2.WorldToMap(_destination) - new Vector2(1, 0)))
         {
-            GD.Print("VITE");
-            Position += _deplacement * delta;
+            Position += _deplacement * delta/10;
         }
     }
 }

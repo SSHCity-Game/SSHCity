@@ -107,7 +107,6 @@ public partial class PlanInitial : Node2D
         _accidentArea2D = (PackedScene) GD.Load("res://Game/Vehicules/Accident.tscn");
         _houloucoupterScene = (PackedScene) GD.Load("res://Game/Vehicules/Houloucoupter.tscn");
         VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
-        AddHouloucoupter(Houloucoupter.Type.HOPITAL, new Vector2(80, 0), new Vector2(18, -8));
     }
 
     public override void _Process(float delta)
