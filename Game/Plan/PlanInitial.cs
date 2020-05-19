@@ -137,7 +137,7 @@ public partial class PlanInitial : Node2D
         {
             Accident area = (Accident) _accidentArea2D.Instance();
             area.Position = positionAccident;
-            area.Init(this, _accidentVisi);
+            area.Init(_accidentVisi);
             AddChild(area);
             addAccident = false;
         }
