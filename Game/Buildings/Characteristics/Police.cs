@@ -6,7 +6,7 @@ namespace SshCity.Game.Buildings.Characteristics
     {
         public Police()
         {
-            Bloc = new[] {Ref_donnees.piscine};
+            Bloc = new[] {Ref_donnees.police};
             Cost = new[] {5000};
             Earn = new[] {1, 2, 5};
             Titre = new[] {"Police"};

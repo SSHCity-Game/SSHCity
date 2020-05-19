@@ -18,6 +18,7 @@ namespace SshCity.Game.Buildings
             Characteristics = BuildingCharacteristics.FromType(type);
             Position = position;
             Characteristics.Lvl = theLvl;
+            Characteristics.Lvl = theLvl;
             ListBuildings.Add(this);
         }
 
@@ -34,7 +35,7 @@ namespace SshCity.Game.Buildings
         /// <summary>
         /// Ses caractéristiques associées
         /// </summary>
-        public static IBuildingCharacteristics Characteristics { get; set; }
+        public IBuildingCharacteristics Characteristics { get; }
 
         /// <summary>
         /// Créer le dictionnaire qui store l'état du bâtiment pour le sauvegarder
@@ -60,20 +61,32 @@ namespace SshCity.Game.Buildings
         /// <returns>Le bâtiment créé</returns>
         public static Building Create(BuildingType type, Vector2 position, int theLvl = 0)
         {
+            verify(type);
             return new Building(type, position, theLvl);
         }
 
-        public static void energyAndWater(BuildingType type)
+        public static void verify(BuildingType type)
+        {
+            
+        }
+        public void energyAndWater(Building type)
         {
             (int energy, int water) = (Characteristics.energy[Characteristics.Lvl],Characteristics.water[Characteristics.Lvl]);
-            switch (type)
+            if (energy<0)
             {
-                case BuildingType.CENTRALE:
-                    Ref_donnees.energy += 100;
-                    break;
+                Ref_donnees.energy -= energy;
+                Interface.Water -= water;
             }
-            Interface.Energy -= energy;
-            Interface.Water -= water;
+            else if(water < 0)
+            {
+                Ref_donnees.water -= water;
+                Interface.Energy -= energy;
+            }
+            else
+            {
+                Interface.Energy -= energy;
+                Interface.Water -= water;
+            }
         }
 
         
@@ -114,7 +127,7 @@ namespace SshCity.Game.Buildings
             if (batimentToUpgrade == null) return (false, -1);
             batimentToUpgrade.Upgrade();
             ListBuildings.Add(batimentToUpgrade);
-            return (true, Building.Characteristics.Bloc[0]);
+            return (true, batimentToUpgrade.Characteristics.Bloc[0]);
         }
 
         /// <summary>

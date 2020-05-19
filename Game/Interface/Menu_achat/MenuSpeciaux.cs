@@ -27,6 +27,8 @@ public class MenuSpeciaux : Node
         _cartePolice.Titre(police.Titre[0]);
         _cartePolice.Gain(police.Earn[0]);
         _cartePolice.Prix(police.Cost[0]);
+        _cartePolice.Enrgie(police.energy[0].ToString());
+        _cartePolice.Eau(police.water[0].ToString());
         _cartePolice.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 
@@ -38,6 +40,8 @@ public class MenuSpeciaux : Node
         _carteCentraleElectrique.Titre(centrale.Titre[0]);
         _carteCentraleElectrique.Gain(centrale.Earn[0]);
         _carteCentraleElectrique.Prix(centrale.Cost[0]);
+        _carteCentraleElectrique.Enrgie(centrale.energy[0].ToString());
+        _carteCentraleElectrique.Eau(centrale.water[0].ToString());
         _carteCentraleElectrique.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         //Config _carteEglise
@@ -49,6 +53,8 @@ public class MenuSpeciaux : Node
         _carteEglise.Titre(eglise.Titre[0]);
         _carteEglise.Gain(eglise.Earn[0]);
         _carteEglise.Prix(eglise.Cost[0]);
+        _carteEglise.Enrgie(eglise.energy[0].ToString());
+        _carteEglise.Eau(eglise.water[0].ToString());
         _carteEglise.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 
