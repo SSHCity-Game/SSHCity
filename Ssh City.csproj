@@ -78,6 +78,7 @@
     <Compile Include="Game\Buildings\Characteristics\Restaurant2.cs" />
     <Compile Include="Game\Incident\incidents.cs" />
     <Compile Include="Game\Incident\menu_incident.cs" />
+    <Compile Include="Game\Interface\Activation.cs" />
     <Compile Include="Game\Interface\Boutique.cs" />
     <Compile Include="Game\Interface\Carte_achat\Carte.cs" />
     <Compile Include="Game\Interface\DeleteVerif.cs" />
@@ -99,7 +100,6 @@
     <Compile Include="Game\Plan\PlanInitial.cs" />
     <Compile Include="Game\Plan\Ref_donnees.cs" />
     <Compile Include="Game\Plan\Routes.cs" />
-    <Compile Include="Game\Plan\Sable.cs" />
     <Compile Include="Game\Sauvegarde\SauvegardeManager.cs" />
     <Compile Include="Game\Sauvegarde\Serializable.cs" />
     <Compile Include="Game\Vehicules\Accident.cs" />

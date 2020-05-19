@@ -16,3 +16,11 @@ text = "2000"
 
 [node name="Gain" parent="." index="6"]
 text = "300"
+
+[node name="Energie" type="Label" parent="." index="7"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Eau" type="Label" parent="." index="8"]
+margin_right = 40.0
+margin_bottom = 14.0

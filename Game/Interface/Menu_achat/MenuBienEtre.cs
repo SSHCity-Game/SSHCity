@@ -24,6 +24,8 @@ public class MenuBienEtre : Node
 		_carteParc.Titre(parc.Titre[0]);
 		_carteParc.Gain(parc.Earn[0]);
 		_carteParc.Prix(parc.Cost[0]);
+		_carteParc.Enrgie(parc.energy[0].ToString());
+		_carteParc.Eau(parc.water[0].ToString());
 		_carteParc.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 

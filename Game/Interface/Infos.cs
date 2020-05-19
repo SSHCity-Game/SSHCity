@@ -99,25 +99,39 @@ public class Infos : Panel
 
     public bool config(Vector2 tile)
     {
-        Building batiment = Building.Delete(tile);
+        Building batiment = Building.GetFromTile(tile);
         if (batiment != null)
         {
             Building.ListBuildings.Add(batiment);
-            _titre.Text = Building.Characteristics.Titre[Building.Characteristics.Lvl];
-            Texture texture = ResourceLoader.Load(Building.Characteristics.Image[0]) as Texture;
+            _titre.Text = batiment.Characteristics.Titre[batiment.Characteristics.Lvl];
+            Texture texture = ResourceLoader.Load(batiment.Characteristics.Image[0]) as Texture;
             _image.Texture = texture;
             position = tile;
-            _lvlActuel.Text = "Lvl " + Convert.ToString(Building.Characteristics.Lvl + 1);
-            _argentActuel.Text = Convert.ToString(Building.Characteristics.Earn[0]);
+            _lvlActuel.Text = "Lvl " + Convert.ToString(batiment.Characteristics.Lvl + 1);
+            _argentActuel.Text = Convert.ToString(batiment.Characteristics.Earn[0]);
             _class = batiment.Type;
-            _energieActuel.Text = Convert.ToString(Building.Characteristics.water[0]);
-            _eauActuel.Text = Convert.ToString(Building.Characteristics.energy[0]);
-            if (Building.Characteristics.Lvl != Building.Characteristics.NbrAmeliorations)
+            if (batiment.Characteristics.energy[0] <0 )
             {
-                _argentAmelio.Text = Convert.ToString(Building.Characteristics.Earn[Building.Characteristics.Lvl + 1]);
-                _argentAmelio.Text = Convert.ToString(Building.Characteristics.energy[Building.Characteristics.Lvl + 1]);
-                _eauAmelio.Text = Convert.ToString(Building.Characteristics.water[Building.Characteristics.Lvl + 1]);
-                _ameliorer.Text = "Ameliorer\n" + Convert.ToString(Building.Characteristics.Cost[1]);
+                _energieActuel.Text = "0";
+            }
+            else
+            {
+                _energieActuel.Text = Convert.ToString(batiment.Characteristics.energy[0]);
+            }
+            if (batiment.Characteristics.water[0] <0 )
+            {
+                _eauActuel.Text = "0";
+            }
+            else
+            {
+                _eauActuel.Text = Convert.ToString(batiment.Characteristics.water[0]);
+            }
+            if (batiment.Characteristics.Lvl != batiment.Characteristics.NbrAmeliorations)
+            {
+                _argentAmelio.Text = Convert.ToString(batiment.Characteristics.Earn[batiment.Characteristics.Lvl + 1]);
+                _argentAmelio.Text = Convert.ToString(batiment.Characteristics.energy[batiment.Characteristics.Lvl + 1]);
+                _eauAmelio.Text = Convert.ToString(batiment.Characteristics.water[batiment.Characteristics.Lvl + 1]);
+                _ameliorer.Text = "Ameliorer\n" + Convert.ToString(batiment.Characteristics.Cost[1]);
             }
             else
             {
