@@ -27,7 +27,6 @@ public class Interface : CanvasLayer
     private static int _energy = Ref_donnees.energy;
     private static int _water = Ref_donnees.water;
     private static bool _hide = true;
-    private static int _xp = 0;
     private bool _achatRoute = false;
     private Sprite _bulldozerMouse;
     private Button _button_shop;
@@ -48,6 +47,10 @@ public class Interface : CanvasLayer
     private bool _visible;
     
     private TextureProgress ScoreBar;
+    private Label Score;
+    private static int _xp = 0;
+    private static int _level = 1;
+    private static int XpMax = 100;
     
     private static int moneyWin = 0;
     private static int energyused = 0;
@@ -132,6 +135,7 @@ public class Interface : CanvasLayer
         _infos = (Infos) GetNode(_str_infos);
         _timer = (Timer) GetNode(_str_timer);
         ScoreBar = (TextureProgress) GetNode("ScoreBar");
+        Score = GetNode<Label>("Score");
         
 
         _croix.Hide();
@@ -200,6 +204,10 @@ public class Interface : CanvasLayer
     {
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
+        
+        (_xp, _level) = UpdateXp(_xp, _level);
+        ScoreBar.Value = _xp;
+        Score.Text = Convert.ToString(_level);
 
         moneyWin = 0;
         energyused = 0;
@@ -269,9 +277,6 @@ public class Interface : CanvasLayer
         //Ferme Achat Route
         _achatRoute = false;
         PlanInitial.AchatRoute(_achatRoute);
-
-        //_openShop = !_openShop;
-        //_closeShop = !_closeShop;
 
         _delete = false;
         PlanInitial.Delete = _delete;
@@ -347,4 +352,10 @@ public class Interface : CanvasLayer
     {
         /* Ouverture Parametres du jeu */
     }
+
+    public (int, int) UpdateXp(int xp, int level)
+    {
+        return (xp, level) = xp >= XpMax ? (xp - XpMax, level + 1) : (xp, level);
+    }
+
 }

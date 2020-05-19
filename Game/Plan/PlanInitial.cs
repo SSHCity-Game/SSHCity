@@ -41,11 +41,9 @@ public partial class PlanInitial : Node2D
         get => addVehicule;
         set => addVehicule = value;
     }
-
-
+    
     private Vector2 _lastTile = new Vector2(0, 0);
-
-
+    
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";

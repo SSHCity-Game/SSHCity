@@ -36,17 +36,7 @@ public class incidents : CanvasLayer
 		base._Process(delta);
 		
 		/* INCENDIES */
-		(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.BatimentFeu);
-		if (ResoIncident)
-		{
-			StopIncendies(MainPlan._planInitial);
-			Nbincendies--;
-		}
-		else if (Nbincidents < MAX_INCIDENTS && Nbincendies < MAX_INCENDIES && !ResoIncident)
-		{
-			GenereIncendies(MainPlan._planInitial);
-			Nbincendies++;
-		}
+		GenerateIncendies(MainPlan._planInitial);
 
 		Nbincidents = Nbincendies + Nbaccident + Nbnoyades + Nbbracages;
 	}
@@ -80,7 +70,21 @@ public class incidents : CanvasLayer
 		return (x, y, indexAv, indexAp);
 	}
 
-	public static async void GenereIncendies(PlanInitial planInitial)
+	public static void GenerateIncendies(PlanInitial planInitial)
+	{
+		(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.BatimentFeu);
+		if (ResoIncident)
+		{
+			StopIncendie(MainPlan._planInitial);
+			Nbincendies--;
+		}
+		else if (Nbincidents < MAX_INCIDENTS && Nbincendies < MAX_INCENDIES && !ResoIncident)
+		{
+			StartIncendie(MainPlan._planInitial);
+			Nbincendies++;
+		}
+	}
+	public static async void StartIncendie(PlanInitial planInitial)
 	{ 
 		/* change le batiment normal avec celui accidente */
 		await Task.Delay(5000);
@@ -88,7 +92,7 @@ public class incidents : CanvasLayer
 		menu_incident.Flamme.Show();
 	}
 	
-	public static async void StopIncendies(PlanInitial planInitial)
+	public static async void StopIncendie(PlanInitial planInitial)
 	{ 
 		/* revient au batiment normal */
 		menu_incident.Flamme.Hide();
