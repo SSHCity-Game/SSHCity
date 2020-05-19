@@ -405,6 +405,7 @@ namespace SshCity.Game.Vehicules
 					Vector2 NextCase = DirectionToVector2(direction) + new Vector2(-1, -1); // Position du bloc suivant. new Vector2(-1, -1) pour difference dans le TileSet
 					if (_planInitial.GetBlock(_planInitial.TileMap1,(int) positionActuel.x + (int) NextCase.x, (int) positionActuel.y + (int) NextCase.y) == -1) //Enleve le vehicule quand il sort de la map
 					{
+						PlanInitial.NbCar -= 1;	
 						this.QueueFree();
 					}
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Godot;
 
 namespace SshCity.Game.Plan
@@ -36,15 +37,17 @@ namespace SshCity.Game.Plan
             return res;
         }
 
-        public static void GenerateMontagne(PlanInitial planInitial)
+        public static void GenerateMontagne(PlanInitial planInitial, ref List<List<Vector2>> list)
         {
             int nbr_m = rand.Next(Ref_donnees.m_min, Ref_donnees.m_max);
             int rand_m_x = rand.Next(Ref_donnees.min_x, Ref_donnees.max_x + 1);
             int rand_m_y = rand.Next(Ref_donnees.min_y, Ref_donnees.max_y + 1);
             int indexe_m = planInitial.GetBlock(planInitial.TileMap1, rand_m_x, rand_m_y);
+            List<Vector2> ListSousMontagne = new List<Vector2>();
 
             if (VerifMontagne(rand_m_x, rand_m_y, planInitial))
             {
+                ListSousMontagne.Add(new Vector2(rand_m_x, rand_m_y));
                 SetBlocMontagne(new Vector2(rand_m_x, rand_m_y), planInitial);
                 int i = 1;
                 while (i < nbr_m)
@@ -58,6 +61,7 @@ namespace SshCity.Game.Plan
                             {
                                 rand_m_x -= 2;
                                 SetBlocMontagne(new Vector2(rand_m_x, rand_m_y), planInitial);
+                                ListSousMontagne.Add(new Vector2(rand_m_x, rand_m_y));
                                 i++;
                             }
 
@@ -70,6 +74,7 @@ namespace SshCity.Game.Plan
                             {
                                 rand_m_x += 2;
                                 SetBlocMontagne(new Vector2(rand_m_x, rand_m_y), planInitial);
+                                ListSousMontagne.Add(new Vector2(rand_m_x, rand_m_y));
                                 i++;
                             }
 
@@ -82,6 +87,7 @@ namespace SshCity.Game.Plan
                             {
                                 rand_m_y += 2;
                                 SetBlocMontagne(new Vector2(rand_m_x, rand_m_y), planInitial);
+                                ListSousMontagne.Add(new Vector2(rand_m_x, rand_m_y));
                                 i++;
                             }
 
@@ -94,6 +100,7 @@ namespace SshCity.Game.Plan
                             {
                                 rand_m_y -= 2;
                                 SetBlocMontagne(new Vector2(rand_m_x, rand_m_y), planInitial);
+                                ListSousMontagne.Add(new Vector2(rand_m_x, rand_m_y));
                                 i++;
                             }
 
@@ -101,10 +108,12 @@ namespace SshCity.Game.Plan
                         }
                     }
                 }
+
+                list.Add(ListSousMontagne);
             }
             else
-            {
-                GenerateMontagne(planInitial);
+            { 
+                GenerateMontagne(planInitial, ref list);
             }
         }
     }
