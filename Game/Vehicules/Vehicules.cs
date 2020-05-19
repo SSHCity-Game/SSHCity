@@ -23,6 +23,7 @@ namespace SshCity.Game.Vehicules
         private Timer _timer;
         private const string _strTimer = "Timer";
         private bool _stopAccident = false;
+
         public enum Direction
         {
             TOP,

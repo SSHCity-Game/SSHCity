@@ -58,8 +58,6 @@ public class menu_incident : CanvasLayer
         Quitter.Hide();
         Background.Hide();
         Texte.Hide();
-        //BackBoutiqueOk.Hide();
-        //TexteBoutiqueOk.Hide();
     }
 
     private void on_boutique_pressed()
@@ -93,6 +91,7 @@ public class menu_incident : CanvasLayer
         HideAll();
         await Task.Delay(3000);
         incidents.ResoIncident = true;
+        Interface.Xp += 50;
     }
 
     private void on_quitter_pressed()

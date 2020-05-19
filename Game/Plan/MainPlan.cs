@@ -167,6 +167,8 @@ public class MainPlan : Node2D
 				_planInitial = new PlanInitial();
 			}
 
+			Interface.Xp = 0;
+
 			Montagnes.GenerateMontagne(_planInitial);
 
 			//CREATION LACS

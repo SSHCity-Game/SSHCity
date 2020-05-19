@@ -19,6 +19,7 @@ namespace SshCity.Game.Buildings
         int[] water { get; } 
         string[] Image { get; }
         int NbrAmeliorations { get; }
+        int NbCar { get; }
     }
 
     /// <summary>
