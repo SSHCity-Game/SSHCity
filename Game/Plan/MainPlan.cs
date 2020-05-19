@@ -5,6 +5,7 @@ using SshCity.Game.Sauvegarde;
 
 public class MainPlan : Node2D
 {
+	public List<List<Vector2>>MontagneList = new List<List<Vector2>>();
 	private const string _str_music = "Musique";
 	public static PlanInitial _planInitial;
 	public static float zoom = (float) 1.25;
@@ -158,8 +159,7 @@ public class MainPlan : Node2D
 		// We load the game or we generate a map
 		if (!SauvegardeManager.LoadGame(_planInitial))
 		{
-			Montagnes.GenerateMontagne(_planInitial);
-			Montagnes.GenerateMontagne(_planInitial);
+
 
 			// Génère une nouvelle map tant qu'on ne peut pas créer de village
 			while (!SshCity.Game.Plan.Buildings.GenerateBuildings(_planInitial))
@@ -167,13 +167,17 @@ public class MainPlan : Node2D
 				_planInitial = new PlanInitial();
 			}
 
-			Montagnes.GenerateMontagne(_planInitial);
+			Interface.Xp = 0;
+			Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
+			Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
+			Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
 
 			//CREATION LACS
-			List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
+			Lacs.GenerateLac(_planInitial);
+			//List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
 
 			//CREATION SABLE
-			Sable.GenerateSable(_planInitial, coordonnées);
+			//Sable.GenerateSable(_planInitial, coordonnées);
 		}
 
 		//Lancement de la musique

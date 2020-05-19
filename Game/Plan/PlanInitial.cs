@@ -19,31 +19,45 @@ public partial class PlanInitial : Node2D
     private static Vector2 _tileSupressing;
     private static bool _buildOnTileMap2 = false;
     private static Vector2 _tileOnTileMap2;
+    
+    //Add Vehicules
     public static bool VehiculesInit = false;
+    private static bool addVehicule = true; //MairieMenu desactivation des vehicules
     public static Vector2 VehiculesPosition;
     public static Vehicules.Type VehiculesType;
     private PackedScene _vehiculeScene;
     private Timer VehiculeTimer;
     private static bool VehiculesAutonome;
-    public static List<Vector2> DepartRoute = new List<Vector2>();
-    private static bool addVehicule = true;
+    
+    //Accidents
     private PackedScene _accidentArea2D;
     private static bool addAccident = false;
     private static Vector2 positionAccident;
     private static bool deleteAccident = false;
     private static Vector2 positionDeleteAccident;
     private static bool _accidentVisi = false;
+    
+    public static List<Vector2> DepartRoute = new List<Vector2>();
 
+    //Add Houloucoupters
+    public static bool HouloucoupterInit = false;
+    public static Vector2 HouloucoupterPosition = new Vector2(60, 0);
+    public static Houloucoupter.Type HouloucoupterType;
+    public static Vector2 HouloucoupterDestination;
+    private PackedScene _houloucoupterScene;
+
+
+
+    public static int MAX_CAR = 0;
+    public static int NbCar = 0;
     public static bool AddVehicule1
     {
         get => addVehicule;
         set => addVehicule = value;
     }
-
-
+    
     private Vector2 _lastTile = new Vector2(0, 0);
-
-
+    
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
@@ -91,6 +105,7 @@ public partial class PlanInitial : Node2D
         VehiculeTimer.Autostart = true;
         _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
         _accidentArea2D = (PackedScene) GD.Load("res://Game/Vehicules/Accident.tscn");
+        _houloucoupterScene = (PackedScene) GD.Load("res://Game/Vehicules/Houloucoupter.tscn");
         VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
     }
 
@@ -122,9 +137,17 @@ public partial class PlanInitial : Node2D
         {
             Accident area = (Accident) _accidentArea2D.Instance();
             area.Position = positionAccident;
-            area.Init(this, _accidentVisi);
+            area.Init(_accidentVisi);
             AddChild(area);
             addAccident = false;
+        }
+
+        if (HouloucoupterInit)
+        {
+            Houloucoupter _houloucoupter = (Houloucoupter) _houloucoupterScene.Instance();
+            _houloucoupter.Init(this, HouloucoupterType, HouloucoupterPosition, HouloucoupterDestination);
+            AddChild(_houloucoupter);
+            HouloucoupterInit = false;
         }
     }
 
@@ -149,10 +172,26 @@ public partial class PlanInitial : Node2D
 
     public static void AddVehicule(Vehicules.Type type, Vector2 position, bool autonome=false)
     {
-        VehiculesInit = true;
-        VehiculesPosition = position;
-        VehiculesType = type;
-        VehiculesAutonome = autonome;
+        if (MAX_CAR <= NbCar)
+        {
+            VehiculesInit = false;
+        }
+        else
+        {
+            VehiculesInit = true;
+            NbCar += 1;
+            VehiculesPosition = position;
+            VehiculesType = type;
+            VehiculesAutonome = autonome;
+        }
+    }
+
+    public static void AddHouloucoupter(Houloucoupter.Type type, Vector2 position, Vector2 destination)
+    {
+        HouloucoupterPosition = position;
+        HouloucoupterType = type;
+        HouloucoupterDestination = destination;
+        HouloucoupterInit = true;
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)
@@ -228,7 +267,7 @@ public partial class PlanInitial : Node2D
             _achat = false;
             _lastTile = new Vector2(0, 0);
             Vector2 tile = GetTilePosition();
-            GD.Print(GetBlock(TileMap2, (int) tile.x, (int) tile.y));
+            //GD.Print(GetBlock(TileMap2, (int) tile.x, (int) tile.y));
             if (GetBlock(TileMap2, (int) tile.x, (int) tile.y) == _batiment)
             {
                 if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)

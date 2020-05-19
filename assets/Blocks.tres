@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
 [ext_resource path="res://assets/Flammeresto.png" type="Texture" id=3]
 [ext_resource path="res://assets/isometric_0064.png" type="Texture" id=4]
+[ext_resource path="res://assets/grass -water.png" type="Texture" id=5]
 [ext_resource path="res://assets/isometric_0063.png" type="Texture" id=6]
 [ext_resource path="res://assets/isometric_0087_2.png" type="Texture" id=7]
 [ext_resource path="res://assets/lac2.png" type="Texture" id=8]
@@ -59,8 +60,6 @@
 [ext_resource path="res://assets/Flammemaison5.png" type="Texture" id=58]
 [ext_resource path="res://assets/Flammemaison4.png" type="Texture" id=59]
 [ext_resource path="res://assets/sol_montagne.png" type="Texture" id=60]
-[ext_resource path="res://assets/Images_interface/roues.png" type="Texture" id=61]
-[ext_resource path="res://assets/Images_interface/trait.png" type="Texture" id=62]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -73,8 +72,13 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 
 [sub_resource type="NavigationPolygon" id=4]
 
+[sub_resource type="NavigationPolygon" id=5]
+vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
+
 [resource]
-0/name = "Grass"
+0/name = "Sol"
 0/texture = ExtResource( 10 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
@@ -140,7 +144,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 5/navigation = SubResource( 1 )
 5/shapes = [  ]
 5/z_index = 0
-6/name = "alerte_incendie"
+6/name = "FlammeMaison1"
 6/texture = ExtResource( 2 )
 6/tex_offset = Vector2( 100, 210 )
 6/modulate = Color( 1, 1, 1, 1 )
@@ -148,7 +152,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 6/tile_mode = 0
 6/occluder_offset = Vector2( 512, 512 )
 6/navigation_offset = Vector2( 512, 512 )
-6/navigation = SubResource( 1 )
+6/navigation = SubResource( 5 )
 6/shapes = [  ]
 6/z_index = 0
 7/name = "FlammeMaison4"
@@ -588,12 +592,12 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 55/z_index = 0
 56/name = "montagne"
 56/texture = ExtResource( 51 )
-56/tex_offset = Vector2( -800, -800 )
+56/tex_offset = Vector2( -800, -500 )
 56/modulate = Color( 1, 1, 1, 1 )
-56/region = Rect2( 0, -256, 2624, 1984 )
+56/region = Rect2( 0, 0, 2600, 2393 )
 56/tile_mode = 0
-56/occluder_offset = Vector2( 8192, 5446.5 )
-56/navigation_offset = Vector2( 8192, 5446.5 )
+56/occluder_offset = Vector2( 1300, 1196.5 )
+56/navigation_offset = Vector2( 1300, 1196.5 )
 56/shapes = [  ]
 56/z_index = 0
 57/name = "Maison3Flamme"
@@ -604,7 +608,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 57/tile_mode = 0
 57/occluder_offset = Vector2( 487.5, 452.5 )
 57/navigation_offset = Vector2( 487.5, 452.5 )
-57/navigation = SubResource( 1 )
+57/navigation = SubResource( 5 )
 57/shapes = [  ]
 57/z_index = 0
 58/name = "isometric centrale1.png 58"
@@ -662,7 +666,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 62/z_index = 0
 63/name = "Tds"
 63/texture = ExtResource( 8 )
-63/tex_offset = Vector2( 0, 0 )
+63/tex_offset = Vector2( -2000, -1500 )
 63/modulate = Color( 1, 1, 1, 1 )
 63/region = Rect2( 224, 640, 4800, 3296 )
 63/tile_mode = 0
@@ -673,7 +677,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 63/z_index = 0
 64/name = "Box"
 64/texture = ExtResource( 1 )
-64/tex_offset = Vector2( 0, 0 )
+64/tex_offset = Vector2( -2000, -2000 )
 64/modulate = Color( 1, 1, 1, 1 )
 64/region = Rect2( 32, 352, 5152, 4160 )
 64/tile_mode = 0
@@ -713,23 +717,13 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 72/navigation_offset = Vector2( 487.5, 452.5 )
 72/shapes = [  ]
 72/z_index = 0
-76/name = "Rouages"
-76/texture = ExtResource( 61 )
-76/tex_offset = Vector2( 0, 0 )
-76/modulate = Color( 1, 1, 1, 1 )
-76/region = Rect2( 0, 0, 2048, 2048 )
-76/tile_mode = 0
-76/occluder_offset = Vector2( 1024, 1024 )
-76/navigation_offset = Vector2( 1024, 1024 )
-76/shapes = [  ]
-76/z_index = 0
-77/name = "Trait"
-77/texture = ExtResource( 62 )
-77/tex_offset = Vector2( 0, 0 )
-77/modulate = Color( 1, 1, 1, 1 )
-77/region = Rect2( 0, 0, 1308, 1182 )
-77/tile_mode = 0
-77/occluder_offset = Vector2( 654, 591 )
-77/navigation_offset = Vector2( 654, 591 )
-77/shapes = [  ]
-77/z_index = 0
+78/name = "grass -water.png 78"
+78/texture = ExtResource( 5 )
+78/tex_offset = Vector2( 0, 0 )
+78/modulate = Color( 1, 1, 1, 1 )
+78/region = Rect2( 0, 0, 1024, 1024 )
+78/tile_mode = 0
+78/occluder_offset = Vector2( 0, 0 )
+78/navigation_offset = Vector2( 0, 0 )
+78/shapes = [  ]
+78/z_index = 0

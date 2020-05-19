@@ -26,7 +26,8 @@ public partial class PlanInitial
                 somehtingHere = GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.route
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.montagne_sol
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sable
-                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.eau;
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.eau
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.water_terre;
                 j++;
             }
 

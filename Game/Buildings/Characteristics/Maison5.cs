@@ -9,13 +9,14 @@ namespace SshCity.Game.Buildings.Characteristics
             Bloc = new[] {Ref_donnees.maison5};
             Cost = new[] {1000};
             Earn = new[] {1, 2, 5};
-            Titre = new[] {"Maison5"};
+            Titre = new[] {"Maison"};
             Lvl = 0;
             GainXp = new[] {10, 100, 500};
             energy = new[] {1,2,3};
             water = new[] {1,2,3};
             Image = new[] {"res://assets/ImageSized/maison5.png"};
             NbrAmeliorations = 0;
+            NbCar = 2;
         }
 
         public int[] Bloc { get; }
@@ -28,5 +29,6 @@ namespace SshCity.Game.Buildings.Characteristics
         public int[] water { get; }
         public string[] Image { get; }
         public int NbrAmeliorations { get; }
+        public int NbCar { get; }
     }
 }
