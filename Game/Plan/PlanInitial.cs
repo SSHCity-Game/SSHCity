@@ -20,7 +20,6 @@ public partial class PlanInitial : Node2D
     private static bool _buildOnTileMap2 = false;
     private static Vector2 _tileOnTileMap2;
     
-    
     //Add Vehicules
     public static bool VehiculesInit = false;
     private static bool addVehicule = true; //MairieMenu desactivation des vehicules

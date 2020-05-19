@@ -201,6 +201,7 @@ namespace SshCity.Game.Vehicules
                 {
                     Vector2 position = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
                     PlanInitial.AddZoneAccident(Position, true);
+                    PlanInitial.NbCar -= 1;
                     QueueFree();
                 }
                 else
