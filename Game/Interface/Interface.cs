@@ -210,9 +210,9 @@ public class Interface : CanvasLayer
         waterused = 0;
         foreach (var batiment in Building.ListBuildings)
         {
-            moneyWin += Building.Characteristics.Earn[0];
-            energyused += Building.Characteristics.energy[0];
-            waterused += Building.Characteristics.water[0];
+            moneyWin += batiment.Characteristics.Earn[0];
+            energyused += batiment.Characteristics.energy[0];
+            waterused += batiment.Characteristics.water[0];
         }
 
 

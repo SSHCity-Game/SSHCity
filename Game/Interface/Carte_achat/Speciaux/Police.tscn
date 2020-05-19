@@ -4,6 +4,8 @@
 [ext_resource path="res://assets/police.png" type="Texture" id=2]
 
 [node name="Police" instance=ExtResource( 1 )]
+margin_top = -120.0
+margin_bottom = 122.0
 
 [node name="Image" parent="Background" index="0"]
 texture = ExtResource( 2 )
