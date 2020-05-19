@@ -342,18 +342,47 @@ namespace SshCity.Game.Plan
             BuildRoadDirection(planInitial, x, y, Direction.RIGHT);
             return (x, y);
         }
+        
+        public static int[] BlocksNextTo(PlanInitial planInitial, int x, int y)
+        {
+            int[] res = new int[9];
+            res[0] = planInitial.GetBlock(planInitial.TileMap1, x, y);
+            res[1] = planInitial.GetBlock(planInitial.TileMap1, x + 1, y);
+            res[2] = planInitial.GetBlock(planInitial.TileMap1, x + 1, y + 1);
+            res[3] = planInitial.GetBlock(planInitial.TileMap1, x, y + 1);
+            res[4] = planInitial.GetBlock(planInitial.TileMap1, x - 1, y + 1);
+            res[5] = planInitial.GetBlock(planInitial.TileMap1, x - 1, y);
+            res[6] = planInitial.GetBlock(planInitial.TileMap1, x - 1, y - 1);
+            res[7] = planInitial.GetBlock(planInitial.TileMap1, x, y - 1);
+            res[8] = planInitial.GetBlock(planInitial.TileMap1, x + 1, y - 1);
+
+            return res;
+        }
+        public static bool Valid_Position(int x, int y, PlanInitial planInitial)
+        {
+            bool creation = true;
+            int[] BlocNext = BlocksNextTo(planInitial, x, y);
+            foreach (int index in BlocNext)
+            {
+                creation =
+                    creation &&
+                    (index == Ref_donnees.terre || index == Ref_donnees.eau);
+            }
+
+            return creation;
+        }
 
         public static bool VerifCases(PlanInitial planInitial, int x, int y)
         {
             bool res;
-            res = Lacs.Valid_Position(x + 1, y, planInitial) &&
-                  Lacs.Valid_Position(x + 1, y + 1, planInitial) &&
-                  Lacs.Valid_Position(x, y + 1, planInitial) &&
-                  Lacs.Valid_Position(x - 1, y + 1, planInitial) &&
-                  Lacs.Valid_Position(x - 1, y, planInitial) &&
-                  Lacs.Valid_Position(x - 1, y - 1, planInitial) &&
-                  Lacs.Valid_Position(x, y - 1, planInitial) &&
-                  Lacs.Valid_Position(x + 1, y - 1, planInitial);
+            res = Valid_Position(x + 1, y, planInitial) &&
+                  Valid_Position(x + 1, y + 1, planInitial) &&
+                  Valid_Position(x, y + 1, planInitial) &&
+                  Valid_Position(x - 1, y + 1, planInitial) &&
+                  Valid_Position(x - 1, y, planInitial) &&
+                  Valid_Position(x - 1, y - 1, planInitial) &&
+                  Valid_Position(x, y - 1, planInitial) &&
+                  Valid_Position(x + 1, y - 1, planInitial);
             return res;
         }
 

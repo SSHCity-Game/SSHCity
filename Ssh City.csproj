@@ -99,7 +99,6 @@
     <Compile Include="Game\Plan\PlanInitial.cs" />
     <Compile Include="Game\Plan\Ref_donnees.cs" />
     <Compile Include="Game\Plan\Routes.cs" />
-    <Compile Include="Game\Plan\Sable.cs" />
     <Compile Include="Game\Sauvegarde\SauvegardeManager.cs" />
     <Compile Include="Game\Sauvegarde\Serializable.cs" />
     <Compile Include="Game\Vehicules\Accident.cs" />
