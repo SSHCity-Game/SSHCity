@@ -16,6 +16,7 @@ namespace SshCity.Game.Buildings.Characteristics
             water = new[] {1};
             Image = new[] {"res://assets/ImageSized/police.png"};
             NbrAmeliorations = 0;
+            NbCar = 0;
         }
 
         public int[] Bloc { get; }
@@ -28,5 +29,6 @@ namespace SshCity.Game.Buildings.Characteristics
         public int[] water { get; }
         public string[] Image { get; }
         public int NbrAmeliorations { get; }
+        public int NbCar { get; }
     }
 }

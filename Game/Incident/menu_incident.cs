@@ -58,8 +58,6 @@ public class menu_incident : CanvasLayer
         Quitter.Hide();
         Background.Hide();
         Texte.Hide();
-        //BackBoutiqueOk.Hide();
-        //TexteBoutiqueOk.Hide();
     }
 
     private void on_boutique_pressed()

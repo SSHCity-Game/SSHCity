@@ -19,6 +19,7 @@ namespace SshCity.Game.Buildings
             Position = position;
             Characteristics.Lvl = theLvl;
             ListBuildings.Add(this);
+            PlanInitial.MAX_CAR += BuildingCharacteristics.FromType(type).NbCar;
         }
 
         /// <summary>
@@ -69,9 +70,6 @@ namespace SshCity.Game.Buildings
             Interface.Energy -= energy;
             Interface.Water -= water;
         }
-
-        
-        
 
         /// <summary>
         /// Supprime un bâtiment de la liste des bâtiments

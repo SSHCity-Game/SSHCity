@@ -53,9 +53,7 @@ public class incidents : CanvasLayer
 
 	public static (int x, int y, int indexAv, int indexAp) GenereCoords((int, int)[] listBat)
 	{
-		/*******************************************************************
-		 * Genere aleatoirement les coordonnees d un batiement a accidente *
-		 *******************************************************************/
+		/* Genere aleatoirement les coordonnees d un batiement a accidente */
 
 		var rand = new Random();
 		var coordinates = new List<Vector2>(); // Liste de stockage des coordonnees de l incident
@@ -97,6 +95,7 @@ public class incidents : CanvasLayer
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
 	}
+	
 	public static void BuildingSwitch(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
 	{
 		/********************************

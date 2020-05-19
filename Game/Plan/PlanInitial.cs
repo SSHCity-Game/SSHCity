@@ -34,6 +34,8 @@ public partial class PlanInitial : Node2D
     private static Vector2 positionDeleteAccident;
     private static bool _accidentVisi = false;
 
+    public static int MAX_CAR = 0;
+    public static int NbCar = 0;
     public static bool AddVehicule1
     {
         get => addVehicule;
@@ -149,10 +151,18 @@ public partial class PlanInitial : Node2D
 
     public static void AddVehicule(Vehicules.Type type, Vector2 position, bool autonome=false)
     {
-        VehiculesInit = true;
-        VehiculesPosition = position;
-        VehiculesType = type;
-        VehiculesAutonome = autonome;
+        if (MAX_CAR <= NbCar)
+        {
+            VehiculesInit = false;
+        }
+        else
+        {
+            VehiculesInit = true;
+            NbCar += 1;
+            VehiculesPosition = position;
+            VehiculesType = type;
+            VehiculesAutonome = autonome;
+        }
     }
 
     public void SetBlock(TileMap tileMap, int x, int y, int index)
@@ -228,7 +238,7 @@ public partial class PlanInitial : Node2D
             _achat = false;
             _lastTile = new Vector2(0, 0);
             Vector2 tile = GetTilePosition();
-            GD.Print(GetBlock(TileMap2, (int) tile.x, (int) tile.y));
+            //GD.Print(GetBlock(TileMap2, (int) tile.x, (int) tile.y));
             if (GetBlock(TileMap2, (int) tile.x, (int) tile.y) == _batiment)
             {
                 if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)
