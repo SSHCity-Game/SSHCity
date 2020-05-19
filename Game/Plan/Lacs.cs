@@ -15,15 +15,18 @@ namespace SshCity.Game.Plan
         enum TypeLac
         {
             LAC1,
+            LAC2
         }
         
         private static List<TypeLac> listTypeLacs = new List<TypeLac>()
         {
             TypeLac.LAC1,
+            TypeLac.LAC2
         };
 
         private static List<Vector2> ListBlocLac1 = new List<Vector2>()
         {
+            new Vector2(0, 0),
             new Vector2(0, -1),
             new Vector2(0, -2),
             new Vector2(0, -3),
@@ -71,12 +74,93 @@ namespace SshCity.Game.Plan
             new Vector2(-2, -3),
             new Vector2(-1, -4)
         };
-
-        private static Godot.Collections.Dictionary<TypeLac, List<Vector2>> TypeLacToListVector2 =
-            new Godot.Collections.Dictionary<TypeLac, List<Vector2>>()
-            {
-                {TypeLac.LAC1, ListBlocLac1},
-            };
+        
+        private static List<Vector2> ListBlocLac2 = new List<Vector2>()
+        {
+            new Vector2(0, 0),
+            new Vector2(0,1),
+            new Vector2(0,2),
+            new Vector2(0,3),
+            new Vector2(0,4),
+            new Vector2(0, -1),
+            new Vector2(0, -2),
+            new Vector2(0, 3),
+            new Vector2(0, -4),
+            new Vector2(0, -5),
+            new Vector2(1, 0),
+            new Vector2(2, 0),
+            new Vector2(3, 0),
+            new Vector2(4, 0),
+            new Vector2(5, 0),
+            new Vector2(-1, 0),
+            new Vector2(-2, 0),
+            new Vector2(-3, 0),
+            new Vector2(-4, 0),
+            new Vector2(-5, 0),
+            new Vector2(1, 1),
+            new Vector2(2, 1),
+            new Vector2(3, 1),
+            new Vector2(4, 1),
+            new Vector2(1, 2),
+            new Vector2(2, 2),
+            new Vector2(3, 2),
+            new Vector2(4, 2),
+            new Vector2(1, 3),
+            new Vector2(2, 3),
+            new Vector2(3, 3),
+            new Vector2(4, 3),
+            new Vector2(1, 4),
+            new Vector2(2, 4),
+            new Vector2(3, 4),
+            new Vector2(1, 5),
+            new Vector2(1, -1),
+            new Vector2(2, -1),
+            new Vector2(3, -1),
+            new Vector2(4, -1),
+            new Vector2(1, -2),
+            new Vector2(2, -2),
+            new Vector2(3, -2),
+            new Vector2(4, -2),
+            new Vector2(1, -3),
+            new Vector2(2, -3),
+            new Vector2(3, -3),
+            new Vector2(1, -4),
+            new Vector2(2, -4),
+            new Vector2(-1, 1),
+            new Vector2(-1, 2),
+            new Vector2(-1, 3),
+            new Vector2(-1, 4),
+            new Vector2(-2, 1),
+            new Vector2(-2, 2),
+            new Vector2(-2, 3),
+            new Vector2(-3, 1),
+            new Vector2(-3, 2),
+            new Vector2(-4, 1),
+            new Vector2(-1, -1),
+            new Vector2(-1, -2),
+            new Vector2(-1, -3),
+            new Vector2(-1, -4),
+            new Vector2(-1, -5),
+            new Vector2(-2, -1),
+            new Vector2(-2, -2),
+            new Vector2(-2, -3),
+            new Vector2(-2, -4),
+            new Vector2(-2, -5),
+            new Vector2(-3, -1),
+            new Vector2(-3, -2),
+            new Vector2(-3, -3),
+            new Vector2(-3, -4),
+            new Vector2(-3, -5),
+            new Vector2(-4, -1),
+            new Vector2(-4, -2),
+            new Vector2(-4, -3),
+            new Vector2(-4, -4),
+            new Vector2(-5, -1),
+            new Vector2(-5, -2),
+            new Vector2(-5, -3),
+            new Vector2(-5, -4),
+        };
+        
 
         public static void GenerateLac(PlanInitial planInitial)
         {
@@ -92,13 +176,23 @@ namespace SshCity.Game.Plan
                 {
                     int WhichLac = random.Next(0, listTypeLacs.Count);
                     TypeLac lac = listTypeLacs[WhichLac];
-                    List<Vector2> lacBlocToSet = ListBlocLac1;
+                    List<Vector2> lacBlocToSet;
+                    int blocLac;
+                    if (lac == TypeLac.LAC1)
+                    {
+                        blocLac = Ref_donnees.lac1;
+                        lacBlocToSet = ListBlocLac1;
+                    }
+                    else
+                    {
+                        blocLac = Ref_donnees.lac2;
+                        lacBlocToSet = ListBlocLac2;
+                    }
                     if (VerifLac(new Vector2(x, y), planInitial, lacBlocToSet))
                     {
-                        planInitial.SetBlock(planInitial.TileMap2, x, y, Ref_donnees.lac1);
+                        planInitial.SetBlock(planInitial.TileMap2, x, y, blocLac);
                         foreach (Vector2 vector2 in lacBlocToSet)
-                        {
-                            GD.Print("BLOC O");
+                        { 
                             planInitial.SetBlock(planInitial.TileMap1, (int) x + (int) vector2.x,
                                 (int) y + (int) vector2.y, Ref_donnees.water_terre);
                         }
