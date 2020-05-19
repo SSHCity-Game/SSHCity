@@ -90,7 +90,7 @@ public partial class PlanInitial
         BuildingType batimentClass = (BuildingType) batiment; 
         Building.Create(batimentClass, tile);
         Building batima = Building.Delete(tile);
-        Building.ListBuildings.Add(batima);
         batima.energyAndWater(batima);
+        Building.ListBuildings.Add(batima);
     }
 }

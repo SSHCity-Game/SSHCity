@@ -51,7 +51,7 @@ public class Carte : Panel
 
     public void ButtonAchatPressed()
     {
-        EmitSignal("Achat", _bloc, _cost);
+        EmitSignal("Achat", _bloc, _cost, _energie, _eau);
     }
 
     public void Titre(string titre)
