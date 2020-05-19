@@ -104,6 +104,8 @@
     <Compile Include="Game\Sauvegarde\Serializable.cs" />
     <Compile Include="Game\Vehicules\Accident.cs" />
     <Compile Include="Game\Vehicules\DeplacementPompiers.cs" />
+    <Compile Include="Game\Vehicules\Houloucoupter.cs" />
+    <Compile Include="Game\Vehicules\HouloucoupterDeplacement.cs" />
     <Compile Include="Game\Vehicules\Vehicules.cs" />
     <Compile Include="Game\Vehicules\VehiculesDeplacement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
