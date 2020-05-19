@@ -121,5 +121,19 @@ namespace SshCity.Game.Buildings
             Interface.Xp += Characteristics.GainXp[Characteristics.Lvl];
             Characteristics.Lvl += 1;
         }
+        
+        public static Building GetFromTile(Vector2 tile)
+        {
+            var i = 0;
+            var length = ListBuildings.Count;
+            while (i < length)
+            {
+                var batiment = ListBuildings[i];
+                if (batiment.Position == tile)
+                    return batiment;
+                i++;
+            }
+            return null;
+        }
     }
 }
