@@ -9,3 +9,11 @@
 position = Vector2( 68.9695, 68.1787 )
 scale = Vector2( 0.142611, 0.141994 )
 texture = ExtResource( 2 )
+
+[node name="Energie" type="Label" parent="." index="7"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Eau" type="Label" parent="." index="8"]
+margin_right = 40.0
+margin_bottom = 14.0

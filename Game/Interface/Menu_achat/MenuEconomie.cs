@@ -27,6 +27,8 @@ public class MenuEconomie : Node
 		_carteCafe.Titre(cafe.Titre[0]);
 		_carteCafe.Gain(cafe.Earn[0]);
 		_carteCafe.Prix(cafe.Cost[0]);
+		_carteCafe.Enrgie(cafe.energy[0].ToString());
+		_carteCafe.Eau(cafe.water[0].ToString());
 		_carteCafe.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		//Config _carteRestaurant
@@ -37,6 +39,8 @@ public class MenuEconomie : Node
 		_carteRestaurant.Titre(restaurant.Titre[0]);
 		_carteRestaurant.Gain(restaurant.Earn[0]);
 		_carteRestaurant.Prix(restaurant.Cost[0]);
+		_carteRestaurant.Enrgie(restaurant.energy[0].ToString());
+		_carteRestaurant.Eau(restaurant.water[0].ToString());
 		_carteRestaurant.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		//Config _carteRestaurant2
@@ -47,6 +51,8 @@ public class MenuEconomie : Node
 		_carteRestaurant2.Titre(restaurant2.Titre[0]);
 		_carteRestaurant2.Gain(restaurant2.Earn[0]);
 		_carteRestaurant2.Prix(restaurant2.Cost[0]);
+		_carteRestaurant2.Enrgie(restaurant2.energy[0].ToString());
+		_carteRestaurant2.Eau(restaurant2.water[0].ToString());
 		_carteRestaurant2.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		//Config _carteFerme
@@ -57,6 +63,8 @@ public class MenuEconomie : Node
 		_carteFerme.Titre(ferme.Titre[0]);
 		_carteFerme.Gain(ferme.Earn[0]);
 		_carteFerme.Prix(ferme.Cost[0]);
+		_carteFerme.Enrgie(ferme.energy[0].ToString());
+		_carteFerme.Eau(ferme.water[0].ToString());
 		_carteFerme.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		_menu_achat.Connect("CloseShop", this, nameof(CloseShop));

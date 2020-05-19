@@ -8,6 +8,8 @@ public class Carte : Panel
     private const string _str_titre = "Titre";
     private const string _str_gain = "Gain";
     private const string _str_prix = "Prix";
+    private const string _str_energie = "Energie";
+    private const string _str_eau = "Eau";
     private int _bloc = 1;
     private Button _buttonAchat;
     private int _cost;
@@ -15,6 +17,8 @@ public class Carte : Panel
     private Label _prix;
     private Sprite _sprite;
     private Label _titre;
+    private Label _energie;
+    private Label _eau;
 
     public int Cost
     {
@@ -39,6 +43,8 @@ public class Carte : Panel
         _sprite = (Sprite) GetNode(_str_sprite);
         _prix = (Label) GetNode(_str_prix);
         _gain = (Label) GetNode(_str_gain);
+        _energie = (Label) GetNode(_str_energie);
+        _eau = (Label) GetNode(_str_eau);
 
         AddUserSignal("Achat");
     }
@@ -61,6 +67,16 @@ public class Carte : Panel
     public void Gain(int gain)
     {
         _gain.Text = Convert.ToString(gain);
+    }
+
+    public void Enrgie(string energie)
+    {
+        _energie.Text = energie;
+    }
+
+    public void Eau(string eau)
+    {
+        _eau.Text = eau;
     }
 
     public void ButtonOver()

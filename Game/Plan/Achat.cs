@@ -87,8 +87,10 @@ public partial class PlanInitial
         {
             Interface.Money -= Prix;
         }
-        var batimentClass = (BuildingType) batiment;
-        Building.energyAndWater(batimentClass);
+        BuildingType batimentClass = (BuildingType) batiment; 
         Building.Create(batimentClass, tile);
+        Building batima = Building.Delete(tile);
+        Building.ListBuildings.Add(batima);
+        batima.energyAndWater(batima);
     }
 }
