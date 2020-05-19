@@ -171,17 +171,13 @@ public class MainPlan : Node2D
 			Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
 			Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
 			Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
-			
-			foreach (List<Vector2> list in MontagneList)
-			{
-				GD.Print("MONTAGNE");
-			}
 
 			//CREATION LACS
-			List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
+			Lacs.GenerateLac(_planInitial);
+			//List<(int, int)> coordonnées = Lacs.GenerateLac(_planInitial);
 
 			//CREATION SABLE
-			Sable.GenerateSable(_planInitial, coordonnées);
+			//Sable.GenerateSable(_planInitial, coordonnées);
 		}
 
 		//Lancement de la musique

@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=67 format=2]
+[gd_resource type="TileSet" load_steps=68 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
 [ext_resource path="res://assets/Flammeresto.png" type="Texture" id=3]
 [ext_resource path="res://assets/isometric_0064.png" type="Texture" id=4]
+[ext_resource path="res://assets/grass -water.png" type="Texture" id=5]
 [ext_resource path="res://assets/isometric_0063.png" type="Texture" id=6]
 [ext_resource path="res://assets/isometric_0087_2.png" type="Texture" id=7]
 [ext_resource path="res://assets/lac2.png" type="Texture" id=8]
@@ -667,7 +668,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 62/z_index = 0
 63/name = "Tds"
 63/texture = ExtResource( 8 )
-63/tex_offset = Vector2( 0, 0 )
+63/tex_offset = Vector2( -2000, -1500 )
 63/modulate = Color( 1, 1, 1, 1 )
 63/region = Rect2( 224, 640, 4800, 3296 )
 63/tile_mode = 0
@@ -738,3 +739,13 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 77/navigation_offset = Vector2( 654, 591 )
 77/shapes = [  ]
 77/z_index = 0
+78/name = "grass -water.png 78"
+78/texture = ExtResource( 5 )
+78/tex_offset = Vector2( 0, 0 )
+78/modulate = Color( 1, 1, 1, 1 )
+78/region = Rect2( 0, 0, 1024, 1024 )
+78/tile_mode = 0
+78/occluder_offset = Vector2( 0, 0 )
+78/navigation_offset = Vector2( 0, 0 )
+78/shapes = [  ]
+78/z_index = 0

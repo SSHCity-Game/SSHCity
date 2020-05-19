@@ -88,6 +88,10 @@ namespace SshCity.Game.Plan
         public const int maison3_flamme = 57;
         public const int cafe_flamme = 60;
         public const int restaurant2_flamme= 62;
+        
+        //Lac Bloc
+        public const int water_terre = 78;
+        public const int lac1 = 63;
 
         /* Liste batiment, batiment en feu */
         public static (int, int)[] BatimentFeu = {
