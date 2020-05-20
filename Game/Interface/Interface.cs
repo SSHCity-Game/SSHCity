@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using SshCity.Game.Buildings;
 using SshCity.Game.Plan;
@@ -118,7 +119,7 @@ public class Interface : CanvasLayer
         set => _water = value;
     }
 
-    public void Init(PlanInitial planInitial)
+    public static void Init(PlanInitial planInitial)
     {
         _planInitial = planInitial;
     }
@@ -141,7 +142,7 @@ public class Interface : CanvasLayer
         _timer = (Timer) GetNode(_str_timer);
         ScoreBar = (TextureProgress) GetNode("ScoreBar");
         Score = GetNode<Label>("Score");
-        
+
 
         _croix.Hide();
         _croixJaune.Hide();
@@ -192,17 +193,16 @@ public class Interface : CanvasLayer
         {
             MairieMenu.MoneyWinManuel += moneyWin;
         }
-        Water -= waterused;
     }
 
     public void EnergyWin()
     {
-            Energy -= energyused;
+        Energy -= energyused;
     }
 
     public void WaterWin()
     {
-            Water -= Waterused;
+        Water -= Waterused;
     }
 
     public override void _Process(float delta)
@@ -213,25 +213,42 @@ public class Interface : CanvasLayer
         (_xp, _level) = UpdateXp(_xp, _level);
         ScoreBar.Value = _xp;
         Score.Text = Convert.ToString(_level);
-
         moneyWin = 0;
         energyused = 0;
         waterused = 0;
-        
         foreach (var batiment in Building.ListBuildings)
         {
-            moneyWin += batiment.Characteristics.Earn[batiment.Characteristics.Lvl];
-            if (batiment.Characteristics.energy[batiment.Characteristics.Lvl] >= 0)
-            {
-                energyused += batiment.Characteristics.energy[batiment.Characteristics.Lvl];
-            }
 
-            if (batiment.Characteristics.water[batiment.Characteristics.Lvl] >= 0)
+            if (Activation.isNextToRoad(_planInitial, batiment.Position,
+                batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
             {
-                waterused += batiment.Characteristics.water[batiment.Characteristics.Lvl];
+                if (!batiment.Activated)
+                {
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, -1);
+                }
+                batiment.Activated = true;
+                moneyWin += batiment.Characteristics.Earn[batiment.Characteristics.Lvl];
+                if (batiment.Characteristics.energy[batiment.Characteristics.Lvl] >= 0)
+                {
+                    energyused += batiment.Characteristics.energy[batiment.Characteristics.Lvl];
+                }
+
+                if (batiment.Characteristics.water[batiment.Characteristics.Lvl] >= 0)
+                {
+                    waterused += batiment.Characteristics.water[batiment.Characteristics.Lvl];
+                }
+            }
+            else
+            {
+                
+                if (batiment.Activated)
+                {
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
+                    batiment.Activated = false;
+                }
+
             }
         }
-
 
         if (PlanInitial.Delete)
         {
