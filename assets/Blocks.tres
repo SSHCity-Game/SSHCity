@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=66 format=2]
+[gd_resource type="TileSet" load_steps=67 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -60,6 +60,7 @@
 [ext_resource path="res://assets/Flammemaison5.png" type="Texture" id=58]
 [ext_resource path="res://assets/Flammemaison4.png" type="Texture" id=59]
 [ext_resource path="res://assets/sol_montagne.png" type="Texture" id=60]
+[ext_resource path="res://assets/Alerte_incidents/bulleRoute.png" type="Texture" id=61]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -727,3 +728,13 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 78/navigation_offset = Vector2( 0, 0 )
 78/shapes = [  ]
 78/z_index = 0
+79/name = "bulleRoute.png 79"
+79/texture = ExtResource( 61 )
+79/tex_offset = Vector2( 300, 0 )
+79/modulate = Color( 1, 1, 1, 1 )
+79/region = Rect2( 544, 256, 512, 480 )
+79/tile_mode = 0
+79/occluder_offset = Vector2( 0, 0 )
+79/navigation_offset = Vector2( 0, 0 )
+79/shapes = [  ]
+79/z_index = 0

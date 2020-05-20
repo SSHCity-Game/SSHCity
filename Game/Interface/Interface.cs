@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using SshCity.Game.Buildings;
 using SshCity.Game.Plan;
@@ -23,7 +24,6 @@ public class Interface : CanvasLayer
 
     private static bool _infosBool = false;
     private static PlanInitial _planInitial;
-    private PackedScene _BulleScene;
 
     private static int _money = Ref_donnees.argent;
     private static int _energy = Ref_donnees.energy;
@@ -142,8 +142,7 @@ public class Interface : CanvasLayer
         _timer = (Timer) GetNode(_str_timer);
         ScoreBar = (TextureProgress) GetNode("ScoreBar");
         Score = GetNode<Label>("Score");
-        _BulleScene = (PackedScene) GD.Load("res://Game/Interface/Bulles.tscn");
-        
+
 
         _croix.Hide();
         _croixJaune.Hide();
@@ -223,6 +222,10 @@ public class Interface : CanvasLayer
             if (Activation.isNextToRoad(_planInitial, batiment.Position,
                 batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
             {
+                if (!batiment.Activated)
+                {
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, -1);
+                }
                 batiment.Activated = true;
                 moneyWin += batiment.Characteristics.Earn[batiment.Characteristics.Lvl];
                 if (batiment.Characteristics.energy[batiment.Characteristics.Lvl] >= 0)
@@ -237,10 +240,13 @@ public class Interface : CanvasLayer
             }
             else
             {
-                batiment.Activated = false;
-                Bulles bulle = (Bulles) _BulleScene.Instance();
-                bulle.Init(Bulles.TypeIncident.ROUTE, _planInitial.TileMap2.MapToWorld(batiment.Position+ new Vector2(1, 1)) + new Vector2(50, -50));
-                _planInitial.AddChild(bulle);
+                
+                if (batiment.Activated)
+                {
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
+                    batiment.Activated = false;
+                }
+
             }
         }
 
