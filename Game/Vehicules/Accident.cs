@@ -9,7 +9,6 @@ public class Accident : Area2D
 
     public override void _Ready()
     {
-        
         Connect("mouse_entered", this, nameof(MouseEntered));
         Connect("mouse_exited", this, nameof(MouseExited));
         Connect("area_exited", this, nameof(AreaExited));

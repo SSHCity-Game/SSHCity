@@ -46,10 +46,9 @@ public partial class PlanInitial : Node2D
     public static Vector2 HouloucoupterDestination;
     private PackedScene _houloucoupterScene;
 
-
-
     public static int MAX_CAR = 0;
     public static int NbCar = 0;
+    
     public static bool AddVehicule1
     {
         get => addVehicule;
@@ -138,6 +137,7 @@ public partial class PlanInitial : Node2D
         {
             Accident area = (Accident) _accidentArea2D.Instance();
             area.Position = positionAccident;
+            
             area.Init(_accidentVisi);
             AddChild(area);
             addAccident = false;

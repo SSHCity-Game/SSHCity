@@ -7,7 +7,9 @@ public class MenuSpeciaux : Node
     private const string _str_cartePolice = _str_menu_achat + "/Police";
     private const string _str_carteEglise = _str_menu_achat + "/Eglise";
     private const string _str_carteCentraleElectrique = _str_menu_achat + "/CentraleElectrique";
+    public static TextureRect _clignoPolice;
 
+    public static bool clignoPolice = false;
     private static bool _achat = false;
     private Carte _carteCentraleElectrique;
     private Carte _carteEglise;
@@ -57,7 +59,10 @@ public class MenuSpeciaux : Node
         _carteEglise.Eau(eglise.water[0].ToString());
         _carteEglise.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
-
+        /* Fond clignotant quand besoin du batiment*/
+        _clignoPolice = (TextureRect) GetNode(_str_cartePolice + "/Background/Cligno");
+        _clignoPolice.Hide();
+        
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
 

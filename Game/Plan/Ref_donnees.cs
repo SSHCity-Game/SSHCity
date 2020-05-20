@@ -105,8 +105,17 @@ namespace SshCity.Game.Plan
             (restaurant2, restaurant2_flamme), (eglise, eglise_flamme), (cafe, cafe_flamme)
         };
         
-        /* Liste batiment, batiment en feu */
-        public static int[] Lacs = {63,64,65};
+        /* Liste lac, lac avec noye */
+        public static (int, int)[] LacNoyade = {
+            (lac1, 2), (lac2, 2)
+        };
+        
+        /* Liste batiment, batiment braque */
+        public static (int, int)[] BatimentVol = {
+            (maison1, 5), (maison3, 5),
+            (maison4, 5), (maison5, 5), (restaurant, 5),
+            (restaurant2, 5), (eglise, 5), (cafe, 5)
+        };
         
         
         // Sauvegarde
