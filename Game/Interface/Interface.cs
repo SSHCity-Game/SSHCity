@@ -246,7 +246,6 @@ public class Interface : CanvasLayer
                     _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
                     batiment.Activated = false;
                 }
-
             }
         }
 
