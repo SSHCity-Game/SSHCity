@@ -48,11 +48,13 @@ public class Interface : CanvasLayer
     private Timer _timer;
     private bool _visible;
     
+    /* ScoreBar */
     private TextureProgress ScoreBar;
     private Label Score;
-    private static int _xp = 0;
-    private static int _level = 1;
-    private static int XpMax = 100;
+    private static int _xp;
+    public static int _level = 1; // niveau
+    //private static int _scoreValue; // index XpMax
+    private static int XpMax = 60; //{200, 400, 600, 800, 1000}; // xp en fonction des niveaux
     
     private static int moneyWin = 0;
     private static int energyused = 0;
@@ -181,8 +183,7 @@ public class Interface : CanvasLayer
             _infos.Show();
         }
     }
-
-
+    
     public void WinMoney()
     {
         if (_moneyAutomatique)
@@ -209,7 +210,8 @@ public class Interface : CanvasLayer
     {
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
-        
+
+        //ScoreBar.MaxValue = UpdateScoreValue(_level);
         (_xp, _level) = UpdateXp(_xp, _level);
         ScoreBar.Value = _xp;
         Score.Text = Convert.ToString(_level);
@@ -378,13 +380,20 @@ public class Interface : CanvasLayer
     }
 
     public void ButtonParam()
-    {
-        /* Ouverture Parametres du jeu */
+    { /* Ouverture Parametres du jeu */
     }
 
-    public (int, int) UpdateXp(int xp, int level)
-    {
+    public (int, int) UpdateXp(int xp, int level) 
+    { /* retourne les nouveaux xp et niveau */
         return (xp, level) = xp >= XpMax ? (xp - XpMax, level + 1) : (xp, level);
     }
 
+    public static int UpdateScoreValue(int level)
+    { /* retourne la nouvelle scoreValue pour choisir XpMax du niveau */
+        if(level < 5) return 0;
+        if(level < 10) return 1;
+        if(level < 15) return 2;
+        if(level < 20) return 3;
+        return 4;
+    }
 }

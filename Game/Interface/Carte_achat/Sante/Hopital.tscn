@@ -1,11 +1,30 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/hopital.png" type="Texture" id=1]
 [ext_resource path="res://Game/Interface/Carte_achat/Carte.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Alerte_incidents/back2.png" type="Texture" id=3]
+[ext_resource path="res://assets/Alerte_incidents/back.png" type="Texture" id=4]
+
+[sub_resource type="AnimatedTexture" id=1]
+flags = 4
+frames = 2
+fps = 1.5
+frame_0/texture = ExtResource( 3 )
+frame_1/texture = ExtResource( 4 )
+frame_1/delay_sec = 0.0
 
 [node name="Hopital" instance=ExtResource( 2 )]
 
-[node name="Image" parent="Background" index="0"]
+[node name="Cligno" type="TextureRect" parent="Background" index="0"]
+margin_top = -1.52588e-05
+margin_right = 142.999
+margin_bottom = 131.0
+texture = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" parent="Background" index="1"]
 position = Vector2( 73.6369, 60.5381 )
 scale = Vector2( 0.118441, 0.120426 )
 texture = ExtResource( 1 )
