@@ -99,10 +99,9 @@ public class Infos : Panel
 
     public bool config(Vector2 tile)
     {
-        Building batiment = Building.Delete(tile);
+        Building batiment = Building.GetFromTile(tile);
         if (batiment != null)
         {
-            Building.ListBuildings.Add(batiment);
             _titre.Text = batiment.Characteristics.Titre[batiment.Characteristics.Lvl];
             Texture texture = ResourceLoader.Load(batiment.Characteristics.Image[0]) as Texture;
             _image.Texture = texture;

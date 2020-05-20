@@ -94,6 +94,9 @@ namespace SshCity.Game.Plan
         public const int water_terre = 78;
         public const int lac1 = 63;
         public const int lac2 = 64;
+        
+        //bulles Bloc
+        public const int bulleRoute = 79;
 
         /* Liste batiment, batiment en feu */
         public static (int, int)[] BatimentFeu = {

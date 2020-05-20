@@ -17,6 +17,7 @@ namespace SshCity.Game.Buildings
             Type = type;
             Characteristics = BuildingCharacteristics.FromType(type);
             Position = position;
+            Activated = false;
             Characteristics.Lvl = theLvl;
             Characteristics.Lvl = theLvl;
             ListBuildings.Add(this);
@@ -28,6 +29,11 @@ namespace SshCity.Game.Buildings
         /// La position du building sur la map
         /// </summary>
         public Vector2 Position { get; }
+        
+        /// <summary>
+        /// Si le batiment est activé
+        /// </summary>
+        public bool Activated { get; set; }
 
         /// <summary>
         /// Le type de Building
@@ -141,6 +147,20 @@ namespace SshCity.Game.Buildings
             Interface.Money -= Characteristics.Cost[Characteristics.Lvl];
             Interface.Xp += Characteristics.GainXp[Characteristics.Lvl];
             Characteristics.Lvl += 1;
+        }
+        
+        public static Building GetFromTile(Vector2 tile)
+        {
+            var i = 0;
+            var length = ListBuildings.Count;
+            while (i < length)
+            {
+                var batiment = ListBuildings[i];
+                if (batiment.Position == tile)
+                    return batiment;
+                i++;
+            }
+            return null;
         }
     }
 }
