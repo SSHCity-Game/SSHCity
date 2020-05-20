@@ -14,7 +14,7 @@ public class MairieMenu : Panel
     private Label _argentValue;
     private Label _eauValue;
     private Label _electriciteValue;
-    private Label _stockageArgent;
+    private Label _Population;
     private Label _stockageEau;
     private Label _stockageElectricite;
     
@@ -29,7 +29,7 @@ public class MairieMenu : Panel
     private const string _strArgentValue = "ArgentTitre/ArgentValue";
     private const string _strEauValue = "EauTitre/EauValue";
     private const string _strElectriciteValue = "ElectriciteTitre/ElectriciteValue";
-    private const string _strStockageArgent = "CapaciteStockageArgentTitre/CapaciteStockageArgentValue";
+    private const string _strPopulation = "Population/PopulationValue";
     private const string _strStockageEau = "CapaciteStockageEauTitre/CapaciteStockageEauValue";
     private const string _strStockageElectricite = "CapaciteStockageEauTitre2/CapaciteStockageEauValue";
 
@@ -60,7 +60,7 @@ public class MairieMenu : Panel
         _argentValue = (Label) GetNode(_strArgentValue);
         _eauValue = (Label) GetNode(_strEauValue);
         _electriciteValue = (Label) GetNode(_strElectriciteValue);
-        _stockageArgent = (Label) GetNode(_strStockageArgent);
+        _Population = (Label) GetNode(_strPopulation);
         _stockageEau = (Label) GetNode(_strStockageEau);
         _stockageElectricite = (Label) GetNode(_strStockageElectricite);
         
@@ -131,6 +131,7 @@ public class MairieMenu : Panel
         _eauValue.Text = "" + Interface.Waterused;
         _stockageEau.Text = ""+Ref_donnees.water;
         _stockageElectricite.Text = "" + Ref_donnees.energy;
+        _Population.Text = "" + Ref_donnees.population;
 
     }
 }

@@ -17,6 +17,7 @@ namespace SshCity.Game.Buildings.Characteristics
             Image = new[] {"res://assets/ImageSized/isometric magasin1.png"};
             NbrAmeliorations = 0;
             NbCar = 0;
+            Population = new[] {0};
         }
 
         public int[] Bloc { get; }
@@ -30,5 +31,6 @@ namespace SshCity.Game.Buildings.Characteristics
         public string[] Image { get; }
         public int NbrAmeliorations { get; }
         public int NbCar { get; }
+        public int[] Population { get; }
     }
 }

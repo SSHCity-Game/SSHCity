@@ -284,31 +284,31 @@ __meta__ = {
 [node name="SpriteArgent" type="Sprite" parent="Amelioration/Gains/Argent"]
 
 [node name="GainBatiment" type="Label" parent="Amelioration/Gains"]
-anchor_left = 0.277
-anchor_top = 0.479
-anchor_right = 0.277
-anchor_bottom = 0.479
-margin_left = -45.095
-margin_top = 19.915
-margin_right = 46.905
-margin_bottom = 52.915
+anchor_left = 0.281
+anchor_top = 0.796
+anchor_right = 0.281
+anchor_bottom = 0.796
+margin_left = -46.035
+margin_top = -16.54
+margin_right = 45.965
+margin_bottom = 16.46
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.172549, 0.478431, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.901961, 0.0196078, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GainBatimentValue" type="Label" parent="Amelioration/Gains/GainBatiment"]
-anchor_left = 0.407
-anchor_top = 0.5
-anchor_right = 0.407
-anchor_bottom = 0.5
-margin_left = 69.556
-margin_top = -15.5
-margin_right = 168.556
-margin_bottom = 17.5
+anchor_left = 1.685
+anchor_top = 0.53
+anchor_right = 1.685
+anchor_bottom = 0.53
+margin_left = -48.02
+margin_top = -16.49
+margin_right = 47.98
+margin_bottom = 16.51
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.992157, 1, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 0.901961, 0.0196078, 1, 1 )
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -498,31 +498,31 @@ __meta__ = {
 [node name="SpriteArgent" type="Sprite" parent="Lvl/Gains/Argent"]
 
 [node name="GainBatiment" type="Label" parent="Lvl/Gains"]
-anchor_left = 0.277
-anchor_top = 0.479
-anchor_right = 0.277
-anchor_bottom = 0.479
-margin_left = -45.095
-margin_top = 19.915
-margin_right = 46.905
-margin_bottom = 52.915
+anchor_left = 0.281
+anchor_top = 0.796
+anchor_right = 0.281
+anchor_bottom = 0.796
+margin_left = -46.035
+margin_top = -16.54
+margin_right = 45.965
+margin_bottom = 16.46
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.172549, 0.478431, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.901961, 0.0196078, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GainBatimentValue" type="Label" parent="Lvl/Gains/GainBatiment"]
-anchor_left = 0.407
+anchor_left = 1.452
 anchor_top = 0.5
-anchor_right = 0.407
+anchor_right = 1.452
 anchor_bottom = 0.5
-margin_left = 69.556
-margin_top = -15.5
-margin_right = 168.556
-margin_bottom = 17.5
+margin_left = -50.9957
+margin_top = -16.5
+margin_right = 51.0043
+margin_bottom = 16.5
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.992157, 1, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 0.901961, 0.0196078, 1, 1 )
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false

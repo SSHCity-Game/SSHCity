@@ -17,6 +17,7 @@ namespace SshCity.Game.Buildings
             Type = type;
             Characteristics = BuildingCharacteristics.FromType(type);
             Position = position;
+            Activated = true;
             Characteristics.Lvl = theLvl;
             Characteristics.Lvl = theLvl;
             ListBuildings.Add(this);
@@ -28,6 +29,11 @@ namespace SshCity.Game.Buildings
         /// La position du building sur la map
         /// </summary>
         public Vector2 Position { get; }
+        
+        /// <summary>
+        /// Si le batiment est activé
+        /// </summary>
+        public bool Activated { get; set; }
 
         /// <summary>
         /// Le type de Building
@@ -89,6 +95,8 @@ namespace SshCity.Game.Buildings
                 Interface.Energy -= energy;
                 Interface.Water -= water;
             }
+
+            Ref_donnees.population += Characteristics.Population[Characteristics.Lvl];
         }
 
         /// <summary>

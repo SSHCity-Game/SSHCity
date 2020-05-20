@@ -106,6 +106,7 @@ public partial class PlanInitial : Node2D
         _accidentArea2D = (PackedScene) GD.Load("res://Game/Vehicules/Accident.tscn");
         _houloucoupterScene = (PackedScene) GD.Load("res://Game/Vehicules/Houloucoupter.tscn");
         VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
+        Interface.Init(this);
     }
 
     public override void _Process(float delta)
@@ -342,6 +343,16 @@ public partial class PlanInitial : Node2D
         {
             Vector2 tile = GetTilePosition();
             int batiment = -1;
+            
+            try
+            {
+                tile = MainPlan.BatimentsTiles[tile];
+            }
+            catch (Exception)
+            {
+                
+            }
+            
             foreach ((Vector2 posi, int node) tuple in MainPlan.ListeBatiment)
             {
                 if (tuple.posi == tile)
@@ -350,6 +361,7 @@ public partial class PlanInitial : Node2D
                     break;
                 }
             }
+            
 
             if (batiment != -1)
             {

@@ -1,3 +1,4 @@
+using System;
 using SshCity.Game.Plan;
 
 namespace SshCity.Game.Buildings.Characteristics
@@ -17,6 +18,8 @@ namespace SshCity.Game.Buildings.Characteristics
             Image = new[] {"res://assets/ImageSized/hotel.png"};
             NbrAmeliorations = 0;
             NbCar = 10;
+            Random pop= new Random();
+            Population = new[] {pop.Next(5, 21),pop.Next(10,31),pop.Next(20,51)};
         }
 
         public int[] Bloc { get; }
@@ -30,5 +33,6 @@ namespace SshCity.Game.Buildings.Characteristics
         public string[] Image { get; }
         public int NbrAmeliorations { get; }
         public int NbCar { get; }
+        public int[] Population { get; }
     }
 }

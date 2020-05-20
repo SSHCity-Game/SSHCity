@@ -13,7 +13,7 @@ public class Activation
             {
                 for (int j = -1; j < 2; j++)
                 {
-                    nextTo = nextTo || Routes.IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)tile.x, (int)tile.y));
+                    nextTo = nextTo || Routes.IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)vector2.x-i, (int)vector2.y-j));
                 }
             }
 
@@ -34,7 +34,7 @@ public class Activation
         {
             for (int j = 0; j < dimensions.largeur; j++)
             {
-                res = res || NextToRoad(tile);
+                res = res || NextToRoad(tile + new Vector2(i, j));
             }
         }
 
