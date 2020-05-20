@@ -1,16 +1,23 @@
 using System.Threading.Tasks;
 using Godot;
+using SshCity.Game.Buildings;
 using SshCity.Game.Plan;
 
 public class menu_incident : CanvasLayer
 {
+    /* Bouton signalisation incident */
     public static Button Flamme;
+    public static Button Flamme2;
     public static Button Accident;
+    public static Button Bracage;
+    public static Button Noyade;
 
     public static bool OpenIncident = false;
     public static bool CaserneopenShop = false;
+    public static bool PolicepenShop = false;
+    public static bool HopitalopenShop = false;
 
-    /* textes incident */
+    /* Textes incident */
     private static string CaserneNon =
         "Attention, vous avez un incendie en cours. \n " +
         "Pour l'eteindre, dirigez vous vers la boutique afin d'acheter une caserne de pompiers. \n ";
@@ -26,48 +33,77 @@ public class menu_incident : CanvasLayer
         "Attention, vous avez un accident en cours. \n " +
         "Vous possedez le materiel adequate pour mettre fin a cet incident \n" +
         "Appuyez sur Resoudre pour venir a bout de l'accident";
+    
+    private static string HopitalNon =
+        "Attention, une personne de votre ville se noie. \n " +
+        "Pour le sauver, dirigez vous vers la boutique afin d'acheter un hopital. \n ";
+    private static string HopitalOui =
+        "Attention, une personne de votre ville se noie. \n " +
+        "Vous possedez le materiel adequate pour sauver cette personne \n" +
+        "Appuyez sur Sauver le noye pour l'aider";
 
     public TextureRect Background;
 
     /* VARIABLES */
     public Button Boutique;
     public Button Quitter;
-    public Button Resoudre;
     public Button Eteindre;
+    public Button Eteindre2;
+    public Button FinAccident;
+    public Button FinBracage;
+    public Button FinNoyade;
     
     public Label Texte;
 
     public override void _Ready()
 
-    {
+    { /* Definitions et connections des boutons */
         Boutique = (Button) GetNode("Boutique");
-        Resoudre = (Button) GetNode("Resoudre");
+        Quitter = (Button) GetNode("Quitter");;
         Eteindre = (Button) GetNode("Eteindre");
-        Quitter = (Button) GetNode("Quitter");
+        Eteindre2 = (Button) GetNode("Eteindre2");
+        FinAccident = (Button) GetNode("FinAccident");
+        FinBracage = (Button) GetNode("FinBracage");
+        FinNoyade = (Button) GetNode("FinNoyade");
         Flamme = (Button) GetNode("Flamme");
+        Flamme2 = (Button) GetNode("Flamme2");
         Accident = (Button) GetNode("Accident");
+        Bracage = (Button) GetNode("Bracage");
+        Noyade = (Button) GetNode("Noyade");
         Background = (TextureRect) GetNode("Background");
         Texte = (Label) GetNode("Background/Texte");
 
-        HideAll();
+        HideAll(); // cacher tous les boutons d'incidents au debut du jeu
         Flamme.Hide();
+        Flamme2.Hide();
         Accident.Hide();
+        Bracage.Hide();
+        Noyade.Hide();
 
         Boutique.Connect("pressed", this, nameof(on_boutique_pressed));
-        Resoudre.Connect("pressed", this, nameof(on_resoudre_pressed));
-        Eteindre.Connect("pressed", this, nameof(on_eteindre_pressed));
         Quitter.Connect("pressed", this, nameof(on_quitter_pressed));
-        Flamme.Connect("pressed", this, nameof(ResolutionIncendie));
+        Eteindre.Connect("pressed", this, nameof(on_eteindre_pressed));
+        Eteindre2.Connect("pressed", this, nameof(on_eteindre_pressed));
+        FinAccident.Connect("pressed", this, nameof(on_fin_accident_pressed));
+        FinBracage.Connect("pressed", this, nameof(on_fin_bracage_pressed));
+        FinNoyade.Connect("pressed", this, nameof(on_fin_noyade_pressed));
+        Flamme.Connect("pressed", this, nameof(ResolutionIncendie1));
+        Flamme2.Connect("pressed", this, nameof(ResolutionIncendie2));
         Accident.Connect("pressed", this, nameof(ResolutionAccident));
+        Bracage.Connect("pressed", this, nameof(ResolutionBracage));
+        Noyade.Connect("pressed", this, nameof(ResolutionNoyade));
     }
     
 
     private void HideAll()
-    {
+    { /* Cache le menu incident */
         Boutique.Hide();
-        Resoudre.Hide();
-        Eteindre.Hide();
         Quitter.Hide();
+        Eteindre.Hide();
+        Eteindre2.Hide();
+        FinAccident.Hide();
+        FinBracage.Hide();
+        FinNoyade.Hide();
         Background.Hide();
         Texte.Hide();
     }
@@ -91,15 +127,31 @@ public class menu_incident : CanvasLayer
         Interface.Xp += 50;
     }
     
-    private async void on_resoudre_pressed()
+    private async void on_fin_accident_pressed()
     {
         HideAll();
         await Task.Delay(3000);
         //incidents.ResoAccident = true;
         Interface.Xp += 50;
     }
+    private async void on_fin_bracage_pressed()
+    {
+        HideAll();
+        await Task.Delay(3000);
+        //incidents.ResoBracage = true;
+        Interface.Xp += 50;
+    }
+    
+    private async void on_fin_noyade_pressed()
+    {
+        HideAll();
+        await Task.Delay(3000);
+        //incidents.ResoNoyade = true;
+        Interface.Xp += 50;
+    }
+    
 
-    private void ResolutionIncendie()
+    private void ResolutionIncendie1()
     {
         Background.Show();
         Quitter.Show();
@@ -108,6 +160,26 @@ public class menu_incident : CanvasLayer
         {
             Texte.Text = CaserneOui;
             Eteindre.Show();
+        }
+        else
+        {
+            Texte.Text = CaserneNon;
+            Boutique.Show();
+        }
+
+        Texte.Show();
+        OpenIncident = true;
+    }
+    
+    private void ResolutionIncendie2()
+    {
+        Background.Show();
+        Quitter.Show();
+        
+        if (MainPlan.ExistBatiment(Ref_donnees.caserne))
+        {
+            Texte.Text = CaserneOui;
+            Eteindre2.Show();
         }
         else
         {
@@ -127,11 +199,51 @@ public class menu_incident : CanvasLayer
         if (MainPlan.ExistBatiment(Ref_donnees.police))
         {
             Texte.Text = PoliceOui;
-            Resoudre.Show();
+            FinAccident.Show();
         }
         else
         {
             Texte.Text = PoliceNon;
+            Boutique.Show();
+        }
+        
+        Texte.Show();
+        OpenIncident = true;
+    }
+    
+    private void ResolutionBracage()
+    {
+        Background.Show();
+        Quitter.Show();
+        
+        if (MainPlan.ExistBatiment(Ref_donnees.police))
+        {
+            Texte.Text = PoliceOui;
+            FinBracage.Show();
+        }
+        else
+        {
+            Texte.Text = PoliceNon;
+            Boutique.Show();
+        }
+        
+        Texte.Show();
+        OpenIncident = true;
+    }
+    
+    private void ResolutionNoyade()
+    {
+        Background.Show();
+        Quitter.Show();
+        
+        if (MainPlan.ExistBatiment(Ref_donnees.hopital))
+        {
+            Texte.Text = HopitalOui;
+            FinNoyade.Show();
+        }
+        else
+        {
+            Texte.Text = HopitalNon;
             Boutique.Show();
         }
         
