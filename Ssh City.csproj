@@ -80,6 +80,7 @@
     <Compile Include="Game\Incident\menu_incident.cs" />
     <Compile Include="Game\Interface\Activation.cs" />
     <Compile Include="Game\Interface\Boutique.cs" />
+    <Compile Include="Game\Interface\Bulles.cs" />
     <Compile Include="Game\Interface\Carte_achat\Carte.cs" />
     <Compile Include="Game\Interface\DeleteVerif.cs" />
     <Compile Include="Game\Interface\Infos.cs" />
