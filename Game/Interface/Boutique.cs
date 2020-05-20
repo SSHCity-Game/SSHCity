@@ -118,7 +118,11 @@ public class Boutique : CanvasLayer
             _button_speciaux.Pressed = false;
             Menu_Achat.Reset1 = true;
             MenuSante._clignoCaserne.Hide();
+            MenuSante._clignoHopital.Hide();
+            MenuSpeciaux._clignoPolice.Hide();
             menu_incident.CaserneopenShop = false;
+            menu_incident.HopitalopenShop = false;
+            menu_incident.PoliceopenShop = false;
             menu_incident.OpenIncident = false;
         }
     }
@@ -133,9 +137,22 @@ public class Boutique : CanvasLayer
             MenuSante._clignoCaserne.Show();
             ViewShop(true);
         }
+        else if (menu_incident.PoliceopenShop) // ouvre le shop et fait clignoter le commissariat
+        {
+            MenuSpeciaux._clignoPolice.Show();
+            ButtonSpeciauxPressed();
+            ViewShop(true);
+        }
+        else if (menu_incident.HopitalopenShop) // ouvre le shop et fait clignoter l'hopital
+        {
+            MenuSante._clignoHopital.Show();
+            ViewShop(true);
+        }
         else
         {
             MenuSante._clignoCaserne.Hide();
+            MenuSante._clignoHopital.Hide();
+            MenuSpeciaux._clignoPolice.Hide();
         }
 
         if (_button_habitation.Pressed)

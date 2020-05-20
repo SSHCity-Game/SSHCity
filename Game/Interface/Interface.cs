@@ -51,9 +51,9 @@ public class Interface : CanvasLayer
     private TextureProgress ScoreBar;
     private Label Score;
     private static int _xp;
-    private static int _level = 1; // niveau
-    private static int _scoreValue; // index XpMax
-    private static int XpMax = 300; //{200, 400, 600, 800, 1000}; // xp en fonction des niveaux
+    public static int _level = 1; // niveau
+    //private static int _scoreValue; // index XpMax
+    private static int XpMax = 60; //{200, 400, 600, 800, 1000}; // xp en fonction des niveaux
     
     private static int moneyWin = 0;
     private static int energyused = 0;

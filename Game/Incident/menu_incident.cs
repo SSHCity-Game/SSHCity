@@ -7,7 +7,7 @@ public class menu_incident : CanvasLayer
 {
     /* Bouton signalisation incident */
     public static Button Flamme;
-    public static Button Flamme2;
+    //public static Button Flamme2;
     public static Button Accident;
     public static Button Bracage;
     public static Button Noyade;
@@ -42,19 +42,24 @@ public class menu_incident : CanvasLayer
         "Vous possedez le materiel adequate pour sauver cette personne \n" +
         "Appuyez sur Sauver le noye pour l'aider";
 
-    public TextureRect Background;
-
     /* VARIABLES : boutons menu incident */
     public Button BoutiqueCaserne;
     public Button BoutiquePolice;
     public Button BoutiqueHopital;
     public Button Quitter;
     public Button Eteindre;
-    public Button Eteindre2;
+    //public Button Eteindre2;
     public Button FinAccident;
     public Button FinBracage;
     public Button FinNoyade;
     
+    /* Timer incidents */
+    public static Timer TimerIncendie;
+    public static Timer TimerAccident;
+    public static Timer TimerBracage;
+    public static Timer TimerNoyade;
+    
+    public TextureRect Background;
     public Label Texte;
 
     public override void _Ready()
@@ -65,21 +70,25 @@ public class menu_incident : CanvasLayer
         BoutiquePolice = (Button) GetNode("BoutiquePolice");
         Quitter = (Button) GetNode("Quitter");;
         Eteindre = (Button) GetNode("Eteindre");
-        Eteindre2 = (Button) GetNode("Eteindre2");
+        //Eteindre2 = (Button) GetNode("Eteindre2");
         FinAccident = (Button) GetNode("FinAccident");
         FinBracage = (Button) GetNode("FinBracage");
         FinNoyade = (Button) GetNode("FinNoyade");
         Flamme = (Button) GetNode("Flamme");
-        Flamme2 = (Button) GetNode("Flamme2");
+        //Flamme2 = (Button) GetNode("Flamme2");
         Accident = (Button) GetNode("Accident");
         Bracage = (Button) GetNode("Bracage");
         Noyade = (Button) GetNode("Noyade");
+        TimerIncendie = (Timer) GetNode("Flamme/TimerFlamme");
+        TimerAccident = (Timer) GetNode("Accident/TimerAccident");
+        TimerBracage = (Timer) GetNode("Bracage/TimerBracage");
+        TimerNoyade = (Timer) GetNode("Noyade/TimerNoyade");
         Background = (TextureRect) GetNode("Background");
         Texte = (Label) GetNode("Background/Texte");
 
         HideAll(); // cache tous les boutons d'incidents au debut du jeu
         Flamme.Hide();
-        Flamme2.Hide();
+        //Flamme2.Hide();
         Accident.Hide();
         Bracage.Hide();
         Noyade.Hide();
@@ -89,15 +98,19 @@ public class menu_incident : CanvasLayer
         BoutiqueHopital.Connect("pressed", this, nameof(on_boutique_hopital_pressed));
         Quitter.Connect("pressed", this, nameof(on_quitter_pressed));
         Eteindre.Connect("pressed", this, nameof(on_eteindre_pressed));
-        Eteindre2.Connect("pressed", this, nameof(on_eteindre_pressed));
+        //Eteindre2.Connect("pressed", this, nameof(on_eteindre_pressed));
         FinAccident.Connect("pressed", this, nameof(on_fin_accident_pressed));
         FinBracage.Connect("pressed", this, nameof(on_fin_bracage_pressed));
         FinNoyade.Connect("pressed", this, nameof(on_fin_noyade_pressed));
-        Flamme.Connect("pressed", this, nameof(ResolutionIncendie1));
-        Flamme2.Connect("pressed", this, nameof(ResolutionIncendie2));
+        Flamme.Connect("pressed", this, nameof(ResolutionIncendie));
+        //Flamme2.Connect("pressed", this, nameof(ResolutionIncendie2));
         Accident.Connect("pressed", this, nameof(ResolutionAccident));
         Bracage.Connect("pressed", this, nameof(ResolutionBracage));
         Noyade.Connect("pressed", this, nameof(ResolutionNoyade));
+        TimerIncendie.Connect("timeout", this, nameof(EndTimerIncendie));
+        TimerAccident.Connect("timeout", this, nameof(EndTimerAccident));
+        TimerBracage.Connect("timeout", this, nameof(EndTimerBracage));
+        TimerNoyade.Connect("timeout", this, nameof(EndTimerNoyade));
     }
     
 
@@ -108,7 +121,7 @@ public class menu_incident : CanvasLayer
         BoutiqueHopital.Hide();
         Quitter.Hide();
         Eteindre.Hide();
-        Eteindre2.Hide();
+        //Eteindre2.Hide();
         FinAccident.Hide();
         FinBracage.Hide();
         FinNoyade.Hide();
@@ -135,48 +148,52 @@ public class menu_incident : CanvasLayer
     }
 
     private void on_quitter_pressed()
-    {
+    { /* Ferme le menu */
         HideAll();
     }
     
     private async void on_eteindre_pressed()
-    {
+    { 
         HideAll();
-        await Task.Delay(3000);
+        await Task.Delay(2000);
         incidents.ResoIncident = true;
+        TimerIncendie.Start();
         Interface.Xp += 50;
     }
     
     private async void on_fin_accident_pressed()
     {
         HideAll();
-        await Task.Delay(3000);
-        //incidents.ResoAccident = true;
+        await Task.Delay(2000);
+        incidents.ResoAccident = true;
+        TimerAccident.Start();
         Interface.Xp += 50;
     }
     private async void on_fin_bracage_pressed()
     {
         HideAll();
-        await Task.Delay(3000);
-        //incidents.ResoBracage = true;
+        await Task.Delay(2000);
+        incidents.ResoBracage = true;
+        TimerBracage.Start();
         Interface.Xp += 50;
     }
     
     private async void on_fin_noyade_pressed()
     {
         HideAll();
-        await Task.Delay(3000);
-        //incidents.ResoNoyade = true;
+        await Task.Delay(2000);
+        incidents.ResoNoyade = true;
+        TimerNoyade.Start();
         Interface.Xp += 50;
     }
     
 
-    private void ResolutionIncendie1()
+    private void ResolutionIncendie()
     {
         Background.Show();
         Quitter.Show();
         
-        if (MainPlan.ExistBatiment(Ref_donnees.caserne))
+        if (MainPlan.ExistBatiment(Ref_donnees.caserne)) // si caserne deja presente
         {
             Texte.Text = CaserneOui;
             Eteindre.Show();
@@ -190,7 +207,7 @@ public class menu_incident : CanvasLayer
         Texte.Show();
         OpenIncident = true;
     }
-    
+    /*
     private void ResolutionIncendie2()
     {
         Background.Show();
@@ -209,7 +226,7 @@ public class menu_incident : CanvasLayer
 
         Texte.Show();
         OpenIncident = true;
-    }
+    }*/
 
     private void ResolutionAccident()
     {
@@ -269,5 +286,25 @@ public class menu_incident : CanvasLayer
         
         Texte.Show();
         OpenIncident = true;
+    }
+
+    private void EndTimerIncendie()
+    {
+        
+    }
+    
+    private void EndTimerAccident()
+    {
+        
+    }
+    
+    private void EndTimerBracage()
+    {
+        
+    }
+    
+    private void EndTimerNoyade()
+    {
+        
     }
 }

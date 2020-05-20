@@ -126,6 +126,7 @@ __meta__ = {
 }
 
 [node name="Eteindre2" type="Button" parent="."]
+visible = false
 anchor_left = 0.503
 anchor_top = 0.5
 anchor_right = 0.503
@@ -259,10 +260,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="Flamme"]
+[node name="TimerFlamme" type="Timer" parent="Flamme"]
+wait_time = 10.0
 one_shot = true
 
 [node name="Flamme2" type="Button" parent="."]
+visible = false
 anchor_left = 0.955
 anchor_right = 0.955
 margin_left = -27.488
@@ -282,10 +285,10 @@ one_shot = true
 [node name="Accident" type="Button" parent="."]
 anchor_left = 0.955
 anchor_right = 0.955
-margin_left = -24.3367
-margin_top = 67.563
+margin_left = -24.3369
+margin_top = 110.0
 margin_right = 4487.66
-margin_bottom = 4573.56
+margin_bottom = 4616.0
 rect_scale = Vector2( 0.01, 0.01 )
 icon = SubResource( 4 )
 flat = true
@@ -293,30 +296,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TimerAccident" type="Timer" parent="Accident"]
+one_shot = true
+
 [node name="Bracage" type="Button" parent="."]
 anchor_left = 0.955
 anchor_right = 0.955
-margin_left = -24.3367
-margin_top = 67.563
-margin_right = 4487.66
-margin_bottom = 4573.56
+margin_left = -24.3369
+margin_top = 160.0
+margin_right = 4637.66
+margin_bottom = 4716.0
 rect_scale = Vector2( 0.01, 0.01 )
+button_mask = 5
 icon = ExtResource( 11 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TimerBracage" type="Timer" parent="Bracage"]
+one_shot = true
+
 [node name="Noyade" type="Button" parent="."]
 anchor_left = 0.955
 anchor_right = 0.955
-margin_left = -24.3367
-margin_top = 67.563
+margin_left = -24.3369
+margin_top = 210.0
 margin_right = 4487.66
-margin_bottom = 4573.56
+margin_bottom = 4716.0
 rect_scale = Vector2( 0.01, 0.01 )
 icon = ExtResource( 12 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TimerNoyade" type="Timer" parent="Noyade"]
+one_shot = true
