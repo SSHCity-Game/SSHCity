@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=66 format=2]
+[gd_resource type="TileSet" load_steps=68 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -60,6 +60,8 @@
 [ext_resource path="res://assets/Flammemaison5.png" type="Texture" id=58]
 [ext_resource path="res://assets/Flammemaison4.png" type="Texture" id=59]
 [ext_resource path="res://assets/sol_montagne.png" type="Texture" id=60]
+[ext_resource path="res://assets/Images_interface/roues.png" type="Texture" id=61]
+[ext_resource path="res://assets/Images_interface/trait.png" type="Texture" id=62]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -717,6 +719,26 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 72/navigation_offset = Vector2( 487.5, 452.5 )
 72/shapes = [  ]
 72/z_index = 0
+76/name = "Rouages"
+76/texture = ExtResource( 61 )
+76/tex_offset = Vector2( 0, 0 )
+76/modulate = Color( 1, 1, 1, 1 )
+76/region = Rect2( 0, 0, 2048, 2048 )
+76/tile_mode = 0
+76/occluder_offset = Vector2( 1024, 1024 )
+76/navigation_offset = Vector2( 1024, 1024 )
+76/shapes = [  ]
+76/z_index = 0
+77/name = "Trait"
+77/texture = ExtResource( 62 )
+77/tex_offset = Vector2( 0, 0 )
+77/modulate = Color( 1, 1, 1, 1 )
+77/region = Rect2( 0, 0, 1308, 1182 )
+77/tile_mode = 0
+77/occluder_offset = Vector2( 654, 591 )
+77/navigation_offset = Vector2( 654, 591 )
+77/shapes = [  ]
+77/z_index = 0
 78/name = "grass -water.png 78"
 78/texture = ExtResource( 5 )
 78/tex_offset = Vector2( 0, 0 )

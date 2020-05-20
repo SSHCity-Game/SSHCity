@@ -152,37 +152,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CapaciteStockageArgentTitre" type="Label" parent="."]
-anchor_left = 0.635
-anchor_top = 0.258
-anchor_right = 0.635
-anchor_bottom = 0.258
-margin_left = -101.776
-margin_top = -9.54274
-margin_right = 147.224
-margin_bottom = 13.4573
+[node name="Population" type="Label" parent="."]
+anchor_left = 0.815
+anchor_top = 0.285
+anchor_right = 0.815
+anchor_bottom = 0.285
+margin_left = -249.376
+margin_top = -22.8548
+margin_right = -0.376038
+margin_bottom = 0.145294
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0.027451, 0.611765, 0.172549, 1 )
-text = "Capacité de stockage argent :"
+text = "Population :"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CapaciteStockageArgentValue" type="Label" parent="CapaciteStockageArgentTitre"]
-margin_left = 495.0
-margin_top = 106.0
-margin_right = 588.0
-margin_bottom = 120.0
+[node name="PopulationValue" type="Label" parent="Population"]
+anchor_bottom = 0.552
+margin_left = 247.954
+margin_top = 2.6851
+margin_right = 340.954
+margin_bottom = 9.98908
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_shadow = Color( 0.0509804, 0.317647, 0.878431, 1 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CapaciteStockageEauTitre" type="Label" parent="."]
-anchor_left = 0.635
-anchor_top = 0.258
-anchor_right = 0.635
-anchor_bottom = 0.258
-margin_left = -98.4678
-margin_top = 33.3253
-margin_right = 140.532
-margin_bottom = 56.3253
+anchor_left = 0.806
+anchor_top = 0.382
+anchor_right = 0.806
+anchor_bottom = 0.382
+margin_left = -238.688
+margin_top = -23.2187
+margin_right = 0.311951
+margin_bottom = -0.218719
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0.0509804, 0.317647, 0.878431, 1 )
 text = "Production eau :"
@@ -191,22 +198,23 @@ __meta__ = {
 }
 
 [node name="CapaciteStockageEauValue" type="Label" parent="CapaciteStockageEauTitre"]
-margin_left = 272.984
-margin_top = 4.9198
-margin_right = 365.984
-margin_bottom = 18.9198
+margin_left = 244.645
+margin_top = -1.66629
+margin_right = 337.645
+margin_bottom = 18.3337
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0.0509804, 0.317647, 0.878431, 1 )
+align = 2
 
 [node name="CapaciteStockageEauTitre2" type="Label" parent="."]
-anchor_left = 0.635
-anchor_top = 0.258
-anchor_right = 0.635
-anchor_bottom = 0.258
-margin_left = -100.423
-margin_top = 73.0353
-margin_right = 138.577
-margin_bottom = 96.0353
+anchor_left = 0.804
+anchor_top = 0.469
+anchor_right = 0.804
+anchor_bottom = 0.469
+margin_left = -239.003
+margin_top = -23.1807
+margin_right = -0.00305176
+margin_bottom = -0.18071
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0.901961, 0.890196, 0.0235294, 1 )
 text = "Production électricité :"
@@ -215,12 +223,13 @@ __meta__ = {
 }
 
 [node name="CapaciteStockageEauValue" type="Label" parent="CapaciteStockageEauTitre2"]
-margin_left = 272.984
-margin_top = 4.9198
-margin_right = 365.984
-margin_bottom = 18.9198
+margin_left = 244.047
+margin_top = 0.728638
+margin_right = 337.047
+margin_bottom = 20.7286
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0.901961, 0.890196, 0.0235294, 1 )
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -20,6 +20,7 @@ namespace SshCity.Game.Buildings
         string[] Image { get; }
         int NbrAmeliorations { get; }
         int NbCar { get; }
+        int[] Population { get; }
     }
 
     /// <summary>

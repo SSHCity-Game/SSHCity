@@ -89,6 +89,8 @@ namespace SshCity.Game.Buildings
                 Interface.Energy -= energy;
                 Interface.Water -= water;
             }
+
+            Ref_donnees.population += Characteristics.Population[Characteristics.Lvl];
         }
 
         /// <summary>
