@@ -175,10 +175,10 @@ anchor_left = 0.503
 anchor_top = 0.5
 anchor_right = 0.503
 anchor_bottom = 0.5
-margin_left = -72.072
-margin_top = 142.0
-margin_right = -0.0720215
-margin_bottom = 162.0
+margin_left = -102.44
+margin_top = 144.0
+margin_right = 2.55957
+margin_bottom = 164.0
 rect_scale = Vector2( 2, 2 )
 text = "Sauver le noye"
 __meta__ = {
@@ -200,7 +200,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Boutique" type="Button" parent="."]
+[node name="BoutiquePolice" type="Button" parent="."]
+anchor_left = 0.502
+anchor_top = 0.5
+anchor_right = 0.502
+anchor_bottom = 0.5
+margin_left = -70.0206
+margin_top = 142.921
+margin_right = -0.0205688
+margin_bottom = 162.921
+rect_scale = Vector2( 2, 2 )
+text = "Boutique"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoutiqueCaserne" type="Button" parent="."]
+anchor_left = 0.502
+anchor_top = 0.5
+anchor_right = 0.502
+anchor_bottom = 0.5
+margin_left = -70.0206
+margin_top = 142.921
+margin_right = -0.0205688
+margin_bottom = 162.921
+rect_scale = Vector2( 2, 2 )
+text = "Boutique"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoutiqueHopital" type="Button" parent="."]
 anchor_left = 0.502
 anchor_top = 0.5
 anchor_right = 0.502

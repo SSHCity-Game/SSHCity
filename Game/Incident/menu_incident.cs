@@ -14,7 +14,7 @@ public class menu_incident : CanvasLayer
 
     public static bool OpenIncident = false;
     public static bool CaserneopenShop = false;
-    public static bool PolicepenShop = false;
+    public static bool PoliceopenShop = false;
     public static bool HopitalopenShop = false;
 
     /* Textes incident */
@@ -44,8 +44,10 @@ public class menu_incident : CanvasLayer
 
     public TextureRect Background;
 
-    /* VARIABLES */
-    public Button Boutique;
+    /* VARIABLES : boutons menu incident */
+    public Button BoutiqueCaserne;
+    public Button BoutiquePolice;
+    public Button BoutiqueHopital;
     public Button Quitter;
     public Button Eteindre;
     public Button Eteindre2;
@@ -58,7 +60,9 @@ public class menu_incident : CanvasLayer
     public override void _Ready()
 
     { /* Definitions et connections des boutons */
-        Boutique = (Button) GetNode("Boutique");
+        BoutiqueCaserne = (Button) GetNode("BoutiqueCaserne");
+        BoutiqueHopital = (Button) GetNode("BoutiqueHopital");
+        BoutiquePolice = (Button) GetNode("BoutiquePolice");
         Quitter = (Button) GetNode("Quitter");;
         Eteindre = (Button) GetNode("Eteindre");
         Eteindre2 = (Button) GetNode("Eteindre2");
@@ -73,14 +77,16 @@ public class menu_incident : CanvasLayer
         Background = (TextureRect) GetNode("Background");
         Texte = (Label) GetNode("Background/Texte");
 
-        HideAll(); // cacher tous les boutons d'incidents au debut du jeu
+        HideAll(); // cache tous les boutons d'incidents au debut du jeu
         Flamme.Hide();
         Flamme2.Hide();
         Accident.Hide();
         Bracage.Hide();
         Noyade.Hide();
 
-        Boutique.Connect("pressed", this, nameof(on_boutique_pressed));
+        BoutiqueCaserne.Connect("pressed", this, nameof(on_boutique_caserne_pressed));
+        BoutiquePolice.Connect("pressed", this, nameof(on_boutique_police_pressed));
+        BoutiqueHopital.Connect("pressed", this, nameof(on_boutique_hopital_pressed));
         Quitter.Connect("pressed", this, nameof(on_quitter_pressed));
         Eteindre.Connect("pressed", this, nameof(on_eteindre_pressed));
         Eteindre2.Connect("pressed", this, nameof(on_eteindre_pressed));
@@ -97,7 +103,9 @@ public class menu_incident : CanvasLayer
 
     private void HideAll()
     { /* Cache le menu incident */
-        Boutique.Hide();
+        BoutiqueCaserne.Hide();
+        BoutiquePolice.Hide();
+        BoutiqueHopital.Hide();
         Quitter.Hide();
         Eteindre.Hide();
         Eteindre2.Hide();
@@ -108,10 +116,22 @@ public class menu_incident : CanvasLayer
         Texte.Hide();
     }
 
-    private void on_boutique_pressed()
-    {
+    private void on_boutique_caserne_pressed()
+    { /* Appui sur le bouton boutique => ouverture boutique fond cligno caserne */
         HideAll();
         CaserneopenShop = true;
+    }
+    
+    private void on_boutique_police_pressed()
+    { /* Appui sur le bouton boutique => ouverture boutique fond cligno police */
+        HideAll();
+        PoliceopenShop = true;
+    }
+    
+    private void on_boutique_hopital_pressed()
+    { /* Appui sur le bouton boutique => ouverture boutique fond cligno hopital */
+        HideAll();
+        HopitalopenShop = true;
     }
 
     private void on_quitter_pressed()
@@ -164,7 +184,7 @@ public class menu_incident : CanvasLayer
         else
         {
             Texte.Text = CaserneNon;
-            Boutique.Show();
+            BoutiqueCaserne.Show();
         }
 
         Texte.Show();
@@ -184,7 +204,7 @@ public class menu_incident : CanvasLayer
         else
         {
             Texte.Text = CaserneNon;
-            Boutique.Show();
+            BoutiqueCaserne.Show();
         }
 
         Texte.Show();
@@ -204,7 +224,7 @@ public class menu_incident : CanvasLayer
         else
         {
             Texte.Text = PoliceNon;
-            Boutique.Show();
+            BoutiquePolice.Show();
         }
         
         Texte.Show();
@@ -224,7 +244,7 @@ public class menu_incident : CanvasLayer
         else
         {
             Texte.Text = PoliceNon;
-            Boutique.Show();
+            BoutiquePolice.Show();
         }
         
         Texte.Show();
@@ -244,7 +264,7 @@ public class menu_incident : CanvasLayer
         else
         {
             Texte.Text = HopitalNon;
-            Boutique.Show();
+            BoutiqueHopital.Show();
         }
         
         Texte.Show();
