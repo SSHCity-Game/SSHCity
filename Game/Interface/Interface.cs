@@ -53,7 +53,7 @@ public class Interface : CanvasLayer
     private static int _xp;
     private static int _level = 1; // niveau
     private static int _scoreValue; // index XpMax
-    private static int[] XpMax = {200, 400, 600, 800, 1000}; // xp en fonction des niveaux
+    private static int XpMax = 300; //{200, 400, 600, 800, 1000}; // xp en fonction des niveaux
     
     private static int moneyWin = 0;
     private static int energyused = 0;
@@ -182,8 +182,7 @@ public class Interface : CanvasLayer
             _infos.Show();
         }
     }
-
-
+    
     public void WinMoney()
     {
         if (_moneyAutomatique)
@@ -212,7 +211,7 @@ public class Interface : CanvasLayer
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
 
-        _scoreValue = UpdateScoreValue(_level);
+        //ScoreBar.MaxValue = UpdateScoreValue(_level);
         (_xp, _level) = UpdateXp(_xp, _level);
         ScoreBar.Value = _xp;
         Score.Text = Convert.ToString(_level);
@@ -370,38 +369,15 @@ public class Interface : CanvasLayer
 
     public (int, int) UpdateXp(int xp, int level) 
     { /* retourne les nouveaux xp et niveau */
-        return (xp, level) = xp >= XpMax[_scoreValue] ? (xp - XpMax[_scoreValue], level + 1) : (xp, level);
+        return (xp, level) = xp >= XpMax ? (xp - XpMax, level + 1) : (xp, level);
     }
 
     public static int UpdateScoreValue(int level)
     { /* retourne la nouvelle scoreValue pour choisir XpMax du niveau */
-        switch (level)
-        {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-                return 0;
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-                return 1;
-            case 10:
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-                return 2;
-            case 15:
-            case 16:
-            case 17:
-            case 18:
-            case 19:
-                return 3;
-            default:
-                return 4;
-        }
+        if(level < 5) return 0;
+        if(level < 10) return 1;
+        if(level < 15) return 2;
+        if(level < 20) return 3;
+        return 4;
     }
 }

@@ -15,7 +15,7 @@
 [ext_resource path="res://Game/Interface/Infos.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Game/Interface/MairieMenu.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/Images_interface/roues.png" type="Texture" id=15]
-[ext_resource path="res://assets/Barre_Niveau/scoreBar/barFill2.png" type="Texture" id=16]
+[ext_resource path="res://assets/Barre_Niveau/scoreBar/barFill3.png" type="Texture" id=16]
 [ext_resource path="res://assets/Barre_Niveau/scoreBar/EmptyBar.png" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
@@ -23,7 +23,7 @@ size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.0666667, 0.0588235, 0.054902, 1 )
+bg_color = Color( 0.113725, 0.113725, 0.109804, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -169,7 +169,6 @@ scale = Vector2( 0.07, 0.07 )
 texture = ExtResource( 12 )
 
 [node name="Infos" parent="." instance=ExtResource( 13 )]
-visible = false
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -206,7 +205,7 @@ margin_right = 355.0
 margin_bottom = 63.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-max_value = 100.0
+max_value = 300.0
 texture_under = ExtResource( 11 )
 texture_progress = ExtResource( 16 )
 nine_patch_stretch = true
@@ -215,7 +214,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="ScoreBar"]
-modulate = Color( 0.121569, 0.490196, 0.419608, 0.317647 )
+modulate = Color( 0.286275, 0.345098, 0.807843, 0.266667 )
 anchor_left = -0.165
 anchor_top = -0.112
 anchor_right = -0.165

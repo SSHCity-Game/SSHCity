@@ -107,7 +107,7 @@ public class menu_incident : CanvasLayer
         if (MainPlan.ExistBatiment(Ref_donnees.caserne))
         {
             Texte.Text = CaserneOui;
-            Resoudre.Show();
+            Eteindre.Show();
         }
         else
         {
