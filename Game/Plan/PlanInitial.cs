@@ -45,7 +45,9 @@ public partial class PlanInitial : Node2D
     public static Houloucoupter.Type HouloucoupterType;
     public static Vector2 HouloucoupterDestination;
     private PackedScene _houloucoupterScene;
-
+    
+    //Add Bateaux
+    public PackedScene _bateauxScene;
 
 
     public static int MAX_CAR = 0;
@@ -106,6 +108,7 @@ public partial class PlanInitial : Node2D
         _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
         _accidentArea2D = (PackedScene) GD.Load("res://Game/Vehicules/Accident.tscn");
         _houloucoupterScene = (PackedScene) GD.Load("res://Game/Vehicules/Houloucoupter.tscn");
+        _bateauxScene = (PackedScene) GD.Load("res://Game/Vehicules/Bateau.tscn");
         VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
         Interface.Init(this);
     }

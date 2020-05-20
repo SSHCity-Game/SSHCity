@@ -103,6 +103,7 @@
     <Compile Include="Game\Sauvegarde\SauvegardeManager.cs" />
     <Compile Include="Game\Sauvegarde\Serializable.cs" />
     <Compile Include="Game\Vehicules\Accident.cs" />
+    <Compile Include="Game\Vehicules\Bateau.cs" />
     <Compile Include="Game\Vehicules\DeplacementPompiers.cs" />
     <Compile Include="Game\Vehicules\Houloucoupter.cs" />
     <Compile Include="Game\Vehicules\HouloucoupterDeplacement.cs" />

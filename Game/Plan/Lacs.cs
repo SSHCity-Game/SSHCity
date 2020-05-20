@@ -191,6 +191,9 @@ namespace SshCity.Game.Plan
                     if (VerifLac(new Vector2(x, y), planInitial, lacBlocToSet))
                     {
                         planInitial.SetBlock(planInitial.TileMap2, x, y, blocLac);
+                        Bateau bateau = (Bateau) planInitial._bateauxScene.Instance();
+                        bateau.Init(planInitial, planInitial.TileMap1.MapToWorld(new Vector2(x+1, y+1)));
+                        planInitial.AddChild(bateau);
                         foreach (Vector2 vector2 in lacBlocToSet)
                         { 
                             planInitial.SetBlock(planInitial.TileMap1, (int) x + (int) vector2.x,
