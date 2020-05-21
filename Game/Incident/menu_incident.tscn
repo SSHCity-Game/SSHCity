@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/Alerte_incidents/flamme.png" type="Texture" id=1]
 [ext_resource path="res://Game/Incident/menu_incident.cs" type="Script" id=2]
@@ -11,19 +11,23 @@
 [ext_resource path="res://assets/vehicules/Accident/Accident.png" type="Texture" id=9]
 [ext_resource path="res://assets/vehicules/Accident/AccidentAModif.png" type="Texture" id=10]
 [ext_resource path="res://assets/Pietons/voleur.png" type="Texture" id=11]
-[ext_resource path="res://assets/Pietons/pieton2.png" type="Texture" id=12]
+[ext_resource path="res://assets/Alerte_incidents/voleur.png" type="Texture" id=12]
+[ext_resource path="res://assets/Alerte_incidents/noye1.png" type="Texture" id=13]
+[ext_resource path="res://assets/Alerte_incidents/voleur2.png" type="Texture" id=14]
+[ext_resource path="res://assets/Alerte_incidents/noye2.png" type="Texture" id=15]
+[ext_resource path="res://assets/Alerte_incidents/noye3.png" type="Texture" id=16]
 
-[sub_resource type="DynamicFont" id=1]
-size = 20
-font_data = ExtResource( 4 )
-
-[sub_resource type="AnimatedTexture" id=2]
+[sub_resource type="AnimatedTexture" id=1]
 flags = 4
 frames = 2
 fps = 1.5
 frame_0/texture = ExtResource( 7 )
 frame_1/texture = ExtResource( 8 )
 frame_1/delay_sec = 0.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 4 )
 
 [sub_resource type="AnimatedTexture" id=3]
 flags = 4
@@ -43,8 +47,195 @@ frame_0/texture = ExtResource( 9 )
 frame_1/texture = ExtResource( 10 )
 frame_1/delay_sec = 0.0
 
+[sub_resource type="AnimatedTexture" id=5]
+flags = 4
+frames = 3
+fps = 10.0
+frame_0/texture = ExtResource( 14 )
+frame_1/texture = ExtResource( 12 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 11 )
+frame_2/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=6]
+flags = 4
+frames = 3
+fps = 6.0
+frame_0/texture = ExtResource( 13 )
+frame_1/texture = ExtResource( 15 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 16 )
+frame_2/delay_sec = 0.0
+
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
+
+[node name="BoutiqueOk" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -196.0
+margin_top = -108.0
+margin_right = 196.0
+margin_bottom = 108.0
+texture = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TexteBoutiqueOk" type="Label" parent="BoutiqueOk"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -137.75
+margin_top = -62.75
+margin_right = 137.75
+margin_bottom = 62.75
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flamme" type="Button" parent="."]
+anchor_left = 0.955
+anchor_right = 0.955
+margin_left = -27.9199
+margin_top = 60.0
+margin_right = 84.08
+margin_bottom = 166.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = SubResource( 3 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerFlamme" type="Timer" parent="Flamme"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Flammefond" type="Button" parent="."]
+visible = false
+anchor_left = 0.955
+anchor_right = 0.955
+margin_left = -27.9199
+margin_top = 60.0
+margin_right = 84.08
+margin_bottom = 166.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 1 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Accident" type="Button" parent="."]
+anchor_left = 0.955
+anchor_right = 0.955
+margin_left = -22.9199
+margin_top = 120.0
+margin_right = 4489.08
+margin_bottom = 4626.0
+rect_scale = Vector2( 0.01, 0.01 )
+icon = SubResource( 4 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerAccident" type="Timer" parent="Accident"]
+one_shot = true
+
+[node name="Accidentfond" type="Button" parent="."]
+visible = false
+anchor_left = 0.955
+anchor_right = 0.955
+margin_left = -22.9199
+margin_top = 115.0
+margin_right = 4489.08
+margin_bottom = 4621.0
+rect_scale = Vector2( 0.01, 0.01 )
+icon = ExtResource( 9 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bracage" type="Button" parent="."]
+anchor_left = 0.955
+anchor_right = 0.955
+margin_left = -27.9199
+margin_top = 160.0
+margin_right = 4634.08
+margin_bottom = 4716.0
+rect_scale = Vector2( 0.01, 0.01 )
+button_mask = 5
+icon = SubResource( 5 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerBracage" type="Timer" parent="Bracage"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Bracagefond" type="Button" parent="."]
+visible = false
+anchor_left = 0.955
+anchor_right = 0.955
+margin_left = -26.9199
+margin_top = 159.0
+margin_right = 4635.08
+margin_bottom = 4715.0
+rect_scale = Vector2( 0.01, 0.01 )
+button_mask = 5
+icon = ExtResource( 11 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Noyade" type="Button" parent="."]
+anchor_left = 0.955
+anchor_top = -2.54313e-08
+anchor_right = 0.955
+margin_left = -27.4069
+margin_top = 210.0
+margin_right = 5278.59
+margin_bottom = 4727.0
+rect_scale = Vector2( 0.008, 0.008 )
+icon = SubResource( 6 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerNoyade" type="Timer" parent="Noyade"]
+one_shot = true
+
+[node name="Noyadefond" type="Button" parent="."]
+visible = false
+anchor_left = 0.955
+anchor_top = -2.54313e-08
+anchor_right = 0.955
+margin_left = -27.9199
+margin_top = 210.0
+margin_right = 5278.08
+margin_bottom = 4727.0
+rect_scale = Vector2( 0.008, 0.008 )
+icon = ExtResource( 16 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -69,40 +260,7 @@ margin_left = -275.5
 margin_top = -125.5
 margin_right = 275.5
 margin_bottom = 125.5
-custom_fonts/font = SubResource( 1 )
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BoutiqueOk" type="TextureRect" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -196.0
-margin_top = -108.0
-margin_right = 196.0
-margin_bottom = 108.0
-texture = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TexteBoutiqueOk" type="Label" parent="BoutiqueOk"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -137.75
-margin_top = -62.75
-margin_right = 137.75
-margin_bottom = 62.75
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 align = 1
 valign = 1
 autowrap = true
@@ -111,22 +269,6 @@ __meta__ = {
 }
 
 [node name="Eteindre" type="Button" parent="."]
-anchor_left = 0.503
-anchor_top = 0.5
-anchor_right = 0.503
-anchor_bottom = 0.5
-margin_left = -72.072
-margin_top = 142.0
-margin_right = -0.0720215
-margin_bottom = 162.0
-rect_scale = Vector2( 2, 2 )
-text = "Eteindre"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Eteindre2" type="Button" parent="."]
-visible = false
 anchor_left = 0.503
 anchor_top = 0.5
 anchor_right = 0.503
@@ -178,7 +320,7 @@ anchor_right = 0.503
 anchor_bottom = 0.5
 margin_left = -102.44
 margin_top = 144.0
-margin_right = 2.55957
+margin_right = 2.56
 margin_bottom = 164.0
 rect_scale = Vector2( 2, 2 )
 text = "Sauver le noye"
@@ -245,91 +387,3 @@ text = "Boutique"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Flamme" type="Button" parent="."]
-anchor_left = 0.955
-anchor_right = 0.955
-margin_left = -27.488
-margin_top = 60.0
-margin_right = 84.512
-margin_bottom = 166.0
-rect_scale = Vector2( 0.5, 0.5 )
-icon = SubResource( 3 )
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TimerFlamme" type="Timer" parent="Flamme"]
-wait_time = 10.0
-one_shot = true
-
-[node name="Flamme2" type="Button" parent="."]
-visible = false
-anchor_left = 0.955
-anchor_right = 0.955
-margin_left = -27.488
-margin_top = 60.0
-margin_right = 84.512
-margin_bottom = 166.0
-rect_scale = Vector2( 0.5, 0.5 )
-icon = SubResource( 3 )
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Timer" type="Timer" parent="Flamme2"]
-one_shot = true
-
-[node name="Accident" type="Button" parent="."]
-anchor_left = 0.955
-anchor_right = 0.955
-margin_left = -24.3369
-margin_top = 110.0
-margin_right = 4487.66
-margin_bottom = 4616.0
-rect_scale = Vector2( 0.01, 0.01 )
-icon = SubResource( 4 )
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TimerAccident" type="Timer" parent="Accident"]
-one_shot = true
-
-[node name="Bracage" type="Button" parent="."]
-anchor_left = 0.955
-anchor_right = 0.955
-margin_left = -24.3369
-margin_top = 160.0
-margin_right = 4637.66
-margin_bottom = 4716.0
-rect_scale = Vector2( 0.01, 0.01 )
-button_mask = 5
-icon = ExtResource( 11 )
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TimerBracage" type="Timer" parent="Bracage"]
-one_shot = true
-
-[node name="Noyade" type="Button" parent="."]
-anchor_left = 0.955
-anchor_right = 0.955
-margin_left = -24.3369
-margin_top = 210.0
-margin_right = 4487.66
-margin_bottom = 4716.0
-rect_scale = Vector2( 0.01, 0.01 )
-icon = ExtResource( 12 )
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TimerNoyade" type="Timer" parent="Noyade"]
-one_shot = true
