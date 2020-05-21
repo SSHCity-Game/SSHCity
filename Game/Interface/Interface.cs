@@ -56,7 +56,7 @@ public class Interface : CanvasLayer
     private static int _xp;
     public static int _level = 1; // niveau
     //private static int _scoreValue; // index XpMax
-    private static int XpMax = 60; //{200, 400, 600, 800, 1000}; // xp en fonction des niveaux
+    private static int XpMax = 30; //{200, 400, 600, 800, 1000}; // xp en fonction des niveaux
     
     private static int moneyWin = 0;
     private static int energyused = 0;
