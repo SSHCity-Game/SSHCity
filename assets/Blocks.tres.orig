@@ -1,18 +1,18 @@
 <<<<<<< HEAD
-[gd_resource type="TileSet" load_steps=56 format=2]
+[gd_resource type="TileSet" load_steps=68 format=2]
 =======
-[gd_resource type="TileSet" load_steps=57 format=2]
->>>>>>> feature/Incidents
+[gd_resource type="TileSet" load_steps=67 format=2]
+>>>>>>> b201adef812d3fe5a9d8b2dd72b3796b33c28c09
 
-[ext_resource path="res://assets/isometric_0108.png" type="Texture" id=1]
-[ext_resource path="res://assets/isometric_0130.png" type="Texture" id=2]
-[ext_resource path="res://assets/isometric_0100.png" type="Texture" id=3]
+[ext_resource path="res://assets/lac3.png" type="Texture" id=1]
+[ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Flammeresto.png" type="Texture" id=3]
 [ext_resource path="res://assets/isometric_0064.png" type="Texture" id=4]
-[ext_resource path="res://assets/isometric_0079.png" type="Texture" id=5]
+[ext_resource path="res://assets/grass -water.png" type="Texture" id=5]
 [ext_resource path="res://assets/isometric_0063.png" type="Texture" id=6]
 [ext_resource path="res://assets/isometric_0087_2.png" type="Texture" id=7]
-[ext_resource path="res://assets/isometric_0086.png" type="Texture" id=8]
-[ext_resource path="res://assets/isometric_0080.png" type="Texture" id=9]
+[ext_resource path="res://assets/lac2.png" type="Texture" id=8]
+[ext_resource path="res://assets/lac.png" type="Texture" id=9]
 [ext_resource path="res://assets/grass.png" type="Texture" id=10]
 [ext_resource path="res://assets/maison1.png" type="Texture" id=11]
 [ext_resource path="res://assets/police.png" type="Texture" id=12]
@@ -55,10 +55,21 @@
 [ext_resource path="res://assets/route_virage4.png" type="Texture" id=49]
 [ext_resource path="res://assets/route_virage2.png" type="Texture" id=50]
 [ext_resource path="res://assets/montagne.png" type="Texture" id=51]
-<<<<<<< HEAD
-=======
 [ext_resource path="res://assets/flammeMaison3.png" type="Texture" id=52]
->>>>>>> feature/Incidents
+[ext_resource path="res://assets/isometric centrale1.png" type="Texture" id=53]
+[ext_resource path="res://assets/isometric ferme ecolo.png" type="Texture" id=54]
+[ext_resource path="res://assets/Flammemagasin6.png" type="Texture" id=55]
+[ext_resource path="res://assets/Flammeboutique5.png" type="Texture" id=56]
+[ext_resource path="res://assets/Flammeeglise1.png" type="Texture" id=57]
+[ext_resource path="res://assets/Flammemaison5.png" type="Texture" id=58]
+[ext_resource path="res://assets/Flammemaison4.png" type="Texture" id=59]
+[ext_resource path="res://assets/sol_montagne.png" type="Texture" id=60]
+<<<<<<< HEAD
+[ext_resource path="res://assets/Images_interface/roues.png" type="Texture" id=61]
+[ext_resource path="res://assets/Images_interface/trait.png" type="Texture" id=62]
+=======
+[ext_resource path="res://assets/Alerte_incidents/bulleRoute.png" type="Texture" id=61]
+>>>>>>> b201adef812d3fe5a9d8b2dd72b3796b33c28c09
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -71,8 +82,13 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 
 [sub_resource type="NavigationPolygon" id=4]
 
+[sub_resource type="NavigationPolygon" id=5]
+vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
+
 [resource]
-0/name = "Grass"
+0/name = "Sol"
 0/texture = ExtResource( 10 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
@@ -83,8 +99,8 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 0/navigation = SubResource( 1 )
 0/shapes = [  ]
 0/z_index = 0
-1/name = "Batiment"
-1/texture = ExtResource( 3 )
+1/name = "SolMontagne"
+1/texture = ExtResource( 60 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 1024, 1024 )
@@ -105,9 +121,9 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 2/navigation = SubResource( 1 )
 2/shapes = [  ]
 2/z_index = 0
-3/name = "Tds"
-3/texture = ExtResource( 9 )
-3/tex_offset = Vector2( 0, 0 )
+3/name = "FlammeBoutique5"
+3/texture = ExtResource( 56 )
+3/tex_offset = Vector2( 20, 380 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 0, 1024, 1024 )
 3/tile_mode = 0
@@ -116,9 +132,9 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 3/navigation = SubResource( 1 )
 3/shapes = [  ]
 3/z_index = 0
-4/name = "Box"
-4/texture = ExtResource( 8 )
-4/tex_offset = Vector2( 0, 0 )
+4/name = "FlammeEglise1"
+4/texture = ExtResource( 57 )
+4/tex_offset = Vector2( 105, 210 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 0, 1024, 1024 )
 4/tile_mode = 0
@@ -138,20 +154,20 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 5/navigation = SubResource( 1 )
 5/shapes = [  ]
 5/z_index = 0
-6/name = "incendie"
+6/name = "FlammeMaison1"
 6/texture = ExtResource( 2 )
-6/tex_offset = Vector2( 0, 0 )
+6/tex_offset = Vector2( 100, 210 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 0, 1024, 1024 )
 6/tile_mode = 0
 6/occluder_offset = Vector2( 512, 512 )
 6/navigation_offset = Vector2( 512, 512 )
-6/navigation = SubResource( 1 )
+6/navigation = SubResource( 5 )
 6/shapes = [  ]
 6/z_index = 0
-7/name = "accident voiture"
-7/texture = ExtResource( 1 )
-7/tex_offset = Vector2( 0, 0 )
+7/name = "FlammeMaison4"
+7/texture = ExtResource( 59 )
+7/tex_offset = Vector2( 0, 150 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 1024, 1024 )
 7/tile_mode = 0
@@ -160,9 +176,9 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 7/navigation = SubResource( 1 )
 7/shapes = [  ]
 7/z_index = 0
-8/name = "incident leger"
-8/texture = ExtResource( 5 )
-8/tex_offset = Vector2( 0, 0 )
+8/name = "FlammeMaison5"
+8/texture = ExtResource( 58 )
+8/tex_offset = Vector2( 70, 260 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 1024, 1024 )
 8/tile_mode = 0
@@ -584,37 +600,170 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 55/navigation_offset = Vector2( 0, 0 )
 55/shapes = [  ]
 55/z_index = 0
-<<<<<<< HEAD
-56/name = "iso montagne1.png 56"
-56/texture = ExtResource( 51 )
-56/tex_offset = Vector2( -800, -600 )
-56/modulate = Color( 1, 1, 1, 1 )
-56/region = Rect2( 0, 0, 3840, 3520 )
-56/tile_mode = 0
-56/occluder_offset = Vector2( 0, 0 )
-56/navigation_offset = Vector2( 0, 0 )
-56/shapes = [  ]
-56/z_index = 0
-=======
 56/name = "montagne"
 56/texture = ExtResource( 51 )
-56/tex_offset = Vector2( 0, 0 )
+56/tex_offset = Vector2( -800, -500 )
 56/modulate = Color( 1, 1, 1, 1 )
-56/region = Rect2( 0, 0, 16384, 10893 )
+56/region = Rect2( 0, 0, 2600, 2393 )
 56/tile_mode = 0
-56/occluder_offset = Vector2( 8192, 5446.5 )
-56/navigation_offset = Vector2( 8192, 5446.5 )
+56/occluder_offset = Vector2( 1300, 1196.5 )
+56/navigation_offset = Vector2( 1300, 1196.5 )
 56/shapes = [  ]
 56/z_index = 0
 57/name = "Maison3Flamme"
 57/texture = ExtResource( 52 )
-57/tex_offset = Vector2( 0, 0 )
+57/tex_offset = Vector2( -4, 188 )
 57/modulate = Color( 1, 1, 1, 1 )
 57/region = Rect2( 0, 0, 975, 905 )
 57/tile_mode = 0
 57/occluder_offset = Vector2( 487.5, 452.5 )
 57/navigation_offset = Vector2( 487.5, 452.5 )
-57/navigation = SubResource( 1 )
+57/navigation = SubResource( 5 )
 57/shapes = [  ]
 57/z_index = 0
->>>>>>> feature/Incidents
+58/name = "isometric centrale1.png 58"
+58/texture = ExtResource( 53 )
+58/tex_offset = Vector2( -750, -70 )
+58/modulate = Color( 1, 1, 1, 1 )
+58/region = Rect2( 0, 128, 3040, 2400 )
+58/tile_mode = 0
+58/occluder_offset = Vector2( 0, 0 )
+58/navigation_offset = Vector2( 0, 0 )
+58/shapes = [  ]
+58/z_index = 0
+59/name = "isometric ferme ecolo.png 59"
+59/texture = ExtResource( 54 )
+59/tex_offset = Vector2( -400, 250 )
+59/modulate = Color( 1, 1, 1, 1 )
+59/region = Rect2( 0, 0, 1792, 1312 )
+59/tile_mode = 0
+59/occluder_offset = Vector2( 0, 0 )
+59/navigation_offset = Vector2( 0, 0 )
+59/shapes = [  ]
+59/z_index = 0
+60/name = "FlammeCafe"
+60/texture = ExtResource( 55 )
+60/tex_offset = Vector2( 65, 255 )
+60/modulate = Color( 1, 1, 1, 1 )
+60/region = Rect2( 0, 0, 1024, 1024 )
+60/tile_mode = 0
+60/occluder_offset = Vector2( 512, 512 )
+60/navigation_offset = Vector2( 512, 512 )
+60/navigation = SubResource( 1 )
+60/shapes = [  ]
+60/z_index = 0
+61/name = "Grass"
+61/texture = ExtResource( 10 )
+61/tex_offset = Vector2( 0, 0 )
+61/modulate = Color( 1, 1, 1, 1 )
+61/region = Rect2( 0, 0, 1025, 1025 )
+61/tile_mode = 0
+61/occluder_offset = Vector2( 512.5, 512.5 )
+61/navigation_offset = Vector2( 512.5, 512.5 )
+61/navigation = SubResource( 1 )
+61/shapes = [  ]
+61/z_index = 0
+62/name = "Batiment"
+62/texture = ExtResource( 3 )
+62/tex_offset = Vector2( 25, 225 )
+62/modulate = Color( 1, 1, 1, 1 )
+62/region = Rect2( 0, 0, 1024, 1024 )
+62/tile_mode = 0
+62/occluder_offset = Vector2( 512, 512 )
+62/navigation_offset = Vector2( 512, 512 )
+62/navigation = SubResource( 1 )
+62/shapes = [  ]
+62/z_index = 0
+63/name = "Tds"
+63/texture = ExtResource( 8 )
+63/tex_offset = Vector2( -2000, -1500 )
+63/modulate = Color( 1, 1, 1, 1 )
+63/region = Rect2( 224, 640, 4800, 3296 )
+63/tile_mode = 0
+63/occluder_offset = Vector2( 512, 512 )
+63/navigation_offset = Vector2( 512, 512 )
+63/navigation = SubResource( 1 )
+63/shapes = [  ]
+63/z_index = 0
+64/name = "Box"
+64/texture = ExtResource( 1 )
+64/tex_offset = Vector2( -2000, -2000 )
+64/modulate = Color( 1, 1, 1, 1 )
+64/region = Rect2( 32, 352, 5152, 4160 )
+64/tile_mode = 0
+64/occluder_offset = Vector2( 512, 512 )
+64/navigation_offset = Vector2( 512, 512 )
+64/navigation = SubResource( 1 )
+64/shapes = [  ]
+64/z_index = 0
+65/name = "accident voiture"
+65/texture = ExtResource( 9 )
+65/tex_offset = Vector2( 0, 0 )
+65/modulate = Color( 1, 1, 1, 1 )
+65/region = Rect2( 224, 608, 4672, 3424 )
+65/tile_mode = 0
+65/occluder_offset = Vector2( 512, 512 )
+65/navigation_offset = Vector2( 512, 512 )
+65/navigation = SubResource( 1 )
+65/shapes = [  ]
+65/z_index = 0
+68/name = "Route"
+68/texture = ExtResource( 42 )
+68/tex_offset = Vector2( 0, 0 )
+68/modulate = Color( 1, 1, 1, 1 )
+68/region = Rect2( 0, 0, 1600, 1019 )
+68/tile_mode = 0
+68/occluder_offset = Vector2( 800, 509.5 )
+68/navigation_offset = Vector2( 800, 509.5 )
+68/shapes = [  ]
+68/z_index = 0
+72/name = "Image"
+72/texture = ExtResource( 21 )
+72/tex_offset = Vector2( 0, 0 )
+72/modulate = Color( 1, 1, 1, 1 )
+72/region = Rect2( 0, 0, 975, 905 )
+72/tile_mode = 0
+72/occluder_offset = Vector2( 487.5, 452.5 )
+72/navigation_offset = Vector2( 487.5, 452.5 )
+72/shapes = [  ]
+72/z_index = 0
+76/name = "Rouages"
+76/texture = ExtResource( 61 )
+76/tex_offset = Vector2( 0, 0 )
+76/modulate = Color( 1, 1, 1, 1 )
+76/region = Rect2( 0, 0, 2048, 2048 )
+76/tile_mode = 0
+76/occluder_offset = Vector2( 1024, 1024 )
+76/navigation_offset = Vector2( 1024, 1024 )
+76/shapes = [  ]
+76/z_index = 0
+77/name = "Trait"
+77/texture = ExtResource( 62 )
+77/tex_offset = Vector2( 0, 0 )
+77/modulate = Color( 1, 1, 1, 1 )
+77/region = Rect2( 0, 0, 1308, 1182 )
+77/tile_mode = 0
+77/occluder_offset = Vector2( 654, 591 )
+77/navigation_offset = Vector2( 654, 591 )
+77/shapes = [  ]
+77/z_index = 0
+78/name = "grass -water.png 78"
+78/texture = ExtResource( 5 )
+78/tex_offset = Vector2( 0, 0 )
+78/modulate = Color( 1, 1, 1, 1 )
+78/region = Rect2( 0, 0, 1024, 1024 )
+78/tile_mode = 0
+78/occluder_offset = Vector2( 0, 0 )
+78/navigation_offset = Vector2( 0, 0 )
+78/shapes = [  ]
+78/z_index = 0
+79/name = "bulleRoute.png 79"
+79/texture = ExtResource( 61 )
+79/tex_offset = Vector2( 300, 0 )
+79/modulate = Color( 1, 1, 1, 1 )
+79/region = Rect2( 544, 256, 512, 480 )
+79/tile_mode = 0
+79/occluder_offset = Vector2( 0, 0 )
+79/navigation_offset = Vector2( 0, 0 )
+79/shapes = [  ]
+79/z_index = 0
