@@ -93,20 +93,35 @@ namespace SshCity.Game.Plan
         public const int restaurant2_flamme= 62;
         
         /* Vol Batiments*/
-        public const int maison1_vol = 82;
-        public const int maison4_vol =83;
-        public const int maison5_vol = 84;
-        public const int maison3_vol = 85;
-        public const int mairie_vol = 86;
+        public const int maison1_vol = 96;
+        public const int maison4_vol = 98;
+        public const int maison5_vol = 99;
+        public const int maison3_vol = 97;
+        public const int mairie_vol = 95;
         
         /* Noyade lac */
-        public const int lac1_noyade = 86;
+        public const int lac1_noyade = 100;
         
         //Lac Bloc
         public const int water_terre = 78;
         public const int lac1 = 63;
         public const int lac2 = 64;
         
+        //Blocs tuyaux
+        public const int tuyaux_right = 81;
+        public const int tuyaux_left = 83;
+        public const int tuyaux_virage_bas = 82;
+        public const int tuyaux_virage_haut = 84;
+        public const int tuyaux_virage_droit = 87;
+        public const int tuyaux_virage_gauche = 101;
+        public const int tuyaux_T_haut_droit = 89;
+        public const int tuyaux_T_bas_droit = 91;
+        public const int tuyaux_T_haut_gauche = 92;
+        public const int tuyaux_T_bas_gauche = 90;
+        public const int tuyaux_croisement = 88;
+        public const int sol_tuyaux = 80;
+        public const int tuyaux_terre = 93;
+
         //bulles Bloc
         public const int bulleRoute = 79;
 

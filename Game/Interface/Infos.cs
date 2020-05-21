@@ -24,10 +24,10 @@ public class Infos : Panel
     private const string _strGainValue = "Lvl/Gains/GainBatiment/GainBatimentValue";
     private const string _strAmelioGainBaatiment = "Amelioration/Gains/GainBatiment";
     private const string _strAmelioGainValue = "Amelioration/Gains/GainBatiment/GainBatimentValue";
-    
+
     private static bool _close = false;
     private static bool _isOpen = false;
-
+    
     private Label _amelioGainValue;
     private Label _amelioGainBatiment;
     private Panel _amelioPanel;
@@ -91,7 +91,6 @@ public class Infos : Panel
         _amelioGainBatiment = (Label) GetNode(_strAmelioGainBaatiment);
         _amelioGainValue = (Label) GetNode(_strAmelioGainValue);
         _nivMax.Hide();
-
 
         _quitter.Connect("pressed", this, nameof(CloseInfos));
         _ameliorer.Connect("pressed", this, nameof(AmeliorerInfos));
@@ -224,6 +223,7 @@ public class Infos : Panel
 
         if (_class == BuildingType.CASERNE)
         {
+            GD.Print("CASERTNE");
             _vehicule.Text = "Camion";
             _vehicule.Show();
             _type = Vehicules.Type.CAMION;
