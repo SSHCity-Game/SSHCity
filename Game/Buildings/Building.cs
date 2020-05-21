@@ -17,7 +17,7 @@ namespace SshCity.Game.Buildings
             Type = type;
             Characteristics = BuildingCharacteristics.FromType(type);
             Position = position;
-            Activated = false;
+            Activated = true;
             Characteristics.Lvl = theLvl;
             Characteristics.Lvl = theLvl;
             ListBuildings.Add(this);

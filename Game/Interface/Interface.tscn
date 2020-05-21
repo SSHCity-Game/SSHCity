@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Game/Interface/Interface.cs" type="Script" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -15,15 +15,16 @@
 [ext_resource path="res://Game/Interface/Infos.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Game/Interface/MairieMenu.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/Images_interface/roues.png" type="Texture" id=15]
-[ext_resource path="res://assets/Barre_Niveau/scoreBar/barFill2.png" type="Texture" id=16]
+[ext_resource path="res://assets/Barre_Niveau/scoreBar/barFill3.png" type="Texture" id=16]
 [ext_resource path="res://assets/Barre_Niveau/scoreBar/EmptyBar.png" type="Texture" id=17]
+[ext_resource path="res://assets/Images_interface/eau.png" type="Texture" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.0666667, 0.0588235, 0.054902, 1 )
+bg_color = Color( 0.113725, 0.113725, 0.109804, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -130,9 +131,9 @@ anchor_left = 0.943
 anchor_top = 0.919
 anchor_right = 0.943
 anchor_bottom = 0.919
-margin_left = -29.5794
+margin_left = -29.632
 margin_top = -191.4
-margin_right = 30.4206
+margin_right = 30.368
 margin_bottom = -131.4
 rect_min_size = Vector2( 60, 60 )
 custom_styles/hover = SubResource( 2 )
@@ -147,6 +148,29 @@ __meta__ = {
 position = Vector2( 30.166, 25.3416 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 7 )
+
+[node name="ButtonEau" type="Button" parent="."]
+anchor_left = 0.943
+anchor_top = 0.919
+anchor_right = 0.943
+anchor_bottom = 0.919
+margin_left = -29.632
+margin_top = -271.4
+margin_right = 30.368
+margin_bottom = -211.4
+rect_min_size = Vector2( 60, 60 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+icon = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Eau" type="Sprite" parent="ButtonEau"]
+position = Vector2( 29.125, 28.0947 )
+scale = Vector2( 0.02, 0.02 )
+texture = ExtResource( 18 )
 
 [node name="Boutique" parent="." instance=ExtResource( 5 )]
 
@@ -169,7 +193,6 @@ scale = Vector2( 0.07, 0.07 )
 texture = ExtResource( 12 )
 
 [node name="Infos" parent="." instance=ExtResource( 13 )]
-visible = false
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -199,21 +222,6 @@ texture = ExtResource( 15 )
 [node name="MairieMenu" parent="." instance=ExtResource( 14 )]
 visible = false
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color( 0.121569, 0.490196, 0.419608, 0.317647 )
-anchor_left = -0.165
-anchor_top = -0.112
-anchor_right = -0.165
-anchor_bottom = -0.112
-margin_left = 219.086
-margin_top = 72.4175
-margin_right = 524.086
-margin_bottom = 130.417
-texture = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ScoreBar" type="TextureProgress" parent="."]
 margin_left = 50.0
 margin_top = 5.0
@@ -221,10 +229,25 @@ margin_right = 355.0
 margin_bottom = 63.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-max_value = 100.0
+max_value = 30.0
 texture_under = ExtResource( 11 )
 texture_progress = ExtResource( 16 )
 nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ScoreBar"]
+modulate = Color( 0.286275, 0.345098, 0.807843, 0.266667 )
+anchor_left = -0.165
+anchor_top = -0.112
+anchor_right = -0.165
+anchor_bottom = -0.112
+margin_left = 50.451
+margin_top = 6.7135
+margin_right = 355.451
+margin_bottom = 64.7135
+texture = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -54,23 +54,23 @@ outline_color = Color( 0.87451, 0.0627451, 0.0627451, 1 )
 font_data = ExtResource( 1 )
 
 [node name="Infos" type="Panel"]
-anchor_left = 0.485
-anchor_top = 0.555
-anchor_right = 0.485
-anchor_bottom = 0.555
-margin_left = -393.7
-margin_top = -266.056
-margin_right = 430.3
-margin_bottom = 180.944
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -392.0
+margin_top = -216.5
+margin_right = 392.0
+margin_bottom = 216.5
 script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Cadre" type="Panel" parent="."]
-margin_left = 29.0321
+margin_left = 25.0321
 margin_top = 52.5294
-margin_right = 248.032
+margin_right = 244.032
 margin_bottom = 265.53
 theme = SubResource( 2 )
 custom_styles/panel = SubResource( 3 )
@@ -96,9 +96,9 @@ __meta__ = {
 }
 
 [node name="Quitter" type="Button" parent="."]
-margin_left = 497.432
+margin_left = 481.432
 margin_top = 390.835
-margin_right = 580.432
+margin_right = 564.432
 margin_bottom = 421.835
 custom_fonts/font = SubResource( 5 )
 text = "Quitter"
@@ -107,9 +107,9 @@ __meta__ = {
 }
 
 [node name="Ameliorer" type="Button" parent="."]
-margin_left = 35.2
+margin_left = 31.2
 margin_top = 337.15
-margin_right = 252.2
+margin_right = 248.2
 margin_bottom = 417.15
 custom_fonts/font = SubResource( 6 )
 text = "Ameliorer"
@@ -123,9 +123,9 @@ __meta__ = {
 }
 
 [node name="Couts" type="Panel" parent="Amelioration"]
-margin_left = 555.0
+margin_left = 531.0
 margin_top = 245.95
-margin_right = 790.0
+margin_right = 766.0
 margin_bottom = 360.0
 theme = SubResource( 7 )
 custom_styles/panel = SubResource( 8 )
@@ -221,9 +221,9 @@ __meta__ = {
 [node name="SpriteEau" type="Sprite" parent="Amelioration/Couts/Eau"]
 
 [node name="Gains" type="Panel" parent="Amelioration"]
-margin_left = 280.0
+margin_left = 276.0
 margin_top = 245.0
-margin_right = 515.0
+margin_right = 511.0
 margin_bottom = 360.0
 theme = SubResource( 7 )
 custom_styles/panel = SubResource( 8 )
@@ -236,9 +236,9 @@ anchor_left = 0.492
 anchor_top = 0.17
 anchor_right = 0.492
 anchor_bottom = 0.17
-margin_left = -114.62
+margin_left = -115.62
 margin_top = -16.55
-margin_right = 119.38
+margin_right = 118.38
 margin_bottom = 16.45
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.192157, 0.996078, 0.0196078, 1 )
@@ -284,31 +284,31 @@ __meta__ = {
 [node name="SpriteArgent" type="Sprite" parent="Amelioration/Gains/Argent"]
 
 [node name="GainBatiment" type="Label" parent="Amelioration/Gains"]
-anchor_left = 0.277
-anchor_top = 0.479
-anchor_right = 0.277
-anchor_bottom = 0.479
-margin_left = -45.095
-margin_top = 19.915
-margin_right = 46.905
-margin_bottom = 52.915
+anchor_left = 0.281
+anchor_top = 0.796
+anchor_right = 0.281
+anchor_bottom = 0.796
+margin_left = -46.035
+margin_top = -16.54
+margin_right = 45.965
+margin_bottom = 16.46
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.172549, 0.478431, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.901961, 0.0196078, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GainBatimentValue" type="Label" parent="Amelioration/Gains/GainBatiment"]
-anchor_left = 0.407
-anchor_top = 0.5
-anchor_right = 0.407
-anchor_bottom = 0.5
-margin_left = 69.556
-margin_top = -15.5
-margin_right = 168.556
-margin_bottom = 17.5
+anchor_left = 1.685
+anchor_top = 0.53
+anchor_right = 1.685
+anchor_bottom = 0.53
+margin_left = -48.02
+margin_top = -16.49
+margin_right = 47.98
+margin_bottom = 16.51
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.992157, 1, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 0.901961, 0.0196078, 1, 1 )
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -337,9 +337,9 @@ __meta__ = {
 }
 
 [node name="Couts" type="Panel" parent="Lvl"]
-margin_left = 555.0
+margin_left = 531.0
 margin_top = 55.0
-margin_right = 790.0
+margin_right = 766.0
 margin_bottom = 170.0
 theme = SubResource( 7 )
 custom_styles/panel = SubResource( 8 )
@@ -435,9 +435,9 @@ __meta__ = {
 }
 
 [node name="Gains" type="Panel" parent="Lvl"]
-margin_left = 280.0
+margin_left = 276.0
 margin_top = 55.0
-margin_right = 515.0
+margin_right = 511.0
 margin_bottom = 170.0
 theme = SubResource( 7 )
 custom_styles/panel = SubResource( 8 )
@@ -498,31 +498,31 @@ __meta__ = {
 [node name="SpriteArgent" type="Sprite" parent="Lvl/Gains/Argent"]
 
 [node name="GainBatiment" type="Label" parent="Lvl/Gains"]
-anchor_left = 0.277
-anchor_top = 0.479
-anchor_right = 0.277
-anchor_bottom = 0.479
-margin_left = -45.095
-margin_top = 19.915
-margin_right = 46.905
-margin_bottom = 52.915
+anchor_left = 0.281
+anchor_top = 0.796
+anchor_right = 0.281
+anchor_bottom = 0.796
+margin_left = -46.035
+margin_top = -16.54
+margin_right = 45.965
+margin_bottom = 16.46
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.172549, 0.478431, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.901961, 0.0196078, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GainBatimentValue" type="Label" parent="Lvl/Gains/GainBatiment"]
-anchor_left = 0.407
+anchor_left = 1.452
 anchor_top = 0.5
-anchor_right = 0.407
+anchor_right = 1.452
 anchor_bottom = 0.5
-margin_left = 69.556
-margin_top = -15.5
-margin_right = 168.556
-margin_bottom = 17.5
+margin_left = -50.9957
+margin_top = -16.5
+margin_right = 51.0043
+margin_bottom = 16.5
 custom_fonts/font = SubResource( 9 )
-custom_colors/font_color_shadow = Color( 0.992157, 1, 0.0196078, 1 )
+custom_colors/font_color_shadow = Color( 0.901961, 0.0196078, 1, 1 )
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false

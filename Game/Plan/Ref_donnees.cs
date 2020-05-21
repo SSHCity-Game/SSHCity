@@ -95,6 +95,11 @@ namespace SshCity.Game.Plan
         public const int lac1 = 63;
         public const int lac2 = 64;
         
+        //Blocs tuyaux
+        public const int tuyaux_right = 81;
+        public const int tuyaux_left = 83;
+        public const int tuyaux_virage_bas = 82;
+        
         //bulles Bloc
         public const int bulleRoute = 79;
 
@@ -105,8 +110,17 @@ namespace SshCity.Game.Plan
             (restaurant2, restaurant2_flamme), (eglise, eglise_flamme), (cafe, cafe_flamme)
         };
         
-        /* Liste batiment, batiment en feu */
-        public static int[] Lacs = {63,64,65};
+        /* Liste lac, lac avec noye */
+        public static (int, int)[] LacNoyade = {
+            (lac1, 2), (lac2, 2)
+        };
+        
+        /* Liste batiment, batiment braque */
+        public static (int, int)[] BatimentVol = {
+            (maison1, 5), (maison3, 5),
+            (maison4, 5), (maison5, 5), (restaurant, 5),
+            (restaurant2, 5), (eglise, 5), (cafe, 5)
+        };
         
         
         // Sauvegarde

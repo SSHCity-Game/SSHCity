@@ -7,11 +7,10 @@ using SshCity.Game.Plan;
 public class incidents : CanvasLayer
 {
 	/* Maximum des incidents potentiels */
-	public const int MAX_INCIDENTS = 8;
-	public const int MAX_INCENDIES = 2;
+	public const int MAX_INCENDIES = 1;
 	public const int MAX_ACCIDENT = 1;
-	public const int MAX_NOYADES = 2;
-	public const int MAX_BRACAGES = 2;
+	public const int MAX_NOYADES = 1;
+	public const int MAX_BRACAGES = 1;
 	/* Nombre actuel des incidents */
 	public static int Nbincidents = 0;
 	public static int Nbincendies = 0;
@@ -20,30 +19,44 @@ public class incidents : CanvasLayer
 	public static int Nbbracages = 0;
 	
 	public static bool ResoIncident = false;
+	public static bool ResoAccident = false;
+	public static bool ResoBracage = false;
+	public static bool ResoNoyade = false;
 
 	private static int x;
 	private static int y;
 	private static int indexAv;
 	private static int indexAp;
-	
-	
-	public override void _Ready()
-	{
-	}
 
+	private static int levelIncendie = 2;
+	private static int levelAccident = 5;
+	private static int levelNoyade = 8;
+	private static int levelBracage = 10;
+	
+	
 	public override void _Process(float delta)
 	{
 		base._Process(delta);
 		
 		/* INCENDIES */
-		GenerateIncendies(MainPlan._planInitial);
+		if(Interface._level >= levelIncendie)
+			GenerateIncendies(MainPlan._planInitial);
+		if (menu_incident.TimerIncendie.IsStopped() && ResoIncident) // definit le temps entre l apparition de deux incendies
+			ResoIncident = false;
 
-		Nbincidents = Nbincendies + Nbaccident + Nbnoyades + Nbbracages;
+		if(Interface._level >= levelBracage)
+			GenerateBracage(MainPlan._planInitial);
+		if (menu_incident.TimerBracage.IsStopped() && ResoBracage) // definit le temps entre l apparition de deux bracage
+			ResoBracage = false;
+		
+		if(Interface._level >= levelNoyade)
+			GenerateNoyade(MainPlan._planInitial);
+		if (menu_incident.TimerNoyade.IsStopped() && ResoNoyade) // definit le temps entre l apparition de deux noyades
+			ResoNoyade = false;
 	}
 
 	public static (int x, int y, int indexAv, int indexAp) GenereCoords((int, int)[] listBat)
-	{
-		/* Genere aleatoirement les coordonnees d un batiement a accidente */
+	{ /* Genere aleatoirement les coordonnees d un batiement a accidente */
 
 		var rand = new Random();
 		var coordinates = new List<Vector2>(); // Liste de stockage des coordonnees de l incident
@@ -69,43 +82,125 @@ public class incidents : CanvasLayer
 		var y = (int) pos.y;
 		return (x, y, indexAv, indexAp);
 	}
-
+	
+					/** INCENDIES **/
 	public static void GenerateIncendies(PlanInitial planInitial)
 	{
-		(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.BatimentFeu);
-		if (ResoIncident)
+		if (ResoIncident && Nbincendies > 0)
 		{
-			StopIncendie(MainPlan._planInitial);
+			StopIncendie(planInitial);
 			Nbincendies--;
+			Nbincidents--;
 		}
-		else if (Nbincidents < MAX_INCIDENTS && Nbincendies < MAX_INCENDIES && !ResoIncident)
+		else if (!ResoIncident && Nbincendies < MAX_INCENDIES)
 		{
-			StartIncendie(MainPlan._planInitial);
+			(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.BatimentFeu);
+			StartIncendie(planInitial);
 			Nbincendies++;
+			Nbincidents++;
 		}
 	}
 	public static async void StartIncendie(PlanInitial planInitial)
-	{ 
-		/* change le batiment normal avec celui accidente */
+	{ /* change le batiment normal avec celui accidente */
 		await Task.Delay(5000);
 		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
 		menu_incident.Flamme.Show();
 	}
-	
 	public static async void StopIncendie(PlanInitial planInitial)
-	{ 
-		/* revient au batiment normal */
+	{ /* revient au batiment normal */
 		menu_incident.Flamme.Hide();
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
 	}
 	
-	public static void BuildingSwitch(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
+					/** ACCIDENTS **/
+	public static void GenerateAccident(PlanInitial planInitial)
 	{
-		/********************************
-		 * Change l'image d'un batiment *
-		 ********************************/
-
+		if (ResoAccident && Nbaccident > 0)
+		{
+			StopAccident(planInitial);
+			Nbaccident--;
+			Nbincidents--;
+		}
+		else if (Nbaccident < MAX_ACCIDENT && !ResoAccident)
+		{
+			StartAccident(planInitial);
+			Nbaccident++;
+			Nbincidents++;
+		}
+	}
+	public static async void StartAccident(PlanInitial planInitial)
+	{ /* fait apparaitre une image d'accident sur la route */
+		menu_incident.Accident.Show();
+	}
+	public static async void StopAccident(PlanInitial planInitial)
+	{ /* supprime l'accident */
+		menu_incident.Accident.Hide();
+	}
+	
+					/** BRACAGES **/
+	public static void GenerateBracage(PlanInitial planInitial)
+	{
+		(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.BatimentVol);
+		if (ResoBracage && Nbbracages > 0)
+		{
+			StopBracage(planInitial);
+			Nbbracages--;
+			Nbincidents--;
+		}
+		else if (Nbbracages < MAX_BRACAGES && !ResoBracage)
+		{
+			StartBracage(planInitial);
+			Nbbracages++;
+			Nbincidents++;
+		}
+	}
+	public static async void StartBracage(PlanInitial planInitial)
+	{ /*fait apparaitre une image de braquer devant la maison */
+		await Task.Delay(5000);
+		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
+		menu_incident.Bracage.Show();
+	}
+	public static async void StopBracage(PlanInitial planInitial)
+	{ /* supprime le bracage */
+		menu_incident.Bracage.Hide();
+		await Task.Delay(3000);
+		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
+	}
+	
+					/** NOYADES **/
+	public static void GenerateNoyade(PlanInitial planInitial)
+	{
+		(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.LacNoyade);
+		if (ResoNoyade && Nbnoyades > 0)
+		{
+			StopNoyade(planInitial);
+			Nbnoyades--;
+			Nbincidents--;
+		}
+		else if (Nbnoyades < MAX_NOYADES && !ResoNoyade)
+		{
+			StartNoyade(planInitial);
+			Nbnoyades++;
+			Nbincidents++;
+		}
+	}
+	public static async void StartNoyade(PlanInitial planInitial)
+	{ /* fait apparaitre une image de lac avec une personne qui se noie */
+		await Task.Delay(5000);
+		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
+		menu_incident.Noyade.Show();
+	}
+	public static async void StopNoyade(PlanInitial planInitial)
+	{ /* revient au lac normal */
+		menu_incident.Noyade.Hide();
+		await Task.Delay(3000);
+		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
+	}
+	
+	
+	public static void BuildingSwitch(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
+	{ /* Change l'image d'un batiment */
 		/* Initialise le bloc en x,y, comme batiment accidente */
 		if (planInitial.GetBlock(planInitial.TileMap2, x, y) == indexAv) 
 			planInitial.SetBlock(planInitial.TileMap2, x, y, indexAp);

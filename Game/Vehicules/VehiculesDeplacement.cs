@@ -71,7 +71,6 @@ namespace SshCity.Game.Vehicules
         public override void _Process(float delta)
 		{
 			base._Process(delta);
-			
 			//Set, en focntion de la direction et de l'animation passe en parametre,
 			//la nouvelle direction du vehicule, son animaion, son decallage, sa case d'arrive.
 			Action<(Direction direction1, string anim)> MovingDirection = para =>

@@ -45,11 +45,15 @@ public partial class PlanInitial : Node2D
     public static Houloucoupter.Type HouloucoupterType;
     public static Vector2 HouloucoupterDestination;
     private PackedScene _houloucoupterScene;
+   
+    //Add Bateaux
+    public PackedScene _bateauxScene;
 
 
 
     public static int MAX_CAR = 0;
     public static int NbCar = 0;
+    
     public static bool AddVehicule1
     {
         get => addVehicule;
@@ -58,10 +62,12 @@ public partial class PlanInitial : Node2D
     
     private Vector2 _lastTile = new Vector2(0, 0);
     
+    public string str_TileMap0 = "TileMap0";
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
     private const string str_VehiculeTimer = "Vehicule";
+    public TileMap TileMap0;
     public TileMap TileMap1;
     public TileMap TileMap2;
     public TileMap TileMap3;
@@ -98,6 +104,7 @@ public partial class PlanInitial : Node2D
 
     public override void _Ready()
     {
+        TileMap0 = (TileMap) GetNode(str_TileMap0);
         TileMap1 = (TileMap) GetNode(str_TileMap1);
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
@@ -106,6 +113,7 @@ public partial class PlanInitial : Node2D
         _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
         _accidentArea2D = (PackedScene) GD.Load("res://Game/Vehicules/Accident.tscn");
         _houloucoupterScene = (PackedScene) GD.Load("res://Game/Vehicules/Houloucoupter.tscn");
+        _bateauxScene = (PackedScene) GD.Load("res://Game/Vehicules/Bateau.tscn");
         VehiculeTimer.Connect("timeout", this, nameof(TimerOutVehicule));
         Interface.Init(this);
     }
@@ -138,6 +146,7 @@ public partial class PlanInitial : Node2D
         {
             Accident area = (Accident) _accidentArea2D.Instance();
             area.Position = positionAccident;
+            
             area.Init(_accidentVisi);
             AddChild(area);
             addAccident = false;
@@ -268,7 +277,6 @@ public partial class PlanInitial : Node2D
             _achat = false;
             _lastTile = new Vector2(0, 0);
             Vector2 tile = GetTilePosition();
-            //GD.Print(GetBlock(TileMap2, (int) tile.x, (int) tile.y));
             if (GetBlock(TileMap2, (int) tile.x, (int) tile.y) == _batiment)
             {
                 if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)
@@ -322,6 +330,14 @@ public partial class PlanInitial : Node2D
         if (OneAction.IsActionPressed("ClickG") && _delete)
         {
             _tileSupressing = GetTilePosition();
+            try
+            {
+                _tileSupressing = MainPlan.BatimentsTiles[_tileSupressing];
+            }
+            catch (Exception)
+            {
+                
+            }
             _delete = false;
             DeleteVerif.Verif = true;
         }
@@ -346,7 +362,28 @@ public partial class PlanInitial : Node2D
                 Ref_donnees.population -= batiment.Characteristics.Population[batiment.Characteristics.Lvl];
             }
             SetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
-            SetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1, Ref_donnees.terre);
+            (int largeur, int longueur) dimensions = (1, 1);
+            try
+            {
+                dimensions = Ref_donnees.dimensions[bloc];
+            }
+            catch (Exception)
+            {
+            }
+
+            int i = +1;
+            while (i < dimensions.longueur+1)
+            {
+                int j = 0+1;
+                while (j < dimensions.largeur+1)
+                {
+                    SetBlock(TileMap1, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
+                    j++;
+                }
+
+                i++;
+            }
+            //SetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1, Ref_donnees.terre);
             Routes.ChangeRoute(_tileSupressing, this);
             _delete = false;
             MainPlan.ListeBatiment.Remove((_tileSupressing, bloc));
@@ -358,6 +395,16 @@ public partial class PlanInitial : Node2D
         {
             Vector2 tile = GetTilePosition();
             int batiment = -1;
+            
+            try
+            {
+                tile = MainPlan.BatimentsTiles[tile];
+            }
+            catch (Exception)
+            {
+                
+            }
+            
             foreach ((Vector2 posi, int node) tuple in MainPlan.ListeBatiment)
             {
                 if (tuple.posi == tile)
@@ -366,6 +413,7 @@ public partial class PlanInitial : Node2D
                     break;
                 }
             }
+            
 
             if (batiment != -1)
             {

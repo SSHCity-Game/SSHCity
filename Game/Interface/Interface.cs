@@ -14,6 +14,7 @@ public class Interface : CanvasLayer
     private const string _str_buttonDelete = "ButtonDelete";
     private const string _str_sonouverture = "ButtonShop/Ouverture";
     private const string _str_bulldozerMouse = "BulldozerMouse";
+    private const string _strButtonEau = "ButtonEau";
     private const string _str_croix = "CroixRouge";
     private const string _str_croixJaune = "CroixJaune";
     private const string _str_infos = "Infos";
@@ -35,6 +36,7 @@ public class Interface : CanvasLayer
     private Button _buttonDelete;
     private Button _buttonRoute;
     private Button _parametre;
+    private Button _buttonEau;
     public Sprite _croix;
     private Sprite _croixJaune;
     private Sprite _rouages;
@@ -48,11 +50,13 @@ public class Interface : CanvasLayer
     private Timer _timer;
     private bool _visible;
     
+    /* ScoreBar */
     private TextureProgress ScoreBar;
     private Label Score;
-    private static int _xp = 0;
-    private static int _level = 1;
-    private static int XpMax = 100;
+    private static int _xp;
+    public static int _level = 1; // niveau
+    //private static int _scoreValue; // index XpMax
+    private static int XpMax = 30; //{200, 400, 600, 800, 1000}; // xp en fonction des niveaux
     
     private static int moneyWin = 0;
     private static int energyused = 0;
@@ -131,6 +135,7 @@ public class Interface : CanvasLayer
         _button_shop = (Button) GetNode(_str_button_shop);
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
         _buttonDelete = (Button) GetNode(_str_buttonDelete);
+        _buttonEau = (Button) GetNode(_strButtonEau);
         _parametre = (Button) GetNode("Parametres");
         _shop = (Boutique) GetNode(_str_shop);
         _bulldozerMouse = (Sprite) GetNode(_str_bulldozerMouse);
@@ -154,20 +159,35 @@ public class Interface : CanvasLayer
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
         _buttonDelete.Connect("pressed", this, nameof(ButtonDeletePressed));
         _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
+        _buttonEau.Connect("pressed", this, nameof(PressedButtonEau));
 
         _button_shop.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonDelete.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonRoute.Connect("mouse_entered", this, nameof(ButtonOver));
+        _buttonEau.Connect("mouse_entered", this, nameof(ButtonOver));
+
 
         _button_shop.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
+        _buttonEau.Connect("mouse_exited", this, nameof(ButtonExited));
+
 
         _timer.Connect("timeout", this, nameof(WinMoney));
         _timer.Connect("timeout", this, nameof(EnergyWin));
         _timer.Connect("timeout", this, nameof(WaterWin));
 
         _parametre.Connect("pressed", this, nameof(ButtonParam));
+    }
+
+    public void PressedButtonEau()
+    {
+        _button_shop.Hide();
+        _buttonDelete.Hide();
+        _buttonRoute.Hide();
+        _buttonEau.Hide(); 
+        _planInitial.TileMap0.Show();
+        _planInitial.TileMap1.Hide();
     }
 
     public static void ConfigInfos(Vector2 tile)
@@ -181,8 +201,7 @@ public class Interface : CanvasLayer
             _infos.Show();
         }
     }
-
-
+    
     public void WinMoney()
     {
         if (_moneyAutomatique)
@@ -209,7 +228,8 @@ public class Interface : CanvasLayer
     {
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
-        
+
+        //ScoreBar.MaxValue = UpdateScoreValue(_level);
         (_xp, _level) = UpdateXp(_xp, _level);
         ScoreBar.Value = _xp;
         Score.Text = Convert.ToString(_level);
@@ -246,7 +266,6 @@ public class Interface : CanvasLayer
                     _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
                     batiment.Activated = false;
                 }
-
             }
         }
 
@@ -379,13 +398,20 @@ public class Interface : CanvasLayer
     }
 
     public void ButtonParam()
-    {
-        /* Ouverture Parametres du jeu */
+    { /* Ouverture Parametres du jeu */
     }
 
-    public (int, int) UpdateXp(int xp, int level)
-    {
+    public (int, int) UpdateXp(int xp, int level) 
+    { /* retourne les nouveaux xp et niveau */
         return (xp, level) = xp >= XpMax ? (xp - XpMax, level + 1) : (xp, level);
     }
 
+    public static int UpdateScoreValue(int level)
+    { /* retourne la nouvelle scoreValue pour choisir XpMax du niveau */
+        if(level < 5) return 0;
+        if(level < 10) return 1;
+        if(level < 15) return 2;
+        if(level < 20) return 3;
+        return 4;
+    }
 }

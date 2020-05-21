@@ -27,10 +27,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -410.0
-margin_top = -228.0
-margin_right = 410.0
-margin_bottom = 228.0
+margin_left = -392.0
+margin_top = -216.5
+margin_right = 392.0
+margin_bottom = 216.5
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -38,15 +38,18 @@ __meta__ = {
 
 [node name="Quitter" type="Button" parent="."]
 anchor_left = 0.5
-anchor_top = 0.922
+anchor_top = 0.905
 anchor_right = 0.5
-anchor_bottom = 0.922
-margin_left = -34.2099
-margin_top = -14.1153
-margin_right = 34.7901
-margin_bottom = 11.8847
+anchor_bottom = 0.905
+margin_left = -34.5
+margin_top = -12.865
+margin_right = 34.5
+margin_bottom = 13.135
 custom_fonts/font = SubResource( 1 )
 text = "Quitter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NomVille" type="Label" parent="."]
 anchor_left = 0.5
@@ -122,14 +125,14 @@ __meta__ = {
 }
 
 [node name="ElectriciteTitre" type="Label" parent="."]
-anchor_left = 0.809
-anchor_top = 0.103
-anchor_right = 0.809
-anchor_bottom = 0.103
-margin_left = -640.38
-margin_top = 144.032
-margin_right = -432.38
-margin_bottom = 164.032
+anchor_left = 0.155
+anchor_top = 0.445
+anchor_right = 0.155
+anchor_bottom = 0.445
+margin_left = -103.644
+margin_top = -10.054
+margin_right = 104.356
+margin_bottom = 9.94598
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.901961, 0.890196, 0.0235294, 1 )
 text = "Electricité utilisée :"
@@ -182,14 +185,14 @@ __meta__ = {
 }
 
 [node name="CapaciteStockageEauTitre" type="Label" parent="."]
-anchor_left = 0.806
-anchor_top = 0.382
-anchor_right = 0.806
-anchor_bottom = 0.382
-margin_left = -238.688
-margin_top = -23.2187
-margin_right = 0.311951
-margin_bottom = -0.218719
+anchor_left = 0.635
+anchor_top = 0.258
+anchor_right = 0.635
+anchor_bottom = 0.258
+margin_left = -94.4678
+margin_top = 33.3253
+margin_right = 144.532
+margin_bottom = 56.3253
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0.0509804, 0.317647, 0.878431, 1 )
 text = "Production eau :"
@@ -207,14 +210,14 @@ custom_colors/font_color_shadow = Color( 0.0509804, 0.317647, 0.878431, 1 )
 align = 2
 
 [node name="CapaciteStockageEauTitre2" type="Label" parent="."]
-anchor_left = 0.804
-anchor_top = 0.469
-anchor_right = 0.804
-anchor_bottom = 0.469
-margin_left = -239.003
-margin_top = -23.1807
-margin_right = -0.00305176
-margin_bottom = -0.18071
+anchor_left = 0.635
+anchor_top = 0.258
+anchor_right = 0.635
+anchor_bottom = 0.258
+margin_left = -96.423
+margin_top = 73.0353
+margin_right = 142.577
+margin_bottom = 96.0353
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0.901961, 0.890196, 0.0235294, 1 )
 text = "Production électricité :"
@@ -235,7 +238,7 @@ __meta__ = {
 }
 
 [node name="Trait" type="Sprite" parent="."]
-position = Vector2( 401.096, 171.581 )
+position = Vector2( 388.096, 171.581 )
 scale = Vector2( 0.246507, 0.141266 )
 texture = ExtResource( 3 )
 
@@ -310,10 +313,14 @@ toggle_mode = true
 text = "Non"
 
 [node name="CollecteArgent" type="Button" parent="."]
-margin_left = 489.475
-margin_top = 405.264
-margin_right = 630.475
-margin_bottom = 431.264
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 107.5
+margin_top = -53.0
+margin_right = 248.5
+margin_bottom = -27.0
 custom_fonts/font = SubResource( 6 )
 text = "Collecte Argent"
 __meta__ = {

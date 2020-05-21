@@ -6,6 +6,7 @@ using SshCity.Game.Sauvegarde;
 public class MainPlan : Node2D
 {
 	public List<List<Vector2>>MontagneList = new List<List<Vector2>>();
+	
 	private const string _str_music = "Musique";
 	public static PlanInitial _planInitial;
 	public static float zoom = (float) 1.25;
@@ -23,6 +24,8 @@ public class MainPlan : Node2D
 	private string str_camera2D = "Camera2D";
 	private string str_planInitial = "PlanInitial";
 	private static Vector2 _mairiePosition;
+	
+	public static Godot.Collections.Dictionary<Vector2, Vector2> BatimentsTiles = new Godot.Collections.Dictionary<Vector2, Vector2>(); 
 
 	public static Vector2 MairiePosition
 	{
