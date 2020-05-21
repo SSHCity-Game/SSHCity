@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/virage_droit.png-78423a57545c141fa6bfce1ed0ef2f8a.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/Tuyaux/tuyaux.jpg"
+source_file="res://assets/Tuyaux/virage_droit.png"
+dest_files=[ "res://.import/virage_droit.png-78423a57545c141fa6bfce1ed0ef2f8a.stex" ]
+
 [params]
 
 compress/mode=0

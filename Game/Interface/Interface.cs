@@ -14,6 +14,7 @@ public class Interface : CanvasLayer
     private const string _str_buttonDelete = "ButtonDelete";
     private const string _str_sonouverture = "ButtonShop/Ouverture";
     private const string _str_bulldozerMouse = "BulldozerMouse";
+    private const string _strButtonEau = "ButtonEau";
     private const string _str_croix = "CroixRouge";
     private const string _str_croixJaune = "CroixJaune";
     private const string _str_infos = "Infos";
@@ -35,6 +36,7 @@ public class Interface : CanvasLayer
     private Button _buttonDelete;
     private Button _buttonRoute;
     private Button _parametre;
+    private Button _buttonEau;
     public Sprite _croix;
     private Sprite _croixJaune;
     private Sprite _rouages;
@@ -133,6 +135,7 @@ public class Interface : CanvasLayer
         _button_shop = (Button) GetNode(_str_button_shop);
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
         _buttonDelete = (Button) GetNode(_str_buttonDelete);
+        _buttonEau = (Button) GetNode(_strButtonEau);
         _parametre = (Button) GetNode("Parametres");
         _shop = (Boutique) GetNode(_str_shop);
         _bulldozerMouse = (Sprite) GetNode(_str_bulldozerMouse);
@@ -156,20 +159,35 @@ public class Interface : CanvasLayer
         _button_shop.Connect("pressed", this, nameof(ButtonShopPressed));
         _buttonDelete.Connect("pressed", this, nameof(ButtonDeletePressed));
         _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
+        _buttonEau.Connect("pressed", this, nameof(PressedButtonEau));
 
         _button_shop.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonDelete.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonRoute.Connect("mouse_entered", this, nameof(ButtonOver));
+        _buttonEau.Connect("mouse_entered", this, nameof(ButtonOver));
+
 
         _button_shop.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
+        _buttonEau.Connect("mouse_exited", this, nameof(ButtonExited));
+
 
         _timer.Connect("timeout", this, nameof(WinMoney));
         _timer.Connect("timeout", this, nameof(EnergyWin));
         _timer.Connect("timeout", this, nameof(WaterWin));
 
         _parametre.Connect("pressed", this, nameof(ButtonParam));
+    }
+
+    public void PressedButtonEau()
+    {
+        _button_shop.Hide();
+        _buttonDelete.Hide();
+        _buttonRoute.Hide();
+        _buttonEau.Hide(); 
+        _planInitial.TileMap0.Show();
+        _planInitial.TileMap1.Hide();
     }
 
     public static void ConfigInfos(Vector2 tile)

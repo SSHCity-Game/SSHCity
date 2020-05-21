@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/coude_bas.png-ae2b7e71d1ea46958640dd129d9c93dc.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/Tuyaux/tuyaux.jpg"
+source_file="res://assets/Tuyaux/coude_bas.png"
+dest_files=[ "res://.import/coude_bas.png-ae2b7e71d1ea46958640dd129d9c93dc.stex" ]
+
 [params]
 
 compress/mode=0

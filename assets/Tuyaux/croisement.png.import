@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/croisement.png-0411a08a0eed4ff9daa74b1a2275bacd.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/Tuyaux/tuyaux.jpg"
+source_file="res://assets/Tuyaux/croisement.png"
+dest_files=[ "res://.import/croisement.png-0411a08a0eed4ff9daa74b1a2275bacd.stex" ]
+
 [params]
 
 compress/mode=0

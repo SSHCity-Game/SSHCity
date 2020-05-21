@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/virage_haut.png-880ef1f86652ffe0f06f69ba612d6cb0.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/Tuyaux/tuyaux.jpg"
+source_file="res://assets/Tuyaux/virage_haut.png"
+dest_files=[ "res://.import/virage_haut.png-880ef1f86652ffe0f06f69ba612d6cb0.stex" ]
+
 [params]
 
 compress/mode=0

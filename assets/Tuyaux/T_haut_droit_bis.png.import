@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/T_haut_droit_bis.png-8a81513a5bb51df602003fdfbec33848.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/Tuyaux/tuyaux.jpg"
+source_file="res://assets/Tuyaux/T_haut_droit_bis.png"
+dest_files=[ "res://.import/T_haut_droit_bis.png-8a81513a5bb51df602003fdfbec33848.stex" ]
+
 [params]
 
 compress/mode=0

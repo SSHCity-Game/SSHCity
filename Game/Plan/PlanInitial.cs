@@ -62,10 +62,12 @@ public partial class PlanInitial : Node2D
     
     private Vector2 _lastTile = new Vector2(0, 0);
     
+    public string str_TileMap0 = "TileMap0";
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
     private const string str_VehiculeTimer = "Vehicule";
+    public TileMap TileMap0;
     public TileMap TileMap1;
     public TileMap TileMap2;
     public TileMap TileMap3;
@@ -102,6 +104,7 @@ public partial class PlanInitial : Node2D
 
     public override void _Ready()
     {
+        TileMap0 = (TileMap) GetNode(str_TileMap0);
         TileMap1 = (TileMap) GetNode(str_TileMap1);
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);

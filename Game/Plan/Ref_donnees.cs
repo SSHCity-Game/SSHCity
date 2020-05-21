@@ -95,6 +95,11 @@ namespace SshCity.Game.Plan
         public const int lac1 = 63;
         public const int lac2 = 64;
         
+        //Blocs tuyaux
+        public const int tuyaux_right = 81;
+        public const int tuyaux_left = 83;
+        public const int tuyaux_virage_bas = 82;
+        
         //bulles Bloc
         public const int bulleRoute = 79;
 
