@@ -106,7 +106,11 @@ public class Menu_Achat : Panel
 		}
 	}
 
+<<<<<<< HEAD
+	public void AchatBatiment(int bloc, int prix/*, string energy, string water*/)
+=======
 	public void AchatBatiment(int bloc, int prix, string energy, string water)
+>>>>>>> b201adef812d3fe5a9d8b2dd72b3796b33c28c09
 	{
 		if (Interface.Money - prix < 0 /*|| Interface.Energy - Convert.ToInt32(energy) <0 || Interface.Water - Convert.ToInt32(water) <0*/)
 		{

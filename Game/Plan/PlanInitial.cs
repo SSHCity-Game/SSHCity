@@ -329,7 +329,22 @@ public partial class PlanInitial : Node2D
         if (DeleteSure)
         {
             int bloc = GetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y);
-            Building.Delete(_tileSupressing);
+            int bloc2 = GetBlock(TileMap1, (int) _tileSupressing.x, (int) _tileSupressing.y);
+            Building batiment = Building.Delete(_tileSupressing);
+            if (bloc2 != Ref_donnees.terre)
+            {
+                if (batiment.Characteristics.Bloc[batiment.Characteristics.Lvl] == Ref_donnees.centrale)
+                {
+                    Ref_donnees.energy += batiment.Characteristics.energy[batiment.Characteristics.Lvl];
+                }
+                else
+                {
+                    Interface.Energy += batiment.Characteristics.energy[batiment.Characteristics.Lvl];
+                }
+
+                Interface.Water += batiment.Characteristics.water[batiment.Characteristics.Lvl];
+                Ref_donnees.population -= batiment.Characteristics.Population[batiment.Characteristics.Lvl];
+            }
             SetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
             SetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1, Ref_donnees.terre);
             Routes.ChangeRoute(_tileSupressing, this);
