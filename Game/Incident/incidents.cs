@@ -30,7 +30,7 @@ public class incidents : CanvasLayer
 	/* niveau d apparition des differents incidents */	
 	private static int levelIncendie = 2;
 	private static int levelAccident = 5;
-	private static int levelNoyade = 18;
+	private static int levelNoyade = 8;
 	private static int levelBracage = 10;
 	
 	

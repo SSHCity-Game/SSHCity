@@ -31,7 +31,8 @@ public class DeleteVerif : Panel
         PlanInitial.DeleteSure = true;
         _verif = false;
         this.Hide();
-        _supression.Play();
+        if(Parametres.effets)
+            _supression.Play();
     }
 
     public void ButtonNonPressed()

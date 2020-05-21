@@ -148,7 +148,6 @@ public class Interface : CanvasLayer
         _bulldozerMouse.Hide();
         _croix = (Sprite) GetNode(_str_croix);
         _croixJaune = (Sprite) GetNode(_str_croixJaune);
-        _rouages = (Sprite) GetNode("Parametres/Rouages");
         _infos = (Infos) GetNode(_str_infos);
         _timer = (Timer) GetNode(_str_timer);
         ScoreBar = (TextureProgress) GetNode("ScoreBar");
@@ -187,8 +186,6 @@ public class Interface : CanvasLayer
         _timer.Connect("timeout", this, nameof(WinMoney));
         _timer.Connect("timeout", this, nameof(EnergyWin));
         _timer.Connect("timeout", this, nameof(WaterWin));
-
-        _parametre.Connect("pressed", this, nameof(ButtonParam));
     }
 
     public void TuyauxPressde()
@@ -259,10 +256,12 @@ public class Interface : CanvasLayer
         base._Process(delta);
         _money_text.Text = Convert.ToString(_money);
 
+        /* incrementation de la barre de niveau */
         //ScoreBar.MaxValue = UpdateScoreValue(_level);
         (_xp, _level) = UpdateXp(_xp, _level);
         ScoreBar.Value = _xp;
         Score.Text = Convert.ToString(_level);
+        
         moneyWin = 0;
         energyused = 0;
         waterused = 0;
@@ -364,7 +363,7 @@ public class Interface : CanvasLayer
         Infos.Close = true;
 
         _shop.ViewShop(_hide);
-        if (_hide)
+        if (_hide && Parametres.effets) // && verifie que le joueur n'est pas desactiver les effets sonores
         {
             _ouvertureboutique.Play();
         }
@@ -425,10 +424,6 @@ public class Interface : CanvasLayer
             PlanInitial.Delete = true;
             _bulldozerMouse.Show();
         }
-    }
-
-    public void ButtonParam()
-    { /* Ouverture Parametres du jeu */
     }
 
     public (int, int) UpdateXp(int xp, int level) 
