@@ -18,6 +18,7 @@ namespace SshCity.Game.Plan
                 for (int j = -1; j < 2; j++)
                 {
                     planInitial.SetBlock(planInitial.TileMap1, x - i, y - j, Ref_donnees.montagne_sol);
+                    planInitial.SetBlock(planInitial.TileMap0, x - i, y - j, Ref_donnees.montagne_sol);
                 }
             }
         }
