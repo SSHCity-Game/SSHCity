@@ -17,38 +17,38 @@ public class incidents : CanvasLayer
 	public static int Nbaccident = 0;
 	public static int Nbnoyades = 0;
 	public static int Nbbracages = 0;
-	
+	/* definit si on peut resoudre un incident */	
 	public static bool ResoIncident = false;
 	public static bool ResoAccident = false;
 	public static bool ResoBracage = false;
 	public static bool ResoNoyade = false;
-
+	/* batiment a changer par son batiment accidente */	
 	private static int x;
 	private static int y;
 	private static int indexAv;
 	private static int indexAp;
-
+	/* niveau d apparition des differents incidents */	
 	private static int levelIncendie = 2;
 	private static int levelAccident = 5;
-	private static int levelNoyade = 8;
+	private static int levelNoyade = 18;
 	private static int levelBracage = 10;
+	
 	
 	
 	public override void _Process(float delta)
 	{
 		base._Process(delta);
-		
 		/* INCENDIES */
 		if(Interface._level >= levelIncendie)
 			GenerateIncendies(MainPlan._planInitial);
 		if (menu_incident.TimerIncendie.IsStopped() && ResoIncident) // definit le temps entre l apparition de deux incendies
 			ResoIncident = false;
-
+		/* BRACAGES */
 		if(Interface._level >= levelBracage)
 			GenerateBracage(MainPlan._planInitial);
 		if (menu_incident.TimerBracage.IsStopped() && ResoBracage) // definit le temps entre l apparition de deux bracage
 			ResoBracage = false;
-		
+		/* NOYADES */		
 		if(Interface._level >= levelNoyade)
 			GenerateNoyade(MainPlan._planInitial);
 		if (menu_incident.TimerNoyade.IsStopped() && ResoNoyade) // definit le temps entre l apparition de deux noyades
@@ -156,7 +156,7 @@ public class incidents : CanvasLayer
 		}
 	}
 	public static async void StartBracage(PlanInitial planInitial)
-	{ /*fait apparaitre une image de braquer devant la maison */
+	{ /*fait apparaitre une image de braqueur devant la maison */
 		await Task.Delay(5000);
 		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
 		menu_incident.Bracage.Show();

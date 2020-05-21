@@ -79,6 +79,8 @@ namespace SshCity.Game.Plan
         public static int water = 20;
         public static int population = 20;
         public const int accident_voiture = 68;
+        public const int voleur = 80;
+        public const int rien = 81; // bloc vide
         
         /* Incendie Batiments */
         public const int restaurant_flamme = 3;
@@ -89,6 +91,16 @@ namespace SshCity.Game.Plan
         public const int maison3_flamme = 57;
         public const int cafe_flamme = 60;
         public const int restaurant2_flamme= 62;
+        
+        /* Vol Batiments*/
+        public const int maison1_vol = 82;
+        public const int maison4_vol =83;
+        public const int maison5_vol = 84;
+        public const int maison3_vol = 85;
+        public const int mairie_vol = 86;
+        
+        /* Noyade lac */
+        public const int lac1_noyade = 86;
         
         //Lac Bloc
         public const int water_terre = 78;
@@ -122,14 +134,13 @@ namespace SshCity.Game.Plan
         
         /* Liste lac, lac avec noye */
         public static (int, int)[] LacNoyade = {
-            (lac1, 2), (lac2, 2)
+            (lac1, lac1_noyade)
         };
         
         /* Liste batiment, batiment braque */
         public static (int, int)[] BatimentVol = {
-            (maison1, 5), (maison3, 5),
-            (maison4, 5), (maison5, 5), (restaurant, 5),
-            (restaurant2, 5), (eglise, 5), (cafe, 5)
+            (maison1, maison1_vol), (maison3, maison3_vol),
+            (maison4, maison4_vol), (maison5, maison5_vol), (mairie, mairie_vol)
         };
         
         
