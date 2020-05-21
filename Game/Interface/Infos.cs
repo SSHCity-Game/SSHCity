@@ -223,6 +223,7 @@ public class Infos : Panel
 
         if (_class == BuildingType.CASERNE)
         {
+            GD.Print("CASERTNE");
             _vehicule.Text = "Camion";
             _vehicule.Show();
             _type = Vehicules.Type.CAMION;
