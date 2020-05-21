@@ -22,10 +22,14 @@ public class Interface : CanvasLayer
     private static bool _interdit = false;
     private static bool _interdiMoney = false;
     private static Infos _infos;
+    private const string _strButtonTuyaux = "ButtonTuyaux";
+    private const string _strButonExit = "ButtonExitEau";
 
     private static bool _infosBool = false;
     private static PlanInitial _planInitial;
 
+    private Button _buttonExit;
+    private Button _buttonTuyaux;
     private static int _money = Ref_donnees.argent;
     private static int _energy = Ref_donnees.energy;
     private static int _water = Ref_donnees.water;
@@ -62,6 +66,8 @@ public class Interface : CanvasLayer
     private static int energyused = 0;
     private static int waterused = 0;
     private static bool _moneyAutomatique = true;
+    
+    public static List<Vector2> ListTuyaux = new List<Vector2>();
 
     public static bool MoneyAutomatique
     {
@@ -147,6 +153,10 @@ public class Interface : CanvasLayer
         _timer = (Timer) GetNode(_str_timer);
         ScoreBar = (TextureProgress) GetNode("ScoreBar");
         Score = GetNode<Label>("Score");
+        
+        //Tuyaux
+        _buttonExit = (Button) GetNode(_strButonExit);
+        _buttonTuyaux = (Button) GetNode(_strButtonTuyaux);
 
 
         _croix.Hide();
@@ -160,12 +170,13 @@ public class Interface : CanvasLayer
         _buttonDelete.Connect("pressed", this, nameof(ButtonDeletePressed));
         _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
         _buttonEau.Connect("pressed", this, nameof(PressedButtonEau));
+        _buttonExit.Connect("pressed", this, nameof(ExitPressed));
+        _buttonTuyaux.Connect("pressed", this, nameof(TuyauxPressde));
 
         _button_shop.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonDelete.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonRoute.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonEau.Connect("mouse_entered", this, nameof(ButtonOver));
-
 
         _button_shop.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonExited));
@@ -180,12 +191,31 @@ public class Interface : CanvasLayer
         _parametre.Connect("pressed", this, nameof(ButtonParam));
     }
 
+    public void TuyauxPressde()
+    {
+        PlanInitial.Tuyaux = true;
+    }
+    
+    public void ExitPressed()
+    {
+        _planInitial.TileMap0.Hide();
+        _planInitial.TileMap1.Show();
+        _button_shop.Show();
+        _buttonDelete.Show();
+        _buttonRoute.Show();
+        _buttonEau.Show(); 
+        _buttonExit.Hide();
+        _buttonTuyaux.Hide();
+    }
+
     public void PressedButtonEau()
     {
         _button_shop.Hide();
         _buttonDelete.Hide();
         _buttonRoute.Hide();
         _buttonEau.Hide(); 
+        _buttonExit.Show();
+        _buttonTuyaux.Show();
         _planInitial.TileMap0.Show();
         _planInitial.TileMap1.Hide();
     }

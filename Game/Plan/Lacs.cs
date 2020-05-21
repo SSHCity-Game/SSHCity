@@ -198,6 +198,8 @@ namespace SshCity.Game.Plan
                         { 
                             planInitial.SetBlock(planInitial.TileMap1, (int) x + (int) vector2.x,
                                 (int) y + (int) vector2.y, Ref_donnees.water_terre);
+                            planInitial.SetBlock(planInitial.TileMap0, (int) x + (int) vector2.x,
+                                (int) y + (int) vector2.y, Ref_donnees.eau);
                         }
 
                         i += 1;
