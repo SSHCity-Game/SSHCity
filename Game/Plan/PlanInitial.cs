@@ -274,7 +274,6 @@ public partial class PlanInitial : Node2D
             _achat = false;
             _lastTile = new Vector2(0, 0);
             Vector2 tile = GetTilePosition();
-            //GD.Print(GetBlock(TileMap2, (int) tile.x, (int) tile.y));
             if (GetBlock(TileMap2, (int) tile.x, (int) tile.y) == _batiment)
             {
                 if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)
@@ -328,6 +327,14 @@ public partial class PlanInitial : Node2D
         if (OneAction.IsActionPressed("ClickG") && _delete)
         {
             _tileSupressing = GetTilePosition();
+            try
+            {
+                _tileSupressing = MainPlan.BatimentsTiles[_tileSupressing];
+            }
+            catch (Exception)
+            {
+                
+            }
             _delete = false;
             DeleteVerif.Verif = true;
         }
@@ -337,7 +344,28 @@ public partial class PlanInitial : Node2D
             int bloc = GetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y);
             Building.Delete(_tileSupressing);
             SetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
-            SetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1, Ref_donnees.terre);
+            (int largeur, int longueur) dimensions = (1, 1);
+            try
+            {
+                dimensions = Ref_donnees.dimensions[bloc];
+            }
+            catch (Exception)
+            {
+            }
+
+            int i = +1;
+            while (i < dimensions.longueur+1)
+            {
+                int j = 0+1;
+                while (j < dimensions.largeur+1)
+                {
+                    SetBlock(TileMap1, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
+                    j++;
+                }
+
+                i++;
+            }
+            //SetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1, Ref_donnees.terre);
             Routes.ChangeRoute(_tileSupressing, this);
             _delete = false;
             MainPlan.ListeBatiment.Remove((_tileSupressing, bloc));
