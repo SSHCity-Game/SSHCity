@@ -142,7 +142,7 @@ public class Interface : CanvasLayer
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
         _buttonDelete = (Button) GetNode(_str_buttonDelete);
         _buttonEau = (Button) GetNode(_strButtonEau);
-        _parametre = (Button) GetNode("Parametres");
+        //_parametre = (Button) GetNode("Parametres");
         _shop = (Boutique) GetNode(_str_shop);
         _bulldozerMouse = (Sprite) GetNode(_str_bulldozerMouse);
         _bulldozerMouse.Hide();
