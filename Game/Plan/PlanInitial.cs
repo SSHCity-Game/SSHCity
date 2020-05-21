@@ -186,18 +186,29 @@ public partial class PlanInitial : Node2D
 
     public static void AddVehicule(Vehicules.Type type, Vector2 position, bool autonome=false)
     {
-        if (MAX_CAR <= NbCar)
+        if (type != Vehicules.Type.CAMION && type != Vehicules.Type.AMBULANCE && type != Vehicules.Type.POLICE)
         {
-            VehiculesInit = false;
+            if (MAX_CAR <= NbCar)
+            {
+                VehiculesInit = false;
+            }
+            else
+            {
+                VehiculesInit = true;
+                NbCar += 1;
+                VehiculesPosition = position;
+                VehiculesType = type;
+                VehiculesAutonome = autonome;
+            }
         }
         else
         {
             VehiculesInit = true;
-            NbCar += 1;
             VehiculesPosition = position;
             VehiculesType = type;
             VehiculesAutonome = autonome;
         }
+
     }
 
     public static void AddHouloucoupter(Houloucoupter.Type type, Vector2 position, Vector2 destination)
