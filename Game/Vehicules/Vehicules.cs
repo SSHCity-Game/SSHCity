@@ -186,7 +186,7 @@ namespace SshCity.Game.Vehicules
             if (!autonome)
             {
                 CollisionMask = 4;
-                CollisionLayer = 4;
+                CollisionLayer = 8;
                 Connect("mouse_entered", this, nameof(MouseEntered));
                 Connect("mouse_exited", this, nameof(MouseExited));
             }
