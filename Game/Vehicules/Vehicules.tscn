@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Game/Vehicules/Vehicules.cs" type="Script" id=1]
 [ext_resource path="res://Game/Vehicules/ANimatedSpriteVehicules/VoitureTruck_animatedSprite.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://assets/vehicules/cerco.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 97.4504, 0.00546455 )
+extents = Vector2( 93.7346, 0.005 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 93.735, 57.818 )
 
 [node name="Vehicule" type="Area2D"]
 scale = Vector2( 1.5, 1.5 )
@@ -22,9 +25,15 @@ frames = ExtResource( 2 )
 animation = "NW"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -16.382, -1.69704 )
+position = Vector2( -1.68014, 21.8259 )
 rotation = -0.471239
 shape = SubResource( 1 )
+
+[node name="AutonomeZone" type="CollisionShape2D" parent="."]
+position = Vector2( -6.0907, 25.7464 )
+rotation = -0.471239
+shape = SubResource( 2 )
+one_way_collision_margin = 0.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0

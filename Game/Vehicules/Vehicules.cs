@@ -9,10 +9,12 @@ namespace SshCity.Game.Vehicules
     {
         private const string _strAnimatedSprite = "AnimatedSprite";
         private const string _strCollsionShape2D = "CollisionShape2D";
+        private const string _strCollisionShapeAutonome = "AutonomeZone";
         private Sprite _invincible;
         private const string _strInvincible = "Invincible";
         private AnimatedSprite _animatedSprite;
         private CollisionShape2D _collisionShape2D;
+        private CollisionShape2D _collisionShapeAutonome;
         private Vector2 _deplacement;
         private PlanInitial _planInitial;
         private Vector2 arrive;
@@ -23,6 +25,8 @@ namespace SshCity.Game.Vehicules
         private Timer _timer;
         private const string _strTimer = "Timer";
         private bool _stopAccident = false;
+        private bool _mouseIn = false;
+        private bool _controleVehicule = false;
 
         public enum Direction
         {
@@ -177,7 +181,19 @@ namespace SshCity.Game.Vehicules
             _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation]; // Rotation du CollisionShape2D en fonction de l'anmation pour qu'il soit centré sur le vehicule
             this.Connect("area_entered", this, nameof(Collision));//Connect la collision
             Connect("area_exited", this, nameof(EndCollision));//Connect la resolution de l'accident
-            this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage;//Set la position du vehicule. LE new Vector2(1, 1) correspond au decallage du tileset
+            this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage; //Set la position du vehicule. LE new Vector2(1, 1) correspond au decallage du tileset
+            _collisionShapeAutonome = (CollisionShape2D) GetNode(_strCollisionShapeAutonome);
+            if (!autonome)
+            {
+                CollisionMask = 4;
+                CollisionLayer = 4;
+                Connect("mouse_entered", this, nameof(MouseEntered));
+                Connect("mouse_exited", this, nameof(MouseExited));
+            }
+            else
+            {
+                GetChild(3).QueueFree();
+            }
         }
         
         public override void _Ready()
@@ -186,6 +202,16 @@ namespace SshCity.Game.Vehicules
             _timer = (Timer) GetNode(_strTimer);
             _timer.Connect("timeout", this, nameof(TimeOut));
             _invincible = (Sprite) GetNode(_strInvincible);
+        }
+
+        public void MouseEntered()
+        {
+            _mouseIn = true;
+        }
+
+        public void MouseExited()
+        {
+            _mouseIn = false;
         }
 
         /// <summary>
