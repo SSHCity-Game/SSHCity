@@ -6,7 +6,7 @@ using SshCity.Game.Plan;
 public class menu_incident : CanvasLayer
 {
     /* Bouton signalisation incident */
-    public static Button Flamme; // en cours
+    public static Button Flamme;
     public static Button Accident;
     public static Button Bracage;
     public static Button Noyade;
