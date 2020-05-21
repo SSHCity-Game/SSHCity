@@ -460,7 +460,7 @@ namespace SshCity.Game.Vehicules
 			}
 
 			//input deplacement vehicule quand il n'est pas autonome en fonction des fleches claviers pressé.
-			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_right")) // Gauche
+			if (_controleVehicule && !_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_right")) // Gauche
 			{
 				if (Croisement)
 				{
@@ -470,7 +470,7 @@ namespace SshCity.Game.Vehicules
 					MovingDirection((Direction.RIGHT, "NE"));
 			}
 
-			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_left"))//droite
+			if (_controleVehicule && !_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_left"))//droite
 			{
 				if (Croisement)
 				{
@@ -482,7 +482,7 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
-			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_down"))//bas
+			if (_controleVehicule && !_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_down"))//bas
 			{
 				if (Croisement)
 				{
@@ -494,7 +494,7 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
-			if (!_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_up"))//Haut
+			if (_controleVehicule && !_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_up"))//Haut
 			{
 				if (Croisement)
 				{
@@ -527,6 +527,15 @@ namespace SshCity.Game.Vehicules
 				Position += _deplacement * delta;
 			}
 
+			if (_mouseIn && Input.IsActionPressed("ClickG"))
+			{
+				_controleVehicule = true;
+			}
+
+			if (!_mouseIn && Input.IsActionPressed("ClickG"))
+			{
+				_controleVehicule = false;
+			}
 		}
     }
 }
