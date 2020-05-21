@@ -363,6 +363,7 @@ public partial class PlanInitial : Node2D
                 while (j < dimensions.largeur+1)
                 {
                     SetBlock(TileMap1, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
+                    SetBlock(TileMap0, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
                     j++;
                 }
 
