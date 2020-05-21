@@ -99,7 +99,17 @@ namespace SshCity.Game.Plan
         public const int tuyaux_right = 81;
         public const int tuyaux_left = 83;
         public const int tuyaux_virage_bas = 82;
-        
+        public const int tuyaux_virage_haut = 84;
+        public const int tuyaux_virage_droit = 87;
+        public const int tuyaux_virage_gauche = 86;
+        public const int tuyaux_T_haut_droit = 89;
+        public const int tuyaux_T_bas_droit = 91;
+        public const int tuyaux_T_haut_gauche = 92;
+        public const int tuyaux_T_bas_gauche = 90;
+        public const int tuyaux_croisement = 88;
+        public const int sol_tuyaux = 80;
+        public const int tuyaux_terre = 93;
+
         //bulles Bloc
         public const int bulleRoute = 79;
 

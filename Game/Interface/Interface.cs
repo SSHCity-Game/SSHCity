@@ -66,6 +66,8 @@ public class Interface : CanvasLayer
     private static int energyused = 0;
     private static int waterused = 0;
     private static bool _moneyAutomatique = true;
+    
+    public static List<Vector2> ListTuyaux = new List<Vector2>();
 
     public static bool MoneyAutomatique
     {
@@ -169,12 +171,12 @@ public class Interface : CanvasLayer
         _buttonRoute.Connect("pressed", this, nameof(ButtonRoutePressed));
         _buttonEau.Connect("pressed", this, nameof(PressedButtonEau));
         _buttonExit.Connect("pressed", this, nameof(ExitPressed));
+        _buttonTuyaux.Connect("pressed", this, nameof(TuyauxPressde));
 
         _button_shop.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonDelete.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonRoute.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonEau.Connect("mouse_entered", this, nameof(ButtonOver));
-
 
         _button_shop.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonExited));
@@ -188,7 +190,11 @@ public class Interface : CanvasLayer
 
         _parametre.Connect("pressed", this, nameof(ButtonParam));
     }
-    
+
+    public void TuyauxPressde()
+    {
+        PlanInitial.Tuyaux = true;
+    }
     
     public void ExitPressed()
     {

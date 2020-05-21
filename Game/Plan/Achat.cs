@@ -36,6 +36,17 @@ public partial class PlanInitial
 
         return somehtingHere;
     }
+    public bool AlreadySomethingHereTuyaux(Vector2 tile)
+    {
+        bool somehtingHere = false;
+
+        somehtingHere = GetBlock(TileMap0, (int) tile.x , (int) tile.y) == Ref_donnees.route
+                        || GetBlock(TileMap0, (int) tile.x , (int) tile.y) == Ref_donnees.eau
+                        || GetBlock(TileMap0, (int) tile.x , (int) tile.y) == Ref_donnees.montagne_sol
+                        || SshCity.Game.Plan.Tuyaux.IsTuyaux(GetBlock(TileMap0, (int) tile.x , (int) tile.y));
+
+        return somehtingHere;
+    }
 
     public void SetAchatBlocs(Vector2 tile)
     {
