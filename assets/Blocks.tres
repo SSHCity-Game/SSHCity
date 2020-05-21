@@ -76,7 +76,7 @@
 [ext_resource path="res://assets/Tuyaux/T_bas_gauche.png" type="Texture" id=74]
 [ext_resource path="res://assets/Tuyaux/T_haut_droit_bis.png" type="Texture" id=75]
 [ext_resource path="res://assets/Tuyaux/T_haut_gauche.png" type="Texture" id=76]
-[ext_resource path="res://assets/isometric_0057.png" type="Texture" id=77]
+[ext_resource path="res://assets/isometric_0173_bis.png" type="Texture" id=77]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -908,7 +908,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 93/texture = ExtResource( 77 )
 93/tex_offset = Vector2( 0, 0 )
 93/modulate = Color( 1, 1, 1, 1 )
-93/region = Rect2( 32, 0, 960, 992 )
+93/region = Rect2( 0, 0, 992, 1024 )
 93/tile_mode = 0
 93/occluder_offset = Vector2( 0, 0 )
 93/navigation_offset = Vector2( 0, 0 )
