@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Images_interface/roues.png" type="Texture" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Alerte_incidents/background.png" type="Texture" id=3]
 [ext_resource path="res://Game/Interface/Parametres.cs" type="Script" id=4]
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.113725, 0.113725, 0.109804, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -17,49 +17,47 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=2]
 corner_radius_top_left = 60
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.054902, 0.0313726, 0.0313726, 1 )
 corner_radius_top_left = 60
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 
-[sub_resource type="DynamicFont" id=2]
-size = 25
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 15
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 25
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=5]
 size = 25
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=4]
+size = 15
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
 font_data = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 4 )
 
 [node name="Parametres" type="Button" parent="."]
+visible = false
 margin_left = 851.0
 margin_top = 521.0
 margin_right = 911.0
 margin_bottom = 581.0
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -88,8 +86,24 @@ margin_left = 49.0
 margin_top = 35.0
 margin_right = 255.0
 margin_bottom = 66.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "Login"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quitter" type="Button" parent="back"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 235.726
+margin_top = -200.122
+margin_right = 304.726
+margin_bottom = -175.122
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 4 )
+text = "Quitter"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -100,7 +114,7 @@ margin_top = 151.0
 margin_right = 149.0
 margin_bottom = 177.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "GamePlay"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -111,7 +125,7 @@ margin_left = 49.0
 margin_top = 250.0
 margin_right = 255.0
 margin_bottom = 281.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "Effets Sonores"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -132,7 +146,7 @@ margin_left = 49.0
 margin_top = 300.0
 margin_right = 255.0
 margin_bottom = 331.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Musique"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -144,22 +158,6 @@ margin_top = -2.0
 margin_right = 214.0
 margin_bottom = 38.0
 pressed = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Quitter" type="Button" parent="back"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 229.0
-margin_top = -199.772
-margin_right = 301.0
-margin_bottom = -173.772
-rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 8 )
-text = "Quitter"
 __meta__ = {
 "_edit_use_anchors_": false
 }

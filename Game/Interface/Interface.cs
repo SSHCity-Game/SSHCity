@@ -39,7 +39,6 @@ public class Interface : CanvasLayer
     private Button _button_shop;
     private Button _buttonDelete;
     private Button _buttonRoute;
-    private Button _parametre;
     private Button _buttonEau;
     public Sprite _croix;
     private Sprite _croixJaune;
@@ -142,7 +141,6 @@ public class Interface : CanvasLayer
         _buttonRoute = (Button) GetNode(_str_buttonRoute);
         _buttonDelete = (Button) GetNode(_str_buttonDelete);
         _buttonEau = (Button) GetNode(_strButtonEau);
-        _parametre = (Button) GetNode("Parametres");
         _shop = (Boutique) GetNode(_str_shop);
         _bulldozerMouse = (Sprite) GetNode(_str_bulldozerMouse);
         _bulldozerMouse.Hide();

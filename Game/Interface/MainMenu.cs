@@ -37,6 +37,7 @@ public class MainMenu : CanvasLayer
         Background.Hide();
         SSHCity.Hide();
         EmitSignal("game_started");
+        Parametres._parametres.Show();
     }
 
     public void menu_options()

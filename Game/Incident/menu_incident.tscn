@@ -15,7 +15,7 @@
 [ext_resource path="res://assets/Alerte_incidents/noye2.png" type="Texture" id=15]
 [ext_resource path="res://assets/Alerte_incidents/noye3.png" type="Texture" id=16]
 
-[sub_resource type="AnimatedTexture" id=16]
+[sub_resource type="AnimatedTexture" id=1]
 flags = 4
 frames = 3
 fps = 8.0
@@ -25,7 +25,7 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 6 )
 frame_2/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=4]
+[sub_resource type="AnimatedTexture" id=2]
 flags = 4
 frames = 2
 fps = 2.0
@@ -33,7 +33,7 @@ frame_0/texture = ExtResource( 9 )
 frame_1/texture = ExtResource( 10 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=5]
+[sub_resource type="AnimatedTexture" id=3]
 flags = 4
 frames = 3
 fps = 10.0
@@ -43,7 +43,7 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 11 )
 frame_2/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=6]
+[sub_resource type="AnimatedTexture" id=4]
 flags = 4
 frames = 3
 fps = 6.0
@@ -53,8 +53,14 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 16 )
 frame_2/delay_sec = 0.0
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=5]
 size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=8]
@@ -75,12 +81,6 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=14]
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=15]
-font_data = ExtResource( 4 )
-
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
 
@@ -92,7 +92,7 @@ margin_top = 60.0
 margin_right = 89.08
 margin_bottom = 166.0
 rect_scale = Vector2( 0.5, 0.5 )
-icon = SubResource( 16 )
+icon = SubResource( 1 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -109,7 +109,7 @@ margin_top = 120.0
 margin_right = 4489.08
 margin_bottom = 4626.0
 rect_scale = Vector2( 0.01, 0.01 )
-icon = SubResource( 4 )
+icon = SubResource( 2 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -126,7 +126,7 @@ margin_top = 160.0
 margin_right = 4634.08
 margin_bottom = 4716.0
 rect_scale = Vector2( 0.01, 0.01 )
-icon = SubResource( 5 )
+icon = SubResource( 3 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -145,7 +145,7 @@ margin_top = 210.0
 margin_right = 5278.59
 margin_bottom = 4727.0
 rect_scale = Vector2( 0.008, 0.008 )
-icon = SubResource( 6 )
+icon = SubResource( 4 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -177,7 +177,7 @@ margin_left = -275.5
 margin_top = -125.5
 margin_right = 275.5
 margin_bottom = 125.5
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 align = 1
 valign = 1
 autowrap = true
@@ -194,7 +194,7 @@ margin_left = -82.0
 margin_top = 150.0
 margin_bottom = 176.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "Eteindre"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -209,7 +209,7 @@ margin_left = -154.0
 margin_top = 150.0
 margin_bottom = 176.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 7 )
 text = "Arreter Le voleur"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -225,7 +225,7 @@ margin_top = 150.0
 margin_right = -0.0720215
 margin_bottom = 176.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 8 )
 text = "Resoudre"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -241,7 +241,7 @@ margin_top = 150.0
 margin_right = 1.66797
 margin_bottom = 176.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 9 )
 text = "Sauver le noye"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -257,7 +257,7 @@ margin_top = -201.0
 margin_right = 301.0
 margin_bottom = -181.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 10 )
 text = "Quitter"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -273,7 +273,7 @@ margin_top = 150.0
 margin_right = -0.0209961
 margin_bottom = 176.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 11 )
 text = "Boutique"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -289,7 +289,7 @@ margin_top = 150.0
 margin_right = -0.0209961
 margin_bottom = 176.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 12 )
 text = "Boutique"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -305,7 +305,7 @@ margin_top = 150.0
 margin_right = 0.5
 margin_bottom = 176.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 13 )
 text = "Boutique"
 __meta__ = {
 "_edit_use_anchors_": false
