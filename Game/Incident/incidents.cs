@@ -41,11 +41,18 @@ public class incidents : CanvasLayer
 		/* INCENDIES */
 		if(Interface._level >= levelIncendie)
 			GenerateIncendies(MainPlan._planInitial);
-		
-		GD.Print(Nbincendies);
-
 		if (menu_incident.TimerIncendie.IsStopped() && ResoIncident) // definit le temps entre l apparition de deux incendies
 			ResoIncident = false;
+
+		if(Interface._level >= levelBracage)
+			GenerateBracage(MainPlan._planInitial);
+		if (menu_incident.TimerBracage.IsStopped() && ResoBracage) // definit le temps entre l apparition de deux bracage
+			ResoBracage = false;
+		
+		if(Interface._level >= levelNoyade)
+			GenerateNoyade(MainPlan._planInitial);
+		if (menu_incident.TimerNoyade.IsStopped() && ResoNoyade) // definit le temps entre l apparition de deux noyades
+			ResoNoyade = false;
 	}
 
 	public static (int x, int y, int indexAv, int indexAp) GenereCoords((int, int)[] listBat)
@@ -109,7 +116,7 @@ public class incidents : CanvasLayer
 					/** ACCIDENTS **/
 	public static void GenerateAccident(PlanInitial planInitial)
 	{
-		if (ResoAccident)
+		if (ResoAccident && Nbaccident > 0)
 		{
 			StopAccident(planInitial);
 			Nbaccident--;
@@ -129,14 +136,13 @@ public class incidents : CanvasLayer
 	public static async void StopAccident(PlanInitial planInitial)
 	{ /* supprime l'accident */
 		menu_incident.Accident.Hide();
-		menu_incident.TimerAccident.Start();
 	}
 	
 					/** BRACAGES **/
 	public static void GenerateBracage(PlanInitial planInitial)
 	{
 		(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.BatimentVol);
-		if (ResoBracage)
+		if (ResoBracage && Nbbracages > 0)
 		{
 			StopBracage(planInitial);
 			Nbbracages--;
@@ -160,14 +166,13 @@ public class incidents : CanvasLayer
 		menu_incident.Bracage.Hide();
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
-		menu_incident.TimerBracage.Start();
 	}
 	
 					/** NOYADES **/
 	public static void GenerateNoyade(PlanInitial planInitial)
 	{
 		(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.LacNoyade);
-		if (ResoNoyade)
+		if (ResoNoyade && Nbnoyades > 0)
 		{
 			StopNoyade(planInitial);
 			Nbnoyades--;
@@ -191,7 +196,6 @@ public class incidents : CanvasLayer
 		menu_incident.Noyade.Hide();
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
-		menu_incident.TimerNoyade.Start();
 	}
 	
 	
