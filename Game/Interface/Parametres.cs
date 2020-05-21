@@ -3,7 +3,7 @@ using System;
 
 public class Parametres : CanvasLayer
 {
-    private static Button _parametres;
+    public static Button _parametres;
     private static TextureRect _background;
     private static Label _login;
     private static Button _gamePlay;
@@ -32,7 +32,7 @@ public class Parametres : CanvasLayer
         
         _parametres.Connect("pressed", this, nameof(param_pressed));
         _gamePlay.Connect("pressed", this, nameof(gameplay_pressed));
-        _quitter.Connect("pressed", this, nameof(quitter_pressed));
+        _quitter.Connect("pressed", this, nameof(gameplay_pressed));
         _checkEffet.Connect("pressed", this, nameof(effet_pressed));
         _checkMusique.Connect("pressed", this, nameof(musique_pressed));
     }
@@ -40,6 +40,7 @@ public class Parametres : CanvasLayer
     private void HideAll()
     {
         _background.Hide();
+        _quitter.Hide();
         _login.Hide();
         _gamePlay.Hide();
         _effetsSonores.Hide();
@@ -51,6 +52,7 @@ public class Parametres : CanvasLayer
     private void param_pressed()
     {
         _background.Show();
+        _quitter.Show();
         _login.Show();
         _gamePlay.Show();
         _effetsSonores.Show();

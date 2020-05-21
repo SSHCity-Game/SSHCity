@@ -39,7 +39,6 @@ public class Interface : CanvasLayer
     private Button _button_shop;
     private Button _buttonDelete;
     private Button _buttonRoute;
-    private Button _parametre;
     private Button _buttonEau;
     public Sprite _croix;
     private Sprite _croixJaune;
