@@ -49,10 +49,10 @@ public class incidents : CanvasLayer
 		if (menu_incident.TimerBracage.IsStopped() && ResoBracage) // definit le temps entre l apparition de deux bracage
 			ResoBracage = false;
 		/* NOYADES */		
-		if(Interface._level >= levelNoyade)
+		/*if(Interface._level >= levelNoyade)
 			GenerateNoyade(MainPlan._planInitial);
 		if (menu_incident.TimerNoyade.IsStopped() && ResoNoyade) // definit le temps entre l apparition de deux noyades
-			ResoNoyade = false;
+			ResoNoyade = false;*/
 	}
 
 	public static (int x, int y, int indexAv, int indexAp) GenereCoords((int, int)[] listBat)

@@ -114,7 +114,7 @@ margin_right = 149.0
 margin_bottom = 177.0
 rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 5 )
-text = "GamePlay"
+text = "Instructions"
 __meta__ = {
 "_edit_use_anchors_": false
 }
