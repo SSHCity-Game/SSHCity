@@ -78,15 +78,15 @@ public class incidents : CanvasLayer
 		} while (nbBloc < 0); // verifie que le batiment existe et recommence s'il n'existe pas
 		
 		var pos = coordinates[rand.Next(0, nbBloc)]; // choisit aleatoirement un batiment parmit tous les batiments de meme type
-		var x = (int) pos.x;
-		var y = (int) pos.y;
+		x = (int) pos.x;
+		y = (int) pos.y;
 		return (x, y, indexAv, indexAp);
 	}
 	
 					/** INCENDIES **/
 	public static void GenerateIncendies(PlanInitial planInitial)
 	{
-		if (ResoIncident && Nbincendies > 0)
+		if (ResoIncident && Nbincendies >= 0)
 		{
 			StopIncendie(planInitial);
 			Nbincendies--;
