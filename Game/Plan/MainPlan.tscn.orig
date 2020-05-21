@@ -5,11 +5,9 @@
 [ext_resource path="res://Game/Interface/Interface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Son/musique.wav" type="AudioStream" id=4]
 [ext_resource path="res://Game/Interface/MainMenu.tscn" type="PackedScene" id=5]
-<<<<<<< HEAD
-=======
 [ext_resource path="res://Game/Incident/incidents.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Game/Interface/Parametres.tscn" type="PackedScene" id=8]
->>>>>>> b12e319d7194012ba3339f96d229d20fa5fb456d
+
 
 [node name="MainPlan" type="Node2D"]
 script = ExtResource( 1 )
@@ -28,13 +26,10 @@ limit_bottom = 1649
 [node name="Interface" parent="Camera2D" instance=ExtResource( 3 )]
 
 [node name="MainMenu" parent="Camera2D" instance=ExtResource( 5 )]
-<<<<<<< HEAD
-=======
-
 [node name="Parametres" parent="Camera2D" instance=ExtResource( 8 )]
 
 [node name="Incidents" parent="Camera2D" instance=ExtResource( 7 )]
->>>>>>> b12e319d7194012ba3339f96d229d20fa5fb456d
+
 
 [node name="Musique" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
