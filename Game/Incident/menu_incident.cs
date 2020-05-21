@@ -6,8 +6,7 @@ using SshCity.Game.Plan;
 public class menu_incident : CanvasLayer
 {
     /* Bouton signalisation incident */
-    public static Button Flamme;
-    //public static Button Flamme2;
+    public static Button Flamme; // en cours
     public static Button Accident;
     public static Button Bracage;
     public static Button Noyade;
@@ -48,7 +47,6 @@ public class menu_incident : CanvasLayer
     public Button BoutiqueHopital;
     public Button Quitter;
     public Button Eteindre;
-    //public Button Eteindre2;
     public Button FinAccident;
     public Button FinBracage;
     public Button FinNoyade;
@@ -70,12 +68,10 @@ public class menu_incident : CanvasLayer
         BoutiquePolice = (Button) GetNode("BoutiquePolice");
         Quitter = (Button) GetNode("Quitter");;
         Eteindre = (Button) GetNode("Eteindre");
-        //Eteindre2 = (Button) GetNode("Eteindre2");
         FinAccident = (Button) GetNode("FinAccident");
         FinBracage = (Button) GetNode("FinBracage");
         FinNoyade = (Button) GetNode("FinNoyade");
         Flamme = (Button) GetNode("Flamme");
-        //Flamme2 = (Button) GetNode("Flamme2");
         Accident = (Button) GetNode("Accident");
         Bracage = (Button) GetNode("Bracage");
         Noyade = (Button) GetNode("Noyade");
@@ -86,9 +82,8 @@ public class menu_incident : CanvasLayer
         Background = (TextureRect) GetNode("Background");
         Texte = (Label) GetNode("Background/Texte");
 
-        HideAll(); // cache tous les boutons d'incidents au debut du jeu
+        HideAll(); // cache tous les boutons d'incidents en cours au debut du jeu
         Flamme.Hide();
-        //Flamme2.Hide();
         Accident.Hide();
         Bracage.Hide();
         Noyade.Hide();
@@ -98,19 +93,13 @@ public class menu_incident : CanvasLayer
         BoutiqueHopital.Connect("pressed", this, nameof(on_boutique_hopital_pressed));
         Quitter.Connect("pressed", this, nameof(on_quitter_pressed));
         Eteindre.Connect("pressed", this, nameof(on_eteindre_pressed));
-        //Eteindre2.Connect("pressed", this, nameof(on_eteindre_pressed));
         FinAccident.Connect("pressed", this, nameof(on_fin_accident_pressed));
         FinBracage.Connect("pressed", this, nameof(on_fin_bracage_pressed));
         FinNoyade.Connect("pressed", this, nameof(on_fin_noyade_pressed));
         Flamme.Connect("pressed", this, nameof(ResolutionIncendie));
-        //Flamme2.Connect("pressed", this, nameof(ResolutionIncendie2));
         Accident.Connect("pressed", this, nameof(ResolutionAccident));
         Bracage.Connect("pressed", this, nameof(ResolutionBracage));
         Noyade.Connect("pressed", this, nameof(ResolutionNoyade));
-        TimerIncendie.Connect("timeout", this, nameof(EndTimerIncendie));
-        TimerAccident.Connect("timeout", this, nameof(EndTimerAccident));
-        TimerBracage.Connect("timeout", this, nameof(EndTimerBracage));
-        TimerNoyade.Connect("timeout", this, nameof(EndTimerNoyade));
     }
     
 
@@ -121,7 +110,6 @@ public class menu_incident : CanvasLayer
         BoutiqueHopital.Hide();
         Quitter.Hide();
         Eteindre.Hide();
-        //Eteindre2.Hide();
         FinAccident.Hide();
         FinBracage.Hide();
         FinNoyade.Hide();
@@ -207,26 +195,6 @@ public class menu_incident : CanvasLayer
         Texte.Show();
         OpenIncident = true;
     }
-    /*
-    private void ResolutionIncendie2()
-    {
-        Background.Show();
-        Quitter.Show();
-        
-        if (MainPlan.ExistBatiment(Ref_donnees.caserne))
-        {
-            Texte.Text = CaserneOui;
-            Eteindre2.Show();
-        }
-        else
-        {
-            Texte.Text = CaserneNon;
-            BoutiqueCaserne.Show();
-        }
-
-        Texte.Show();
-        OpenIncident = true;
-    }*/
 
     private void ResolutionAccident()
     {
@@ -286,25 +254,5 @@ public class menu_incident : CanvasLayer
         
         Texte.Show();
         OpenIncident = true;
-    }
-
-    private void EndTimerIncendie()
-    {
-        
-    }
-    
-    private void EndTimerAccident()
-    {
-        
-    }
-    
-    private void EndTimerBracage()
-    {
-        
-    }
-    
-    private void EndTimerNoyade()
-    {
-        
     }
 }

@@ -28,7 +28,6 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 861, 496 )
 cell_tile_origin = 1
 format = 1
-tile_data = PoolIntArray( 1703901, 0, 0 )
 
 [node name="Vehicule" type="Timer" parent="."]
 wait_time = 3.0
