@@ -19,7 +19,7 @@ public class MainPlan : Node2D
 	private Vector2 _DraggingStart;
 	private MainMenu _mainMenu;
 	private bool _mousePressed;
-	private AudioStreamPlayer _musique;
+	public static AudioStreamPlayer _musique;
 	private int position_zoom = 3;
 	private string str_camera2D = "Camera2D";
 	private string str_planInitial = "PlanInitial";
@@ -178,7 +178,7 @@ public class MainPlan : Node2D
 		}
 
 		//Lancement de la musique
-		//_musique.Play();
+		_musique.Play();
 	}
 
 	public static bool ExistBatiment(int indexBat)

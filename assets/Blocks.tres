@@ -774,13 +774,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 80/tile_mode = 0
 80/occluder_offset = Vector2( 0, 0 )
 80/navigation_offset = Vector2( 0, 0 )
-80/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": null,
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
+80/shapes = [  ]
 80/z_index = 0
 81/name = "VolMairie"
 81/texture = ExtResource( 65 )
