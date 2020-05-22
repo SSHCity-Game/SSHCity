@@ -249,6 +249,61 @@ public class Interface : CanvasLayer
         Water -= Waterused;
     }
 
+    public void buildable(Building batiment)
+    {
+        int[] batiments = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        switch (batiment.Characteristics.Bloc[batiment.Characteristics.Lvl])
+        {
+            case Ref_donnees.maison3:
+            case Ref_donnees.maison1:
+            case Ref_donnees.maison4:
+            case Ref_donnees.maison5:
+                ++batiments[0]; //maison
+                break;
+            case Ref_donnees.immeuble_brique:
+            case  Ref_donnees.immeuble_vert:
+                ++batiments[1]; //immeuble
+                break;
+            case Ref_donnees.hotel:
+                ++batiments[2]; //hotel
+                break;
+            case Ref_donnees.parc_enfant:
+                ++batiments[3]; //parc
+                break;
+            case Ref_donnees.piscine:
+                ++batiments[4]; //piscine
+                break;
+            case Ref_donnees.restaurant:
+            case Ref_donnees.restaurant2:
+                ++batiments[5]; //restaurant
+                break;
+            case Ref_donnees.cafe:
+            case Ref_donnees.McAffy:
+                ++batiments[6]; //bar
+                break;
+            case Ref_donnees.ferme:
+            case Ref_donnees.ferme_ecolo:
+                ++batiments[7]; //ferme
+                break;
+            case Ref_donnees.eglise:
+                ++batiments[8];
+                break;
+            case Ref_donnees.police:
+                ++batiments[9];
+                break;
+            case Ref_donnees.hopital:
+                ++batiments[10];
+                break;
+            case Ref_donnees.caserne:
+                ++batiments[11];
+                break;
+            case Ref_donnees.centrale:
+                ++batiments[12];
+                break;
+        }
+        
+    }
+
     public override void _Process(float delta)
     {
         base._Process(delta);
