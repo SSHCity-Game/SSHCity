@@ -272,20 +272,31 @@ public class Interface : CanvasLayer
             if (Activation.isNextToRoad(_planInitial, batiment.Position,
                 batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
             {
+                bool energirvalide = false;
+                bool eauvalide = false;
                 if (!batiment.Activated)
                 {
                     _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, -1);
                 }
                 batiment.Activated = true;
-                moneyWin += batiment.Characteristics.Earn[batiment.Characteristics.Lvl];
-                if (batiment.Characteristics.energy[batiment.Characteristics.Lvl] >= 0)
+                if (energyused + batiment.Characteristics.energy[batiment.Characteristics.Lvl] <= Ref_donnees.energy)
                 {
-                    energyused += batiment.Characteristics.energy[batiment.Characteristics.Lvl];
+                    if (batiment.Characteristics.Bloc[batiment.Characteristics.Lvl] != Ref_donnees.centrale)
+                    {
+                        energyused += batiment.Characteristics.energy[batiment.Characteristics.Lvl];
+                    }
+                    energirvalide = true;
                 }
 
-                if (batiment.Characteristics.water[batiment.Characteristics.Lvl] >= 0)
+                if (waterused + batiment.Characteristics.water[batiment.Characteristics.Lvl] <= Ref_donnees.water)
                 {
                     waterused += batiment.Characteristics.water[batiment.Characteristics.Lvl];
+                    eauvalide = true;
+                }
+
+                if (energirvalide && eauvalide)
+                {
+                    moneyWin += batiment.Characteristics.Earn[batiment.Characteristics.Lvl];
                 }
             }
             else
