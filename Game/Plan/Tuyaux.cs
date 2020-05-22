@@ -18,7 +18,8 @@ namespace SshCity.Game.Plan
                    bloc == Ref_donnees.tuyaux_virage_gauche ||
                    bloc == Ref_donnees.tuyaux_virage_haut ||
                    bloc == Ref_donnees.eau ||
-                   bloc == Ref_donnees.route;
+                   bloc == Ref_donnees.route ||
+                   bloc == Ref_donnees.sol_stationEpuration;
         }
 
         public static int ChoixTuyaux(Vector2 tile, PlanInitial planInitial)

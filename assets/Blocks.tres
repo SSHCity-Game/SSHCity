@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=91 format=2]
+[gd_resource type="TileSet" load_steps=92 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -85,6 +85,7 @@
 [ext_resource path="res://assets/noyade.png" type="Texture" id=83]
 [ext_resource path="res://assets/Pietons/voleur.png" type="Texture" id=84]
 [ext_resource path="res://assets/station epuration2.png" type="Texture" id=85]
+[ext_resource path="res://assets/isometric_0224.png" type="Texture" id=86]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -1002,3 +1003,13 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 101/navigation_offset = Vector2( 0, 0 )
 101/shapes = [  ]
 101/z_index = 0
+102/name = "isometric_0224.png 102"
+102/texture = ExtResource( 86 )
+102/tex_offset = Vector2( 0, 0 )
+102/modulate = Color( 1, 1, 1, 1 )
+102/region = Rect2( 32, 0, 960, 1024 )
+102/tile_mode = 0
+102/occluder_offset = Vector2( 0, 0 )
+102/navigation_offset = Vector2( 0, 0 )
+102/shapes = [  ]
+102/z_index = 0

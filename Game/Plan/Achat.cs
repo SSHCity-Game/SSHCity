@@ -65,8 +65,16 @@ public partial class PlanInitial
             int j = 1;
             while (j < dimensions.largeur + 1)
             {
-                SetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
-                SetBlock(TileMap0, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
+                if (_batiment == Ref_donnees.stationEpuration)
+                {
+                    SetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
+                    SetBlock(TileMap0, (int) tile.x + i, (int) tile.y + j, Ref_donnees.sol_stationEpuration);
+                }
+                else
+                {
+                    SetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
+                    SetBlock(TileMap0, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
+                }
                 MainPlan.BatimentsTiles.Add(new Vector2(tile.x + i-1, tile.y + j-1), new Vector2(tile.x, tile.y));
                 j++;
             }

@@ -81,6 +81,8 @@ namespace SshCity.Game.Plan
         public const int accident_voiture = 68;
         public const int voleur = 80;
         public const int rien = 81; // bloc vide
+        public const int stationEpuration = 101;
+        public const int sol_stationEpuration = 102;
         
         /* Incendie Batiments */
         public const int restaurant_flamme = 3;
@@ -163,7 +165,8 @@ namespace SshCity.Game.Plan
         public static Dictionary<int, (int, int)> dimensions = new Dictionary<int, (int, int)>()
         {
             {centrale, (3, 4)},
-            {ferme, (2, 2)}
+            {ferme, (2, 2)},
+            {stationEpuration, (3,3)},
         };
 
         private Random rand;
