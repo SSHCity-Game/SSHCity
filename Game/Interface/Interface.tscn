@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Game/Interface/Interface.cs" type="Script" id=1]
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://assets/Images_interface/croix_jaune.png" type="Texture" id=12]
 [ext_resource path="res://Game/Interface/Infos.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Game/Interface/MairieMenu.tscn" type="PackedScene" id=14]
-[ext_resource path="res://assets/Images_interface/roues.png" type="Texture" id=15]
 [ext_resource path="res://assets/Barre_Niveau/scoreBar/barFill3.png" type="Texture" id=16]
 [ext_resource path="res://assets/Barre_Niveau/scoreBar/EmptyBar.png" type="Texture" id=17]
 [ext_resource path="res://assets/Images_interface/eau.png" type="Texture" id=18]
@@ -30,8 +29,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color( 0.992157, 0.956863, 0.956863, 1 )
-border_blend = true
+border_color = Color( 0.647059, 0.647059, 0.647059, 1 )
 corner_radius_top_left = 60
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
@@ -244,29 +242,6 @@ texture = ExtResource( 12 )
 [node name="Infos" parent="." instance=ExtResource( 13 )]
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="Parametres" type="Button" parent="."]
-anchor_left = 0.948242
-anchor_top = 0.918842
-anchor_right = 0.948242
-anchor_bottom = 0.918842
-margin_left = -119.053
-margin_top = -30.1999
-margin_right = -59.053
-margin_bottom = 29.8001
-rect_min_size = Vector2( 60, 60 )
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = ExtResource( 4 )
-icon = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="Rouages" type="Sprite" parent="Parametres"]
-position = Vector2( 29.6387, 30.3809 )
-scale = Vector2( 0.0288479, 0.0295595 )
-texture = ExtResource( 15 )
 
 [node name="MairieMenu" parent="." instance=ExtResource( 14 )]
 visible = false

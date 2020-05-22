@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Threading.Tasks;
 using Godot;
 using SshCity.Game.Plan;
@@ -22,15 +23,28 @@ public class incidents : CanvasLayer
 	public static bool ResoAccident = false;
 	public static bool ResoBracage = false;
 	public static bool ResoNoyade = false;
-	/* batiment a changer par son batiment accidente */	
-	private static int x;
-	private static int y;
-	private static int indexAv;
-	private static int indexAp;
+	/* batiment a changer par son batiment accidente */
+	private static int x, y;
+	private static int xincendie;
+	private static int yincendie;
+	private static int indexAvincendie;
+	private static int indexApincendie;
+	private static int xaccident;
+	private static int yaccident;
+	private static int indexAvaccident;
+	private static int indexApaccident;
+	private static int xnoyade;
+	private static int ynoyade;
+	private static int indexAvnoyade;
+	private static int indexApnoyade;
+	private static int xbracage;
+	private static int ybracage;
+	private static int indexAvbracage;
+	private static int indexApbracage;
 	/* niveau d apparition des differents incidents */	
 	private static int levelIncendie = 2;
 	private static int levelAccident = 5;
-	private static int levelNoyade = 18;
+	private static int levelNoyade = 8;
 	private static int levelBracage = 10;
 	
 	
@@ -78,8 +92,8 @@ public class incidents : CanvasLayer
 		} while (nbBloc < 0); // verifie que le batiment existe et recommence s'il n'existe pas
 		
 		var pos = coordinates[rand.Next(0, nbBloc)]; // choisit aleatoirement un batiment parmit tous les batiments de meme type
-		var x = (int) pos.x;
-		var y = (int) pos.y;
+		x = (int) pos.x;
+		y = (int) pos.y;
 		return (x, y, indexAv, indexAp);
 	}
 	
@@ -88,13 +102,13 @@ public class incidents : CanvasLayer
 	{
 		if (ResoIncident && Nbincendies > 0)
 		{
-			StopIncendie(planInitial);
 			Nbincendies--;
 			Nbincidents--;
+			StopIncendie(planInitial);
 		}
 		else if (!ResoIncident && Nbincendies < MAX_INCENDIES)
 		{
-			(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.BatimentFeu);
+			(xincendie, yincendie, indexAvincendie, indexApincendie) = GenereCoords(Ref_donnees.BatimentFeu);
 			StartIncendie(planInitial);
 			Nbincendies++;
 			Nbincidents++;
@@ -103,14 +117,14 @@ public class incidents : CanvasLayer
 	public static async void StartIncendie(PlanInitial planInitial)
 	{ /* change le batiment normal avec celui accidente */
 		await Task.Delay(5000);
-		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
+		BuildingSwitch(planInitial, indexAvincendie, indexApincendie, xincendie, yincendie);
 		menu_incident.Flamme.Show();
 	}
 	public static async void StopIncendie(PlanInitial planInitial)
 	{ /* revient au batiment normal */
 		menu_incident.Flamme.Hide();
 		await Task.Delay(3000);
-		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
+		BuildingSwitch(planInitial, indexApincendie, indexAvincendie, xincendie, yincendie);
 	}
 	
 					/** ACCIDENTS **/
@@ -118,9 +132,9 @@ public class incidents : CanvasLayer
 	{
 		if (ResoAccident && Nbaccident > 0)
 		{
-			StopAccident(planInitial);
 			Nbaccident--;
 			Nbincidents--;
+			StopAccident(planInitial);
 		}
 		else if (Nbaccident < MAX_ACCIDENT && !ResoAccident)
 		{
@@ -141,15 +155,15 @@ public class incidents : CanvasLayer
 					/** BRACAGES **/
 	public static void GenerateBracage(PlanInitial planInitial)
 	{
-		(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.BatimentVol);
 		if (ResoBracage && Nbbracages > 0)
 		{
-			StopBracage(planInitial);
 			Nbbracages--;
 			Nbincidents--;
+			StopBracage(planInitial);
 		}
 		else if (Nbbracages < MAX_BRACAGES && !ResoBracage)
 		{
+			(xbracage, ybracage, indexAvbracage, indexApbracage) = GenereCoords(Ref_donnees.BatimentVol);
 			StartBracage(planInitial);
 			Nbbracages++;
 			Nbincidents++;
@@ -158,47 +172,39 @@ public class incidents : CanvasLayer
 	public static async void StartBracage(PlanInitial planInitial)
 	{ /*fait apparaitre une image de braqueur devant la maison */
 		await Task.Delay(5000);
-		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
+		BuildingSwitch(planInitial, indexAvbracage, indexApbracage, xbracage, ybracage);
 		menu_incident.Bracage.Show();
 	}
 	public static async void StopBracage(PlanInitial planInitial)
 	{ /* supprime le bracage */
 		menu_incident.Bracage.Hide();
 		await Task.Delay(3000);
-		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
+		BuildingSwitch(planInitial, indexApbracage, indexAvbracage, xbracage, ybracage);
 	}
 	
 					/** NOYADES **/
-	public static void GenerateNoyade(PlanInitial planInitial)
+	public static async void GenerateNoyade(PlanInitial planInitial)
 	{
-		(x, y, indexAv, indexAp) = GenereCoords(Ref_donnees.LacNoyade);
 		if (ResoNoyade && Nbnoyades > 0)
 		{
-			StopNoyade(planInitial);
 			Nbnoyades--;
 			Nbincidents--;
+			menu_incident.Noyade.Hide();
+			await Task.Delay(3000);
+			Lacs.GenerateLacNoyade(planInitial, Ref_donnees.lac1, xnoyade, ynoyade);
 		}
-		else if (Nbnoyades < MAX_NOYADES && !ResoNoyade)
+		else if (!ResoNoyade && Nbnoyades < MAX_NOYADES)
 		{
-			StartNoyade(planInitial);
+			Random rand = new Random();
+			(xnoyade, ynoyade) = Lacs.CoordsLac1[rand.Next(0, Lacs.CoordsLac1.Count - 1)];
 			Nbnoyades++;
 			Nbincidents++;
+			await Task.Delay(5000);
+			Lacs.GenerateLacNoyade(planInitial, Ref_donnees.lac1_noyade, xnoyade, ynoyade);
+			menu_incident.Noyade.Show();
 		}
 	}
-	public static async void StartNoyade(PlanInitial planInitial)
-	{ /* fait apparaitre une image de lac avec une personne qui se noie */
-		await Task.Delay(5000);
-		BuildingSwitch(planInitial, indexAv, indexAp, x, y);
-		menu_incident.Noyade.Show();
-	}
-	public static async void StopNoyade(PlanInitial planInitial)
-	{ /* revient au lac normal */
-		menu_incident.Noyade.Hide();
-		await Task.Delay(3000);
-		BuildingSwitch(planInitial, indexAp, indexAv, x, y);
-	}
-	
-	
+
 	public static void BuildingSwitch(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
 	{ /* Change l'image d'un batiment */
 		/* Initialise le bloc en x,y, comme batiment accidente */

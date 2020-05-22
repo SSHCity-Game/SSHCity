@@ -92,6 +92,7 @@
     <Compile Include="Game\Interface\Menu_achat\MenuSante.cs" />
     <Compile Include="Game\Interface\Menu_achat\MenuSpeciaux.cs" />
     <Compile Include="Game\Interface\Menu_achat\Menu_Achat.cs" />
+    <Compile Include="Game\Interface\Parametres.cs" />
     <Compile Include="Game\Plan\Achat.cs" />
     <Compile Include="Game\Plan\Buildings.cs" />
     <Compile Include="Game\Plan\Lacs.cs" />

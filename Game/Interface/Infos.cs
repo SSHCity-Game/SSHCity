@@ -222,7 +222,7 @@ public class Infos : Panel
         }
 
         if (_class == BuildingType.CASERNE)
-        {
+        { 
             _vehicule.Text = "Camion";
             _vehicule.Show();
             _type = Vehicules.Type.CAMION;
