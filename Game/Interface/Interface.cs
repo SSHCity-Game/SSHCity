@@ -359,20 +359,18 @@ public class Interface : CanvasLayer
             }
             else
             {
-                
-                if (batiment.Activated)
+
+                if (!Activation.isNextToRoad(_planInitial, batiment.Position,
+                                    batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
                 {
-                    if (!Activation.isNextToRoad(_planInitial, batiment.Position,
-                                        batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
-                    {
-                        _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
-                    }
-                    else
-                    {
-                        _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleEau);
-                    }
-                    batiment.Activated = false;
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
                 }
+                else
+                {
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleEau);
+                }
+                batiment.Activated = false;
+                
             }
         }
 
