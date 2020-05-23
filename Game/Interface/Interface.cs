@@ -193,8 +193,10 @@ public class Interface : CanvasLayer
     
     public void ExitPressed()
     {
+        _planInitial.TileMapWithoutRoute.Hide();
         _planInitial.TileMap0.Hide();
         _planInitial.TileMap1.Show();
+        _planInitial.TileMap2.Show();
         _button_shop.Show();
         _buttonDelete.Show();
         _buttonRoute.Show();
@@ -213,6 +215,8 @@ public class Interface : CanvasLayer
         _buttonTuyaux.Show();
         _planInitial.TileMap0.Show();
         _planInitial.TileMap1.Hide();
+        _planInitial.TileMap2.Hide();
+        _planInitial.TileMapWithoutRoute.Show();
     }
 
     public static void ConfigInfos(Vector2 tile)
@@ -323,7 +327,8 @@ public class Interface : CanvasLayer
         {
 
             if (Activation.isNextToRoad(_planInitial, batiment.Position,
-                batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
+                batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]) && Activation.isRaccordeEnEau(_planInitial, batiment.Position, batiment.Characteristics.Bloc[batiment.Characteristics.Lvl],
+                batiment.Characteristics.water[batiment.Characteristics.Lvl]))
             {
                 bool energirvalide = false;
                 bool eauvalide = false;
@@ -357,7 +362,15 @@ public class Interface : CanvasLayer
                 
                 if (batiment.Activated)
                 {
-                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
+                    if (!Activation.isNextToRoad(_planInitial, batiment.Position,
+                                        batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
+                    {
+                        _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
+                    }
+                    else
+                    {
+                        _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleEau);
+                    }
                     batiment.Activated = false;
                 }
             }

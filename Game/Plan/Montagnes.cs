@@ -13,6 +13,7 @@ namespace SshCity.Game.Plan
             int x = (int) tile.x;
             int y = (int) tile.y;
             planInitial.SetBlock(planInitial.TileMap2, x - 1, y - 1, Ref_donnees.montagne);
+            planInitial.SetBlock(planInitial.TileMapWithoutRoute, x - 1, y - 1, Ref_donnees.montagne);
             for (int i = -1; i < 2; i++)
             {
                 for (int j = -1; j < 2; j++)

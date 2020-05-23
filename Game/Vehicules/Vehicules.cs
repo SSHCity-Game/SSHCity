@@ -27,6 +27,7 @@ namespace SshCity.Game.Vehicules
         private bool _stopAccident = false;
         private bool _mouseIn = false;
         private bool _controleVehicule = false;
+        private Type _type;
 
         public enum Direction
         {
@@ -169,6 +170,7 @@ namespace SshCity.Game.Vehicules
         /// <param name="autonome">choisir si le vehicule se direige tout seul ou manuellement</param>
         public void Init(PlanInitial planInitial, Vector2 position, Type type, bool autonome=false)
         {
+            _type = type;
             _animatedSprite = (AnimatedSprite) GetNode(_strAnimatedSprite);
             _collisionShape2D = (CollisionShape2D) GetNode(_strCollsionShape2D);
             Autonome = autonome; //Determine si le vehicule se deplace tout seul ou s'il faut que le joueur le dirige avec les fleches
