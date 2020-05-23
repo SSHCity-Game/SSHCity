@@ -408,7 +408,7 @@ namespace SshCity.Game.Vehicules
 
 			if (_type == Type.CAMION)
 			{
-				Vector2 posi = _planInitial.TileMap2.WorldToMap(Position);
+				Vector2 posi = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
 				if (isFeu(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x+1, (int) posi.y)))
 				{
 					_paused = true;
