@@ -13,7 +13,7 @@ namespace SshCity.Game.Sauvegarde
         /// Charge une sauvegarde depuis un fichier s'il existe
         /// </summary>
         /// <returns>Renvoie false s'il n'y a pas de sauvegarde ou quelle n'a pu être chargée. true sinon</returns>
-        public static bool LoadGame(PlanInitial planInitial, string game = null)
+        public static bool LoadGame(PlanInitial planInitial, string game)
         {
             var saveGame = new File();
             // Il n'y a pas de sauvegarde
@@ -21,10 +21,9 @@ namespace SshCity.Game.Sauvegarde
                 return false;
             if (game != null)
                 SaveFile(game);
-            
+
             saveGame.Open(Ref_donnees.GameSavePath, File.ModeFlags.Read);
-            if (saveGame.GetLen() == 0)
-                return false;
+            var text = saveGame.GetAsText();
             var buildData = (Dictionary) JSON.Parse(saveGame.GetAsText()).Result;
             // Load Buildings
             var datas = (Array) buildData["Buildings"];
@@ -36,6 +35,7 @@ namespace SshCity.Game.Sauvegarde
                 var lvl = int.Parse(dicValues["Level"].ToString());
 
                 var bat = Building.Create(clazz, new Vector2(x, y), lvl);
+                GD.Print(clazz);
                 planInitial.SetBlock(planInitial.TileMap2, (int) x, (int) y, bat.Characteristics.Bloc[0]);
                 planInitial.SetAchatBlocs(bat.Position);
             }
@@ -52,7 +52,6 @@ namespace SshCity.Game.Sauvegarde
                 {
                     {"Buildings", bat.Select(b => b.Save())}
                 });
-            GD.Print(buildingsData);
             SaveFile(buildingsData);
         }
 

@@ -208,18 +208,18 @@ public class MainPlan : Node2D
 			//CREATION LACS
 			Lacs.GenerateLac(_planInitial);
 		}
+		GD.Print("FINI");
 
 		//Lancement de la musique
 		_musique.Play();
 	}
 
-	/*public override void _Notification(int what)
+	public override void _Notification(int what)
 	{
 		if (what != MainLoop.NotificationWmQuitRequest)
 			return;
-		GD.Print("Exiting");
 		SauvegardeManager.SaveGame();
-	}*/
+	}
 
 	public static bool ExistBatiment(int indexBat)
 	{
