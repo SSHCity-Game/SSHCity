@@ -14,7 +14,7 @@ namespace SshCity.Game.Buildings.Characteristics
             GainXp = new[] {10, 100, 500};
             energy = new[] {1};
             water = new[] {3};
-            Image = new[] {"res://assets/ImageSized/isometric epuration.png"};
+            Image = new[] {"res://assets/ImageSized/station epuration2.png"};
             NbrAmeliorations = 0;
             NbCar = 3;
             Population = new []{0};
