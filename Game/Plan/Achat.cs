@@ -51,7 +51,7 @@ public partial class PlanInitial
         return somehtingHere;
     }
 
-    public void SetAchatBlocs(Vector2 tile)
+    public void SetAchatBlocs(Vector2 tile, bool route)
     {
         (int largeur, int longueur) dimensions = (1, 1);
         try
@@ -73,7 +73,10 @@ public partial class PlanInitial
                     SshCity.Game.Plan.Tuyaux.ListEpuration.Add(new Vector2(tile.x + i, tile.y + j));
                 }
                 SetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
-                SetBlock(TileMap0, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
+                if (!route)
+                {
+                    SetBlock(TileMap0, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
+                }
                 MainPlan.BatimentsTiles.Add(new Vector2(tile.x + i-1, tile.y + j-1), new Vector2(tile.x, tile.y));
                 j++;
             }

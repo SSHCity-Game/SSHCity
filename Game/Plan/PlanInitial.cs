@@ -307,7 +307,7 @@ public partial class PlanInitial : Node2D
                 if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)
                 {
                     Interface.Interdit = false;
-                    SetAchatBlocs(tile);
+                    SetAchatBlocs(tile, _achatRoute);
                     if (_achatRoute)
                     {
                         SetBlock(TileMapWithoutRoute, (int) _lastTile.x, (int) _lastTile.y, -1);
@@ -357,16 +357,19 @@ public partial class PlanInitial : Node2D
         if (OneAction.IsActionPressed("ClickG") && _delete)
         {
             _tileSupressing = GetTilePosition(TileMap1);
-            try
+            if (_tileSupressing != MainPlan.MairiePosition)
             {
-                _tileSupressing = MainPlan.BatimentsTiles[_tileSupressing];
-            }
-            catch (Exception)
-            {
+                try
+                {
+                    _tileSupressing = MainPlan.BatimentsTiles[_tileSupressing];
+                }
+                catch (Exception)
+                {
                 
+                }
+                _delete = false;
+                DeleteVerif.Verif = true;
             }
-            _delete = false;
-            DeleteVerif.Verif = true;
         }
 
         if (DeleteSure)
