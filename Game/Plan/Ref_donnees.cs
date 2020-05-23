@@ -109,6 +109,7 @@ namespace SshCity.Game.Plan
         
         //Blocs tuyaux
         public const int tuyaux_right = 81;
+        public const int stationEpuration = 101;
         public const int tuyaux_left = 83;
         public const int tuyaux_virage_bas = 82;
         public const int tuyaux_virage_haut = 84;
