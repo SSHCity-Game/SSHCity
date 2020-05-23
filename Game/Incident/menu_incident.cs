@@ -178,6 +178,7 @@ public class menu_incident : CanvasLayer
 
     private void ResolutionIncendie()
     {
+        CloseAll();
         Background.Show();
         Quitter.Show();
         
@@ -193,11 +194,11 @@ public class menu_incident : CanvasLayer
         }
 
         Texte.Show();
-        OpenIncident = true;
     }
 
     private void ResolutionAccident()
     {
+        CloseAll();
         Background.Show();
         Quitter.Show();
         
@@ -213,11 +214,11 @@ public class menu_incident : CanvasLayer
         }
         
         Texte.Show();
-        OpenIncident = true;
     }
     
     private void ResolutionBracage()
     {
+        CloseAll();
         Background.Show();
         Quitter.Show();
         
@@ -233,11 +234,11 @@ public class menu_incident : CanvasLayer
         }
         
         Texte.Show();
-        OpenIncident = true;
     }
     
     private void ResolutionNoyade()
     {
+        CloseAll();
         Background.Show();
         Quitter.Show();
         
@@ -253,6 +254,14 @@ public class menu_incident : CanvasLayer
         }
         
         Texte.Show();
+    }
+
+    private void CloseAll()
+    {
         OpenIncident = true;
+        Infos.Close = true;
+        PlanInitial.AchatRoute(false);
+        PlanInitial.Delete = false;
+        DeleteVerif.Verif = false;
     }
 }

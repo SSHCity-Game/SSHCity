@@ -179,7 +179,7 @@ namespace SshCity.Game.Vehicules
             _animatedSprite.Animation = WhichAnimation[blocRoute]; //Set l'animation en fonction du bloc route
             Decallage = DecallageDico[_animatedSprite.Animation]; //Decallage du vehicule en fonction de l'animation pour qu'il soit centre sur la route
             _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation]; // Rotation du CollisionShape2D en fonction de l'anmation pour qu'il soit centré sur le vehicule
-            this.Connect("area_entered", this, nameof(Collision));//Connect la collision
+            Connect("area_entered", this, nameof(Collision));//Connect la collision
             Connect("area_exited", this, nameof(EndCollision));//Connect la resolution de l'accident
             this.Position = planInitial.TileMap2.MapToWorld(position + new Vector2(1, 1)) + Decallage; //Set la position du vehicule. LE new Vector2(1, 1) correspond au decallage du tileset
             _collisionShapeAutonome = (CollisionShape2D) GetNode(_strCollisionShapeAutonome);
