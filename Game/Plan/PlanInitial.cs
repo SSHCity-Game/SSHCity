@@ -174,7 +174,7 @@ public partial class PlanInitial : Node2D
 
     public void TimerOutVehicule()
     {
-        if (addVehicule)
+        if (addVehicule && DepartRoute.Count > 0)
         {
             Random rand = new Random();
             int whichVehicule = rand.Next(0, Vehicules.ListTypeVehicules.Count);
