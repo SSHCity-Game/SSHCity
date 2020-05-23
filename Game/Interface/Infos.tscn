@@ -106,6 +106,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Camion" type="Button" parent="."]
+margin_left = 600.0
+margin_top = 390.835
+margin_right = 683.0
+margin_bottom = 421.835
+custom_fonts/font = SubResource( 5 )
+text = "Vehicule"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Helicopter" type="Button" parent="."]
+margin_left = 325.0
+margin_top = 390.835
+margin_right = 443.0
+margin_bottom = 421.835
+custom_fonts/font = SubResource( 5 )
+text = "Helicopter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Ameliorer" type="Button" parent="."]
 margin_left = 31.2
 margin_top = 337.15
@@ -567,11 +589,3 @@ text = "Lvl Max Atteinds
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Camion" type="Button" parent="."]
-visible = false
-margin_left = 670.0
-margin_top = 393.0
-margin_right = 762.0
-margin_bottom = 421.0
-text = "Camion"

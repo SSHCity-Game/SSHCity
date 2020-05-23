@@ -24,6 +24,7 @@ public class Infos : Panel
     private const string _strGainValue = "Lvl/Gains/GainBatiment/GainBatimentValue";
     private const string _strAmelioGainBaatiment = "Amelioration/Gains/GainBatiment";
     private const string _strAmelioGainValue = "Amelioration/Gains/GainBatiment/GainBatimentValue";
+    private const string _strButtonHelicopter = "Helicopter";
 
     private static bool _close = false;
     private static bool _isOpen = false;
@@ -51,6 +52,7 @@ public class Infos : Panel
     private Button _vehicule;
     private bool buttonWork = false;
     private Vector2 position;
+    private Button _buttonHelicopter;
 
     public Vector2 CamionPos;
 
@@ -74,6 +76,7 @@ public class Infos : Panel
         _image = (Sprite) GetNode(_strImage);
         _cadre = (Panel) GetNode(_strCadre);
 
+        _buttonHelicopter = (Button) GetNode(_strButtonHelicopter);
         _vehicule = (Button) GetNode(_strVehicule);
 
         // Infos/Ameliorations
@@ -91,10 +94,12 @@ public class Infos : Panel
         _amelioGainBatiment = (Label) GetNode(_strAmelioGainBaatiment);
         _amelioGainValue = (Label) GetNode(_strAmelioGainValue);
         _nivMax.Hide();
+        _buttonHelicopter.Hide();
 
         _quitter.Connect("pressed", this, nameof(CloseInfos));
         _ameliorer.Connect("pressed", this, nameof(AmeliorerInfos));
         _vehicule.Connect("pressed", this, nameof(EnvoieVehicule));
+        _buttonHelicopter.Connect("pressed", this, nameof(EnvoieHelicopter));
     }
 
     public void CloseInfos()
@@ -107,6 +112,17 @@ public class Infos : Panel
     {
         CloseInfos();
         PlanInitial.AddVehicule(_type, position);
+    }
+
+    public void EnvoieHelicopter()
+    {
+        if (incidents.ListNoyade.Count > 0)
+        {
+            CloseInfos();
+            Vector2 where = incidents.ListNoyade[0];
+            incidents.ListNoyade.Remove(where);
+            PlanInitial.AddHouloucoupter(Houloucoupter.Type.HOPITAL, position, where);
+        }
     }
 
     public bool config(Vector2 tile)
@@ -231,6 +247,7 @@ public class Infos : Panel
         {
             _vehicule.Text = "Ambulance";
             _vehicule.Show();
+            _buttonHelicopter.Show();
             _type = Vehicules.Type.AMBULANCE;
         }
         else if (_class == BuildingType.POLICE)
@@ -242,6 +259,7 @@ public class Infos : Panel
         else
         {
             _vehicule.Hide();
+            _buttonHelicopter.Hide();
         }
     }
 }

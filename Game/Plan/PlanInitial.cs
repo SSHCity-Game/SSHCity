@@ -156,7 +156,7 @@ public partial class PlanInitial : Node2D
             area.Position = positionAccident;
             
             area.Init(_accidentVisi);
-            AddChild(area);
+            TileMap2.AddChild(area);
             addAccident = false;
         }
 
@@ -164,7 +164,7 @@ public partial class PlanInitial : Node2D
         {
             Houloucoupter _houloucoupter = (Houloucoupter) _houloucoupterScene.Instance();
             _houloucoupter.Init(this, HouloucoupterType, HouloucoupterPosition, HouloucoupterDestination);
-            AddChild(_houloucoupter);
+            TileMap2.AddChild(_houloucoupter);
             HouloucoupterInit = false;
         }
     }

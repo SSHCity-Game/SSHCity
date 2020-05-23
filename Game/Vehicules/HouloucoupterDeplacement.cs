@@ -13,5 +13,15 @@ public partial class Houloucoupter
         {
             Position += _deplacement * delta/10;
         }
+        else if(!workDone)
+        {
+            workDone = true;
+            incidents.ResoNoyade = true;
+            Init(_planInitial, Type.HOPITAL, _planInitial.TileMap2.WorldToMap(_destination), _planInitial.TileMap2.WorldToMap(depart));
+        }
+        else
+        {
+            QueueFree();
+        }
     }
 }
