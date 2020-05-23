@@ -66,6 +66,7 @@
     <Compile Include="Game\Buildings\Characteristics\Hotel.cs" />
     <Compile Include="Game\Buildings\Characteristics\Immeuble.cs" />
     <Compile Include="Game\Buildings\Characteristics\ImmeubleVert.cs" />
+    <Compile Include="Game\Buildings\Characteristics\Mairie.cs" />
     <Compile Include="Game\Buildings\Characteristics\Maison.cs" />
     <Compile Include="Game\Buildings\Characteristics\Maison3.cs" />
     <Compile Include="Game\Buildings\Characteristics\Maison4.cs" />
