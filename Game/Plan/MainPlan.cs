@@ -160,7 +160,6 @@ public class MainPlan : Node2D
 		_planInitial = (PlanInitial) GetNode(str_planInitial);
 		_camera2D = (Camera2D) GetNode(str_camera2D);
 		_musique = (AudioStreamPlayer) GetNode(_str_music);
-		GD.Print("Putain zebi");
 		// Charges les arguments de lancement
 		var args = OS.GetCmdlineArgs();
 		Player player;
@@ -190,6 +189,7 @@ public class MainPlan : Node2D
 		string game = null;
 		if (args.Length > 1)
 			game = Marshalls.Base64ToUtf8(args[1]);
+		
 
 		// We load the game or we generate a map
 		if (!SauvegardeManager.LoadGame(_planInitial, game))
@@ -208,7 +208,6 @@ public class MainPlan : Node2D
 			//CREATION LACS
 			Lacs.GenerateLac(_planInitial);
 		}
-		GD.Print("FINI");
 
 		//Lancement de la musique
 		_musique.Play();

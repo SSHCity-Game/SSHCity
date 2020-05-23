@@ -21,8 +21,8 @@ namespace SshCity.Game.Buildings
             Characteristics.Lvl = theLvl;
             Characteristics.Lvl = theLvl;
             
-            PlanInitial.MAX_CAR += BuildingCharacteristics.FromType(type).NbCar;
-            Interface.Xp += BuildingCharacteristics.FromType(type).GainXp[theLvl];
+            PlanInitial.MAX_CAR += Characteristics.NbCar;
+            Interface.Xp += Characteristics.GainXp[theLvl];
             ListBuildings.Add(this);
         }
 
