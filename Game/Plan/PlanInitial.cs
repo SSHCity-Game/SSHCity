@@ -462,6 +462,7 @@ public partial class PlanInitial : Node2D
                     Interface.Interdit = false;
                     SetBlock(TileMapNeg, (int)tile.x, (int)tile.y, Ref_donnees.tuyaux_terre);
                     SshCity.Game.Plan.Tuyaux.ChangeTuyaux(tile, this);
+                    SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
                 }
                 else
                 {

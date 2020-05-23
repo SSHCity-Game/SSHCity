@@ -1,9 +1,178 @@
-﻿using Godot;
+﻿using System.Collections.Generic;
+using Godot;
 
 namespace SshCity.Game.Plan
 {
     public class Tuyaux
     {
+        public static List<Vector2> ListEpuration = new List<Vector2>();
+        public static List<Vector2> ListTuyauxEauLac = new List<Vector2>();
+        public static List<Vector2> ListTuyauxEauEpuration = new List<Vector2>();
+ 
+        /// <summary>
+        /// Considere tous les blocs a coté d'un bloc station epuration qui vient de se faire raccordé a l'eau comme racordé
+        /// </summary>
+        /// <param name="tile">Position du bloc venant de se faire raccordé</param>
+        /// <param name="planInitial">PlanInitial</param>
+        public static void raccordage(Vector2 tile, PlanInitial planInitial, int bloc)
+        {
+            planInitial.SetBlock(planInitial.TileMap0, (int)tile.x, (int)tile.y, bloc);
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = -1; j < 2; j++)
+                {
+                    if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x + i, (int)tile.y + j) == Ref_donnees.sol_stationEpuration)
+                    {
+                        raccordage(new Vector2(tile.x+i, tile.y+j), planInitial, bloc);
+                    }
+                }
+            }
+        }
+
+        public static void EpuratioRaccordage(PlanInitial planInitial)
+        {
+            foreach (Vector2 vector2 in ListEpuration)
+            {
+                List<Vector2> ListTuyauxAlreadyDone = new List<Vector2>();
+                if (VerifRaccorde(vector2, planInitial, ListTuyauxAlreadyDone))
+                {
+                    raccordage(vector2, planInitial, Ref_donnees.sol_stationEpuration);
+                }
+                else
+                {
+                    raccordage(vector2, planInitial, Ref_donnees.route);
+                }
+            }
+        }
+
+        public static bool VerifRaccorde(Vector2 tile, PlanInitial planInitial, List<Vector2> list)
+        {
+            foreach (Vector2 vector2 in list)
+            {
+                if (vector2 == tile)
+                {
+                    return false;
+                }
+            }
+            list.Add(tile);
+            bool gauche = false;
+            bool droit = false;
+            bool bas = false;
+            bool haut = false;
+            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x -1,(int)tile.y)))
+            {
+                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x -1,(int)tile.y) == Ref_donnees.eau)
+                {
+                    return true;
+                }
+                gauche = true;
+            }
+            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x+1,(int)tile.y)))
+            {
+                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x+1,(int)tile.y) == Ref_donnees.eau)
+                {
+                    return true;
+                }
+                droit = true;
+            }
+            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y-1)))
+            {
+                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x ,(int)tile.y-1) == Ref_donnees.eau)
+                {
+                    return true;
+                }
+                haut = true;
+            }
+            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y+1)))
+            {
+                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y+1) == Ref_donnees.eau)
+                {
+                    return true;
+                }
+                bas = true;
+            }
+
+            if (gauche && bas && droit && haut)
+            {
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+            }
+            if (bas && droit && haut)
+            {
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+            }
+            if (gauche && droit && haut)
+            {
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+            }
+            if (gauche && bas && haut)
+            {
+                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+            }
+            if (gauche && bas && droit)
+            {
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list);
+            }
+            if (droit && haut)
+            {
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+            }
+            if (gauche && bas)
+            {
+                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list);
+            }
+            if (bas && haut)
+            {
+                return VerifRaccorde(tile + new Vector2(0, 1), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+            }
+            if (gauche && droit)
+            {
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list);
+            }
+            if (bas && droit)
+            {
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list);
+            }
+            if (gauche && haut)
+            {
+                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+            }
+            if (gauche)
+            {
+                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list);
+            }
+            if (bas)
+            {
+                return VerifRaccorde(tile + new Vector2(0, 1), planInitial, list);
+            }
+            if (droit)
+            {
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list);
+            }
+            if (haut)
+            {
+                return VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+            }
+
+            return false;
+        }
+        
         public static bool IsTuyaux(int bloc)
         {
             return bloc == Ref_donnees.tuyaux_left ||
@@ -18,7 +187,6 @@ namespace SshCity.Game.Plan
                    bloc == Ref_donnees.tuyaux_virage_gauche ||
                    bloc == Ref_donnees.tuyaux_virage_haut ||
                    bloc == Ref_donnees.eau ||
-                   bloc == Ref_donnees.route ||
                    bloc == Ref_donnees.sol_stationEpuration;
         }
 
@@ -145,31 +313,6 @@ namespace SshCity.Game.Plan
             {
                 planInitial.SetBlock(planInitial.TileMap0, x - 1, y, ChoixTuyaux(new Vector2(x - 1, y), planInitial));
             }
-        }
-
-        public static Vector2 WhereIsRoute(Vector2 tile, PlanInitial planInitial)
-        {
-            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int) tile.x - 1, (int) tile.y)))
-            {
-                return tile - new Vector2(1, 0);
-            }
-
-            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int) tile.x + 1, (int) tile.y)))
-            {
-                return tile + new Vector2(1, 0);
-            }
-
-            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y - 1)))
-            {
-                return tile - new Vector2(0, 1);
-            }
-
-            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y + 1)))
-            {
-                return tile + new Vector2(0, 1);
-            }
-
-            return new Vector2();
         }
     }
 }
