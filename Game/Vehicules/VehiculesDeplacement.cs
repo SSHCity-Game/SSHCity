@@ -15,6 +15,18 @@ namespace SshCity.Game.Vehicules
 	    private bool Virage = false;
 	    private int WhichVirage;
 
+	    public static bool isFeu(int bloc)
+	    {
+		    return bloc == Ref_donnees.eglise_flamme ||
+		           bloc == Ref_donnees.maison1_flamme ||
+		           bloc == Ref_donnees.maison3_flamme ||
+		           bloc == Ref_donnees.maison4_flamme ||
+		           bloc == Ref_donnees.maison5_flamme ||
+		           bloc == Ref_donnees.restaurant2_flamme ||
+		           bloc == Ref_donnees.restaurant_flamme ||
+		           bloc == Ref_donnees.cafe_flamme;
+	    }
+
 	    /// <summary>
 	    /// Indique si un deplacemetn à un croisment est valide ou pas 
 	    /// </summary>
@@ -392,6 +404,37 @@ namespace SshCity.Game.Vehicules
 					}
 				}
 			};
+
+
+			if (_type == Type.CAMION)
+			{
+				Vector2 posi = _planInitial.TileMap2.WorldToMap(Position);
+				if (isFeu(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x+1, (int) posi.y)))
+				{
+					_paused = true;
+					incidents.ResoIncident = true;
+				}
+				else if (isFeu(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x-1, (int) posi.y)))
+				{
+					_paused = true;
+					incidents.ResoIncident = true;
+				}
+				else if (isFeu(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x, (int) posi.y-1)))
+				{
+					_paused = true;
+					incidents.ResoIncident = true;
+				}
+				else if (isFeu(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x, (int) posi.y+1)))
+				{
+					_paused = true;
+					incidents.ResoIncident = true;
+				}
+				else
+				{
+					_paused = false;
+				}
+			}
+
 			
 			if (isMoving && !Croisement) //Si le vehicule est en mouvement et que l'on n'est pas a un croisement
 			{
