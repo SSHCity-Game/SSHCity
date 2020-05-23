@@ -40,7 +40,6 @@ namespace SshCity.Game.Plan
                 List<Vector2> ListTuyauxAlreadyDone = new List<Vector2>();
                 if (VerifRaccorde(vector2, planInitial, ListTuyauxAlreadyDone, Ref_donnees.eau))
                 {
-                    GD.Print("SOLSTATION");
                     raccordage(vector2, planInitial, Ref_donnees.sol_stationEpuration);
                 }
                 else
@@ -241,22 +240,26 @@ namespace SshCity.Game.Plan
                                 planInitial.GetBlock(planInitial.TileMapNeg, x, y - 1) == Ref_donnees.tuyaux_terre)
                       || (planInitial.GetBlock(planInitial.TileMap0, x, y-1) == Ref_donnees.route 
                           || planInitial.GetBlock(planInitial.TileMap0, x, y-1) == Ref_donnees.eau
-                          || planInitial.GetBlock(planInitial.TileMap0, x , y-1) == Ref_donnees.sol_maisonEau);
+                          || planInitial.GetBlock(planInitial.TileMap0, x , y-1) == Ref_donnees.sol_maisonEau
+                      || planInitial.GetBlock(planInitial.TileMap0, x , y-1) == Ref_donnees.sol_stationEpuration);
             bool BD = (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x + 1, y))&&
                       planInitial.GetBlock(planInitial.TileMapNeg, x + 1, y) == Ref_donnees.tuyaux_terre)
                 || (planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.route 
                     || planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.eau
-                    || planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.sol_maisonEau);
+                    || planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.sol_maisonEau
+                    || planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.sol_stationEpuration);
             bool BG = (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x, y + 1))&&
                       planInitial.GetBlock(planInitial.TileMapNeg, x, y + 1) == Ref_donnees.tuyaux_terre)
                       || (planInitial.GetBlock(planInitial.TileMap0, x , y+1) == Ref_donnees.route 
                           || planInitial.GetBlock(planInitial.TileMap0, x, y+1) == Ref_donnees.eau
-                          || planInitial.GetBlock(planInitial.TileMap0, x , y+1) == Ref_donnees.sol_maisonEau);
+                          || planInitial.GetBlock(planInitial.TileMap0, x , y+1) == Ref_donnees.sol_maisonEau
+                          || planInitial.GetBlock(planInitial.TileMap0, x , y+1) == Ref_donnees.sol_stationEpuration);
             bool HG = (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x - 1, y))&&
                       planInitial.GetBlock(planInitial.TileMapNeg, x - 1, y) == Ref_donnees.tuyaux_terre)
                       || (planInitial.GetBlock(planInitial.TileMap0, x - 1, y) == Ref_donnees.route 
                           || planInitial.GetBlock(planInitial.TileMap0, x - 1, y) == Ref_donnees.eau
-                          || planInitial.GetBlock(planInitial.TileMap0, x - 1, y) == Ref_donnees.sol_maisonEau);
+                          || planInitial.GetBlock(planInitial.TileMap0, x - 1, y) == Ref_donnees.sol_maisonEau
+                          || planInitial.GetBlock(planInitial.TileMap0, x-1 , y) == Ref_donnees.sol_stationEpuration);
 
             if (HD && BD && BG && HG)
             {

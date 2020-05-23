@@ -50,12 +50,12 @@ public class Activation
             {
                 return true;
             }
-            return (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y) ==
+            return (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x+1, (int) tile.y+1) ==
                     Ref_donnees.sol_maisonEau);
         }
         else
         {
-            return (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y) ==
+            return (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x+1, (int) tile.y+1) ==
                     Ref_donnees.sol_stationEpuration);
         }
     }
