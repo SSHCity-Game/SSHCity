@@ -274,7 +274,10 @@ public partial class PlanInitial : Node2D
             {
                 Interface.Interdit = false;
                 SetBlock(TileMap2, (int) tile.x, (int) tile.y, _batiment);
-                SetBlock(TileMapWithoutRoute, (int) tile.x, (int) tile.y, _batiment);
+                if (!_achatRoute)
+                {
+                    SetBlock(TileMapWithoutRoute, (int) tile.x, (int) tile.y, _batiment);
+                }
                 if (tile != _lastTile)
                 {
                     SetBlock(TileMap2, (int) _lastTile.x, (int) _lastTile.y, -1);
@@ -307,6 +310,7 @@ public partial class PlanInitial : Node2D
                     SetAchatBlocs(tile);
                     if (_achatRoute)
                     {
+                        SetBlock(TileMapWithoutRoute, (int) _lastTile.x, (int) _lastTile.y, -1);
                         Routes.ChangeRoute(tile, this);
                     }
 

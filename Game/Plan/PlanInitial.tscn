@@ -25,7 +25,6 @@ tile_data = PoolIntArray( -3997637, 0, 0, -3932102, 0, 0, -3932101, 0, 0, -39321
 
 [node name="TileMap1bis" type="TileMap" parent="."]
 visible = false
-scale = Vector2( 1, 1 )
 mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 861, 496 )

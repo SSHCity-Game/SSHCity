@@ -43,6 +43,7 @@ public class Activation
 
     public static bool isRaccordeEnEau(PlanInitial planInitial, Vector2 tile, int bloc, int consomationEau)
     {
+        
         if (bloc != Ref_donnees.stationEpuration)
         {
             if (consomationEau == 0)
