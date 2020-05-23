@@ -249,7 +249,7 @@ public class Interface : CanvasLayer
         Water -= Waterused;
     }
 
-    public void buildable(Building batiment)
+    public int[] buildable(Building batiment)
     {
         int[] batiments = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         switch (batiment.Characteristics.Bloc[batiment.Characteristics.Lvl])
@@ -301,7 +301,8 @@ public class Interface : CanvasLayer
                 ++batiments[12];
                 break;
         }
-        
+
+        return batiments;
     }
 
     public override void _Process(float delta)
