@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Godot;
+using SshCity.Game.Buildings;
 
 namespace SshCity.Game.Plan
 {
@@ -34,7 +35,7 @@ namespace SshCity.Game.Plan
             foreach (Vector2 vector2 in ListEpuration)
             {
                 List<Vector2> ListTuyauxAlreadyDone = new List<Vector2>();
-                if (VerifRaccorde(vector2, planInitial, ListTuyauxAlreadyDone))
+                if (VerifRaccorde(vector2, planInitial, ListTuyauxAlreadyDone, Ref_donnees.eau))
                 {
                     raccordage(vector2, planInitial, Ref_donnees.sol_stationEpuration);
                 }
@@ -45,7 +46,24 @@ namespace SshCity.Game.Plan
             }
         }
 
-        public static bool VerifRaccorde(Vector2 tile, PlanInitial planInitial, List<Vector2> list)
+        public static void MaisonRaccordage(PlanInitial planInitial)
+        {
+            foreach (Building building in Building.ListBuildings)
+            {
+                Vector2 tile = building.Position + new Vector2(1, 1);
+                List<Vector2> ListTuyauxAlreadyDone = new List<Vector2>();
+                if (VerifRaccorde(tile, planInitial, ListTuyauxAlreadyDone, Ref_donnees.sol_stationEpuration))
+                {
+                    raccordage(tile, planInitial, Ref_donnees.sol_maisonEau);
+                }
+                else
+                {
+                    raccordage(tile, planInitial, Ref_donnees.route);
+                }
+            }
+        }
+
+        public static bool VerifRaccorde(Vector2 tile, PlanInitial planInitial, List<Vector2> list, int bloc)
         {
             foreach (Vector2 vector2 in list)
             {
@@ -61,7 +79,7 @@ namespace SshCity.Game.Plan
             bool haut = false;
             if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x -1,(int)tile.y)))
             {
-                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x -1,(int)tile.y) == Ref_donnees.eau)
+                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x -1,(int)tile.y) == bloc)
                 {
                     return true;
                 }
@@ -69,7 +87,7 @@ namespace SshCity.Game.Plan
             }
             if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x+1,(int)tile.y)))
             {
-                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x+1,(int)tile.y) == Ref_donnees.eau)
+                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x+1,(int)tile.y) == bloc)
                 {
                     return true;
                 }
@@ -77,7 +95,7 @@ namespace SshCity.Game.Plan
             }
             if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y-1)))
             {
-                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x ,(int)tile.y-1) == Ref_donnees.eau)
+                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x ,(int)tile.y-1) == bloc)
                 {
                     return true;
                 }
@@ -85,7 +103,7 @@ namespace SshCity.Game.Plan
             }
             if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y+1)))
             {
-                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y+1) == Ref_donnees.eau)
+                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y+1) == bloc)
                 {
                     return true;
                 }
@@ -94,80 +112,80 @@ namespace SshCity.Game.Plan
 
             if (gauche && bas && droit && haut)
             {
-                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
             if (bas && droit && haut)
             {
-                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
             if (gauche && droit && haut)
             {
-                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
             if (gauche && bas && haut)
             {
-                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
             if (gauche && bas && droit)
             {
-                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc);
             }
             if (droit && haut)
             {
-                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
             if (gauche && bas)
             {
-                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc);
             }
             if (bas && haut)
             {
-                return VerifRaccorde(tile + new Vector2(0, 1), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
             if (gauche && droit)
             {
-                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc);
             }
             if (bas && droit)
             {
-                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc);
             }
             if (gauche && haut)
             {
-                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list) ||
-                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
+                       VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
             if (gauche)
             {
-                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc);
             }
             if (bas)
             {
-                return VerifRaccorde(tile + new Vector2(0, 1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc);
             }
             if (droit)
             {
-                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc);
             }
             if (haut)
             {
-                return VerifRaccorde(tile + new Vector2(0, -1), planInitial, list);
+                return VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
 
             return false;
@@ -188,6 +206,7 @@ namespace SshCity.Game.Plan
                    bloc == Ref_donnees.tuyaux_virage_haut ||
                    bloc == Ref_donnees.eau ||
                    bloc == Ref_donnees.sol_maisonEau ||
+                   bloc == Ref_donnees.route ||
                    bloc == Ref_donnees.sol_stationEpuration;
         }
 

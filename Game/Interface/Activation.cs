@@ -40,4 +40,22 @@ public class Activation
 
         return res;
     }
+
+    public static bool isRaccordeEnEau(PlanInitial planInitial, Vector2 tile, int bloc, int consomationEau)
+    {
+        if (bloc != Ref_donnees.stationEpuration)
+        {
+            if (consomationEau == 0)
+            {
+                return true;
+            }
+            return (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y) ==
+                    Ref_donnees.sol_maisonEau);
+        }
+        else
+        {
+            return (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y) ==
+                    Ref_donnees.sol_stationEpuration);
+        }
+    }
 }

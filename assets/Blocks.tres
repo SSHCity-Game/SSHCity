@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=93 format=2]
+[gd_resource type="TileSet" load_steps=94 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -87,6 +87,7 @@
 [ext_resource path="res://assets/station epuration2.png" type="Texture" id=85]
 [ext_resource path="res://assets/isometric_0224.png" type="Texture" id=86]
 [ext_resource path="res://assets/isometric_0083.png" type="Texture" id=87]
+[ext_resource path="res://assets/Alerte_incidents/bulleEau.png" type="Texture" id=88]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -1024,3 +1025,13 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 103/navigation_offset = Vector2( 0, 0 )
 103/shapes = [  ]
 103/z_index = 0
+104/name = "bulleEau.png 104"
+104/texture = ExtResource( 88 )
+104/tex_offset = Vector2( 100, 0 )
+104/modulate = Color( 1, 1, 1, 1 )
+104/region = Rect2( 448, 864, 608, 512 )
+104/tile_mode = 0
+104/occluder_offset = Vector2( 0, 0 )
+104/navigation_offset = Vector2( 0, 0 )
+104/shapes = [  ]
+104/z_index = 0

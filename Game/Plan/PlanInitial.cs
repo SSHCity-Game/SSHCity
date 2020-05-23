@@ -393,6 +393,8 @@ public partial class PlanInitial : Node2D
 
                 i++;
             }
+            SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
+            SshCity.Game.Plan.Tuyaux.MaisonRaccordage(this);
             //SetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1, Ref_donnees.terre);
             Routes.ChangeRoute(_tileSupressing, this);
             _delete = false;
@@ -472,6 +474,7 @@ public partial class PlanInitial : Node2D
                     SetBlock(TileMapNeg, (int)tile.x, (int)tile.y, Ref_donnees.tuyaux_terre);
                     SshCity.Game.Plan.Tuyaux.ChangeTuyaux(tile, this);
                     SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
+                    SshCity.Game.Plan.Tuyaux.MaisonRaccordage(this);
                 }
                 else
                 {

@@ -271,7 +271,8 @@ public class Interface : CanvasLayer
         {
 
             if (Activation.isNextToRoad(_planInitial, batiment.Position,
-                batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
+                batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]) && Activation.isRaccordeEnEau(_planInitial, batiment.Position, batiment.Characteristics.Bloc[batiment.Characteristics.Lvl],
+                batiment.Characteristics.water[batiment.Characteristics.Lvl]))
             {
                 if (!batiment.Activated)
                 {
@@ -294,7 +295,15 @@ public class Interface : CanvasLayer
                 
                 if (batiment.Activated)
                 {
-                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
+                    if (!Activation.isNextToRoad(_planInitial, batiment.Position,
+                                        batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
+                    {
+                        _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
+                    }
+                    else
+                    {
+                        _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleEau);
+                    }
                     batiment.Activated = false;
                 }
             }
