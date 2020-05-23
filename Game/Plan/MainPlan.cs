@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
+using SshCity.Game;
 using SshCity.Game.Plan;
 using SshCity.Game.Sauvegarde;
 
@@ -158,9 +160,39 @@ public class MainPlan : Node2D
 		_planInitial = (PlanInitial) GetNode(str_planInitial);
 		_camera2D = (Camera2D) GetNode(str_camera2D);
 		_musique = (AudioStreamPlayer) GetNode(_str_music);
+		GD.Print("Putain zebi");
+		// Charges les arguments de lancement
+		var args = OS.GetCmdlineArgs();
+		Player player;
+		if (args.Length == 0)
+		{
+			player = Player.CreateInstance();
+			player.Email = "default@email.com";
+			player.FirstName = "FirstName";
+			player.LastName = "LastName";
+			player.Token = null;
+			player.Username = "Username";
+			player.GameId = "GameID";
+		}
+		else
+		{
+			var jsonUser = Marshalls.Base64ToUtf8(args[0]);
+			var user = JSON.Parse(jsonUser).Result as Dictionary;
+			player = Player.CreateInstance();
+			player.Email = user["email"].ToString();
+			player.Username = user["username"].ToString();
+			player.LastName = user["lastName"].ToString();
+			player.Token = user["token"].ToString();
+			player.FirstName = user["firstName"].ToString();
+			player.GameId = user["gameId"].ToString();
+		}
+
+		string game = null;
+		if (args.Length > 1)
+			game = Marshalls.Base64ToUtf8(args[1]);
 
 		// We load the game or we generate a map
-		if (!SauvegardeManager.LoadGame(_planInitial))
+		if (!SauvegardeManager.LoadGame(_planInitial, game))
 		{
 			// Génère une nouvelle map tant qu'on ne peut pas créer de village
 			while (!Buildings.GenerateBuildings(_planInitial))
@@ -180,6 +212,14 @@ public class MainPlan : Node2D
 		//Lancement de la musique
 		_musique.Play();
 	}
+
+	/*public override void _Notification(int what)
+	{
+		if (what != MainLoop.NotificationWmQuitRequest)
+			return;
+		GD.Print("Exiting");
+		SauvegardeManager.SaveGame();
+	}*/
 
 	public static bool ExistBatiment(int indexBat)
 	{
