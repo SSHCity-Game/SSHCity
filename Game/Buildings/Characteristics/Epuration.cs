@@ -9,7 +9,7 @@ namespace SshCity.Game.Buildings.Characteristics
             Bloc = new[] {Ref_donnees.stationEpuration};
             Cost = new[] {3000};
             Earn = new[] {2,5,8};
-            Titre = new[] {"Ferme"};
+            Titre = new[] {"Station Epuration"};
             Lvl = 0;
             GainXp = new[] {10, 100, 500};
             energy = new[] {1};
