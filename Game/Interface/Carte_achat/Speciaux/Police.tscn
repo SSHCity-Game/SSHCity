@@ -18,7 +18,8 @@ margin_top = -120.0
 margin_bottom = 122.0
 
 [node name="Cligno" type="TextureRect" parent="Background" index="0"]
-margin_right = 142.999
+margin_left = -1.0
+margin_right = 142.0
 margin_bottom = 131.0
 texture = SubResource( 1 )
 __meta__ = {
@@ -26,7 +27,7 @@ __meta__ = {
 }
 
 [node name="Image" parent="Background" index="1"]
-position = Vector2( 69.2398, 64.3962 )
+position = Vector2( 68.2397, 66.3962 )
 texture = ExtResource( 2 )
 
 [node name="Energie" type="Label" parent="." index="7"]

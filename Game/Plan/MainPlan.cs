@@ -154,7 +154,7 @@ public class MainPlan : Node2D
 
 	public override void _Ready()
 	{
-		_mainMenu = (MainMenu) GetNode("Camera2D/MainMenu");
+		//_mainMenu = (MainMenu) GetNode("Camera2D/MainMenu");
 		_planInitial = (PlanInitial) GetNode(str_planInitial);
 		_camera2D = (Camera2D) GetNode(str_camera2D);
 		_musique = (AudioStreamPlayer) GetNode(_str_music);

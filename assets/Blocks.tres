@@ -1,5 +1,6 @@
 [gd_resource type="TileSet" load_steps=94 format=2]
 
+
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
 [ext_resource path="res://assets/Flammeresto.png" type="Texture" id=3]
@@ -88,6 +89,7 @@
 [ext_resource path="res://assets/isometric_0224.png" type="Texture" id=86]
 [ext_resource path="res://assets/isometric_0083.png" type="Texture" id=87]
 [ext_resource path="res://assets/Alerte_incidents/bulleEau.png" type="Texture" id=88]
+
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -937,7 +939,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 94/z_index = 0
 95/name = "Volmairie.png 95"
 95/texture = ExtResource( 80 )
-95/tex_offset = Vector2( 0, 0 )
+95/tex_offset = Vector2( -35, 130 )
 95/modulate = Color( 1, 1, 1, 1 )
 95/region = Rect2( 32, 32, 960, 928 )
 95/tile_mode = 0
@@ -947,7 +949,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 95/z_index = 0
 96/name = "Volmaison1.png 96"
 96/texture = ExtResource( 79 )
-96/tex_offset = Vector2( 0, 0 )
+96/tex_offset = Vector2( 145, 320 )
 96/modulate = Color( 1, 1, 1, 1 )
 96/region = Rect2( 32, 96, 800, 736 )
 96/tile_mode = 0
@@ -957,7 +959,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 96/z_index = 0
 97/name = "Volmaison3.png 97"
 97/texture = ExtResource( 81 )
-97/tex_offset = Vector2( 0, 0 )
+97/tex_offset = Vector2( 30, 315 )
 97/modulate = Color( 1, 1, 1, 1 )
 97/region = Rect2( 32, 128, 928, 736 )
 97/tile_mode = 0
@@ -967,7 +969,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 97/z_index = 0
 98/name = "Volmaison4.png 98"
 98/texture = ExtResource( 82 )
-98/tex_offset = Vector2( 0, 0 )
+98/tex_offset = Vector2( 70, 250 )
 98/modulate = Color( 1, 1, 1, 1 )
 98/region = Rect2( 64, 96, 896, 768 )
 98/tile_mode = 0
@@ -977,7 +979,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 98/z_index = 0
 99/name = "Volmaison5.png 99"
 99/texture = ExtResource( 78 )
-99/tex_offset = Vector2( 0, 0 )
+99/tex_offset = Vector2( 130, 280 )
 99/modulate = Color( 1, 1, 1, 1 )
 99/region = Rect2( 0, 64, 864, 672 )
 99/tile_mode = 0
@@ -987,7 +989,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 99/z_index = 0
 100/name = "noyade.png 100"
 100/texture = ExtResource( 83 )
-100/tex_offset = Vector2( 0, 0 )
+100/tex_offset = Vector2( -2035, -1275 )
 100/modulate = Color( 1, 1, 1, 1 )
 100/region = Rect2( 384, 864, 4832, 3232 )
 100/tile_mode = 0
@@ -1035,3 +1037,4 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 104/navigation_offset = Vector2( 0, 0 )
 104/shapes = [  ]
 104/z_index = 0
+

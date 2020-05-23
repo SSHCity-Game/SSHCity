@@ -12,6 +12,8 @@ namespace SshCity.Game.Plan
     {
         public static Random rand;
 
+        public static List<(int, int)> CoordsLac1= new List<(int, int)>();
+        public static List<(int, int)> CoordsLac2 = new List<(int, int)>();
         enum TypeLac
         {
             LAC1,
@@ -192,6 +194,10 @@ namespace SshCity.Game.Plan
                     {
                         planInitial.SetBlock(planInitial.TileMap2, x, y, blocLac);
                         planInitial.SetBlock(planInitial.TileMapWithoutRoute, x, y, blocLac);
+
+                        if (blocLac == Ref_donnees.lac1) CoordsLac1.Add((x, y));
+                        else CoordsLac2.Add((x,y));
+
                         Bateau bateau = (Bateau) planInitial._bateauxScene.Instance();
                         bateau.Init(planInitial, planInitial.TileMap1.MapToWorld(new Vector2(x+1, y+1)));
                         planInitial.AddChild(bateau);
@@ -206,6 +212,20 @@ namespace SshCity.Game.Plan
                         i += 1;
                     }
                 }
+            }
+        }
+        
+        public static void GenerateLacNoyade(PlanInitial planInitial, int index, int x, int y)
+        { /* change une image de lac par une noyade */
+            if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.water_terre)
+            {
+                planInitial.SetBlock(planInitial.TileMap2, x, y, index);
+                /*if (index == Ref_donnees.lac1)
+                {
+                    Bateau bateau = (Bateau) planInitial._bateauxScene.Instance();
+                    bateau.Init(planInitial, planInitial.TileMap1.MapToWorld(new Vector2(x+1, y+1)));
+                    planInitial.AddChild(bateau);
+                }*/
             }
         }
 
