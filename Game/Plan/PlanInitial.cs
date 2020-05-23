@@ -178,7 +178,7 @@ public partial class PlanInitial : Node2D
 
     public void TimerOutVehicule()
     {
-        if (addVehicule)
+        if (addVehicule && DepartRoute.Count > 0)
         {
             Random rand = new Random();
             int whichVehicule = rand.Next(0, Vehicules.ListTypeVehicules.Count);
@@ -391,7 +391,7 @@ public partial class PlanInitial : Node2D
                 while (j < dimensions.largeur+1)
                 {
                     SetBlock(TileMap1, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
-                    SetBlock(TileMap0, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
+                    SetBlock(TileMap0, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);;
                     j++;
                 }
 
