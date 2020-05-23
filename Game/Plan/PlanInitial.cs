@@ -68,12 +68,14 @@ public partial class PlanInitial : Node2D
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
+    public const string str_TileMapWithoutRoute = "TileMap1bis";
     private const string str_VehiculeTimer = "Vehicule";
     public TileMap TileMap0;
     public TileMap TileMap1;
     public TileMap TileMap2;
     public TileMap TileMap3;
     public TileMap TileMapNeg;
+    public TileMap TileMapWithoutRoute;
 
     public static bool DeleteSure
     {
@@ -112,6 +114,7 @@ public partial class PlanInitial : Node2D
         TileMap2 = (TileMap) GetNode(str_TileMap2);
         TileMap3 = (TileMap) GetNode(str_TileMap3);
         TileMapNeg = (TileMap) GetNode(str_TileMapNeg);
+        TileMapWithoutRoute = (TileMap) GetNode(str_TileMapWithoutRoute);
         VehiculeTimer = (Timer) GetNode(str_VehiculeTimer);
         VehiculeTimer.Autostart = true;
         _vehiculeScene = (PackedScene) GD.Load("res://Game/Vehicules/Vehicules.tscn");
@@ -128,6 +131,7 @@ public partial class PlanInitial : Node2D
         if (_buildOnTileMap2)
         {
             SetBlock(TileMap2, (int) _tileOnTileMap2.x, (int) _tileOnTileMap2.y, _batiment);
+            SetBlock(TileMapWithoutRoute, (int) _tileOnTileMap2.x, (int) _tileOnTileMap2.y, _batiment);
             _buildOnTileMap2 = false;
         }
 
@@ -142,7 +146,7 @@ public partial class PlanInitial : Node2D
             {
                 _vehicule.Init(this, Routes.WhereIsRoute(VehiculesPosition, this), VehiculesType, VehiculesAutonome);
             }
-            AddChild(_vehicule);
+            TileMap2.AddChild(_vehicule);
             VehiculesInit = false;
         }
 
@@ -270,9 +274,11 @@ public partial class PlanInitial : Node2D
             {
                 Interface.Interdit = false;
                 SetBlock(TileMap2, (int) tile.x, (int) tile.y, _batiment);
+                SetBlock(TileMapWithoutRoute, (int) tile.x, (int) tile.y, _batiment);
                 if (tile != _lastTile)
                 {
                     SetBlock(TileMap2, (int) _lastTile.x, (int) _lastTile.y, -1);
+                    SetBlock(TileMapWithoutRoute, (int) _lastTile.x, (int) _lastTile.y, -1);
                 }
 
                 _lastTile = tile;
@@ -282,6 +288,7 @@ public partial class PlanInitial : Node2D
                 if (tile != _lastTile)
                 {
                     SetBlock(TileMap2, (int) _lastTile.x, (int) _lastTile.y, -1);
+                    SetBlock(TileMapWithoutRoute, (int) _lastTile.x, (int) _lastTile.y, -1);
                     Interface.Interdit = true;
                 }
             }
@@ -337,6 +344,7 @@ public partial class PlanInitial : Node2D
             if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) != Ref_donnees.route) //Corrige _bug bouton route
             {
                 SetBlock(TileMap2, (int) tile.x, (int) tile.y, -1);
+                SetBlock(TileMapWithoutRoute, (int) tile.x, (int) tile.y, -1);
             }
 
             _pressed = false;
@@ -362,6 +370,7 @@ public partial class PlanInitial : Node2D
             int bloc = GetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y);
             Building.Delete(_tileSupressing);
             SetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
+            SetBlock(TileMapWithoutRoute, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
             (int largeur, int longueur) dimensions = (1, 1);
             try
             {

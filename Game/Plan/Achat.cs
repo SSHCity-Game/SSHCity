@@ -28,7 +28,9 @@ public partial class PlanInitial
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.montagne_sol
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sable
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.eau
-                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.water_terre;
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.water_terre
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sol_stationEpuration
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sol_maisonEau;
                 j++;
             }
 

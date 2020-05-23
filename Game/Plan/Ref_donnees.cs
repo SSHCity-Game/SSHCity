@@ -123,6 +123,7 @@ namespace SshCity.Game.Plan
         public const int tuyaux_croisement = 88;
         public const int sol_tuyaux = 80;
         public const int tuyaux_terre = 93;
+        public const int sol_maisonEau = 103;
 
         //bulles Bloc
         public const int bulleRoute = 79;
