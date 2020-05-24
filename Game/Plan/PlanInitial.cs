@@ -308,6 +308,8 @@ public partial class PlanInitial : Node2D
                 if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)
                 {
                     SetAchatBlocs(tile, _achatRoute);
+                    SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
+                    SshCity.Game.Plan.Tuyaux.MaisonRaccordage(this);
                     if (_achatRoute)
                     {
                         SetBlock(TileMapWithoutRoute, (int) _lastTile.x, (int) _lastTile.y, -1);
@@ -378,6 +380,8 @@ public partial class PlanInitial : Node2D
             Building.Delete(_tileSupressing);
             SetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
             SetBlock(TileMapWithoutRoute, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
+            SetBlock(TileMap3, (int)_tileSupressing.x, (int)_tileSupressing.y, -1);
+
             (int largeur, int longueur) dimensions = (1, 1);
             try
             {
