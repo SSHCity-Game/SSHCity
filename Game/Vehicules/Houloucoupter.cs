@@ -41,9 +41,10 @@ public partial class Houloucoupter : Area2D
 
     public async void Init(PlanInitial planInitial, Type type, Vector2 position, Vector2 destination)
     {
-        if (workDone)
+        if (wait)
         {
             await Task.Delay(3000);
+            ok = true;
         }
         _animatedSprite = (AnimatedSprite) GetNode(_strAnimatedSprite);
         _collisionShape2D = (CollisionShape2D) GetNode(_strCollsionShape2D);

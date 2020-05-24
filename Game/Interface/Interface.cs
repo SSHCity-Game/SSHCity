@@ -35,6 +35,7 @@ public class Interface : CanvasLayer
     private static int _water = Ref_donnees.water;
     private static bool _hide = true;
     private bool _achatRoute = false;
+    private bool _achatTuyaux = false;
     private Sprite _bulldozerMouse;
     private Button _button_shop;
     private Button _buttonDelete;
@@ -174,12 +175,15 @@ public class Interface : CanvasLayer
         _buttonDelete.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonRoute.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonEau.Connect("mouse_entered", this, nameof(ButtonOver));
+        _buttonTuyaux.Connect("mouse_entered", this, nameof(ButtonOver));
+        _buttonExit.Connect("mouse_entered", this, nameof(ButtonOver));
 
         _button_shop.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonEau.Connect("mouse_exited", this, nameof(ButtonExited));
-
+        _buttonTuyaux.Connect("mouse_exited", this, nameof(ButtonExited));
+        _buttonExit.Connect("mouse_exited", this, nameof(ButtonExited));
 
         _timer.Connect("timeout", this, nameof(WinMoney));
         _timer.Connect("timeout", this, nameof(EnergyWin));
@@ -188,11 +192,14 @@ public class Interface : CanvasLayer
 
     public void TuyauxPressde()
     {
-        PlanInitial.Tuyaux = true;
+        _achatTuyaux = !_achatTuyaux;
+        PlanInitial.Tuyaux = !PlanInitial.Tuyaux;
     }
     
     public void ExitPressed()
     {
+        _achatTuyaux = false;
+        PlanInitial.Tuyaux = false;
         _planInitial.TileMapWithoutRoute.Hide();
         _planInitial.TileMap0.Hide();
         _planInitial.TileMap1.Show();
@@ -476,6 +483,11 @@ public class Interface : CanvasLayer
 
     public void ButtonOver()
     {
+        if (_achatTuyaux)
+        {
+            PlanInitial.Tuyaux = false;
+        }
+        
         if (_achatRoute)
         {
             PlanInitial.AchatRoute(false);
@@ -490,6 +502,11 @@ public class Interface : CanvasLayer
 
     public void ButtonExited()
     {
+        if (_achatTuyaux)
+        {
+            PlanInitial.Tuyaux = true;
+        }
+        
         if (_achatRoute)
         {
             PlanInitial.AchatRoute(true);

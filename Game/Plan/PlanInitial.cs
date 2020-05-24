@@ -471,7 +471,6 @@ public partial class PlanInitial : Node2D
 
         if (OneAction.IsActionPressed("ClickG") && Tuyaux)
         {
-            Tuyaux = false;
             _lastTile = new Vector2(0, 0);
             Vector2 tile = GetTilePosition(TileMap0) + new Vector2(1, 1);
             if (GetBlock(TileMap0, (int) tile.x, (int) tile.y) == _batiment)

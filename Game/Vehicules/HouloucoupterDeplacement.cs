@@ -2,6 +2,9 @@
 
 public partial class Houloucoupter
 {
+
+    private bool wait = false;
+    private bool ok = false;
     public override void _Process(float delta)
     {
         base._Process(delta);
@@ -15,11 +18,12 @@ public partial class Houloucoupter
         }
         else if(!workDone)
         {
-            workDone = true;
+            wait = true;
             incidents.ResoNoyade = true;
             Init(_planInitial, Type.HOPITAL, _planInitial.TileMap2.WorldToMap(_destination), _planInitial.TileMap2.WorldToMap(depart));
+            workDone = true;
         }
-        else
+        else if (ok)
         {
             QueueFree();
         }
