@@ -192,8 +192,8 @@ public class MainPlan : Node2D
 		
 
 		// We load the game or we generate a map
-		if (!SauvegardeManager.LoadGame(_planInitial, game))
-		{
+		//if (!SauvegardeManager.LoadGame(_planInitial, game))
+		//{
 			// Génère une nouvelle map tant qu'on ne peut pas créer de village
 			while (!Buildings.GenerateBuildings(_planInitial))
 			{
@@ -207,7 +207,7 @@ public class MainPlan : Node2D
 
 			//CREATION LACS
 			Lacs.GenerateLac(_planInitial);
-		}
+		//}
 
 		//Lancement de la musique
 		_musique.Play();

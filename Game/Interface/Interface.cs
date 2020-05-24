@@ -317,7 +317,7 @@ public class Interface : CanvasLayer
         /* incrementation de la barre de niveau */
         //ScoreBar.MaxValue = UpdateScoreValue(_level);
         // todo: en attente d'un fix
-        //(_xp, _level) = UpdateXp(_xp, _level);
+        (_xp, _level) = UpdateXp(_xp, _level);
         ScoreBar.Value = _xp;
         Score.Text = Convert.ToString(_level);
         
