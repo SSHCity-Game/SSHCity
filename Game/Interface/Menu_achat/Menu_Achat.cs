@@ -119,7 +119,6 @@ public class Menu_Achat : Panel
 		}
 		else
 		{
-			Interface.Hide = true;
 			EmitSignal("CloseShop");
 			PlanInitial.Achat = true;
 			PlanInitial.Batiment = bloc;
