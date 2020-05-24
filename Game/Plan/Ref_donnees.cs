@@ -86,7 +86,19 @@ namespace SshCity.Game.Plan
         public const int hopitallv3 = 105;
         public const int hopitallv2 = 106;
         public const int centralelv2 = 107;
-
+        public const int immeubleVert = 108;
+        public const int immeubleVerre = 109;
+        public const int feteForraine = 110;
+        public const int aeroport = 111;
+        public const int essence = 112;
+        public const int basket = 113;
+        public const int foot = 114;
+        public const int footlv2 = 115;
+        public const int footlv3 = 116;
+        public const int eolienne = 117;
+        public const int solaire = 118;
+        public const int usine1 = 119;
+        public const int usine2 = 120;
         
         /* Incendie Batiments */
         public const int restaurant_flamme = 3;
@@ -172,10 +184,19 @@ namespace SshCity.Game.Plan
         {
             {centrale, (3, 4)},
             {centralelv2, (3,4)},
-            {ferme, (2, 2)},
             {stationEpuration, (3,3)},
             {hopital, (2,2)},
             {hopitallv3, (2,2)},
+            {feteForraine, (3, 4)},
+            {aeroport, (3, 4)},
+            {foot, (2, 2)},
+            {footlv2, (2, 2)},
+            {footlv3, (2, 2)},
+            {eolienne, (2, 2)},
+            {solaire, (2, 2)},
+            {usine1, (2, 2)},
+            {usine2, (2, 2)},
+
         };
 
         private Random rand;
