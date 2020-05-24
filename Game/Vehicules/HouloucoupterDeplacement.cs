@@ -20,6 +20,7 @@ public partial class Houloucoupter
         {
             wait = true;
             incidents.ResoNoyade = true;
+            Interface.Xp += 50;
             Init(_planInitial, Type.HOPITAL, _planInitial.TileMap2.WorldToMap(_destination), _planInitial.TileMap2.WorldToMap(depart));
             workDone = true;
         }

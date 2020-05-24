@@ -3,7 +3,7 @@ using Godot;
 
 public class Menu_Achat : Panel
 {
-	private const string _str_button_flecheG = "FlecheG/ButtonFlecheG";
+	private const string _str_button_flecheG = "FlecheG/ButtonFlecheGauche";
 	private const string _str_button_flecheD = "FlecheD/ButtonFlecheD";
 	private const string _str_Page = "Page";
 

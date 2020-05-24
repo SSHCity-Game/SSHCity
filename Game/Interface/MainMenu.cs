@@ -7,6 +7,7 @@ public class MainMenu : CanvasLayer
     public Button NewGame;
     public Button Options;
     public Label SSHCity;
+    public CenterContainer CenterContainer;
 
 
     public override void _Ready()
@@ -16,6 +17,7 @@ public class MainMenu : CanvasLayer
         Options = (Button) GetNode("Center/MenuOptions/Options");
         Background = (TextureRect) GetNode("Background");
         SSHCity = (Label) GetNode("CenterTitle/SSHCity");
+        CenterContainer = (CenterContainer) GetNode("Center");
 
         Connexion.Connect("pressed", this, nameof(menu_connexion));
         NewGame.Connect("pressed", this, nameof(new_game));
@@ -36,6 +38,7 @@ public class MainMenu : CanvasLayer
         Options.Hide();
         Background.Hide();
         SSHCity.Hide();
+        CenterContainer.Hide();
         EmitSignal("game_started");
         Parametres._parametres.Show();
     }
