@@ -13,12 +13,14 @@ public class Boutique : CanvasLayer
     private const string _str_menuSpeciaux = _str_background + "/MenuSpeciaux";
     private const string _str_menuBienEtre = _str_background + "/MenuBienEtre";
     private const string _str_menuEconomie = _str_background + "/MenuEconomie";
+    private const string _str_Quitter = _str_background + "/Quitter";
     private Panel _background;
     private Button _button_bien_etre;
     private Button _button_economie;
     private Button _button_habitation;
     private Button _button_sante;
     private Button _button_speciaux;
+    private Button _quitter;
     private MenuBienEtre _menuBienEtre;
     private MenuEconomie _menuEconomie;
     private MenuHabitation _menuHabitation;
@@ -34,6 +36,7 @@ public class Boutique : CanvasLayer
         _button_habitation = (Button) GetNode(_str_button_habitation);
         _button_speciaux = (Button) GetNode(_str_button_speciaux);
         _button_bien_etre = (Button) GetNode(_str_button_bien_etre);
+        _quitter = (Button) GetNode(_str_Quitter);
         _menuHabitation = (MenuHabitation) GetNode(_str_menuHabitation);
         _menuSante = (MenuSante) GetNode(_str_menuSante);
         _menuSpeciaux = (MenuSpeciaux) GetNode(_str_menuSpeciaux);
@@ -52,54 +55,58 @@ public class Boutique : CanvasLayer
         _button_bien_etre.Connect("pressed", this, nameof(ButtonBienEtrePressed));
         _button_speciaux.Connect("pressed", this, nameof(ButtonSpeciauxPressed));
         _button_sante.Connect("pressed", this, nameof(ButtonSantePressed));
+        _quitter.Connect("pressed", this, nameof(Leave));
+    }
+
+    public void Leave()
+    {
+        ViewShop(false);
     }
 
     public void ButtonHabitationPressed()
     {
+        _menuHabitation.Reset();
         _button_bien_etre.Pressed = false;
         _button_economie.Pressed = false;
         _button_sante.Pressed = false;
         _button_speciaux.Pressed = false;
-        Menu_Achat.Reset1 = true;
     }
 
     public void ButtonSantePressed()
     {
+        _menuSante.Reset();
         _button_bien_etre.Pressed = false;
         _button_economie.Pressed = false;
         _button_habitation.Pressed = false;
         _button_speciaux.Pressed = false;
-        Menu_Achat.Reset1 = true;
-
     }
 
     public void ButtonSpeciauxPressed()
     {
+        _menuSpeciaux.Reset();
         _button_bien_etre.Pressed = false;
         _button_economie.Pressed = false;
         _button_sante.Pressed = false;
-        _button_habitation.Pressed = false;        
-        Menu_Achat.Reset1 = true;
-
+        _button_habitation.Pressed = false;
     }
 
     public void ButtonBienEtrePressed()
     {
+       _menuBienEtre.Reset();
         _button_economie.Pressed = false;
         _button_habitation.Pressed = false;
         _button_sante.Pressed = false;
         _button_speciaux.Pressed = false;
-        Menu_Achat.Reset1 = true;
     }
 
 
     public void ButtonEconomiePressed()
     {
+        _menuEconomie.Reset();
         _button_bien_etre.Pressed = false;
         _button_habitation.Pressed = false;
         _button_sante.Pressed = false;
         _button_speciaux.Pressed = false;
-        Menu_Achat.Reset1 = true;
     }
 
 
@@ -135,6 +142,8 @@ public class Boutique : CanvasLayer
             menu_incident.PoliceopenShop = false;
             menu_incident.OpenIncident = false;
         }
+
+        Interface.Hide = !Interface.Hide;
     }
 
     public override void _Process(float delta)

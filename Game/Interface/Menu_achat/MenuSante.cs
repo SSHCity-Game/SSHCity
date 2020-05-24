@@ -60,7 +60,20 @@ public class MenuSante : Node
 		_menu_achat.Menus = menus;
 	}
 
-
+	public void Reset()
+	{
+		Carte[] menu1 = {_carteHopital, _carteCaserne};
+		Carte[][] menus = {menu1};
+		_menu_achat.Menus = menus;
+		if (Menu_Achat.WhichMenu <= menus.Length)
+		{
+			_menu_achat.Reset();
+		}
+		else
+		{
+			Menu_Achat.WhichMenu = 0;
+		}
+	}
 	public void CloseMenuSante()
 	{
 		_menu_achat.Hide();

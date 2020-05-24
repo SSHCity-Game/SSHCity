@@ -400,8 +400,6 @@ public class Interface : CanvasLayer
         {
             _ouvertureboutique.Play();
         }
-
-        _hide = !_hide;
     }
 
     public void ButtonRoutePressed()
@@ -433,6 +431,7 @@ public class Interface : CanvasLayer
 
     public void ButtonOver()
     {
+        Interdit = false;
         if (_achatTuyaux)
         {
             PlanInitial.Tuyaux = false;
