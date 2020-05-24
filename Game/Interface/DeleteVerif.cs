@@ -30,6 +30,7 @@ public class DeleteVerif : Panel
     {
         PlanInitial.DeleteSure = true;
         _verif = false;
+        Interface.Delete = false;
         this.Hide();
         if(Parametres.effets)
             _supression.Play();

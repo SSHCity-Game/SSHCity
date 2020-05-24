@@ -44,7 +44,7 @@ public class Interface : CanvasLayer
     public Sprite _croix;
     private Sprite _croixJaune;
     private Sprite _rouages;
-    private bool _delete = false;
+    private static bool _delete = false;
     private Panel _money_couleur;
     private Label _money_text;
     private Label _energy_text;
@@ -80,6 +80,12 @@ public class Interface : CanvasLayer
     public static int Energyused => energyused;
 
     public static int Waterused => waterused;
+
+    public static bool Delete
+    {
+        get => _delete;
+        set => _delete = value;
+    }
 
     public static bool InfosBool
     {
@@ -193,7 +199,7 @@ public class Interface : CanvasLayer
     public void TuyauxPressde()
     {
         _achatTuyaux = !_achatTuyaux;
-        PlanInitial.Tuyaux = !_achatTuyaux;
+        PlanInitial.Tuyaux = _achatTuyaux;
     }
     
     public void ExitPressed()
@@ -429,7 +435,6 @@ public class Interface : CanvasLayer
     {
         if (_achatTuyaux)
         {
-            GD.Print("JTTEBZ");
             PlanInitial.Tuyaux = false;
         }
         
