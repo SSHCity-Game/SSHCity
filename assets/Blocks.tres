@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=112 format=2]
+[gd_resource type="TileSet" load_steps=113 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -99,6 +99,7 @@
 [ext_resource path="res://assets/hopital3.png" type="Texture" id=97]
 [ext_resource path="res://assets/isometric centrale2.png" type="Texture" id=98]
 [ext_resource path="res://assets/hopital4.png" type="Texture" id=99]
+[ext_resource path="res://assets/isometric hotel.png" type="Texture" id=100]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -1135,3 +1136,13 @@ frame_1/delay_sec = 0.0
 107/navigation_offset = Vector2( 0, 0 )
 107/shapes = [  ]
 107/z_index = 0
+108/name = "isometric hotel.png 108"
+108/texture = ExtResource( 100 )
+108/tex_offset = Vector2( 75, 180 )
+108/modulate = Color( 1, 1, 1, 1 )
+108/region = Rect2( 0, 0, 864, 832 )
+108/tile_mode = 0
+108/occluder_offset = Vector2( 0, 0 )
+108/navigation_offset = Vector2( 0, 0 )
+108/shapes = [  ]
+108/z_index = 0

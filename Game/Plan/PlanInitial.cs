@@ -307,8 +307,7 @@ public partial class PlanInitial : Node2D
                 if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)
                 {
                     SetAchatBlocs(tile, _achatRoute);
-                    SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
-                    SshCity.Game.Plan.Tuyaux.MaisonRaccordage(this);
+                   
                     if (_achatRoute)
                     {
                         SetBlock(TileMapWithoutRoute, (int) _lastTile.x, (int) _lastTile.y, -1);
@@ -320,6 +319,8 @@ public partial class PlanInitial : Node2D
                     {
                         AjoutNode(_batiment, tile);
                     }
+                    SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
+                    SshCity.Game.Plan.Tuyaux.MaisonRaccordage(this);
                 }
                 else
                 {
@@ -359,9 +360,9 @@ public partial class PlanInitial : Node2D
         {
             _tileSupressing = GetTilePosition(TileMap1);
             if (_tileSupressing != MainPlan.MairiePosition &&
-                GetBlock(TileMap1, (int)_tileSupressing.x, (int)_tileSupressing.y) != Ref_donnees.montagne_sol &&
-                GetBlock(TileMap1, (int)_tileSupressing.x, (int)_tileSupressing.y) != Ref_donnees.water_terre &&
-                GetBlock(TileMap1, (int)_tileSupressing.x, (int)_tileSupressing.y) != Ref_donnees.terre)
+                GetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1) != Ref_donnees.montagne_sol &&
+                GetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1) != Ref_donnees.water_terre &&
+                GetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1) != Ref_donnees.terre)
             {
                 try
                 {
