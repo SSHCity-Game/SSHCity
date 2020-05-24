@@ -153,7 +153,6 @@ frame_1/delay_sec = 0.0
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 2 )
-frame_1/texture = ExtResource( 100 )
 frame_1/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=10]

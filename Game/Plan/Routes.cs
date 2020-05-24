@@ -158,8 +158,36 @@ namespace SshCity.Game.Plan
             }
         }
 
-        public static Vector2 WhereIsRoute(Vector2 tile, PlanInitial planInitial)
+        public static Vector2 WhereIsRoute(Vector2 tile, PlanInitial planInitial, Vehicules.Vehicules.Type type)
         {
+            if (type == Vehicules.Vehicules.Type.AMBULANCE)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x+i - 1, (int) tile.y+j)))
+                        {
+                            return tile - new Vector2(1+i, 0+j);
+                        }
+            
+                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x+i + 1, (int) tile.y+j)))
+                        {
+                            return tile + new Vector2(1+i, 0+j);
+                        }
+            
+                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x+i, (int) tile.y+j - 1)))
+                        {
+                            return tile - new Vector2(0+i, 1+j);
+                        }
+            
+                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x+i, (int) tile.y+j + 1)))
+                        {
+                            return tile + new Vector2(0+i, 1+j);
+                        }
+                    }
+                }
+            }
             if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x - 1, (int) tile.y)))
             {
                 return tile - new Vector2(1, 0);

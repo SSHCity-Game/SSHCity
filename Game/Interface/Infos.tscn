@@ -112,18 +112,18 @@ margin_top = 390.835
 margin_right = 683.0
 margin_bottom = 421.835
 custom_fonts/font = SubResource( 5 )
-text = "Vehicule"
+text = "Véhicule"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Helicopter" type="Button" parent="."]
-margin_left = 325.0
+margin_left = 310.0
 margin_top = 390.835
-margin_right = 443.0
+margin_right = 441.0
 margin_bottom = 421.835
 custom_fonts/font = SubResource( 5 )
-text = "Helicopter"
+text = "Hélicoptère"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -134,7 +134,7 @@ margin_top = 337.15
 margin_right = 248.2
 margin_bottom = 417.15
 custom_fonts/font = SubResource( 6 )
-text = "Ameliorer"
+text = "Améliorer"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -166,7 +166,7 @@ margin_right = 116.5
 margin_bottom = 32.3916
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.976471, 0.0784314, 0.0588235, 1 )
-text = "Couts
+text = "Coûts
 "
 align = 1
 valign = 1
@@ -380,7 +380,7 @@ margin_right = 116.5
 margin_bottom = 39.21
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0.976471, 0.0784314, 0.0588235, 1 )
-text = "Couts
+text = "Coûts
 "
 align = 1
 valign = 1

@@ -143,7 +143,7 @@ public partial class PlanInitial : Node2D
             }
             else
             {
-                _vehicule.Init(this, Routes.WhereIsRoute(VehiculesPosition, this), VehiculesType, VehiculesAutonome);
+                _vehicule.Init(this, Routes.WhereIsRoute(VehiculesPosition, this, VehiculesType), VehiculesType, VehiculesAutonome);
             }
             TileMap2.AddChild(_vehicule);
             VehiculesInit = false;

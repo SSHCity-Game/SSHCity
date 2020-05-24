@@ -26,7 +26,7 @@ public class LevelUp : CanvasLayer
         if (Interface.levelup)
         {
             LevelUpBack.Show();
-            LevelUpText.Text = "BRAVO \n Vous etes maintenant niveau " + Interface._level;
+            LevelUpText.Text = "BRAVO \n Vous êtes maintenant niveau " + Interface._level;
             LevelUpText.Show();
             Quitter.Show();
             Interface.levelup = false;

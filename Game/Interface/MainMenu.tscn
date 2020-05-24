@@ -79,7 +79,7 @@ __meta__ = {
 
 [node name="MenuOptions" type="VBoxContainer" parent="Center"]
 margin_top = 155.0
-margin_right = 182.0
+margin_right = 251.0
 margin_bottom = 344.0
 custom_constants/separation = 30
 __meta__ = {
@@ -87,7 +87,7 @@ __meta__ = {
 }
 
 [node name="Connexion" type="Button" parent="Center/MenuOptions"]
-margin_right = 182.0
+margin_right = 251.0
 margin_bottom = 43.0
 custom_fonts/font = SubResource( 2 )
 toggle_mode = true
@@ -98,18 +98,18 @@ __meta__ = {
 
 [node name="NewGame" type="Button" parent="Center/MenuOptions"]
 margin_top = 73.0
-margin_right = 182.0
+margin_right = 251.0
 margin_bottom = 116.0
 custom_fonts/font = SubResource( 3 )
 toggle_mode = true
-text = "New Game"
+text = "Nouvelle Partie"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Options" type="Button" parent="Center/MenuOptions"]
 margin_top = 146.0
-margin_right = 182.0
+margin_right = 251.0
 margin_bottom = 189.0
 custom_fonts/font = SubResource( 4 )
 toggle_mode = true
