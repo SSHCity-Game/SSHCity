@@ -49,9 +49,8 @@ public partial class PlanInitial : Node2D
    
     //Add Bateaux
     public PackedScene _bateauxScene;
-
-
-
+    
+    /* nombre de voitures sur la map */
     public static int MAX_CAR = 0;
     public static int NbCar = 0;
     

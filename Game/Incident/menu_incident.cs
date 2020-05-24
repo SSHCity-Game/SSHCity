@@ -23,7 +23,8 @@ public class menu_incident : CanvasLayer
     private static string CaserneOui =
         "Attention, vous avez un incendie en cours. \n " +
         "Vous possedez le materiel adequate pour mettre fin a cet incindent \n" +
-        "Appuyez sur Eteindre pour venir a bout de l'incendie";
+        "Dirigez vous vers la caserne afin de sortir en d'ammener le camion vers le lieu de l'incendie" +
+        "Une fois arrive, cliquez sur le camion pour venir a bout de l'incendie";
     
     private static string PoliceNon =
         "Attention, vous avez un accident en cours. \n " +
@@ -178,6 +179,7 @@ public class menu_incident : CanvasLayer
 
     private void ResolutionIncendie()
     {
+        CloseAll();
         Background.Show();
         Quitter.Show();
         
@@ -193,11 +195,11 @@ public class menu_incident : CanvasLayer
         }
 
         Texte.Show();
-        OpenIncident = true;
     }
 
     private void ResolutionAccident()
     {
+        CloseAll();
         Background.Show();
         Quitter.Show();
         
@@ -213,11 +215,11 @@ public class menu_incident : CanvasLayer
         }
         
         Texte.Show();
-        OpenIncident = true;
     }
     
     private void ResolutionBracage()
     {
+        CloseAll();
         Background.Show();
         Quitter.Show();
         
@@ -233,11 +235,11 @@ public class menu_incident : CanvasLayer
         }
         
         Texte.Show();
-        OpenIncident = true;
     }
     
     private void ResolutionNoyade()
     {
+        CloseAll();
         Background.Show();
         Quitter.Show();
         
@@ -253,6 +255,14 @@ public class menu_incident : CanvasLayer
         }
         
         Texte.Show();
+    }
+
+    private void CloseAll()
+    {
         OpenIncident = true;
+        Infos.Close = true;
+        PlanInitial.AchatRoute(false);
+        PlanInitial.Delete = false;
+        DeleteVerif.Verif = false;
     }
 }
