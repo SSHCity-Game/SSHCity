@@ -218,7 +218,7 @@ public class MainPlan : Node2D
 
 			//CREATION LACS
 			//Lacs.GenerateLac(_planInitial);
-		}
+		//}
 		//Lancement de la musique
 		_musique.Play();
 	}
