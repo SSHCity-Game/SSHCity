@@ -24,6 +24,7 @@ public class Boutique : CanvasLayer
     private MenuHabitation _menuHabitation;
     private MenuSante _menuSante;
     private MenuSpeciaux _menuSpeciaux;
+    public static bool BoutiqueOpen = false;
 
     public override void _Ready()
     {
@@ -101,10 +102,12 @@ public class Boutique : CanvasLayer
         {
             _background.Show();
             _menuSante.OpenMenuSante();
+            BoutiqueOpen = true;
             _button_sante.Pressed = true;
         }
         else
         {
+            BoutiqueOpen = false;
             _background.Hide();
             _menuHabitation.CloseMenuHabitation();
             _menuEconomie.CloseMenuEconomie();

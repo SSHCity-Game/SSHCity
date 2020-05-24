@@ -411,7 +411,7 @@ public partial class PlanInitial : Node2D
         }
 
         if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete && !DeleteVerif.Verif &&
-            !Infos.IsOpen)
+            !Infos.IsOpen && !Boutique.BoutiqueOpen)
         {
             Vector2 tile = GetTilePosition(TileMap1);
             int batiment = -1;
