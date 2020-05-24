@@ -4,7 +4,7 @@
 [ext_resource path="res://Game/Plan/PlanInitial.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Interface/Interface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Son/musique.wav" type="AudioStream" id=4]
-[ext_resource path="res://Game/Interface/MainMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game/Interface/LevelUp.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Game/Incident/incidents.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Game/Interface/Parametres.tscn" type="PackedScene" id=8]
 
@@ -22,9 +22,9 @@ limit_top = 0
 limit_right = 2581
 limit_bottom = 1649
 
-[node name="Interface" parent="Camera2D" instance=ExtResource( 3 )]
+[node name="LevelUp" parent="Camera2D" instance=ExtResource( 5 )]
 
-[node name="MainMenu" parent="Camera2D" instance=ExtResource( 5 )]
+[node name="Interface" parent="Camera2D" instance=ExtResource( 3 )]
 
 [node name="Parametres" parent="Camera2D" instance=ExtResource( 8 )]
 

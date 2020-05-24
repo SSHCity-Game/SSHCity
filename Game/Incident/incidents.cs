@@ -41,8 +41,8 @@ public class incidents : CanvasLayer
 	private static int indexAvbracage;
 	private static int indexApbracage;
 	/* niveau d apparition des differents incidents */	
-	private static int levelIncendie = 2;
-	private static int levelAccident = 5;
+	private static int levelIncendie = 5;
+	public static int levelAccident = 2;
 	private static int levelNoyade = 8;
 	private static int levelBracage = 10;
 	
@@ -66,6 +66,8 @@ public class incidents : CanvasLayer
 			GenerateNoyade(MainPlan._planInitial);
 		if (menu_incident.TimerNoyade.IsStopped() && ResoNoyade) // definit le temps entre l apparition de deux noyades
 			ResoNoyade = false;
+		if (menu_incident.TimerAccident.IsStopped() && ResoAccident)
+			ResoAccident = false;
 	}
 
 	public static (int x, int y, int indexAv, int indexAp) GenereCoords((int, int)[] listBat)
@@ -123,31 +125,6 @@ public class incidents : CanvasLayer
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexApincendie, indexAvincendie, xincendie, yincendie);
 		menu_incident.TimerIncendie.Start();
-		Interface.Xp += 50;
-	}
-	
-					/** ACCIDENTS **/
-	public static void GenerateAccident(PlanInitial planInitial)
-	{
-		if (ResoAccident && Nbaccident > 0)
-		{
-			Nbaccident--;
-			StopAccident(planInitial);
-		}
-		else if (Nbaccident < MAX_ACCIDENT && !ResoAccident)
-		{
-			StartAccident(planInitial);
-			Nbaccident++;
-		}
-	}
-	public static async void StartAccident(PlanInitial planInitial)
-	{ /* fait apparaitre une image d'accident sur la route */
-		menu_incident.Accident.Show();
-	}
-	public static async void StopAccident(PlanInitial planInitial)
-	{ /* supprime l'accident */
-		menu_incident.Accident.Hide();
-		menu_incident.TimerAccident.Start();
 		Interface.Xp += 50;
 	}
 	

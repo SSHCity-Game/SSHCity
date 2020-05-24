@@ -24,27 +24,30 @@ public class menu_incident : CanvasLayer
         "Attention, vous avez un incendie en cours. \n " +
         "Vous possedez le materiel adequate pour mettre fin a cet incindent \n" +
         "Dirigez vous vers la caserne afin de sortir et d'ammener le camion vers le lieu de l'incendie" +
-        "Pour ce faire, cliquez sur la caserne, dans la carte infos cliquez sur camion, le camion sort \n" +
+        "Pour ce faire, cliquez sur la caserne, dans la carte info cliquez sur camion, le camion sort \n" +
         "Cliquez ensuite sur ce camion et dirigez le a l'aide des fleches du clavier \n" +
         "Une fois le camion arrive, l'incendie s'eteindra";
     
-    private static string PoliceNon =
-        "Attention, vous avez un accident en cours. \n " +
+    private static string PoliceNonB =
+        "Attention, vous avez un bracage en cours. \n " +
         "Pour le resoudre, dirigez vous vers la boutique afin d'acheter un commissariat. \n ";
     private static string PoliceOuiB =
-        "Attention, vous avez un accident en cours. \n " +
+        "Attention, vous avez un bracage en cours. \n " +
         "Vous possedez le materiel adequate pour mettre fin a cet incident \n" +
         "Dirigez vous vers le commissariat afin de sortir et d'ammener la voiture vers le lieu du bracage \n" +
-        "Pour ce faire, cliquez sur le commissariat, dans la carte infos cliquez sur police, la voiture sort \n" +
+        "Pour ce faire, cliquez sur le commissariat, dans la carte info cliquez sur police, la voiture sort \n" +
         "Cliquez ensuite sur cette voiture et dirigez la a l'aide des fleches du clavier \n" +
-        "Une fois la voiture arrive, vous arreterez le voleur";
+        "Une fois la voiture arrive, vous arreterez le voleur"; 
+    private static string PoliceNonA =
+        "Attention, vous avez un accident en cours. \n " +
+        "Pour le resoudre, dirigez vous vers la boutique afin d'acheter un commissariat. \n ";
     private static string PoliceOuiA =
         "Attention, vous avez un accident en cours. \n " +
         "Vous possedez le materiel adequate pour mettre fin a cet incident \n" +
-        "Dirigez vous vers le commissariat afin de sortir et d'ammener la voiture vers le lieu de l'accident \n" +
-        "Pour ce faire, cliquez sur le commissariat, dans la carte infos cliquez sur police, la voiture sort \n" +
-        "Cliquez ensuite sur cette voiture et dirigez la a l'aide des fleches du clavier \n" +
-        "Une fois la voiture arrive, vous prendrez en charge l'accident";
+        "Dirigez vous vers l'hopital afin de sortir et d'ammener l'ambulance vers le lieu de l'accident \n" +
+        "Pour ce faire, cliquez sur l'hopital, dans la carte info cliquez sur ambulance, elle sort \n" +
+        "Cliquez ensuite sur celle ci et dirigez la a l'aide des fleches du clavier \n" +
+        "Une fois l'ambulance arrive, vous prendrez en charge l'accident";
     
     private static string HopitalNon =
         "Attention, une personne de votre ville se noie. \n " +
@@ -157,11 +160,11 @@ public class menu_incident : CanvasLayer
         Background.Show();
         Quitter.Show();
         
-        if (MainPlan.ExistBatiment(Ref_donnees.police)) // si la police est deja presente
+        if (MainPlan.ExistBatiment(Ref_donnees.hopital)) // si l'hopital est deja present
             Texte.Text = PoliceOuiA;
         else {
-            Texte.Text = PoliceNon;
-            BoutiquePolice.Show(); // bouton pour aller vers la boutique
+            Texte.Text = PoliceNonA;
+            BoutiqueHopital.Show(); // bouton pour aller vers la boutique
         }
         
         Texte.Show();
@@ -176,7 +179,7 @@ public class menu_incident : CanvasLayer
         if (MainPlan.ExistBatiment(Ref_donnees.police)) // si la police est deja presente
             Texte.Text = PoliceOuiB;
         else {
-            Texte.Text = PoliceNon;
+            Texte.Text = PoliceNonB;
             BoutiquePolice.Show(); // bouton pour aller vers la boutique
         }
         
@@ -189,7 +192,7 @@ public class menu_incident : CanvasLayer
         Background.Show();
         Quitter.Show();
         
-        if (MainPlan.ExistBatiment(Ref_donnees.hopital)) // si l'hopital est deja presente
+        if (MainPlan.ExistBatiment(Ref_donnees.hopital)) // si l'hopital est deja present
             Texte.Text = HopitalOui;
         else {
             Texte.Text = HopitalNon;

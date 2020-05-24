@@ -28,6 +28,7 @@ public class Parametres : CanvasLayer
         _checkMusique = GetNode<CheckButton>("back/Musique/CheckButton");
         _quitter = GetNode<Button>("back/Quitter");
 
+        _login.Text = "username";
         HideAll();
         
         _parametres.Connect("pressed", this, nameof(param_pressed));
