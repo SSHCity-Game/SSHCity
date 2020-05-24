@@ -11,9 +11,11 @@ script = ExtResource( 2 )
 [node name="Menu_Achat" parent="." instance=ExtResource( 1 )]
 
 [node name="Hopital" parent="Menu_Achat" instance=ExtResource( 3 )]
-margin_left = -277.5
+anchor_left = 0.259
+anchor_right = 0.259
+margin_left = -90.243
 margin_top = -120.0
-margin_right = -96.5
+margin_right = 90.757
 margin_bottom = 122.0
 
 [node name="Caserne" parent="Menu_Achat" instance=ExtResource( 4 )]

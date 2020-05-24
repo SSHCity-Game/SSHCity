@@ -8,16 +8,10 @@ public class Activation
     {
         Func<Vector2, bool> NextToRoad = delegate(Vector2 vector2)
         {
-            bool nextTo = false;
-            for (int i = -1; i < 2; i++)
-            {
-                for (int j = -1; j < 2; j++)
-                {
-                    nextTo = nextTo || Routes.IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)vector2.x-i, (int)vector2.y-j));
-                }
-            }
-
-            return nextTo;
+           return Routes.IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)vector2.x-1, (int)vector2.y)) ||
+                  Routes.IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)vector2.x+1, (int)vector2.y)) ||
+                  Routes.IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)vector2.x, (int)vector2.y-1)) ||
+                  Routes.IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int)vector2.x, (int)vector2.y+1));
         };
         
         bool res = false;

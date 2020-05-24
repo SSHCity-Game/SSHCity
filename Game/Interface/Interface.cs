@@ -35,6 +35,7 @@ public class Interface : CanvasLayer
     private static int _water = Ref_donnees.water;
     private static bool _hide = true;
     private bool _achatRoute = false;
+    private bool _achatTuyaux = false;
     private Sprite _bulldozerMouse;
     private Button _button_shop;
     private Button _buttonDelete;
@@ -43,7 +44,7 @@ public class Interface : CanvasLayer
     public Sprite _croix;
     private Sprite _croixJaune;
     private Sprite _rouages;
-    private bool _delete = false;
+    private static bool _delete = false;
     private Panel _money_couleur;
     private Label _money_text;
     private Label _energy_text;
@@ -79,6 +80,12 @@ public class Interface : CanvasLayer
     public static int Energyused => energyused;
 
     public static int Waterused => waterused;
+
+    public static bool Delete
+    {
+        get => _delete;
+        set => _delete = value;
+    }
 
     public static bool InfosBool
     {
@@ -174,12 +181,15 @@ public class Interface : CanvasLayer
         _buttonDelete.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonRoute.Connect("mouse_entered", this, nameof(ButtonOver));
         _buttonEau.Connect("mouse_entered", this, nameof(ButtonOver));
+        _buttonTuyaux.Connect("mouse_entered", this, nameof(ButtonOver));
+        _buttonExit.Connect("mouse_entered", this, nameof(ButtonOver));
 
         _button_shop.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonEau.Connect("mouse_exited", this, nameof(ButtonExited));
-
+        _buttonTuyaux.Connect("mouse_exited", this, nameof(ButtonExited));
+        _buttonExit.Connect("mouse_exited", this, nameof(ButtonExited));
 
         _timer.Connect("timeout", this, nameof(WinMoney));
         _timer.Connect("timeout", this, nameof(EnergyWin));
@@ -188,11 +198,14 @@ public class Interface : CanvasLayer
 
     public void TuyauxPressde()
     {
-        PlanInitial.Tuyaux = true;
+        _achatTuyaux = !_achatTuyaux;
+        PlanInitial.Tuyaux = _achatTuyaux;
     }
     
     public void ExitPressed()
     {
+        _achatTuyaux = false;
+        PlanInitial.Tuyaux = false;
         _planInitial.TileMapWithoutRoute.Hide();
         _planInitial.TileMap0.Hide();
         _planInitial.TileMap1.Show();
@@ -253,62 +266,6 @@ public class Interface : CanvasLayer
         Water -= Waterused;
     }
 
-    public int[] buildable(Building batiment)
-    {
-        int[] batiments = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        switch (batiment.Characteristics.Bloc[batiment.Characteristics.Lvl])
-        {
-            case Ref_donnees.maison3:
-            case Ref_donnees.maison1:
-            case Ref_donnees.maison4:
-            case Ref_donnees.maison5:
-                ++batiments[0]; //maison
-                break;
-            case Ref_donnees.immeuble_brique:
-            case  Ref_donnees.immeuble_vert:
-                ++batiments[1]; //immeuble
-                break;
-            case Ref_donnees.hotel:
-                ++batiments[2]; //hotel
-                break;
-            case Ref_donnees.parc_enfant:
-                ++batiments[3]; //parc
-                break;
-            case Ref_donnees.piscine:
-                ++batiments[4]; //piscine
-                break;
-            case Ref_donnees.restaurant:
-            case Ref_donnees.restaurant2:
-                ++batiments[5]; //restaurant
-                break;
-            case Ref_donnees.cafe:
-            case Ref_donnees.McAffy:
-                ++batiments[6]; //bar
-                break;
-            case Ref_donnees.ferme:
-            case Ref_donnees.ferme_ecolo:
-                ++batiments[7]; //ferme
-                break;
-            case Ref_donnees.eglise:
-                ++batiments[8];
-                break;
-            case Ref_donnees.police:
-                ++batiments[9];
-                break;
-            case Ref_donnees.hopital:
-                ++batiments[10];
-                break;
-            case Ref_donnees.caserne:
-                ++batiments[11];
-                break;
-            case Ref_donnees.centrale:
-                ++batiments[12];
-                break;
-        }
-
-        return batiments;
-    }
-
     public override void _Process(float delta)
     {
         base._Process(delta);
@@ -360,20 +317,18 @@ public class Interface : CanvasLayer
             }
             else
             {
-                
-                if (batiment.Activated)
+
+                if (!Activation.isNextToRoad(_planInitial, batiment.Position,
+                                    batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
                 {
-                    if (!Activation.isNextToRoad(_planInitial, batiment.Position,
-                                        batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
-                    {
-                        _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
-                    }
-                    else
-                    {
-                        _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleEau);
-                    }
-                    batiment.Activated = false;
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
                 }
+                else
+                {
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleEau);
+                }
+                batiment.Activated = false;
+                
             }
         }
 
@@ -446,8 +401,6 @@ public class Interface : CanvasLayer
         {
             _ouvertureboutique.Play();
         }
-
-        _hide = !_hide;
     }
 
     public void ButtonRoutePressed()
@@ -479,6 +432,12 @@ public class Interface : CanvasLayer
 
     public void ButtonOver()
     {
+        Interdit = false;
+        if (_achatTuyaux)
+        {
+            PlanInitial.Tuyaux = false;
+        }
+        
         if (_achatRoute)
         {
             PlanInitial.AchatRoute(false);
@@ -493,6 +452,11 @@ public class Interface : CanvasLayer
 
     public void ButtonExited()
     {
+        if (_achatTuyaux)
+        {
+            PlanInitial.Tuyaux = true;
+        }
+        
         if (_achatRoute)
         {
             PlanInitial.AchatRoute(true);

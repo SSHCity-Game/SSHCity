@@ -15,10 +15,6 @@ public class MenuHabitation : Node
 	private Carte _carteMaison5;
 	private Menu_Achat _menu_achat;
 
-	public static Carte[][] Menu { get; set; }
-
-	public static bool Achat { get; set; } = false;
-
 	public override void _Ready()
 	{
 		_menu_achat = (Menu_Achat) GetNode(_str_menu_achat);
@@ -82,6 +78,21 @@ public class MenuHabitation : Node
 		Carte[] menu2 = {_carteMaison5};
 		Carte[][] menus = {menu1, menu2};
 		_menu_achat.Menus = menus;
+	}
+	public void Reset()
+	{
+		Carte[] menu1 = {_carteMaison, _carteMaison3, _carteMaison4};
+		Carte[] menu2 = {_carteMaison5};
+		_carteMaison5.Hide();
+		Carte[][] menus = {menu1, menu2};
+		if (Menu_Achat.WhichMenu <= menus.Length)
+		{
+			_menu_achat.Reset();
+		}
+		else
+		{
+			Menu_Achat.WhichMenu = 0;
+		}
 	}
 
 	public void CloseMenuHabitation()

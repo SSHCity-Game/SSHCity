@@ -405,21 +405,25 @@ namespace SshCity.Game.Vehicules
 				{
 					_paused = true;
 					incidents.ResoIncident = true;
+					Interface.Xp += 50;
 				}
 				else if (isFeu(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x-1, (int) posi.y)))
 				{
 					_paused = true;
 					incidents.ResoIncident = true;
+					Interface.Xp += 50;
 				}
 				else if (isFeu(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x, (int) posi.y-1)))
 				{
 					_paused = true;
 					incidents.ResoIncident = true;
+					Interface.Xp += 50;
 				}
 				else if (isFeu(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x, (int) posi.y+1)))
 				{
 					_paused = true;
 					incidents.ResoIncident = true;
+					Interface.Xp += 50;
 				}
 				else
 				{
