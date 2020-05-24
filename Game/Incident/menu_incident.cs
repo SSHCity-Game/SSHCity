@@ -23,16 +23,22 @@ public class menu_incident : CanvasLayer
     private static string CaserneOui =
         "Attention, vous avez un incendie en cours. \n " +
         "Vous possedez le materiel adequate pour mettre fin a cet incindent \n" +
-        "Dirigez vous vers la caserne afin de sortir en d'ammener le camion vers le lieu de l'incendie" +
-        "Une fois arrive, cliquez sur le camion pour venir a bout de l'incendie";
+        "Dirigez vous vers la caserne afin de sortir et d'ammener le camion vers le lieu de l'incendie" +
+        "Une fois le camion arrive, l'incendie s'eteindra";
     
     private static string PoliceNon =
         "Attention, vous avez un accident en cours. \n " +
         "Pour le resoudre, dirigez vous vers la boutique afin d'acheter un commissariat. \n ";
-    private static string PoliceOui =
+    private static string PoliceOuiB =
         "Attention, vous avez un accident en cours. \n " +
         "Vous possedez le materiel adequate pour mettre fin a cet incident \n" +
-        "Appuyez sur Resoudre pour venir a bout de l'accident";
+        "Dirigez vous vers le commissariat afin de sortir et d'ammener la voiture vers le lieu du bracage \n" +
+        "Une fois la voiture arrive, vous arreterez le voleur";
+    private static string PoliceOuiA =
+        "Attention, vous avez un accident en cours. \n " +
+        "Vous possedez le materiel adequate pour mettre fin a cet incident \n" +
+        "Dirigez vous vers le commissariat afin de sortir et d'ammener la voiture vers le lieu de l'accident \n" +
+        "Une fois la voiture arrive, vous prendrez en charge l'accident";
     
     private static string HopitalNon =
         "Attention, une personne de votre ville se noie. \n " +
@@ -47,10 +53,10 @@ public class menu_incident : CanvasLayer
     public Button BoutiquePolice;
     public Button BoutiqueHopital;
     public Button Quitter;
-    public Button Eteindre;
-    public Button FinAccident;
-    public Button FinBracage;
-    public Button FinNoyade;
+    //public Button Eteindre;
+    //public Button FinAccident;
+    //public Button FinBracage;
+    //public Button FinNoyade;
     
     /* Timer incidents */
     public static Timer TimerIncendie;
@@ -68,10 +74,10 @@ public class menu_incident : CanvasLayer
         BoutiqueHopital = (Button) GetNode("BoutiqueHopital");
         BoutiquePolice = (Button) GetNode("BoutiquePolice");
         Quitter = (Button) GetNode("Quitter");;
-        Eteindre = (Button) GetNode("Eteindre");
-        FinAccident = (Button) GetNode("FinAccident");
-        FinBracage = (Button) GetNode("FinBracage");
-        FinNoyade = (Button) GetNode("FinNoyade");
+        //Eteindre = (Button) GetNode("Eteindre");
+        //FinAccident = (Button) GetNode("FinAccident");
+        //FinBracage = (Button) GetNode("FinBracage");
+        //FinNoyade = (Button) GetNode("FinNoyade");
         Flamme = (Button) GetNode("Flamme");
         Accident = (Button) GetNode("Accident");
         Bracage = (Button) GetNode("Bracage");
@@ -93,10 +99,10 @@ public class menu_incident : CanvasLayer
         BoutiquePolice.Connect("pressed", this, nameof(on_boutique_police_pressed));
         BoutiqueHopital.Connect("pressed", this, nameof(on_boutique_hopital_pressed));
         Quitter.Connect("pressed", this, nameof(on_quitter_pressed));
-        Eteindre.Connect("pressed", this, nameof(on_eteindre_pressed));
-        FinAccident.Connect("pressed", this, nameof(on_fin_accident_pressed));
-        FinBracage.Connect("pressed", this, nameof(on_fin_bracage_pressed));
-        FinNoyade.Connect("pressed", this, nameof(on_fin_noyade_pressed));
+        //Eteindre.Connect("pressed", this, nameof(on_eteindre_pressed));
+        //FinAccident.Connect("pressed", this, nameof(on_fin_accident_pressed));
+        //FinBracage.Connect("pressed", this, nameof(on_fin_bracage_pressed));
+        //FinNoyade.Connect("pressed", this, nameof(on_fin_noyade_pressed));
         Flamme.Connect("pressed", this, nameof(ResolutionIncendie));
         Accident.Connect("pressed", this, nameof(ResolutionAccident));
         Bracage.Connect("pressed", this, nameof(ResolutionBracage));
@@ -110,10 +116,10 @@ public class menu_incident : CanvasLayer
         BoutiquePolice.Hide();
         BoutiqueHopital.Hide();
         Quitter.Hide();
-        Eteindre.Hide();
-        FinAccident.Hide();
-        FinBracage.Hide();
-        FinNoyade.Hide();
+        //Eteindre.Hide();
+        //FinAccident.Hide();
+        //FinBracage.Hide();
+        //FinNoyade.Hide();
         Background.Hide();
         Texte.Hide();
     }
@@ -141,42 +147,6 @@ public class menu_incident : CanvasLayer
         HideAll();
     }
     
-    private async void on_eteindre_pressed()
-    { 
-        HideAll();
-        await Task.Delay(2000);
-        incidents.ResoIncident = true;
-        TimerIncendie.Start();
-        Interface.Xp += 50;
-    }
-    
-    private async void on_fin_accident_pressed()
-    {
-        HideAll();
-        await Task.Delay(2000);
-        incidents.ResoAccident = true;
-        TimerAccident.Start();
-        Interface.Xp += 50;
-    }
-    private async void on_fin_bracage_pressed()
-    {
-        HideAll();
-        await Task.Delay(2000);
-        incidents.ResoBracage = true;
-        TimerBracage.Start();
-        Interface.Xp += 50;
-    }
-    
-    private async void on_fin_noyade_pressed()
-    {
-        HideAll();
-        await Task.Delay(2000);
-        incidents.ResoNoyade = true;
-        TimerNoyade.Start();
-        Interface.Xp += 50;
-    }
-    
-
     private void ResolutionIncendie()
     {
         CloseAll();
@@ -184,10 +154,7 @@ public class menu_incident : CanvasLayer
         Quitter.Show();
         
         if (MainPlan.ExistBatiment(Ref_donnees.caserne)) // si caserne deja presente
-        {
             Texte.Text = CaserneOui;
-            Eteindre.Show();
-        }
         else
         {
             Texte.Text = CaserneNon;
@@ -204,10 +171,7 @@ public class menu_incident : CanvasLayer
         Quitter.Show();
         
         if (MainPlan.ExistBatiment(Ref_donnees.police))
-        {
-            Texte.Text = PoliceOui;
-            FinAccident.Show();
-        }
+            Texte.Text = PoliceOuiA;
         else
         {
             Texte.Text = PoliceNon;
@@ -224,10 +188,7 @@ public class menu_incident : CanvasLayer
         Quitter.Show();
         
         if (MainPlan.ExistBatiment(Ref_donnees.police))
-        {
-            Texte.Text = PoliceOui;
-            FinBracage.Show();
-        }
+            Texte.Text = PoliceOuiB;
         else
         {
             Texte.Text = PoliceNon;
@@ -244,10 +205,7 @@ public class menu_incident : CanvasLayer
         Quitter.Show();
         
         if (MainPlan.ExistBatiment(Ref_donnees.hopital))
-        {
             Texte.Text = HopitalOui;
-            FinNoyade.Show();
-        }
         else
         {
             Texte.Text = HopitalNon;

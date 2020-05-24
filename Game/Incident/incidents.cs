@@ -122,10 +122,11 @@ public class incidents : CanvasLayer
 	}
 	public static async void StopIncendie(PlanInitial planInitial)
 	{ /* revient au batiment normal */
-		
 		menu_incident.Flamme.Hide();
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexApincendie, indexAvincendie, xincendie, yincendie);
+		menu_incident.TimerIncendie.Start();
+		Interface.Xp += 50;
 	}
 	
 					/** ACCIDENTS **/
@@ -151,6 +152,8 @@ public class incidents : CanvasLayer
 	public static async void StopAccident(PlanInitial planInitial)
 	{ /* supprime l'accident */
 		menu_incident.Accident.Hide();
+		menu_incident.TimerAccident.Start();
+		Interface.Xp += 50;
 	}
 	
 					/** BRACAGES **/
@@ -181,6 +184,8 @@ public class incidents : CanvasLayer
 		menu_incident.Bracage.Hide();
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexApbracage, indexAvbracage, xbracage, ybracage);
+		menu_incident.TimerBracage.Start();
+		Interface.Xp += 50;
 	}
 	
 					/** NOYADES **/
@@ -193,6 +198,8 @@ public class incidents : CanvasLayer
 			menu_incident.Noyade.Hide();
 			await Task.Delay(3000);
 			Lacs.GenerateLacNoyade(planInitial, Ref_donnees.lac1, xnoyade, ynoyade);
+			menu_incident.TimerNoyade.Start();
+			Interface.Xp += 50;
 		}
 		else if (!ResoNoyade && Nbnoyades < MAX_NOYADES)
 		{
