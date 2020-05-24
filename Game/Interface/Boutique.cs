@@ -60,6 +60,7 @@ public class Boutique : CanvasLayer
         _button_economie.Pressed = false;
         _button_sante.Pressed = false;
         _button_speciaux.Pressed = false;
+        Menu_Achat.Reset1 = true;
     }
 
     public void ButtonSantePressed()
@@ -68,6 +69,8 @@ public class Boutique : CanvasLayer
         _button_economie.Pressed = false;
         _button_habitation.Pressed = false;
         _button_speciaux.Pressed = false;
+        Menu_Achat.Reset1 = true;
+
     }
 
     public void ButtonSpeciauxPressed()
@@ -75,7 +78,9 @@ public class Boutique : CanvasLayer
         _button_bien_etre.Pressed = false;
         _button_economie.Pressed = false;
         _button_sante.Pressed = false;
-        _button_habitation.Pressed = false;
+        _button_habitation.Pressed = false;        
+        Menu_Achat.Reset1 = true;
+
     }
 
     public void ButtonBienEtrePressed()
@@ -84,6 +89,7 @@ public class Boutique : CanvasLayer
         _button_habitation.Pressed = false;
         _button_sante.Pressed = false;
         _button_speciaux.Pressed = false;
+        Menu_Achat.Reset1 = true;
     }
 
 
@@ -93,6 +99,7 @@ public class Boutique : CanvasLayer
         _button_habitation.Pressed = false;
         _button_sante.Pressed = false;
         _button_speciaux.Pressed = false;
+        Menu_Achat.Reset1 = true;
     }
 
 
