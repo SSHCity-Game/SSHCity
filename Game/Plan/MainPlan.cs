@@ -190,7 +190,7 @@ public class MainPlan : Node2D
 		if (args.Length > 1)
 			game = Marshalls.Base64ToUtf8(args[1]);
 		
-
+/*
 		// We load the game or we generate a map
 		if (!SauvegardeManager.LoadGame(_planInitial, game))
 		{
@@ -208,7 +208,7 @@ public class MainPlan : Node2D
 			//CREATION LACS
 			Lacs.GenerateLac(_planInitial);
 		}
-
+*/
 		//Lancement de la musique
 		_musique.Play();
 	}
