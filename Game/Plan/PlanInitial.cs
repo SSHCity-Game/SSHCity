@@ -359,7 +359,10 @@ public partial class PlanInitial : Node2D
         if (OneAction.IsActionPressed("ClickG") && _delete)
         {
             _tileSupressing = GetTilePosition(TileMap1);
-            if (_tileSupressing != MainPlan.MairiePosition)
+            if (_tileSupressing != MainPlan.MairiePosition &&
+                GetBlock(TileMap1, (int)_tileSupressing.x, (int)_tileSupressing.y) != Ref_donnees.montagne_sol &&
+                GetBlock(TileMap1, (int)_tileSupressing.x, (int)_tileSupressing.y) != Ref_donnees.water_terre &&
+                GetBlock(TileMap1, (int)_tileSupressing.x, (int)_tileSupressing.y) != Ref_donnees.terre)
             {
                 try
                 {
@@ -371,6 +374,11 @@ public partial class PlanInitial : Node2D
                 }
                 _delete = false;
                 DeleteVerif.Verif = true;
+            }
+            else
+            {
+                _delete = false;
+                Interface.Delete = false;
             }
         }
 
