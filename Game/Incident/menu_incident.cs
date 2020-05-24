@@ -23,7 +23,8 @@ public class menu_incident : CanvasLayer
     private static string CaserneOui =
         "Attention, vous avez un incendie en cours. \n " +
         "Vous possedez le materiel adequate pour mettre fin a cet incindent \n" +
-        "Appuyez sur Eteindre pour venir a bout de l'incendie";
+        "Dirigez vous vers la caserne afin de sortir en d'ammener le camion vers le lieu de l'incendie" +
+        "Une fois arrive, cliquez sur le camion pour venir a bout de l'incendie";
     
     private static string PoliceNon =
         "Attention, vous avez un accident en cours. \n " +
