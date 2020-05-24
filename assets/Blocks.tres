@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=105 format=2]
+[gd_resource type="TileSet" load_steps=109 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -96,7 +96,6 @@
 [ext_resource path="res://assets/noyade3.png" type="Texture" id=94]
 [ext_resource path="res://assets/noyade5.png" type="Texture" id=95]
 [ext_resource path="res://assets/Volmaison5-2.png" type="Texture" id=96]
-
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
