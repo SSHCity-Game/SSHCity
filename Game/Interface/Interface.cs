@@ -59,8 +59,8 @@ public class Interface : CanvasLayer
     private Label Score;
     private static int _xp;
     public static int _level = 1; // niveau
-    //private static int _scoreValue; // index XpMax
-    private static int XpMax = 30; //{200, 400, 600, 800, 1000}; // xp en fonction des niveaux
+    private static int XpMax = 30;
+    public static bool levelup = false;
     
     private static int moneyWin = 0;
     private static int energyused = 0;
@@ -188,6 +188,7 @@ public class Interface : CanvasLayer
         _buttonRoute.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonDelete.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonEau.Connect("mouse_exited", this, nameof(ButtonExited));
+
         _buttonTuyaux.Connect("mouse_exited", this, nameof(ButtonExited));
         _buttonExit.Connect("mouse_exited", this, nameof(ButtonExited));
 
@@ -272,12 +273,15 @@ public class Interface : CanvasLayer
         _money_text.Text = Convert.ToString(_money);
 
         /* incrementation de la barre de niveau */
-        //ScoreBar.MaxValue = UpdateScoreValue(_level);
-        // todo: en attente d'un fix
-        //(_xp, _level) = UpdateXp(_xp, _level);
+        if (_xp >= XpMax)
+        {
+            _xp -= XpMax;
+            _level += 1;
+            levelup = true;
+        }
         ScoreBar.Value = _xp;
         Score.Text = Convert.ToString(_level);
-        
+
         moneyWin = 0;
         energyused = 0;
         waterused = 0;
@@ -439,9 +443,7 @@ public class Interface : CanvasLayer
         }
         
         if (_achatRoute)
-        {
             PlanInitial.AchatRoute(false);
-        }
 
         if (_delete)
         {
@@ -467,19 +469,5 @@ public class Interface : CanvasLayer
             PlanInitial.Delete = true;
             _bulldozerMouse.Show();
         }
-    }
-
-    public (int, int) UpdateXp(int xp, int level) 
-    { /* retourne les nouveaux xp et niveau */
-        return (xp, level) = xp >= XpMax ? (xp - XpMax, level + 1) : (xp, level);
-    }
-
-    public static int UpdateScoreValue(int level)
-    { /* retourne la nouvelle scoreValue pour choisir XpMax du niveau */
-        if(level < 5) return 0;
-        if(level < 10) return 1;
-        if(level < 15) return 2;
-        if(level < 20) return 3;
-        return 4;
     }
 }

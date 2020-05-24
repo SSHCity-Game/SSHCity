@@ -16,6 +16,7 @@ public partial class Houloucoupter : Area2D
 
     private const string _strAnimatedSprite = "AnimatedSprite";
     private const string _strCollsionShape2D = "CollisionShape2D";
+    
     public enum Type
     {
         HOPITAL
@@ -31,13 +32,10 @@ public partial class Houloucoupter : Area2D
 
     Godot.Collections.Dictionary<Type, SpriteFrames> AnimatedSpriteType = new Godot.Collections.Dictionary<Type, SpriteFrames>()
     {
-        {Type.HOPITAL, ResourceLoader.Load("res://Game/Vehicules/AnimatedSpriteHouloucoupter/Hopital.tres") as SpriteFrames},
+        {Type.HOPITAL, ResourceLoader.Load("res://Game/Vehicules/AnimatedSpriteHouloucoupter/Hopital.tres") as SpriteFrames}
     };
     
-    public static List<Type> ListTypeHouloucoupter = new List<Type>()
-    {
-        {Type.HOPITAL},
-    };
+    public static List<Type> ListTypeHouloucoupter = new List<Type> {Type.HOPITAL};
 
     public async void Init(PlanInitial planInitial, Type type, Vector2 position, Vector2 destination)
     {
@@ -56,15 +54,23 @@ public partial class Houloucoupter : Area2D
         depart = Position;
         _deplacement = planInitial.TileMap2.MapToWorld(destination) - Position;
         _destination = planInitial.TileMap2.MapToWorld(destination);
-        
+
         if (_destination.x >= Position.x && _destination.y >= Position.y)
+        {
             _animatedSprite.Animation = "NE";
-        else if(_destination.x >= Position.x && _destination.y <= Position.y)
+        }
+        else if (_destination.x >= Position.x && _destination.y <= Position.y)
+        {
             _animatedSprite.Animation = "NW";
-        else if(_destination.x <= Position.x && _destination.y <= Position.y)
+        }
+        else if (_destination.x <= Position.x && _destination.y <= Position.y)
+        {
             _animatedSprite.Animation = "SW";
-        else if(_destination.x <= Position.x && _destination.y >= Position.y)
+        }
+        else if (_destination.x <= Position.x && _destination.y >= Position.y)
+        {
             _animatedSprite.Animation = "SE";
+        }
     }
 
 }

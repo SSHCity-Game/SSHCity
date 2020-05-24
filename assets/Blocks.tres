@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=112 format=2]
+[gd_resource type="TileSet" load_steps=122 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -96,6 +96,13 @@
 [ext_resource path="res://assets/noyade3.png" type="Texture" id=94]
 [ext_resource path="res://assets/noyade5.png" type="Texture" id=95]
 [ext_resource path="res://assets/Volmaison5-2.png" type="Texture" id=96]
+[ext_resource path="res://assets/Flammemaison3-2.png" type="Texture" id=104]
+[ext_resource path="res://assets/Flammemaison4-2.png" type="Texture" id=105]
+[ext_resource path="res://assets/Flammemaison5-2.png" type="Texture" id=106]
+[ext_resource path="res://assets/Flammemaison1-2.png" type="Texture" id=100]
+[ext_resource path="res://assets/Flammeboutique5-2.png" type="Texture" id=101]
+[ext_resource path="res://assets/Flammemagasin6-2.png" type="Texture" id=102]
+[ext_resource path="res://assets/Flammeresto-2.png" type="Texture" id=103]
 [ext_resource path="res://assets/hopital3.png" type="Texture" id=97]
 [ext_resource path="res://assets/isometric centrale2.png" type="Texture" id=98]
 [ext_resource path="res://assets/hopital4.png" type="Texture" id=99]
@@ -127,7 +134,7 @@ frame_3/delay_sec = 0.0
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 56 )
-frame_1/texture = ExtResource( 33 )
+frame_1/texture = ExtResource( 101 )
 frame_1/delay_sec = 0.0
 
 [sub_resource type="NavigationPolygon" id=7]
@@ -138,12 +145,54 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 [sub_resource type="AnimatedTexture" id=8]
 flags = 4
 frames = 2
+frame_0/texture = ExtResource( 52 )
+frame_1/texture = ExtResource( 104 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=9]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 2 )
+frame_1/texture = ExtResource( 100 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=10]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 55 )
+frame_1/texture = ExtResource( 102 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=11]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 3 )
+frame_1/texture = ExtResource( 103 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=12]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 59 )
+frame_1/texture = ExtResource( 105 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=13]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 58 )
+frame_1/texture = ExtResource( 106 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=14]
+flags = 4
+frames = 2
 fps = 2.0
 frame_0/texture = ExtResource( 80 )
 frame_1/texture = ExtResource( 89 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=9]
+[sub_resource type="AnimatedTexture" id=15]
 flags = 4
 frames = 2
 fps = 2.0
@@ -151,7 +200,7 @@ frame_0/texture = ExtResource( 79 )
 frame_1/texture = ExtResource( 91 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=10]
+[sub_resource type="AnimatedTexture" id=16]
 flags = 4
 frames = 2
 fps = 2.0
@@ -159,7 +208,7 @@ frame_0/texture = ExtResource( 81 )
 frame_1/texture = ExtResource( 90 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=11]
+[sub_resource type="AnimatedTexture" id=17]
 flags = 4
 frames = 2
 fps = 2.0
@@ -167,7 +216,7 @@ frame_0/texture = ExtResource( 93 )
 frame_1/texture = ExtResource( 82 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=12]
+[sub_resource type="AnimatedTexture" id=18]
 flags = 4
 frames = 2
 fps = 2.0
@@ -243,7 +292,7 @@ frame_1/delay_sec = 0.0
 5/shapes = [  ]
 5/z_index = 0
 6/name = "FlammeMaison1"
-6/texture = ExtResource( 2 )
+6/texture = SubResource( 9 )
 6/tex_offset = Vector2( 100, 210 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 0, 1024, 1024 )
@@ -254,7 +303,7 @@ frame_1/delay_sec = 0.0
 6/shapes = [  ]
 6/z_index = 0
 7/name = "FlammeMaison4"
-7/texture = ExtResource( 59 )
+7/texture = SubResource( 12 )
 7/tex_offset = Vector2( 0, 150 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 1024, 1024 )
@@ -265,7 +314,7 @@ frame_1/delay_sec = 0.0
 7/shapes = [  ]
 7/z_index = 0
 8/name = "FlammeMaison5"
-8/texture = ExtResource( 58 )
+8/texture = SubResource( 13 )
 8/tex_offset = Vector2( 70, 260 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 1024, 1024 )
@@ -699,7 +748,7 @@ frame_1/delay_sec = 0.0
 56/shapes = [  ]
 56/z_index = 0
 57/name = "Maison3Flamme"
-57/texture = ExtResource( 52 )
+57/texture = SubResource( 8 )
 57/tex_offset = Vector2( -4, 188 )
 57/modulate = Color( 1, 1, 1, 1 )
 57/region = Rect2( 0, 0, 975, 905 )
@@ -730,7 +779,7 @@ frame_1/delay_sec = 0.0
 59/shapes = [  ]
 59/z_index = 0
 60/name = "FlammeCafe"
-60/texture = ExtResource( 55 )
+60/texture = SubResource( 10 )
 60/tex_offset = Vector2( 65, 255 )
 60/modulate = Color( 1, 1, 1, 1 )
 60/region = Rect2( 0, 0, 1024, 1024 )
@@ -752,7 +801,7 @@ frame_1/delay_sec = 0.0
 61/shapes = [  ]
 61/z_index = 0
 62/name = "Batiment"
-62/texture = ExtResource( 3 )
+62/texture = SubResource( 11 )
 62/tex_offset = Vector2( 25, 225 )
 62/modulate = Color( 1, 1, 1, 1 )
 62/region = Rect2( 0, 0, 1024, 1024 )
@@ -1006,7 +1055,7 @@ frame_1/delay_sec = 0.0
 94/shapes = [  ]
 94/z_index = 0
 95/name = "Volmairie.png 95"
-95/texture = SubResource( 8 )
+95/texture = SubResource( 14 )
 95/tex_offset = Vector2( -35, 130 )
 95/modulate = Color( 1, 1, 1, 1 )
 95/region = Rect2( 32, 32, 960, 928 )
@@ -1016,7 +1065,7 @@ frame_1/delay_sec = 0.0
 95/shapes = [  ]
 95/z_index = 0
 96/name = "Volmaison1.png 96"
-96/texture = SubResource( 9 )
+96/texture = SubResource( 15 )
 96/tex_offset = Vector2( 145, 320 )
 96/modulate = Color( 1, 1, 1, 1 )
 96/region = Rect2( 32, 96, 800, 736 )
@@ -1026,7 +1075,7 @@ frame_1/delay_sec = 0.0
 96/shapes = [  ]
 96/z_index = 0
 97/name = "Volmaison3.png 97"
-97/texture = SubResource( 10 )
+97/texture = SubResource( 16 )
 97/tex_offset = Vector2( 30, 315 )
 97/modulate = Color( 1, 1, 1, 1 )
 97/region = Rect2( 32, 128, 928, 736 )
@@ -1036,7 +1085,7 @@ frame_1/delay_sec = 0.0
 97/shapes = [  ]
 97/z_index = 0
 98/name = "Volmaison4.png 98"
-98/texture = SubResource( 11 )
+98/texture = SubResource( 17 )
 98/tex_offset = Vector2( 70, 250 )
 98/modulate = Color( 1, 1, 1, 1 )
 98/region = Rect2( 64, 96, 896, 768 )
@@ -1046,7 +1095,7 @@ frame_1/delay_sec = 0.0
 98/shapes = [  ]
 98/z_index = 0
 99/name = "Volmaison5.png 99"
-99/texture = SubResource( 12 )
+99/texture = SubResource( 18 )
 99/tex_offset = Vector2( 130, 280 )
 99/modulate = Color( 1, 1, 1, 1 )
 99/region = Rect2( 0, 64, 864, 672 )

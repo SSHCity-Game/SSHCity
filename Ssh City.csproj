@@ -86,6 +86,7 @@
     <Compile Include="Game\Interface\DeleteVerif.cs" />
     <Compile Include="Game\Interface\Infos.cs" />
     <Compile Include="Game\Interface\Interface.cs" />
+    <Compile Include="Game\Interface\LevelUp.cs" />
     <Compile Include="Game\Interface\MainMenu.cs" />
     <Compile Include="Game\Interface\MairieMenu.cs" />
     <Compile Include="Game\Interface\Menu_achat\MenuBienEtre.cs" />
