@@ -113,6 +113,7 @@ public partial class PlanInitial
         Building.Create(batimentClass, tile);
         Building batima = Building.Delete(tile);
         batima.energyAndWater(batima);
+        Interface.Xp += batima.Characteristics.GainXp[0];
         Building.ListBuildings.Add(batima);
     }
 }

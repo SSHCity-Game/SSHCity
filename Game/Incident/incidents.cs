@@ -63,7 +63,7 @@ public class incidents : CanvasLayer
 			GenerateBracage(MainPlan._planInitial);
 		if (menu_incident.TimerBracage.IsStopped() && ResoBracage) // definit le temps entre l apparition de deux bracage
 			ResoBracage = false;
-		/* NOYADES */		
+		/* NOYADES */	
 		if(Interface._level >= levelNoyade)
 			GenerateNoyade(MainPlan._planInitial);
 		if (menu_incident.TimerNoyade.IsStopped() && ResoNoyade) // definit le temps entre l apparition de deux noyades
