@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=94 format=2]
+[gd_resource type="TileSet" load_steps=97 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -88,6 +88,9 @@
 [ext_resource path="res://assets/isometric_0224.png" type="Texture" id=86]
 [ext_resource path="res://assets/isometric_0083.png" type="Texture" id=87]
 [ext_resource path="res://assets/Alerte_incidents/bulleEau.png" type="Texture" id=88]
+[ext_resource path="res://assets/hopital4.png" type="Texture" id=89]
+[ext_resource path="res://assets/hopital3.png" type="Texture" id=90]
+[ext_resource path="res://assets/isometric centrale2.png" type="Texture" id=91]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -260,9 +263,9 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 14/z_index = 0
 15/name = "hopital.png 15"
 15/texture = ExtResource( 15 )
-15/tex_offset = Vector2( 45, 110 )
+15/tex_offset = Vector2( -350, -100 )
 15/modulate = Color( 1, 1, 1, 1 )
-15/region = Rect2( 0, 0, 1024, 1024 )
+15/region = Rect2( 64, 160, 2944, 2848 )
 15/tile_mode = 0
 15/occluder_offset = Vector2( 0, 0 )
 15/navigation_offset = Vector2( 0, 0 )
@@ -1035,3 +1038,33 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 104/navigation_offset = Vector2( 0, 0 )
 104/shapes = [  ]
 104/z_index = 0
+105/name = "hopital4.png 105"
+105/texture = ExtResource( 89 )
+105/tex_offset = Vector2( -200, -100 )
+105/modulate = Color( 1, 1, 1, 1 )
+105/region = Rect2( 192, 192, 2112, 2112 )
+105/tile_mode = 0
+105/occluder_offset = Vector2( 0, 0 )
+105/navigation_offset = Vector2( 0, 0 )
+105/shapes = [  ]
+105/z_index = 0
+106/name = "hopital3.png 106"
+106/texture = ExtResource( 90 )
+106/tex_offset = Vector2( -300, 100 )
+106/modulate = Color( 1, 1, 1, 1 )
+106/region = Rect2( 192, 256, 1728, 1472 )
+106/tile_mode = 0
+106/occluder_offset = Vector2( 0, 0 )
+106/navigation_offset = Vector2( 0, 0 )
+106/shapes = [  ]
+106/z_index = 0
+107/name = "isometric centrale2.png 107"
+107/texture = ExtResource( 91 )
+107/tex_offset = Vector2( -900, 300 )
+107/modulate = Color( 1, 1, 1, 1 )
+107/region = Rect2( 64, 640, 3168, 2080 )
+107/tile_mode = 0
+107/occluder_offset = Vector2( 0, 0 )
+107/navigation_offset = Vector2( 0, 0 )
+107/shapes = [  ]
+107/z_index = 0

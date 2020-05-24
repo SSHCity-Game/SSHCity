@@ -395,6 +395,7 @@ public partial class PlanInitial : Node2D
                 {
                     SetBlock(TileMap1, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
                     SetBlock(TileMap0, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
+                    MainPlan.BatimentsTiles.Remove(new Vector2(_tileSupressing.x + i-1, _tileSupressing.y + j-1));
                     j++;
                 }
 
