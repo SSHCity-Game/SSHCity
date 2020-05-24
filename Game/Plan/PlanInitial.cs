@@ -300,13 +300,13 @@ public partial class PlanInitial : Node2D
         if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute) && !_NotEnoughtMoney)
         {
             _achat = false;
+            Interface.Interdit = false;
             _lastTile = new Vector2(0, 0);
             Vector2 tile = GetTilePosition(TileMap1);
             if (GetBlock(TileMap2, (int) tile.x, (int) tile.y) == _batiment)
             {
                 if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)
                 {
-                    Interface.Interdit = false;
                     SetAchatBlocs(tile, _achatRoute);
                     if (_achatRoute)
                     {
@@ -472,12 +472,12 @@ public partial class PlanInitial : Node2D
         if (OneAction.IsActionPressed("ClickG") && Tuyaux)
         {
             _lastTile = new Vector2(0, 0);
+            Interface.Interdit = false;
             Vector2 tile = GetTilePosition(TileMap0) + new Vector2(1, 1);
             if (GetBlock(TileMap0, (int) tile.x, (int) tile.y) == _batiment)
             {
                 if (GetBlock(TileMapNeg, (int) tile.x, (int) tile.y) == Ref_donnees.sol_tuyaux)
                 {
-                    Interface.Interdit = false;
                     SetBlock(TileMapNeg, (int)tile.x, (int)tile.y, Ref_donnees.tuyaux_terre);
                     SshCity.Game.Plan.Tuyaux.ChangeTuyaux(tile, this);
                     SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
