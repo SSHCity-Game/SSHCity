@@ -1,6 +1,5 @@
 [gd_resource type="TileSet" load_steps=112 format=2]
 
-
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
 [ext_resource path="res://assets/Flammeresto.png" type="Texture" id=3]
