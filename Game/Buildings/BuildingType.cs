@@ -26,5 +26,7 @@ namespace SshCity.Game.Buildings
         POLICE = Ref_donnees.police,
         RESTAURANT = Ref_donnees.restaurant,
         RESTAURANT2 = Ref_donnees.restaurant2,
+        MAIRIE = Ref_donnees.mairie,
+        EPURATION = Ref_donnees.stationEpuration
     }
 }

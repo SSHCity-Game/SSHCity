@@ -7,11 +7,13 @@ public class MenuSpeciaux : Node
     private const string _str_cartePolice = _str_menu_achat + "/Police";
     private const string _str_carteEglise = _str_menu_achat + "/Eglise";
     private const string _str_carteCentraleElectrique = _str_menu_achat + "/CentraleElectrique";
+    private const string _str_carteEpuration = _str_menu_achat + "/Epuration";
     public static TextureRect _clignoPolice;
 
     public static bool clignoPolice = false;
     private static bool _achat = false;
     private Carte _carteCentraleElectrique;
+    private Carte _carteEpuration;
     private Carte _carteEglise;
     private Carte _cartePolice;
     private Menu_Achat _menu_achat;
@@ -46,6 +48,19 @@ public class MenuSpeciaux : Node
         _carteCentraleElectrique.Eau(centrale.water[0].ToString());
         _carteCentraleElectrique.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
+        //config 
+        
+        _carteEpuration = (Carte) GetNode(_str_carteEpuration);
+        var epur = BuildingCharacteristics.FromType(BuildingType.EPURATION);
+        _carteEpuration.Bloc = epur.Bloc[0];
+        _carteEpuration.Cost = epur.Cost[0];
+        _carteEpuration.Titre(epur.Titre[0]);
+        _carteEpuration.Gain(epur.Earn[0]);
+        _carteEpuration.Prix(epur.Cost[0]);
+        _carteEpuration.Enrgie(epur.energy[0].ToString());
+        _carteEpuration.Eau(epur.water[0].ToString());
+        _carteEpuration.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+
         //Config _carteEglise
 
         _carteEglise = (Carte) GetNode(_str_carteEglise);
@@ -66,8 +81,9 @@ public class MenuSpeciaux : Node
         _menu_achat.Hide();
         AddUserSignal("CloseShop");
 
-        Carte[] menu1 = new[] {_cartePolice, _carteCentraleElectrique, _carteEglise};
-        Carte[][] menus = new[] {menu1};
+        Carte[] menu1 = new[] {_cartePolice, _carteCentraleElectrique,_carteEpuration };
+        Carte[] menu2 = {_carteEglise};
+        Carte[][] menus = {menu1, menu2};
         _menu_achat.Menus = menus;
     }
 

@@ -193,8 +193,11 @@ namespace SshCity.Game.Plan
                     if (VerifLac(new Vector2(x, y), planInitial, lacBlocToSet))
                     {
                         planInitial.SetBlock(planInitial.TileMap2, x, y, blocLac);
+                        planInitial.SetBlock(planInitial.TileMapWithoutRoute, x, y, blocLac);
+
                         if (blocLac == Ref_donnees.lac1) CoordsLac1.Add((x, y));
                         else CoordsLac2.Add((x,y));
+
                         Bateau bateau = (Bateau) planInitial._bateauxScene.Instance();
                         bateau.Init(planInitial, planInitial.TileMap1.MapToWorld(new Vector2(x+1, y+1)));
                         planInitial.AddChild(bateau);

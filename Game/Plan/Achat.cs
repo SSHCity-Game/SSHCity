@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Godot;
 using SshCity.Game.Buildings;
 using SshCity.Game.Plan;
@@ -27,7 +28,9 @@ public partial class PlanInitial
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.montagne_sol
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sable
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.eau
-                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.water_terre;
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.water_terre
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sol_stationEpuration
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sol_maisonEau;
                 j++;
             }
 
@@ -65,6 +68,10 @@ public partial class PlanInitial
             int j = 1;
             while (j < dimensions.largeur + 1)
             {
+                if (_batiment == Ref_donnees.stationEpuration)
+                {
+                    SshCity.Game.Plan.Tuyaux.ListEpuration.Add(new Vector2(tile.x + i, tile.y + j));
+                }
                 SetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
                 SetBlock(TileMap0, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
                 MainPlan.BatimentsTiles.Add(new Vector2(tile.x + i-1, tile.y + j-1), new Vector2(tile.x, tile.y));

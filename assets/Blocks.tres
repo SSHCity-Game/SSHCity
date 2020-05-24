@@ -84,14 +84,19 @@
 [ext_resource path="res://assets/Volmaison4.png" type="Texture" id=82]
 [ext_resource path="res://assets/noyade6.png" type="Texture" id=83]
 [ext_resource path="res://assets/Pietons/voleur.png" type="Texture" id=84]
-[ext_resource path="res://assets/Volmaison4-3.png" type="Texture" id=85]
-[ext_resource path="res://assets/noyade3.png" type="Texture" id=86]
-[ext_resource path="res://assets/noyade5.png" type="Texture" id=87]
-[ext_resource path="res://assets/Volmaison5-2.png" type="Texture" id=88]
+[ext_resource path="res://assets/station epuration2.png" type="Texture" id=85]
+[ext_resource path="res://assets/isometric_0224.png" type="Texture" id=86]
+[ext_resource path="res://assets/isometric_0083.png" type="Texture" id=87]
+[ext_resource path="res://assets/Alerte_incidents/bulleEau.png" type="Texture" id=88]
 [ext_resource path="res://assets/Volmairie2.png" type="Texture" id=89]
 [ext_resource path="res://assets/Volmaison3-2.png" type="Texture" id=90]
 [ext_resource path="res://assets/Volmaison1-2.png" type="Texture" id=91]
 [ext_resource path="res://assets/noyade8.png" type="Texture" id=92]
+[ext_resource path="res://assets/Volmaison4-3.png" type="Texture" id=93]
+[ext_resource path="res://assets/noyade3.png" type="Texture" id=94]
+[ext_resource path="res://assets/noyade5.png" type="Texture" id=95]
+[ext_resource path="res://assets/Volmaison5-2.png" type="Texture" id=96]
+
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -102,8 +107,8 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 flags = 4
 frames = 4
 fps = 3.0
-frame_0/texture = ExtResource( 86 )
-frame_1/texture = ExtResource( 87 )
+frame_0/texture = ExtResource( 94 )
+frame_1/texture = ExtResource( 95 )
 frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 92 )
 frame_2/delay_sec = 0.0
@@ -156,7 +161,7 @@ frame_1/delay_sec = 0.0
 flags = 4
 frames = 2
 fps = 2.0
-frame_0/texture = ExtResource( 85 )
+frame_0/texture = ExtResource( 93 )
 frame_1/texture = ExtResource( 82 )
 frame_1/delay_sec = 0.0
 
@@ -165,7 +170,7 @@ flags = 4
 frames = 2
 fps = 2.0
 frame_0/texture = ExtResource( 78 )
-frame_1/texture = ExtResource( 88 )
+frame_1/texture = ExtResource( 96 )
 frame_1/delay_sec = 0.0
 
 [resource]
@@ -1058,3 +1063,43 @@ frame_1/delay_sec = 0.0
 100/navigation_offset = Vector2( 0, 0 )
 100/shapes = [  ]
 100/z_index = 0
+101/name = "station epuration2.png 101"
+101/texture = ExtResource( 85 )
+101/tex_offset = Vector2( -850, 450 )
+101/modulate = Color( 1, 1, 1, 1 )
+101/region = Rect2( 96, 128, 2912, 1760 )
+101/tile_mode = 0
+101/occluder_offset = Vector2( 0, 0 )
+101/navigation_offset = Vector2( 0, 0 )
+101/shapes = [  ]
+101/z_index = 0
+102/name = "isometric_0224.png 102"
+102/texture = ExtResource( 86 )
+102/tex_offset = Vector2( 0, 0 )
+102/modulate = Color( 1, 1, 1, 1 )
+102/region = Rect2( 32, 0, 960, 1024 )
+102/tile_mode = 0
+102/occluder_offset = Vector2( 0, 0 )
+102/navigation_offset = Vector2( 0, 0 )
+102/shapes = [  ]
+102/z_index = 0
+103/name = "isometric_0083.png 103"
+103/texture = ExtResource( 87 )
+103/tex_offset = Vector2( 0, 0 )
+103/modulate = Color( 1, 1, 1, 1 )
+103/region = Rect2( 0, 0, 1024, 1024 )
+103/tile_mode = 0
+103/occluder_offset = Vector2( 0, 0 )
+103/navigation_offset = Vector2( 0, 0 )
+103/shapes = [  ]
+103/z_index = 0
+104/name = "bulleEau.png 104"
+104/texture = ExtResource( 88 )
+104/tex_offset = Vector2( 100, 0 )
+104/modulate = Color( 1, 1, 1, 1 )
+104/region = Rect2( 448, 864, 608, 512 )
+104/tile_mode = 0
+104/occluder_offset = Vector2( 0, 0 )
+104/navigation_offset = Vector2( 0, 0 )
+104/shapes = [  ]
+104/z_index = 0

@@ -61,11 +61,13 @@
     <Compile Include="Game\Buildings\Characteristics\Caserne.cs" />
     <Compile Include="Game\Buildings\Characteristics\CentraleElectrique.cs" />
     <Compile Include="Game\Buildings\Characteristics\Eglise.cs" />
+    <Compile Include="Game\Buildings\Characteristics\Epuration.cs" />
     <Compile Include="Game\Buildings\Characteristics\Ferme.cs" />
     <Compile Include="Game\Buildings\Characteristics\Hospital.cs" />
     <Compile Include="Game\Buildings\Characteristics\Hotel.cs" />
     <Compile Include="Game\Buildings\Characteristics\Immeuble.cs" />
     <Compile Include="Game\Buildings\Characteristics\ImmeubleVert.cs" />
+    <Compile Include="Game\Buildings\Characteristics\Mairie.cs" />
     <Compile Include="Game\Buildings\Characteristics\Maison.cs" />
     <Compile Include="Game\Buildings\Characteristics\Maison3.cs" />
     <Compile Include="Game\Buildings\Characteristics\Maison4.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Game\Plan\Ref_donnees.cs" />
     <Compile Include="Game\Plan\Routes.cs" />
     <Compile Include="Game\Plan\Tuyaux.cs" />
+    <Compile Include="Game\Player.cs" />
     <Compile Include="Game\Sauvegarde\SauvegardeManager.cs" />
     <Compile Include="Game\Sauvegarde\Serializable.cs" />
     <Compile Include="Game\Vehicules\Accident.cs" />

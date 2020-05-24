@@ -34,6 +34,9 @@ namespace SshCity.Game.Plan
                 {
                     int bloc_set = batiments[k];
                     planInitial.SetBlock(planInitial.TileMap2, i - 1, j - 1, bloc_set);
+                    planInitial.SetBlock(planInitial.TileMapWithoutRoute, i - 1, j - 1, bloc_set);
+                    planInitial.SetBlock(planInitial.TileMap0, i, j, Ref_donnees.route);
+
 
                     switch (k)
                     {

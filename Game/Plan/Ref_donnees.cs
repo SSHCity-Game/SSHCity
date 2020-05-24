@@ -81,6 +81,8 @@ namespace SshCity.Game.Plan
         public const int accident_voiture = 68;
         public const int voleur = 80;
         public const int rien = 81; // bloc vide
+        public const int stationEpuration = 101;
+        public const int sol_stationEpuration = 102;
         
         /* Incendie Batiments */
         public const int restaurant_flamme = 3;
@@ -113,7 +115,7 @@ namespace SshCity.Game.Plan
         public const int tuyaux_virage_bas = 82;
         public const int tuyaux_virage_haut = 84;
         public const int tuyaux_virage_droit = 87;
-        public const int tuyaux_virage_gauche = 101;
+        public const int tuyaux_virage_gauche = 86;
         public const int tuyaux_T_haut_droit = 89;
         public const int tuyaux_T_bas_droit = 91;
         public const int tuyaux_T_haut_gauche = 92;
@@ -121,9 +123,11 @@ namespace SshCity.Game.Plan
         public const int tuyaux_croisement = 88;
         public const int sol_tuyaux = 80;
         public const int tuyaux_terre = 93;
+        public const int sol_maisonEau = 103;
 
         //bulles Bloc
         public const int bulleRoute = 79;
+        public const int bulleEau = 104; 
 
         /* Liste batiment, batiment en feu */
         public static (int, int)[] BatimentFeu = {
@@ -163,7 +167,8 @@ namespace SshCity.Game.Plan
         public static Dictionary<int, (int, int)> dimensions = new Dictionary<int, (int, int)>()
         {
             {centrale, (3, 4)},
-            {ferme, (2, 2)}
+            {ferme, (2, 2)},
+            {stationEpuration, (3,3)},
         };
 
         private Random rand;
