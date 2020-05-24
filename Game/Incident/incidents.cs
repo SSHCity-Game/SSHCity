@@ -45,7 +45,7 @@ public class incidents : CanvasLayer
 	private static int levelIncendie = 2;
 	private static int levelAccident = 5;
 	private static int levelNoyade = 8;
-	private static int levelBracage = 1;
+	private static int levelBracage = 10;
 	/*Indique ou sont les incidents*/
 	public static List<Vector2> ListNoyade = new List<Vector2>();
 
