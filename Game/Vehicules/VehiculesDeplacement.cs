@@ -173,9 +173,7 @@ namespace SshCity.Game.Vehicules
 									break;
 								}
 								default:
-								{
 									return;
-								}
 							}
 							break;
 						}
@@ -220,9 +218,7 @@ namespace SshCity.Game.Vehicules
 									break;
 								}
 								default:
-								{
 									return;
-								}
 							}
 							break;
 						}
@@ -267,9 +263,7 @@ namespace SshCity.Game.Vehicules
 									break;
 								}
 								default:
-								{
 									return;
-								}
 							}
 							break;
 						}
@@ -314,9 +308,7 @@ namespace SshCity.Game.Vehicules
 									break;
 								}
 								default:
-								{
 									return;
-								}
 							}
 							break;
 						}
@@ -510,9 +502,7 @@ namespace SshCity.Game.Vehicules
 			if (_controleVehicule && !_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_right")) // Gauche
 			{
 				if (Croisement)
-				{
 					MovingCroisement(Direction.RIGHT);
-				}
 				else
 					MovingDirection((Direction.RIGHT, "NE"));
 			}
@@ -520,37 +510,25 @@ namespace SshCity.Game.Vehicules
 			if (_controleVehicule && !_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_left"))//droite
 			{
 				if (Croisement)
-				{
 					MovingCroisement(Direction.LEFT);
-				}
 				else
-				{
 					MovingDirection((Direction.LEFT, "SW"));
-				}
 			}
 
 			if (_controleVehicule && !_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_down"))//bas
 			{
 				if (Croisement)
-				{
 					MovingCroisement(Direction.BOTTOM);
-				}
 				else
-				{
 					MovingDirection((Direction.BOTTOM, "SE"));
-				}
 			}
 
 			if (_controleVehicule && !_paused && !isMoving && !Autonome && Input.IsActionPressed("ui_up"))//Haut
 			{
 				if (Croisement)
-				{
 					MovingCroisement(Direction.TOP);
-				}
 				else
-				{
 					MovingDirection((Direction.TOP, "NW"));
-				}
 			}
 
 			//Si c'est un vehicule autonome, il va choisir une direction pour faire bouger le vehicule quand celui ci ne bouge pas
@@ -559,30 +537,20 @@ namespace SshCity.Game.Vehicules
 				int randNumber = rand.Next(0, 4);
 				Direction direction = ListDirection[randNumber];
 				if (Croisement)
-				{
 					MovingCroisement(direction);
-				}
 				else
-				{
 					MovingDirection((direction, DirectionToAnim[direction]));
-				}
 			}
 			
 			//Deplace le vehicule. Si _paused alors le vehicule ne bouge plus
 			if (!_paused)
-			{
 				Position += _deplacement * delta;
-			}
 
 			if (_mouseIn && Input.IsActionPressed("ClickG"))
-			{
 				_controleVehicule = true;
-			}
 
 			if (!_mouseIn && Input.IsActionPressed("ClickG"))
-			{
 				_controleVehicule = false;
-			}
 		}
     }
 }

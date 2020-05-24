@@ -154,20 +154,23 @@ public class Boutique : CanvasLayer
         if (menu_incident.CaserneopenShop) // ouvre le shop et fait clignoter la caserne
         {
             MenuSante._clignoCaserne.Show();
+            _button_sante.Pressed = true;
             ViewShop(true);
         }
         else if (menu_incident.PoliceopenShop) // ouvre le shop et fait clignoter le commissariat
         {
             MenuSpeciaux._clignoPolice.Show();
-            ButtonSpeciauxPressed();
+            _button_speciaux.Pressed = true;
             ViewShop(true);
         }
         else if (menu_incident.HopitalopenShop) // ouvre le shop et fait clignoter l'hopital
         {
             MenuSante._clignoHopital.Show();
+            _button_sante.Pressed = true;
             ViewShop(true);
         }
         else
+        
         {
             MenuSante._clignoCaserne.Hide();
             MenuSante._clignoHopital.Hide();

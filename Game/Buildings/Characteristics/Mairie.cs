@@ -2,22 +2,22 @@
 
 namespace SshCity.Game.Buildings.Characteristics
 {
-    public class Epuration : IBuildingCharacteristics
+    public class Mairie : IBuildingCharacteristics
     {
-        public Epuration()
+        public Mairie()
         {
-            Bloc = new[] {Ref_donnees.stationEpuration};
-            Cost = new[] {3000};
-            Earn = new[] {2,5,8};
-            Titre = new[] {"Station Epuration"};
+            Bloc = new[] {Ref_donnees.mairie};
+            Cost = new[] {0};
+            Earn = new[] {0};
+            Titre = new[] {"Mairie"};
             Lvl = 0;
-            GainXp = new[] {10, 100, 500};
-            energy = new[] {3};
-            water = new[] {-100};
-            Image = new[] {"res://assets/ImageSized/station epuration2.png"};
+            GainXp = new[] {0};
+            energy = new[] {0};
+            water = new[] {0};
+            Image = new[] {"res://assets/ImageSized/mairie.png"};
             NbrAmeliorations = 0;
-            NbCar = 3;
-            Population = new []{0};
+            NbCar = 0;
+            Population = new[] {0};
         }
 
         public int[] Bloc { get; }

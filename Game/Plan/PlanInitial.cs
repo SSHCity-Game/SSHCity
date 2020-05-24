@@ -49,9 +49,8 @@ public partial class PlanInitial : Node2D
    
     //Add Bateaux
     public PackedScene _bateauxScene;
-
-
-
+    
+    /* nombre de voitures sur la map */
     public static int MAX_CAR = 0;
     public static int NbCar = 0;
     
@@ -178,7 +177,7 @@ public partial class PlanInitial : Node2D
 
     public void TimerOutVehicule()
     {
-        if (addVehicule)
+        if (addVehicule && DepartRoute.Count > 0)
         {
             Random rand = new Random();
             int whichVehicule = rand.Next(0, Vehicules.ListTypeVehicules.Count);

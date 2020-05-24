@@ -58,21 +58,13 @@ public partial class Houloucoupter : Area2D
         _destination = planInitial.TileMap2.MapToWorld(destination);
         
         if (_destination.x >= Position.x && _destination.y >= Position.y)
-        {
             _animatedSprite.Animation = "NE";
-        }
         else if(_destination.x >= Position.x && _destination.y <= Position.y)
-        {
             _animatedSprite.Animation = "NW";
-        }
         else if(_destination.x <= Position.x && _destination.y <= Position.y)
-        {
             _animatedSprite.Animation = "SW";
-        }
         else if(_destination.x <= Position.x && _destination.y >= Position.y)
-        {
             _animatedSprite.Animation = "SE";
-        }
     }
 
 }

@@ -124,6 +124,7 @@ public class incidents : CanvasLayer
 	}
 	public static async void StopIncendie(PlanInitial planInitial)
 	{ /* revient au batiment normal */
+		
 		menu_incident.Flamme.Hide();
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexApincendie, indexAvincendie, xincendie, yincendie);
