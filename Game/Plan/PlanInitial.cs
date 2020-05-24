@@ -319,6 +319,7 @@ public partial class PlanInitial : Node2D
                     {
                         AjoutNode(_batiment, tile);
                     }
+                    
                     SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
                     SshCity.Game.Plan.Tuyaux.MaisonRaccordage(this);
                 }

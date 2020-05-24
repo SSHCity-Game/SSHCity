@@ -192,8 +192,9 @@ public class MainPlan : Node2D
 		
 
 		// We load the game or we generate a map
-		if (true/*!SauvegardeManager.LoadGame(_planInitial, game)*/)
+		if (!SauvegardeManager.LoadGame(_planInitial, game))
 		{
+			GD.Print("HERE");
 			// Génère une nouvelle map tant qu'on ne peut pas créer de village
 			while (!Buildings.GenerateBuildings(_planInitial))
 			{
@@ -208,7 +209,16 @@ public class MainPlan : Node2D
 			//CREATION LACS
 			Lacs.GenerateLac(_planInitial);
 		}
+		else
+		{
+			// Génère une nouvelle map tant qu'on ne peut pas créer de village
+			GD.Print("HEre");
+			Interface.Xp = 0;
+			//Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
 
+			//CREATION LACS
+			//Lacs.GenerateLac(_planInitial);
+		}
 		//Lancement de la musique
 		_musique.Play();
 	}
