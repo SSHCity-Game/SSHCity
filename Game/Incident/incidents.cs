@@ -45,9 +45,11 @@ public class incidents : CanvasLayer
 	public static int levelAccident = 2;
 	private static int levelNoyade = 8;
 	private static int levelBracage = 10;
-	
-	
-	
+	/*Indique ou sont les incidents*/
+	public static List<Vector2> ListNoyade = new List<Vector2>();
+
+
+
 	public override void _Process(float delta)
 	{
 		base._Process(delta);
@@ -174,6 +176,7 @@ public class incidents : CanvasLayer
 		{
 			Random rand = new Random();
 			(xnoyade, ynoyade) = Lacs.CoordsLac1[rand.Next(0, Lacs.CoordsLac1.Count - 1)];
+			ListNoyade.Add(new Vector2(xnoyade, ynoyade));
 			Nbnoyades++;
 			await Task.Delay(5000);
 			Lacs.GenerateLacNoyade(planInitial, Ref_donnees.lac1_noyade, xnoyade, ynoyade);

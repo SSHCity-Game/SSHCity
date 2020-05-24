@@ -46,6 +46,8 @@ public class Carte : Panel
         _energie = (Label) GetNode(_str_energie);
         _eau = (Label) GetNode(_str_eau);
 
+        _energie.Hide();
+        _eau.Hide();
         AddUserSignal("Achat");
     }
 

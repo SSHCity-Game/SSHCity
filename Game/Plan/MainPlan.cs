@@ -215,6 +215,7 @@ public class MainPlan : Node2D
 
 	public override void _Notification(int what)
 	{
+		
 		if (what != MainLoop.NotificationWmQuitRequest)
 			return;
 		SauvegardeManager.SaveGame();

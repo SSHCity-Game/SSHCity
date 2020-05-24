@@ -65,6 +65,7 @@ public class MenuEconomie : Node
 		_carteFerme.Prix(ferme.Cost[0]);
 		_carteFerme.Enrgie(ferme.energy[0].ToString());
 		_carteFerme.Eau(ferme.water[0].ToString());
+		_carteFerme.Hide();
 		_carteFerme.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		_menu_achat.Connect("CloseShop", this, nameof(CloseShop));
@@ -76,6 +77,23 @@ public class MenuEconomie : Node
 		Carte[] menu2 = {_carteFerme};
 		Carte[][] menus = {menu1, menu2};
 		_menu_achat.Menus = menus;
+	}
+	
+	public void Reset()
+	{
+		Carte[] menu1 = {_carteCafe, _carteRestaurant, _carteRestaurant2};
+		Carte[] menu2 = {_carteFerme};
+		_carteFerme.Hide();
+		Carte[][] menus = {menu1, menu2};
+		_menu_achat.Menus = menus;
+		if (Menu_Achat.WhichMenu <= menus.Length)
+		{
+			_menu_achat.Reset();
+		}		
+		else
+		{
+			Menu_Achat.WhichMenu = 0;
+		}
 	}
 
 	public void CloseMenuEconomie()

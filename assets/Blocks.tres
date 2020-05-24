@@ -96,13 +96,16 @@
 [ext_resource path="res://assets/noyade3.png" type="Texture" id=94]
 [ext_resource path="res://assets/noyade5.png" type="Texture" id=95]
 [ext_resource path="res://assets/Volmaison5-2.png" type="Texture" id=96]
-[ext_resource path="res://assets/Flammemaison3-2.png" type="Texture" id=97]
-[ext_resource path="res://assets/Flammemaison4-2.png" type="Texture" id=98]
-[ext_resource path="res://assets/Flammemaison5-2.png" type="Texture" id=99]
+[ext_resource path="res://assets/Flammemaison3-2.png" type="Texture" id=104]
+[ext_resource path="res://assets/Flammemaison4-2.png" type="Texture" id=105]
+[ext_resource path="res://assets/Flammemaison5-2.png" type="Texture" id=106]
 [ext_resource path="res://assets/Flammemaison1-2.png" type="Texture" id=100]
 [ext_resource path="res://assets/Flammeboutique5-2.png" type="Texture" id=101]
 [ext_resource path="res://assets/Flammemagasin6-2.png" type="Texture" id=102]
 [ext_resource path="res://assets/Flammeresto-2.png" type="Texture" id=103]
+[ext_resource path="res://assets/hopital3.png" type="Texture" id=97]
+[ext_resource path="res://assets/isometric centrale2.png" type="Texture" id=98]
+[ext_resource path="res://assets/hopital4.png" type="Texture" id=99]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -143,7 +146,7 @@ outlines = [ PoolVector2Array( 0, -262, -432, -14, 0, 234, 432, -14 ) ]
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 52 )
-frame_1/texture = ExtResource( 97 )
+frame_1/texture = ExtResource( 104 )
 frame_1/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=9]
@@ -171,14 +174,14 @@ frame_1/delay_sec = 0.0
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 59 )
-frame_1/texture = ExtResource( 98 )
+frame_1/texture = ExtResource( 105 )
 frame_1/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=13]
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 58 )
-frame_1/texture = ExtResource( 99 )
+frame_1/texture = ExtResource( 106 )
 frame_1/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=14]
@@ -376,9 +379,9 @@ frame_1/delay_sec = 0.0
 14/z_index = 0
 15/name = "hopital.png 15"
 15/texture = ExtResource( 15 )
-15/tex_offset = Vector2( 45, 110 )
+15/tex_offset = Vector2( -350, -100 )
 15/modulate = Color( 1, 1, 1, 1 )
-15/region = Rect2( 0, 0, 1024, 1024 )
+15/region = Rect2( 64, 160, 2944, 2848 )
 15/tile_mode = 0
 15/occluder_offset = Vector2( 0, 0 )
 15/navigation_offset = Vector2( 0, 0 )
@@ -1151,3 +1154,33 @@ frame_1/delay_sec = 0.0
 104/navigation_offset = Vector2( 0, 0 )
 104/shapes = [  ]
 104/z_index = 0
+105/name = "hopital4.png 105"
+105/texture = ExtResource( 99 )
+105/tex_offset = Vector2( -200, -100 )
+105/modulate = Color( 1, 1, 1, 1 )
+105/region = Rect2( 192, 192, 2112, 2112 )
+105/tile_mode = 0
+105/occluder_offset = Vector2( 0, 0 )
+105/navigation_offset = Vector2( 0, 0 )
+105/shapes = [  ]
+105/z_index = 0
+106/name = "hopital3.png 106"
+106/texture = ExtResource( 97 )
+106/tex_offset = Vector2( -300, 100 )
+106/modulate = Color( 1, 1, 1, 1 )
+106/region = Rect2( 192, 256, 1728, 1472 )
+106/tile_mode = 0
+106/occluder_offset = Vector2( 0, 0 )
+106/navigation_offset = Vector2( 0, 0 )
+106/shapes = [  ]
+106/z_index = 0
+107/name = "isometric centrale2.png 107"
+107/texture = ExtResource( 98 )
+107/tex_offset = Vector2( -900, 300 )
+107/modulate = Color( 1, 1, 1, 1 )
+107/region = Rect2( 64, 640, 3168, 2080 )
+107/tile_mode = 0
+107/occluder_offset = Vector2( 0, 0 )
+107/navigation_offset = Vector2( 0, 0 )
+107/shapes = [  ]
+107/z_index = 0

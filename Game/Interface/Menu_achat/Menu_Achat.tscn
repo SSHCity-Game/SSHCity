@@ -27,27 +27,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FlecheG" type="Sprite" parent="."]
-position = Vector2( 48, 150 )
-scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 2 )
-
-[node name="ButtonFlecheG" type="Button" parent="FlecheG"]
-anchor_left = 0.5
-anchor_top = 0.493
-anchor_right = 0.5
-anchor_bottom = 0.493
-margin_left = -1288.0
-margin_top = -826.795
-margin_right = 25.0
-margin_bottom = 12.205
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 3 )
-custom_styles/normal = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
 [node name="FlecheD" type="Sprite" parent="."]
 position = Vector2( 720, 150 )
 rotation = 3.14159
@@ -63,6 +42,27 @@ margin_left = -1311.0
 margin_top = -883.5
 margin_right = -19.0
 margin_bottom = 34.5
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlecheG" type="Sprite" parent="."]
+position = Vector2( 48, 150 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 2 )
+
+[node name="ButtonFlecheGauche" type="Button" parent="FlecheG"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1184.31
+margin_top = -887.845
+margin_right = 107.688
+margin_bottom = 30.1553
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
 custom_styles/normal = ExtResource( 3 )

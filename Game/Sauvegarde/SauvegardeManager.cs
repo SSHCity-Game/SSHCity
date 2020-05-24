@@ -35,7 +35,7 @@ namespace SshCity.Game.Sauvegarde
 
                 var bat = Building.Create(clazz, new Vector2(x, y), lvl);
                 planInitial.SetBlock(planInitial.TileMap2, (int) x, (int) y, bat.Characteristics.Bloc[0]);
-                planInitial.SetAchatBlocs(bat.Position);
+                planInitial.SetAchatBlocs(bat.Position, false);
             }
 
             saveGame.Close();

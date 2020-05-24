@@ -155,7 +155,7 @@ public partial class PlanInitial : Node2D
             area.Position = positionAccident;
             
             area.Init(_accidentVisi);
-            AddChild(area);
+            TileMap2.AddChild(area);
             addAccident = false;
         }
 
@@ -163,7 +163,7 @@ public partial class PlanInitial : Node2D
         {
             Houloucoupter _houloucoupter = (Houloucoupter) _houloucoupterScene.Instance();
             _houloucoupter.Init(this, HouloucoupterType, HouloucoupterPosition, HouloucoupterDestination);
-            AddChild(_houloucoupter);
+            TileMap2.AddChild(_houloucoupter);
             HouloucoupterInit = false;
         }
     }
@@ -299,14 +299,16 @@ public partial class PlanInitial : Node2D
         if (OneAction.IsActionPressed("ClickG") && (_achat || _achatRoute) && !_NotEnoughtMoney)
         {
             _achat = false;
+            Interface.Interdit = false;
             _lastTile = new Vector2(0, 0);
             Vector2 tile = GetTilePosition(TileMap1);
             if (GetBlock(TileMap2, (int) tile.x, (int) tile.y) == _batiment)
             {
                 if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)
                 {
-                    Interface.Interdit = false;
-                    SetAchatBlocs(tile);
+                    SetAchatBlocs(tile, _achatRoute);
+                    SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
+                    SshCity.Game.Plan.Tuyaux.MaisonRaccordage(this);
                     if (_achatRoute)
                     {
                         SetBlock(TileMapWithoutRoute, (int) _lastTile.x, (int) _lastTile.y, -1);
@@ -356,16 +358,27 @@ public partial class PlanInitial : Node2D
         if (OneAction.IsActionPressed("ClickG") && _delete)
         {
             _tileSupressing = GetTilePosition(TileMap1);
-            try
+            if (_tileSupressing != MainPlan.MairiePosition &&
+                GetBlock(TileMap1, (int)_tileSupressing.x, (int)_tileSupressing.y) != Ref_donnees.montagne_sol &&
+                GetBlock(TileMap1, (int)_tileSupressing.x, (int)_tileSupressing.y) != Ref_donnees.water_terre &&
+                GetBlock(TileMap1, (int)_tileSupressing.x, (int)_tileSupressing.y) != Ref_donnees.terre)
             {
-                _tileSupressing = MainPlan.BatimentsTiles[_tileSupressing];
-            }
-            catch (Exception)
-            {
+                try
+                {
+                    _tileSupressing = MainPlan.BatimentsTiles[_tileSupressing];
+                }
+                catch (Exception)
+                {
                 
+                }
+                _delete = false;
+                DeleteVerif.Verif = true;
             }
-            _delete = false;
-            DeleteVerif.Verif = true;
+            else
+            {
+                _delete = false;
+                Interface.Delete = false;
+            }
         }
 
         if (DeleteSure)
@@ -374,6 +387,8 @@ public partial class PlanInitial : Node2D
             Building.Delete(_tileSupressing);
             SetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
             SetBlock(TileMapWithoutRoute, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
+            SetBlock(TileMap3, (int)_tileSupressing.x, (int)_tileSupressing.y, -1);
+
             (int largeur, int longueur) dimensions = (1, 1);
             try
             {
@@ -390,7 +405,8 @@ public partial class PlanInitial : Node2D
                 while (j < dimensions.largeur+1)
                 {
                     SetBlock(TileMap1, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
-                    SetBlock(TileMap0, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);;
+                    SetBlock(TileMap0, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
+                    MainPlan.BatimentsTiles.Remove(new Vector2(_tileSupressing.x + i-1, _tileSupressing.y + j-1));
                     j++;
                 }
 
@@ -406,7 +422,7 @@ public partial class PlanInitial : Node2D
         }
 
         if (OneAction.IsActionPressed("ClickG") && !(_achat) && !(_achatRoute) && !_delete && !DeleteVerif.Verif &&
-            !Infos.IsOpen)
+            !Infos.IsOpen && !Boutique.BoutiqueOpen)
         {
             Vector2 tile = GetTilePosition(TileMap1);
             int batiment = -1;
@@ -466,14 +482,13 @@ public partial class PlanInitial : Node2D
 
         if (OneAction.IsActionPressed("ClickG") && Tuyaux)
         {
-            Tuyaux = false;
             _lastTile = new Vector2(0, 0);
+            Interface.Interdit = false;
             Vector2 tile = GetTilePosition(TileMap0) + new Vector2(1, 1);
             if (GetBlock(TileMap0, (int) tile.x, (int) tile.y) == _batiment)
             {
                 if (GetBlock(TileMapNeg, (int) tile.x, (int) tile.y) == Ref_donnees.sol_tuyaux)
                 {
-                    Interface.Interdit = false;
                     SetBlock(TileMapNeg, (int)tile.x, (int)tile.y, Ref_donnees.tuyaux_terre);
                     SshCity.Game.Plan.Tuyaux.ChangeTuyaux(tile, this);
                     SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);

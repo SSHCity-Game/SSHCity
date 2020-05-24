@@ -12,8 +12,8 @@ namespace SshCity.Game.Buildings.Characteristics
             Titre = new[] {"Station Epuration"};
             Lvl = 0;
             GainXp = new[] {10, 100, 500};
-            energy = new[] {1};
-            water = new[] {3};
+            energy = new[] {3};
+            water = new[] {-100};
             Image = new[] {"res://assets/ImageSized/station epuration2.png"};
             NbrAmeliorations = 0;
             NbCar = 3;
