@@ -190,9 +190,9 @@ public class MainPlan : Node2D
 		if (args.Length > 1)
 			game = Marshalls.Base64ToUtf8(args[1]);
 		
-/*
+
 		// We load the game or we generate a map
-		if (!SauvegardeManager.LoadGame(_planInitial, game))
+		if (true/*!SauvegardeManager.LoadGame(_planInitial, game)*/)
 		{
 			// Génère une nouvelle map tant qu'on ne peut pas créer de village
 			while (!Buildings.GenerateBuildings(_planInitial))
@@ -208,13 +208,14 @@ public class MainPlan : Node2D
 			//CREATION LACS
 			Lacs.GenerateLac(_planInitial);
 		}
-*/
+
 		//Lancement de la musique
 		_musique.Play();
 	}
 
 	public override void _Notification(int what)
 	{
+		
 		if (what != MainLoop.NotificationWmQuitRequest)
 			return;
 		SauvegardeManager.SaveGame();
