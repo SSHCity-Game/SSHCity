@@ -35,6 +35,15 @@ namespace SshCity.Game.Vehicules
 		           bloc == Ref_donnees.maison5_vol;
 	    }
 
+	    public static bool isBracage(int bloc)
+	    {
+		    return bloc == Ref_donnees.maison1_vol ||
+		           bloc == Ref_donnees.maison3_vol ||
+		           bloc == Ref_donnees.maison4_vol ||
+		           bloc == Ref_donnees.maison5_vol ||
+		           bloc == Ref_donnees.mairie_vol;
+	    }
+
 	    /// <summary>
 	    /// Indique si un deplacemetn à un croisment est valide ou pas 
 	    /// </summary>
@@ -438,32 +447,29 @@ namespace SshCity.Game.Vehicules
 					_paused = false;
 				}
 			}
+			
 			if (_type == Type.POLICE)
 			{
 				Vector2 posi = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
-				if (isCambriolage(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x+1, (int) posi.y)))
+				if (isBracage(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x+1, (int) posi.y)))
 				{
 					_paused = true;
 					incidents.ResoBracage = true;
-					Interface.Xp += 50;
 				}
-				else if (isCambriolage(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x-1, (int) posi.y)))
+				else if (isBracage(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x-1, (int) posi.y)))
 				{
 					_paused = true;
 					incidents.ResoBracage = true;
-					Interface.Xp += 50;
 				}
-				else if (isCambriolage(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x, (int) posi.y-1)))
+				else if (isBracage(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x, (int) posi.y-1)))
 				{
 					_paused = true;
 					incidents.ResoBracage = true;
-					Interface.Xp += 50;
 				}
-				else if (isCambriolage(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x, (int) posi.y+1)))
+				else if (isBracage(_planInitial.GetBlock(_planInitial.TileMap2, (int) posi.x, (int) posi.y+1)))
 				{
 					_paused = true;
 					incidents.ResoBracage = true;
-					Interface.Xp += 50;
 				}
 				else
 				{

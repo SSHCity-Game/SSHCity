@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Alerte_incidents/background.png" type="Texture" id=2]
+[ext_resource path="res://Game/Interface/LevelUp.cs" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 1 )
+
+[node name="LevelUp" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="LevelUpBack" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -393.0
+margin_top = -216.5
+margin_right = 393.0
+margin_bottom = 216.5
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quitter" type="Button" parent="LevelUpBack"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 237.0
+margin_top = -200.5
+margin_right = 306.0
+margin_bottom = -174.5
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 1 )
+text = "Quitter"
+
+[node name="LevelUpText" type="Label" parent="LevelUpBack"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -275.0
+margin_top = -175.0
+margin_right = 275.0
+margin_bottom = 175.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

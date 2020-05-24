@@ -13,7 +13,6 @@ public class incidents : CanvasLayer
 	public const int MAX_NOYADES = 1;
 	public const int MAX_BRACAGES = 1;
 	/* Nombre actuel des incidents */
-	public static int Nbincidents = 0;
 	public static int Nbincendies = 0;
 	public static int Nbaccident = 0;
 	public static int Nbnoyades = 0;
@@ -42,8 +41,8 @@ public class incidents : CanvasLayer
 	private static int indexAvbracage;
 	private static int indexApbracage;
 	/* niveau d apparition des differents incidents */	
-	private static int levelIncendie = 2;
-	private static int levelAccident = 5;
+	private static int levelIncendie = 5;
+	public static int levelAccident = 2;
 	private static int levelNoyade = 8;
 	private static int levelBracage = 10;
 	/*Indique ou sont les incidents*/
@@ -69,6 +68,8 @@ public class incidents : CanvasLayer
 			GenerateNoyade(MainPlan._planInitial);
 		if (menu_incident.TimerNoyade.IsStopped() && ResoNoyade) // definit le temps entre l apparition de deux noyades
 			ResoNoyade = false;
+		if (menu_incident.TimerAccident.IsStopped() && ResoAccident)
+			ResoAccident = false;
 	}
 
 	public static (int x, int y, int indexAv, int indexAp) GenereCoords((int, int)[] listBat)
@@ -105,7 +106,6 @@ public class incidents : CanvasLayer
 		if (ResoIncident && Nbincendies > 0)
 		{
 			Nbincendies--;
-			Nbincidents--;
 			StopIncendie(planInitial);
 		}
 		else if (!ResoIncident && Nbincendies < MAX_INCENDIES)
@@ -113,7 +113,6 @@ public class incidents : CanvasLayer
 			(xincendie, yincendie, indexAvincendie, indexApincendie) = GenereCoords(Ref_donnees.BatimentFeu);
 			StartIncendie(planInitial);
 			Nbincendies++;
-			Nbincidents++;
 		}
 	}
 	public static async void StartIncendie(PlanInitial planInitial)
@@ -124,35 +123,11 @@ public class incidents : CanvasLayer
 	}
 	public static async void StopIncendie(PlanInitial planInitial)
 	{ /* revient au batiment normal */
-		
 		menu_incident.Flamme.Hide();
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexApincendie, indexAvincendie, xincendie, yincendie);
-	}
-	
-					/** ACCIDENTS **/
-	public static void GenerateAccident(PlanInitial planInitial)
-	{
-		if (ResoAccident && Nbaccident > 0)
-		{
-			Nbaccident--;
-			Nbincidents--;
-			StopAccident(planInitial);
-		}
-		else if (Nbaccident < MAX_ACCIDENT && !ResoAccident)
-		{
-			StartAccident(planInitial);
-			Nbaccident++;
-			Nbincidents++;
-		}
-	}
-	public static async void StartAccident(PlanInitial planInitial)
-	{ /* fait apparaitre une image d'accident sur la route */
-		menu_incident.Accident.Show();
-	}
-	public static async void StopAccident(PlanInitial planInitial)
-	{ /* supprime l'accident */
-		menu_incident.Accident.Hide();
+		menu_incident.TimerIncendie.Start();
+		Interface.Xp += 50;
 	}
 	
 					/** BRACAGES **/
@@ -161,7 +136,6 @@ public class incidents : CanvasLayer
 		if (ResoBracage && Nbbracages > 0)
 		{
 			Nbbracages--;
-			Nbincidents--;
 			StopBracage(planInitial);
 		}
 		else if (Nbbracages < MAX_BRACAGES && !ResoBracage)
@@ -169,7 +143,6 @@ public class incidents : CanvasLayer
 			(xbracage, ybracage, indexAvbracage, indexApbracage) = GenereCoords(Ref_donnees.BatimentVol);
 			StartBracage(planInitial);
 			Nbbracages++;
-			Nbincidents++;
 		}
 	}
 	public static async void StartBracage(PlanInitial planInitial)
@@ -183,6 +156,8 @@ public class incidents : CanvasLayer
 		menu_incident.Bracage.Hide();
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexApbracage, indexAvbracage, xbracage, ybracage);
+		menu_incident.TimerBracage.Start();
+		Interface.Xp += 50;
 	}
 	
 					/** NOYADES **/
@@ -191,10 +166,11 @@ public class incidents : CanvasLayer
 		if (ResoNoyade && Nbnoyades > 0)
 		{
 			Nbnoyades--;
-			Nbincidents--;
 			menu_incident.Noyade.Hide();
 			await Task.Delay(3000);
 			Lacs.GenerateLacNoyade(planInitial, Ref_donnees.lac1, xnoyade, ynoyade);
+			menu_incident.TimerNoyade.Start();
+			Interface.Xp += 50;
 		}
 		else if (!ResoNoyade && Nbnoyades < MAX_NOYADES)
 		{
@@ -202,14 +178,13 @@ public class incidents : CanvasLayer
 			(xnoyade, ynoyade) = Lacs.CoordsLac1[rand.Next(0, Lacs.CoordsLac1.Count - 1)];
 			ListNoyade.Add(new Vector2(xnoyade, ynoyade));
 			Nbnoyades++;
-			Nbincidents++;
 			await Task.Delay(5000);
 			Lacs.GenerateLacNoyade(planInitial, Ref_donnees.lac1_noyade, xnoyade, ynoyade);
 			menu_incident.Noyade.Show();
 		}
 	}
 
-	public static void BuildingSwitch(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
+					public static void BuildingSwitch(PlanInitial planInitial, int indexAv, int indexAp, int x, int y)
 	{ /* Change l'image d'un batiment */
 		/* Initialise le bloc en x,y, comme batiment accidente */
 		if (planInitial.GetBlock(planInitial.TileMap2, x, y) == indexAv) 

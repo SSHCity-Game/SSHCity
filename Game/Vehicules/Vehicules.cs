@@ -223,7 +223,7 @@ namespace SshCity.Game.Vehicules
         /// <param name="area2D">L'area2D venant de rentrer dans l'area2D</param>
         public void Collision(Area2D area2D)
         {
-            if (!_stopArea2DCreat && !_stopAccident)
+            if (!_stopArea2DCreat && !_stopAccident && Interface._level >= incidents.levelAccident && incidents.Nbaccident < incidents.MAX_ACCIDENT && !incidents.ResoAccident)
             {
                 if (area2D.CollisionMask == 1)
                 {
@@ -231,6 +231,8 @@ namespace SshCity.Game.Vehicules
                     PlanInitial.AddZoneAccident(Position, true);
                     PlanInitial.NbCar -= 1;
                     QueueFree();
+                    incidents.Nbaccident++;
+                    menu_incident.Accident.Show();
                 }
                 else
                 {
