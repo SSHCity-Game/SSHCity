@@ -80,7 +80,7 @@ margin_top = 180.0
 margin_right = 74.0
 margin_bottom = 200.0
 custom_fonts/font = SubResource( 4 )
-text = "Cost :"
+text = "Prix :"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -101,7 +101,7 @@ margin_top = 205.0
 margin_right = 77.0
 margin_bottom = 225.0
 custom_fonts/font = SubResource( 6 )
-text = "Earn :"
+text = "Gain :"
 __meta__ = {
 "_edit_use_anchors_": false
 }
