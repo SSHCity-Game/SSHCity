@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=145 format=2]
+[gd_resource type="TileSet" load_steps=151 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -126,6 +126,12 @@
 [ext_resource path="res://assets/isometric eglise4.png" type="Texture" id=124]
 [ext_resource path="res://assets/isometric hotel1.png" type="Texture" id=125]
 [ext_resource path="res://assets/iso hotel1.png" type="Texture" id=126]
+[ext_resource path="res://assets/isometric ferme3.png" type="Texture" id=127]
+[ext_resource path="res://assets/isometric ferme4.png" type="Texture" id=128]
+[ext_resource path="res://assets/iso parc enfant3.png" type="Texture" id=129]
+[ext_resource path="res://assets/iso parc enfants1.png" type="Texture" id=130]
+[ext_resource path="res://assets/isometric boutique9.png" type="Texture" id=131]
+[ext_resource path="res://assets/iso resto burger.png" type="Texture" id=132]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -1413,3 +1419,63 @@ frame_1/delay_sec = 0.0
 128/navigation_offset = Vector2( 0, 0 )
 128/shapes = [  ]
 128/z_index = 0
+129/name = "isometric ferme3.png 129"
+129/texture = ExtResource( 127 )
+129/tex_offset = Vector2( -500, 350 )
+129/modulate = Color( 1, 1, 1, 1 )
+129/region = Rect2( -32, 32, 2080, 1312 )
+129/tile_mode = 0
+129/occluder_offset = Vector2( 0, 0 )
+129/navigation_offset = Vector2( 0, 0 )
+129/shapes = [  ]
+129/z_index = 0
+130/name = "isometric ferme4.png 130"
+130/texture = ExtResource( 128 )
+130/tex_offset = Vector2( -375, 350 )
+130/modulate = Color( 1, 1, 1, 1 )
+130/region = Rect2( 32, 32, 1920, 1184 )
+130/tile_mode = 0
+130/occluder_offset = Vector2( 0, 0 )
+130/navigation_offset = Vector2( 0, 0 )
+130/shapes = [  ]
+130/z_index = 0
+131/name = "iso parc enfants1.png 131"
+131/texture = ExtResource( 130 )
+131/tex_offset = Vector2( -60, 380 )
+131/modulate = Color( 1, 1, 1, 1 )
+131/region = Rect2( -32, -32, 1152, 800 )
+131/tile_mode = 0
+131/occluder_offset = Vector2( 0, 0 )
+131/navigation_offset = Vector2( 0, 0 )
+131/shapes = [  ]
+131/z_index = 0
+132/name = "iso parc enfant3.png 132"
+132/texture = ExtResource( 129 )
+132/tex_offset = Vector2( 50, 430 )
+132/modulate = Color( 1, 1, 1, 1 )
+132/region = Rect2( 0, 32, 960, 736 )
+132/tile_mode = 0
+132/occluder_offset = Vector2( 0, 0 )
+132/navigation_offset = Vector2( 0, 0 )
+132/shapes = [  ]
+132/z_index = 0
+133/name = "isometric boutique9.png 133"
+133/texture = ExtResource( 131 )
+133/tex_offset = Vector2( 50, 250 )
+133/modulate = Color( 1, 1, 1, 1 )
+133/region = Rect2( 32, 32, 1056, 832 )
+133/tile_mode = 0
+133/occluder_offset = Vector2( 0, 0 )
+133/navigation_offset = Vector2( 0, 0 )
+133/shapes = [  ]
+133/z_index = 0
+134/name = "iso resto burger.png 134"
+134/texture = ExtResource( 132 )
+134/tex_offset = Vector2( 50, 230 )
+134/modulate = Color( 1, 1, 1, 1 )
+134/region = Rect2( 32, 96, 960, 832 )
+134/tile_mode = 0
+134/occluder_offset = Vector2( 0, 0 )
+134/navigation_offset = Vector2( 0, 0 )
+134/shapes = [  ]
+134/z_index = 0

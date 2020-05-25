@@ -107,6 +107,12 @@ namespace SshCity.Game.Plan
         public const int eglise2 = 126;
         public const int hotel2 = 127;
         public const int hotel1 = 128;
+        public const int ferme3 = 129;
+        public const int ferme4 = 130;
+        public const int parc2 = 131;
+        public const int parc3 = 132;
+        public const int resto2 = 133;
+        public const int burgeur = 134;
         
         /* Incendie Batiments */
         public const int restaurant_flamme = 3;
@@ -207,6 +213,8 @@ namespace SshCity.Game.Plan
             {usine3, (2, 2)}, 
             {usine4, (2, 2)},
             {zoo, (2, 2)},
+            {ferme3, (2, 2)},
+            {ferme4, (2, 2)},
         };
 
         private Random rand;
