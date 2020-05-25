@@ -9,6 +9,7 @@ public class MenuSpeciaux : Node
     private const string _str_carteCentraleElectrique = _str_menu_achat + "/CentraleElectrique";
     private const string _str_carteEpuration = _str_menu_achat + "/Epuration";
     private const string _str_carteMosque = _str_menu_achat + "/Mosque";
+    private const string _str_carteEolienne = _str_menu_achat + "/Eolienne";
     public static TextureRect _clignoPolice;
 
     public static bool clignoPolice = false;
@@ -18,6 +19,7 @@ public class MenuSpeciaux : Node
     private Carte _carteEglise;
     private Carte _cartePolice;
     private Carte _carteMosque;
+    private Carte _carteEolienne;
     private Menu_Achat _menu_achat;
     public override void _Ready()
     {
@@ -88,6 +90,19 @@ public class MenuSpeciaux : Node
         _carteMosque.Enrgie(mosque.energy[0].ToString());
         _carteMosque.Eau(mosque.water[0].ToString());
         _carteMosque.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+        
+        //config _carteEolienne
+        
+        _carteEolienne = (Carte) GetNode(_str_carteEolienne);
+        var eolienne = BuildingCharacteristics.FromType(BuildingType.EOLIENNE);
+        _carteEolienne.Bloc = eolienne.Bloc[0];
+        _carteEolienne.Cost = eolienne.Cost[0];
+        _carteEolienne.Titre(eolienne.Titre[0]);
+        _carteEolienne.Gain(eolienne.Earn[0]);
+        _carteEolienne.Prix(eolienne.Cost[0]);
+        _carteEolienne.Enrgie(eolienne.energy[0].ToString());
+        _carteEolienne.Eau(eolienne.water[0].ToString());
+        _carteEolienne.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         /* Fond clignotant quand besoin du batiment*/
         _clignoPolice = (TextureRect) GetNode(_str_cartePolice + "/Background/Cligno");
@@ -97,7 +112,7 @@ public class MenuSpeciaux : Node
         AddUserSignal("CloseShop");
 
         Carte[] menu1 = new[] {_cartePolice, _carteCentraleElectrique,_carteEpuration };
-        Carte[] menu2 = {_carteEglise, _carteMosque};
+        Carte[] menu2 = {_carteEglise, _carteMosque, _carteEolienne};
         Carte[][] menus = {menu1, menu2};
         _menu_achat.Menus = menus;
     }
@@ -105,9 +120,10 @@ public class MenuSpeciaux : Node
     public void Reset()
     {
         Carte[] menu1 = new[] {_cartePolice, _carteCentraleElectrique,_carteEpuration };
-        Carte[] menu2 = {_carteEglise, _carteMosque};
+        Carte[] menu2 = {_carteEglise, _carteMosque, _carteEolienne};
         _carteEglise.Hide();
         _carteMosque.Hide();
+        _carteEolienne.Hide();
         Carte[][] menus = {menu1, menu2};
         _menu_achat.Menus = menus;
         if (Menu_Achat.WhichMenu <= menus.Length)

@@ -72,7 +72,7 @@ public class MenuEconomie : Node
 		
 		//Config _carteFermeGrande
 		_carteFermeGrande = (Carte) GetNode(_str_carteFermeFrande);
-		var fermeGrande = BuildingCharacteristics.FromType(BuildingType.FERME);
+		var fermeGrande = BuildingCharacteristics.FromType(BuildingType.FERMEGRANDE);
 		_carteFermeGrande.Bloc = fermeGrande.Bloc[0];
 		_carteFermeGrande.Cost = fermeGrande.Cost[0];
 		_carteFermeGrande.Titre(fermeGrande.Titre[0]);

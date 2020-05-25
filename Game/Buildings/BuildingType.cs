@@ -30,5 +30,6 @@ namespace SshCity.Game.Buildings
         EPURATION = Ref_donnees.stationEpuration,
         MOSQUE = Ref_donnees.mosque,
         FERMEGRANDE = Ref_donnees.ferme3,
+        EOLIENNE = Ref_donnees.eolienne,
     }
 }

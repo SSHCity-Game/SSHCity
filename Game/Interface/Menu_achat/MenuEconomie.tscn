@@ -36,6 +36,7 @@ margin_top = -120.0
 margin_right = -96.5
 margin_bottom = 122.0
 
-[node name="Carte" parent="Menu_Achat" instance=ExtResource( 7 )]
+[node name="FermeGrande" parent="Menu_Achat" instance=ExtResource( 7 )]
+visible = false
 margin_top = -120.0
 margin_bottom = 122.0
