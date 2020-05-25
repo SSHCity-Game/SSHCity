@@ -125,7 +125,13 @@ namespace SshCity.Game.Plan
         public const int maison5_flamme = 8;
         public const int maison3_flamme = 57;
         public const int cafe_flamme = 60;
-        public const int restaurant2_flamme= 62;
+        public const int restaurant2_flamme = 62;
+        public const int ferme2_flamme = 139;
+        public const int ferme3_flamme = 140;
+        public const int mosque2_flamme = 141;
+        public const int station_service1_flamme = 142;
+        public const int usine1_flamme = 143;
+        
         
         /* Vol Batiments*/
         public const int maison1_vol = 96;
@@ -164,9 +170,11 @@ namespace SshCity.Game.Plan
 
         /* Liste batiment, batiment en feu */
         public static (int, int)[] BatimentFeu = {
-            (maison1, maison1_flamme), (maison3, maison3_flamme),
-            (maison4, maison4_flamme), (maison5, maison5_flamme), (restaurant, restaurant_flamme),
-            (restaurant2, restaurant2_flamme), (eglise, eglise_flamme), (cafe, cafe_flamme)
+            (maison1, maison1_flamme), (maison3, maison3_flamme), (maison4, maison4_flamme), 
+            (maison5, maison5_flamme), (restaurant, restaurant_flamme), (restaurant2, restaurant2_flamme), 
+            (eglise, eglise_flamme), (cafe, cafe_flamme), (ferme, ferme2_flamme),
+            (ferme3, ferme3_flamme), (mosque2, mosque2_flamme), (essence, station_service1_flamme), 
+            (usine1, usine1_flamme)
         };
         
         /* Liste lac, lac avec noye */

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_resource type="TileSet" load_steps=125 format=2]
-=======
 [gd_resource type="TileSet" load_steps=154 format=2]
->>>>>>> bb7834b1a4cb3bc71db78a820e570700f0670ab6
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -139,7 +135,6 @@
 [ext_resource path="res://assets/isometric mosquee2.png" type="Texture" id=133]
 [ext_resource path="res://assets/isometric mosquee1.png" type="Texture" id=134]
 [ext_resource path="res://assets/isometric mosquee3.png" type="Texture" id=135]
-[ext_resource path="res://assets/Flammemaison1-2.png" type="Texture" id=136]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )

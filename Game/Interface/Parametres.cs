@@ -30,10 +30,11 @@ public class Parametres : CanvasLayer
 
         _login.Text = "username";
         HideAll();
+        _parametres.Hide();
         
         _parametres.Connect("pressed", this, nameof(param_pressed));
         _gamePlay.Connect("pressed", this, nameof(gameplay_pressed));
-        _quitter.Connect("pressed", this, nameof(gameplay_pressed));
+        _quitter.Connect("pressed", this, nameof(quitter_pressed));
         _checkEffet.Connect("pressed", this, nameof(effet_pressed));
         _checkMusique.Connect("pressed", this, nameof(musique_pressed));
     }
