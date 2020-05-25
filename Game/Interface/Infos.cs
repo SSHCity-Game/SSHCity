@@ -123,15 +123,15 @@ public class Infos : Panel
     public void EnvoieVehicule()
     {
         CloseInfos();
-        if (_type == Vehicules.Type.POLICE)
+        if (_type == Vehicules.Type.POLICE && Parametres.effets)
         {
             _police.Play();
         }
-        else if (_type  == Vehicules.Type.AMBULANCE)
+        else if (_type  == Vehicules.Type.AMBULANCE && Parametres.effets)
         {
             _ambulance.Play();
         }
-        else if (_type  == Vehicules.Type.CAMION)
+        else if (_type  == Vehicules.Type.CAMION && Parametres.effets)
         {
             _pompier.Play();
         }
@@ -144,7 +144,8 @@ public class Infos : Panel
         {
             CloseInfos();
             Vector2 where = incidents.ListNoyade[0];
-            _helico.Play();
+            if(Parametres.effets)
+                _helico.Play();
             incidents.ListNoyade.Remove(where);
             PlanInitial.AddHouloucoupter(Houloucoupter.Type.HOPITAL, position, where);
         }
