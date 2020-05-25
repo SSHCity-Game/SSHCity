@@ -103,6 +103,10 @@ namespace SshCity.Game.Plan
         public const int usine4 = 122;
         public const int maisonEcolo = 123;
         public const int zoo = 124;
+        public const int eglise3 = 125;
+        public const int eglise2 = 126;
+        public const int hotel2 = 127;
+        public const int hotel1 = 128;
         
         /* Incendie Batiments */
         public const int restaurant_flamme = 3;
