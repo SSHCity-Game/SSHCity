@@ -35,5 +35,6 @@ namespace SshCity.Game.Buildings
         AEROPORT = Ref_donnees.aeroport,
         ESSENCE = Ref_donnees.essence,
         FOOT = Ref_donnees.foot,
+        ZOO = Ref_donnees.zoo,
     }
 }

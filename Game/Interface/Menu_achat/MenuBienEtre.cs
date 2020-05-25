@@ -6,9 +6,11 @@ public class MenuBienEtre : Node
 	private const string _str_menu_achat = "Menu_Achat";
 	private const string _str_carteParc = _str_menu_achat + "/Parc";
 	private const string _str_carteFoot = _str_menu_achat + "/Foot";
+	private const string _str_carteZoo = _str_menu_achat + "/Zoo";
 
 	private Carte _carteParc;
 	private Carte _carteFoot;
+	private Carte _carteZoo;
 	private Menu_Achat _menu_achat;
 
 	public static bool Achat { get; set; } = false;
@@ -41,21 +43,34 @@ public class MenuBienEtre : Node
 		_carteFoot.Enrgie(foot.energy[0].ToString());
 		_carteFoot.Eau(foot.water[0].ToString());
 		_carteFoot.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+		
+		//Config _carteZoo
+		_carteZoo = (Carte) GetNode(_str_carteZoo);
+		var zoo = BuildingCharacteristics.FromType(BuildingType.ZOO);
+		_carteZoo.Bloc = zoo.Bloc[0];
+		_carteZoo.Cost = zoo.Cost[0];
+		_carteZoo.Titre(zoo.Titre[0]);
+		_carteZoo.Gain(zoo.Earn[0]);
+		_carteZoo.Prix(zoo.Cost[0]);
+		_carteZoo.Enrgie(zoo.energy[0].ToString());
+		_carteZoo.Eau(zoo.water[0].ToString());
+		_carteZoo.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 
 		_menu_achat.Hide();
 		AddUserSignal("CloseShop");
 
-		Carte[] menu1 = {_carteParc, _carteFoot};
+		Carte[] menu1 = {_carteParc, _carteFoot, _carteZoo};
 		Carte[][] menus = {menu1};
 		_menu_achat.Menus = menus;
 	}
 	
 	public void Reset()
 	{
-		Carte[] menu1 = {_carteParc, _carteFoot};
+		Carte[] menu1 = {_carteParc, _carteFoot, _carteZoo};
 		_carteParc.Show();
 		_carteFoot.Show();
+		_carteZoo.Show();
 		Carte[][] menus = {menu1};
 		_menu_achat.Menus = menus;
 		_menu_achat._whichMenu = 0;

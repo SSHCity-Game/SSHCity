@@ -59,6 +59,7 @@ namespace SshCity.Game.Buildings
                 {BuildingType.AEROPORT, typeof(Aeroport)},
                 {BuildingType.ESSENCE, typeof(Essence)},
                 {BuildingType.FOOT, typeof(Foot)},
+                {BuildingType.ZOO, typeof(Zoo)},
 
             };
 
