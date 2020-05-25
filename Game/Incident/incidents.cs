@@ -49,6 +49,13 @@ public class incidents : CanvasLayer
 	public static List<Vector2> ListNoyade = new List<Vector2>();
 
 
+	private const string _str_feu = "Feu";
+	static AudioStreamPlayer _feu;
+
+	public incidents()
+	{
+		_feu = (AudioStreamPlayer) GetNode(_str_feu);
+	}
 
 	public override void _Process(float delta)
 	{
@@ -121,6 +128,7 @@ public class incidents : CanvasLayer
 		await Task.Delay(5000);
 		BuildingSwitch(planInitial, indexAvincendie, indexApincendie, xincendie, yincendie);
 		menu_incident.Flamme.Show();
+		_feu.Play();
 	}
 	public static async void StopIncendie(PlanInitial planInitial)
 	{ /* revient au batiment normal */
