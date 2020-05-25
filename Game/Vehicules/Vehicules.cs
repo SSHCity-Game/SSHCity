@@ -239,7 +239,7 @@ namespace SshCity.Game.Vehicules
             }
             else if (!_stopArea2DCreat && !_stopAccident && _type != Type.AMBULANCE && _type != Type.POLICE && _type != Type.CAMION)
             {
-                if (area2D.CollisionMask == 1)
+                if (area2D.CollisionMask == 7)
                 {
                     if (incidents.Nbaccident < incidents.MAX_ACCIDENT)
                     {
