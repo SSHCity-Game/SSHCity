@@ -169,7 +169,6 @@ public class Interface : CanvasLayer
         _buttonDelete.Hide();
         _buttonEau.Hide();
         _buttonRoute.Hide();
-        _buttonTuyaux.Hide();
         Score.Hide();
         ScoreBar.Hide();
         
@@ -497,7 +496,6 @@ public class Interface : CanvasLayer
         _buttonDelete.Show();
         _buttonEau.Show();
         _buttonRoute.Show();
-        _buttonTuyaux.Show();
         Score.Show();
         ScoreBar.Show();
     }

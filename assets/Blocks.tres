@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=172 format=2]
+[gd_resource type="TileSet" load_steps=173 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -147,6 +147,7 @@
 [ext_resource path="res://assets/Flammeusine1.png" type="Texture" id=145]
 [ext_resource path="res://assets/Flammemosquee2.png" type="Texture" id=146]
 [ext_resource path="res://assets/Volstation service1.png" type="Texture" id=147]
+[ext_resource path="res://assets/Alerte_incidents/bulleReparation.png" type="Texture" id=148]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -1627,3 +1628,13 @@ frame_1/delay_sec = 0.0
 144/navigation_offset = Vector2( 0, 0 )
 144/shapes = [  ]
 144/z_index = 0
+145/name = "bulleReparation.png 145"
+145/texture = ExtResource( 148 )
+145/tex_offset = Vector2( 0, 0 )
+145/modulate = Color( 1, 1, 1, 1 )
+145/region = Rect2( 448, 800, 640, 608 )
+145/tile_mode = 0
+145/occluder_offset = Vector2( 0, 0 )
+145/navigation_offset = Vector2( 0, 0 )
+145/shapes = [  ]
+145/z_index = 0

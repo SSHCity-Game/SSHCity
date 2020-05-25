@@ -52,7 +52,7 @@ public class incidents : CanvasLayer
 	private const string _str_feu = "Feu";
 	static AudioStreamPlayer _feu;
 
-	public incidents()
+	public override void _Ready()
 	{
 		_feu = (AudioStreamPlayer) GetNode(_str_feu);
 	}
