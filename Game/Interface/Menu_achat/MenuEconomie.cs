@@ -98,18 +98,14 @@ public class MenuEconomie : Node
 	{
 		Carte[] menu1 = {_carteCafe, _carteRestaurant, _carteRestaurant2};
 		Carte[] menu2 = {_carteFerme, _carteFermeGrande};
+		_carteCafe.Show();
+		_carteRestaurant.Show();
+		_carteRestaurant2.Show();
 		_carteFerme.Hide();
 		_carteFermeGrande.Hide();
 		Carte[][] menus = {menu1, menu2};
 		_menu_achat.Menus = menus;
-		if (Menu_Achat.WhichMenu <= menus.Length)
-		{
-			_menu_achat.Reset();
-		}		
-		else
-		{
-			Menu_Achat.WhichMenu = 0;
-		}
+		_menu_achat._whichMenu = 0;
 	}
 
 	public void CloseMenuEconomie()

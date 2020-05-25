@@ -31,5 +31,7 @@ namespace SshCity.Game.Buildings
         MOSQUE = Ref_donnees.mosque,
         FERMEGRANDE = Ref_donnees.ferme3,
         EOLIENNE = Ref_donnees.eolienne,
+        SOLAIRE = Ref_donnees.solaire,
+        AEROPORT = Ref_donnees.aeroport,
     }
 }

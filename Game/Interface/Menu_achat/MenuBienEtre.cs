@@ -40,16 +40,11 @@ public class MenuBienEtre : Node
 	public void Reset()
 	{
 		Carte[] menu1 = {_carteParc};
+		_carteParc.Show();
 		Carte[][] menus = {menu1};
 		_menu_achat.Menus = menus;
-		if (Menu_Achat.WhichMenu > menus.Length)
-		{
-			_menu_achat.Reset();
-		}
-		else
-		{
-			Menu_Achat.WhichMenu = 0;
-		}
+		_menu_achat._whichMenu = 0;
+
 	}
 
 	public void CloseMenuBienEtre()

@@ -1,3 +1,4 @@
+using System.Reflection;
 using Godot;
 using SshCity.Game.Buildings;
 
@@ -10,6 +11,8 @@ public class MenuSpeciaux : Node
     private const string _str_carteEpuration = _str_menu_achat + "/Epuration";
     private const string _str_carteMosque = _str_menu_achat + "/Mosque";
     private const string _str_carteEolienne = _str_menu_achat + "/Eolienne";
+    private const string _str_carteSolaire = _str_menu_achat + "/Solaire";
+    private const string _str_carteAeroport = _str_menu_achat + "/Aeroport";
     public static TextureRect _clignoPolice;
 
     public static bool clignoPolice = false;
@@ -20,6 +23,8 @@ public class MenuSpeciaux : Node
     private Carte _cartePolice;
     private Carte _carteMosque;
     private Carte _carteEolienne;
+    private Carte _carteSolaire;
+    private Carte _carteAeroport;
     private Menu_Achat _menu_achat;
     public override void _Ready()
     {
@@ -103,6 +108,32 @@ public class MenuSpeciaux : Node
         _carteEolienne.Enrgie(eolienne.energy[0].ToString());
         _carteEolienne.Eau(eolienne.water[0].ToString());
         _carteEolienne.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+        
+        //config _carteSolaire
+        
+        _carteSolaire = (Carte) GetNode(_str_carteSolaire);
+        var solaire = BuildingCharacteristics.FromType(BuildingType.SOLAIRE);
+        _carteSolaire.Bloc = solaire.Bloc[0];
+        _carteSolaire.Cost = solaire.Cost[0];
+        _carteSolaire.Titre(solaire.Titre[0]);
+        _carteSolaire.Gain(solaire.Earn[0]);
+        _carteSolaire.Prix(solaire.Cost[0]);
+        _carteSolaire.Enrgie(solaire.energy[0].ToString());
+        _carteSolaire.Eau(solaire.water[0].ToString());
+        _carteSolaire.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+        
+        //config _carteAeroport
+        
+        _carteAeroport = (Carte) GetNode(_str_carteAeroport);
+        var aeroport = BuildingCharacteristics.FromType(BuildingType.AEROPORT);
+        _carteAeroport.Bloc = aeroport.Bloc[0];
+        _carteAeroport.Cost = aeroport.Cost[0];
+        _carteAeroport.Titre(aeroport.Titre[0]);
+        _carteAeroport.Gain(aeroport.Earn[0]);
+        _carteAeroport.Prix(aeroport.Cost[0]);
+        _carteAeroport.Enrgie(aeroport.energy[0].ToString());
+        _carteAeroport.Eau(aeroport.water[0].ToString());
+        _carteAeroport.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
         /* Fond clignotant quand besoin du batiment*/
         _clignoPolice = (TextureRect) GetNode(_str_cartePolice + "/Background/Cligno");
@@ -113,7 +144,8 @@ public class MenuSpeciaux : Node
 
         Carte[] menu1 = new[] {_cartePolice, _carteCentraleElectrique,_carteEpuration };
         Carte[] menu2 = {_carteEglise, _carteMosque, _carteEolienne};
-        Carte[][] menus = {menu1, menu2};
+        Carte[] menu3 = {_carteSolaire, _carteAeroport};
+        Carte[][] menus = {menu1, menu2, menu3};
         _menu_achat.Menus = menus;
     }
 
@@ -121,19 +153,19 @@ public class MenuSpeciaux : Node
     {
         Carte[] menu1 = new[] {_cartePolice, _carteCentraleElectrique,_carteEpuration };
         Carte[] menu2 = {_carteEglise, _carteMosque, _carteEolienne};
+        _cartePolice.Show();
+        _carteCentraleElectrique.Show();
+        _carteEpuration.Show();
         _carteEglise.Hide();
         _carteMosque.Hide();
         _carteEolienne.Hide();
-        Carte[][] menus = {menu1, menu2};
+        _carteSolaire.Hide();
+        _carteAeroport.Hide();
+        Carte[] menu3 = {_carteSolaire, _carteAeroport};
+        Carte[][] menus = {menu1, menu2, menu3};
         _menu_achat.Menus = menus;
-        if (Menu_Achat.WhichMenu <= menus.Length)
-        {
-            _menu_achat.Reset();
-        }
-        else
-        {
-            Menu_Achat.WhichMenu = 0;
-        }    
+        _menu_achat._whichMenu = 0;
+
     }
     public void CloseMenuSpeciaux()
     {

@@ -83,16 +83,13 @@ public class MenuHabitation : Node
 	{
 		Carte[] menu1 = {_carteMaison, _carteMaison3, _carteMaison4};
 		Carte[] menu2 = {_carteMaison5};
+		_carteMaison.Show();
+		_carteMaison3.Show();
+		_carteMaison4.Show();
 		_carteMaison5.Hide();
 		Carte[][] menus = {menu1, menu2};
-		if (Menu_Achat.WhichMenu <= menus.Length)
-		{
-			_menu_achat.Reset();
-		}
-		else
-		{
-			Menu_Achat.WhichMenu = 0;
-		}
+		_menu_achat._whichMenu = 0;
+
 	}
 
 	public void CloseMenuHabitation()
