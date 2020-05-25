@@ -7,19 +7,18 @@ namespace SshCity.Game.Buildings.Characteristics
     {
         public Hotel()
         {
-            Bloc = new[] {Ref_donnees.hotel};
-            Cost = new[] {2000};
-            Earn = new[] {2,6,12};
-            Titre = new[] {"Hôtel"};
+            Bloc = new[] {Ref_donnees.hotel1, Ref_donnees.hotel, Ref_donnees.hotel2};
+            Cost = new[] {2000, 10000, 15000};
+            Earn = new[] {2,15,50};
+            Titre = new[] {"Môtel", "Hotel", "Palace"};
             Lvl = 0;
-            GainXp = new[] {10, 100, 500};
-            energy = new[] {2};
-            water = new[] {2};
-            Image = new[] {"res://assets/ImageSized/hotel.png"};
-            NbrAmeliorations = 0;
-            NbCar = 10;
-            Random pop= new Random();
-            Population = new[] {pop.Next(5, 21),pop.Next(10,31),pop.Next(20,51)};
+            GainXp = new[] {10, 15, 30};
+            energy = new[] {2, 10, 25};
+            water = new[] {2, 10, 25};
+            Image = new[] {"res://assets/ImageSized/I hotel.png", "res://assets/ImageSized/hotel.png", "res://assets/ImageSized/isometric hotel1.png"};
+            NbrAmeliorations = 2;
+            NbCar = 3;
+            Population = new[] {5, 20, 30};
         }
 
         public int[] Bloc { get; }

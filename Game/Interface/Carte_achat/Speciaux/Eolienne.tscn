@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ImageSized/isometric par eoliennes.png" type="Texture" id=1]
+[ext_resource path="res://Game/Interface/Carte_achat/Carte.tscn" type="PackedScene" id=2]
+
+[node name="Eolienne" instance=ExtResource( 2 )]
+
+[node name="Image" parent="Background" index="0"]
+position = Vector2( 70.4587, 67.3223 )
+scale = Vector2( 0.120183, 0.118775 )
+texture = ExtResource( 1 )

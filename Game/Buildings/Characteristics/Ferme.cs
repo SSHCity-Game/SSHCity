@@ -6,18 +6,18 @@ namespace SshCity.Game.Buildings.Characteristics
     {
         public Ferme()
         {
-            Bloc = new[] {Ref_donnees.ferme};
-            Cost = new[] {3000};
-            Earn = new[] {2,5,8};
-            Titre = new[] {"Ferme"};
+            Bloc = new[] {Ref_donnees.ferme, Ref_donnees.ferme_ecolo};
+            Cost = new[] {3000, 4000};
+            Earn = new[] {2,5};
+            Titre = new[] {"Ferme", "Ferme Ecolo"};
             Lvl = 0;
-            GainXp = new[] {10, 100, 500};
-            energy = new[] {1};
-            water = new[] {3};
-            Image = new[] {"res://assets/ImageSized/isometric ferme2.png"};
-            NbrAmeliorations = 0;
+            GainXp = new[] {10, 15};
+            energy = new[] {1, 0};
+            water = new[] {3, 0};
+            Image = new[] {"res://assets/ImageSized/isometric ferme2.png", "res://assets/ImageSized/I ferme ecolobis.png"};
+            NbrAmeliorations = 1;
             NbCar = 3;
-            Population = new []{0};
+            Population = new []{0, 0};
         }
 
         public int[] Bloc { get; }

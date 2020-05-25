@@ -129,6 +129,7 @@ public partial class PlanInitial : Node2D
         base._Process(delta);
         if (_buildOnTileMap2)
         {
+            GD.Print("Process");
             SetBlock(TileMap2, (int) _tileOnTileMap2.x, (int) _tileOnTileMap2.y, _batiment);
             SetBlock(TileMapWithoutRoute, (int) _tileOnTileMap2.x, (int) _tileOnTileMap2.y, _batiment);
             _buildOnTileMap2 = false;
@@ -244,7 +245,6 @@ public partial class PlanInitial : Node2D
     public static void Amelioration(Vector2 tile)
     {
         (bool worked, int bloc) amelio = Building.Upgrade(tile);
-        GD.Print(amelio);
         if (amelio.worked)
         {
             BuildTileMap2(amelio.bloc, tile);

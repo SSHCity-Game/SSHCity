@@ -6,18 +6,18 @@ namespace SshCity.Game.Buildings.Characteristics
     {
         public Restaurant2()
         {
-            Bloc = new[] {Ref_donnees.restaurant2};
-            Cost = new[] {5000};
-            Earn = new[] {10, 15, 20};
-            Titre = new[] {"Restaurant2"};
+            Bloc = new[] {Ref_donnees.restaurant2, Ref_donnees.burgeur};
+            Cost = new[] {5000, 6000};
+            Earn = new[] {10, 15};
+            Titre = new[] {"Restaurant", "Burgeur"};
             Lvl = 0;
-            GainXp = new[] {10, 100, 500};
-            energy = new[] {1};
-            water = new[] {2};
-            Image = new[] {"res://assets/ImageSized/restaurant2.png"};
-            NbrAmeliorations = 0;
+            GainXp = new[] {10, 15};
+            energy = new[] {1, 3};
+            water = new[] {2, 4};
+            Image = new[] {"res://assets/ImageSized/restaurant2.png", "res://assets/ImageSized/iso resto burger.png"};
+            NbrAmeliorations = 1;
             NbCar = 0;
-            Population = new[] {0};
+            Population = new[] {0, 0};
         }
 
         public int[] Bloc { get; }

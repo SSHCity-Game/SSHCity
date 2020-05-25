@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Game/Interface/Menu_achat/Menu_Achat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Interface/Menu_achat/MenuSpeciaux.cs" type="Script" id=2]
 [ext_resource path="res://Game/Interface/Carte_achat/Speciaux/CentraleElectrique.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game/Interface/Carte_achat/Speciaux/Police.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Game/Interface/Carte_achat/Speciaux/Eglise.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Game/Interface/Carte_achat/Speciaux/Mosque.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Game/Interface/Carte_achat/Speciaux/Epuration.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Game/Interface/Carte_achat/Speciaux/Eolienne.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Game/Interface/Carte_achat/Speciaux/Solaire.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Game/Interface/Carte_achat/Speciaux/Aeroport.tscn" type="PackedScene" id=10]
 
 [node name="MenuSpeciaux" type="Node"]
 script = ExtResource( 2 )
@@ -32,3 +36,27 @@ margin_left = -279.03
 margin_top = -120.428
 margin_right = -98.0303
 margin_bottom = 121.572
+
+[node name="Mosque" parent="Menu_Achat" instance=ExtResource( 6 )]
+visible = false
+margin_top = -120.0
+margin_bottom = 122.0
+
+[node name="Eolienne" parent="Menu_Achat" instance=ExtResource( 8 )]
+visible = false
+margin_left = 96.5
+margin_top = -120.0
+margin_right = 277.5
+margin_bottom = 122.0
+
+[node name="Solaire" parent="Menu_Achat" instance=ExtResource( 9 )]
+visible = false
+margin_left = -277.5
+margin_top = -120.0
+margin_right = -96.5
+margin_bottom = 122.0
+
+[node name="Aeroport" parent="Menu_Achat" instance=ExtResource( 10 )]
+visible = false
+margin_top = -120.0
+margin_bottom = 122.0

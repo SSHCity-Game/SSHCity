@@ -86,7 +86,36 @@ namespace SshCity.Game.Plan
         public const int hopitallv3 = 105;
         public const int hopitallv2 = 106;
         public const int centralelv2 = 107;
-
+        public const int immeubleVert = 108;
+        public const int immeubleVerre = 109;
+        public const int feteForraine = 110;
+        public const int aeroport = 111;
+        public const int essence = 112;
+        public const int basket = 113;
+        public const int foot = 114;
+        public const int footlv2 = 115;
+        public const int footlv3 = 116;
+        public const int eolienne = 117;
+        public const int solaire = 118;
+        public const int usine1 = 119;
+        public const int usine2 = 120;
+        public const int usine3 = 121;
+        public const int usine4 = 122;
+        public const int maisonEcolo = 123;
+        public const int zoo = 124;
+        public const int eglise3 = 125;
+        public const int eglise2 = 126;
+        public const int hotel2 = 127;
+        public const int hotel1 = 128;
+        public const int ferme3 = 129;
+        public const int ferme4 = 130;
+        public const int parc2 = 131;
+        public const int parc3 = 132;
+        public const int resto2 = 133;
+        public const int burgeur = 134;
+        public const int mosque = 135;
+        public const int mosque2 = 136;
+        public const int mosque3 = 137;
         
         /* Incendie Batiments */
         public const int restaurant_flamme = 3;
@@ -172,10 +201,23 @@ namespace SshCity.Game.Plan
         {
             {centrale, (3, 4)},
             {centralelv2, (3,4)},
-            {ferme, (2, 2)},
             {stationEpuration, (3,3)},
             {hopital, (2,2)},
             {hopitallv3, (2,2)},
+            {feteForraine, (3, 4)},
+            {aeroport, (3, 4)},
+            {foot, (2, 2)},
+            {footlv2, (2, 2)},
+            {footlv3, (2, 2)},
+            {eolienne, (2, 2)},
+            {solaire, (2, 2)},
+            {usine1, (2, 2)},
+            {usine2, (2, 2)},
+            {usine3, (2, 2)}, 
+            {usine4, (2, 2)},
+            {zoo, (2, 2)},
+            {ferme3, (2, 2)},
+            {ferme4, (2, 2)},
         };
 
         private Random rand;
