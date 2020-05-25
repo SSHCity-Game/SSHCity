@@ -99,6 +99,10 @@ namespace SshCity.Game.Plan
         public const int solaire = 118;
         public const int usine1 = 119;
         public const int usine2 = 120;
+        public const int usine3 = 121;
+        public const int usine4 = 122;
+        public const int maisonEcolo = 123;
+        public const int zoo = 124;
         
         /* Incendie Batiments */
         public const int restaurant_flamme = 3;
@@ -196,7 +200,9 @@ namespace SshCity.Game.Plan
             {solaire, (2, 2)},
             {usine1, (2, 2)},
             {usine2, (2, 2)},
-
+            {usine3, (2, 2)}, 
+            {usine4, (2, 2)},
+            {zoo, (2, 2)},
         };
 
         private Random rand;
