@@ -67,6 +67,7 @@
     <Compile Include="Game\Buildings\Characteristics\Essence.cs" />
     <Compile Include="Game\Buildings\Characteristics\Ferme.cs" />
     <Compile Include="Game\Buildings\Characteristics\FermeGrande.cs" />
+    <Compile Include="Game\Buildings\Characteristics\Foot.cs" />
     <Compile Include="Game\Buildings\Characteristics\Hospital.cs" />
     <Compile Include="Game\Buildings\Characteristics\Hotel.cs" />
     <Compile Include="Game\Buildings\Characteristics\Immeuble.cs" />
