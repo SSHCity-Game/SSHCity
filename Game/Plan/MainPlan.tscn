@@ -23,13 +23,13 @@ limit_top = 0
 limit_right = 2581
 limit_bottom = 1649
 
-[node name="LevelUp" parent="Camera2D" instance=ExtResource( 5 )]
-
 [node name="Interface" parent="Camera2D" instance=ExtResource( 3 )]
 
 [node name="Incidents" parent="Camera2D" instance=ExtResource( 7 )]
 
 [node name="Parametres" parent="Camera2D" instance=ExtResource( 8 )]
+
+[node name="LevelUp" parent="Camera2D" instance=ExtResource( 5 )]
 
 [node name="MainMenu" parent="." instance=ExtResource( 6 )]
 
