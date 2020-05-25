@@ -25,6 +25,10 @@ public class Infos : Panel
     private const string _strAmelioGainBaatiment = "Amelioration/Gains/GainBatiment";
     private const string _strAmelioGainValue = "Amelioration/Gains/GainBatiment/GainBatimentValue";
     private const string _strButtonHelicopter = "Helicopter";
+    private const string _str_ambulance = "Police";
+    private const string _str_police = "Ambulance";
+    private const string _str_helico = "Helico";
+    private const string _str_pompier = "Pompier";
 
     private static bool _close = false;
     private static bool _isOpen = false;
@@ -53,6 +57,10 @@ public class Infos : Panel
     private bool buttonWork = false;
     private Vector2 position;
     private Button _buttonHelicopter;
+    private AudioStreamPlayer _ambulance;
+    private AudioStreamPlayer _police;
+    private AudioStreamPlayer _helico;
+    private AudioStreamPlayer _pompier;
 
     public Vector2 CamionPos;
 
@@ -69,7 +77,11 @@ public class Infos : Panel
     }
 
     public override void _Ready()
-    {
+    { 
+        _ambulance = (AudioStreamPlayer) GetNode(_str_ambulance); 
+        _police = (AudioStreamPlayer) GetNode(_str_police);
+        _police = (AudioStreamPlayer) GetNode(_str_helico);
+        _pompier = (AudioStreamPlayer) GetNode(_str_pompier);
         _quitter = (Button) GetNode(_strQuitter);
         _ameliorer = (Button) GetNode(_strAmeliorer);
         _titre = (Label) GetNode(_strTitre);
@@ -111,6 +123,18 @@ public class Infos : Panel
     public void EnvoieVehicule()
     {
         CloseInfos();
+        if (_type == Vehicules.Type.POLICE)
+        {
+            _police.Play();
+        }
+        else if (_type  == Vehicules.Type.AMBULANCE)
+        {
+            _ambulance.Play();
+        }
+        else if (_type  == Vehicules.Type.CAMION)
+        {
+            _pompier.Play();
+        }
         PlanInitial.AddVehicule(_type, position);
     }
 
@@ -120,6 +144,7 @@ public class Infos : Panel
         {
             CloseInfos();
             Vector2 where = incidents.ListNoyade[0];
+            _helico.Play();
             incidents.ListNoyade.Remove(where);
             PlanInitial.AddHouloucoupter(Houloucoupter.Type.HOPITAL, position, where);
         }
