@@ -1,14 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/Alerte_incidents/background.png" type="Texture" id=2]
+[ext_resource path="res://assets/Barre_Niveau/scoreBar/EmptyBar.png" type="Texture" id=2]
 [ext_resource path="res://Game/Interface/LevelUp.cs" type="Script" id=3]
-[ext_resource path="res://assets/Images_interface/croix.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 18
 font_data = ExtResource( 1 )
 
@@ -16,51 +12,30 @@ font_data = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="LevelUpBack" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -393.0
-margin_top = -216.5
-margin_right = 393.0
-margin_bottom = 216.5
+modulate = Color( 0.2, 0.2, 0.2, 1 )
+anchor_left = 0.53
+anchor_right = 0.53
+margin_left = -183.22
+margin_top = -25.0
+margin_right = 121.78
+margin_bottom = 33.0
+rect_scale = Vector2( 1.2, 1.7 )
 texture = ExtResource( 2 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Quitter" type="Button" parent="LevelUpBack"]
-anchor_left = 0.981
-anchor_top = 0.029
-anchor_right = 0.981
-anchor_bottom = 0.029
-margin_left = -13.0
-margin_top = -12.0
-margin_right = 14.0
-margin_bottom = 11.0
+[node name="LevelUpText" type="Label" parent="."]
+anchor_left = 0.532
+anchor_top = 0.043
+anchor_right = 0.532
+anchor_bottom = 0.043
+margin_left = -175.768
+margin_top = -23.8
+margin_right = 170.232
+margin_bottom = 29.2
 custom_fonts/font = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="LevelUpBack/Quitter"]
-position = Vector2( 14, 12 )
-scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 4 )
-
-[node name="LevelUpText" type="Label" parent="LevelUpBack"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -275.0
-margin_top = -175.0
-margin_right = 275.0
-margin_bottom = 175.0
-custom_fonts/font = SubResource( 2 )
 align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

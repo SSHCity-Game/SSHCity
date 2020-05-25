@@ -217,7 +217,6 @@ public class Interface : CanvasLayer
     {
         _achatTuyaux = !_achatTuyaux;
         PlanInitial.Tuyaux = _achatTuyaux;
-        LevelUp.LevelUpOpen = false;
     }
     
     public void ExitPressed()
@@ -234,7 +233,6 @@ public class Interface : CanvasLayer
         _buttonEau.Show(); 
         _buttonExit.Hide();
         _buttonTuyaux.Hide();
-        LevelUp.LevelUpOpen = false;
     }
 
     public void PressedButtonEau()
@@ -249,7 +247,6 @@ public class Interface : CanvasLayer
         _planInitial.TileMap1.Hide();
         _planInitial.TileMap2.Hide();
         _planInitial.TileMapWithoutRoute.Show();
-        LevelUp.LevelUpOpen = false;
     }
 
     public static void ConfigInfos(Vector2 tile)
@@ -413,8 +410,6 @@ public class Interface : CanvasLayer
         //Ferme Achat Route
         _achatRoute = false;
         PlanInitial.AchatRoute(_achatRoute);
-        LevelUp.LevelUpOpen = false;
-
 
         _delete = false;
         PlanInitial.Delete = _delete;
@@ -440,8 +435,6 @@ public class Interface : CanvasLayer
         Infos.Close = true;
         _hide = false;
         _shop.ViewShop(_hide);
-        LevelUp.LevelUpOpen = false;
-
     }
 
     public void ButtonDeletePressed()
@@ -456,8 +449,6 @@ public class Interface : CanvasLayer
         _delete = !_delete;
         PlanInitial.Delete = _delete;
         _bulldozerMouse.Show();
-        LevelUp.LevelUpOpen = false;
-
     }
 
     public void ButtonOver()
