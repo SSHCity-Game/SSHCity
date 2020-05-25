@@ -58,6 +58,7 @@
     <Compile Include="Game\Buildings\BuildingCharacteristics.cs" />
     <Compile Include="Game\Buildings\BuildingType.cs" />
     <Compile Include="Game\Buildings\Characteristics\Aeroport.cs" />
+    <Compile Include="Game\Buildings\Characteristics\Basket.cs" />
     <Compile Include="Game\Buildings\Characteristics\Cafe.cs" />
     <Compile Include="Game\Buildings\Characteristics\Caserne.cs" />
     <Compile Include="Game\Buildings\Characteristics\CentraleElectrique.cs" />

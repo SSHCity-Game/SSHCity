@@ -61,6 +61,7 @@ namespace SshCity.Game.Buildings
                 {BuildingType.FOOT, typeof(Foot)},
                 {BuildingType.ZOO, typeof(Zoo)},
                 {BuildingType.FETEFORRAINE, typeof(FeteForraine)},
+                {BuildingType.BASKET, typeof(Basket)},
 
             };
 

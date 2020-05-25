@@ -37,5 +37,6 @@ namespace SshCity.Game.Buildings
         FOOT = Ref_donnees.foot,
         ZOO = Ref_donnees.zoo,
         FETEFORRAINE = Ref_donnees.feteForraine,
+        BASKET = Ref_donnees.basket,
     }
 }

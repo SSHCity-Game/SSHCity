@@ -8,9 +8,11 @@ public class MenuBienEtre : Node
 	private const string _str_carteFoot = _str_menu_achat + "/Foot";
 	private const string _str_carteZoo = _str_menu_achat + "/Zoo";
 	private const string _str_carteFeteForraine = _str_menu_achat + "/FeteForraine";
+	private const string _str_carteBasket = _str_menu_achat + "/Basket";
 
 	private Carte _carteParc;
 	private Carte _carteFoot;
+	private Carte _carteBasket;
 	private Carte _carteZoo;
 	private Carte _carteFeteForraine;
 	private Menu_Achat _menu_achat;
@@ -59,8 +61,8 @@ public class MenuBienEtre : Node
 		_carteZoo.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 		
 		//Config _carteFeteForraine
-		_carteFeteForraine = (Carte) GetNode(_str_carteZoo);
-		var feteForraine = BuildingCharacteristics.FromType(BuildingType.ZOO);
+		_carteFeteForraine = (Carte) GetNode(_str_carteFeteForraine);
+		var feteForraine = BuildingCharacteristics.FromType(BuildingType.FETEFORRAINE);
 		_carteFeteForraine.Bloc = feteForraine.Bloc[0];
 		_carteFeteForraine.Cost = feteForraine.Cost[0];
 		_carteFeteForraine.Titre(feteForraine.Titre[0]);
@@ -69,13 +71,25 @@ public class MenuBienEtre : Node
 		_carteFeteForraine.Enrgie(feteForraine.energy[0].ToString());
 		_carteFeteForraine.Eau(feteForraine.water[0].ToString());
 		_carteFeteForraine.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+		
+		//Config _carteBasket
+		_carteBasket = (Carte) GetNode(_str_carteBasket);
+		var basket = BuildingCharacteristics.FromType(BuildingType.BASKET);
+		_carteBasket.Bloc = basket.Bloc[0];
+		_carteBasket.Cost = basket.Cost[0];
+		_carteBasket.Titre(basket.Titre[0]);
+		_carteBasket.Gain(basket.Earn[0]);
+		_carteBasket.Prix(basket.Cost[0]);
+		_carteBasket.Enrgie(basket.energy[0].ToString());
+		_carteBasket.Eau(basket.water[0].ToString());
+		_carteBasket.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 
 		_menu_achat.Hide();
 		AddUserSignal("CloseShop");
 
 		Carte[] menu1 = {_carteParc, _carteFoot, _carteZoo};
-		Carte[] menu2 = {_carteFeteForraine};
+		Carte[] menu2 = {_carteFeteForraine, _carteBasket};
 		Carte[][] menus = {menu1, menu2};
 		_menu_achat.Menus = menus;
 	}
@@ -83,12 +97,13 @@ public class MenuBienEtre : Node
 	public void Reset()
 	{
 		Carte[] menu1 = {_carteParc, _carteFoot, _carteZoo};
-		Carte[] menu2 = {_carteFeteForraine};
+		Carte[] menu2 = {_carteFeteForraine, _carteBasket};
 		Carte[][] menus = {menu1, menu2};
 		_carteParc.Show();
 		_carteFoot.Show();
 		_carteZoo.Show();
 		_carteFeteForraine.Hide();
+		_carteBasket.Hide();
 		_menu_achat.Menus = menus;
 		_menu_achat._whichMenu = 0;
 
