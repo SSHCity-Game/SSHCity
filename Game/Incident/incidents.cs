@@ -47,6 +47,11 @@ public class incidents : CanvasLayer
 	private static int levelBracage = 10;
 	/* Indique ou sont les incidents */
 	public static List<Vector2> ListNoyade = new List<Vector2>();
+	/* correction bug xp */
+	public static bool XpIncident = false;
+	public static bool XpAccident = false;
+	public static bool XpBracage = false;
+	public static bool XpNoyade = false;
 
 
 	private const string _str_feu = "Feu";
@@ -112,14 +117,17 @@ public class incidents : CanvasLayer
 	{
 		if (ResoIncident && Nbincendies > 0)
 		{
+			if(XpIncident)
+				Interface.Xp += 30;
+			XpIncident = false;
 			Nbincendies--;
 			StopIncendie(planInitial);
-			Interface.Xp += 50;
 		}
 		else if (!ResoIncident && Nbincendies < MAX_INCENDIES)
 		{
 			(xincendie, yincendie, indexAvincendie, indexApincendie) = GenereCoords(Ref_donnees.BatimentFeu);
 			StartIncendie(planInitial);
+			XpIncident = true;
 			Nbincendies++;
 		}
 	}
@@ -143,14 +151,17 @@ public class incidents : CanvasLayer
 	{
 		if (ResoBracage && Nbbracages > 0)
 		{
+			if(XpBracage)
+				Interface.Xp += 30;
+			XpBracage = false;
 			Nbbracages--;
 			StopBracage(planInitial);
-			Interface.Xp += 50;
 		}
 		else if (Nbbracages < MAX_BRACAGES && !ResoBracage)
 		{
 			(xbracage, ybracage, indexAvbracage, indexApbracage) = GenereCoords(Ref_donnees.BatimentVol);
 			StartBracage(planInitial);
+			XpBracage = true;
 			Nbbracages++;
 		}
 	}
@@ -173,12 +184,14 @@ public class incidents : CanvasLayer
 	{
 		if (ResoNoyade && Nbnoyades > 0)
 		{
+			if(XpNoyade)
+				Interface.Xp += 30;
+			XpNoyade = false;
 			Nbnoyades--;
 			menu_incident.Noyade.Hide();
 			await Task.Delay(3000);
 			Lacs.GenerateLacNoyade(planInitial, Ref_donnees.lac1, xnoyade, ynoyade);
 			menu_incident.TimerNoyade.Start();
-			Interface.Xp += 50;
 		}
 		else if (!ResoNoyade && Nbnoyades < MAX_NOYADES)
 		{
@@ -189,6 +202,7 @@ public class incidents : CanvasLayer
 			await Task.Delay(5000);
 			Lacs.GenerateLacNoyade(planInitial, Ref_donnees.lac1_noyade, xnoyade, ynoyade);
 			menu_incident.Noyade.Show();
+			XpNoyade = true;
 		}
 	}
 

@@ -232,6 +232,7 @@ namespace SshCity.Game.Vehicules
                     PlanInitial.NbCar -= 1;
                     QueueFree();
                     incidents.Nbaccident++;
+                    incidents.XpAccident = true;
                     menu_incident.Accident.Show();
                 }
                 else

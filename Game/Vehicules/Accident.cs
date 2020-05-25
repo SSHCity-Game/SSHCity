@@ -55,7 +55,9 @@ public class Accident : Area2D
             QueueFree();
             menu_incident.Accident.Hide();
             menu_incident.TimerAccident.Start();
-            Interface.Xp += 50;
+            if(incidents.XpAccident)
+                Interface.Xp += 30;
+            incidents.XpAccident = false;
         }
     }
     
