@@ -51,7 +51,8 @@ namespace SshCity.Game.Buildings
                 {BuildingType.POLICE, typeof(Police)},
                 {BuildingType.RESTAURANT2, typeof(Restaurant2)},
                 {BuildingType.MAIRIE, typeof(Mairie)},
-                {BuildingType.EPURATION, typeof(Epuration)}
+                {BuildingType.EPURATION, typeof(Epuration)},
+                {BuildingType.MOSQUE, typeof(Mosque)},
             };
 
 

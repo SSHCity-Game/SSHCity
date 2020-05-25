@@ -73,6 +73,7 @@
     <Compile Include="Game\Buildings\Characteristics\Maison4.cs" />
     <Compile Include="Game\Buildings\Characteristics\Maison5.cs" />
     <Compile Include="Game\Buildings\Characteristics\McAlly.cs" />
+    <Compile Include="Game\Buildings\Characteristics\Mosque.cs" />
     <Compile Include="Game\Buildings\Characteristics\Parc.cs" />
     <Compile Include="Game\Buildings\Characteristics\Piscine.cs" />
     <Compile Include="Game\Buildings\Characteristics\Police.cs" />
