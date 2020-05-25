@@ -57,5 +57,6 @@ margin_right = -96.5
 margin_bottom = 122.0
 
 [node name="Aeroport" parent="Menu_Achat" instance=ExtResource( 10 )]
+visible = false
 margin_top = -120.0
 margin_bottom = 122.0

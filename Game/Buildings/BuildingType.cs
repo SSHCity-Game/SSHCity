@@ -13,7 +13,7 @@ namespace SshCity.Game.Buildings
         EGLISE = Ref_donnees.eglise,
         FERME = Ref_donnees.ferme,
         HOSPITAL = Ref_donnees.hopital,
-        HOTEL = Ref_donnees.hotel,
+        HOTEL = Ref_donnees.hotel1,
         IMMEUBLE = Ref_donnees.immeuble_brique,
         IMMEUBLE_VERT = Ref_donnees.immeuble_vert,
         MAISON = Ref_donnees.maison1,
