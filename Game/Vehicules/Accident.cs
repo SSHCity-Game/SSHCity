@@ -51,11 +51,11 @@ public class Accident : Area2D
         base._Process(delta);
         if (incidents.ResoAccident && incidents.Nbaccident > 0)
         {
+            incidents.Nbaccident--;
             QueueFree();
             menu_incident.Accident.Hide();
             menu_incident.TimerAccident.Start();
             Interface.Xp += 50;
-            incidents.Nbaccident--;
         }
     }
     

@@ -139,6 +139,7 @@ namespace SshCity.Game.Plan
         public const int maison5_vol = 99;
         public const int maison3_vol = 97;
         public const int mairie_vol = 95;
+        public const int essence_vol = 144;
         
         /* Noyade lac */
         public const int lac1_noyade = 100;
@@ -185,7 +186,8 @@ namespace SshCity.Game.Plan
         /* Liste batiment, batiment braque */
         public static (int, int)[] BatimentVol = {
             (maison1, maison1_vol), (maison3, maison3_vol),
-            (maison4, maison4_vol), (maison5, maison5_vol), (mairie, mairie_vol)
+            (maison4, maison4_vol), (maison5, maison5_vol), (mairie, mairie_vol),
+            (essence, essence_vol)
         };
         
         

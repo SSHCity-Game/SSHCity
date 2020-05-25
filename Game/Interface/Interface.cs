@@ -29,7 +29,7 @@ public class Interface : CanvasLayer
     private static PlanInitial _planInitial;
 
     private Button _buttonExit;
-    private Button _buttonTuyaux;
+    private static Button _buttonTuyaux;
     private static int _money = Ref_donnees.argent;
     private static int _energy = Ref_donnees.energy;
     private static int _water = Ref_donnees.water;
@@ -37,16 +37,16 @@ public class Interface : CanvasLayer
     private bool _achatRoute = false;
     private bool _achatTuyaux = false;
     private Sprite _bulldozerMouse;
-    private Button _button_shop;
-    private Button _buttonDelete;
-    private Button _buttonRoute;
-    private Button _buttonEau;
+    private static Button _button_shop;
+    private static Button _buttonDelete;
+    private static Button _buttonRoute;
+    private static Button _buttonEau;
     public Sprite _croix;
     private Sprite _croixJaune;
     private Sprite _rouages;
     private static bool _delete = false;
-    private Panel _money_couleur;
-    private Label _money_text;
+    private static Panel _money_couleur;
+    private static Label _money_text;
     private Label _energy_text;
     private Label _water_text;
     private AudioStreamPlayer _ouvertureboutique;
@@ -55,8 +55,8 @@ public class Interface : CanvasLayer
     private bool _visible;
     
     /* ScoreBar */
-    private TextureProgress ScoreBar;
-    private Label Score;
+    private static TextureProgress ScoreBar;
+    private static Label Score;
     private static int _xp = 0;
     public static int _level = 1; // niveau
     private static int XpMax = 30;
@@ -162,7 +162,17 @@ public class Interface : CanvasLayer
         _buttonExit = (Button) GetNode(_strButonExit);
         _buttonTuyaux = (Button) GetNode(_strButtonTuyaux);
 
-
+        /* cache toute l interface au demarrage */
+        _money_couleur.Hide();
+        _money_text.Hide();
+        _button_shop.Hide();
+        _buttonDelete.Hide();
+        _buttonEau.Hide();
+        _buttonRoute.Hide();
+        _buttonTuyaux.Hide();
+        Score.Hide();
+        ScoreBar.Hide();
+        
         _croix.Hide();
         _croixJaune.Hide();
         _infos.Hide();
@@ -477,5 +487,18 @@ public class Interface : CanvasLayer
             PlanInitial.Delete = true;
             _bulldozerMouse.Show();
         }
+    }
+
+    public static void Start()
+    {
+        _money_couleur.Show();
+        _money_text.Show();
+        _button_shop.Show();
+        _buttonDelete.Show();
+        _buttonEau.Show();
+        _buttonRoute.Show();
+        _buttonTuyaux.Show();
+        Score.Show();
+        ScoreBar.Show();
     }
 }

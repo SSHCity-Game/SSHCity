@@ -64,6 +64,7 @@ public class menu_incident : CanvasLayer
     public Button BoutiquePolice;
     public Button BoutiqueHopital;
     public Button Quitter;
+    public Sprite Croix;
     
     /* Timer incidents */
     public static Timer TimerIncendie;
@@ -80,7 +81,8 @@ public class menu_incident : CanvasLayer
         BoutiqueCaserne = (Button) GetNode("BoutiqueCaserne");
         BoutiqueHopital = (Button) GetNode("BoutiqueHopital");
         BoutiquePolice = (Button) GetNode("BoutiquePolice");
-        Quitter = (Button) GetNode("Quitter");
+        Quitter = (Button) GetNode("Background/Quitter");
+        Croix = (Sprite) GetNode("Background/Quitter/Sprite");
         Flamme = (Button) GetNode("Flamme");
         Accident = (Button) GetNode("Accident");
         Bracage = (Button) GetNode("Bracage");
@@ -115,6 +117,7 @@ public class menu_incident : CanvasLayer
         BoutiquePolice.Hide();
         BoutiqueHopital.Hide();
         Quitter.Hide();
+        Croix.Hide();
         Background.Hide();
         Texte.Hide();
     }
@@ -143,6 +146,7 @@ public class menu_incident : CanvasLayer
         CloseAll(); // ferme tous les autres menu
         Background.Show();
         Quitter.Show();
+        Croix.Show();
         
         if (MainPlan.ExistBatiment(Ref_donnees.caserne)) // si la caserne est deja presente
             Texte.Text = CaserneOui;
@@ -159,6 +163,7 @@ public class menu_incident : CanvasLayer
         CloseAll(); // ferme tous les autres menu
         Background.Show();
         Quitter.Show();
+        Croix.Show();
         
         if (MainPlan.ExistBatiment(Ref_donnees.hopital)) // si l'hopital est deja present
             Texte.Text = PoliceOuiA;
@@ -175,6 +180,7 @@ public class menu_incident : CanvasLayer
         CloseAll(); // ferme tous les autres menu
         Background.Show();
         Quitter.Show();
+        Croix.Show();
         
         if (MainPlan.ExistBatiment(Ref_donnees.police)) // si la police est deja presente
             Texte.Text = PoliceOuiB;
@@ -191,6 +197,7 @@ public class menu_incident : CanvasLayer
         CloseAll(); // ferme tous les autres menu
         Background.Show();
         Quitter.Show();
+        Croix.Show();
         
         if (MainPlan.ExistBatiment(Ref_donnees.hopital)) // si l'hopital est deja present
             Texte.Text = HopitalOui;

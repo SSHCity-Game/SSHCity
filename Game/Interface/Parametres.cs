@@ -12,6 +12,7 @@ public class Parametres : CanvasLayer
     private static CheckButton _checkEffet;
     private static CheckButton _checkMusique;
     private static Button _quitter;
+    private static Sprite _croix;
 
     private static bool musique = true;
     public static bool effets = true;
@@ -27,6 +28,7 @@ public class Parametres : CanvasLayer
         _checkEffet = GetNode<CheckButton>("back/EffetSonore/CheckButton");
         _checkMusique = GetNode<CheckButton>("back/Musique/CheckButton");
         _quitter = GetNode<Button>("back/Quitter");
+        _croix = GetNode<Sprite>("back/Quitter/Sprite");
 
         _login.Text = "username";
         HideAll();
@@ -43,6 +45,7 @@ public class Parametres : CanvasLayer
     {
         _background.Hide();
         _quitter.Hide();
+        _croix.Hide();
         _login.Hide();
         _gamePlay.Hide();
         _effetsSonores.Hide();
@@ -51,10 +54,11 @@ public class Parametres : CanvasLayer
         _checkMusique.Hide();
     }
 
-    private void param_pressed()
+    public static void param_pressed()
     {
         _background.Show();
         _quitter.Show();
+        _croix.Show();
         _login.Show();
         _gamePlay.Show();
         _effetsSonores.Show();
@@ -71,6 +75,9 @@ public class Parametres : CanvasLayer
     private void quitter_pressed()
     {
         HideAll();
+        if (MainMenu.options)
+            MainMenu.ShowAll();
+        MainMenu.options = false;
     }
 
     private void effet_pressed()

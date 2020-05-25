@@ -14,8 +14,6 @@ script = ExtResource( 1 )
 
 [node name="PlanInitial" parent="." instance=ExtResource( 2 )]
 
-[node name="MainMenu" parent="." instance=ExtResource( 6 )]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 1113.01, 786.027 )
 current = true
@@ -32,6 +30,8 @@ limit_bottom = 1649
 [node name="Incidents" parent="Camera2D" instance=ExtResource( 7 )]
 
 [node name="Parametres" parent="Camera2D" instance=ExtResource( 8 )]
+
+[node name="MainMenu" parent="." instance=ExtResource( 6 )]
 
 [node name="Musique" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

@@ -41,11 +41,11 @@ public class incidents : CanvasLayer
 	private static int indexAvbracage;
 	private static int indexApbracage;
 	/* niveau d apparition des differents incidents */	
-	private static int levelIncendie = 5;
-	public static int levelAccident = 2;
+	private static int levelIncendie = 2;
+	public static int levelAccident = 5;
 	private static int levelNoyade = 8;
 	private static int levelBracage = 10;
-	/*Indique ou sont les incidents*/
+	/* Indique ou sont les incidents */
 	public static List<Vector2> ListNoyade = new List<Vector2>();
 
 
@@ -107,6 +107,7 @@ public class incidents : CanvasLayer
 		{
 			Nbincendies--;
 			StopIncendie(planInitial);
+			Interface.Xp += 50;
 		}
 		else if (!ResoIncident && Nbincendies < MAX_INCENDIES)
 		{
@@ -127,7 +128,6 @@ public class incidents : CanvasLayer
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexApincendie, indexAvincendie, xincendie, yincendie);
 		menu_incident.TimerIncendie.Start();
-		Interface.Xp += 50;
 	}
 	
 					/** BRACAGES **/
@@ -137,6 +137,7 @@ public class incidents : CanvasLayer
 		{
 			Nbbracages--;
 			StopBracage(planInitial);
+			Interface.Xp += 50;
 		}
 		else if (Nbbracages < MAX_BRACAGES && !ResoBracage)
 		{
@@ -157,7 +158,6 @@ public class incidents : CanvasLayer
 		await Task.Delay(3000);
 		BuildingSwitch(planInitial, indexApbracage, indexAvbracage, xbracage, ybracage);
 		menu_incident.TimerBracage.Start();
-		Interface.Xp += 50;
 	}
 	
 					/** NOYADES **/

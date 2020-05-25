@@ -477,6 +477,12 @@ namespace SshCity.Game.Vehicules
 				}
 			}
 
+			if (_type == Type.AMBULANCE)
+			{
+				Vector2 posi = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
+				
+			}
+
 			
 			if (isMoving && !Croisement) //Si le vehicule est en mouvement et que l'on n'est pas a un croisement
 			{
