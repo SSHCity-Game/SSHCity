@@ -1,7 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/maison3.png" type="Texture" id=2]
+[ext_resource path="res://Son/police.wav" type="AudioStream" id=3]
+[ext_resource path="res://Son/pompier.wav" type="AudioStream" id=4]
+[ext_resource path="res://Son/ambulance.wav" type="AudioStream" id=5]
+[ext_resource path="res://Son/helico.wav" type="AudioStream" id=6]
 
 [sub_resource type="CSharpScript" id=1]
 resource_name = "Infos"
@@ -589,3 +593,15 @@ text = "Lvl Max Atteinds
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Police" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Pompier" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Helico" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Ambulance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
