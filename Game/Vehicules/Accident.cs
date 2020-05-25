@@ -6,6 +6,7 @@ public class Accident : Area2D
     private bool _mouseIn = false;
     private Sprite _sprite;
     private const string _strSprite = "Sprite";
+    public bool Visi = false;
 
     public override void _Ready()
     {
@@ -20,7 +21,7 @@ public class Accident : Area2D
     /// <param name="area2D">Area2D venant de sortir de cette area2D</param>
     public void AreaExited(Area2D area2D)
     {
-        if (area2D.CollisionMask == 3) // Verifie que l'area venant de sortir est une area2D de CollsionMask accident, afin de ne pas supprimer les collsionMask de vehicules. 
+        if (area2D.CollisionMask == 7) // Verifie que l'area venant de sortir est une area2D de CollsionMask accident, afin de ne pas supprimer les collsionMask de vehicules. 
         {
             QueueFree();
         }
@@ -42,23 +43,6 @@ public class Accident : Area2D
         _mouseIn = false;
     }
 
-    /// <summary>
-    /// Fonction de Godot recuperant les actions faites par le joueur 
-    /// </summary>
-    /// <param name="OneAction">Recupere l'action faite par l'utilisateur</param>
-    public override void _Process(float delta)
-    {
-        base._Process(delta);
-        if (incidents.ResoAccident && incidents.Nbaccident > 0)
-        {
-            incidents.Nbaccident--;
-            QueueFree();
-            menu_incident.Accident.Hide();
-            menu_incident.TimerAccident.Start();
-            Interface.Xp += 50;
-        }
-    }
-    
 
     /// <summary>
     /// Constructeur de la zone d'accident
@@ -68,5 +52,6 @@ public class Accident : Area2D
     {
         _sprite = (Sprite) GetNode(_strSprite);
         _sprite.Visible = visi;
+        Visi = visi;
     }
 }
