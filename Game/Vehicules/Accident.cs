@@ -43,24 +43,6 @@ public class Accident : Area2D
         _mouseIn = false;
     }
 
-    /// <summary>
-    /// Fonction de Godot recuperant les actions faites par le joueur 
-    /// </summary>
-    /// <param name="OneAction">Recupere l'action faite par l'utilisateur</param>
-    public override void _Process(float delta)
-    {
-        base._Process(delta);
-        if (incidents.ResoAccident && incidents.Nbaccident > 0)
-        {
-            incidents.Nbaccident--;
-            QueueFree();
-            menu_incident.Accident.Hide();
-            menu_incident.TimerAccident.Start();
-            if(incidents.XpAccident)
-                Interface.Xp += 30;
-            incidents.XpAccident = false;
-        }
-    }
 
     /// <summary>
     /// Constructeur de la zone d'accident

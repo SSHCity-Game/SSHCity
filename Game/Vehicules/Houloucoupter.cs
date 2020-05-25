@@ -34,8 +34,6 @@ public partial class Houloucoupter : Area2D
     {
         {Type.HOPITAL, ResourceLoader.Load("res://Game/Vehicules/AnimatedSpriteHouloucoupter/Hopital.tres") as SpriteFrames}
     };
-    
-    public static List<Type> ListTypeHouloucoupter = new List<Type> {Type.HOPITAL};
 
     public async void Init(PlanInitial planInitial, Type type, Vector2 position, Vector2 destination)
     {

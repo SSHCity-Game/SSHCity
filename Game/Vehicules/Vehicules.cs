@@ -239,15 +239,17 @@ namespace SshCity.Game.Vehicules
             }
             else if (!_stopArea2DCreat && !_stopAccident && _type != Type.AMBULANCE && _type != Type.POLICE && _type != Type.CAMION)
             {
-                if (area2D.CollisionMask == 1 && incidents.Nbaccident < incidents.MAX_ACCIDENT)
-                {                    
-                        incidents.XpAccident = true;
+                if (area2D.CollisionMask == 7)
+                {
+                    if (incidents.Nbaccident < incidents.MAX_ACCIDENT)
+                    {
                         incidents.Nbaccident++;
                         Vector2 position = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
                         PlanInitial.AddZoneAccident(Position, true);
                         PlanInitial.NbCar -= 1;
                         menu_incident.Accident.Show();
                         QueueFree();
+                    }
                 }
                 else
                 {

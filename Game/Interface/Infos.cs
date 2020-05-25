@@ -80,7 +80,7 @@ public class Infos : Panel
     { 
         _ambulance = (AudioStreamPlayer) GetNode(_str_ambulance); 
         _police = (AudioStreamPlayer) GetNode(_str_police);
-        _police = (AudioStreamPlayer) GetNode(_str_helico);
+        _helico = (AudioStreamPlayer) GetNode(_str_helico);
         _pompier = (AudioStreamPlayer) GetNode(_str_pompier);
         _quitter = (Button) GetNode(_strQuitter);
         _ameliorer = (Button) GetNode(_strAmeliorer);
