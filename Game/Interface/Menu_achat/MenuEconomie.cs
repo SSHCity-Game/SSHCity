@@ -10,12 +10,14 @@ public class MenuEconomie : Node
 	private const string _str_carteFerme = _str_menu_achat + "/Ferme";
 	private const string _str_carteFermeFrande = _str_menu_achat + "/FermeGrande";
 	private const string _str_carteEssence = _str_menu_achat + "/Essence";
+	private const string _str_carteUsine = _str_menu_achat + "/Usine";
 	private Carte _carteCafe;
 	private Carte _carteFerme;
 	private Carte _carteRestaurant;
 	private Carte _carteRestaurant2;
 	private Carte _carteFermeGrande;
 	private Carte _carteEssence;
+	private Carte _carteUsine;
 	private Menu_Achat _menu_achat;
 
 
@@ -97,6 +99,19 @@ public class MenuEconomie : Node
 		_carteEssence.Eau(essence.water[0].ToString());
 		_carteEssence.Hide();
 		_carteEssence.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+		
+		//Config _carteUsine
+		_carteUsine = (Carte) GetNode(_str_carteUsine);
+		var usine = BuildingCharacteristics.FromType(BuildingType.USINE);
+		_carteUsine.Bloc = usine.Bloc[0];
+		_carteUsine.Cost = usine.Cost[0];
+		_carteUsine.Titre(usine.Titre[0]);
+		_carteUsine.Gain(usine.Earn[0]);
+		_carteUsine.Prix(usine.Cost[0]);
+		_carteUsine.Enrgie(usine.energy[0].ToString());
+		_carteUsine.Eau(usine.water[0].ToString());
+		_carteUsine.Hide();
+		_carteUsine.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		_menu_achat.Connect("CloseShop", this, nameof(CloseShop));
 
@@ -105,7 +120,8 @@ public class MenuEconomie : Node
 
 		Carte[] menu1 = {_carteCafe, _carteRestaurant, _carteRestaurant2};
 		Carte[] menu2 = {_carteFerme, _carteFermeGrande, _carteEssence};
-		Carte[][] menus = {menu1, menu2};
+		Carte[] menu3 = {_carteUsine};
+		Carte[][] menus = {menu1, menu2, menu3};
 		_menu_achat.Menus = menus;
 	}
 	
@@ -113,13 +129,15 @@ public class MenuEconomie : Node
 	{
 		Carte[] menu1 = {_carteCafe, _carteRestaurant, _carteRestaurant2};
 		Carte[] menu2 = {_carteFerme, _carteFermeGrande, _carteEssence};
+		Carte[] menu3 = {_carteUsine};
+		Carte[][] menus = {menu1, menu2, menu3};
 		_carteCafe.Show();
 		_carteRestaurant.Show();
 		_carteRestaurant2.Show();
 		_carteFerme.Hide();
 		_carteFermeGrande.Hide();
+		_carteUsine.Hide();
 		_carteEssence.Hide();
-		Carte[][] menus = {menu1, menu2};
 		_menu_achat.Menus = menus;
 		_menu_achat._whichMenu = 0;
 	}

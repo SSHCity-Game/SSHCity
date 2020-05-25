@@ -87,6 +87,7 @@
     <Compile Include="Game\Buildings\Characteristics\Restaurant.cs" />
     <Compile Include="Game\Buildings\Characteristics\Restaurant2.cs" />
     <Compile Include="Game\Buildings\Characteristics\Solaire.cs" />
+    <Compile Include="Game\Buildings\Characteristics\Usine.cs" />
     <Compile Include="Game\Buildings\Characteristics\Zoo.cs" />
     <Compile Include="Game\Incident\incidents.cs" />
     <Compile Include="Game\Incident\menu_incident.cs" />
