@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=200 format=2]
+[gd_resource type="TileSet" load_steps=201 format=2]
 
 [ext_resource path="res://assets/lac3.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flammemaison1.png" type="Texture" id=2]
@@ -166,6 +166,7 @@
 [ext_resource path="res://assets/Flammeimmeuble.png" type="Texture" id=164]
 [ext_resource path="res://assets/Flammeboutique9.png" type="Texture" id=165]
 [ext_resource path="res://assets/Flammeimmeuble-2.png" type="Texture" id=166]
+[ext_resource path="res://assets/Flammemaison1-2.png" type="Texture" id=167]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 432, -14, 0, 234, -432, -14, 0, -262 )
@@ -318,6 +319,7 @@ frame_1/delay_sec = 0.0
 flags = 4
 frames = 2
 frame_0/texture = ExtResource( 2 )
+frame_1/texture = ExtResource( 167 )
 frame_1/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=25]
@@ -1650,7 +1652,7 @@ frame_1/delay_sec = 0.0
 137/z_index = 0
 139/name = "Flammeferme2.png 139"
 139/texture = SubResource( 5 )
-139/tex_offset = Vector2( 0, 0 )
+139/tex_offset = Vector2( 55, 320 )
 139/modulate = Color( 1, 1, 1, 1 )
 139/region = Rect2( -32, -32, 928, 800 )
 139/tile_mode = 0
@@ -1660,7 +1662,7 @@ frame_1/delay_sec = 0.0
 139/z_index = 0
 140/name = "Flammeferme3-2.png 140"
 140/texture = SubResource( 7 )
-140/tex_offset = Vector2( 0, 0 )
+140/tex_offset = Vector2( -465, 270 )
 140/modulate = Color( 1, 1, 1, 1 )
 140/region = Rect2( -32, -32, 1952, 1536 )
 140/tile_mode = 0
@@ -1670,7 +1672,7 @@ frame_1/delay_sec = 0.0
 140/z_index = 0
 141/name = "Flammemosquee2.png 141"
 141/texture = SubResource( 8 )
-141/tex_offset = Vector2( 0, 0 )
+141/tex_offset = Vector2( -160, 140 )
 141/modulate = Color( 1, 1, 1, 1 )
 141/region = Rect2( -192, 0, 1152, 1024 )
 141/tile_mode = 0
@@ -1680,7 +1682,7 @@ frame_1/delay_sec = 0.0
 141/z_index = 0
 142/name = "FlammestationService1.png 142"
 142/texture = SubResource( 9 )
-142/tex_offset = Vector2( 0, 0 )
+142/tex_offset = Vector2( 35, 200 )
 142/modulate = Color( 1, 1, 1, 1 )
 142/region = Rect2( 0, 0, 960, 960 )
 142/tile_mode = 0
@@ -1690,7 +1692,7 @@ frame_1/delay_sec = 0.0
 142/z_index = 0
 143/name = "Flammeusine1.png 143"
 143/texture = SubResource( 10 )
-143/tex_offset = Vector2( 0, 0 )
+143/tex_offset = Vector2( -465, -235 )
 143/modulate = Color( 1, 1, 1, 1 )
 143/region = Rect2( 0, 0, 1824, 1824 )
 143/tile_mode = 0
@@ -1720,7 +1722,7 @@ frame_1/delay_sec = 0.0
 145/z_index = 0
 146/name = "Flammeaeroport.png 146"
 146/texture = SubResource( 12 )
-146/tex_offset = Vector2( 0, 0 )
+146/tex_offset = Vector2( -750, 340 )
 146/modulate = Color( 1, 1, 1, 1 )
 146/region = Rect2( 16, 7, 3022, 2407 )
 146/tile_mode = 0
@@ -1730,7 +1732,7 @@ frame_1/delay_sec = 0.0
 146/z_index = 0
 147/name = "Flammeboutique9.png 147"
 147/texture = SubResource( 13 )
-147/tex_offset = Vector2( 0, 0 )
+147/tex_offset = Vector2( 20, 175 )
 147/modulate = Color( 1, 1, 1, 1 )
 147/region = Rect2( 0, -32, 960, 992 )
 147/tile_mode = 0
@@ -1740,7 +1742,7 @@ frame_1/delay_sec = 0.0
 147/z_index = 0
 148/name = "Flammeburger.png 148"
 148/texture = SubResource( 14 )
-148/tex_offset = Vector2( 0, 0 )
+148/tex_offset = Vector2( -30, 100 )
 148/modulate = Color( 1, 1, 1, 1 )
 148/region = Rect2( -32, -32, 1056, 1120 )
 148/tile_mode = 0
@@ -1750,7 +1752,7 @@ frame_1/delay_sec = 0.0
 148/z_index = 0
 149/name = "Flammeeglise4.png 149"
 149/texture = SubResource( 15 )
-149/tex_offset = Vector2( 0, 0 )
+149/tex_offset = Vector2( -20, 115 )
 149/modulate = Color( 1, 1, 1, 1 )
 149/region = Rect2( -32, -32, 992, 1056 )
 149/tile_mode = 0
@@ -1760,7 +1762,7 @@ frame_1/delay_sec = 0.0
 149/z_index = 0
 150/name = "Flammehotel1.png 150"
 150/texture = SubResource( 16 )
-150/tex_offset = Vector2( 0, 0 )
+150/tex_offset = Vector2( 50, 240 )
 150/modulate = Color( 1, 1, 1, 1 )
 150/region = Rect2( -32, -32, 928, 896 )
 150/tile_mode = 0
@@ -1770,7 +1772,7 @@ frame_1/delay_sec = 0.0
 150/z_index = 0
 151/name = "Flammehotel1_2.png 151"
 151/texture = SubResource( 17 )
-151/tex_offset = Vector2( 0, 0 )
+151/tex_offset = Vector2( 0, 250 )
 151/modulate = Color( 1, 1, 1, 1 )
 151/region = Rect2( -32, -32, 1024, 1056 )
 151/tile_mode = 0
@@ -1780,7 +1782,7 @@ frame_1/delay_sec = 0.0
 151/z_index = 0
 152/name = "Flammeimmeuble.png 152"
 152/texture = SubResource( 18 )
-152/tex_offset = Vector2( 0, 0 )
+152/tex_offset = Vector2( -80, -10 )
 152/modulate = Color( 1, 1, 1, 1 )
 152/region = Rect2( -32, -32, 1152, 1152 )
 152/tile_mode = 0
@@ -1790,7 +1792,7 @@ frame_1/delay_sec = 0.0
 152/z_index = 0
 153/name = "Flammemaison ecolo.png 153"
 153/texture = SubResource( 19 )
-153/tex_offset = Vector2( 0, 0 )
+153/tex_offset = Vector2( -45, 230 )
 153/modulate = Color( 1, 1, 1, 1 )
 153/region = Rect2( -32, -32, 1120, 960 )
 153/tile_mode = 0
@@ -1800,7 +1802,7 @@ frame_1/delay_sec = 0.0
 153/z_index = 0
 154/name = "Flammefete foraine1.png 154"
 154/texture = SubResource( 20 )
-154/tex_offset = Vector2( 0, 0 )
+154/tex_offset = Vector2( -750, -450 )
 154/modulate = Color( 1, 1, 1, 1 )
 154/region = Rect2( -32, -32, 3104, 2848 )
 154/tile_mode = 0
