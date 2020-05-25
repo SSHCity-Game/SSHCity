@@ -156,14 +156,14 @@ __meta__ = {
 }
 
 [node name="Population" type="Label" parent="."]
-anchor_left = 0.815
-anchor_top = 0.285
-anchor_right = 0.815
-anchor_bottom = 0.285
-margin_left = -249.376
-margin_top = -22.8548
-margin_right = -0.376038
-margin_bottom = 0.145294
+anchor_left = 0.673
+anchor_top = 0.261
+anchor_right = 0.673
+anchor_bottom = 0.261
+margin_left = -124.632
+margin_top = -11.513
+margin_right = 124.368
+margin_bottom = 11.4871
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0.027451, 0.611765, 0.172549, 1 )
 text = "Population :"
@@ -178,7 +178,7 @@ margin_top = 2.6851
 margin_right = 340.954
 margin_bottom = 9.98908
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color_shadow = Color( 0.0509804, 0.317647, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0.027451, 0.611765, 0.172549, 1 )
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -286,7 +286,7 @@ margin_top = 99.3692
 margin_right = 354.715
 margin_bottom = 119.369
 custom_fonts/font = SubResource( 2 )
-text = "Autorisation Vehicule : "
+text = "Autorisation Véhicule : "
 __meta__ = {
 "_edit_use_anchors_": false
 }
