@@ -2,14 +2,15 @@ using Godot;
 
 public class MainMenu : CanvasLayer
 {
-    public TextureRect Background;
-    public Button Connexion;
-    public Button NewGame;
-    public Button Options;
-    public Label SSHCity;
-    public CenterContainer CenterContainer;
-    public CenterContainer Centertop;
+    public static TextureRect Background;
+    public static Button Connexion;
+    public static Button NewGame;
+    public static Button Options;
+    public static Label SSHCity;
+    public static CenterContainer CenterContainer;
+    public static CenterContainer Centertop;
 
+    public static bool options = false;
 
     public override void _Ready()
     {
@@ -28,12 +29,7 @@ public class MainMenu : CanvasLayer
         AddUserSignal("game_started");
     }
 
-    public void menu_connexion()
-    {
-        new_game();
-    }
-
-    public void new_game()
+    public void HideAll()
     {
         Connexion.Hide();
         NewGame.Hide();
@@ -42,6 +38,29 @@ public class MainMenu : CanvasLayer
         SSHCity.Hide();
         CenterContainer.Hide();
         Centertop.Hide();
+    }
+
+    public static void ShowAll()
+    {
+        Connexion.Show();
+        NewGame.Show();
+        Options.Show();
+        Background.Show();
+        SSHCity.Show();
+        CenterContainer.Show();
+        Centertop.Show();
+    }
+
+    public void menu_connexion()
+    {
+        new_game();
+    }
+
+    public void new_game()
+    {
+        MainPlan._planInitial.Show();
+        Interface.Start();
+        HideAll();
         EmitSignal("game_started");
         Parametres._parametres.Show();
         MainPlan.NewGame();
@@ -50,13 +69,9 @@ public class MainMenu : CanvasLayer
     {
         if (MainPlan.LoadGame())
         {
-            Connexion.Hide();
-            NewGame.Hide();
-            Options.Hide();
-            Background.Hide();
-            SSHCity.Hide();
-            CenterContainer.Hide();
-            Centertop.Hide();
+            MainPlan._planInitial.Show();
+            Interface.Start();
+            HideAll();
             EmitSignal("game_started");
             Parametres._parametres.Show();
         }
@@ -64,5 +79,8 @@ public class MainMenu : CanvasLayer
 
     public void menu_options()
     {
+        HideAll();
+        options = true;
+        Parametres.param_pressed();
     }
 }

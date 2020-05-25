@@ -16,7 +16,7 @@ public class MainPlan : Node2D
 	private static List<(Vector2, int)> _listeBatiment = new List<(Vector2, int)>();
 	private static List<(Vector2, int)> _listeNode = new List<(Vector2, int)>();
 	public static bool incident = false;
-	private Camera2D _camera2D;
+	public Camera2D _camera2D;
 	private Vector2 _distanceDragged;
 	private Vector2 _DraggingStart;
 	private MainMenu _mainMenu;
@@ -156,11 +156,13 @@ public class MainPlan : Node2D
 
 	public override void _Ready()
 	{
-		//_mainMenu = (MainMenu) GetNode("Camera2D/MainMenu");
 		_planInitial = (PlanInitial) GetNode(str_planInitial);
 		_mainMenu = (MainMenu) GetNode("MainMenu");
 		_camera2D = (Camera2D) GetNode(str_camera2D);
 		_musique = (AudioStreamPlayer) GetNode(_str_music);
+		
+		_planInitial.Hide();
+		
 		// Charges les arguments de lancement
 		var args = OS.GetCmdlineArgs();
 		Player player;
@@ -226,7 +228,6 @@ public class MainPlan : Node2D
 
 		//CREATION LACS
 		Lacs.GenerateLac(_planInitial);
-		_musique.Play();
 	}
 
 	public static bool LoadGame()
