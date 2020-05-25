@@ -34,7 +34,10 @@ namespace SshCity.Game.Sauvegarde
                 var lvl = int.Parse(dicValues["Level"].ToString());
 
                 var bat = Building.Create(clazz, new Vector2(x, y), lvl);
+                MainPlan.ListeBatiment.Add((new Vector2(x, y), bat.Characteristics.Bloc[bat.Characteristics.Lvl]));
+                Interface.Xp += bat.Characteristics.GainXp[bat.Characteristics.Lvl];
                 planInitial.SetBlock(planInitial.TileMap2, (int) x, (int) y, bat.Characteristics.Bloc[0]);
+                planInitial.SetBlock(planInitial.TileMapWithoutRoute, (int) x, (int) y, bat.Characteristics.Bloc[0]);
                 planInitial.SetAchatBlocs(bat.Position, false);
             }
 

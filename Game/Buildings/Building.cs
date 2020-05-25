@@ -22,7 +22,6 @@ namespace SshCity.Game.Buildings
             Characteristics.Lvl = theLvl;
             
             PlanInitial.MAX_CAR += Characteristics.NbCar;
-            Interface.Xp += Characteristics.GainXp[theLvl];
             ListBuildings.Add(this);
         }
 
@@ -135,7 +134,7 @@ namespace SshCity.Game.Buildings
             if (batimentToUpgrade == null) return (false, -1);
             batimentToUpgrade.Upgrade();
             ListBuildings.Add(batimentToUpgrade);
-            return (true, batimentToUpgrade.Characteristics.Bloc[0]);
+            return (true, batimentToUpgrade.Characteristics.Bloc[batimentToUpgrade.Characteristics.Lvl]);
         }
 
         /// <summary>

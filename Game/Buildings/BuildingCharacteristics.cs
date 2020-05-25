@@ -51,7 +51,18 @@ namespace SshCity.Game.Buildings
                 {BuildingType.POLICE, typeof(Police)},
                 {BuildingType.RESTAURANT2, typeof(Restaurant2)},
                 {BuildingType.MAIRIE, typeof(Mairie)},
-                {BuildingType.EPURATION, typeof(Epuration)}
+                {BuildingType.EPURATION, typeof(Epuration)},
+                {BuildingType.MOSQUE, typeof(Mosque)},
+                {BuildingType.FERMEGRANDE, typeof(FermeGrande)},
+                {BuildingType.EOLIENNE, typeof(Eolienne)},
+                {BuildingType.SOLAIRE, typeof(Solaire)},
+                {BuildingType.AEROPORT, typeof(Aeroport)},
+                {BuildingType.ESSENCE, typeof(Essence)},
+                {BuildingType.FOOT, typeof(Foot)},
+                {BuildingType.ZOO, typeof(Zoo)},
+                {BuildingType.FETEFORRAINE, typeof(FeteForraine)},
+                {BuildingType.BASKET, typeof(Basket)},
+                {BuildingType.USINE, typeof(Usine)},
             };
 
 

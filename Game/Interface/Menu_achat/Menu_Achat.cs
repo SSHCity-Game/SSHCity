@@ -7,13 +7,8 @@ public class Menu_Achat : Panel
 	private const string _str_button_flecheD = "FlecheD/ButtonFlecheD";
 	private const string _str_Page = "Page";
 
-	private static int _whichMenu = 0;
-
-	public static int WhichMenu
-	{
-		get => _whichMenu;
-		set => _whichMenu = value;
-	}
+	public  int _whichMenu = 0;
+	
 	private static bool _achat = false;
 	private static bool _reset = false;
 	private Button _button_flecheD;
@@ -119,7 +114,6 @@ public class Menu_Achat : Panel
 		}
 		else
 		{
-			Interface.Hide = true;
 			EmitSignal("CloseShop");
 			PlanInitial.Achat = true;
 			PlanInitial.Batiment = bloc;

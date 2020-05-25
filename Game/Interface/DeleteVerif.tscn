@@ -92,7 +92,7 @@ margin_top = -40.574
 margin_right = 307.5
 margin_bottom = 40.426
 custom_fonts/font = SubResource( 2 )
-text = "Etes-vous sûr de vouloir supprimer 
+text = "Êtes-vous sûr de vouloir supprimer 
 le bâtiment ?"
 align = 1
 __meta__ = {

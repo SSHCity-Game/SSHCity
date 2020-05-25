@@ -8,10 +8,16 @@ public class MenuEconomie : Node
 	private const string _str_carteRestaurant = _str_menu_achat + "/Restaurant";
 	private const string _str_carteRestaurant2 = _str_menu_achat + "/Restaurant2";
 	private const string _str_carteFerme = _str_menu_achat + "/Ferme";
+	private const string _str_carteFermeFrande = _str_menu_achat + "/FermeGrande";
+	private const string _str_carteEssence = _str_menu_achat + "/Essence";
+	private const string _str_carteUsine = _str_menu_achat + "/Usine";
 	private Carte _carteCafe;
 	private Carte _carteFerme;
 	private Carte _carteRestaurant;
 	private Carte _carteRestaurant2;
+	private Carte _carteFermeGrande;
+	private Carte _carteEssence;
+	private Carte _carteUsine;
 	private Menu_Achat _menu_achat;
 
 
@@ -67,6 +73,45 @@ public class MenuEconomie : Node
 		_carteFerme.Eau(ferme.water[0].ToString());
 		_carteFerme.Hide();
 		_carteFerme.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+		
+		//Config _carteFermeGrande
+		_carteFermeGrande = (Carte) GetNode(_str_carteFermeFrande);
+		var fermeGrande = BuildingCharacteristics.FromType(BuildingType.FERMEGRANDE);
+		_carteFermeGrande.Bloc = fermeGrande.Bloc[0];
+		_carteFermeGrande.Cost = fermeGrande.Cost[0];
+		_carteFermeGrande.Titre(fermeGrande.Titre[0]);
+		_carteFermeGrande.Gain(fermeGrande.Earn[0]);
+		_carteFermeGrande.Prix(fermeGrande.Cost[0]);
+		_carteFermeGrande.Enrgie(fermeGrande.energy[0].ToString());
+		_carteFermeGrande.Eau(fermeGrande.water[0].ToString());
+		_carteFermeGrande.Hide();
+		_carteFermeGrande.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+		
+		//Config _carteEssence
+		_carteEssence = (Carte) GetNode(_str_carteEssence);
+		var essence = BuildingCharacteristics.FromType(BuildingType.ESSENCE);
+		_carteEssence.Bloc = essence.Bloc[0];
+		_carteEssence.Cost = essence.Cost[0];
+		_carteEssence.Titre(essence.Titre[0]);
+		_carteEssence.Gain(essence.Earn[0]);
+		_carteEssence.Prix(essence.Cost[0]);
+		_carteEssence.Enrgie(essence.energy[0].ToString());
+		_carteEssence.Eau(essence.water[0].ToString());
+		_carteEssence.Hide();
+		_carteEssence.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+		
+		//Config _carteUsine
+		_carteUsine = (Carte) GetNode(_str_carteUsine);
+		var usine = BuildingCharacteristics.FromType(BuildingType.USINE);
+		_carteUsine.Bloc = usine.Bloc[0];
+		_carteUsine.Cost = usine.Cost[0];
+		_carteUsine.Titre(usine.Titre[0]);
+		_carteUsine.Gain(usine.Earn[0]);
+		_carteUsine.Prix(usine.Cost[0]);
+		_carteUsine.Enrgie(usine.energy[0].ToString());
+		_carteUsine.Eau(usine.water[0].ToString());
+		_carteUsine.Hide();
+		_carteUsine.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		_menu_achat.Connect("CloseShop", this, nameof(CloseShop));
 
@@ -74,26 +119,27 @@ public class MenuEconomie : Node
 		AddUserSignal("CloseShop");
 
 		Carte[] menu1 = {_carteCafe, _carteRestaurant, _carteRestaurant2};
-		Carte[] menu2 = {_carteFerme};
-		Carte[][] menus = {menu1, menu2};
+		Carte[] menu2 = {_carteFerme, _carteFermeGrande, _carteEssence};
+		Carte[] menu3 = {_carteUsine};
+		Carte[][] menus = {menu1, menu2, menu3};
 		_menu_achat.Menus = menus;
 	}
 	
 	public void Reset()
 	{
 		Carte[] menu1 = {_carteCafe, _carteRestaurant, _carteRestaurant2};
-		Carte[] menu2 = {_carteFerme};
+		Carte[] menu2 = {_carteFerme, _carteFermeGrande, _carteEssence};
+		Carte[] menu3 = {_carteUsine};
+		Carte[][] menus = {menu1, menu2, menu3};
+		_carteCafe.Show();
+		_carteRestaurant.Show();
+		_carteRestaurant2.Show();
 		_carteFerme.Hide();
-		Carte[][] menus = {menu1, menu2};
+		_carteFermeGrande.Hide();
+		_carteUsine.Hide();
+		_carteEssence.Hide();
 		_menu_achat.Menus = menus;
-		if (Menu_Achat.WhichMenu <= menus.Length)
-		{
-			_menu_achat.Reset();
-		}		
-		else
-		{
-			Menu_Achat.WhichMenu = 0;
-		}
+		_menu_achat._whichMenu = 0;
 	}
 
 	public void CloseMenuEconomie()

@@ -8,11 +8,13 @@ public class MenuHabitation : Node
 	private const string _str_carteMaison3 = _str_menu_achat + "/Maison2";
 	private const string _str_carteMaison4 = _str_menu_achat + "/Maison3";
 	private const string _str_carteMaison5 = _str_menu_achat + "/Maison5";
+	private const string _str_carteHotel = _str_menu_achat + "/Hotel";
 
 	private Carte _carteMaison;
 	private Carte _carteMaison3;
 	private Carte _carteMaison4;
 	private Carte _carteMaison5;
+	private Carte _carteHotel;
 	private Menu_Achat _menu_achat;
 
 	public override void _Ready()
@@ -70,29 +72,40 @@ public class MenuHabitation : Node
 		_carteMaison5.Eau(maison5.water[0].ToString());
 		_carteMaison5.Hide();
 		_carteMaison5.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+		
+		//Config _carteHotel
+		_carteHotel = (Carte) GetNode(_str_carteHotel);
+		var hotel = BuildingCharacteristics.FromType(BuildingType.HOTEL);
+		_carteHotel.Bloc = hotel.Bloc[0];
+		_carteHotel.Cost = hotel.Cost[0];
+		_carteHotel.Titre(hotel.Titre[0]);
+		_carteHotel.Gain(hotel.Earn[0]);
+		_carteHotel.Prix(hotel.Cost[0]);
+		_carteHotel.Enrgie(hotel.energy[0].ToString());
+		_carteHotel.Eau(hotel.water[0].ToString());
+		_carteHotel.Hide();
+		_carteHotel.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		_menu_achat.Hide();
 		AddUserSignal("CloseShop");
 
 		Carte[] menu1 = {_carteMaison, _carteMaison3, _carteMaison4};
-		Carte[] menu2 = {_carteMaison5};
+		Carte[] menu2 = {_carteMaison5, _carteHotel};
 		Carte[][] menus = {menu1, menu2};
 		_menu_achat.Menus = menus;
 	}
 	public void Reset()
 	{
 		Carte[] menu1 = {_carteMaison, _carteMaison3, _carteMaison4};
-		Carte[] menu2 = {_carteMaison5};
+		Carte[] menu2 = {_carteMaison5, _carteHotel};
+		_carteMaison.Show();
+		_carteMaison3.Show();
+		_carteMaison4.Show();
 		_carteMaison5.Hide();
+		_carteHotel.Hide();
 		Carte[][] menus = {menu1, menu2};
-		if (Menu_Achat.WhichMenu <= menus.Length)
-		{
-			_menu_achat.Reset();
-		}
-		else
-		{
-			Menu_Achat.WhichMenu = 0;
-		}
+		_menu_achat._whichMenu = 0;
+
 	}
 
 	public void CloseMenuHabitation()

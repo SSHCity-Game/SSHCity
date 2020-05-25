@@ -57,7 +57,7 @@ public class Interface : CanvasLayer
     /* ScoreBar */
     private TextureProgress ScoreBar;
     private Label Score;
-    private static int _xp;
+    private static int _xp = 0;
     public static int _level = 1; // niveau
     private static int XpMax = 30;
     public static bool levelup = false;
@@ -195,6 +195,13 @@ public class Interface : CanvasLayer
         _timer.Connect("timeout", this, nameof(WinMoney));
         _timer.Connect("timeout", this, nameof(EnergyWin));
         _timer.Connect("timeout", this, nameof(WaterWin));
+
+        _xp = 0;
+        _level = 1;
+        ScoreBar.MaxValue = 30;//UpdateScoreValue(_level);
+        ScoreBar.MinValue = 0;
+        ScoreBar.Value = _xp;
+        Score.Text = Convert.ToString(_level);
     }
 
     public void TuyauxPressde()
@@ -273,6 +280,7 @@ public class Interface : CanvasLayer
         _money_text.Text = Convert.ToString(_money);
 
         /* incrementation de la barre de niveau */
+        //ScoreBar.MaxValue = UpdateScoreValue(_level);
         if (_xp >= XpMax)
         {
             _xp -= XpMax;

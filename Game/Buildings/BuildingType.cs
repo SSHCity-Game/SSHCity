@@ -13,7 +13,7 @@ namespace SshCity.Game.Buildings
         EGLISE = Ref_donnees.eglise,
         FERME = Ref_donnees.ferme,
         HOSPITAL = Ref_donnees.hopital,
-        HOTEL = Ref_donnees.hotel,
+        HOTEL = Ref_donnees.hotel1,
         IMMEUBLE = Ref_donnees.immeuble_brique,
         IMMEUBLE_VERT = Ref_donnees.immeuble_vert,
         MAISON = Ref_donnees.maison1,
@@ -27,6 +27,17 @@ namespace SshCity.Game.Buildings
         RESTAURANT = Ref_donnees.restaurant,
         RESTAURANT2 = Ref_donnees.restaurant2,
         MAIRIE = Ref_donnees.mairie,
-        EPURATION = Ref_donnees.stationEpuration
+        EPURATION = Ref_donnees.stationEpuration,
+        MOSQUE = Ref_donnees.mosque,
+        FERMEGRANDE = Ref_donnees.ferme3,
+        EOLIENNE = Ref_donnees.eolienne,
+        SOLAIRE = Ref_donnees.solaire,
+        AEROPORT = Ref_donnees.aeroport,
+        ESSENCE = Ref_donnees.essence,
+        FOOT = Ref_donnees.foot,
+        ZOO = Ref_donnees.zoo,
+        FETEFORRAINE = Ref_donnees.feteForraine,
+        BASKET = Ref_donnees.basket,
+        USINE = Ref_donnees.usine1,
     }
 }

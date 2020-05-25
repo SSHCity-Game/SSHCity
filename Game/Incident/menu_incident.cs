@@ -19,45 +19,45 @@ public class menu_incident : CanvasLayer
     /* Textes incident */
     private static string CaserneNon =
         "Attention, vous avez un incendie en cours. \n " +
-        "Pour l'eteindre, dirigez vous vers la boutique afin d'acheter une caserne de pompiers. \n ";
+        "Pour l'éteindre, dirigez-vous vers la boutique afin d'acheter une caserne de pompiers. \n ";
     private static string CaserneOui =
         "Attention, vous avez un incendie en cours. \n " +
-        "Vous possedez le materiel adequate pour mettre fin a cet incindent \n" +
-        "Dirigez vous vers la caserne afin de sortir et d'ammener le camion vers le lieu de l'incendie" +
-        "Pour ce faire, cliquez sur la caserne, dans la carte info cliquez sur camion, le camion sort \n" +
-        "Cliquez ensuite sur ce camion et dirigez le a l'aide des fleches du clavier \n" +
-        "Une fois le camion arrive, l'incendie s'eteindra";
+        "Vous possédez le matériel adéquate pour mettre fin à cet incident \n" +
+        "Dirigez-vous vers la caserne afin de sortir et d'ammener le camion vers le lieu de l'incendie" +
+        "Pour ce faire, cliquez sur la caserne puis cliquez sur camion \n" +
+        "Cliquez ensuite sur ce camion et dirigez-le à l'aide des flèches du clavier \n" +
+        "Une fois le camion arrivé, l'incendie s'éteindra";
     
     private static string PoliceNonB =
         "Attention, vous avez un bracage en cours. \n " +
-        "Pour le resoudre, dirigez vous vers la boutique afin d'acheter un commissariat. \n ";
+        "Pour le résoudre, dirigez-vous vers la boutique afin d'acheter un commissariat. \n ";
     private static string PoliceOuiB =
         "Attention, vous avez un bracage en cours. \n " +
-        "Vous possedez le materiel adequate pour mettre fin a cet incident \n" +
-        "Dirigez vous vers le commissariat afin de sortir et d'ammener la voiture vers le lieu du bracage \n" +
-        "Pour ce faire, cliquez sur le commissariat, dans la carte info cliquez sur police, la voiture sort \n" +
-        "Cliquez ensuite sur cette voiture et dirigez la a l'aide des fleches du clavier \n" +
-        "Une fois la voiture arrive, vous arreterez le voleur"; 
+        "Vous possédez le matériel adéquate pour mettre fin à cet incident \n" +
+        "Dirigez-vous vers le commissariat afin de sortir et d'ammener la voiture vers le lieu du bracage \n" +
+        "Pour ce faire, cliquez sur le commissariat puis sur police \n" +
+        "Cliquez ensuite sur cette voiture et dirigez-la à l'aide des flèches du clavier \n" +
+        "Une fois la voiture arrivée, vous arrêterez le voleur"; 
     private static string PoliceNonA =
         "Attention, vous avez un accident en cours. \n " +
-        "Pour le resoudre, dirigez vous vers la boutique afin d'acheter un commissariat. \n ";
+        "Pour le résoudre, dirigez-vous vers la boutique afin d'acheter un commissariat. \n ";
     private static string PoliceOuiA =
         "Attention, vous avez un accident en cours. \n " +
-        "Vous possedez le materiel adequate pour mettre fin a cet incident \n" +
-        "Dirigez vous vers l'hopital afin de sortir et d'ammener l'ambulance vers le lieu de l'accident \n" +
-        "Pour ce faire, cliquez sur l'hopital, dans la carte info cliquez sur ambulance, elle sort \n" +
-        "Cliquez ensuite sur celle ci et dirigez la a l'aide des fleches du clavier \n" +
-        "Une fois l'ambulance arrive, vous prendrez en charge l'accident";
+        "Vous possédez le matériel adéquate pour mettre fin à cet incident \n" +
+        "Dirigez-vous vers l'hôpital afin de sortir et d'ammener l'ambulance vers le lieu de l'accident \n" +
+        "Pour ce faire, cliquez sur l'hôpital puis sur ambulance\n" +
+        "Cliquez ensuite sur celle-ci et dirigez-la à l'aide des flèches du clavier \n" +
+        "Une fois l'ambulance arrivée, vous prendrez en charge l'accident";
     
     private static string HopitalNon =
         "Attention, une personne de votre ville se noie. \n " +
-        "Pour le sauver, dirigez vous vers la boutique afin d'acheter un hopital. \n ";
+        "Pour la sauver, dirigez-vous vers la boutique afin d'acheter un hôpital. \n ";
     private static string HopitalOui =
         "Attention, une personne de votre ville se noie. \n " +
-        "Vous possedez le materiel adequate pour sauver cette personne \n" +
-        "Dirigez vous vers l'hopital afin d'ammener l'helico vers le lac \n " +
-        "Pour ce faire, cliquez sur l'helico en haut de l'hopital \n" +
-        "Une fois l'helico arrive, il prendra en charge la personne";
+        "Vous possédez le matériel adéquate pour sauver cette personne \n" +
+        "Dirigez-vous vers l'hôpital afin d'ammener l'hélicoptère vers le lac \n " +
+        "Pour ce faire, cliquez sur l'hôpital puis sur hélicoptère\n" +
+        "Une fois l'hélicoptère arrivé, il prendra en charge la personne";
 
     /* VARIABLES : boutons menu incident */
     public Button BoutiqueCaserne;

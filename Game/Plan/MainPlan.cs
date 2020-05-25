@@ -7,7 +7,7 @@ using SshCity.Game.Sauvegarde;
 
 public class MainPlan : Node2D
 {
-	public List<List<Vector2>>MontagneList = new List<List<Vector2>>();
+	public static List<List<Vector2>>MontagneList = new List<List<Vector2>>();
 	
 	private const string _str_music = "Musique";
 	public static PlanInitial _planInitial;
@@ -158,6 +158,7 @@ public class MainPlan : Node2D
 	{
 		//_mainMenu = (MainMenu) GetNode("Camera2D/MainMenu");
 		_planInitial = (PlanInitial) GetNode(str_planInitial);
+		_mainMenu = (MainMenu) GetNode("MainMenu");
 		_camera2D = (Camera2D) GetNode(str_camera2D);
 		_musique = (AudioStreamPlayer) GetNode(_str_music);
 		// Charges les arguments de lancement
@@ -192,25 +193,79 @@ public class MainPlan : Node2D
 		
 
 		// We load the game or we generate a map
+
 		//if (!SauvegardeManager.LoadGame(_planInitial, game))
 		//{
 			// Génère une nouvelle map tant qu'on ne peut pas créer de village
-			while (!Buildings.GenerateBuildings(_planInitial))
-			{
-				_planInitial = new PlanInitial();
-			}
-
-			Interface.Xp = 0;
-			Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
-			Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
-			Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
-
-			//CREATION LACS
-			Lacs.GenerateLac(_planInitial);
+			
+		//}
+		//else
+		//{
+			//GD.Print("HEre");
+			//Interface.Xp = 0;
 		//}
 
+
+			//CREATION LACS
+			//Lacs.GenerateLac(_planInitial);
+		//}
 		//Lancement de la musique
+	}
+
+	public static void NewGame()
+	{
+		while (!Buildings.GenerateBuildings(_planInitial))
+		{
+			_planInitial = new PlanInitial();
+		}
+
+		Interface.Xp = 0;
+		Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
+		Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
+		Montagnes.GenerateMontagne(_planInitial, ref MontagneList);
+
+		//CREATION LACS
+		Lacs.GenerateLac(_planInitial);
 		_musique.Play();
+	}
+
+	public static bool LoadGame()
+	{
+		var args = OS.GetCmdlineArgs();
+		Player player;
+		if (args.Length == 0)
+		{
+			player = Player.CreateInstance();
+			player.Email = "default@email.com";
+			player.FirstName = "FirstName";
+			player.LastName = "LastName";
+			player.Token = null;
+			player.Username = "Username";
+			player.GameId = "GameID";
+		}
+		else
+		{
+			var jsonUser = Marshalls.Base64ToUtf8(args[0]);
+			var user = JSON.Parse(jsonUser).Result as Dictionary;
+			player = Player.CreateInstance();
+			player.Email = user["email"].ToString();
+			player.Username = user["username"].ToString();
+			player.LastName = user["lastName"].ToString();
+			player.Token = user["token"].ToString();
+			player.FirstName = user["firstName"].ToString();
+			player.GameId = user["gameId"].ToString();
+		}
+		string game = null;
+		if (args.Length > 1)
+			game = Marshalls.Base64ToUtf8(args[1]);
+		bool worked = SauvegardeManager.LoadGame(_planInitial, game);
+
+		if (worked)
+		{
+			_musique.Play();
+		}
+
+		return worked;
 	}
 
 	public override void _Notification(int what)
