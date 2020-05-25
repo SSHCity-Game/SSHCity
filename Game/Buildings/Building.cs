@@ -134,7 +134,7 @@ namespace SshCity.Game.Buildings
             if (batimentToUpgrade == null) return (false, -1);
             batimentToUpgrade.Upgrade();
             ListBuildings.Add(batimentToUpgrade);
-            return (true, batimentToUpgrade.Characteristics.Bloc[0]);
+            return (true, batimentToUpgrade.Characteristics.Bloc[batimentToUpgrade.Characteristics.Lvl]);
         }
 
         /// <summary>

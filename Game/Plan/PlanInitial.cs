@@ -129,6 +129,7 @@ public partial class PlanInitial : Node2D
         base._Process(delta);
         if (_buildOnTileMap2)
         {
+            GD.Print("Process");
             SetBlock(TileMap2, (int) _tileOnTileMap2.x, (int) _tileOnTileMap2.y, _batiment);
             SetBlock(TileMapWithoutRoute, (int) _tileOnTileMap2.x, (int) _tileOnTileMap2.y, _batiment);
             _buildOnTileMap2 = false;
@@ -247,6 +248,8 @@ public partial class PlanInitial : Node2D
         GD.Print(amelio);
         if (amelio.worked)
         {
+            GD.Print("Worked");
+
             BuildTileMap2(amelio.bloc, tile);
         }
     }

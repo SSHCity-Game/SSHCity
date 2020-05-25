@@ -6,7 +6,7 @@ namespace SshCity.Game.Buildings.Characteristics
     {
         public Eglise()
         {
-            Bloc = new[] {Ref_donnees.eglise, Ref_donnees.eglise3, Ref_donnees.eglise2};
+            Bloc = new[] {Ref_donnees.eglise, Ref_donnees.eglise2, Ref_donnees.eglise3};
             Cost = new[] {4000, 6000, 10000};
             Earn = new[] {1, 2, 3};
             Titre = new[] {"Eglise", "Eglise", "Cathédrale"};

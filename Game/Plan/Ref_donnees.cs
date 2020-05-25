@@ -113,6 +113,9 @@ namespace SshCity.Game.Plan
         public const int parc3 = 132;
         public const int resto2 = 133;
         public const int burgeur = 134;
+        public const int mosque = 135;
+        public const int mosque2 = 136;
+        public const int mosque3 = 137;
         
         /* Incendie Batiments */
         public const int restaurant_flamme = 3;

@@ -13,7 +13,7 @@ namespace SshCity.Game.Buildings.Characteristics
             Lvl = 0;
             GainXp = new[] {10, 15};
             energy = new[] {1, 0};
-            water = new[] {3, 4};
+            water = new[] {3, 0};
             Image = new[] {"res://assets/ImageSized/isometric ferme2.png", "res://assets/ImageSized/I ferme ecolobis.png"};
             NbrAmeliorations = 1;
             NbCar = 3;

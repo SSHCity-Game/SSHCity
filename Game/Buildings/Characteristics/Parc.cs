@@ -17,7 +17,7 @@ namespace SshCity.Game.Buildings.Characteristics
             Image = new[] {"res://assets/ImageSized/iso parc enfant4.png", "res://assets/ImageSized/I parc enfant.png", "res://assets/ImageSized/I parc enfant2.png"};
             NbrAmeliorations = 2;
             NbCar = 0;
-            Population = new[] {0};
+            Population = new[] {0, 0, 0};
         }
 
         public int[] Bloc { get; }

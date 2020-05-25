@@ -9,7 +9,7 @@ namespace SshCity.Game.Buildings.Characteristics
             Bloc = new[] {Ref_donnees.maison3, Ref_donnees.immeuble_brique};
             Cost = new[] {1000, 1500};
             Earn = new[] {1, 3};
-            Titre = new[] {"Maison"};
+            Titre = new[] {"Maison", "Tour"};
             Lvl = 0;
             GainXp = new[] {10, 15};
             energy = new[] {1,3};
