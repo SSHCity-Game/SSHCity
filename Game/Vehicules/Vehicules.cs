@@ -187,8 +187,8 @@ namespace SshCity.Game.Vehicules
             _collisionShapeAutonome = (CollisionShape2D) GetNode(_strCollisionShapeAutonome);
             if (!autonome)
             {
-                CollisionMask = 4;
-                CollisionLayer = 8;
+                CollisionMask = 8;
+                CollisionLayer = 4;
                 Connect("mouse_entered", this, nameof(MouseEntered));
                 Connect("mouse_exited", this, nameof(MouseExited));
             }
@@ -223,16 +223,33 @@ namespace SshCity.Game.Vehicules
         /// <param name="area2D">L'area2D venant de rentrer dans l'area2D</param>
         public void Collision(Area2D area2D)
         {
-            if (!_stopArea2DCreat && !_stopAccident && Interface._level >= incidents.levelAccident && incidents.Nbaccident < incidents.MAX_ACCIDENT && !incidents.ResoAccident)
+            if (_type == Type.AMBULANCE)
+            {
+                if (area2D.CollisionMask == 7)
+                {
+                    Accident accident = (Accident) area2D;
+                    if (accident.Visi)
+                    {
+                        incidents.Nbaccident--;
+                        accident.QueueFree();
+                        menu_incident.Accident.Hide();
+                        Interface.Xp += 50;
+                    }
+                }
+            }
+            else if (!_stopArea2DCreat && !_stopAccident && _type != Type.AMBULANCE && _type != Type.POLICE && _type != Type.CAMION)
             {
                 if (area2D.CollisionMask == 1)
                 {
-                    Vector2 position = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
-                    PlanInitial.AddZoneAccident(Position, true);
-                    PlanInitial.NbCar -= 1;
-                    QueueFree();
-                    incidents.Nbaccident++;
-                    menu_incident.Accident.Show();
+                    if (incidents.Nbaccident < incidents.MAX_ACCIDENT)
+                    {
+                        incidents.Nbaccident++;
+                        Vector2 position = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
+                        PlanInitial.AddZoneAccident(Position, true);
+                        PlanInitial.NbCar -= 1;
+                        menu_incident.Accident.Show();
+                        QueueFree();
+                    }
                 }
                 else
                 {
@@ -250,7 +267,7 @@ namespace SshCity.Game.Vehicules
         /// <param name="area2D">L'area2D qui vient de sortir</param>
         public void EndCollision(Area2D area2D)
         {
-            if (area2D.CollisionMask == 3) //Tets si l'area2D est une area2D Accident
+            if (area2D.CollisionMask == 7 && _type != Type.AMBULANCE && _type != Type.POLICE && _type != Type.CAMION) //Tets si l'area2D est une area2D Accident
             {
                 _stopArea2DCreat = false;
                 _paused = false;
