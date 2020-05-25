@@ -131,7 +131,15 @@ namespace SshCity.Game.Plan
         public const int mosque2_flamme = 141;
         public const int station_service1_flamme = 142;
         public const int usine1_flamme = 143;
-        
+        public const int immeuble_flamme = 152;
+        public const int fete_forraine_flamme = 154;
+        public const int aeroport_flamme = 146;
+        public const int maison_ecolo_flamme = 153;
+        public const int eglise4_flamme = 149;
+        public const int hotel1_flamme = 151;
+        public const int hotel2_flamme = 150;
+        public const int boutique9_flamme = 147;
+        public const int burger_flamme = 148;
         
         /* Vol Batiments*/
         public const int maison1_vol = 96;
@@ -167,7 +175,8 @@ namespace SshCity.Game.Plan
 
         //bulles Bloc
         public const int bulleRoute = 79;
-        public const int bulleEau = 104; 
+        public const int bulleEau = 104;
+        public const int bulleReparation = 145;
 
         /* Liste batiment, batiment en feu */
         public static (int, int)[] BatimentFeu = {
@@ -175,7 +184,9 @@ namespace SshCity.Game.Plan
             (maison5, maison5_flamme), (restaurant, restaurant_flamme), (restaurant2, restaurant2_flamme), 
             (eglise, eglise_flamme), (cafe, cafe_flamme), (ferme, ferme2_flamme),
             (ferme3, ferme3_flamme), (mosque2, mosque2_flamme), (essence, station_service1_flamme), 
-            (usine1, usine1_flamme)
+            (usine1, usine1_flamme), (immeubleVerre, immeuble_flamme), (feteForraine, fete_forraine_flamme),
+            (aeroport, aeroport_flamme), (maisonEcolo, maison_ecolo_flamme), (eglise3, eglise4_flamme),
+            (hotel1, hotel1_flamme), (hotel2, hotel2_flamme), (resto2, boutique9_flamme), (burgeur, burger_flamme)
         };
         
         /* Liste lac, lac avec noye */

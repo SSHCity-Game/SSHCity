@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using SshCity.Game;
 
 public class Parametres : CanvasLayer
 {
@@ -59,6 +60,7 @@ public class Parametres : CanvasLayer
         _background.Show();
         _quitter.Show();
         _croix.Show();
+        _login.Text = Player.ThePlayer.Username;
         _login.Show();
         _gamePlay.Show();
         _effetsSonores.Show();
