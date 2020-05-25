@@ -57,6 +57,7 @@ namespace SshCity.Game.Buildings
                 {BuildingType.EOLIENNE, typeof(Eolienne)},
                 {BuildingType.SOLAIRE, typeof(Solaire)},
                 {BuildingType.AEROPORT, typeof(Aeroport)},
+                {BuildingType.ESSENCE, typeof(Essence)},
 
             };
 

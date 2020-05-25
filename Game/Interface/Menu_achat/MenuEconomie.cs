@@ -9,11 +9,13 @@ public class MenuEconomie : Node
 	private const string _str_carteRestaurant2 = _str_menu_achat + "/Restaurant2";
 	private const string _str_carteFerme = _str_menu_achat + "/Ferme";
 	private const string _str_carteFermeFrande = _str_menu_achat + "/FermeGrande";
+	private const string _str_carteEssence = _str_menu_achat + "/Essence";
 	private Carte _carteCafe;
 	private Carte _carteFerme;
 	private Carte _carteRestaurant;
 	private Carte _carteRestaurant2;
 	private Carte _carteFermeGrande;
+	private Carte _carteEssence;
 	private Menu_Achat _menu_achat;
 
 
@@ -82,6 +84,19 @@ public class MenuEconomie : Node
 		_carteFermeGrande.Eau(fermeGrande.water[0].ToString());
 		_carteFermeGrande.Hide();
 		_carteFermeGrande.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
+		
+		//Config _carteEssence
+		_carteEssence = (Carte) GetNode(_str_carteEssence);
+		var essence = BuildingCharacteristics.FromType(BuildingType.ESSENCE);
+		_carteEssence.Bloc = essence.Bloc[0];
+		_carteEssence.Cost = essence.Cost[0];
+		_carteEssence.Titre(essence.Titre[0]);
+		_carteEssence.Gain(essence.Earn[0]);
+		_carteEssence.Prix(essence.Cost[0]);
+		_carteEssence.Enrgie(essence.energy[0].ToString());
+		_carteEssence.Eau(essence.water[0].ToString());
+		_carteEssence.Hide();
+		_carteEssence.Connect("Achat", _menu_achat, nameof(Menu_Achat.AchatBatiment));
 
 		_menu_achat.Connect("CloseShop", this, nameof(CloseShop));
 
@@ -89,7 +104,7 @@ public class MenuEconomie : Node
 		AddUserSignal("CloseShop");
 
 		Carte[] menu1 = {_carteCafe, _carteRestaurant, _carteRestaurant2};
-		Carte[] menu2 = {_carteFerme, _carteFermeGrande};
+		Carte[] menu2 = {_carteFerme, _carteFermeGrande, _carteEssence};
 		Carte[][] menus = {menu1, menu2};
 		_menu_achat.Menus = menus;
 	}
@@ -97,12 +112,13 @@ public class MenuEconomie : Node
 	public void Reset()
 	{
 		Carte[] menu1 = {_carteCafe, _carteRestaurant, _carteRestaurant2};
-		Carte[] menu2 = {_carteFerme, _carteFermeGrande};
+		Carte[] menu2 = {_carteFerme, _carteFermeGrande, _carteEssence};
 		_carteCafe.Show();
 		_carteRestaurant.Show();
 		_carteRestaurant2.Show();
 		_carteFerme.Hide();
 		_carteFermeGrande.Hide();
+		_carteEssence.Hide();
 		Carte[][] menus = {menu1, menu2};
 		_menu_achat.Menus = menus;
 		_menu_achat._whichMenu = 0;

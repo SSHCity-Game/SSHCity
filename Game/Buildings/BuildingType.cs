@@ -33,5 +33,6 @@ namespace SshCity.Game.Buildings
         EOLIENNE = Ref_donnees.eolienne,
         SOLAIRE = Ref_donnees.solaire,
         AEROPORT = Ref_donnees.aeroport,
+        ESSENCE = Ref_donnees.essence,
     }
 }

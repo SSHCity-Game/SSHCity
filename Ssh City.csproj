@@ -64,6 +64,7 @@
     <Compile Include="Game\Buildings\Characteristics\Eglise.cs" />
     <Compile Include="Game\Buildings\Characteristics\Eolienne.cs" />
     <Compile Include="Game\Buildings\Characteristics\Epuration.cs" />
+    <Compile Include="Game\Buildings\Characteristics\Essence.cs" />
     <Compile Include="Game\Buildings\Characteristics\Ferme.cs" />
     <Compile Include="Game\Buildings\Characteristics\FermeGrande.cs" />
     <Compile Include="Game\Buildings\Characteristics\Hospital.cs" />
