@@ -42,7 +42,7 @@ public class incidents : CanvasLayer
 	private static int indexApbracage;
 	/* niveau d apparition des differents incidents */	
 	private static int levelIncendie = 2;
-	public static int levelAccident = 5;
+	public static int levelAccident = 0;
 	private static int levelNoyade = 8;
 	private static int levelBracage = 10;
 	/* Indique ou sont les incidents */

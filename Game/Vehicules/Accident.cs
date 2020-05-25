@@ -6,6 +6,7 @@ public class Accident : Area2D
     private bool _mouseIn = false;
     private Sprite _sprite;
     private const string _strSprite = "Sprite";
+    public bool Visi = false;
 
     public override void _Ready()
     {
@@ -20,7 +21,7 @@ public class Accident : Area2D
     /// <param name="area2D">Area2D venant de sortir de cette area2D</param>
     public void AreaExited(Area2D area2D)
     {
-        if (area2D.CollisionMask == 3) // Verifie que l'area venant de sortir est une area2D de CollsionMask accident, afin de ne pas supprimer les collsionMask de vehicules. 
+        if (area2D.CollisionMask == 7) // Verifie que l'area venant de sortir est une area2D de CollsionMask accident, afin de ne pas supprimer les collsionMask de vehicules. 
         {
             QueueFree();
         }
@@ -60,7 +61,6 @@ public class Accident : Area2D
             incidents.XpAccident = false;
         }
     }
-    
 
     /// <summary>
     /// Constructeur de la zone d'accident
@@ -70,5 +70,6 @@ public class Accident : Area2D
     {
         _sprite = (Sprite) GetNode(_strSprite);
         _sprite.Visible = visi;
+        Visi = visi;
     }
 }

@@ -8,6 +8,7 @@ public class LevelUp : CanvasLayer
     private static Label LevelUpText;
     private static Button Quitter;
     private static Sprite Croix;
+    public static bool LevelUpOpen = false;
     
     public override void _Ready()
     {
@@ -28,6 +29,7 @@ public class LevelUp : CanvasLayer
     {
         if (Interface.levelup)
         {
+            LevelUpOpen = true;
             LevelUpBack.Show();
             LevelUpText.Text = "BRAVO \n Vous êtes maintenant niveau " + Interface._level;
             LevelUpText.Show();
@@ -35,10 +37,16 @@ public class LevelUp : CanvasLayer
             Croix.Show();
             Interface.levelup = false;
         }
+
+        if (!LevelUpOpen)
+        {
+            ButtonQuitter();   
+        }
     }
     
     private void ButtonQuitter()
     {
+        LevelUpOpen = false;
         Quitter.Hide();
         Croix.Hide();
         LevelUpBack.Hide();

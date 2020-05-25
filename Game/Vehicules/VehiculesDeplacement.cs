@@ -26,15 +26,6 @@ namespace SshCity.Game.Vehicules
 		           bloc == Ref_donnees.restaurant_flamme ||
 		           bloc == Ref_donnees.cafe_flamme;
 	    }
-	    public static bool isCambriolage(int bloc)
-	    {
-		    return bloc == Ref_donnees.mairie_vol ||
-		           bloc == Ref_donnees.maison1_vol ||
-		           bloc == Ref_donnees.maison3_vol ||
-		           bloc == Ref_donnees.maison4_vol ||
-		           bloc == Ref_donnees.maison5_vol;
-	    }
-
 	    public static bool isBracage(int bloc)
 	    {
 		    return bloc == Ref_donnees.maison1_vol ||
