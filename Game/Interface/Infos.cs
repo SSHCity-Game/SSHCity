@@ -203,6 +203,8 @@ public class Infos : Panel
             
             if (batiment.Characteristics.Lvl != batiment.Characteristics.NbrAmeliorations)
             {
+                _amelioPanel.Show();
+                _nivMax.Hide();
                 _argentAmelio.Text = Convert.ToString(batiment.Characteristics.Earn[batiment.Characteristics.Lvl + 1]);
                 _energieAmelio.Text = Convert.ToString(batiment.Characteristics.energy[batiment.Characteristics.Lvl + 1]);
                 _eauAmelio.Text = Convert.ToString(batiment.Characteristics.water[batiment.Characteristics.Lvl + 1]);
