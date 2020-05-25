@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game/Interface/Menu_achat/Menu_Achat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/Interface/Menu_achat/MenuEconomie.cs" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Game/Interface/Carte_achat/Economie/Restaurant.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Game/Interface/Carte_achat/Economie/Restaurant2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Game/Interface/Carte_achat/Economie/Ferme.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Game/Interface/Carte_achat/Economie/FermeGrande.tscn" type="PackedScene" id=7]
 
 [node name="MenuEconomie" type="Node"]
 script = ExtResource( 2 )
@@ -33,4 +34,8 @@ visible = false
 margin_left = -277.5
 margin_top = -120.0
 margin_right = -96.5
+margin_bottom = 122.0
+
+[node name="Carte" parent="Menu_Achat" instance=ExtResource( 7 )]
+margin_top = -120.0
 margin_bottom = 122.0

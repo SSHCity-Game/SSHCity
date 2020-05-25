@@ -28,6 +28,7 @@ namespace SshCity.Game.Buildings
         RESTAURANT2 = Ref_donnees.restaurant2,
         MAIRIE = Ref_donnees.mairie,
         EPURATION = Ref_donnees.stationEpuration,
-        MOSQUE = Ref_donnees.mosque
+        MOSQUE = Ref_donnees.mosque,
+        FERMEGRANDE = Ref_donnees.ferme3,
     }
 }
