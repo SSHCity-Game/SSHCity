@@ -204,7 +204,7 @@ public class Infos : Panel
             if (batiment.Characteristics.Lvl != batiment.Characteristics.NbrAmeliorations)
             {
                 _argentAmelio.Text = Convert.ToString(batiment.Characteristics.Earn[batiment.Characteristics.Lvl + 1]);
-                _argentAmelio.Text = Convert.ToString(batiment.Characteristics.energy[batiment.Characteristics.Lvl + 1]);
+                _energieAmelio.Text = Convert.ToString(batiment.Characteristics.energy[batiment.Characteristics.Lvl + 1]);
                 _eauAmelio.Text = Convert.ToString(batiment.Characteristics.water[batiment.Characteristics.Lvl + 1]);
                 _ameliorer.Text = "Ameliorer\n" + Convert.ToString(batiment.Characteristics.Cost[batiment.Characteristics.Lvl +1]);
                 if (batiment.Characteristics.Population[batiment.Characteristics.Lvl +1] != 0)
