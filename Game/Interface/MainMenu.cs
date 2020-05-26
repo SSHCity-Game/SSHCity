@@ -79,6 +79,7 @@ public class MainMenu : CanvasLayer
 
     public void menu_options()
     {
+        Options.Pressed = false;
         HideAll();
         options = true;
         Parametres.param_pressed();

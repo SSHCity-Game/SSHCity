@@ -241,7 +241,7 @@ namespace SshCity.Game.Vehicules
             {
                 if (area2D.CollisionMask == 1)
                 {
-                    if (incidents.Nbaccident < incidents.MAX_ACCIDENT)
+                    if (incidents.Nbaccident < incidents.MAX_ACCIDENT+1)
                     {
                         incidents.Nbaccident++;
                         Vector2 position = _planInitial.TileMap2.WorldToMap(Position) - new Vector2(1, 1);
