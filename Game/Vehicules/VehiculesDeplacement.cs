@@ -24,7 +24,22 @@ namespace SshCity.Game.Vehicules
 		           bloc == Ref_donnees.maison5_flamme ||
 		           bloc == Ref_donnees.restaurant2_flamme ||
 		           bloc == Ref_donnees.restaurant_flamme ||
-		           bloc == Ref_donnees.cafe_flamme;
+		           bloc == Ref_donnees.cafe_flamme ||
+		           bloc == Ref_donnees.ferme2_flamme ||
+		           bloc == Ref_donnees.ferme3_flamme ||
+		           bloc == Ref_donnees.fete_forraine_flamme ||
+		           bloc == Ref_donnees.aeroport_flamme ||
+		           bloc == Ref_donnees.boutique9_flamme ||
+		           bloc == Ref_donnees.burger_flamme ||
+		           bloc == Ref_donnees.eglise4_flamme ||
+		           bloc == Ref_donnees.hotel1_flamme ||
+		           bloc == Ref_donnees.hotel2_flamme ||
+		           bloc == Ref_donnees.immeuble_flamme ||
+		           bloc == Ref_donnees.maison_ecolo_flamme ||
+		           bloc == Ref_donnees.mosque2_flamme ||
+		           bloc == Ref_donnees.station_service1_flamme ||
+		           bloc == Ref_donnees.usine1_flamme
+			    ;
 	    }
 	    public static bool isBracage(int bloc)
 	    {
