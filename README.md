@@ -8,7 +8,7 @@ SSHCity is a game based on [Godot Engine](https://godotengine.org/).
 |Folder                         |Content                                                 |
 |-------------------------------|--------------------------------------------------------|
 |`assets`                       |All statical assets in game : png, mp3, \*.import...    |
-|`Scenes`                       |The source code and scenes of each developper           |
+|`Game`                         |The source code                                         |
 
 ## Git organisation
 
