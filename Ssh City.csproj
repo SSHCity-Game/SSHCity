@@ -1,134 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Tools</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0B59A570-5325-4297-9E50-4082E71C25C7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <OutputPath>.mono\temp\bin\$(Configuration)</OutputPath>
-    <RootNamespace>SshCity</RootNamespace>
-    <AssemblyName>Ssh City</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <GodotProjectGeneratorVersion>1.0.7333.3918</GodotProjectGeneratorVersion>
-    <BaseIntermediateOutputPath>.mono\temp\obj</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>
-    <ApiConfiguration Condition=" '$(Configuration)' != 'Release' ">Debug</ApiConfiguration>
-    <ApiConfiguration Condition=" '$(Configuration)' == 'Release' ">Release</ApiConfiguration>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <Optimize>false</Optimize>
-    <DefineConstants>$(GodotDefineConstants);GODOT;DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>portable</DebugType>
-    <Optimize>true</Optimize>
-    <DefineConstants>$(GodotDefineConstants);GODOT;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Tools|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <Optimize>false</Optimize>
-    <DefineConstants>$(GodotDefineConstants);GODOT;DEBUG;TOOLS;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="GodotSharp">
-      <Private>False</Private>
-      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Tools' ">
-      <Private>False</Private>
-      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Game\Buildings\Building.cs" />
-    <Compile Include="Game\Buildings\BuildingCharacteristics.cs" />
-    <Compile Include="Game\Buildings\BuildingType.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Aeroport.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Basket.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Cafe.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Caserne.cs" />
-    <Compile Include="Game\Buildings\Characteristics\CentraleElectrique.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Eglise.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Eolienne.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Epuration.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Essence.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Ferme.cs" />
-    <Compile Include="Game\Buildings\Characteristics\FermeGrande.cs" />
-    <Compile Include="Game\Buildings\Characteristics\FeteForraine.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Foot.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Hospital.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Hotel.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Immeuble.cs" />
-    <Compile Include="Game\Buildings\Characteristics\ImmeubleVert.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Mairie.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Maison.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Maison3.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Maison4.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Maison5.cs" />
-    <Compile Include="Game\Buildings\Characteristics\McAlly.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Mosque.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Parc.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Piscine.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Police.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Restaurant.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Restaurant2.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Solaire.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Usine.cs" />
-    <Compile Include="Game\Buildings\Characteristics\Zoo.cs" />
-    <Compile Include="Game\Incident\incidents.cs" />
-    <Compile Include="Game\Incident\menu_incident.cs" />
-    <Compile Include="Game\Interface\Activation.cs" />
-    <Compile Include="Game\Interface\Boutique.cs" />
-    <Compile Include="Game\Interface\Carte_achat\Carte.cs" />
-    <Compile Include="Game\Interface\DeleteVerif.cs" />
-    <Compile Include="Game\Interface\Infos.cs" />
-    <Compile Include="Game\Interface\Interface.cs" />
-    <Compile Include="Game\Interface\LevelUp.cs" />
-    <Compile Include="Game\Interface\MainMenu.cs" />
-    <Compile Include="Game\Interface\MairieMenu.cs" />
-    <Compile Include="Game\Interface\Menu_achat\MenuBienEtre.cs" />
-    <Compile Include="Game\Interface\Menu_achat\MenuEconomie.cs" />
-    <Compile Include="Game\Interface\Menu_achat\MenuHabitation.cs" />
-    <Compile Include="Game\Interface\Menu_achat\MenuSante.cs" />
-    <Compile Include="Game\Interface\Menu_achat\MenuSpeciaux.cs" />
-    <Compile Include="Game\Interface\Menu_achat\Menu_Achat.cs" />
-    <Compile Include="Game\Interface\Parametres.cs" />
-    <Compile Include="Game\Plan\Achat.cs" />
-    <Compile Include="Game\Plan\Buildings.cs" />
-    <Compile Include="Game\Plan\Lacs.cs" />
-    <Compile Include="Game\Plan\MainPlan.cs" />
-    <Compile Include="Game\Plan\Montagnes.cs" />
-    <Compile Include="Game\Plan\PlanInitial.cs" />
-    <Compile Include="Game\Plan\Ref_donnees.cs" />
-    <Compile Include="Game\Plan\Routes.cs" />
-    <Compile Include="Game\Plan\Tuyaux.cs" />
-    <Compile Include="Game\Player.cs" />
-    <Compile Include="Game\Sauvegarde\SauvegardeManager.cs" />
-    <Compile Include="Game\Sauvegarde\Serializable.cs" />
-    <Compile Include="Game\Vehicules\Accident.cs" />
-    <Compile Include="Game\Vehicules\Bateau.cs" />
-    <Compile Include="Game\Vehicules\Houloucoupter.cs" />
-    <Compile Include="Game\Vehicules\HouloucoupterDeplacement.cs" />
-    <Compile Include="Game\Vehicules\Vehicules.cs" />
-    <Compile Include="Game\Vehicules\VehiculesDeplacement.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="XML_file.xml" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Tools</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{0B59A570-5325-4297-9E50-4082E71C25C7}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <OutputPath>.mono\temp\bin\$(Configuration)</OutputPath>
+        <RootNamespace>SshCity</RootNamespace>
+        <AssemblyName>Ssh City</AssemblyName>
+        <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+        <GodotProjectGeneratorVersion>1.0.7333.3918</GodotProjectGeneratorVersion>
+        <BaseIntermediateOutputPath>.mono\temp\obj</BaseIntermediateOutputPath>
+        <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>
+        <ApiConfiguration Condition=" '$(Configuration)' != 'Release' ">Debug</ApiConfiguration>
+        <ApiConfiguration Condition=" '$(Configuration)' == 'Release' ">Release</ApiConfiguration>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>portable</DebugType>
+        <Optimize>false</Optimize>
+        <DefineConstants>$(GodotDefineConstants);GODOT;DEBUG;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <ConsolePause>false</ConsolePause>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>portable</DebugType>
+        <Optimize>true</Optimize>
+        <DefineConstants>$(GodotDefineConstants);GODOT;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <ConsolePause>false</ConsolePause>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Tools|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>portable</DebugType>
+        <Optimize>false</Optimize>
+        <DefineConstants>$(GodotDefineConstants);GODOT;DEBUG;TOOLS;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <ConsolePause>false</ConsolePause>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="GodotSharp">
+            <Private>False</Private>
+            <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Tools' ">
+            <Private>False</Private>
+            <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
+        </Reference>
+        <Reference Include="System" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Game\Buildings\Building.cs" />
+        <Compile Include="Game\Buildings\BuildingCharacteristics.cs" />
+        <Compile Include="Game\Buildings\BuildingType.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Aeroport.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Basket.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Cafe.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Caserne.cs" />
+        <Compile Include="Game\Buildings\Characteristics\CentraleElectrique.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Eglise.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Eolienne.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Epuration.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Essence.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Ferme.cs" />
+        <Compile Include="Game\Buildings\Characteristics\FermeGrande.cs" />
+        <Compile Include="Game\Buildings\Characteristics\FeteForraine.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Foot.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Hospital.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Hotel.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Immeuble.cs" />
+        <Compile Include="Game\Buildings\Characteristics\ImmeubleVert.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Mairie.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Maison.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Maison3.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Maison4.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Maison5.cs" />
+        <Compile Include="Game\Buildings\Characteristics\McAlly.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Mosque.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Parc.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Piscine.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Police.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Restaurant.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Restaurant2.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Solaire.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Usine.cs" />
+        <Compile Include="Game\Buildings\Characteristics\Zoo.cs" />
+        <Compile Include="Game\Incident\incidents.cs" />
+        <Compile Include="Game\Incident\menu_incident.cs" />
+        <Compile Include="Game\Interface\Activation.cs" />
+        <Compile Include="Game\Interface\Boutique.cs" />
+        <Compile Include="Game\Interface\Carte_achat\Carte.cs" />
+        <Compile Include="Game\Interface\DeleteVerif.cs" />
+        <Compile Include="Game\Interface\Infos.cs" />
+        <Compile Include="Game\Interface\Interface.cs" />
+        <Compile Include="Game\Interface\LevelUp.cs" />
+        <Compile Include="Game\Interface\MainMenu.cs" />
+        <Compile Include="Game\Interface\MairieMenu.cs" />
+        <Compile Include="Game\Interface\Menu_achat\MenuBienEtre.cs" />
+        <Compile Include="Game\Interface\Menu_achat\MenuEconomie.cs" />
+        <Compile Include="Game\Interface\Menu_achat\MenuHabitation.cs" />
+        <Compile Include="Game\Interface\Menu_achat\MenuSante.cs" />
+        <Compile Include="Game\Interface\Menu_achat\MenuSpeciaux.cs" />
+        <Compile Include="Game\Interface\Menu_achat\Menu_Achat.cs" />
+        <Compile Include="Game\Interface\Parametres.cs" />
+        <Compile Include="Game\Plan\Achat.cs" />
+        <Compile Include="Game\Plan\Buildings.cs" />
+        <Compile Include="Game\Plan\Lacs.cs" />
+        <Compile Include="Game\Plan\MainPlan.cs" />
+        <Compile Include="Game\Plan\Montagnes.cs" />
+        <Compile Include="Game\Plan\PlanInitial.cs" />
+        <Compile Include="Game\Plan\Ref_donnees.cs" />
+        <Compile Include="Game\Plan\Routes.cs" />
+        <Compile Include="Game\Plan\Tuyaux.cs" />
+        <Compile Include="Game\Player.cs" />
+        <Compile Include="Game\Sauvegarde\SauvegardeManager.cs" />
+        <Compile Include="Game\Sauvegarde\Serializable.cs" />
+        <Compile Include="Game\Vehicules\Accident.cs" />
+        <Compile Include="Game\Vehicules\Bateau.cs" />
+        <Compile Include="Game\Vehicules\Houloucoupter.cs" />
+        <Compile Include="Game\Vehicules\HouloucoupterDeplacement.cs" />
+        <Compile Include="Game\Vehicules\Vehicules.cs" />
+        <Compile Include="Game\Vehicules\VehiculesDeplacement.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

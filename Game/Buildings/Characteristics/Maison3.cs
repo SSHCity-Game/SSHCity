@@ -12,8 +12,8 @@ namespace SshCity.Game.Buildings.Characteristics
             Titre = new[] {"Maison", "Tour"};
             Lvl = 0;
             GainXp = new[] {10, 15};
-            energy = new[] {1,3};
-            water = new[] {1,3};
+            energy = new[] {1, 3};
+            water = new[] {1, 3};
             Image = new[] {"res://assets/ImageSized/maison3.png", "res://assets/ImageSized/maison2.png"};
             NbrAmeliorations = 1;
             NbCar = 2;

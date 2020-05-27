@@ -114,7 +114,7 @@ namespace SshCity.Game.Plan
                 list.Add(ListSousMontagne);
             }
             else
-            { 
+            {
                 GenerateMontagne(planInitial, ref list);
             }
         }

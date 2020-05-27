@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Godot;
 using SshCity.Game.Buildings;
 using SshCity.Game.Plan;
@@ -29,7 +28,8 @@ public partial class PlanInitial
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sable
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.eau
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.water_terre
-                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sol_stationEpuration
+                                || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) ==
+                                Ref_donnees.sol_stationEpuration
                                 || GetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j) == Ref_donnees.sol_maisonEau;
                 j++;
             }
@@ -39,14 +39,15 @@ public partial class PlanInitial
 
         return somehtingHere;
     }
+
     public bool AlreadySomethingHereTuyaux(Vector2 tile)
     {
         bool somehtingHere = false;
 
-        somehtingHere = GetBlock(TileMap0, (int) tile.x , (int) tile.y) == Ref_donnees.route
-                        || GetBlock(TileMap0, (int) tile.x , (int) tile.y) == Ref_donnees.eau
-                        || GetBlock(TileMap0, (int) tile.x , (int) tile.y) == Ref_donnees.montagne_sol
-                        || SshCity.Game.Plan.Tuyaux.IsTuyaux(GetBlock(TileMap0, (int) tile.x , (int) tile.y));
+        somehtingHere = GetBlock(TileMap0, (int) tile.x, (int) tile.y) == Ref_donnees.route
+                        || GetBlock(TileMap0, (int) tile.x, (int) tile.y) == Ref_donnees.eau
+                        || GetBlock(TileMap0, (int) tile.x, (int) tile.y) == Ref_donnees.montagne_sol
+                        || SshCity.Game.Plan.Tuyaux.IsTuyaux(GetBlock(TileMap0, (int) tile.x, (int) tile.y));
 
         return somehtingHere;
     }
@@ -72,12 +73,14 @@ public partial class PlanInitial
                 {
                     SshCity.Game.Plan.Tuyaux.ListEpuration.Add(new Vector2(tile.x + i, tile.y + j));
                 }
+
                 SetBlock(TileMap1, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
                 if (!route)
                 {
                     SetBlock(TileMap0, (int) tile.x + i, (int) tile.y + j, Ref_donnees.route);
                 }
-                MainPlan.BatimentsTiles.Add(new Vector2(tile.x + i-1, tile.y + j-1), new Vector2(tile.x, tile.y));
+
+                MainPlan.BatimentsTiles.Add(new Vector2(tile.x + i - 1, tile.y + j - 1), new Vector2(tile.x, tile.y));
                 j++;
             }
 
@@ -109,7 +112,8 @@ public partial class PlanInitial
         {
             Interface.Money -= Prix;
         }
-        BuildingType batimentClass = (BuildingType) batiment; 
+
+        BuildingType batimentClass = (BuildingType) batiment;
         Building.Create(batimentClass, tile);
         Building batima = Building.Delete(tile);
         batima.energyAndWater(batima);

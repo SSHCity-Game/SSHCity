@@ -14,19 +14,19 @@ public class Boutique : CanvasLayer
     private const string _str_menuBienEtre = _str_background + "/MenuBienEtre";
     private const string _str_menuEconomie = _str_background + "/MenuEconomie";
     private const string _str_Quitter = _str_background + "/Quitter";
+    public static bool BoutiqueOpen = false;
     private Panel _background;
     private Button _button_bien_etre;
     private Button _button_economie;
     private Button _button_habitation;
     private Button _button_sante;
     private Button _button_speciaux;
-    private Button _quitter;
     private MenuBienEtre _menuBienEtre;
     private MenuEconomie _menuEconomie;
     private MenuHabitation _menuHabitation;
     private MenuSante _menuSante;
     private MenuSpeciaux _menuSpeciaux;
-    public static bool BoutiqueOpen = false;
+    private Button _quitter;
 
     public override void _Ready()
     {
@@ -92,7 +92,7 @@ public class Boutique : CanvasLayer
 
     public void ButtonBienEtrePressed()
     {
-       _menuBienEtre.Reset();
+        _menuBienEtre.Reset();
         _button_economie.Pressed = false;
         _button_habitation.Pressed = false;
         _button_sante.Pressed = false;
@@ -170,7 +170,7 @@ public class Boutique : CanvasLayer
             ViewShop(true);
         }
         else
-        
+
         {
             MenuSante._clignoCaserne.Hide();
             MenuSante._clignoHopital.Hide();

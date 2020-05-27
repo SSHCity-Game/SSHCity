@@ -9,7 +9,7 @@ namespace SshCity.Game.Plan
         public static List<Vector2> ListEpuration = new List<Vector2>();
         public static List<Vector2> ListTuyauxEauLac = new List<Vector2>();
         public static List<Vector2> ListTuyauxEauEpuration = new List<Vector2>();
- 
+
         /// <summary>
         /// Considere tous les blocs a coté d'un bloc station epuration qui vient de se faire raccordé a l'eau comme racordé
         /// </summary>
@@ -17,16 +17,17 @@ namespace SshCity.Game.Plan
         /// <param name="planInitial">PlanInitial</param>
         public static void raccordage(Vector2 tile, PlanInitial planInitial, int bloc)
         {
-            if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x, (int)tile.y) != bloc)
+            if (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y) != bloc)
             {
-                planInitial.SetBlock(planInitial.TileMap0, (int)tile.x, (int)tile.y, bloc);
+                planInitial.SetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y, bloc);
                 for (int i = -1; i < 2; i++)
                 {
                     for (int j = -1; j < 2; j++)
                     {
-                        if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x + i, (int)tile.y + j) == Ref_donnees.sol_stationEpuration)
+                        if (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x + i, (int) tile.y + j) ==
+                            Ref_donnees.sol_stationEpuration)
                         {
-                            raccordage(new Vector2(tile.x+i, tile.y+j), planInitial, bloc);
+                            raccordage(new Vector2(tile.x + i, tile.y + j), planInitial, bloc);
                         }
                     }
                 }
@@ -78,57 +79,73 @@ namespace SshCity.Game.Plan
                     return false;
                 }
             }
+
             list.Add(tile);
             bool gauche = false;
             bool droit = false;
             bool bas = false;
             bool haut = false;
-            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x -1,(int)tile.y)))
+            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int) tile.x - 1, (int) tile.y)))
             {
-                if (bloc == Ref_donnees.sol_stationEpuration && planInitial.GetBlock(planInitial.TileMap0, (int)tile.x -1,(int)tile.y) == Ref_donnees.eau)
+                if (bloc == Ref_donnees.sol_stationEpuration &&
+                    planInitial.GetBlock(planInitial.TileMap0, (int) tile.x - 1, (int) tile.y) == Ref_donnees.eau)
                 {
                     return false;
                 }
-                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x -1,(int)tile.y) == bloc)
+
+                if (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x - 1, (int) tile.y) == bloc)
                 {
                     return true;
                 }
+
                 gauche = true;
             }
-            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x+1,(int)tile.y)))
+
+            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int) tile.x + 1, (int) tile.y)))
             {
-                if (bloc == Ref_donnees.sol_stationEpuration && planInitial.GetBlock(planInitial.TileMap0, (int)tile.x +1,(int)tile.y) == Ref_donnees.eau)
+                if (bloc == Ref_donnees.sol_stationEpuration &&
+                    planInitial.GetBlock(planInitial.TileMap0, (int) tile.x + 1, (int) tile.y) == Ref_donnees.eau)
                 {
                     return false;
                 }
-                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x+1,(int)tile.y) == bloc)
+
+                if (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x + 1, (int) tile.y) == bloc)
                 {
                     return true;
                 }
+
                 droit = true;
             }
-            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y-1)))
+
+            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y - 1)))
             {
-                if (bloc == Ref_donnees.sol_stationEpuration && planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y-1) == Ref_donnees.eau)
+                if (bloc == Ref_donnees.sol_stationEpuration &&
+                    planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y - 1) == Ref_donnees.eau)
                 {
                     return false;
                 }
-                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x ,(int)tile.y-1) == bloc)
+
+                if (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y - 1) == bloc)
                 {
                     return true;
                 }
+
                 haut = true;
             }
-            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y+1)))
+
+            if (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y + 1)))
             {
-                if (bloc == Ref_donnees.sol_stationEpuration && planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y+1) == Ref_donnees.eau)
+                if (bloc == Ref_donnees.sol_stationEpuration &&
+                    planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y + 1) == Ref_donnees.eau)
                 {
                     return false;
                 }
-                if (planInitial.GetBlock(planInitial.TileMap0, (int)tile.x,(int)tile.y+1) == bloc)
+
+                if (planInitial.GetBlock(planInitial.TileMap0, (int) tile.x, (int) tile.y + 1) == bloc)
                 {
                     return true;
                 }
+
                 bas = true;
             }
 
@@ -139,72 +156,86 @@ namespace SshCity.Game.Plan
                        VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
+
             if (bas && droit && haut)
             {
                 return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
+
             if (gauche && droit && haut)
             {
                 return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
+
             if (gauche && bas && haut)
             {
                 return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
+
             if (gauche && bas && droit)
             {
                 return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc);
             }
+
             if (droit && haut)
             {
                 return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
+
             if (gauche && bas)
             {
                 return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc);
             }
+
             if (bas && haut)
             {
                 return VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
+
             if (gauche && droit)
             {
                 return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc);
             }
+
             if (bas && droit)
             {
                 return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc);
             }
+
             if (gauche && haut)
             {
                 return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc) ||
                        VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
             }
+
             if (gauche)
             {
                 return VerifRaccorde(tile + new Vector2(-1, 0), planInitial, list, bloc);
             }
+
             if (bas)
             {
                 return VerifRaccorde(tile + new Vector2(0, 1), planInitial, list, bloc);
             }
+
             if (droit)
             {
                 return VerifRaccorde(tile + new Vector2(1, 0), planInitial, list, bloc);
             }
+
             if (haut)
             {
                 return VerifRaccorde(tile + new Vector2(0, -1), planInitial, list, bloc);
@@ -212,7 +243,7 @@ namespace SshCity.Game.Plan
 
             return false;
         }
-        
+
         public static bool IsTuyaux(int bloc)
         {
             return bloc == Ref_donnees.tuyaux_left ||
@@ -221,7 +252,7 @@ namespace SshCity.Game.Plan
                    bloc == Ref_donnees.tuyaux_T_bas_droit ||
                    bloc == Ref_donnees.tuyaux_T_bas_gauche ||
                    bloc == Ref_donnees.tuyaux_T_haut_droit ||
-                   bloc == Ref_donnees.tuyaux_T_haut_gauche || 
+                   bloc == Ref_donnees.tuyaux_T_haut_gauche ||
                    bloc == Ref_donnees.tuyaux_virage_bas ||
                    bloc == Ref_donnees.tuyaux_virage_droit ||
                    bloc == Ref_donnees.tuyaux_virage_gauche ||
@@ -237,29 +268,29 @@ namespace SshCity.Game.Plan
             int x = (int) tile.x;
             int y = (int) tile.y;
             bool HD = (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x, y - 1)) &&
-                                planInitial.GetBlock(planInitial.TileMapNeg, x, y - 1) == Ref_donnees.tuyaux_terre)
-                      || (planInitial.GetBlock(planInitial.TileMap0, x, y-1) == Ref_donnees.route 
-                          || planInitial.GetBlock(planInitial.TileMap0, x, y-1) == Ref_donnees.eau
-                          || planInitial.GetBlock(planInitial.TileMap0, x , y-1) == Ref_donnees.sol_maisonEau
-                      || planInitial.GetBlock(planInitial.TileMap0, x , y-1) == Ref_donnees.sol_stationEpuration);
-            bool BD = (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x + 1, y))&&
-                      planInitial.GetBlock(planInitial.TileMapNeg, x + 1, y) == Ref_donnees.tuyaux_terre)
-                || (planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.route 
-                    || planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.eau
-                    || planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.sol_maisonEau
-                    || planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.sol_stationEpuration);
-            bool BG = (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x, y + 1))&&
-                      planInitial.GetBlock(planInitial.TileMapNeg, x, y + 1) == Ref_donnees.tuyaux_terre)
-                      || (planInitial.GetBlock(planInitial.TileMap0, x , y+1) == Ref_donnees.route 
-                          || planInitial.GetBlock(planInitial.TileMap0, x, y+1) == Ref_donnees.eau
-                          || planInitial.GetBlock(planInitial.TileMap0, x , y+1) == Ref_donnees.sol_maisonEau
-                          || planInitial.GetBlock(planInitial.TileMap0, x , y+1) == Ref_donnees.sol_stationEpuration);
-            bool HG = (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x - 1, y))&&
-                      planInitial.GetBlock(planInitial.TileMapNeg, x - 1, y) == Ref_donnees.tuyaux_terre)
-                      || (planInitial.GetBlock(planInitial.TileMap0, x - 1, y) == Ref_donnees.route 
+                       planInitial.GetBlock(planInitial.TileMapNeg, x, y - 1) == Ref_donnees.tuyaux_terre)
+                      || (planInitial.GetBlock(planInitial.TileMap0, x, y - 1) == Ref_donnees.route
+                          || planInitial.GetBlock(planInitial.TileMap0, x, y - 1) == Ref_donnees.eau
+                          || planInitial.GetBlock(planInitial.TileMap0, x, y - 1) == Ref_donnees.sol_maisonEau
+                          || planInitial.GetBlock(planInitial.TileMap0, x, y - 1) == Ref_donnees.sol_stationEpuration);
+            bool BD = (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x + 1, y)) &&
+                       planInitial.GetBlock(planInitial.TileMapNeg, x + 1, y) == Ref_donnees.tuyaux_terre)
+                      || (planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.route
+                          || planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.eau
+                          || planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.sol_maisonEau
+                          || planInitial.GetBlock(planInitial.TileMap0, x + 1, y) == Ref_donnees.sol_stationEpuration);
+            bool BG = (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x, y + 1)) &&
+                       planInitial.GetBlock(planInitial.TileMapNeg, x, y + 1) == Ref_donnees.tuyaux_terre)
+                      || (planInitial.GetBlock(planInitial.TileMap0, x, y + 1) == Ref_donnees.route
+                          || planInitial.GetBlock(planInitial.TileMap0, x, y + 1) == Ref_donnees.eau
+                          || planInitial.GetBlock(planInitial.TileMap0, x, y + 1) == Ref_donnees.sol_maisonEau
+                          || planInitial.GetBlock(planInitial.TileMap0, x, y + 1) == Ref_donnees.sol_stationEpuration);
+            bool HG = (IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x - 1, y)) &&
+                       planInitial.GetBlock(planInitial.TileMapNeg, x - 1, y) == Ref_donnees.tuyaux_terre)
+                      || (planInitial.GetBlock(planInitial.TileMap0, x - 1, y) == Ref_donnees.route
                           || planInitial.GetBlock(planInitial.TileMap0, x - 1, y) == Ref_donnees.eau
                           || planInitial.GetBlock(planInitial.TileMap0, x - 1, y) == Ref_donnees.sol_maisonEau
-                          || planInitial.GetBlock(planInitial.TileMap0, x-1 , y) == Ref_donnees.sol_stationEpuration);
+                          || planInitial.GetBlock(planInitial.TileMap0, x - 1, y) == Ref_donnees.sol_stationEpuration);
 
             if (HD && BD && BG && HG)
             {
@@ -345,11 +376,11 @@ namespace SshCity.Game.Plan
             int y = (int) tile.y;
             bool HD = IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x, y - 1)) &&
                       planInitial.GetBlock(planInitial.TileMapNeg, x, y - 1) == Ref_donnees.tuyaux_terre;
-            bool BD = IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x + 1, y))&&
+            bool BD = IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x + 1, y)) &&
                       planInitial.GetBlock(planInitial.TileMapNeg, x + 1, y) == Ref_donnees.tuyaux_terre;
-            bool BG = IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x, y + 1))&&
+            bool BG = IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x, y + 1)) &&
                       planInitial.GetBlock(planInitial.TileMapNeg, x, y + 1) == Ref_donnees.tuyaux_terre;
-            bool HG = IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x - 1, y))&&
+            bool HG = IsTuyaux(planInitial.GetBlock(planInitial.TileMap0, x - 1, y)) &&
                       planInitial.GetBlock(planInitial.TileMapNeg, x - 1, y) == Ref_donnees.tuyaux_terre;
 
             if (HD)

@@ -8,7 +8,7 @@ namespace SshCity.Game.Buildings.Characteristics
         {
             Bloc = new[] {Ref_donnees.stationEpuration};
             Cost = new[] {3000};
-            Earn = new[] {2,5,8};
+            Earn = new[] {2, 5, 8};
             Titre = new[] {"Epuration"};
             Lvl = 0;
             GainXp = new[] {10, 100, 500};
@@ -17,7 +17,7 @@ namespace SshCity.Game.Buildings.Characteristics
             Image = new[] {"res://assets/ImageSized/station epuration2.png"};
             NbrAmeliorations = 0;
             NbCar = 3;
-            Population = new []{0};
+            Population = new[] {0};
         }
 
         public int[] Bloc { get; }

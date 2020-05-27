@@ -13,12 +13,12 @@ public class Carte : Panel
     private int _bloc = 1;
     private Button _buttonAchat;
     private int _cost;
+    private Label _eau;
+    private Label _energie;
     private Label _gain;
     private Label _prix;
     private Sprite _sprite;
     private Label _titre;
-    private Label _energie;
-    private Label _eau;
 
     public int Cost
     {

@@ -14,10 +14,14 @@ namespace SshCity.Game.Buildings.Characteristics
             GainXp = new[] {10, 15, 30};
             energy = new[] {1, 3, 6};
             water = new[] {2, 3, 5};
-            Image = new[] {"res://assets/ImageSized/isometric mosquee2.png", "res://assets/ImageSized/isometric mosquee1.png", "res://assets/ImageSized/isometric mosquee3.png"};
+            Image = new[]
+            {
+                "res://assets/ImageSized/isometric mosquee2.png", "res://assets/ImageSized/isometric mosquee1.png",
+                "res://assets/ImageSized/isometric mosquee3.png"
+            };
             NbrAmeliorations = 2;
             NbCar = 0;
-            Population =new[] {0, 0, 0};
+            Population = new[] {0, 0, 0};
         }
 
         public int[] Bloc { get; }

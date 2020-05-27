@@ -1,18 +1,16 @@
-using Godot;
-using System;
 using System.Threading.Tasks;
+using Godot;
 
 public class LevelUp : CanvasLayer
 {
-
     private static TextureRect LevelUpBack;
     private static Label LevelUpText;
-    
+
     public override void _Ready()
     {
         LevelUpBack = GetNode<TextureRect>("LevelUpBack");
         LevelUpText = GetNode<Label>("LevelUpText");
-        
+
         LevelUpBack.Hide();
         LevelUpText.Hide();
     }

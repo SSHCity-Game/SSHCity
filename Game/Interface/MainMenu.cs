@@ -21,7 +21,7 @@ public class MainMenu : CanvasLayer
         SSHCity = (Label) GetNode("CenterTitle/SSHCity");
         CenterContainer = (CenterContainer) GetNode("Center");
         Centertop = (CenterContainer) GetNode("CenterTitle");
-        
+
         Connexion.Connect("pressed", this, nameof(load_game));
         NewGame.Connect("pressed", this, nameof(new_game));
         Options.Connect("pressed", this, nameof(menu_options));
@@ -65,6 +65,7 @@ public class MainMenu : CanvasLayer
         Parametres._parametres.Show();
         MainPlan.NewGame();
     }
+
     public void load_game()
     {
         if (MainPlan.LoadGame())

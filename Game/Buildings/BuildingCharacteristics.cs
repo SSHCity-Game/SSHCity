@@ -16,7 +16,7 @@ namespace SshCity.Game.Buildings
         int Lvl { get; set; }
         int[] GainXp { get; }
         int[] energy { get; }
-        int[] water { get; } 
+        int[] water { get; }
         string[] Image { get; }
         int NbrAmeliorations { get; }
         int NbCar { get; }

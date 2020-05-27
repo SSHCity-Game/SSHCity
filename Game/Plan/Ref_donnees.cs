@@ -7,7 +7,8 @@ namespace SshCity.Game.Plan
     {
         //Variables pour definir la taille de la Map 
 
-        public const int size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
+        public const int
+            size = 25; //Nombre de bloques sur un coté de la Map  // PAS UTILISE CAR CREATMAP() NE FONCTIONNE PAS
 
         public const int max_x = 127; //Coordonées max d'un bloque sur l'axe x
         public const int min_x = -16; //Coordonnées min d'un bloque sur l'axe x
@@ -75,9 +76,6 @@ namespace SshCity.Game.Plan
         public const int montagne = 56;
         public const int centrale = 58;
         public const int ferme_ecolo = 59;
-        public static int energy = 20;
-        public static int water = 20;
-        public static int population = 20;
         public const int accident_voiture = 68;
         public const int voleur = 80;
         public const int rien = 81; // bloc vide
@@ -116,7 +114,7 @@ namespace SshCity.Game.Plan
         public const int mosque = 135;
         public const int mosque2 = 136;
         public const int mosque3 = 137;
-        
+
         /* Incendie Batiments */
         public const int restaurant_flamme = 3;
         public const int eglise_flamme = 4;
@@ -140,7 +138,7 @@ namespace SshCity.Game.Plan
         public const int hotel2_flamme = 150;
         public const int boutique9_flamme = 147;
         public const int burger_flamme = 148;
-        
+
         /* Vol Batiments*/
         public const int maison1_vol = 96;
         public const int maison4_vol = 98;
@@ -148,15 +146,15 @@ namespace SshCity.Game.Plan
         public const int maison3_vol = 97;
         public const int mairie_vol = 95;
         public const int essence_vol = 144;
-        
+
         /* Noyade lac */
         public const int lac1_noyade = 100;
-        
+
         //Lac Bloc
         public const int water_terre = 78;
         public const int lac1 = 63;
         public const int lac2 = 64;
-        
+
         //Blocs tuyaux
         public const int tuyaux_right = 81;
         public const int tuyaux_left = 83;
@@ -178,33 +176,39 @@ namespace SshCity.Game.Plan
         public const int bulleEau = 104;
         public const int bulleReparation = 145;
 
+
+        // Sauvegarde
+        public const string GameSavePath = "user://sshcity.save";
+        public static int energy = 20;
+        public static int water = 20;
+        public static int population = 20;
+
         /* Liste batiment, batiment en feu */
-        public static (int, int)[] BatimentFeu = {
-            (maison1, maison1_flamme), (maison3, maison3_flamme), (maison4, maison4_flamme), 
-            (maison5, maison5_flamme), (restaurant, restaurant_flamme), (restaurant2, restaurant2_flamme), 
+        public static (int, int)[] BatimentFeu =
+        {
+            (maison1, maison1_flamme), (maison3, maison3_flamme), (maison4, maison4_flamme),
+            (maison5, maison5_flamme), (restaurant, restaurant_flamme), (restaurant2, restaurant2_flamme),
             (eglise, eglise_flamme), (cafe, cafe_flamme), (ferme, ferme2_flamme),
-            (ferme3, ferme3_flamme), (mosque2, mosque2_flamme), (essence, station_service1_flamme), 
+            (ferme3, ferme3_flamme), (mosque2, mosque2_flamme), (essence, station_service1_flamme),
             (usine1, usine1_flamme), (immeubleVerre, immeuble_flamme), (feteForraine, fete_forraine_flamme),
             (aeroport, aeroport_flamme), (maisonEcolo, maison_ecolo_flamme), (eglise3, eglise4_flamme),
             (hotel1, hotel1_flamme), (hotel2, hotel2_flamme), (resto2, boutique9_flamme), (burgeur, burger_flamme)
         };
-        
+
         /* Liste lac, lac avec noye */
-        public static (int, int)[] LacNoyade = {
+        public static (int, int)[] LacNoyade =
+        {
             (lac1, lac1_noyade)
         };
-        
+
         /* Liste batiment, batiment braque */
-        public static (int, int)[] BatimentVol = {
+        public static (int, int)[] BatimentVol =
+        {
             (maison1, maison1_vol), (maison3, maison3_vol),
             (maison4, maison4_vol), (maison5, maison5_vol), (mairie, mairie_vol),
             (essence, essence_vol)
         };
-        
-        
-        // Sauvegarde
-        public const string GameSavePath = "user://sshcity.save";
-        
+
         //Variable bloquer camera
         public static float[] x_left = {252, 382, 502, 639, 765, 896, 1019, 1146, 1279};
         public static float[] x_right = {2324, 2197, 2070, 1940, 1817, 1680, 1557, 1430, 1300};
@@ -221,10 +225,10 @@ namespace SshCity.Game.Plan
         public static Dictionary<int, (int, int)> dimensions = new Dictionary<int, (int, int)>()
         {
             {centrale, (3, 4)},
-            {centralelv2, (3,4)},
-            {stationEpuration, (3,3)},
-            {hopital, (2,2)},
-            {hopitallv3, (2,2)},
+            {centralelv2, (3, 4)},
+            {stationEpuration, (3, 3)},
+            {hopital, (2, 2)},
+            {hopitallv3, (2, 2)},
             {feteForraine, (3, 4)},
             {aeroport, (3, 4)},
             {foot, (2, 2)},
@@ -234,7 +238,7 @@ namespace SshCity.Game.Plan
             {solaire, (2, 2)},
             {usine1, (2, 2)},
             {usine2, (2, 2)},
-            {usine3, (2, 2)}, 
+            {usine3, (2, 2)},
             {usine4, (2, 2)},
             {zoo, (2, 2)},
             {ferme3, (2, 2)},

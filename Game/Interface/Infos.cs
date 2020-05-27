@@ -32,37 +32,37 @@ public class Infos : Panel
 
     private static bool _close = false;
     private static bool _isOpen = false;
-    
-    private Label _amelioGainValue;
+    private AudioStreamPlayer _ambulance;
     private Label _amelioGainBatiment;
+
+    private Label _amelioGainValue;
     private Panel _amelioPanel;
     private Button _ameliorer;
     private Label _argentActuel;
-    private Label _gainBatiment;
-    private Label _gainValue;
     private Label _argentAmelio;
+    private Button _buttonHelicopter;
     private Panel _cadre;
     private BuildingType _class;
     private Label _eauActuel;
     private Label _eauAmelio;
     private Label _energieActuel;
     private Label _energieAmelio;
+    private Label _gainBatiment;
+    private Label _gainValue;
+    private AudioStreamPlayer _helico;
     private Sprite _image;
     private Label _lvlActuel;
     private Panel _nivMax;
+    private AudioStreamPlayer _police;
+    private AudioStreamPlayer _pompier;
     private Button _quitter;
     private Label _titre;
     private Vehicules.Type _type;
     private Button _vehicule;
     private bool buttonWork = false;
-    private Vector2 position;
-    private Button _buttonHelicopter;
-    private AudioStreamPlayer _ambulance;
-    private AudioStreamPlayer _police;
-    private AudioStreamPlayer _helico;
-    private AudioStreamPlayer _pompier;
 
     public Vector2 CamionPos;
+    private Vector2 position;
 
     public static bool IsOpen
     {
@@ -77,8 +77,8 @@ public class Infos : Panel
     }
 
     public override void _Ready()
-    { 
-        _ambulance = (AudioStreamPlayer) GetNode(_str_ambulance); 
+    {
+        _ambulance = (AudioStreamPlayer) GetNode(_str_ambulance);
         _police = (AudioStreamPlayer) GetNode(_str_police);
         _helico = (AudioStreamPlayer) GetNode(_str_helico);
         _pompier = (AudioStreamPlayer) GetNode(_str_pompier);
@@ -127,14 +127,15 @@ public class Infos : Panel
         {
             _police.Play();
         }
-        else if (_type  == Vehicules.Type.AMBULANCE && Parametres.effets)
+        else if (_type == Vehicules.Type.AMBULANCE && Parametres.effets)
         {
             _ambulance.Play();
         }
-        else if (_type  == Vehicules.Type.CAMION && Parametres.effets)
+        else if (_type == Vehicules.Type.CAMION && Parametres.effets)
         {
             _pompier.Play();
         }
+
         PlanInitial.AddVehicule(_type, position);
     }
 
@@ -144,7 +145,7 @@ public class Infos : Panel
         {
             CloseInfos();
             Vector2 where = incidents.ListNoyade[0];
-            if(Parametres.effets)
+            if (Parametres.effets)
                 _helico.Play();
             incidents.ListNoyade.Remove(where);
             PlanInitial.AddHouloucoupter(Houloucoupter.Type.HOPITAL, position, where);
@@ -157,13 +158,14 @@ public class Infos : Panel
         if (batiment != null)
         {
             _titre.Text = batiment.Characteristics.Titre[batiment.Characteristics.Lvl];
-            Texture texture = ResourceLoader.Load(batiment.Characteristics.Image[batiment.Characteristics.Lvl]) as Texture;
+            Texture texture =
+                ResourceLoader.Load(batiment.Characteristics.Image[batiment.Characteristics.Lvl]) as Texture;
             _image.Texture = texture;
             position = tile;
             _lvlActuel.Text = "Lvl " + Convert.ToString(batiment.Characteristics.Lvl + 1);
             _argentActuel.Text = Convert.ToString(batiment.Characteristics.Earn[batiment.Characteristics.Lvl]);
             _class = batiment.Type;
-            if (batiment.Characteristics.energy[batiment.Characteristics.Lvl] <0 )
+            if (batiment.Characteristics.energy[batiment.Characteristics.Lvl] < 0)
             {
                 _energieActuel.Text = "0";
             }
@@ -171,7 +173,8 @@ public class Infos : Panel
             {
                 _energieActuel.Text = Convert.ToString(batiment.Characteristics.energy[batiment.Characteristics.Lvl]);
             }
-            if (batiment.Characteristics.water[batiment.Characteristics.Lvl] <0 )
+
+            if (batiment.Characteristics.water[batiment.Characteristics.Lvl] < 0)
             {
                 _eauActuel.Text = "0";
             }
@@ -185,13 +188,13 @@ public class Infos : Panel
                 _gainBatiment.Text = "Habitant :";
                 _gainValue.Text = "" + batiment.Characteristics.Population[batiment.Characteristics.Lvl];
             }
-            else if(batiment.Characteristics.energy[batiment.Characteristics.Lvl] < 0)
+            else if (batiment.Characteristics.energy[batiment.Characteristics.Lvl] < 0)
             {
                 _gainBatiment.Text = "Energie :";
                 _gainValue.Text = "" + -batiment.Characteristics.energy[batiment.Characteristics.Lvl];
             }
             else if (batiment.Characteristics.water[batiment.Characteristics.Lvl] < 0)
-            { 
+            {
                 _gainBatiment.Text = "Eau :";
                 _gainValue.Text = "" + -batiment.Characteristics.water[batiment.Characteristics.Lvl];
             }
@@ -200,29 +203,31 @@ public class Infos : Panel
                 _gainBatiment.Text = "";
                 _gainValue.Text = "";
             }
-            
+
             if (batiment.Characteristics.Lvl != batiment.Characteristics.NbrAmeliorations)
             {
                 _amelioPanel.Show();
                 _nivMax.Hide();
                 _argentAmelio.Text = Convert.ToString(batiment.Characteristics.Earn[batiment.Characteristics.Lvl + 1]);
-                _energieAmelio.Text = Convert.ToString(batiment.Characteristics.energy[batiment.Characteristics.Lvl + 1]);
+                _energieAmelio.Text =
+                    Convert.ToString(batiment.Characteristics.energy[batiment.Characteristics.Lvl + 1]);
                 _eauAmelio.Text = Convert.ToString(batiment.Characteristics.water[batiment.Characteristics.Lvl + 1]);
-                _ameliorer.Text = "Ameliorer\n" + Convert.ToString(batiment.Characteristics.Cost[batiment.Characteristics.Lvl +1]);
-                if (batiment.Characteristics.Population[batiment.Characteristics.Lvl +1] != 0)
+                _ameliorer.Text = "Ameliorer\n" +
+                                  Convert.ToString(batiment.Characteristics.Cost[batiment.Characteristics.Lvl + 1]);
+                if (batiment.Characteristics.Population[batiment.Characteristics.Lvl + 1] != 0)
                 {
                     _amelioGainBatiment.Text = "Habitant :";
-                    _amelioGainValue.Text = "" + batiment.Characteristics.Population[batiment.Characteristics.Lvl +1];
+                    _amelioGainValue.Text = "" + batiment.Characteristics.Population[batiment.Characteristics.Lvl + 1];
                 }
-                else if(batiment.Characteristics.energy[batiment.Characteristics.Lvl +1] < 0)
+                else if (batiment.Characteristics.energy[batiment.Characteristics.Lvl + 1] < 0)
                 {
                     _amelioGainBatiment.Text = "Energie :";
-                    _amelioGainValue.Text = "" + -batiment.Characteristics.energy[batiment.Characteristics.Lvl +1];
+                    _amelioGainValue.Text = "" + -batiment.Characteristics.energy[batiment.Characteristics.Lvl + 1];
                 }
-                else if (batiment.Characteristics.water[batiment.Characteristics.Lvl +1] < 0)
-                { 
+                else if (batiment.Characteristics.water[batiment.Characteristics.Lvl + 1] < 0)
+                {
                     _amelioGainBatiment.Text = "Eau :";
-                    _amelioGainValue.Text = "" + -batiment.Characteristics.water[batiment.Characteristics.Lvl +1];
+                    _amelioGainValue.Text = "" + -batiment.Characteristics.water[batiment.Characteristics.Lvl + 1];
                 }
                 else
                 {
@@ -266,7 +271,7 @@ public class Infos : Panel
         }
 
         if (_class == BuildingType.CASERNE)
-        { 
+        {
             _vehicule.Text = "Camion";
             _vehicule.Show();
             _type = Vehicules.Type.CAMION;

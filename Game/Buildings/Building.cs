@@ -20,7 +20,7 @@ namespace SshCity.Game.Buildings
             Activated = true;
             Characteristics.Lvl = theLvl;
             Characteristics.Lvl = theLvl;
-            
+
             PlanInitial.MAX_CAR += Characteristics.NbCar;
             ListBuildings.Add(this);
         }
@@ -29,7 +29,7 @@ namespace SshCity.Game.Buildings
         /// La position du building sur la map
         /// </summary>
         public Vector2 Position { get; }
-        
+
         /// <summary>
         /// Si le batiment est activé
         /// </summary>
@@ -75,17 +75,18 @@ namespace SshCity.Game.Buildings
 
         public static void verify(BuildingType type)
         {
-            
         }
+
         public void energyAndWater(Building type)
         {
-            (int energy, int water) = (Characteristics.energy[Characteristics.Lvl],Characteristics.water[Characteristics.Lvl]);
-            if (energy<0)
+            (int energy, int water) = (Characteristics.energy[Characteristics.Lvl],
+                Characteristics.water[Characteristics.Lvl]);
+            if (energy < 0)
             {
                 Ref_donnees.energy -= energy;
                 Interface.Water -= water;
             }
-            else if(water < 0)
+            else if (water < 0)
             {
                 Ref_donnees.water -= water;
                 Interface.Energy -= energy;
@@ -148,7 +149,7 @@ namespace SshCity.Game.Buildings
             Interface.Xp += Characteristics.GainXp[Characteristics.Lvl];
             Characteristics.Lvl += 1;
         }
-        
+
         public static Building GetFromTile(Vector2 tile)
         {
             var i = 0;
@@ -160,6 +161,7 @@ namespace SshCity.Game.Buildings
                     return batiment;
                 i++;
             }
+
             return null;
         }
     }

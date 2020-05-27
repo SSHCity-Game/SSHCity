@@ -32,7 +32,7 @@ public class DeleteVerif : Panel
         _verif = false;
         Interface.Delete = false;
         this.Hide();
-        if(Parametres.effets)
+        if (Parametres.effets)
             _supression.Play();
     }
 

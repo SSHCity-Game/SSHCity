@@ -1,24 +1,8 @@
 using Godot;
-using System;
 using SshCity.Game.Plan;
 
 public class MairieMenu : Panel
 {
-    private Button _quitter;
-    private Button _collecte;
-    private Button _ouiVehicule;
-    private Button _nonVehicule;
-    private Button _collecteAutomatique;
-    private Button _collecteManuel;
-    private Label _nomVille;
-    private Label _argentValue;
-    private Label _eauValue;
-    private Label _electriciteValue;
-    private Label _Population;
-    private Label _stockageEau;
-    private Label _stockageElectricite;
-    
-
     private const string _strQuitter = "Quitter";
     private const string _strCollecter = "CollecteArgent";
     private const string _strOuiVehicule = "AutorisationVehicules/Oui";
@@ -35,6 +19,19 @@ public class MairieMenu : Panel
 
     private static bool _openMairieMenu = false;
     private static int _moneyWinManuel = 0;
+    private Label _argentValue;
+    private Button _collecte;
+    private Button _collecteAutomatique;
+    private Button _collecteManuel;
+    private Label _eauValue;
+    private Label _electriciteValue;
+    private Label _nomVille;
+    private Button _nonVehicule;
+    private Button _ouiVehicule;
+    private Label _Population;
+    private Button _quitter;
+    private Label _stockageEau;
+    private Label _stockageElectricite;
 
     public static int MoneyWinManuel
     {
@@ -47,7 +44,7 @@ public class MairieMenu : Panel
         get => _openMairieMenu;
         set => _openMairieMenu = value;
     }
-    
+
     public override void _Ready()
     {
         _quitter = (Button) GetNode(_strQuitter);
@@ -63,7 +60,7 @@ public class MairieMenu : Panel
         _Population = (Label) GetNode(_strPopulation);
         _stockageEau = (Label) GetNode(_strStockageEau);
         _stockageElectricite = (Label) GetNode(_strStockageElectricite);
-        
+
         _collecte.Hide();
         _collecteAutomatique.Pressed = true;
         _ouiVehicule.Pressed = true;
@@ -129,9 +126,8 @@ public class MairieMenu : Panel
         _argentValue.Text = "" + Interface.MoneyWin;
         _electriciteValue.Text = "" + Interface.Energyused;
         _eauValue.Text = "" + Interface.Waterused;
-        _stockageEau.Text = ""+Ref_donnees.water;
+        _stockageEau.Text = "" + Ref_donnees.water;
         _stockageElectricite.Text = "" + Ref_donnees.energy;
         _Population.Text = "" + Ref_donnees.population;
-
     }
 }

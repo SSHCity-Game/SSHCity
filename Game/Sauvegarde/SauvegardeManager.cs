@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Net;
+using System.Linq;
 using Godot;
 using Godot.Collections;
 using SshCity.Game.Buildings;
@@ -67,7 +66,8 @@ namespace SshCity.Game.Sauvegarde
 
         private static void UploadSave(string game)
         {
-            if (Player.ThePlayer.Token == null || Player.ThePlayer.Token.Empty())
+            // Ignore la sauvegarde en ligne si le joueur n'est pas connecté
+            if (Player.ThePlayer == null || Player.ThePlayer.Token == null || Player.ThePlayer.Token.Empty())
                 return;
             // Upload
             var client = new HTTPClient();

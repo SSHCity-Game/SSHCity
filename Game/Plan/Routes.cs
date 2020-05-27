@@ -12,7 +12,7 @@ namespace SshCity.Game.Plan
                    bloc == Ref_donnees.route_bord_bas_gauche ||
                    bloc == Ref_donnees.route_bord_haut_droit ||
                    bloc == Ref_donnees.route_bord_haut_gauche ||
-                   IsCroisement(bloc) || 
+                   IsCroisement(bloc) ||
                    IsVirage(bloc);
         }
 
@@ -166,28 +166,29 @@ namespace SshCity.Game.Plan
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x+i - 1, (int) tile.y+j)))
+                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x + i - 1, (int) tile.y + j)))
                         {
-                            return tile - new Vector2(1+i, 0+j);
+                            return tile - new Vector2(1 + i, 0 + j);
                         }
-            
-                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x+i + 1, (int) tile.y+j)))
+
+                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x + i + 1, (int) tile.y + j)))
                         {
-                            return tile + new Vector2(1+i, 0+j);
+                            return tile + new Vector2(1 + i, 0 + j);
                         }
-            
-                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x+i, (int) tile.y+j - 1)))
+
+                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x + i, (int) tile.y + j - 1)))
                         {
-                            return tile - new Vector2(0+i, 1+j);
+                            return tile - new Vector2(0 + i, 1 + j);
                         }
-            
-                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x+i, (int) tile.y+j + 1)))
+
+                        if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x + i, (int) tile.y + j + 1)))
                         {
-                            return tile + new Vector2(0+i, 1+j);
+                            return tile + new Vector2(0 + i, 1 + j);
                         }
                     }
                 }
             }
+
             if (IsRoute(planInitial.GetBlock(planInitial.TileMap2, (int) tile.x - 1, (int) tile.y)))
             {
                 return tile - new Vector2(1, 0);

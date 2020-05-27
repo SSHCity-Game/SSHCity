@@ -7,6 +7,8 @@ using SshCity.Game.Vehicules;
 
 public partial class PlanInitial : Node2D
 {
+    public const string str_TileMapWithoutRoute = "TileMap1bis";
+    private const string str_VehiculeTimer = "Vehicule";
     public static bool Tuyaux = false;
     public static Vector2 PositionTile = new Vector2(0, 0);
     private static int _batiment;
@@ -20,24 +22,19 @@ public partial class PlanInitial : Node2D
     private static Vector2 _tileSupressing;
     private static bool _buildOnTileMap2 = false;
     private static Vector2 _tileOnTileMap2;
-    
+
     //Add Vehicules
     public static bool VehiculesInit = false;
     private static bool addVehicule = true; //MairieMenu desactivation des vehicules
     public static Vector2 VehiculesPosition;
     public static Vehicules.Type VehiculesType;
-    private PackedScene _vehiculeScene;
-    private Timer VehiculeTimer;
     private static bool VehiculesAutonome;
-    
-    //Accidents
-    private PackedScene _accidentArea2D;
     private static bool addAccident = false;
     private static Vector2 positionAccident;
     private static bool deleteAccident = false;
     private static Vector2 positionDeleteAccident;
     private static bool _accidentVisi = false;
-    
+
     public static List<Vector2> DepartRoute = new List<Vector2>();
 
     //Add Houloucoupters
@@ -45,36 +42,39 @@ public partial class PlanInitial : Node2D
     public static Vector2 HouloucoupterPosition = new Vector2(60, 0);
     public static Houloucoupter.Type HouloucoupterType;
     public static Vector2 HouloucoupterDestination;
-    private PackedScene _houloucoupterScene;
-   
-    //Add Bateaux
-    public PackedScene _bateauxScene;
-    
+
     /* nombre de voitures sur la map */
     public static int MAX_CAR = 0;
     public static int NbCar = 0;
-    
-    public static bool AddVehicule1
-    {
-        get => addVehicule;
-        set => addVehicule = value;
-    }
-    
-    private Vector2 _lastTile = new Vector2(0, 0);
 
-    public string str_TileMapNeg = "TileMap-1";
+    //Accidents
+    private PackedScene _accidentArea2D;
+
+    //Add Bateaux
+    public PackedScene _bateauxScene;
+    private PackedScene _houloucoupterScene;
+
+    private Vector2 _lastTile = new Vector2(0, 0);
+    private PackedScene _vehiculeScene;
     public string str_TileMap0 = "TileMap0";
     public string str_TileMap1 = "TileMap1";
     public string str_TileMap2 = "TileMap2";
     public string str_TileMap3 = "TileMap3";
-    public const string str_TileMapWithoutRoute = "TileMap1bis";
-    private const string str_VehiculeTimer = "Vehicule";
+
+    public string str_TileMapNeg = "TileMap-1";
     public TileMap TileMap0;
     public TileMap TileMap1;
     public TileMap TileMap2;
     public TileMap TileMap3;
     public TileMap TileMapNeg;
     public TileMap TileMapWithoutRoute;
+    private Timer VehiculeTimer;
+
+    public static bool AddVehicule1
+    {
+        get => addVehicule;
+        set => addVehicule = value;
+    }
 
     public static bool DeleteSure
     {
@@ -129,7 +129,6 @@ public partial class PlanInitial : Node2D
         base._Process(delta);
         if (_buildOnTileMap2)
         {
-            GD.Print("Process");
             SetBlock(TileMap2, (int) _tileOnTileMap2.x, (int) _tileOnTileMap2.y, _batiment);
             SetBlock(TileMapWithoutRoute, (int) _tileOnTileMap2.x, (int) _tileOnTileMap2.y, _batiment);
             _buildOnTileMap2 = false;
@@ -140,12 +139,14 @@ public partial class PlanInitial : Node2D
             Vehicules _vehicule = (Vehicules) _vehiculeScene.Instance();
             if (VehiculesAutonome)
             {
-                _vehicule.Init(this, VehiculesPosition-new Vector2(1, 1), VehiculesType, VehiculesAutonome);
+                _vehicule.Init(this, VehiculesPosition - new Vector2(1, 1), VehiculesType, VehiculesAutonome);
             }
             else
             {
-                _vehicule.Init(this, Routes.WhereIsRoute(VehiculesPosition, this, VehiculesType), VehiculesType, VehiculesAutonome);
+                _vehicule.Init(this, Routes.WhereIsRoute(VehiculesPosition, this, VehiculesType), VehiculesType,
+                    VehiculesAutonome);
             }
+
             TileMap2.AddChild(_vehicule);
             VehiculesInit = false;
         }
@@ -154,7 +155,7 @@ public partial class PlanInitial : Node2D
         {
             Accident area = (Accident) _accidentArea2D.Instance();
             area.Position = positionAccident;
-            
+
             area.Init(_accidentVisi);
             TileMap2.AddChild(area);
             addAccident = false;
@@ -188,7 +189,7 @@ public partial class PlanInitial : Node2D
         }
     }
 
-    public static void AddVehicule(Vehicules.Type type, Vector2 position, bool autonome=false)
+    public static void AddVehicule(Vehicules.Type type, Vector2 position, bool autonome = false)
     {
         if (type != Vehicules.Type.CAMION && type != Vehicules.Type.AMBULANCE && type != Vehicules.Type.POLICE)
         {
@@ -212,7 +213,6 @@ public partial class PlanInitial : Node2D
             VehiculesType = type;
             VehiculesAutonome = autonome;
         }
-
     }
 
     public static void AddHouloucoupter(Houloucoupter.Type type, Vector2 position, Vector2 destination)
@@ -277,6 +277,7 @@ public partial class PlanInitial : Node2D
                 {
                     SetBlock(TileMapWithoutRoute, (int) tile.x, (int) tile.y, _batiment);
                 }
+
                 if (tile != _lastTile)
                 {
                     SetBlock(TileMap2, (int) _lastTile.x, (int) _lastTile.y, -1);
@@ -307,7 +308,7 @@ public partial class PlanInitial : Node2D
                 if (GetBlock(TileMap1, (int) tile.x + 1, (int) tile.y + 1) == Ref_donnees.terre)
                 {
                     SetAchatBlocs(tile, _achatRoute);
-                   
+
                     if (_achatRoute)
                     {
                         SetBlock(TileMapWithoutRoute, (int) _lastTile.x, (int) _lastTile.y, -1);
@@ -319,7 +320,7 @@ public partial class PlanInitial : Node2D
                     {
                         AjoutNode(_batiment, tile);
                     }
-                    
+
                     SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
                     SshCity.Game.Plan.Tuyaux.MaisonRaccordage(this);
                 }
@@ -361,9 +362,11 @@ public partial class PlanInitial : Node2D
         {
             _tileSupressing = GetTilePosition(TileMap1);
             if (_tileSupressing != MainPlan.MairiePosition &&
-                GetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1) != Ref_donnees.montagne_sol &&
-                GetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1) != Ref_donnees.water_terre &&
-                GetBlock(TileMap1, (int)_tileSupressing.x+1, (int)_tileSupressing.y+1) != Ref_donnees.terre)
+                GetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1) !=
+                Ref_donnees.montagne_sol &&
+                GetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1) !=
+                Ref_donnees.water_terre &&
+                GetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1) != Ref_donnees.terre)
             {
                 try
                 {
@@ -371,8 +374,8 @@ public partial class PlanInitial : Node2D
                 }
                 catch (Exception)
                 {
-                
                 }
+
                 _delete = false;
                 DeleteVerif.Verif = true;
             }
@@ -389,7 +392,7 @@ public partial class PlanInitial : Node2D
             Building.Delete(_tileSupressing);
             SetBlock(TileMap2, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
             SetBlock(TileMapWithoutRoute, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
-            SetBlock(TileMap3, (int)_tileSupressing.x, (int)_tileSupressing.y, -1);
+            SetBlock(TileMap3, (int) _tileSupressing.x, (int) _tileSupressing.y, -1);
 
             (int largeur, int longueur) dimensions = (1, 1);
             try
@@ -401,19 +404,20 @@ public partial class PlanInitial : Node2D
             }
 
             int i = +1;
-            while (i < dimensions.longueur+1)
+            while (i < dimensions.longueur + 1)
             {
-                int j = 0+1;
-                while (j < dimensions.largeur+1)
+                int j = 0 + 1;
+                while (j < dimensions.largeur + 1)
                 {
                     SetBlock(TileMap1, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
                     SetBlock(TileMap0, (int) _tileSupressing.x + i, (int) _tileSupressing.y + j, Ref_donnees.terre);
-                    MainPlan.BatimentsTiles.Remove(new Vector2(_tileSupressing.x + i-1, _tileSupressing.y + j-1));
+                    MainPlan.BatimentsTiles.Remove(new Vector2(_tileSupressing.x + i - 1, _tileSupressing.y + j - 1));
                     j++;
                 }
 
                 i++;
             }
+
             SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
             SshCity.Game.Plan.Tuyaux.MaisonRaccordage(this);
             //SetBlock(TileMap1, (int) _tileSupressing.x + 1, (int) _tileSupressing.y + 1, Ref_donnees.terre);
@@ -428,16 +432,15 @@ public partial class PlanInitial : Node2D
         {
             Vector2 tile = GetTilePosition(TileMap1);
             int batiment = -1;
-            
+
             try
             {
                 tile = MainPlan.BatimentsTiles[tile];
             }
             catch (Exception)
             {
-                
             }
-            
+
             foreach ((Vector2 posi, int node) tuple in MainPlan.ListeBatiment)
             {
                 if (tuple.posi == tile)
@@ -446,20 +449,20 @@ public partial class PlanInitial : Node2D
                     break;
                 }
             }
-            
+
 
             if (batiment != -1)
             {
                 Interface.ConfigInfos(tile);
             }
         }
-        
+
         //Tuyaux
         if (OneAction is InputEventMouse && Tuyaux)
         {
             Vector2 tile = GetTilePosition(TileMap0) + new Vector2(1, 1);
             _batiment = SshCity.Game.Plan.Tuyaux.ChoixTuyaux(tile, this);
-            
+
 
             if (!AlreadySomethingHereTuyaux(tile))
             {
@@ -491,7 +494,7 @@ public partial class PlanInitial : Node2D
             {
                 if (GetBlock(TileMapNeg, (int) tile.x, (int) tile.y) == Ref_donnees.sol_tuyaux)
                 {
-                    SetBlock(TileMapNeg, (int)tile.x, (int)tile.y, Ref_donnees.tuyaux_terre);
+                    SetBlock(TileMapNeg, (int) tile.x, (int) tile.y, Ref_donnees.tuyaux_terre);
                     SshCity.Game.Plan.Tuyaux.ChangeTuyaux(tile, this);
                     SshCity.Game.Plan.Tuyaux.EpuratioRaccordage(this);
                     SshCity.Game.Plan.Tuyaux.MaisonRaccordage(this);

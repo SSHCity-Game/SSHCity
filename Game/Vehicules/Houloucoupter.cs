@@ -1,28 +1,32 @@
-using Godot;
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using Godot;
+using Godot.Collections;
 
 public partial class Houloucoupter : Area2D
 {
-    private PlanInitial _planInitial;
-    private AnimatedSprite _animatedSprite;
-    private CollisionShape2D _collisionShape2D;
-    private Vector2 _deplacement;
-    private Vector2 _destination;
-    private Vector2 depart;
-    private bool workDone = false;
-
-    private const string _strAnimatedSprite = "AnimatedSprite";
-    private const string _strCollsionShape2D = "CollisionShape2D";
-    
     public enum Type
     {
         HOPITAL
     }
 
-    Godot.Collections.Dictionary<string, int> CollisionAngle = new Godot.Collections.Dictionary<string, int>()
+    private const string _strAnimatedSprite = "AnimatedSprite";
+    private const string _strCollsionShape2D = "CollisionShape2D";
+    private AnimatedSprite _animatedSprite;
+    private CollisionShape2D _collisionShape2D;
+    private Vector2 _deplacement;
+    private Vector2 _destination;
+    private PlanInitial _planInitial;
+
+    Dictionary<Type, SpriteFrames> AnimatedSpriteType =
+        new Dictionary<Type, SpriteFrames>()
+        {
+            {
+                Type.HOPITAL,
+                ResourceLoader.Load("res://Game/Vehicules/AnimatedSpriteHouloucoupter/Hopital.tres") as SpriteFrames
+            }
+        };
+
+    Dictionary<string, int> CollisionAngle = new Dictionary<string, int>()
     {
         {"NE", 60},
         {"NW", -60},
@@ -30,10 +34,8 @@ public partial class Houloucoupter : Area2D
         {"SW", 60}
     };
 
-    Godot.Collections.Dictionary<Type, SpriteFrames> AnimatedSpriteType = new Godot.Collections.Dictionary<Type, SpriteFrames>()
-    {
-        {Type.HOPITAL, ResourceLoader.Load("res://Game/Vehicules/AnimatedSpriteHouloucoupter/Hopital.tres") as SpriteFrames}
-    };
+    private Vector2 depart;
+    private bool workDone = false;
 
     public async void Init(PlanInitial planInitial, Type type, Vector2 position, Vector2 destination)
     {
@@ -42,12 +44,13 @@ public partial class Houloucoupter : Area2D
             await Task.Delay(3000);
             ok = true;
         }
+
         _animatedSprite = (AnimatedSprite) GetNode(_strAnimatedSprite);
         _collisionShape2D = (CollisionShape2D) GetNode(_strCollsionShape2D);
         this._planInitial = planInitial;
         SpriteFrames spriteFrames = AnimatedSpriteType[type];
         _animatedSprite.Frames = spriteFrames;
-        _collisionShape2D.Rotation =  CollisionAngle[_animatedSprite.Animation];
+        _collisionShape2D.Rotation = CollisionAngle[_animatedSprite.Animation];
         Position = planInitial.TileMap2.MapToWorld(position);
         depart = Position;
         _deplacement = planInitial.TileMap2.MapToWorld(destination) - Position;
@@ -70,5 +73,4 @@ public partial class Houloucoupter : Area2D
             _animatedSprite.Animation = "SE";
         }
     }
-
 }

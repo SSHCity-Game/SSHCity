@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Godot;
 using SshCity.Game.Buildings;
 
@@ -62,7 +61,7 @@ namespace SshCity.Game.Plan
                         }
                         case 4:
                         {
-                            MainPlan.MairiePosition = new Vector2(i-1, j-1);
+                            MainPlan.MairiePosition = new Vector2(i - 1, j - 1);
                             break;
                         }
                         case 5:
@@ -287,6 +286,7 @@ namespace SshCity.Game.Plan
                     break;
                 }
             }
+
             while (planInitial.GetBlock(planInitial.TileMap1, x, y) != -1)
             {
                 planInitial.SetBlock(planInitial.TileMap1, x, y, Ref_donnees.route);
@@ -298,8 +298,9 @@ namespace SshCity.Game.Plan
                         y--;
                         if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
                         {
-                            PlanInitial.DepartRoute.Add(new Vector2(x, y+1));
+                            PlanInitial.DepartRoute.Add(new Vector2(x, y + 1));
                         }
+
                         break;
                     }
                     case Direction.DOWN:
@@ -307,8 +308,9 @@ namespace SshCity.Game.Plan
                         y++;
                         if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
                         {
-                            PlanInitial.DepartRoute.Add(new Vector2(x, y-1));
+                            PlanInitial.DepartRoute.Add(new Vector2(x, y - 1));
                         }
+
                         break;
                     }
                     case Direction.LEFT:
@@ -316,8 +318,9 @@ namespace SshCity.Game.Plan
                         x--;
                         if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
                         {
-                            PlanInitial.DepartRoute.Add(new Vector2(x+1, y));
+                            PlanInitial.DepartRoute.Add(new Vector2(x + 1, y));
                         }
+
                         break;
                     }
                     case Direction.RIGHT:
@@ -325,8 +328,9 @@ namespace SshCity.Game.Plan
                         x++;
                         if (planInitial.GetBlock(planInitial.TileMap1, x, y) == -1)
                         {
-                            PlanInitial.DepartRoute.Add(new Vector2(x-1, y));
+                            PlanInitial.DepartRoute.Add(new Vector2(x - 1, y));
                         }
+
                         break;
                     }
                 }
@@ -345,7 +349,7 @@ namespace SshCity.Game.Plan
             BuildRoadDirection(planInitial, x, y, Direction.RIGHT);
             return (x, y);
         }
-        
+
         public static int[] BlocksNextTo(PlanInitial planInitial, int x, int y)
         {
             int[] res = new int[9];
@@ -361,6 +365,7 @@ namespace SshCity.Game.Plan
 
             return res;
         }
+
         public static bool Valid_Position(int x, int y, PlanInitial planInitial)
         {
             bool creation = true;

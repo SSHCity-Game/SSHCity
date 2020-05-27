@@ -19,41 +19,27 @@ public class Interface : CanvasLayer
     private const string _str_croixJaune = "CroixJaune";
     private const string _str_infos = "Infos";
     private const string _str_timer = "Timer";
+    private const string _strButtonTuyaux = "ButtonTuyaux";
+    private const string _strButonExit = "ButtonExitEau";
     private static bool _interdit = false;
     private static bool _interdiMoney = false;
     private static Infos _infos;
-    private const string _strButtonTuyaux = "ButtonTuyaux";
-    private const string _strButonExit = "ButtonExitEau";
 
     private static bool _infosBool = false;
     private static PlanInitial _planInitial;
-
-    private Button _buttonExit;
     private static Button _buttonTuyaux;
     private static int _money = Ref_donnees.argent;
     private static int _energy = Ref_donnees.energy;
     private static int _water = Ref_donnees.water;
     private static bool _hide = true;
-    private bool _achatRoute = false;
-    private bool _achatTuyaux = false;
-    private Sprite _bulldozerMouse;
     private static Button _button_shop;
     private static Button _buttonDelete;
     private static Button _buttonRoute;
     private static Button _buttonEau;
-    public Sprite _croix;
-    private Sprite _croixJaune;
-    private Sprite _rouages;
     private static bool _delete = false;
     private static Panel _money_couleur;
     private static Label _money_text;
-    private Label _energy_text;
-    private Label _water_text;
-    private AudioStreamPlayer _ouvertureboutique;
-    private Boutique _shop;
-    private Timer _timer;
-    private bool _visible;
-    
+
     /* ScoreBar */
     private static TextureProgress ScoreBar;
     private static Label Score;
@@ -61,13 +47,27 @@ public class Interface : CanvasLayer
     public static int _level = 1; // niveau
     private static int XpMax = 30;
     public static bool levelup = false;
-    
+
     private static int moneyWin = 0;
     private static int energyused = 0;
     private static int waterused = 0;
     private static bool _moneyAutomatique = true;
-    
+
     public static List<Vector2> ListTuyaux = new List<Vector2>();
+    private bool _achatRoute = false;
+    private bool _achatTuyaux = false;
+    private Sprite _bulldozerMouse;
+
+    private Button _buttonExit;
+    public Sprite _croix;
+    private Sprite _croixJaune;
+    private Label _energy_text;
+    private AudioStreamPlayer _ouvertureboutique;
+    private Sprite _rouages;
+    private Boutique _shop;
+    private Timer _timer;
+    private bool _visible;
+    private Label _water_text;
 
     public static bool MoneyAutomatique
     {
@@ -157,7 +157,7 @@ public class Interface : CanvasLayer
         _timer = (Timer) GetNode(_str_timer);
         ScoreBar = (TextureProgress) GetNode("ScoreBar");
         Score = GetNode<Label>("Score");
-        
+
         //Tuyaux
         _buttonExit = (Button) GetNode(_strButonExit);
         _buttonTuyaux = (Button) GetNode(_strButtonTuyaux);
@@ -171,7 +171,7 @@ public class Interface : CanvasLayer
         _buttonRoute.Hide();
         Score.Hide();
         ScoreBar.Hide();
-        
+
         _croix.Hide();
         _croixJaune.Hide();
         _infos.Hide();
@@ -207,7 +207,7 @@ public class Interface : CanvasLayer
 
         _xp = 0;
         _level = 1;
-        ScoreBar.MaxValue = 30;//UpdateScoreValue(_level);
+        ScoreBar.MaxValue = 30; //UpdateScoreValue(_level);
         ScoreBar.MinValue = 0;
         ScoreBar.Value = _xp;
         Score.Text = Convert.ToString(_level);
@@ -218,7 +218,7 @@ public class Interface : CanvasLayer
         _achatTuyaux = !_achatTuyaux;
         PlanInitial.Tuyaux = _achatTuyaux;
     }
-    
+
     public void ExitPressed()
     {
         _achatTuyaux = false;
@@ -230,7 +230,7 @@ public class Interface : CanvasLayer
         _button_shop.Show();
         _buttonDelete.Show();
         _buttonRoute.Show();
-        _buttonEau.Show(); 
+        _buttonEau.Show();
         _buttonExit.Hide();
         _buttonTuyaux.Hide();
     }
@@ -240,7 +240,7 @@ public class Interface : CanvasLayer
         _button_shop.Hide();
         _buttonDelete.Hide();
         _buttonRoute.Hide();
-        _buttonEau.Hide(); 
+        _buttonEau.Hide();
         _buttonExit.Show();
         _buttonTuyaux.Show();
         _planInitial.TileMap0.Show();
@@ -260,7 +260,7 @@ public class Interface : CanvasLayer
             _infos.Show();
         }
     }
-    
+
     public void WinMoney()
     {
         if (_moneyAutomatique)
@@ -296,6 +296,7 @@ public class Interface : CanvasLayer
             _level += 1;
             levelup = true;
         }
+
         ScoreBar.Value = _xp;
         Score.Text = Convert.ToString(_level);
 
@@ -304,17 +305,19 @@ public class Interface : CanvasLayer
         waterused = 0;
         foreach (var batiment in Building.ListBuildings)
         {
-
             if (Activation.isNextToRoad(_planInitial, batiment.Position,
-                batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]) && Activation.isRaccordeEnEau(_planInitial, batiment.Position, batiment.Characteristics.Bloc[batiment.Characteristics.Lvl],
+                batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]) && Activation.isRaccordeEnEau(
+                _planInitial, batiment.Position, batiment.Characteristics.Bloc[batiment.Characteristics.Lvl],
                 batiment.Characteristics.water[batiment.Characteristics.Lvl]))
             {
                 bool energirvalide = false;
                 bool eauvalide = false;
                 if (!batiment.Activated)
                 {
-                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, -1);
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int) batiment.Position.x, (int) batiment.Position.y,
+                        -1);
                 }
+
                 batiment.Activated = true;
                 if (energyused + batiment.Characteristics.energy[batiment.Characteristics.Lvl] <= Ref_donnees.energy)
                 {
@@ -322,6 +325,7 @@ public class Interface : CanvasLayer
                     {
                         energyused += batiment.Characteristics.energy[batiment.Characteristics.Lvl];
                     }
+
                     energirvalide = true;
                 }
 
@@ -338,18 +342,19 @@ public class Interface : CanvasLayer
             }
             else
             {
-
                 if (!Activation.isNextToRoad(_planInitial, batiment.Position,
-                                    batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
+                    batiment.Characteristics.Bloc[batiment.Characteristics.Lvl]))
                 {
-                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleRoute);
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int) batiment.Position.x, (int) batiment.Position.y,
+                        Ref_donnees.bulleRoute);
                 }
                 else
                 {
-                    _planInitial.SetBlock(_planInitial.TileMap3, (int)batiment.Position.x, (int)batiment.Position.y, Ref_donnees.bulleEau);
+                    _planInitial.SetBlock(_planInitial.TileMap3, (int) batiment.Position.x, (int) batiment.Position.y,
+                        Ref_donnees.bulleEau);
                 }
+
                 batiment.Activated = false;
-                
             }
         }
 
@@ -458,7 +463,7 @@ public class Interface : CanvasLayer
         {
             PlanInitial.Tuyaux = false;
         }
-        
+
         if (_achatRoute)
             PlanInitial.AchatRoute(false);
 
@@ -475,7 +480,7 @@ public class Interface : CanvasLayer
         {
             PlanInitial.Tuyaux = true;
         }
-        
+
         if (_achatRoute)
         {
             PlanInitial.AchatRoute(true);

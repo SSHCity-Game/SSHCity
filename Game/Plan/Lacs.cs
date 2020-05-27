@@ -12,14 +12,9 @@ namespace SshCity.Game.Plan
     {
         public static Random rand;
 
-        public static List<(int, int)> CoordsLac1= new List<(int, int)>();
+        public static List<(int, int)> CoordsLac1 = new List<(int, int)>();
         public static List<(int, int)> CoordsLac2 = new List<(int, int)>();
-        enum TypeLac
-        {
-            LAC1,
-            LAC2
-        }
-        
+
         private static List<TypeLac> listTypeLacs = new List<TypeLac>()
         {
             TypeLac.LAC1,
@@ -48,7 +43,7 @@ namespace SshCity.Game.Plan
             new Vector2(1, 4),
             new Vector2(2, 4),
             new Vector2(2, 3),
-            new Vector2(2,2),
+            new Vector2(2, 2),
             new Vector2(3, 2),
             new Vector2(2, 4),
             new Vector2(1, -1),
@@ -76,14 +71,14 @@ namespace SshCity.Game.Plan
             new Vector2(-2, -3),
             new Vector2(-1, -4)
         };
-        
+
         private static List<Vector2> ListBlocLac2 = new List<Vector2>()
         {
             new Vector2(0, 0),
-            new Vector2(0,1),
-            new Vector2(0,2),
-            new Vector2(0,3),
-            new Vector2(0,4),
+            new Vector2(0, 1),
+            new Vector2(0, 2),
+            new Vector2(0, 3),
+            new Vector2(0, 4),
             new Vector2(0, -1),
             new Vector2(0, -2),
             new Vector2(0, 3),
@@ -162,7 +157,7 @@ namespace SshCity.Game.Plan
             new Vector2(-5, -3),
             new Vector2(-5, -4),
         };
-        
+
 
         public static void GenerateLac(PlanInitial planInitial)
         {
@@ -174,7 +169,7 @@ namespace SshCity.Game.Plan
                 int x = random.Next(Ref_donnees.min_x, Ref_donnees.max_x);
                 int y = random.Next(Ref_donnees.min_y, Ref_donnees.max_y);
                 if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.terre
-                    && planInitial.GetBlock(planInitial.TileMap2, x-1, y-1) == -1)
+                    && planInitial.GetBlock(planInitial.TileMap2, x - 1, y - 1) == -1)
                 {
                     int WhichLac = random.Next(0, listTypeLacs.Count);
                     TypeLac lac = listTypeLacs[WhichLac];
@@ -190,19 +185,20 @@ namespace SshCity.Game.Plan
                         blocLac = Ref_donnees.lac2;
                         lacBlocToSet = ListBlocLac2;
                     }
+
                     if (VerifLac(new Vector2(x, y), planInitial, lacBlocToSet))
                     {
                         planInitial.SetBlock(planInitial.TileMap2, x, y, blocLac);
                         planInitial.SetBlock(planInitial.TileMapWithoutRoute, x, y, blocLac);
 
                         if (blocLac == Ref_donnees.lac1) CoordsLac1.Add((x, y));
-                        else CoordsLac2.Add((x,y));
+                        else CoordsLac2.Add((x, y));
 
                         Bateau bateau = (Bateau) planInitial._bateauxScene.Instance();
-                        bateau.Init(planInitial, planInitial.TileMap1.MapToWorld(new Vector2(x+1, y+1)));
+                        bateau.Init(planInitial, planInitial.TileMap1.MapToWorld(new Vector2(x + 1, y + 1)));
                         planInitial.AddChild(bateau);
                         foreach (Vector2 vector2 in lacBlocToSet)
-                        { 
+                        {
                             planInitial.SetBlock(planInitial.TileMap1, (int) x + (int) vector2.x,
                                 (int) y + (int) vector2.y, Ref_donnees.water_terre);
                             planInitial.SetBlock(planInitial.TileMap0, (int) x + (int) vector2.x,
@@ -214,9 +210,10 @@ namespace SshCity.Game.Plan
                 }
             }
         }
-        
+
         public static void GenerateLacNoyade(PlanInitial planInitial, int index, int x, int y)
-        { /* change une image de lac par une noyade */
+        {
+            /* change une image de lac par une noyade */
             if (planInitial.GetBlock(planInitial.TileMap1, x, y) == Ref_donnees.water_terre)
             {
                 planInitial.SetBlock(planInitial.TileMap2, x, y, index);
@@ -238,12 +235,20 @@ namespace SshCity.Game.Plan
                 {
                     break;
                 }
+
                 valid = planInitial.GetBlock(planInitial.TileMap1, (int) tile.x + (int) vector2.x,
                             (int) tile.y + (int) vector2.y) == Ref_donnees.terre
-                        && planInitial.GetBlock(planInitial.TileMap2, (int) tile.x + (int) vector2.x-1,
-                            (int) tile.y + (int) vector2.y -1) == -1;
+                        && planInitial.GetBlock(planInitial.TileMap2, (int) tile.x + (int) vector2.x - 1,
+                            (int) tile.y + (int) vector2.y - 1) == -1;
             }
+
             return valid;
+        }
+
+        enum TypeLac
+        {
+            LAC1,
+            LAC2
         }
     }
 }

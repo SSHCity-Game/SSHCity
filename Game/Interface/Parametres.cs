@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using SshCity.Game;
 
 public class Parametres : CanvasLayer
@@ -17,7 +16,7 @@ public class Parametres : CanvasLayer
 
     private static bool musique = true;
     public static bool effets = true;
-    
+
     public override void _Ready()
     {
         _parametres = GetNode<Button>("Parametres");
@@ -34,7 +33,7 @@ public class Parametres : CanvasLayer
         _login.Text = "username";
         HideAll();
         _parametres.Hide();
-        
+
         _parametres.Connect("pressed", this, nameof(param_pressed));
         _gamePlay.Connect("pressed", this, nameof(gameplay_pressed));
         _quitter.Connect("pressed", this, nameof(quitter_pressed));
@@ -90,7 +89,7 @@ public class Parametres : CanvasLayer
     private void musique_pressed()
     {
         musique = !musique;
-        if(!musique)
+        if (!musique)
             MainPlan._musique.Stop();
         else
             MainPlan._musique.Play();

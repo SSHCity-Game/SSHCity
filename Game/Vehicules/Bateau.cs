@@ -1,18 +1,10 @@
-using Godot;
 using System;
 using System.Collections.Generic;
+using Godot;
 using SshCity.Game.Plan;
 
 public class Bateau : Area2D
 {
-    private AnimatedSprite _animatedSprite2D;
-    private Vector2 _deplacement;
-    private Direction direction;
-    private Vector2 arrive;
-    private bool isMoving = false;
-    private PlanInitial _planInitial;
-    private Random rand = new Random();
-    private const string _strAnimatedSprite2D = "AnimatedSprite";
     public enum Direction
     {
         RIGHT,
@@ -20,7 +12,9 @@ public class Bateau : Area2D
         LEFT,
         BOTTOM,
     }
-        
+
+    private const string _strAnimatedSprite2D = "AnimatedSprite";
+
     public static List<Direction> ListDirection = new List<Direction>()
     {
         {Direction.LEFT},
@@ -28,15 +22,25 @@ public class Bateau : Area2D
         {Direction.BOTTOM},
         {Direction.RIGHT},
     };
-    
-    Godot.Collections.Dictionary<Direction, string> DirectionToAnim = new Godot.Collections.Dictionary<Direction, string>()
-    {
-        {Direction.TOP, "NW"},
-        {Direction.BOTTOM, "SE"},
-        {Direction.LEFT, "SW"},
-        {Direction.RIGHT, "NE"}
-    };
-    
+
+    private AnimatedSprite _animatedSprite2D;
+    private Vector2 _deplacement;
+    private PlanInitial _planInitial;
+    private Vector2 arrive;
+    private Direction direction;
+
+    Godot.Collections.Dictionary<Direction, string> DirectionToAnim =
+        new Godot.Collections.Dictionary<Direction, string>()
+        {
+            {Direction.TOP, "NW"},
+            {Direction.BOTTOM, "SE"},
+            {Direction.LEFT, "SW"},
+            {Direction.RIGHT, "NE"}
+        };
+
+    private bool isMoving = false;
+    private Random rand = new Random();
+
     /// <summary>
     /// Permet avec la direction du vehicule d'avoir le vecteur a ajouter par rapport à sa position pour aller sur le bloc suivant
     /// </summary>
@@ -57,14 +61,13 @@ public class Bateau : Area2D
     public void Init(PlanInitial planInitial, Vector2 position)
     {
         _planInitial = planInitial;
-        Position = position+ new Vector2(0, 20);
+        Position = position + new Vector2(0, 20);
         isMoving = false;
     }
-    
+
     public override void _Ready()
     {
         _animatedSprite2D = (AnimatedSprite) GetNode(_strAnimatedSprite2D);
-            
     }
 
     public override void _Process(float delta)
@@ -78,6 +81,7 @@ public class Bateau : Area2D
             isMoving = false;
             _deplacement = new Vector2(0, 0);
         }
+
         if (!isMoving)
         {
             Random random = new Random();
@@ -86,15 +90,17 @@ public class Bateau : Area2D
             Vector2 posActuel = _planInitial.TileMap1.WorldToMap(Position);
             Vector2 next = DirectionToVector2(dir);
             Vector2 NextCase = posActuel + next;
-            if (_planInitial.GetBlock(_planInitial.TileMap1, (int)NextCase.x+(int)next.x, (int)NextCase.y+(int)next.y) == Ref_donnees.water_terre)
+            if (_planInitial.GetBlock(_planInitial.TileMap1, (int) NextCase.x + (int) next.x,
+                (int) NextCase.y + (int) next.y) == Ref_donnees.water_terre)
             {
                 direction = dir;
                 _animatedSprite2D.Animation = DirectionToAnim[dir];
-                _deplacement = _planInitial.TileMap1.MapToWorld(NextCase) - Position+ new Vector2(0, 25);
+                _deplacement = _planInitial.TileMap1.MapToWorld(NextCase) - Position + new Vector2(0, 25);
                 arrive = _planInitial.TileMap1.MapToWorld(NextCase) + new Vector2(0, 25);
-                isMoving = true; 
+                isMoving = true;
             }
         }
+
         Position += _deplacement * delta;
     }
 }
